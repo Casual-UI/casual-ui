@@ -1,6 +1,4 @@
-# OPay UI Vue
-
-基于Vue3的OPay组件库
+# Casual UI Vue
 
 ## 安装
 
