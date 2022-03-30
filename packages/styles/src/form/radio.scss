@@ -1,0 +1,39 @@
+$radio-sizes: ("xs": 15px, "sm": 17.5px );
+
+.c-radio {
+  @extend %c-inline-flex;
+  @extend %c-items-center;
+
+  cursor: pointer;
+  color: var(--casual-copywriting-normal);
+  user-select: none;
+
+  &--disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  &--circle-wrapper {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+  }
+
+  &--inner-circle {
+    transition: transform var(--casual-ease-in-out-cubic) 0.2s;
+    transform: scale(0);
+    transform-origin: center;
+  }
+
+  &--label {
+    margin-left: 2px;
+  }
+
+  &--selected {
+    color: var(--casual-primary);
+
+    .c-radio--inner-circle {
+      transform: scale(1);
+    }
+  }
+}

@@ -1,0 +1,52 @@
+.c-tooltip {
+  position: relative;
+  display: inline-block;
+
+  &--popper-content {
+    line-height: 1.5em;
+    padding: 4px 8px;
+    background-color: var(--casual-tooltip-bg);
+    border-radius: 4px;
+    white-space: nowrap;
+    font-size: 14px;
+    color: var(--casual-copywriting-light);
+
+    &-wrapper {
+      position: absolute;
+      z-index: 3;
+      opacity: 0;
+      padding: 6px;
+      transition: opacity 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+    }
+  }
+
+  &--position-top {
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -100%);
+  }
+
+  &--position-bottom {
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 100%);
+  }
+
+  &--position-left {
+    left: 0;
+    top: 50%;
+    transform: translate(-100%, -50%);
+  }
+
+  &--position-right {
+    right: 0;
+    top: 50%;
+    transform: translate(100%, -50%);
+  }
+
+  &--show {
+    .c-tooltip--popper-content-wrapper {
+      opacity: 1;
+    }
+  }
+}

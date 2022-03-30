@@ -1,0 +1,110 @@
+@use "sass:math";
+
+$flex-justify-maps: (
+  "start": flex-start,
+  "end": flex-end,
+  "between": space-between,
+  "center": center,
+  "evenly": space-evenly,
+  "around": space-around
+);
+$flex-align-maps: ("start": flex-start, "end": flex-end, "center": center, "baseline": baseline, "stretch": stretch);
+$c-columns: 12;
+
+.c-row,
+.c-column,
+.c-flex,
+%c-row,
+%c-column,
+%c-flex {
+  display: flex;
+}
+
+.c-inline-flex,
+%c-inline-flex {
+  display: inline-flex;
+}
+
+.c-row-reverse,
+%c-row-reverse {
+  flex-direction: row-reverse;
+}
+
+.c-column-reverse,
+%c-column-reverse {
+  flex-direction: column-reverse;
+}
+
+.c-column,
+%c-column {
+  flex-direction: column;
+}
+
+.c-wrap,
+%c-wrap {
+  flex-wrap: wrap;
+}
+
+.c-flex-grow,
+%c-flex-grow {
+  flex-grow: 1;
+}
+
+@each $justify, $value in $flex-justify-maps {
+  .c-justify-#{$justify},
+  %c-justify-#{$justify} {
+    justify-content: $value;
+  }
+}
+
+@each $align, $value in $flex-align-maps {
+  .c-items-#{$align},
+  %c-items-#{$align} {
+    align-items: $value;
+  }
+}
+
+.c-row {
+  @for $i from 0 through $c-columns {
+    > .c-col-#{$i},
+    > %c-col-#{$i} {
+      height: auto;
+      width: math.percentage(math.div($i, $c-columns));
+      box-sizing: border-box;
+    }
+  }
+}
+
+.c-column {
+  @for $i from 0 through $c-columns {
+    > .c-col-#{$i},
+    > %c-col-#{$i} {
+      width: auto;
+      box-sizing: border-box;
+      height: math.percentage(math.div($i, $c-columns));
+    }
+  }
+}
+
+.c-grid,
+%c-grid {
+  display: grid;
+}
+
+@for $var from 1 to 12 {
+  .c-grid-col-#{$var},
+  %c-grid-col-#{$var} {
+    grid-template-columns: repeat($var, 1fr);
+  }
+  .c-grid-row-#{$var},
+  %c-grid-row-#{$var} {
+    grid-template-rows: repeat($var, 1fr);
+  }
+}
+
+@each $size, $value in $basic-padding-sizes {
+  .c-grid-gap-#{$size},
+  %c-grid-gap-#{$size} {
+    gap: #{$value};
+  }
+}

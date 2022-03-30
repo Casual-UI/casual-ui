@@ -1,0 +1,57 @@
+{
+  "name": "casual-ui-vue",
+  "version": "0.0.1-alpha.1",
+  "description": "Casual UI Vue",
+  "main": "index.ts",
+  "license": "MIT",
+  "type": "module",
+  "author": {
+    "email": "1197160272@qq.com",
+    "name": "Dongsheng Zhao"
+  },
+  "scripts": {
+    "build": "vite build"
+  },
+  "repository": {
+    "url": "https://github.com/Blackman99/casual-ui.git",
+    "directory": "/packages/vue/ui"
+  },
+  "devDependencies": {
+    "@rushstack/eslint-patch": "^1.1.1",
+    "@typescript-eslint/eslint-plugin": "^5.16.0",
+    "@typescript-eslint/parser": "^5.16.0",
+    "@vitejs/plugin-vue": "^2.2.4",
+    "@vue/eslint-config-prettier": "^7.0.0",
+    "@vue/eslint-config-typescript": "^10.0.0",
+    "eslint": "^8.12.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-markdown": "^2.2.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^8.5.0",
+    "prettier": "^2.6.1",
+    "@quasar/extras": "^1.13.4",
+    "dayjs": "^1.11.0",
+    "typescript": "^4.6.3",
+    "vue": "^3.2.31",
+    "casual-i18n": "workspace:*",
+    "casual-types": "workspace:*",
+    "casual-styles": "workspace:*",
+    "casual-ui-vue": "workspace:*",
+    "vite-plugin-vue-auto-name": "workspace:*",
+    "vite": "^2.8.6"
+  },
+  "publishConfig": {
+    "main": "./dist/casual-ui-vue.umd.js",
+    "module": "./dist/casual-ui-vue.es.js",
+    "exports": {
+      ".": {
+        "import": "./dist/casual-ui-vue.es.js",
+        "require": "./dist/casual-ui-vue.umd.js"
+      },
+      "./dist/style.css": {
+        "import": "./dist/style.css",
+        "require": "./dist/style.css"
+      }
+    }
+  }
+}

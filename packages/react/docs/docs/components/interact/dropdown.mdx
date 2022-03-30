@@ -1,0 +1,21 @@
+---
+title: 下拉
+---
+
+### 基础使用
+
+```jsx live
+function Demo() {
+  const [show, setShow] = useState(false)
+
+  return (
+    <CDropdown
+      value={show}
+      onChange={setShow}
+      dropContent={<p>一些下拉内容</p>}
+    >
+      <CButton label="点击展示下拉" />
+    </CDropdown>
+  )
+}
+```

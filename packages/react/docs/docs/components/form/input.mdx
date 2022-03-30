@@ -1,0 +1,133 @@
+---
+title: 输入框
+---
+
+### 基础使用
+
+```jsx live
+function Demo() {
+  const [value, onChange] = useState('')
+  return (
+    <div className="c-row c-gutter-x-md">
+      <div>
+        <CInput {...{ value, onChange }} placeholder="普通输入框" />
+      </div>
+      <div>
+        <CInput
+          {...{ value, onChange }}
+          placeholder="密码输入框"
+          type="password"
+        />
+      </div>
+      <div>
+        <CInput {...{ value, onChange }} placeholder="圆角输入框" rounded />
+      </div>
+      <div>
+        <CInput {...{ value, onChange }} placeholder="禁用状态" disabled />
+      </div>
+    </div>
+  )
+}
+```
+
+### 可清除
+
+```jsx live
+function Demo() {
+  const [value, onChange] = useState('')
+  return (
+    <>
+      <CInput {...{ value, onChange }} clearable placeholder="可清除内容" />
+    </>
+  )
+}
+```
+
+### 不同尺寸
+
+```jsx live
+function Demo() {
+  const [value, onChange] = useState('')
+  return (
+    <div className="c-row c-gutter-x-md c-items-center c-wrap">
+      <div>
+        <CInput {...{ value, onChange }} size="xs" placeholder="超小尺寸" />
+      </div>
+      <div>
+        <CInput {...{ value, onChange }} size="sm" placeholder="小尺寸" />
+      </div>
+      <div>
+        <CInput
+          {...{ value, onChange }}
+          size="md"
+          placeholder="中等（默认）尺寸"
+        />
+      </div>
+      <div>
+        <CInput {...{ value, onChange }} size="lg" placeholder="大尺寸" />
+      </div>
+      <div>
+        <CInput {...{ value, onChange }} size="xl" placeholder="超大尺寸" />
+      </div>
+    </div>
+  )
+}
+```
+
+### 前置&后置内容
+
+```jsx live
+function Demo() {
+  const [value, onChange] = useState('abc')
+  return (
+    <div className="c-row c-gutter-x-md">
+      <div>
+        <CInput
+          {...{ value, onChange }}
+          placeholder="前置内容&后置内容"
+          prefix="+234"
+          suffix="@someone"
+        />
+      </div>
+      <div>
+        <CInput
+          {...{ value, onChange }}
+          rounded
+          placeholder="前置与后置图标"
+          clearable
+          prefix={<CIcon content={MdIcons.matContactPhone} />}
+          suffix={<CIcon content={MdIcons.matDateRange} />}
+        />
+      </div>
+    </div>
+  )
+}
+```
+
+### 加载态
+
+```jsx live
+function Demo() {
+  const [value, onChange] = useState('')
+  return (
+    <div className="c-row c-gutter-x-md">
+      <div>
+        <CInput {...{ value, onChange }} rounded placeholder="加载中" loading />
+      </div>
+      <div>
+        <CInput
+          {...{ value, onChange }}
+          rounded
+          loading
+          placeholder="加载中"
+          customLoading={<CLoadingBar color="purple" />}
+        />
+      </div>
+    </div>
+  )
+}
+```
+
+### Props
+
+<PropTable name="CInput" typeWidth="300px" />

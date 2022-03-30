@@ -1,0 +1,74 @@
+---
+title: 图标
+---
+
+Casual UI 的图标集成了[@quasar/extras](https://github.com/quasarframework/quasar/tree/dev/extras)
+
+:::warning 注意
+本篇的所有示例，均建立在以下导入代码之上:
+
+```jsx
+import * as MdIcons from '@quasar/extras/material-icons'
+import * as MdiV6Icons from '@quasar/extras/mdi-v6'
+```
+
+:::
+
+### 使用
+
+- 安装`@quasar/extras`
+
+```sh
+yarn add @quasar/extras
+```
+
+- 导入
+
+```jsx
+import * as MdIcons from '@quasar/extras/material-icons'
+import * as MdiV6Icons from '@quasar/extras/mdi-v6'
+```
+
+- 使用
+
+```jsx live
+<CIcon content={MdiV6Icons.mdiAccount} />
+```
+
+### 颜色和尺寸
+
+```jsx live
+<div className="c-row c-gutter-x-md">
+  <CIcon
+    content={MdiV6Icons.mdiAbTesting}
+    style={{ fontSize: '24px', color: 'blue' }}
+  />
+  <CIcon
+    content={MdIcons.matMenu}
+    style={{ fontSize: '48px', color: 'cyan' }}
+  />
+  <CIcon
+    content={MdIcons.matSupervisedUserCircle}
+    style={{ fontSize: '96px', color: 'purple' }}
+  />
+</div>
+```
+
+### Material Icons 一览
+
+```jsx live
+<div
+  className="c-row c-wrap c-gutter-md"
+  style={{ maxHeight: '30vh', overflow: 'auto' }}
+>
+  {Object.entries(MdIcons).map(([name, value]) => (
+    <div key={name} style={{ fontSize: '24px' }}>
+      <CIcon content={value} />
+    </div>
+  ))}
+</div>
+```
+
+### Props
+
+<PropTable name="CIcon" />

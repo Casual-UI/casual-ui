@@ -1,0 +1,46 @@
+.c-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 999;
+
+  &--show {
+    pointer-events: all;
+  }
+
+  &--backdrop,
+  &--content-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &--backdrop {
+    background-color: var(--casual-popup-bg);
+    z-index: 2;
+  }
+
+  &--content-wrapper {
+    @extend %c-column;
+
+    z-index: 3;
+
+    $origin-x: ("start": left, "center": center, "end": right);
+    $origin-y: ("start": top, "center": center, "end": bottom);
+
+    @each $x, $v in $origin-x {
+      @each $y, $vy in $origin-y {
+        &.c-items-#{$x}.c-justify-#{$y} {
+          .c-dialog {
+            transform-origin: $v $vy;
+          }
+        }
+      }
+    }
+  }
+}

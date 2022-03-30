@@ -1,0 +1,107 @@
+---
+title: 按钮
+---
+
+### 基础使用
+
+```jsx live
+function Demo() {
+  return (
+    <SpaceItems>
+      <CButton label="普通按钮" />
+      <CButton label="轮廓按钮" outlined />
+      <CButton label="禁用状态" disabled />
+      <CButton label="圆角按钮" rounded />
+      <CButton label="圆边按钮" round />
+    </SpaceItems>
+  )
+}
+```
+
+### 主题
+
+```jsx live
+<SpaceItems>
+  <CButton label="主色按钮" theme="primary" />
+  <CButton label="辅色按钮" theme="secondary" />
+  <CButton label="警告色按钮" theme="warning" />
+  <CButton label="消极色按钮" theme="negative" />
+</SpaceItems>
+```
+
+### 不同尺寸
+
+```jsx live
+<SpaceItems>
+  <CButton label="超小尺寸按钮" size="xs" />
+  <CButton label="小尺寸按钮" size="sm" />
+  <CButton label="中等尺寸钮" size="md" />
+  <CButton label="大尺寸按钮" size="lg" />
+  <CButton label="超大尺寸按钮" size="xl" />
+</SpaceItems>
+```
+
+### 块级
+
+```jsx live
+<div>
+  <div className="c-mb-md">
+    <CButton label="块级按钮" block size="lg" theme="warning" />
+  </div>
+  <div className="c-mb-md">
+    <CButton label="块级按钮" block size="lg" rounded />
+  </div>
+  <div>
+    <CButton label="块级按钮" block size="lg" round theme="negative" outlined />
+  </div>
+</div>
+```
+
+### 加载状态
+
+```jsx live
+<SpaceItems>
+  <CButton label="提交中" size="sm" loading />
+  <CButton label="提交中" loading />
+  <CButton label="提交中" size="lg" loading />
+  <CButton rounded label="提交中" loading />
+  <CButton rounded label="提交中" loading outlined />
+  <CButton round label="提交中" loading />
+  <CButton round outlined label="提交中" loading />
+</SpaceItems>
+```
+
+### 自定义加载动画
+
+```jsx live
+<SpaceItems>
+  <CButton label="提交中" loading customLoading={<CLoadingAudio />} />
+  <CButton label="提交中" outlined loading customLoading={<CLoadingCube />} />
+</SpaceItems>
+```
+
+### 图标按钮
+
+```jsx live
+<SpaceItems>
+  <CButton icon style={{ fontSize: '20px' }}>
+    <CIcon content={MdIcons.matLightbulb} />
+  </CButton>
+  <CButton icon outlined style={{ fontSize: '32px' }}>
+    <CIcon content={MdIcons.matHouse} />
+  </CButton>
+  <CButton icon outlined style={{ fontSize: '32px' }} theme="negative">
+    <CIcon content={MdIcons.matPerson} />
+  </CButton>
+  <CButton icon style={{ fontSize: '56px' }} theme="secondary">
+    <CIcon content={MdIcons.matSupervisedUserCircle} />
+  </CButton>
+  <CButton icon style={{ fontSize: '56px' }} theme="warning">
+    <CIcon content={MdIcons.matDeviceHub} />
+  </CButton>
+</SpaceItems>
+```
+
+### Props
+
+<PropTable name="CButton" typeWidth="320px" />

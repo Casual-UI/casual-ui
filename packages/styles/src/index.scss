@@ -1,0 +1,24 @@
+@import "./variables/index";
+@import "./button";
+@import "./loading";
+@import "./form/input";
+@import "./form/select";
+@import "./form/radio";
+@import "./table";
+@import "./icon";
+@import "./popups/tooltip";
+@import "./interact/expansion";
+@import "./list";
+@import "./tag";
+@import "./form/checkbox";
+@import "./popups/popup";
+@import "./popups/dialog";
+@import "./popups/notification";
+@import "./form/toggle";
+@import "./dropdown";
+@import "./form//date-picker";
+
+html,
+body {
+  color: var(--casual-copywriting-normal);
+}

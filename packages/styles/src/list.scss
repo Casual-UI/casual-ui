@@ -1,0 +1,34 @@
+.c-list {
+  &--empty {
+    text-align: center;
+    color: var(--casual-copywriting-light);
+    font-size: 12px;
+  }
+}
+
+.c-item {
+  &--clickable {
+    font-weight: 400;
+    cursor: pointer;
+    transition:
+      background var(--casual-ease-in-cubic) 0.2s,
+      color var(--casual-ease-in-cubic) 0.2s;
+
+    &:hover {
+      background-color: var(--casual-input-bg-darker);
+    }
+
+    &:active {
+      background-color: var(--casual-input-bg-darker2);
+    }
+  }
+
+  &--active {
+    color: var(--casual-primary);
+    background-color: var(--casual-primary-pale);
+
+    &:hover {
+      background-color: var(--casual-primary-pale-darker);
+    }
+  }
+}

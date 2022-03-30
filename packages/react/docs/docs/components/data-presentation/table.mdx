@@ -1,0 +1,86 @@
+---
+title: 表格
+---
+
+### 基础使用
+
+```jsx live
+<CTable
+  columns={[
+    { title: '名称', field: 'name' },
+    { title: '性别', field: 'gender' },
+  ]}
+  data={[
+    { name: 'Jason', gender: 'male' },
+    { name: 'Lorry', gender: 'female' },
+  ]}
+  rowKey="name"
+/>
+```
+
+### 自定义表头
+
+```jsx live
+function Demo() {
+  const columns = [
+    {
+      title: '姓名',
+      field: 'name',
+      customHeader: ({ title }) => (
+        <span style={{ color: 'purple', fontSize: '48px' }}>{title}</span>
+      ),
+    },
+    {
+      title: '性别',
+      field: 'gender',
+      customHeader: ({ title }) => (
+        <span style={{ color: 'cyan', fontSize: '48px' }}>{title}</span>
+      ),
+    },
+  ]
+
+  const data = [
+    { name: 'Jason', gender: 'male' },
+    { name: 'Lorry', gender: 'female' },
+  ]
+
+  return <CTable columns={columns} data={data} rowKey="name" />
+}
+```
+
+### 自定义单元格
+
+```jsx live
+function Demo() {
+  const columns = [
+    {
+      title: '姓名',
+      field: 'name',
+    },
+    {
+      title: '性别',
+      field: 'gender',
+    },
+    {
+      title: '操作',
+      customRender: ({ row }) => (
+        <>
+          <CButton label="编辑" size="sm" />
+          <CButton label="删除" theme="negative" size="sm" />
+        </>
+      ),
+    },
+  ]
+
+  const data = [
+    { name: 'Jason', gender: 'male' },
+    { name: 'Lorry', gender: 'female' },
+  ]
+
+  return <CTable columns={columns} data={data} rowKey="name" />
+}
+```
+
+### Props
+
+<PropTable name="CTable" />

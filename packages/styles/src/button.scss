@@ -1,0 +1,152 @@
+.c-button {
+  user-select: none;
+  display: inline-block;
+  outline: none;
+  border: 1px solid transparent;
+  transition: background 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  color: #fff;
+
+  &--block {
+    display: block;
+    width: 100%;
+  }
+
+  &--rounded {
+    border-radius: var(--casual-rounded);
+  }
+
+  &--content-wrapper {
+    @extend %c-flex;
+    @extend %c-items-center;
+    @extend %c-justify-center;
+
+    height: 100%;
+  }
+
+  &--icon {
+    border-radius: 50%;
+
+    $icon: 2em;
+
+    padding: 0;
+    width: $icon;
+    height: $icon;
+    line-height: $icon;
+
+    .c-button--content-wrapper {
+      .c-icon {
+        height: auto;
+      }
+    }
+  }
+
+  &--round {
+    border-radius: 24px;
+  }
+
+  &--theme {
+    &-primary {
+      background-color: var(--casual-primary);
+    }
+
+    &-secondary {
+      background-color: var(--casual-secondary);
+    }
+
+    &-warning {
+      background-color: var(--casual-warning);
+    }
+
+    &-negative {
+      background-color: var(--casual-negative);
+    }
+  }
+
+  &--outlined {
+    background-color: transparent;
+
+    &.c-button--theme {
+      &-primary {
+        border-color: var(--casual-primary);
+        color: var(--casual-primary);
+      }
+
+      &-secondary {
+        border-color: var(--casual-secondary);
+        color: var(--casual-secondary);
+      }
+
+      &-warning {
+        border-color: var(--casual-warning);
+        color: var(--casual-warning);
+      }
+
+      &-negative {
+        border-color: var(--casual-negative);
+        color: var(--casual-negative);
+      }
+    }
+  }
+
+  &:not(:disabled):not(.c-button--loading).c-button {
+    &--theme {
+      &-primary {
+        &:hover {
+          background-color: var(--casual-primary-lighter);
+        }
+
+        &:active {
+          background-color: var(--casual-primary-darker);
+        }
+      }
+
+      &-secondary {
+        &:hover {
+          background-color: var(--casual-secondary-lighter);
+        }
+
+        &:active {
+          background-color: var(--casual-secondary-darker);
+        }
+      }
+
+      &-warning {
+        &:hover {
+          background-color: var(--casual-warning-lighter);
+        }
+
+        &:active {
+          background-color: var(--casual-warning-darker);
+        }
+      }
+
+      &-negative {
+        &:hover {
+          background-color: var(--casual-negative-lighter);
+        }
+
+        &:active {
+          background-color: var(--casual-negative-darker);
+        }
+      }
+    }
+
+    &--outlined {
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+
+  &--loading {
+    cursor: wait;
+    opacity: 0.7;
+  }
+
+  &:disabled {
+    background-color: var(--casual-disabled);
+    cursor: not-allowed;
+    color: #fff;
+  }
+}

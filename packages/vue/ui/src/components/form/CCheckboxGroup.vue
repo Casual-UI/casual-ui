@@ -1,0 +1,66 @@
+<script setup lang="ts">
+import { useVModel, CCheckbox } from 'casual-ui-vue'
+import { computed, toRefs } from 'vue'
+type CCheckboxModel = boolean | string | number
+
+interface CCheckboxGroupProps {
+  /**
+   * 选项数组
+   */
+  options?: Array<{ label: string; value: CCheckboxModel }>
+  /**
+   * 当前选中值数组
+   */
+  modelValue: CCheckboxModel[]
+}
+
+const props = withDefaults(defineProps<CCheckboxGroupProps>(), {
+  options: () => [],
+})
+
+// FIXME: 官方暂时不支持类型外部导入，暂时在组件内部定义类型
+const emit = defineEmits<{
+  /**
+   * 绑定值变化时触发
+   */
+  (e: 'update:modelValue', newValue: CCheckboxModel[]): void
+}>()
+
+const { modelValue } = toRefs(props)
+
+const { innerValue } = useVModel<CCheckboxModel[]>(
+  modelValue,
+  modelValue.value,
+  newValue => {
+    emit('update:modelValue', newValue)
+  }
+)
+
+const optionsWithCheckStatus = computed(() =>
+  props.options.map(op => ({
+    ...op,
+    value: op.value as string,
+    checked: innerValue.value.some(v => v === op.value),
+  }))
+)
+
+const onCheckStatusChange = (val: CCheckboxModel) => {
+  const idx = innerValue.value.findIndex(v => v === val)
+  if (idx === -1) {
+    innerValue.value.push(val)
+    return
+  }
+  innerValue.value.splice(idx, 1)
+}
+</script>
+<template>
+  <div class="c-checkbox-group">
+    <c-checkbox
+      v-for="op in optionsWithCheckStatus"
+      :key="op.value"
+      :label="op.label"
+      :model-value="op.checked"
+      @update:model-value="onCheckStatusChange(op.value)"
+    />
+  </div>
+</template>

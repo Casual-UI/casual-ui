@@ -1,0 +1,18 @@
+{
+  "name": "casual-types",
+  "version": "0.0.1",
+  "description": "Casual UI relative types",
+  "main": "index.ts",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Blackman99/casual-ui.git",
+    "directory": "/packages/types"
+  },
+  "author": {
+    "email": "1197160272@qq.com",
+    "name": "Dongsheng Zhao"
+  },
+  "license": "MIT"
+}

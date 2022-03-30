@@ -1,0 +1,24 @@
+{
+  "name": "casual-utils",
+  "description": "Casual Utils library",
+  "version": "0.0.1",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "index.ts",
+  "scripts": {
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+  },
+  "author": {
+    "email": "1197160272@qq.com",
+    "name": "Dongsheng Zhao"
+  },
+  "repository": {
+    "url": "https://github.com/Blackman99/casual-ui.git",
+    "directory": "/packages/lib"
+  }
+}

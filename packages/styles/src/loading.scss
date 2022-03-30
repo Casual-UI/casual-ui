@@ -1,0 +1,54 @@
+.c-loading {
+  vertical-align: middle;
+  width: 1em;
+  height: 1em;
+
+  &--mat {
+    animation: c-spin 2s linear infinite;
+  }
+
+  &--path {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+    animation: c-mat-dash 1.5s ease-in-out infinite;
+  }
+}
+
+@keyframes c-spin {
+  0% {
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+
+  25% {
+    transform: rotate3d(0, 0, 1, 90deg);
+  }
+
+  50% {
+    transform: rotate3d(0, 0, 1, 180deg);
+  }
+
+  75% {
+    transform: rotate3d(0, 0, 1, 270deg);
+  }
+
+  100% {
+    transform: rotate3d(0, 0, 1, 359deg);
+  }
+}
+
+@keyframes c-mat-dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35px;
+  }
+
+  100% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -124px;
+  }
+}

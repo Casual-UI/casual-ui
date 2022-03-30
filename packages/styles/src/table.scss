@@ -1,0 +1,45 @@
+.c-table {
+  &--table {
+    background-color: var(--casual-table-bg);
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    word-wrap: break-word;
+    word-break: break-all;
+    text-align: left;
+    table-layout: auto;
+    font-size: 14px;
+    display: table;
+    line-height: 1.5em;
+  }
+
+  thead,
+  tbody,
+  tr,
+  th,
+  td {
+    border: none;
+  }
+
+  tr {
+    background-color: transparent;
+  }
+
+  td,
+  th {
+    padding: 6px;
+    box-sizing: border-box;
+    border-bottom: 1px solid var(--casual-normal-bg);
+  }
+
+  &--striped {
+    tbody tr:nth-child(2n) {
+      background-color: var(--casual-table-striped-bg);
+    }
+  }
+
+  &--no-data {
+    text-align: center;
+    color: var(--casual-copywriting-light);
+  }
+}

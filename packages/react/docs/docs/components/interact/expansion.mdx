@@ -1,0 +1,65 @@
+---
+title: 折叠器
+---
+
+### 基础使用
+
+```jsx live
+<CExpansion title="点击展开/收起">
+  <div className="c-pa-md">
+    <p>你好，世界</p>
+    <p>你好，世界</p>
+    <p>你好，世界</p>
+    <p>你好，世界</p>
+  </div>
+</CExpansion>
+```
+
+### 标题图标
+
+```jsx live
+<>
+  <CExpansion title="左侧标题图标" icon={<CIcon content={MdIcons.matPeople} />}>
+    <div className="c-pa-lg">
+      <p>代码能够运行并满足业务要求是最低标准</p>
+    </div>
+  </CExpansion>
+  <CExpansion
+    title="左侧标题图标"
+    icon={<CIcon content={MdIcons.matNaturePeople} />}
+  >
+    <div className="c-pa-lg">
+      <p>代码能够运行并满足业务要求是最低标准</p>
+    </div>
+  </CExpansion>
+</>
+```
+
+### 自定义箭头
+
+```jsx live
+<>
+  <CExpansion
+    title="自定义arrow图标"
+    arrow={() => <CIcon content={MdIcons.matArrowCircleDown} />}
+  >
+    <div className="c-pa-lg">
+      <p>哇哦，自定义箭头</p>
+    </div>
+  </CExpansion>
+  <CExpansion
+    title="自定义arrow图标"
+    arrow={open => (
+      <CIcon content={open ? MdIcons.matPeople : MdIcons.matNaturePeople} />
+    )}
+  >
+    <div className="c-pa-lg">
+      <p>展开、折叠状态展示不同图标</p>
+    </div>
+  </CExpansion>
+</>
+```
+
+### Props
+
+<PropTable name="CExpansion" typeWidth="260px" />

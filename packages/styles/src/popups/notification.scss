@@ -1,0 +1,191 @@
+$positions: "start", "center", "end";
+
+@keyframes close-count-down {
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: -63;
+  }
+}
+
+@each $p1 in $positions {
+  @each $p2 in $positions {
+    .c-notification {
+      &-#{$p1}-#{$p2}-move,
+      &-#{$p1}-#{$p2}-enter-active,
+      &-#{$p1}-#{$p2}-leave-active {
+        transition: all 0.3s var(--casual-ease-in-out-cubic);
+      }
+      &-#{$p1}-#{$p2}-enter-from,
+      &-#{$p1}-#{$p2}-leave-to {
+        @if $p1 == start {
+          transform: translate(-100%, 0) scale(0.01);
+        } @else if $p1 == end {
+          transform: translate(100%, 0) scale(0.01);
+        } @else if $p1 == center {
+          @if $p2 == start {
+            transform: translate(0, -100%) scale(0.01);
+          }
+
+          @if $p2 == center {
+            transform: scale(0.01);
+          }
+
+          @if $p2 == end {
+            transform: translate(0, 100%) scale(0.01);
+          }
+        }
+      }
+
+      &-#{$p1}-#{$p2}-leave-active {
+        position: absolute;
+      }
+    }
+    .c-popup--content-wrapper.c-items-#{$p1}.c-justify-#{$p2} {
+      .c-notification--item-card {
+        @if $p1 == start {
+          border-right-width: 6px;
+          border-right-style: solid;
+        } @else if $p1 == end {
+          border-left-width: 6px;
+          border-left-style: solid;
+        } @else if $p1 == center {
+          @if $p2 == start {
+            border-bottom-width: 6px;
+            border-bottom-style: solid;
+          } @else if $p2 == center {
+            border-left-width: 6px;
+            border-right-width: 6px;
+            border-left-style: solid;
+            border-right-style: solid;
+          } @else if $p2 == end {
+            border-top-width: 6px;
+            border-top-style: solid;
+          }
+        }
+      }
+    }
+  }
+}
+
+.c-notification {
+  font-size: 14px;
+
+  @extend %c-ma-md;
+
+  pointer-events: none;
+
+  &-normal {
+    transform: translate(0, 0) scale(1);
+
+    &-center {
+      transform: translate(0, calc(-50% - 12px)) scale(1);
+    }
+  }
+
+  &--with-transition {
+    transition: all 0.3s var(--casual-ease-in-out-cubic);
+  }
+
+  .c-notification {
+    &--title {
+      color: var(--casual-copywriting-normal);
+      font-weight: bold;
+    }
+
+    &--countdown-bar {
+      vertical-align: middle;
+      width: 24px;
+      height: 24px;
+
+      &-circle {
+        stroke-dasharray: 63;
+        stroke-dashoffset: 0;
+        transform-origin: center;
+        transform: rotate(-90deg);
+      }
+    }
+
+    &--header {
+      @extend %c-pb-sm, %c-flex, %c-justify-between, %c-items-start;
+    }
+
+    &--message {
+      font-size: 0.9em;
+      color: var(--casual-copywriting-light);
+    }
+
+    &--close-icon {
+      position: relative;
+
+      &-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 3;
+        cursor: pointer;
+        color: var(--casual-input-clear-icon-hover);
+
+        &:hover {
+          color: var(--casual-radio-unselect);
+        }
+      }
+    }
+
+    &--item {
+      &-list {
+        pointer-events: all;
+      }
+
+      &-card {
+        @extend %c-rounded-md, %c-ma-md, %c-pa-md;
+
+        width: 240px;
+        box-sizing: border-box;
+        background-color: var(--casual-popup-content-bg);
+        box-shadow: 0 2px 12px 0 rgb(0 0 0 / 5%);
+      }
+
+      &-theme {
+        &-primary {
+          border-color: var(--casual-primary);
+          background-color: var(--casual-primary-pale);
+
+          .c-notification--countdown-bar {
+            color: var(--casual-primary);
+          }
+        }
+
+        &-secondary {
+          border-color: var(--casual-secondary);
+          background-color: var(--casual-secondary-pale);
+
+          .c-notification--countdown-bar {
+            color: var(--casual-secondary);
+          }
+        }
+
+        &-warning {
+          border-color: var(--casual-warning);
+          background-color: var(--casual-warning-pale);
+
+          .c-notification--countdown-bar {
+            color: var(--casual-warning);
+          }
+        }
+
+        &-negative {
+          border-color: var(--casual-negative);
+          background-color: var(--casual-negative-pale);
+
+          .c-notification--countdown-bar {
+            color: var(--casual-negative);
+          }
+        }
+      }
+    }
+  }
+}

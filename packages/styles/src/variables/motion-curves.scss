@@ -1,0 +1,107 @@
+// ⬇️⬇️⬇️ 淡出 ⬇️⬇️⬇️
+// 圆形
+$ease-out-circle: cubic-bezier(0.075, 0.82, 0.165, 1);
+
+// 急速
+$ease-out-overshoots: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+// 2级指数
+$ease-out-quadratic: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+// 3级指数
+$ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+
+// 4级指数
+$ease-out-quartic: cubic-bezier(0.165, 0.84, 0.44, 1);
+
+// 5级指数
+$ease-out-quintic: cubic-bezier(0.23, 1, 0.32, 1);
+
+// 10级指数
+$ease-out-exponential: cubic-bezier(0.19, 1, 0.22, 1);
+
+// sin
+$ease-out-sin: cubic-bezier(0.39, 0.575, 0.565, 1);
+
+// ⬆️⬆️⬆️ 淡出 ⬆️⬆️⬆️
+
+// ⬇️⬇️⬇️ 淡入 ⬇️⬇️⬇️
+// 圆形
+$ease-in-circle: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+
+// sin
+$ease-in-sin: cubic-bezier(0.47, 0, 0.745, 0.715);
+
+// 急速
+$ease-in-overshoots: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+
+// 2级指数
+$ease-in-quadratic: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+
+// 3级指数
+$ease-in-cubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+
+// 4级指数
+$ease-in-quartic: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+
+// 5级指数
+$ease-in-quintic: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+
+// 10级指数
+$ease-in-exponential: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+
+// ⬆️⬆️⬆️ 淡入 ⬆️⬆️⬆️
+
+// ⬇️⬇️⬇️ 淡入淡出 ⬇️⬇️⬇️
+// 圆形
+$ease-in-out-circle: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+
+// sin
+$ease-in-out-sin: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+
+// 急速
+$ease-in-out-overshoots: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+// 2级指数
+$ease-in-out-quadratic: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+
+// 3级指数
+$ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+
+// 4级指数
+$ease-in-out-quartic: cubic-bezier(0.77, 0, 0.175, 1);
+
+// 5级指数
+$ease-in-out-quintic: cubic-bezier(0.86, 0, 0.07, 1);
+
+// 10级指数
+$ease-in-out-exponential: cubic-bezier(1, 0, 0, 1);
+
+// ⬆️⬆️⬆️ 淡入淡出 ⬆️⬆️⬆️
+
+:root {
+  --casual-ease-out-circle: #{$ease-out-circle};
+  --casual-ease-out-overshoots: #{$ease-out-overshoots};
+  --casual-ease-out-quadratic: #{$ease-out-quadratic};
+  --casual-ease-out-cubic: #{$ease-out-cubic};
+  --casual-ease-out-quartic: #{$ease-out-quartic};
+  --casual-ease-out-quintic: #{$ease-out-quintic};
+  --casual-ease-out-exponential: #{$ease-out-exponential};
+  --casual-ease-out-sin: #{$ease-out-sin};
+  --casual-ease-in-out-circle: #{$ease-in-out-circle};
+  --casual-ease-in-out-overshoots: #{$ease-in-out-overshoots};
+  --casual-ease-in-out-quadratic: #{$ease-in-out-quadratic};
+  --casual-ease-in-out-cubic: #{$ease-in-out-cubic};
+  --casual-ease-in-out-quartic: #{$ease-in-out-quartic};
+  --casual-ease-in-out-quintic: #{$ease-in-out-quintic};
+  --casual-ease-in-out-exponential: #{$ease-in-out-exponential};
+  --casual-ease-in-out-sin: #{$ease-in-out-sin};
+  --casual-ease-in-circle: #{$ease-in-circle};
+  --casual-ease-in-overshoots: #{$ease-in-overshoots};
+  --casual-ease-in-quadratic: #{$ease-in-quadratic};
+  --casual-ease-in-cubic: #{$ease-in-cubic};
+  --casual-ease-in-quartic: #{$ease-in-quartic};
+  --casual-ease-in-quintic: #{$ease-in-quintic};
+  --casual-ease-in-exponential: #{$ease-in-exponential};
+  --casual-ease-in-sin: #{$ease-in-sin};
+}

@@ -1,0 +1,71 @@
+---
+title: 主题定制
+---
+
+### 主题色
+
+```jsx live
+function Demo() {
+  const colors = [
+    '--casual-primary',
+    '--casual-secondary',
+    '--casual-warning',
+    '--casual-negative',
+  ]
+
+  return (
+    <div className="c-row c-gutter-md c-items-center c-wrap">
+      {colors.map(colorName => (
+        <div className="o-col-3" key={colorName}>
+          <div
+            className="c-rounded-md color-card c-pa-md"
+            style={{
+              backgroundColor: `var(${colorName})`,
+              height: '120px',
+              lineHeight: '120px',
+              color: '#fff',
+              textAlign: 'center',
+            }}
+          >
+            {colorName}
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
+```
+
+Casual UI 提供了两种方式定制主题，可以根据项目具体需要选择合适的方式
+
+### 基于 scss 方案
+
+### 基于 css 变量方案
+
+### 变量一览
+
+```scss title="packages/styles/variables.scss"
+@use 'sass:color';
+// 主色
+$primary: #00b876;
+$primary-lighter: color.adjust(#00b876, $lightness: 2%, $alpha: -0.1);
+$primary-darker: color.adjust(#00b876, $lightness: -2%, $alpha: 0.1);
+$disabled: #9dacb6;
+
+// 辅色
+$secondary: #1dcf9f;
+$secondary-lighter: color.adjust(#1dcf9f, $lightness: 2%, $alpha: -0.1);
+$secondary-darker: color.adjust(#1dcf9f, $lightness: -2%, $alpha: 0.1);
+
+:root {
+  --casual-primary: #{$primary};
+  --casual-primary-darker: #{$primary-darker};
+  --casual-primary-lighter: #{$primary-lighter};
+
+  --casual-secondary: #{$secondary};
+  --casual-secondary-darker: #{$secondary-darker};
+  --casual-secondary-lighter: #{$secondary-lighter};
+
+  --casual-disabled: #{$disabled};
+}
+```

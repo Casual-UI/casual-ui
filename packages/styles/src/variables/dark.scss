@@ -1,0 +1,50 @@
+/* stylelint-disable selector-class-pattern */
+$primary-dark: lighten($primary, 2%);
+$secondary-dark: lighten($secondary, 2%);
+$warning-dark: lighten($warning, 5%);
+$primary-pale-dark: darken($primary, 30%);
+$secondary-pale-dark: darken($secondary, 35%);
+$warning-pale-dark: darken($warning, 35%);
+$negative-pale-dark: darken($negative, 60%);
+$input-bg-lighter-dark: darken($input-bg-lighter, 90%);
+$table-bg-dark: #121212;
+$copywriting-normal-dark: #dfdedd;
+$copywriting-light-dark: darken($copywriting-normal-dark, 40%);
+$normal-bg-dark: darken($normal-bg, 50%);
+$toggle-dot-bg-dark: darken($toggle-dot-bg, 10%);
+$tooltip-bg-dark: #fefefe;
+$popup-content-bg-dark: #010101;
+$popup-bg-dark: rgba(#fff, 0.6);
+$light-bg-dark: #0d0904;
+$input-placeholder-dark: #3f456e;
+
+html.dark,
+html[data-theme="dark"] {
+  --casual-primary: #{$primary-dark};
+  --casual-secondary: #{$secondary-dark};
+  --casual-warning: #{$warning-dark};
+  --casual-primary-pale: #{$primary-pale-dark};
+  --casual-secondary-pale: #{$secondary-pale-dark};
+  --casual-warning-pale: #{$warning-pale-dark};
+  --casual-negative-pale: #{$negative-pale-dark};
+  --casual-input-bg-lighter: #{$input-bg-lighter-dark};
+  --casual-select-bg: var(--casual-input-bg-lighter);
+  --casual-table-bg: #{$table-bg-dark};
+
+  // 文案色
+  --casual-copywriting-normal: #{$copywriting-normal-dark};
+  --casual-copywriting-light: #{$copywriting-light-dark};
+  --casual-normal-bg: #{$normal-bg-dark};
+  --casual-toggle-dot-bg: #{$toggle-dot-bg-dark};
+
+  // 弹出层
+  --casual-popup-content-bg: #{$popup-content-bg-dark};
+  --casual-popup-bg: #{$popup-bg-dark};
+
+  // 工具提示
+  --casual-tooltip-bg: #{$tooltip-bg-dark};
+  --casual-light-bg: #{$light-bg-dark};
+
+  // 输入框
+  --casual-input-placeholder: #{$input-placeholder-dark};
+}

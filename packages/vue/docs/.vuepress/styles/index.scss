@@ -1,0 +1,97 @@
+/* stylelint-disable */
+@use "sass:color";
+
+$table-striped-bg-dark: color.adjust(#282c34, $lightness: 10%);
+$cTipBgDark: darken(#00b876, 30%);
+
+:root {
+  --content-width: 880px;
+  --c-bg: #f7f8fa;
+  --doc-demo-bg: #fff;
+  --c-tip-bg: var(--casual-primary-pale);
+}
+
+html.dark {
+  --casual-table-striped-bg: #{$table-striped-bg-dark};
+  --doc-demo-bg: #333;
+  --casual-input-bg: #282c34;
+  --casual-input-bg-darker: #262626;
+  --casual-input-bg-darker2: #222;
+  --casual-copywriting-normal: #999;
+}
+
+.custom-container {
+  border-radius: 8px;
+}
+
+.theme-default-content:not(.custom) > h3 {
+  margin-bottom: 12px;
+}
+
+.doc-table {
+  code {
+    display: inline-block;
+
+    & + code {
+      margin-left: 2px;
+    }
+  }
+}
+
+table {
+  background-color: var(--casual-table-bg);
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  word-wrap: break-word;
+  word-break: break-all;
+  text-align: left;
+  table-layout: auto;
+  font-size: 14px;
+  display: table;
+  line-height: 1.5em;
+
+  thead,
+  tbody,
+  tr,
+  th,
+  td {
+    border: none;
+  }
+
+  td,
+  th {
+    border-bottom: 1px solid var(--casual-normal-bg);
+  }
+
+  code + code {
+    margin-left: 8px;
+  }
+
+  tr {
+    background-color: transparent;
+
+    &:nth-child(2n) {
+      background-color: transparent;
+    }
+  }
+}
+
+.c-doc-demo {
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
+  border-radius: 4px;
+  margin-bottom: 12px;
+  background-color: var(--doc-demo-bg);
+}
+
+.theme-default-content pre,
+.theme-default-content pre[class*="language-"] {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: Consolas;
+}
+
+@font-face {
+  font-family: Consolas;
+  src: url("/fonts/CONSOLA.TTF");
+}

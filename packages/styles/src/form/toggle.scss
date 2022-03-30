@@ -1,0 +1,71 @@
+$toggle-widths: (
+  "xs": 25px,
+  "sm": 30px,
+  "md": 35px,
+  "lg": 40px,
+  "xl": 45px
+);
+
+.c-toggle {
+  @extend %c-inline-flex, %c-items-center;
+
+  user-select: none;
+  cursor: pointer;
+  box-sizing: border-box;
+
+  &--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &--dot {
+    transition: all var(--casual-ease-in-out-cubic) 0.2s;
+    position: absolute;
+    left: 0;
+    top: -0.2em;
+    height: 1.4em;
+    width: 1.4em;
+    border-radius: 50%;
+    z-index: 3;
+    background-color: var(--casual-toggle-dot-bg);
+    box-shadow: 0 3px 1px -2px #0003, 0 2px 2px 0 #00000024, 0 1px 5px 0 #0000001f;
+  }
+
+  &--track {
+    transition: background var(--casual-ease-in-out-cubic) 0.2s;
+    position: relative;
+    background-color: var(--casual-normal-bg);
+    height: 1em;
+    border-radius: 0.5em;
+  }
+
+  &--label {
+    margin-left: 4px;
+    transition: color  var(--casual-ease-in-out-cubic) 0.2s;
+  }
+
+  &--checked {
+    .c-toggle {
+      &--dot {
+        left: 100%;
+        transform: translateX(calc(-100% + 2px));
+      }
+
+      &--track {
+        background-color: var(--casual-primary);
+      }
+
+      &--label {
+        color: var(--casual-primary);
+      }
+    }
+  }
+
+  @each $size, $width in $toggle-widths {
+    &--size-#{$size} {
+      .c-toggle--track {
+        width: $width;
+      }
+    }
+  }
+}

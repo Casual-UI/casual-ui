@@ -1,0 +1,32 @@
+{
+  "eslint.workingDirectories": [
+    "./packages/react/ui",
+    "./packages/react/docs",
+    "./packages/vue/ui",
+    "./packages/vue/docs/.vuepress"
+  ],
+  "cSpell.words": [
+    "clsx",
+    "CONSOLA",
+    "Fullscreen",
+    "Infima",
+    "Opay",
+    "Parens",
+    "rushstack",
+    "styleguidist",
+    "stylelint",
+    "vite",
+    "vitejs"
+  ],
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "stylelint.validate": [
+    "css",
+    "scss"
+  ],
+  "stylelint.configBasedir": "./packages/styles",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.stylelint": true
+  }
+}

@@ -1,0 +1,136 @@
+@use "sass:color";
+
+// 背景色
+$normal-bg: #dcdfe6;
+$light-bg: #f2f6fc;
+$pure-white: #fff;
+
+// 主色
+$primary: #00b876;
+$primary-lighter: color.adjust(#00b876, $lightness: 2%, $alpha: -0.1);
+$primary-lighter2: color.adjust(#00b876, $lightness: 5%);
+$primary-pale: lighten(#00b876, 62%);
+$primary-pale-darker: color.adjust(#00b876, $lightness: 5%, $alpha: -0.9);
+$primary-darker: color.adjust(#00b876, $lightness: -5%, $alpha: 0.1);
+
+// 辅色
+$secondary: #1dcf9f;
+$secondary-pale: lighten(#1dcf9f, 52%);
+$secondary-lighter: color.adjust(#1dcf9f, $lightness: 3%, $alpha: -0.1);
+$secondary-lighter2: color.adjust(#1dcf9f, $lightness: 10%);
+$secondary-darker: color.adjust(#1dcf9f, $lightness: -3%, $alpha: 0.1);
+
+// 消极色
+$negative: #ff6472;
+$negative-pale: lighten(#ff6472, 29%);
+$negative-lighter: color.adjust(#ff6472, $lightness: 5%, $alpha: -0.1);
+$negative-darker: color.adjust(#ff6472, $lightness: -5%, $alpha: 0.1);
+
+// 警告色
+$warning: #ff9100;
+$warning-pale: lighten($warning, 48%);
+$warning-lighter: color.adjust(#ff9100, $lightness: 5%, $alpha: -0.1);
+$warning-darker: color.adjust(#ff9100, $lightness: -5%, $alpha: 0.1);
+
+// 禁用色
+$disabled: #9dacb6;
+
+// 文案色
+$copywriting-normal: #303133;
+$copywriting-light: color.adjust(#303133, $lightness: 40%);
+
+// 输入框
+$input-bg: #f8f8fb;
+$input-bg-lighter: lighten(#f8f8fb, 2%);
+$input-bg-darker: darken(#f8f8fb, 2%);
+$input-bg-darker2: darken(#f8f8fb, 5%);
+$input-placeholder: #c1cbd1;
+$input-prefix-suffix-divider: rgb(132 151 164 / 40%);
+$input-clear-icon-hover: #909399;
+
+// 选择框
+$select-dropdown-z-index: 9;
+
+// 表格
+$table-striped-bg: color.adjust(#fff, $lightness: -3%);
+
+// 弹出层
+$popup-bg: rgba(#000, 0.6);
+$popup-content-bg: #fff;
+
+// 切换器
+$toggle-dot-bg: #fff;
+
+// 工具提示
+$tooltip-bg: #010101;
+
+:root {
+  // 背景色
+  --casual-normal-bg: #{$normal-bg};
+  --casual-light-bg: #{$light-bg};
+
+  // 主色
+  --casual-primary: #{$primary};
+  --casual-primary-darker: #{$primary-darker};
+  --casual-primary-lighter: #{$primary-lighter};
+  --casual-primary-lighter2: #{$primary-lighter2};
+  --casual-primary-pale: #{$primary-pale};
+  --casual-primary-pale-darker: #{$primary-pale-darker};
+
+  // 辅色
+  --casual-secondary: #{$secondary};
+  --casual-secondary-pale: #{$secondary-pale};
+  --casual-secondary-darker: #{$secondary-darker};
+  --casual-secondary-lighter: #{$secondary-lighter};
+  --casual-secondary-lighter2: #{$secondary-lighter2};
+
+  // 文案色
+  --casual-copywriting-normal: #{$copywriting-normal};
+  --casual-copywriting-light: #{$copywriting-light};
+
+  // 消极色
+  --casual-negative: #{$negative};
+  --casual-negative-pale: #{$negative-pale};
+  --casual-negative-lighter: #{$negative-lighter};
+  --casual-negative-darker: #{$negative-darker};
+
+  // 警告色
+  --casual-warning: #{$warning};
+  --casual-warning-pale: #{$warning-pale};
+  --casual-warning-lighter: #{$warning-lighter};
+  --casual-warning-darker: #{$warning-darker};
+
+  // 禁用色
+  --casual-disabled: #{$disabled};
+
+  // 输入框相关
+  --casual-input-bg: #{$input-bg};
+  --casual-input-bg-lighter: #{$input-bg-lighter};
+  --casual-input-bg-darker: #{$input-bg-darker};
+  --casual-input-bg-darker2: #{$input-bg-darker2};
+  --casual-input-placeholder: #{$input-placeholder};
+  --casual-input-prefix-suffix-divider: #{$input-prefix-suffix-divider};
+  --casual-input-clear-icon-hover: #{$input-clear-icon-hover};
+
+  // 选择器
+  --casual-select-bg: #{$pure-white};
+  --casual-select-dropdown-z-index: #{$select-dropdown-z-index};
+
+  // 单选器
+  --casual-radio-unselect: #{$copywriting-light};
+
+  // 切换器
+  --casual-toggle-dot-bg: #{$toggle-dot-bg};
+
+  // 表格相关
+  --casual-table-bg: #{$pure-white};
+  --casual-table-divider-color: #{$normal-bg};
+  --casual-table-striped-bg: #{$table-striped-bg};
+
+  // 弹出层
+  --casual-popup-bg: #{$popup-bg};
+  --casual-popup-content-bg: #{$popup-content-bg};
+
+  // 工具提示
+  --casual-tooltip-bg: #{$tooltip-bg};
+}

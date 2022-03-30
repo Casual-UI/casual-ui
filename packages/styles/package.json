@@ -1,0 +1,23 @@
+{
+  "name": "casual-styles",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.scss",
+  "module": "./src/index.scss",
+  "author": {
+    "email": "1197160272@qq.com",
+    "name": "Dongsheng Zhao"
+  },
+  "repository": {
+    "url": "https://github.com/Blackman99/casual-ui.git",
+    "directory": "/packages/styles"
+  },
+  "devDependencies": {
+    "sass": "^1.49.9",
+    "stylelint": "^14.6.1",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-standard": "^25.0.0",
+    "stylelint-config-standard-scss": "^3.0.0"
+  }
+}

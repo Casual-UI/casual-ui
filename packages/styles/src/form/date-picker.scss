@@ -1,0 +1,213 @@
+@mixin item-selected {
+  background-color: var(--casual-primary);
+  font-weight: bold;
+  color: #fff;
+}
+
+$pw: 264px;
+$ph: 252px;
+
+.c-date-picker {
+  user-select: none;
+  text-align: center;
+  display: inline-block;
+
+  &--panel {
+    transform-origin: center;
+
+    &-wrapper {
+      position: relative;
+      width: $pw;
+      height: $ph;
+      overflow: hidden;
+    }
+
+    height: 100%;
+
+    .c-date-picker--panel-body {
+      height: 100%;
+    }
+
+    &-cell {
+      cursor: pointer;
+
+      @extend %c-flex, %c-items-center, %c-justify-center;
+
+      &:hover {
+        color: var(--casual-primary);
+      }
+
+      &--is-selected {
+        .c-date-picker--panel-cell--inner {
+          background-color: var(--casual-primary);
+          color: #fff;
+          font-weight: bold;
+          padding: 12px 24px;
+          border-radius: 3px;
+        }
+      }
+    }
+  }
+
+  &--size-xs {
+    .c-date-picker--panel-wrapper {
+      height: $ph * 0.8;
+      width: $pw * 0.8;
+    }
+  }
+
+  &--size-sm {
+    .c-date-picker--panel-wrapper {
+      height: $ph * 0.9;
+      width: $pw * 0.9;
+    }
+  }
+
+  &--size-lg {
+    .c-date-picker--panel-wrapper {
+      height: $ph * 1.1;
+      width: $pw * 1.1;
+    }
+  }
+
+  &--size-xl {
+    .c-date-picker--panel-wrapper {
+      height: $ph * 1.2;
+      width: $pw * 1.2;
+    }
+  }
+}
+
+.c-date-panel {
+  transform-origin: center;
+  height: 100%;
+
+  &--header {
+    @extend %c-flex, %c-items-center, %c-justify-between;
+
+    font-size: 1.2em;
+
+    .c-icon {
+      cursor: pointer;
+
+      &:hover {
+        color: var(--casual-primary);
+      }
+    }
+  }
+
+  &--year {
+    font-weight: bold;
+
+    &.c-date-panel--year-switchable {
+      span:hover {
+        cursor: pointer;
+        color: var(--casual-primary);
+      }
+    }
+  }
+
+  &--body {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(7, calc(100% / 7));
+    grid-template-rows: repeat(6, calc(100% / 7));
+  }
+
+  &--week-item,
+  &--date-item {
+    @extend %c-flex, %c-items-center, %c-justify-center;
+  }
+
+  &--date-item {
+    cursor: pointer;
+    box-sizing: border-box;
+    padding: 2px 0;
+    background-clip: content-box;
+
+    &--in-range {
+      background-color: var(--casual-light-bg);
+    }
+
+    &--is-start {
+      border-radius: 50% 0 0 50%;
+    }
+
+    &--is-end {
+      border-radius: 0 50% 50% 0;
+
+      &.c-date-panel--date-item--is-start {
+        border-radius: 50%;
+      }
+    }
+
+    &:hover {
+      color: var(--casual-primary);
+    }
+
+    &--inner {
+      line-height: 1.8em;
+      height: 1.8em;
+      width: 1.8em;
+
+      &-not-current-month {
+        color: var(--casual-copywriting-light);
+      }
+
+      &-selected {
+        @include item-selected;
+
+        border-radius: 0.9em;
+      }
+    }
+  }
+}
+
+@keyframes c-date-panel {
+  0% {
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes c-date-panel-leave {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(50%);
+  }
+}
+
+.c-date-panel-enter-active {
+  animation: c-date-panel 0.3s var(--casual-ease-in-out-cubic);
+}
+
+.c-date-panel-leave-active,
+.c-date-panel-reverse-leave-active {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
+}
+
+.c-date-panel-leave-active {
+  animation: c-date-panel-leave 0.3s var(--casual-ease-in-out-cubic);
+}
+
+.c-date-panel-reverse-leave-active {
+  animation: c-date-panel 0.3s var(--casual-ease-in-out-cubic) reverse;
+}
+
+.c-date-panel-reverse-enter-active {
+  animation: c-date-panel-leave 0.3s var(--casual-ease-in-out-cubic) reverse;
+}

@@ -1,0 +1,118 @@
+// 高度
+$basic-sizes: ("xs": 28px, "sm": 32px, "md": 42px, "lg": 52px, "xl": 58px);
+
+// 字体
+$basic-font-sizes: ("xs": 10px, "sm": 12px, "md": 14px, "lg": 16px, "xl": 18px);
+
+// padding
+$basic-padding-sizes: ("xs": 4px,"sm": 8px, "md": 12px, "lg": 16px, "xl": 24px);
+
+// 圆角
+$basic-rounded-sizes: ("xs": 4px, "sm": 4px, "md": 8px, "lg": 12px, "xl": 12px);
+$property-names: ("p": padding, "m": margin);
+$left: a, x, l;
+$right: a, x, r;
+$top: a, y, t;
+$bottom: a, y, b;
+$directions: ("left": $left, "top": $top, "right": $right, "bottom": $bottom);
+
+@each $size, $height in $basic-sizes {
+  .c-h-#{$size},
+  %c-h-#{$size} {
+    height: $height;
+    line-height: $height;
+  }
+  .c-w-#{$size},
+  %c-w-#{$size} {
+    width: $height;
+  }
+}
+
+@each $size, $font-size in $basic-font-sizes {
+  .c-font-#{$size},
+  %c-font-#{$size} {
+    font-size: $font-size;
+  }
+}
+
+@each $size, $rounded-size in $basic-rounded-sizes {
+  .c-rounded-#{$size},
+  %c-rounded-#{$size} {
+    border-radius: $rounded-size;
+  }
+  .c-rounded-l-#{$size},
+  .c-rounded-t-#{$size},
+  .c-rounded-tl-#{$size},
+  %c-rounded-l-#{$size},
+  %c-rounded-tl-#{$size},
+  %c-rounded-t-#{$size} {
+    border-top-left-radius: $rounded-size;
+  }
+
+  .c-rounded-r-#{$size},
+  .c-rounded-t-#{$size},
+  .c-rounded-tr-#{$size},
+  %c-rounded-r-#{$size},
+  %c-rounded-t-#{$size},
+  %c-rounded-tr-#{$size} {
+    border-top-right-radius: $rounded-size;
+  }
+
+  .c-rounded-b-#{$size},
+  .c-rounded-l-#{$size},
+  .c-rounded-bl-#{$size},
+  %c-rounded-b-#{$size},
+  %c-rounded-bl-#{$size},
+  %c-rounded-l-#{$size} {
+    border-bottom-left-radius: $rounded-size;
+  }
+
+  .c-rounded-b-#{$size},
+  .c-rounded-r-#{$size},
+  .c-rounded-br-#{$size},
+  %c-rounded-b-#{$size},
+  %c-rounded-br-#{$size},
+  %c-rounded-r-#{$size} {
+    border-bottom-right-radius: $rounded-size;
+  }
+}
+
+@each $size, $val in $basic-padding-sizes {
+  @each $name, $p in $property-names {
+    @each $d, $names in $directions {
+      @each $n in $names {
+        .c-#{$name}#{$n}-#{$size},
+        %c-#{$name}#{$n}-#{$size} {
+          #{$p}-#{$d}: $val;
+        }
+      }
+    }
+  }
+}
+
+@each $size, $val in $basic-padding-sizes {
+  .c-gutter-#{$size},
+  .c-gutter-y-#{$size},
+  %c-gutter-#{$size},
+  %c-gutter-y-#{$size} {
+    margin-top: -$val;
+    margin-bottom: -$val;
+
+    > * {
+      padding-top: $val;
+      padding-bottom: $val;
+    }
+  }
+  .c-gutter-#{$size},
+  .c-gutter-x-#{$size},
+  %c-gutter-#{$size},
+  %c-gutter-x-#{$size} {
+    margin-left: -$val;
+    margin-right: -$val;
+
+    > * {
+      padding-left: $val;
+      padding-right: $val;
+    }
+  }
+}

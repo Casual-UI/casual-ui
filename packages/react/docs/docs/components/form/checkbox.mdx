@@ -1,0 +1,120 @@
+---
+title: 勾选器
+---
+
+### 基础使用
+
+```jsx live
+function Demo() {
+  const [val, setVal] = useState(false)
+
+  return (
+    <CCheckbox
+      checkedValue={true}
+      value={val}
+      onChange={setVal}
+      label="同意协议"
+    />
+  )
+}
+```
+
+### 尺寸
+
+```jsx live
+function Demo() {
+  const [val, setVal] = useState('md')
+
+  return (
+    <>
+      <div className="c-row c-gutter-md c-items-center">
+        <CCheckbox
+          checkedValue="xs"
+          size="xs"
+          value={val}
+          onChange={setVal}
+          label="超小尺寸"
+        />
+        <CCheckbox
+          checkedValue="sm"
+          size="sm"
+          value={val}
+          onChange={setVal}
+          label="小尺寸"
+        />
+        <CCheckbox
+          checkedValue="md"
+          value={val}
+          onChange={setVal}
+          label="中等尺寸（默认）"
+        />
+        <CCheckbox
+          checkedValue="lg"
+          size="lg"
+          value={val}
+          onChange={setVal}
+          label="大尺寸"
+        />
+        <CCheckbox
+          checkedValue="xl"
+          size="xl"
+          value={val}
+          onChange={setVal}
+          label="超大尺寸"
+        />
+      </div>
+      <div>当前值：{val}</div>
+    </>
+  )
+}
+```
+
+### 状态
+
+```jsx live
+function Demo() {
+  return (
+    <div className="c-row c-gutter-x-md">
+      <CCheckbox value={false} label="禁用态" disabled />
+      <CCheckbox value={true} label="禁用态" disabled />
+    </div>
+  )
+}
+```
+
+### 勾选框组
+
+```jsx live
+function Demo() {
+  const [val, setVal] = useState([])
+
+  const options = [
+    { label: '苹果', value: 'Apple' },
+    { label: '香蕉', value: 'Banana' },
+    { label: '橘子', value: 'Orange' },
+    { label: '桃子', value: 'Peach' },
+  ]
+
+  return (
+    <>
+      <CCheckboxGroup
+        value={val}
+        onChange={setVal}
+        options={options}
+        className="c-row c-item-center c-gutter-x-md"
+      />
+      <div>当前值：{val.join('，')}</div>
+    </>
+  )
+}
+```
+
+### Props
+
+<PropTable name="CCheckbox" typeWidth="300px" />
+
+### 额外类型说明
+
+```ts
+type CCheckboxModel = boolean | string | number
+```

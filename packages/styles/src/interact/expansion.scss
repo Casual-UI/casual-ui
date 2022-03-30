@@ -1,0 +1,47 @@
+.c-expansion {
+  position: relative;
+  overflow: hidden;
+
+  &--header {
+    @extend %c-py-md, %c-px-lg, %c-items-center, %c-flex, %c-justify-between;
+
+    cursor: pointer;
+    background-color: var(--casual-input-bg);
+    transition: background-color 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+    &:hover {
+      background-color: var(--casual-input-bg-darker);
+    }
+
+    &:active {
+      background-color: var(--casual-input-bg-darker2);
+    }
+  }
+
+  &--icon {
+    @extend %c-mr-md;
+  }
+
+  &--title {
+    @extend %c-flex-grow;
+  }
+
+  &--body {
+    box-sizing: content-box;
+    transition: max-height $ease-in-out-quadratic 0.2s;
+    max-height: var(--casual-expansion-height);
+    overflow: hidden;
+  }
+
+  &--arrow {
+    transition: transform $ease-in-out-quadratic 0.2s;
+
+    .c-icon {
+      font-size: 24px;
+    }
+
+    &-expanded {
+      transform: rotate(180deg);
+    }
+  }
+}

@@ -1,0 +1,114 @@
+@keyframes c-dialog-open {
+  0% {
+    transform: scale(0.01, 0.01);
+  }
+
+  50% {
+    transform: scale(1, 0.01);
+  }
+
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes c-dialog-open-reverse {
+  0% {
+    transform: scale(0.01, 0.01);
+  }
+
+  50% {
+    transform: scale(0.01, 1);
+  }
+
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes c-dialog-backdrop {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.c-dialog {
+  background-color: var(--casual-popup-content-bg);
+
+  &--header,
+  &--footer {
+    @extend %c-flex;
+    @extend %c-items-start;
+    @extend %c-pa-md;
+
+    box-sizing: border-box;
+  }
+
+  &--header {
+    @extend %c-justify-between;
+
+    font-size: 16px;
+  }
+
+  &--footer {
+    @extend %c-justify-end;
+  }
+
+  &--title {
+    font-weight: bold;
+  }
+
+  &--close-btn {
+    font-size: 1.2em;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 50%;
+    transition:
+      background var(--casual-ease-in-out-cubic) 0.2s,
+      transform var(--casual-ease-in-out-cubic) 0.2s;
+
+    &:hover {
+      background-color: var(--casual-input-bg-darker2);
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.c-dialog-enter-active {
+  animation: c-dialog-open 0.3s var(--casual-ease-in-out-cubic) forwards;
+}
+
+.c-dialog-leave-active,
+.c-dialog-exit-active {
+  animation: c-dialog-open 0.3s var(--casual-ease-in-out-cubic) reverse;
+}
+
+.c-dialog-reverse-enter-active {
+  animation: c-dialog-open-reverse 0.3s var(--casual-ease-in-out-cubic) forwards;
+}
+
+.c-dialog-reverse-leave-active,
+.c-dialog-reverse-exit-active {
+  animation: c-dialog-open-reverse 0.3s var(--casual-ease-in-out-cubic) reverse;
+}
+
+.c-dialog-backdrop-enter-active {
+  animation: c-dialog-backdrop 0.3s var(--casual-ease-in-out-cubic) forwards;
+}
+
+.c-dialog-backdrop-leave-active,
+.c-dialog-backdrop-exit-active {
+  animation: c-dialog-backdrop 0.3s var(--casual-ease-in-out-cubic) reverse;
+}
+
+.c-dialog-backdrop-exit {
+  opacity: 0;
+}
+
+.c-dialog-exit {
+  transform: scale(0);
+}

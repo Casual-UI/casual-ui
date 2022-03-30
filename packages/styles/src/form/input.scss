@@ -1,0 +1,141 @@
+@mixin input-before {
+  content: " ";
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: inherit;
+  right: 0;
+  bottom: 0;
+  z-index: 4;
+  border: 1px solid var(--casual-primary-lighter2);
+  opacity: 0;
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.c-input {
+  display: inline-flex;
+  position: relative;
+  transition: background 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:not(.c-input--custom-color) {
+    background-color: var(--casual-input-bg);
+
+    &::before {
+      @include input-before;
+    }
+
+    &:not(.c-input--disabled):not(.c-input--focused):not(.c-input--loading):hover {
+      background-color: var(--casual-input-bg-darker);
+    }
+
+    &.c-input--focused {
+      background-color: var(--casual-input-bg-lighter);
+
+      &::before {
+        opacity: 1;
+      }
+    }
+  }
+
+  &--content-wrapper {
+    height: 100%;
+
+    @extend %c-inline-flex;
+    @extend %c-items-stretch;
+
+    input {
+      cursor: inherit;
+      outline: none;
+      border: none;
+      background-color: transparent;
+      height: 100%;
+      color: var(--casual-copy-writing-normal);
+      font-size: inherit;
+
+      &::placeholder {
+        color: var(--casual-input-placeholder);
+      }
+    }
+  }
+
+  &--prefix,
+  &--suffix {
+    @extend %c-inline-flex;
+    @extend %c-items-center;
+
+    position: relative;
+    color: var(--casual-input-placeholder);
+
+    &-with-content {
+      &.c-input {
+        &--prefix,
+        &--suffix {
+          &-with-divider {
+            &::after {
+              content: " ";
+              position: absolute;
+              right: 0;
+              top: 0;
+              bottom: 0;
+              width: 1px;
+              background:
+                linear-gradient(
+                  to bottom,
+                  transparent 25%,
+                  var(--casual-input-prefix-suffix-divider) 40% 60%,
+                  transparent 75%
+                );
+            }
+          }
+        }
+      }
+    }
+
+    .c-icon {
+      height: auto;
+    }
+  }
+
+  &--suffix-with-content::after {
+    right: unset;
+    left: 0;
+  }
+
+  &--rounded {
+    border-radius: var(--casual-rounded);
+  }
+
+  &--loading {
+    cursor: wait;
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+
+  &--clear-icon {
+    @extend %c-inline-flex;
+    @extend %c-items-center;
+
+    font-size: 14px;
+    cursor: pointer;
+    color: var(--casual-input-placeholder);
+    opacity: 0;
+    pointer-events: none;
+
+    &-show {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    &:hover {
+      color: var(--casual-input-clear-icon-hover);
+    }
+  }
+
+  &--input-wrapper {
+    position: relative;
+  }
+}

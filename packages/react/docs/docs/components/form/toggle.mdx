@@ -1,0 +1,67 @@
+---
+title: 切换器/开关
+---
+
+### 基础使用
+
+```jsx live
+function Demo() {
+  const [openNotify, setOpenNotify] = useState(false)
+  return (
+    <CToggle
+      value={openNotify}
+      onChange={setOpenNotify}
+      label={openNotify ? '点击关闭通知' : '点击打开通知'}
+    />
+  )
+}
+```
+
+### 尺寸
+
+```jsx live
+function Demo() {
+  const [toggleStatus, setToggleStatus] = useState({
+    xs: false,
+    sm: false,
+    md: false,
+    lg: false,
+    xl: false,
+  })
+
+  return (
+    <>
+      <div className="c-row c-items-center c-gutter-x-md">
+        {Object.keys(toggleStatus).map(size => (
+          <div key={size} className="">
+            <CToggle
+              size={size}
+              value={toggleStatus[size]}
+              onChange={v => setToggleStatus({ ...toggleStatus, [size]: v })}
+              label={size}
+            />
+            <p>状态：{toggleStatus[size] ? 'true' : 'false'}</p>
+          </div>
+        ))}
+      </div>
+    </>
+  )
+}
+```
+
+### 禁用态
+
+```jsx live
+function Demo() {
+  return (
+    <>
+      <CToggle value={false} disabled label="禁用态" />
+      <CToggle value={true} disabled label="禁用态" />
+    </>
+  )
+}
+```
+
+### Props
+
+<PropTable name="CToggle" typeWidth="240px" />

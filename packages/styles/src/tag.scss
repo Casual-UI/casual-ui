@@ -1,0 +1,54 @@
+.c-tag {
+  @extend %c-inline-flex;
+  @extend %c-items-center;
+
+  &--close-icon {
+    cursor: pointer;
+    width: 1em;
+    height: 1em;
+    padding: 1px;
+    border-radius: 50%;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+
+  &--theme {
+    &-primary {
+      background-color: var(--casual-primary-pale);
+      color: var(--casual-primary);
+
+      .c-tag--close-icon:hover {
+        background-color: var(--casual-primary);
+      }
+    }
+
+    &-secondary {
+      color: var(--casual-secondary);
+      background-color: var(--casual-secondary-pale);
+
+      .c-tag--close-icon:hover {
+        background-color: var(--casual-secondary);
+      }
+    }
+
+    &-warning {
+      color: var(--casual-warning);
+      background-color: var(--casual-warning-pale);
+
+      .c-tag--close-icon:hover {
+        background-color: var(--casual-warning);
+      }
+    }
+
+    &-negative {
+      color: var(--casual-negative);
+      background-color: var(--casual-negative-pale);
+
+      .c-tag--close-icon:hover {
+        background-color: var(--casual-negative);
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+node_modules
+.DS_Store
+.docz
+dist
+dist-ssr
+*.local
+*.log
+package-lock.json
+yarn.lock
+.cache/
+.temp/
+.docusaurus/
+pnpm-lock.yaml
+demo

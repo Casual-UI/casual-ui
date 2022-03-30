@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-prettier",
+    "stylelint-config-standard-scss"
+  ],
+  "rules": {
+    "scss/no-global-function-names": null,
+    "selector-class-pattern": "^c(-[a-z]+)+(--[a-z]+(-[a-z]+)*)*$",
+    "function-no-unknown": [
+      true,
+      {
+        "ignoreFunctions": ["/^math./", "/^color./", "lighten", "darken"]
+      }
+    ]
+  }
+}

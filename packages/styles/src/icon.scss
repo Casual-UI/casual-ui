@@ -1,0 +1,11 @@
+.c-icon {
+  @extend %c-flex;
+  @extend %c-items-center;
+
+  svg {
+    vertical-align: middle;
+    fill: currentcolor;
+    height: 1em;
+    width: 1em;
+  }
+}

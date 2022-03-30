@@ -1,0 +1,92 @@
+---
+title: 工具提示
+---
+
+### 基础使用
+
+```jsx live
+<CTooltip content="你好，世界">
+  <CButton label="Hover Me" />
+</CTooltip>
+```
+
+### 不同位置
+
+```jsx live
+<div className="c-row c-gutter-x-md">
+  <div>
+    <CTooltip position="left" content="你好，世界">
+      <CButton label="左侧" />
+    </CTooltip>
+  </div>
+  <div>
+    <CTooltip content="你好，世界">
+      <CButton label="上方（默认）" />
+    </CTooltip>
+  </div>
+  <div>
+    <CTooltip position="bottom" content="你好，世界">
+      <CButton label="底部" />
+    </CTooltip>
+  </div>
+  <div>
+    <CTooltip position="right" content="你好，世界">
+      <CButton label="右侧" />
+    </CTooltip>
+  </div>
+</div>
+```
+
+### 触发方式
+
+```jsx live
+function Demo() {
+  const [show, setShow] = useState(false)
+
+  return (
+    <div className="c-row c-gutter-x-md">
+      <div>
+        <CTooltip content="你好，世界">
+          <CButton outlined rounded label="悬浮（默认）" />
+        </CTooltip>
+      </div>
+      <div>
+        <CTooltip trigger="click" content="你好，世界">
+          <CButton rounded label="点击" />
+        </CTooltip>
+      </div>
+      <div>
+        <CButton label="手动" onClick={() => setShow(!show)} />
+        <CTooltip
+          trigger="manual"
+          content="你好，世界"
+          show={show}
+          toggleShow={setShow}
+        >
+          点击左侧按钮手动触发
+        </CTooltip>
+      </div>
+    </div>
+  )
+}
+```
+
+### 自定义内容
+
+```jsx live
+<CTooltip
+  content={
+    <div>
+      哇哦，支持自定义内容
+      <CButton label="我是自定义按钮" outlined round />
+    </div>
+  }
+  trigger="click"
+>
+  <CButton label="点我" />
+</CTooltip>
+```
+
+### Props
+
+<PropTable name="CTooltip" typeWidth="280px" />
