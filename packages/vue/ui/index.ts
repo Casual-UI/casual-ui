@@ -55,7 +55,7 @@ import CDatePanelHeader from './src/components/form/date-picker/CDatePanelHeader
 import CYearPanel from './src/components/form/date-picker/CYearPanel.vue'
 import CMonthPanel from './src/components/form/date-picker/CMonthPanel.vue'
 
-const OpayUI: Plugin = {
+const CasualUI: Plugin = {
   install: (app: App) => {
     app.component('CButton', CButton)
     app.component('CLoading', CLoading)
@@ -103,7 +103,7 @@ const OpayUI: Plugin = {
   },
 }
 
-export default OpayUI
+export default CasualUI
 
 export {
   CButton,

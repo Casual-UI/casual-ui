@@ -9,6 +9,6 @@ fs.rm(
     force: true,
   },
   () => {
-    console.log('OPay temp components deleted')
+    console.log('Casual temp components deleted')
   }
 )

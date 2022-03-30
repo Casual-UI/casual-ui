@@ -36,7 +36,7 @@ const colors = ['--casual-primary', '--casual-secondary', '--casual-warning', '-
 </style>
 ```
 
-OPay UI提供了两种方式定制主题
+Casual UI提供了两种方式定制主题
 
 ### 基于scss方案
 

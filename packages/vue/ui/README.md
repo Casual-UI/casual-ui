@@ -26,11 +26,11 @@ import 'casual-ui-vue/dist/style.css'
 ```js
 import { createApp } from 'vue'
 import App from 'App.vue'
-import OpayUI from 'casual-ui-vue'
+import CasualUI from 'casual-ui-vue'
 
 const app = createApp(App)
 
-app.use(OpayUI)
+app.use(CasualUI)
 
 app.mount('#app')
 ```

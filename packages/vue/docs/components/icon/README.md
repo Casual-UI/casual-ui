@@ -3,7 +3,7 @@ title: 图标
 componentPath: basic/icon/CIcon
 ---
 
-OPay UI推荐使用[@quasar/extras](https://github.com/quasarframework/quasar/tree/dev/extras)
+Casual UI推荐使用[@quasar/extras](https://github.com/quasarframework/quasar/tree/dev/extras)
 
 ### 使用
 

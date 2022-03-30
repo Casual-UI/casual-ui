@@ -25,8 +25,8 @@ export default defineUserConfig<
 >({
   port: 8090,
   lang: 'zh-CN',
-  title: 'OPay UI - Vue',
-  description: '基于OPay业务的增长式组件库',
+  title: 'Casual UI - Vue',
+  description: '一个随意的组件库',
   theme: '@vuepress/theme-default',
   head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
   clientAppEnhanceFiles: [path.resolve(__dirname, './clientAppEnhance.ts')],

@@ -1,0 +1,3 @@
+[submodule "packages/vite-plugin-vue-auto-name"]
+	path = packages/vite-plugin-vue-auto-name
+	url = https://github.com/Blackman99/vite-plugin-vue-auto-name.git

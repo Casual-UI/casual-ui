@@ -82,7 +82,7 @@ $sizes: (
 
 ### 栅格
 
-OPay UI 使用经典的 12 栅格机制
+Casual UI 使用经典的 12 栅格机制
 
 `o-col-[colSize]`
 
