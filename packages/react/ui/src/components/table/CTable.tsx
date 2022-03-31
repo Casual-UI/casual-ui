@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import React from 'react'
-import OTd from './OTd'
+import CTd from './CTd'
 import CTh from './CTh'
 import CTr from './CTr'
 
@@ -98,7 +98,7 @@ function CTable<T>({
           {data.map((row, idx) => (
             <CTr key={row[rowKey]}>
               {columns.map(({ field, customRender, width }) => (
-                <OTd key={String(field)} width={width}>
+                <CTd key={String(field)} width={width}>
                   {customRender
                     ? customRender({
                         row,
@@ -107,7 +107,7 @@ function CTable<T>({
                         field,
                       })
                     : String(row[field])}
-                </OTd>
+                </CTd>
               ))}
             </CTr>
           ))}

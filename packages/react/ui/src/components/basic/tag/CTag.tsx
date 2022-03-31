@@ -50,19 +50,19 @@ const CTag = ({
   return (
     <div
       className={clsx(
-        'c-input',
-        `c-input--theme-${realTheme}`,
+        'c-tag',
+        `c-tag--theme-${realTheme}`,
         `c-h-${realSize}`,
         `c-font-${realSize}`,
         `c-px-${realSize}`,
         rounded && `c-rounded-${realSize}`
       )}
     >
-      <div className="c-input--prefix">{prefix && prefix}</div>
-      <div className="c-input--label">{label}</div>
+      <div className="c-tag--prefix">{prefix && prefix}</div>
+      <div className="c-tag--label">{label}</div>
       {closeable && (
         <div
-          className={clsx('c-input--close-icon', 'c-ml-sm')}
+          className={clsx('c-tag--close-icon', 'c-ml-sm')}
           onClick={e => {
             e.stopPropagation()
             onClose?.()

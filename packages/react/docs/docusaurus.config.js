@@ -23,8 +23,8 @@ const config = {
         docs: {
           routeBasePath: '/',
           sidebarPath: require.resolve('./config/sidebars.js'),
-          // TODO: 填写编辑地址
-          editUrl: '',
+          editUrl:
+            'https://github.com/Blackman99/casual-ui/edit/main/packages/react/docs',
           remarkPlugins: [
             [require('@docusaurus/remark-plugin-npm2yarn'), { sync: true }],
             () => async ast => {

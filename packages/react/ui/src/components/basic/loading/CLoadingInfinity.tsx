@@ -2,7 +2,7 @@ import React from 'react'
 
 const CLoadingInfinity = () => (
   <svg
-    className="o-loading"
+    className="c-loading"
     viewBox="0 0 100 100"
     preserveAspectRatio="xMidYMid"
   >

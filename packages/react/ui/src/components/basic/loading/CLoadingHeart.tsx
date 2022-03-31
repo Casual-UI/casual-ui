@@ -2,7 +2,7 @@ import React from 'react'
 
 const CLoadingHeart = () => (
   <svg
-    className="o-loading"
+    className="c-loading"
     fill="currentColor"
     viewBox="0 0 140 64"
     xmlns="http://www.w3.org/2000/svg"

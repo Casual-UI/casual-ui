@@ -23,12 +23,12 @@ const CLoading = ({
 }: CLoadingProps) => {
   return (
     <svg
-      className="o-loading o-loading--mat"
+      className="c-loading c-loading--mat"
       viewBox="25 25 50 50"
       {...useLoadingSize(size)}
     >
       <circle
-        className="o-loading--path"
+        className="c-loading--path"
         cx="50"
         cy="50"
         r="20"

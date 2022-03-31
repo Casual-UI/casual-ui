@@ -2,7 +2,7 @@ import React from 'react'
 
 const CLoadingCircleBars = () => (
   <svg
-    className="o-loading"
+    className="c-loading"
     stroke="currentColor"
     fill="currentColor"
     viewBox="0 0 64 64"

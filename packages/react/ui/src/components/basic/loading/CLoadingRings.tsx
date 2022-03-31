@@ -1,7 +1,7 @@
 import React from 'react'
 const CLoadingRings = () => (
   <svg
-    className="o-loading"
+    className="c-loading"
     stroke="currentColor"
     viewBox="0 0 45 45"
     xmlns="http://www.w3.org/2000/svg"

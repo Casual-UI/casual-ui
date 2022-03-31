@@ -2,7 +2,7 @@ import React from 'react'
 
 const CLoadingPuff = () => (
   <svg
-    className="o-loading"
+    className="c-loading"
     stroke="currentColor"
     viewBox="0 0 44 44"
     xmlns="http://www.w3.org/2000/svg"

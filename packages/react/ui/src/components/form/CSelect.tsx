@@ -5,7 +5,7 @@ import clsx from 'clsx'
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import CTag from '../basic/tag/CTag'
 import CDropdown from '../interact/CDropdown'
-import OItem from '../list/OItem'
+import CList from '../list/CList'
 import CInput from './CInput'
 
 /**
@@ -169,7 +169,7 @@ const CSelect = ({
               focused && 'c-select--options-show'
             )}
           >
-            <OItem
+            <CList
               itemKey="value"
               items={options}
               activeFn={isItemActive}
