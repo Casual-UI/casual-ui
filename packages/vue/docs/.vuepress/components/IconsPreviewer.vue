@@ -32,7 +32,7 @@ const copyDom = (name: string) => {
     <div v-for="(iconStr, name) in icons" :key="name" class="c-col-2">
       <div class="item">
         <c-tooltip>
-          <div class="o-column c-items-center icon-wrapper">
+          <div class="c-column c-items-center icon-wrapper">
             <c-icon :content="iconStr" />
             <span class="icon-name">
               {{ name }}

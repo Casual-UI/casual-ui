@@ -24,11 +24,11 @@ export default defineUserConfig<
   }
 >({
   port: 8090,
+  head: [['link', { rel: 'icon', href: '/logo.svg' }]],
   lang: 'zh-CN',
   title: 'Casual UI - Vue',
   description: '一个随意的组件库',
   theme: '@vuepress/theme-default',
-  head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
   clientAppEnhanceFiles: [path.resolve(__dirname, './clientAppEnhance.ts')],
   plugins: [path.resolve(__dirname, './plugins/vueDemoCode.ts')],
   clientAppRootComponentFiles: [

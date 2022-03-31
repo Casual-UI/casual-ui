@@ -46,7 +46,7 @@ $basic-rounded-sizes: (
 
 | 类名                        | 大概相当于 CSS                    |
 | --------------------------- | --------------------------------- |
-| `o-flex` `o-column` `c-row` | `display: inline-flex;`           |
+| `o-flex` `c-column` `c-row` | `display: inline-flex;`           |
 | `c-justify-start`           | `justify-content: flex-start;`    |
 | `c-justify-center`          | `justify-content: center;`        |
 | `c-justify-end`             | `justify-content: flex-end;`      |
@@ -89,7 +89,7 @@ Casual UI 使用经典的 12 栅格机制
 ### 子元素间距
 
 ::: tip 提示
-该项需要配合`.c-row`或者`.o-column`使用
+该项需要配合`.c-row`或者`.c-column`使用
 :::
 
 `.c-gutter[-x | -y ]-[xs | sm | md | lg | xl]`
