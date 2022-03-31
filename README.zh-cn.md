@@ -1,19 +1,17 @@
-### Introduction
+### 介绍
 
-A casual ui library for both Vue3+ and React17+
+一个随意编写的支持Vue3+以及React17+的组件库
 
-[简体中文](./README.zh-cn.md)
+### 在线示例 & 文档
 
-### Online Demos & Docs
+* [React 文档]()
+* [Vue 文档]()
 
-* [React Docs]()
-* [Vue Docs]()
+### 参与贡献
 
-### Contributing
+[贡献指南](./CONTRIBUTING.md)
 
-[CONTRIBUTING](./CONTRIBUTING.md)
-
-### Thanks
+### 鸣谢
 
 ![Vue](./badges/vue.svg)
 ![Vite](./badges/vite.svg)
