@@ -4,7 +4,7 @@
 
 ### 在线示例 & 文档
 
-* [React 文档]()
+* React 文档（暂不支持访问）
 * [Vue 文档](https://casual-ui-vue.donsen.site/)
 
 ### 安装 & 使用
