@@ -15,7 +15,7 @@ const { closeByPositionGroupAndID, notifications } = useNotifications()
       addition-class="c-popup--notification"
     >
       <div class="c-notification--item-list">
-        <transition-group :name="`c-notification-${x}-${y}`" tag="div">
+        <transition-group :name="`c-notification-${x}-${y}`">
           <div
             v-for="noItem in items"
             :key="noItem.id"
