@@ -41,6 +41,8 @@ export default defineUserConfig<
     repoLabel: 'Git仓库',
     contributorsText: '贡献者',
     lastUpdatedText: '最后更新于',
+    editLinkText: '在Github上编辑此页',
+    editLinkPattern: ':repo/edit/:branch/packages/vue/docs/:path',
     tip: '提示',
     navbar: [
       {
