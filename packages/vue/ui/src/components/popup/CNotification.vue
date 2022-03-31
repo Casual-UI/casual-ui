@@ -14,56 +14,54 @@ const { closeByPositionGroupAndID, notifications } = useNotifications()
       :vertical-align="y"
       addition-class="c-popup--notification"
     >
-      <transition-group
-        :name="`c-notification-${x}-${y}`"
-        tag="div"
-        class="c-notification--item-list"
-      >
-        <div
-          v-for="noItem in items"
-          :key="noItem.id"
-          :class="[
-            'c-notification--item-card',
-            `c-notification--item-theme-${noItem.theme}`,
-          ]"
-        >
-          <div class="c-notification--header">
-            <div class="c-notification--title">
-              {{ noItem.title }}
-            </div>
-            <div
-              v-if="noItem.closeIcon"
-              class="c-notification--close-icon"
-              @click="closeByPositionGroupAndID(groupName, noItem.id)"
-            >
-              <svg class="c-notification--countdown-bar" viewBox="0 0 24 24">
-                <circle
-                  v-if="noItem.timeout && noItem.timeout > 0"
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  fill="transparent"
-                  class="c-notification--countdown-bar-circle"
-                  :style="{
-                    animation: `close-count-down ${
-                      noItem.timeout / 1000
-                    }s linear forwards`,
-                  }"
+      <div class="c-notification--item-list">
+        <transition-group :name="`c-notification-${x}-${y}`" tag="div">
+          <div
+            v-for="noItem in items"
+            :key="noItem.id"
+            :class="[
+              'c-notification--item-card',
+              `c-notification--item-theme-${noItem.theme}`,
+            ]"
+          >
+            <div class="c-notification--header">
+              <div class="c-notification--title">
+                {{ noItem.title }}
+              </div>
+              <div
+                v-if="noItem.closeIcon"
+                class="c-notification--close-icon"
+                @click="closeByPositionGroupAndID(groupName, noItem.id)"
+              >
+                <svg class="c-notification--countdown-bar" viewBox="0 0 24 24">
+                  <circle
+                    v-if="noItem.timeout && noItem.timeout > 0"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    fill="transparent"
+                    class="c-notification--countdown-bar-circle"
+                    :style="{
+                      animation: `close-count-down ${
+                        noItem.timeout / 1000
+                      }s linear forwards`,
+                    }"
+                  />
+                </svg>
+                <c-icon
+                  :content="matClose"
+                  class="c-notification--close-icon-icon"
                 />
-              </svg>
-              <c-icon
-                :content="matClose"
-                class="c-notification--close-icon-icon"
-              />
+              </div>
+            </div>
+            <div class="c-notification--message">
+              {{ noItem.message }}
             </div>
           </div>
-          <div class="c-notification--message">
-            {{ noItem.message }}
-          </div>
-        </div>
-      </transition-group>
+        </transition-group>
+      </div>
     </c-popup>
   </div>
 </template>

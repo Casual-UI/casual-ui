@@ -12,6 +12,7 @@
   "scripts": {
     "build": "vite build"
   },
+  "keywords": ["vue", "vue components", "ui components", "vue3", "vue3 components", "vue3 ui components"],
   "repository": {
     "url": "https://github.com/Blackman99/casual-ui.git",
     "directory": "/packages/vue/ui"
