@@ -2,26 +2,34 @@
 @use "sass:color";
 
 $table-striped-bg-dark: color.adjust(#282c34, $lightness: 10%);
-$cTipBgDark: darken(#00b876, 30%);
 
 :root {
   --content-width: 880px;
+  --c-brand: var(--casual-primary);
+  --c-brand-light: var(--casual-primary-lighter);
   --c-bg: #f7f8fa;
   --doc-demo-bg: #fff;
   --c-tip-bg: var(--casual-primary-pale);
+  --c-tip: var(--casual-primary);
 }
 
 html.dark {
+  --c-brand: var(--casual-primary);
+  --c-brand-light: var(--casual-primary-lighter);
   --casual-table-striped-bg: #{$table-striped-bg-dark};
   --doc-demo-bg: #333;
   --casual-input-bg: #282c34;
   --casual-input-bg-darker: #262626;
   --casual-input-bg-darker2: #222;
   --casual-copywriting-normal: #999;
+  --c-tip: var(--casual-primary);
 }
 
 .custom-container {
   border-radius: 8px;
+  .custom-container-title {
+    font-weight: bold;
+  }
 }
 
 .theme-default-content:not(.custom) > h3 {

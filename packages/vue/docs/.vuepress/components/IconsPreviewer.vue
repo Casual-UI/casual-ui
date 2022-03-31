@@ -29,7 +29,7 @@ const copyDom = (name: string) => {
 </script>
 <template>
   <div class="c-row c-items-center c-gutter-md c-wrap icons-previewer">
-    <div v-for="(iconStr, name) in icons" :key="name" class="o-col-2">
+    <div v-for="(iconStr, name) in icons" :key="name" class="c-col-2">
       <div class="item">
         <c-tooltip>
           <div class="o-column c-items-center icon-wrapper">

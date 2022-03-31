@@ -84,7 +84,7 @@ $sizes: (
 
 Casual UI 使用经典的 12 栅格机制
 
-`o-col-[colSize]`
+`c-col-[colSize]`
 
 ### 子元素间距
 
@@ -105,25 +105,25 @@ Casual UI 使用经典的 12 栅格机制
 ```vue live
 <template>
   <div class="c-row c-gutter-x-sm">
-    <div v-for="n in 6" :key="n" class="o-col-2">
+    <div v-for="n in 6" :key="n" class="c-col-2">
       <div>col-2 + gutter-sm</div>
     </div>
   </div>
   <div class="c-row c-gutter-x-md c-mt-md">
-    <div v-for="n in 4" :key="n" class="o-col-3">
+    <div v-for="n in 4" :key="n" class="c-col3">
       <div>col-3 + gutter-md</div>
     </div>
   </div>
   <div class="c-row c-gutter-x-lg c-mt-md">
-    <div v-for="n in 3" :key="n" class="o-col-4">
+    <div v-for="n in 3" :key="n" class="c-col4">
       <div>col-4 + gutter-lg</div>
     </div>
   </div>
 </template>
 <style scoped lang="scss">
-.o-col-2,
-.o-col-3,
-.o-col-4 {
+.c-col-2,
+.c-col-3,
+.c-col-4 {
   > div {
     border: 1px solid #333;
     background-color: var(--casual-primary);

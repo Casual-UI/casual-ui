@@ -4,9 +4,14 @@ title: 安装
 
 ### 安装依赖
 
-```bash
+```sh
+# use yarn
 yarn add casual-ui-vue
+
+# use npm
 npm instal casual-ui-vue
+
+# use pnpm
 pnpm install casual-ui-vue
 ```
 

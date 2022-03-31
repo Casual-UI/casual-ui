@@ -13,7 +13,7 @@ const colors = ['--casual-primary', '--casual-secondary', '--casual-warning', '-
     <div
       v-for="c in colors"
       :key="c"
-      class="o-col-3"
+      class="c-col-3"
     >
       <div
         class="c-rounded-md color-card c-pa-md"
@@ -44,4 +44,4 @@ Casual UI提供了两种方式定制主题
 
 ### 变量一览
 
-@[code](../../../styles/variables/colors.scss)
+@[code](../../../styles/src/variables/colors.scss)

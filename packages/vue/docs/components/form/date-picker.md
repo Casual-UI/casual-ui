@@ -126,7 +126,7 @@ const formattedYear = ref('')
 </script>
 <template>
   <div class="c-row c-gutter-x-md">
-    <div class="o-col-6">
+    <div class="c-col-6">
       <c-date-picker
         v-model="month"
         v-model:formattedValue="formattedMonth"
@@ -141,7 +141,7 @@ const formattedYear = ref('')
         <strong>formattedMonth:</strong> {{ formattedMonth }}
       </p>
     </div>
-    <div class="o-col-6">
+    <div class="c-col-6">
       <c-date-picker
         v-model="year"
         v-model:formattedValue="formattedYear"
