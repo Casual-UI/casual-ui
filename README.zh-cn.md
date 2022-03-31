@@ -7,6 +7,59 @@
 * [React 文档]()
 * [Vue 文档]()
 
+### 安装 & 使用
+
+#### Vue3用户
+
+* 安装依赖 
+
+```sh
+npm install casual-ui-vue
+```
+
+* 全局使用
+
+```js
+import { createApp } from 'vue'
+import CasualUI from 'casual-ui-vue'
+import 'casual/style.css'
+
+const app = createApp()
+app.use(CasualUI)
+app.mount('#app')
+```
+
+* 局部使用
+
+```vue
+<!-- SomeComponent.vue -->
+<script setup>
+import { CButton } from 'casual-ui-vue'
+</script>
+<template>
+  <c-button label="一个按钮" />
+</template>
+```
+
+#### React17+用户
+
+* 安装依赖
+
+```sh
+npm install casual-ui-react
+```
+
+* 使用
+
+```js
+import { CButton } from 'casual-ui-react'
+
+function SomeComponent() {
+
+  return <OButton label="A Button" />
+}
+```
+
 ### 参与贡献
 
 [贡献指南](./CONTRIBUTING.md)
