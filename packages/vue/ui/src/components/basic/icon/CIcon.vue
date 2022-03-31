@@ -4,10 +4,12 @@ interface CIconProps {
   /**
    * svg内容，格式为<code>d[@@style][@@transform]|viewBox</code>
    */
-  content: string
+  content?: string
 }
 
-const props = defineProps<CIconProps>()
+const props = withDefaults(defineProps<CIconProps>(), {
+  content: '',
+})
 
 defineEmits<{
   /**
@@ -17,7 +19,18 @@ defineEmits<{
 }>()
 
 const svgInfo = computed(() => {
-  const [def, viewBox = '0 0 24 24'] = props.content.split('|')
+  if (typeof props.content !== 'string')
+    return {
+      viewBox: '0 0 24 24',
+      paths: [],
+    }
+  const svgDef = props.content.split('|')
+  if (!Array.isArray(svgDef))
+    return {
+      viewBox: '0 0 24 24',
+      paths: [],
+    }
+  const [def, viewBox = '0 0 24 24'] = svgDef
   const paths = def.split('&&').map(path => {
     const [d, style, transform] = path.split('@@')
     return {

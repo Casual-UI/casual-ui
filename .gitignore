@@ -12,3 +12,4 @@ yarn.lock
 .docusaurus/
 pnpm-lock.yaml
 demo
+deploy
