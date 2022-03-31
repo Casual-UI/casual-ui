@@ -2,6 +2,7 @@ import { defineUserConfig } from 'vuepress'
 import type { DefaultThemeOptions } from 'vuepress'
 import { path } from '@vuepress/utils'
 import { UserConfig } from 'vite'
+import casualCode from 'vuepress-plugin-casual-code'
 
 const iconsRoutes = [
   '/icons-preview/material/',
@@ -30,7 +31,7 @@ export default defineUserConfig<
   description: '一个随意的组件库',
   theme: '@vuepress/theme-default',
   clientAppEnhanceFiles: [path.resolve(__dirname, './clientAppEnhance.ts')],
-  plugins: [path.resolve(__dirname, './plugins/vueDemoCode.ts')],
+  plugins: [casualCode],
   clientAppRootComponentFiles: [
     path.resolve(__dirname, '../../ui/src/components/popup/CNotification.vue'),
   ],

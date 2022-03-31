@@ -8,5 +8,8 @@
   },
   "repository": {
     "url": "https://github.com/Blackman99/casual-ui.git"
+  },
+  "scripts": {
+    "docs:build-vue": "vuepress build ./packages/vue/docs -d ./deploy/dist/casual-ui-vue"
   }
 }

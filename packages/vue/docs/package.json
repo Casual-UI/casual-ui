@@ -14,11 +14,12 @@
   },
   "license": "MIT",
   "dependencies": {
-    "casual-styles": "workspace:*",
-    "casual-ui-vue": "workspace:*",
     "uid": "^2.0.0",
     "vue-styleguidist": "^4.44.27",
-    "vuepress": "^2.0.0-beta.36"
+    "vuepress": "^2.0.0-beta.36",
+    "casual-styles": "workspace:*",
+    "casual-ui-vue": "workspace:*",
+    "vuepress-plugin-casual-code": "workspace:*"
   },
   "scripts": {
     "dev": "node ./cli/clearTemp && yarn vuepress dev .",

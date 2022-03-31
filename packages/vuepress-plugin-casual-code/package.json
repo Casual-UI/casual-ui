@@ -1,0 +1,14 @@
+{
+  "name": "vuepress-plugin-casual-code",
+  "version": "0.0.1",
+  "description": "",
+  "dependencies": {
+    "casual-ui-vue": "workspace:*",
+    "vue": "^3.2.31"
+  },
+  "main": "./src/index.ts",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "MIT"
+}
