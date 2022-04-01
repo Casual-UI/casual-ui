@@ -1,3 +1,6 @@
 [submodule "packages/vite-plugin-vue-auto-name"]
 	path = packages/vite-plugin-vue-auto-name
 	url = https://github.com/Blackman99/vite-plugin-vue-auto-name.git
+[submodule "packages/ali-oss-static-web-deploy"]
+	path = packages/ali-oss-static-web-deploy
+	url = https://github.com/Blackman99/ali-oss-static-web-deploy.git

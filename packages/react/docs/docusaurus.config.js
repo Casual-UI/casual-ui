@@ -98,7 +98,7 @@ const config = {
           },
           {
             href: 'https://github.com/Blackman99/casual-ui.git',
-            label: 'Git仓库',
+            label: 'Github',
             position: 'right',
           },
         ],
