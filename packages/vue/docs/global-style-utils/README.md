@@ -110,12 +110,12 @@ Casual UI 使用经典的 12 栅格机制
     </div>
   </div>
   <div class="c-row c-gutter-x-md c-mt-md">
-    <div v-for="n in 4" :key="n" class="c-col3">
+    <div v-for="n in 4" :key="n" class="c-col-3">
       <div>col-3 + gutter-md</div>
     </div>
   </div>
   <div class="c-row c-gutter-x-lg c-mt-md">
-    <div v-for="n in 3" :key="n" class="c-col4">
+    <div v-for="n in 3" :key="n" class="c-col-4">
       <div>col-4 + gutter-lg</div>
     </div>
   </div>
