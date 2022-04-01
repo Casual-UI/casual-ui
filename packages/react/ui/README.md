@@ -1,24 +1,31 @@
 # Casual UI React
 
-基于React17+的一个随意的组建库
+A casual UI libs for React17+
 
-## 安装
+## Install
 
 ```bash
-# 使用NPM
+# via npm
 npm install casual-ui-react
 
-# 使用YARN
+# via yarn
 yarn install casual-ui-react
 
-# 使用PNPM
+# via pnpm
 pnpm install casual-ui-react
 ```
 
-## 使用
+## Usage
+
+### Import styles in your entry file
+
+```js
+import 'casual-ui-react/dist/style.css'
+```
+
+### Use in your jsx files
 
 ```jsx
-import 'casual-ui-react/dist/style.css'
 import { CButton } from 'casual-ui-react'
 
 const APP = () => <CButton label="按钮" />
