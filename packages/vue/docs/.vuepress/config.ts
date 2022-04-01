@@ -39,7 +39,7 @@ export default defineUserConfig<
     logo: '/logo.svg',
     logoDark: '/logo-dark.svg',
     repo: 'https://github.com/Blackman99/casual-ui',
-    repoLabel: 'Git仓库',
+    repoLabel: 'Github',
     contributorsText: '贡献者',
     lastUpdatedText: '最后更新于',
     editLinkText: '在Github上编辑此页',

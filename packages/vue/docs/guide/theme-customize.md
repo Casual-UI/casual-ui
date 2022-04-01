@@ -36,12 +36,9 @@ const colors = ['--casual-primary', '--casual-secondary', '--casual-warning', '-
 </style>
 ```
 
-Casual UI提供了两种方式定制主题
+Casual UI支持通过CSS变量定制主题
 
-### 基于scss方案
-
-### 基于css变量方案
-
+下面的所有变量均可以通过自定义css变量覆盖
 ### 变量一览
 
 @[code](../../../styles/src/variables/colors.scss)
