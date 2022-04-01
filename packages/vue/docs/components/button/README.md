@@ -26,7 +26,6 @@ componentPath: basic/button/CButton
   <c-button label="消极色按钮" theme="negative" outlined />
 </template>
 ```
-
 ### 形状
 
 ```vue live

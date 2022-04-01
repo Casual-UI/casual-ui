@@ -8,4 +8,5 @@ export default defineClientAppEnhance(({ app }) => {
   app.component(CExpansion.name, CExpansion)
   app.component('ComponentDoc', ComponentDoc)
   app.component('DemoCode', DemoCode)
+  app.config.globalProperties.$resolveCasual = defineAsyncComponent
 })
