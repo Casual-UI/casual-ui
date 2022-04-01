@@ -9,7 +9,6 @@
   },
   "scripts": {
     "build": "vite build"
-    
   },
   "repository": {
     "url": "https://github.com/Blackman99/casual-ui.git",

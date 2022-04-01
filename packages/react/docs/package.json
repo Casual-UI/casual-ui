@@ -4,7 +4,8 @@
   "description": "Casual UI React Docs",
   "main": "index.js",
   "scripts": {
-    "dev": "docusaurus start --no-open"
+    "dev": "docusaurus start --no-open",
+    "build": "docusaurus build"
   },
   "author": {
     "email": "1197160272@qq.com",

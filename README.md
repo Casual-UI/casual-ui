@@ -6,7 +6,7 @@ A casual ui library for both Vue3+ and React17+
 
 ### Online Demos & Docs
 
-* React Docs (Not supported yet)
+* [React Docs](https://casual-ui-react.donsen.site/)
 * [Vue Docs](https://casual-ui-vue.donsen.site/)
 
 ### Install
