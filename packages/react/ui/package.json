@@ -1,6 +1,6 @@
 {
   "name": "casual-ui-react",
-  "version": "0.0.1-alpha.2",
+  "version": "0.0.1-alpha.3",
   "description": "Casual UI React",
   "main": "index.ts",
   "author": {
@@ -15,6 +15,14 @@
     "url": "https://github.com/Blackman99/casual-ui.git",
     "directory": "/packages/react/ui"
   },
+  "keywords": [
+    "react17",
+    "react components",
+    "react17 components",
+    "ui components",
+    "react ui components",
+    "react17 ui components"
+  ],
   "devDependencies": {
     "@quasar/extras": "^1.13.4",
     "@types/react-transition-group": "^4.4.4",
