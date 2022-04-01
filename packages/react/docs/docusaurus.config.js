@@ -6,7 +6,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Casual UI - React',
-  tagline: 'A React UI library for casual users',
+  tagline: '一个随意的React组件库',
   url: 'https://your-docusaurus-test-site.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
