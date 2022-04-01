@@ -36,18 +36,18 @@ const CNotificationItem = ({
             <svg className="c-notification--countdown-bar" viewBox="0 0 24 24">
               {timeout && timeout > 0 && (
                 <circle
-                  v-if="noItem.timeout && noItem.timeout > 0"
                   cx="12"
                   cy="12"
                   r="10"
                   stroke="currentColor"
                   strokeWidth="2"
                   fill="transparent"
-                  className="c-notification--countdown-bar-circle"
+                  className={clsx(
+                    'c-notification--countdown-bar-circle',
+                    'c-with-close-count-down'
+                  )}
                   style={{
-                    animation: `close-count-down ${
-                      timeout / 1000
-                    }s linear forwards`,
+                    animationDuration: `${timeout / 1000}s`,
                   }}
                 />
               )}

@@ -10,6 +10,11 @@ $positions: "start", "center", "end";
   }
 }
 
+.c-with-close-count-down {
+  animation-name: close-count-down;
+  animation-timing-function: linear;
+}
+
 @each $p1 in $positions {
   @each $p2 in $positions {
     .c-notification {
