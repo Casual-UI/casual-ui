@@ -11,7 +11,7 @@ const config = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'favicon.ico',
+  favicon: 'logo.svg',
   organizationName: 'Blackman99',
   projectName: 'casual-ui',
   githubHost: 'github.com',
@@ -88,7 +88,7 @@ const config = {
               },
               {
                 label: '组件',
-                to: '/components/',
+                to: '/components/basic/button',
               },
               {
                 label: 'Hooks API',
@@ -122,7 +122,7 @@ const config = {
             title: '更多',
             items: [
               {
-                label: 'Git仓库',
+                label: 'Github',
                 href: 'https://github.com/Blackman99/casual-ui.git',
               },
             ],
@@ -137,6 +137,7 @@ const config = {
       liveCodeBlock: {
         playgroundPosition: 'top',
       },
+      showLastUpdateTime: true,
     }),
 }
 
