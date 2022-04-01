@@ -9,7 +9,18 @@
   "repository": {
     "url": "https://github.com/Blackman99/casual-ui.git"
   },
-  "scripts": {
-    "docs:build-vue": "vuepress build ./packages/vue/docs -d ./deploy/dist/casual-ui-vue"
-  }
+  "keywords": [
+    "ui components", 
+    "vue components", 
+    "vue ui components", 
+    "vue3", 
+    "vue3 components", 
+    "vue3 ui components",
+    "react", "react ui", 
+    "react components", 
+    "react ui components", 
+    "react17", "react3 ui", 
+    "react3 components", 
+    "react17 ui components"
+  ]
 }
