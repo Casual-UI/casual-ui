@@ -1,27 +1,27 @@
 # Casual UI Vue
 
-## 安装
+## Install
 
 ```bash
-# 使用NPM
+# vai npm
 npm install casual-ui-vue
 
-# 使用YARN
+# via yarn
 yarn install casual-ui-vue
 
-# 使用PNPM
+# via pnpm
 pnpm install casual-ui-vue
 ```
 
-## 使用
+## Usage
 
-### 导入样式（必须）
+### Import styles
 
 ```js
 import 'casual-ui-vue/dist/style.css'
 ```
 
-### 全局使用
+### Global usage
 
 ```js
 import { createApp } from 'vue'
@@ -35,13 +35,13 @@ app.use(CasualUI)
 app.mount('#app')
 ```
 
-### 局部使用
+### Local Usage
 
 ```html
 <script setup>
 import { CButton } from 'casual-ui-vue'
 </script>
 <template>
-  <c-button label="按钮" />
+  <c-button label="A Button" />
 </template>
 ```

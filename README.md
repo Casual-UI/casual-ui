@@ -24,7 +24,7 @@ npm install casual-ui-vue
 ```js
 import { createApp } from 'vue'
 import CasualUI from 'casual-ui-vue'
-import 'casual/style.css'
+import 'casual-ui-vue/dist/style.css'
 
 const app = createApp()
 app.use(CasualUI)
@@ -48,6 +48,12 @@ import { CButton } from 'casual-ui-vue'
 
 ```sh
 npm install casual-ui-react
+```
+
+* import styles in your entry file
+
+```js
+import 'casual-ui-react/dist/style.css'
 ```
 
 * usage
