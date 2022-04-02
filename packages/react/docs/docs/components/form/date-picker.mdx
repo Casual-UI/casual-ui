@@ -34,16 +34,42 @@ function Demo() {
 
 ```jsx live
 function Demo() {
-  const [date1, setDate1] = useState(null)
-  const [date2, setDate2] = useState(new Date())
+  const [date, setDate] = useState(null)
   return (
     <SpaceItems>
       <CDatePicker
-        value={date1}
-        onChange={setDate1}
+        value={date}
+        onChange={setDate}
         placeholder="不可选"
         disabled
       />
+    </SpaceItems>
+  )
+}
+```
+
+### 尺寸
+
+```jsx live
+function Demo() {
+  const [date, setDate] = useState(null)
+  const [formattedDate, setFormattedDate] = useState('')
+  const props = useMemo(
+    () => ({
+      value: date,
+      onChange: setDate,
+      formattedValue: formattedDate,
+      onFormattedValueChange: setFormattedDate,
+    }),
+    [date, setDate, formattedDate, setFormattedDate]
+  )
+  return (
+    <SpaceItems>
+      <CDatePicker size="xs" {...props} placeholder="超小" />
+      <CDatePicker size="sm" {...props} placeholder="较小" />
+      <CDatePicker {...props} placeholder="中等（默认）" />
+      <CDatePicker size="lg" {...props} placeholder="较大" />
+      <CDatePicker size="xl" {...props} placeholder="超大" />
     </SpaceItems>
   )
 }
