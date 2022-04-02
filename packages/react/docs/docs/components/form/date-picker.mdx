@@ -104,3 +104,57 @@ function Demo() {
   )
 }
 ```
+
+### 月份、年份选择
+
+```jsx live
+function Demo() {
+  const [month, setMonth] = useState(null)
+  const [year, setYear] = useState(null)
+  const [formattedMonth, setFormattedMonth] = useState('')
+  const [formattedYear, setFormattedYear] = useState('')
+  return (
+    <div className="c-row c-gutter-md" style={{ width: '100%' }}>
+      <div className="c-col-6">
+        <p>
+          <strong>选中月份：</strong>
+          {month && month.toString()}
+        </p>
+        <p>
+          <strong>选中月份格式化后的值：</strong>
+          {formattedMonth}
+        </p>
+        <CDatePicker
+          unit="month"
+          value={month}
+          onChange={setMonth}
+          format="MMM, YYYY"
+          formattedValue={formattedMonth}
+          onFormattedValueChange={setFormattedMonth}
+          placeholder="请选择月份"
+        />
+      </div>
+      <div className="c-col-6">
+        <p>
+          <strong>选中年份：</strong>
+          {year && year.toString()}
+        </p>
+        <p>
+          <strong>选中年份格式化后的值：</strong>
+          {formattedYear}
+        </p>
+
+        <CDatePicker
+          unit="year"
+          value={year}
+          onChange={setYear}
+          format="YYYY"
+          formattedValue={formattedYear}
+          onFormattedValueChange={setFormattedYear}
+          placeholder="请选择年份"
+        />
+      </div>
+    </div>
+  )
+}
+```

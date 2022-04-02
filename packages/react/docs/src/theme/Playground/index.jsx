@@ -7,7 +7,6 @@ import { usePrismTheme } from '@docusaurus/theme-common'
 import styles from './styles.module.css'
 import useIsBrowser from '@docusaurus/useIsBrowser'
 import { CExpansion } from 'casual-ui-react'
-import SpaceItems from '../components/SpaceItems'
 
 function LivePreviewLoader() {
   // Is it worth improving/translating?
@@ -21,10 +20,10 @@ function ResultWithHeader() {
       <div className={styles.playgroundPreview}>
         <BrowserOnly fallback={<LivePreviewLoader />}>
           {() => (
-            <SpaceItems>
+            <>
               <LivePreview />
               <LiveError />
-            </SpaceItems>
+            </>
           )}
         </BrowserOnly>
       </div>
