@@ -180,7 +180,7 @@ const CDatePanel = ({
               'c-date-panel--date-item',
               isStart(date) && 'c-date-panel--date-item--is-start',
               isEnd(date) && 'c-date-panel--date-item--is-end',
-              isDateInRange(date) && 'c-date-panel--date-item--is-in-range'
+              isDateInRange(date) && 'c-date-panel--date-item--in-range'
             )}
             onClick={e => {
               e.stopPropagation()

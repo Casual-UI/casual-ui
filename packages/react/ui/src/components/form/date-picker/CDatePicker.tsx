@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import clsx from 'clsx'
 import { CSize } from 'casual-types'
 import dayjs from 'dayjs'
@@ -125,7 +125,7 @@ const CDatePicker = ({
 
   const displayValue = useMemo(() => {
     if (range) {
-      const [start, end] = rangeValue
+      const [start, end] = formattedRangeValue || ['', '']
       if (!start && !end) return ''
       return `${start} - ${end}`
     }

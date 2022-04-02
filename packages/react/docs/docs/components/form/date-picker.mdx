@@ -74,3 +74,33 @@ function Demo() {
   )
 }
 ```
+
+### 日期段选择
+
+```jsx live
+function Demo() {
+  const [range, setRange] = useState([null, null])
+  const [rangeFmt, setRangeFmt] = useState(['', ''])
+  const strDate = d => d && d.toString()
+  return (
+    <>
+      <p>
+        <strong>选中日期段：</strong>
+        {range.map(strDate).join(' - ')}
+      </p>
+      <p>
+        <strong>选中日期格式化后的值：</strong>
+        {rangeFmt[0]} - {rangeFmt[1]}
+      </p>
+      <CDatePicker
+        range
+        placeholder="请选择日期段"
+        rangeValue={range}
+        onRangeChange={setRange}
+        formattedRangeValue={rangeFmt}
+        onFormattedRangeChange={setRangeFmt}
+      />
+    </>
+  )
+}
+```
