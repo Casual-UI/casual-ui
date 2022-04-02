@@ -79,6 +79,6 @@ function SomeComponent() {
 ![Docusaurus](./badges/docusaurus.svg)
 ![VSCode](./badges/vscode.svg)
 
-### LICENSE
+### 协议
 
-MIT
+[MIT](./LICENSE)

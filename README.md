@@ -88,4 +88,4 @@ function SomeComponent() {
 
 ### LICENSE
 
-MIT
+[MIT](./LICENSE)
