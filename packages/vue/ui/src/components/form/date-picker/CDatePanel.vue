@@ -35,20 +35,12 @@ const props = withDefaults(defineProps<ODatePanelProps>(), {
     return dayjs(d).format(f)
   },
   range: false,
-  unit: 'day',
 })
 const innerFormatter = (d: Date | null) => props.formatter(d, props.format)
 
 const emit = defineEmits<{
   (e: 'update:modelValue', modelValue: Date | null): void
   (e: 'update:dateRange', dateRange: [Date | null, Date | null]): void
-  (
-    e: 'panelSizeReady',
-    size: {
-      width: string
-      height: string
-    }
-  ): void
 }>()
 
 const { month, year, modelValue, dateRange, formattedDateRange } = toRefs(props)

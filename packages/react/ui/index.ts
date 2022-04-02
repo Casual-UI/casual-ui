@@ -42,8 +42,10 @@ import CLoadingPuff from './src/components/basic/loading/CLoadingPuff'
 import CLoadingRings from './src/components/basic/loading/CLoadingRings'
 import CLoadingTail from './src/components/basic/loading/CLoadingTail'
 import CLoadingWifi from './src/components/basic/loading/CLoadingWifi'
+import CDatePicker from './src/components/form/date-picker/CDatePicker'
 
 export {
+  CDatePicker,
   CLoading,
   CLoadingAudio,
   CLoadingDot,

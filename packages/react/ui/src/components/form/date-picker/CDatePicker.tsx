@@ -1,14 +1,25 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import clsx from 'clsx'
 import { CSize } from 'casual-types'
 import dayjs from 'dayjs'
 import { useSize, CSizeContext } from 'casual-ui-react'
 import CDropdown from '../../interact/CDropdown'
 import CInput from '../CInput'
+import CDatePanelHeader from './CDatePanelHeader'
+import CDateGridPanel from './CDateGridPanel'
+import CDatePanel from './CDatePanel'
 
 type DateValue = Date | null
+type Formatter = (origin: DateValue, format: string) => string
 type Unit = 'day' | 'month' | 'year'
-interface ODatePickerProps {
+
+const getDisplayMonth = (month: number) => {
+  const d = new Date()
+  d.setMonth(month)
+  return d.toLocaleDateString('en-US', { month: 'short' })
+}
+
+interface CDatePickerProps {
   /**
    * 单选时选中的日期值
    */
@@ -48,7 +59,7 @@ interface ODatePickerProps {
   /**
    * 自定义格式化函数
    */
-  formatter?: (value: DateValue, format: string) => string
+  formatter?: Formatter
   /**
    * 尺寸
    */
@@ -70,16 +81,12 @@ interface ODatePickerProps {
    */
   unit?: Unit
   /**
-   * 选择单位变化时触发
-   */
-  onUnitChange?: (unit: Unit) => void
-  /**
    * 是否为日期段选择
    */
   range?: boolean
 }
 
-const ODatePicker = ({
+const CDatePicker = ({
   value = null,
   onChange,
   formattedValue,
@@ -88,25 +95,26 @@ const ODatePicker = ({
   onRangeChange,
   formattedRangeValue,
   onFormattedRangeChange,
-  format = '',
+  format = 'YYYY-MM-DD',
   size,
   formatter = (v, f) => {
-    if (v) {
+    if (!v) {
       return ''
     }
     return dayjs(v).format(f)
   },
   range = false,
   unit = 'day',
-  onUnitChange,
   hideOnSelect = true,
   disabled = false,
-}: ODatePickerProps) => {
+  placeholder,
+}: CDatePickerProps) => {
   const now = new Date()
 
   const innerFormatter = (d: DateValue) => formatter(d, format)
 
   useEffect(() => {
+    if (!value) return
     onFormattedValueChange?.(innerFormatter(value))
   }, [value])
 
@@ -126,8 +134,11 @@ const ODatePicker = ({
   const [showDrop, setShowDrop] = useState(false)
   const [year, setYear] = useState(value?.getFullYear() || now.getFullYear())
   const [month, setMonth] = useState(value?.getMonth() || now.getMonth())
-  const [yearRange, setYearRange] = useState([year, year + 11])
-  const initialUnit = unit
+  const [yearRange, setYearRange] = useState<[number, number]>([
+    year,
+    year + 11,
+  ])
+  const [innerUnit, setInnerUnit] = useState(unit)
   const onDateSet = () => {
     if (hideOnSelect) {
       setShowDrop(false)
@@ -145,28 +156,52 @@ const ODatePicker = ({
         // year to month 反向
       }
     }
-    onUnitChange?.(newUnit)
+    setInnerUnit?.(newUnit)
   }
 
-  const onMonthSet = (newDate: DateValue) => {
-    setMonth(newDate?.getMonth() || 0)
-    if (initialUnit === 'day') {
+  const onMonthSet = (newMonth: number) => {
+    setMonth(newMonth)
+    onChange?.(
+      new Date(value?.getFullYear() || year, newMonth, value?.getDate() || 1)
+    )
+    if (unit === 'day') {
       onUpdateUnit('day')
       return
     }
     onDateSet()
   }
 
-  const onYearSet = (newDate: DateValue) => {
-    setYear(newDate?.getFullYear() || 0)
-    if (initialUnit === 'year') {
+  const onYearSet = (newYear: number) => {
+    setYear(newYear)
+    onChange?.(
+      new Date(newYear, value?.getMonth() || month, value?.getDate() || 1)
+    )
+    if (unit === 'year') {
       onDateSet()
       return
     }
     onUpdateUnit('month')
   }
 
-  const contextSize = useSize()
+  const contextSize = useSize(size)
+
+  const isYearActive = useCallback(
+    yearNum => yearNum === value?.getFullYear(),
+    [value]
+  )
+
+  const isMonthActive = useCallback(
+    (monthNum: number) => {
+      const d = new Date()
+      d.setFullYear(year)
+      d.setMonth(monthNum)
+      return (
+        d.getFullYear() === value?.getFullYear() &&
+        d.getMonth() === value?.getMonth()
+      )
+    },
+    [value]
+  )
 
   return (
     <CSizeContext.Provider value={contextSize}>
@@ -181,14 +216,74 @@ const ODatePicker = ({
         <CDropdown
           value={showDrop}
           onChange={setShowDrop}
+          widthWithinParent={false}
           disabled={disabled}
-          dropContent={<div>{/* TODO: 实现剩余部分 */}</div>}
+          dropContent={
+            <>
+              <CDatePanelHeader
+                year={year}
+                month={month}
+                yearRange={yearRange}
+                unit={innerUnit}
+                onYearChange={setYear}
+                onMonthChange={setMonth}
+                onUnitChange={onUpdateUnit}
+                onYearRangeChange={setYearRange}
+                unitSwitchable={!range}
+              />
+              <div
+                className={clsx(
+                  'c-date-picker--panel-wrapper',
+                  `c-px-${contextSize}`,
+                  `c-pb-${contextSize}`
+                )}
+              >
+                {innerUnit === 'month' && (
+                  <CDateGridPanel
+                    items={Array(12)
+                      .fill(0)
+                      .map((_, i) => i)}
+                    displayFormatter={getDisplayMonth}
+                    isActive={isMonthActive}
+                    onItemClick={onMonthSet}
+                  />
+                )}
+                {innerUnit === 'year' && (
+                  <CDateGridPanel
+                    items={Array(yearRange[1] - yearRange[0] + 1)
+                      .fill(0)
+                      .map((_, i) => i + yearRange[0])}
+                    displayFormatter={item => item + ''}
+                    isActive={isYearActive}
+                    onItemClick={onYearSet}
+                  />
+                )}
+                {innerUnit === 'day' && (
+                  <CDatePanel
+                    {...{
+                      value,
+                      dateRange: rangeValue,
+                      formattedDateRange: formattedRangeValue,
+                      range,
+                      year,
+                      month,
+                      onChange: v => {
+                        onChange?.(v)
+                        onDateSet()
+                      },
+                      onDateRangeChange: onRangeChange,
+                    }}
+                  />
+                )}
+              </div>
+            </>
+          }
         >
-          <CInput value={displayValue} readonly />
+          <CInput value={displayValue} placeholder={placeholder} readonly />
         </CDropdown>
       </div>
     </CSizeContext.Provider>
   )
 }
-export default ODatePicker
-export type { ODatePickerProps }
+export default CDatePicker
+export type { CDatePickerProps, Unit, DateValue, Formatter }

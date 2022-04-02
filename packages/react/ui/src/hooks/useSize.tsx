@@ -4,10 +4,13 @@ const defaultSize: CSize = 'md'
 
 const CSizeContext = createContext<CSize>(defaultSize)
 
-const useSize = (size?: CSize) => {
+const useSize = (size: CSize = defaultSize) => {
   const contextSize = useContext(CSizeContext)
 
-  return useMemo(() => (size ? size : contextSize), [size, contextSize])
+  return useMemo(
+    () => (size ? size : contextSize ? contextSize : 'md'),
+    [size, contextSize]
+  )
 }
 export default useSize
 

@@ -24,6 +24,10 @@ interface CDropdownProps {
    * 是否禁用
    */
   disabled?: boolean
+  /**
+   * 是否自动与默认内容保持一致宽度
+   */
+  widthWithinParent?: boolean
 }
 const CDropdown = ({
   value,
@@ -31,6 +35,7 @@ const CDropdown = ({
   children,
   dropContent,
   disabled = false,
+  widthWithinParent = true,
 }: CDropdownProps) => {
   const dropdownDom = useRef(null)
   useClickOutside({
@@ -50,7 +55,14 @@ const CDropdown = ({
       className={clsx('c-dropdown', value && 'c-dropdown--dropped')}
     >
       <div className="c-dropdown--trigger">{children}</div>
-      <div className="c-dropdown--drop-content">{dropContent}</div>
+      <div
+        className={clsx(
+          'c-dropdown--drop-content',
+          !widthWithinParent && 'c-dropdown--drop-content-auto-width'
+        )}
+      >
+        {dropContent}
+      </div>
     </div>
   )
 }

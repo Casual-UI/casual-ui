@@ -14,12 +14,16 @@ interface CIconProps {
    * 自定义行内样式
    */
   style?: CSSProperties
+  /**
+   * 点击触发
+   */
+  onClick?: () => void
 }
 
-const CIcon = ({ content, className, style }: CIconProps) => {
+const CIcon = ({ content, className, style, onClick }: CIconProps) => {
   const [def, viewBox = '0 0 24 24'] = content.split('|')
   return (
-    <span className={clsx('c-icon', className)} style={style}>
+    <span className={clsx('c-icon', className)} style={style} onClick={onClick}>
       <svg
         viewBox={viewBox}
         dangerouslySetInnerHTML={{

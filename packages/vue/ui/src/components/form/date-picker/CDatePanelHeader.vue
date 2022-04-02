@@ -88,7 +88,7 @@ const nextYearRange = () => {
   emit('update:yearRange', [yearRange.value[0] + 12, yearRange.value[1] + 12])
 }
 
-const { displayMonth } = useDisplayMonth(year, month)
+const { displayMonth } = useDisplayMonth(month)
 
 const isDay = computed(() => unit.value === 'day')
 const isMonth = computed(() => unit.value === 'month')

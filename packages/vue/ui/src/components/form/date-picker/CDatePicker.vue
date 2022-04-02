@@ -261,7 +261,7 @@ const onYearSet = (newDate: Date | null) => {
           class="c-date-picker--panel-wrapper"
           :class="[`c-px-${size}`, `c-pb-${size}`]"
         >
-          <transition :name="transitionName">
+          <transition-group :name="transitionName">
             <c-date-panel
               v-if="innerUnit === 'day'"
               key="day"
@@ -287,7 +287,7 @@ const onYearSet = (newDate: Date | null) => {
               :year-range="yearRange"
               @update:model-value="onYearSet"
             />
-          </transition>
+          </transition-group>
         </div>
       </template>
     </c-dropdown>

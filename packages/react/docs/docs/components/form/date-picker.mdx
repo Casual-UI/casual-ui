@@ -1,0 +1,31 @@
+---
+title: 日期选择器
+---
+
+### 基础使用
+
+```jsx live
+function Demo() {
+  const [date, setDate] = useState(null)
+  const [formattedDate, setFormattedDate] = useState('')
+  return (
+    <>
+      <p>
+        <strong>选中日期：</strong>
+        {date && date.toString()}
+      </p>
+      <p>
+        <strong>选中日期格式化后的值：</strong>
+        {formattedDate}
+      </p>
+      <CDatePicker
+        value={date}
+        onChange={setDate}
+        formattedValue={formattedDate}
+        onFormattedValueChange={setFormattedDate}
+        placeholder="请选择日期"
+      />
+    </>
+  )
+}
+```
