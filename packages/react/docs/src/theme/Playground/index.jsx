@@ -7,6 +7,7 @@ import { usePrismTheme } from '@docusaurus/theme-common'
 import styles from './styles.module.css'
 import useIsBrowser from '@docusaurus/useIsBrowser'
 import { CExpansion } from 'casual-ui-react'
+import SpaceItems from '../components/SpaceItems'
 
 function LivePreviewLoader() {
   // Is it worth improving/translating?
@@ -20,10 +21,10 @@ function ResultWithHeader() {
       <div className={styles.playgroundPreview}>
         <BrowserOnly fallback={<LivePreviewLoader />}>
           {() => (
-            <>
+            <SpaceItems>
               <LivePreview />
               <LiveError />
-            </>
+            </SpaceItems>
           )}
         </BrowserOnly>
       </div>
@@ -35,12 +36,7 @@ function ThemedLiveEditor() {
   const isBrowser = useIsBrowser()
   return (
     <CExpansion title="展开/收起代码" open={false}>
-      <LiveEditor
-        // We force remount the editor on hydration,
-        // otherwise dark prism theme is not applied
-        key={isBrowser}
-        className={styles.playgroundEditor}
-      />
+      <LiveEditor key={isBrowser} className={styles.playgroundEditor} />
     </CExpansion>
   )
 }

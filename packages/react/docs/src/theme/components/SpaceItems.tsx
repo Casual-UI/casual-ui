@@ -1,10 +1,14 @@
 import React from 'react'
-const SpaceItems = ({ children }: { children: JSX.Element[] }) => {
+const SpaceItems = ({
+  children,
+}: {
+  children: JSX.Element[] | JSX.Element
+}) => {
   return (
     <div className="c-row c-gutter-md c-items-center c-wrap">
-      {children.map((c, i) => (
-        <div key={i}>{c}</div>
-      ))}
+      {Array.isArray(children)
+        ? children.map((c, i) => <div key={i}>{c}</div>)
+        : children}
     </div>
   )
 }
