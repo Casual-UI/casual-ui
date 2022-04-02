@@ -1,6 +1,7 @@
 {
   "name": "casual-ui-react-docs",
   "version": "0.0.1",
+  "private": true,
   "description": "Casual UI React Docs",
   "main": "index.js",
   "scripts": {

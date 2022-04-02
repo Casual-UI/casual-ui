@@ -2,6 +2,7 @@
   "name": "casual-ui",
   "version": "0.0.1",
   "type": "module",
+  "private": true,
   "author": {
     "email": "1197160272@qq.com",
     "name": "Dongsheng Zhao"
