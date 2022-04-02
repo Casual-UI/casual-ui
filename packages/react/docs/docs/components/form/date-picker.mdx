@@ -29,3 +29,23 @@ function Demo() {
   )
 }
 ```
+
+### 禁用态
+
+```jsx live
+function Demo() {
+  const [date1, setDate1] = useState(null)
+  const [date2, setDate2] = useState(new Date())
+  return (
+    <SpaceItems>
+      <CDatePicker
+        value={date1}
+        onChange={setDate1}
+        placeholder="不可选"
+        disabled
+      />
+      <CDatePicker value={date2} onChange={setDate2} disabled />
+    </SpaceItems>
+  )
+}
+```

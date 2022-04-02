@@ -185,23 +185,17 @@ const CDatePicker = ({
 
   const contextSize = useSize(size)
 
-  const isYearActive = useCallback(
-    yearNum => yearNum === value?.getFullYear(),
-    [value]
-  )
+  const isYearActive = yearNum => yearNum === value?.getFullYear()
 
-  const isMonthActive = useCallback(
-    (monthNum: number) => {
-      const d = new Date()
-      d.setFullYear(year)
-      d.setMonth(monthNum)
-      return (
-        d.getFullYear() === value?.getFullYear() &&
-        d.getMonth() === value?.getMonth()
-      )
-    },
-    [value]
-  )
+  const isMonthActive = (monthNum: number) => {
+    const d = new Date()
+    d.setFullYear(year)
+    d.setMonth(monthNum)
+    return (
+      d.getFullYear() === value?.getFullYear() &&
+      d.getMonth() === value?.getMonth()
+    )
+  }
 
   return (
     <CSizeContext.Provider value={contextSize}>
@@ -279,7 +273,12 @@ const CDatePicker = ({
             </>
           }
         >
-          <CInput value={displayValue} placeholder={placeholder} readonly />
+          <CInput
+            value={displayValue}
+            placeholder={placeholder}
+            readonly
+            disabled={disabled}
+          />
         </CDropdown>
       </div>
     </CSizeContext.Provider>
