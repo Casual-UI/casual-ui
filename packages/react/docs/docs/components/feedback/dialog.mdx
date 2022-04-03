@@ -166,6 +166,28 @@ function Demo() {
 }
 ```
 
+### 底部按钮
+
+```jsx live
+function Demo() {
+  const [show, setShow] = useState(false)
+  return (
+    <>
+      <CDialog
+        value={show}
+        onChange={setShow}
+        title="标题"
+        showConfirmBtn
+        showCancelBtn
+      >
+        内容
+      </CDialog>
+      <CButton label="打开弹窗" onClick={() => setShow(true)} />
+    </>
+  )
+}
+```
+
 ### 自定义内容
 
 ```jsx live
