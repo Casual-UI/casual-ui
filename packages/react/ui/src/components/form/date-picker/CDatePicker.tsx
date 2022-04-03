@@ -8,6 +8,11 @@ import CInput from '../CInput'
 import CDatePanelHeader from './CDatePanelHeader'
 import CDateGridPanel from './CDateGridPanel'
 import CDatePanel from './CDatePanel'
+import {
+  CSSTransition,
+  SwitchTransition,
+  TransitionGroup,
+} from 'react-transition-group'
 
 type DateValue = Date | null
 type Formatter = (origin: DateValue, format: string) => string
@@ -144,16 +149,19 @@ const CDatePicker = ({
       setShowDrop(false)
     }
   }
+  const [panelSwitchDirection, setPanelSwitchDirection] = useState<
+    'forward' | 'backward'
+  >('forward')
   const onUpdateUnit = (newUnit: Unit) => {
     if (newUnit === 'day') {
-      // 反向
+      setPanelSwitchDirection('forward')
     } else if (newUnit === 'year') {
-      // 正向
+      setPanelSwitchDirection('backward')
     } else {
-      if (unit === 'day') {
-        // day to month 正向
+      if (innerUnit === 'day') {
+        setPanelSwitchDirection('backward')
       } else {
-        // year to month 反向
+        setPanelSwitchDirection('forward')
       }
     }
     setInnerUnit?.(newUnit)
@@ -225,51 +233,68 @@ const CDatePicker = ({
                 onYearRangeChange={setYearRange}
                 unitSwitchable={!range}
               />
-              <div
+              <TransitionGroup
                 className={clsx(
                   'c-date-picker--panel-wrapper',
                   `c-px-${contextSize}`,
                   `c-pb-${contextSize}`
                 )}
               >
-                {innerUnit === 'month' && (
-                  <CDateGridPanel
-                    items={Array(12)
-                      .fill(0)
-                      .map((_, i) => i)}
-                    displayFormatter={getDisplayMonth}
-                    isActive={isMonthActive}
-                    onItemClick={onMonthSet}
-                  />
-                )}
-                {innerUnit === 'year' && (
-                  <CDateGridPanel
-                    items={Array(yearRange[1] - yearRange[0] + 1)
-                      .fill(0)
-                      .map((_, i) => i + yearRange[0])}
-                    displayFormatter={item => item + ''}
-                    isActive={isYearActive}
-                    onItemClick={onYearSet}
-                  />
-                )}
-                {innerUnit === 'day' && (
-                  <CDatePanel
-                    {...{
-                      value,
-                      dateRange: rangeValue,
-                      formattedDateRange: formattedRangeValue,
-                      range,
-                      year,
-                      month,
-                      onChange: v => {
-                        onChange?.(v)
-                        onDateSet()
-                      },
-                      onDateRangeChange: onRangeChange,
-                    }}
-                  />
-                )}
-              </div>
+                <CSSTransition
+                  timeout={300}
+                  key={innerUnit}
+                  classNames={{
+                    enterActive:
+                      panelSwitchDirection === 'forward'
+                        ? 'c-date-panel-enter-active'
+                        : 'c-date-panel-reverse-enter-active',
+                    exitActive:
+                      panelSwitchDirection === 'forward'
+                        ? 'c-date-panel-leave-active'
+                        : 'c-date-panel-reverse-leave-active',
+                  }}
+                >
+                  <>
+                    {innerUnit === 'month' && (
+                      <CDateGridPanel
+                        items={Array(12)
+                          .fill(0)
+                          .map((_, i) => i)}
+                        displayFormatter={getDisplayMonth}
+                        isActive={isMonthActive}
+                        onItemClick={onMonthSet}
+                      />
+                    )}
+                    {innerUnit === 'year' && (
+                      <CDateGridPanel
+                        items={Array(yearRange[1] - yearRange[0] + 1)
+                          .fill(0)
+                          .map((_, i) => i + yearRange[0])}
+                        displayFormatter={item => item + ''}
+                        isActive={isYearActive}
+                        onItemClick={onYearSet}
+                      />
+                    )}
+                    {innerUnit === 'day' && (
+                      <CDatePanel
+                        {...{
+                          value,
+                          dateRange: rangeValue,
+                          formattedDateRange: formattedRangeValue,
+                          range,
+                          year,
+                          month,
+                          onChange: v => {
+                            onChange?.(v)
+                            onDateSet()
+                          },
+                          onDateRangeChange: onRangeChange,
+                        }}
+                      />
+                    )}
+                  </>
+                </CSSTransition>
+              </TransitionGroup>
             </>
           }
         >
