@@ -7,11 +7,14 @@
 
     &-item {
       cursor: pointer;
+      transition: background-color 0.2s var(--casual-ease-in-out-cubic);
+
+      &:hover {
+        background-color: var(--casual-primary-pale);
+      }
 
       &-active {
         color: var(--casual-primary);
-        font-weight: bold;
-        background-color: var(--casual-primary-pale);
       }
     }
 

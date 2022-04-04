@@ -71,12 +71,9 @@ onMounted(() => {
   setActiveBarStatus()
 })
 
-watch(
-  () => props.modelValue,
-  () => {
-    nextTick(setActiveBarStatus)
-  }
-)
+watch([() => props.modelValue, () => props.size], () => {
+  nextTick(setActiveBarStatus)
+})
 </script>
 <template>
   <div class="c-tabs">
