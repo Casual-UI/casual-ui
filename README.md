@@ -1,3 +1,6 @@
+# Casual UI
+
+![logo](./packages/vue/docs/.vuepress/public/logo.svg)
 ### Introduction
 
 A casual ui library for both Vue3+ and React17+
