@@ -103,3 +103,14 @@ table {
   font-family: Consolas;
   src: url("/fonts/CONSOLA.TTF");
 }
+
+.home .hero .action-button.primary {
+  transition: all .3s var(--casual-ease-in-out-cubic);
+  background-image: linear-gradient(45deg, #8952fd, #31e6b5);
+  background-size: 200% 200%;
+  background-position: 0 0;
+  border: none;
+  &:hover {
+    background-position: 100% 100%;
+  }
+} 
