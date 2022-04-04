@@ -54,9 +54,11 @@ import CDatePanel from './src/components/form/date-picker/CDatePanel.vue'
 import CDatePanelHeader from './src/components/form/date-picker/CDatePanelHeader.vue'
 import CYearPanel from './src/components/form/date-picker/CYearPanel.vue'
 import CMonthPanel from './src/components/form/date-picker/CMonthPanel.vue'
+import CTabs from './src/components/interact/CTabs.vue'
 
 const CasualUI: Plugin = {
   install: (app: App) => {
+    app.component('CTabs', CTabs)
     app.component('CButton', CButton)
     app.component('CLoading', CLoading)
     app.component('CLoadingAudio', CLoadingAudio)
@@ -106,6 +108,7 @@ const CasualUI: Plugin = {
 export default CasualUI
 
 export {
+  CTabs,
   CButton,
   CIcon,
   CLoading,

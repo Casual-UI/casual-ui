@@ -1,0 +1,90 @@
+<script setup lang="ts">
+import { CSize } from 'casual-types'
+import { useInjectSize } from 'casual-ui-vue'
+import { ref } from 'vue'
+
+interface CItem {
+  name: string
+  title?: string
+  icon?: string
+}
+
+interface CTabProps {
+  /**
+   * 当前激活的tab
+   */
+  modelValue: string
+  /**
+   * 标签项
+   */
+  items: CItem[]
+  /**
+   * 尺寸
+   */
+  size?: CSize
+}
+
+const props = withDefaults(defineProps<CTabProps>(), {
+  items: () => [],
+  size: undefined,
+})
+
+const emit = defineEmits<{
+  (e: 'update:modelValue', newModelValue: string): void
+}>()
+
+const { provideSize: realSize } = useInjectSize(props)
+
+const isForward = ref(true)
+
+const updateModelValue = (newModelValue: string) => {
+  const currentIdx = props.items.findIndex(
+    item => item.name === props.modelValue
+  )
+  const newIdx = props.items.findIndex(item => item.name === newModelValue)
+  if (newIdx < currentIdx) {
+    isForward.value = true
+  } else {
+    isForward.value = false
+  }
+  emit('update:modelValue', newModelValue)
+}
+</script>
+<template>
+  <div class="c-tabs">
+    <div class="c-tabs--header c-row c-items-center">
+      <div
+        v-for="tabItem in items"
+        :key="tabItem.name"
+        :class="[
+          'c-tabs--header-item',
+          `c-h-${realSize}`,
+          `c-font-${realSize}`,
+          `c-px-${realSize}`,
+        ]"
+        @click="updateModelValue(tabItem.name)"
+      >
+        <slot :name="`header-${tabItem.name}`">
+          <span>
+            {{ tabItem.title ? tabItem.title : tabItem.name }}
+          </span>
+          <span v-if="tabItem.icon">
+            {{ tabItem.icon }}
+          </span>
+        </slot>
+      </div>
+    </div>
+    <div class="c-tabs--body">
+      <transition-group
+        :name="isForward ? 'c-date-panel' : 'c-date-panel-reverse'"
+      >
+        <div
+          :key="modelValue"
+          :class="['c-tabs--body-item', `c-pa-${realSize}`]"
+        >
+          <slot :name="`body-${modelValue}`" />
+        </div>
+      </transition-group>
+    </div>
+  </div>
+</template>

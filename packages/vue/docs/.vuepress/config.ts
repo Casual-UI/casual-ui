@@ -115,6 +115,7 @@ export default defineUserConfig<
           children: [
             '/components/interact/expansion/',
             '/components/interact/dropdown/',
+            '/components/interact/tabs/',
           ],
         },
         {

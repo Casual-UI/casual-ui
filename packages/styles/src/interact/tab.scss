@@ -1,0 +1,14 @@
+.c-tabs {
+  position: relative;
+  overflow: hidden;
+
+  &--header {
+    &-item {
+      cursor: pointer;
+    }
+  }
+
+  &--body {
+    // TODO:
+  }
+}

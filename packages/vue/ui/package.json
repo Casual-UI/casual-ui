@@ -13,34 +13,40 @@
   "scripts": {
     "build": "vite build"
   },
-  "keywords": ["vue", "vue components", "ui components", "vue3", "vue3 components", "vue3 ui components"],
+  "keywords": [
+    "vue",
+    "vue components",
+    "ui components",
+    "vue3",
+    "vue3 components",
+    "vue3 ui components"
+  ],
   "repository": {
     "url": "https://github.com/Blackman99/casual-ui.git",
     "directory": "/packages/vue/ui"
   },
   "devDependencies": {
+    "@vitejs/plugin-vue": "^2.2.4",
+    "@quasar/extras": "^1.13.4",
     "@rushstack/eslint-patch": "^1.1.1",
     "@typescript-eslint/eslint-plugin": "^5.16.0",
     "@typescript-eslint/parser": "^5.16.0",
-    "@vitejs/plugin-vue": "^2.2.4",
     "@vue/eslint-config-prettier": "^7.0.0",
     "@vue/eslint-config-typescript": "^10.0.0",
     "eslint": "^8.12.0",
-    "eslint-plugin-markdown": "^2.2.1",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^8.5.0",
     "prettier": "^2.6.1",
-    "@quasar/extras": "^1.13.4",
+    "casual-i18n": "workspace:*",
+    "casual-styles": "workspace:*",
+    "casual-types": "workspace:*",
+    "casual-ui-vue": "workspace:*",
     "dayjs": "^1.11.0",
     "typescript": "^4.6.3",
-    "vue": "^3.2.31",
-    "casual-i18n": "workspace:*",
-    "casual-types": "workspace:*",
-    "casual-styles": "workspace:*",
-    "casual-ui-vue": "workspace:*",
+    "vite": "^2.8.6",
     "vite-plugin-vue-auto-name": "workspace:*",
-    "vite": "^2.8.6"
+    "vue": "^3.2.31"
   },
   "publishConfig": {
     "main": "./dist/casual-ui-vue.umd.js",
