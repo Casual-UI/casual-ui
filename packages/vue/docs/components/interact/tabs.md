@@ -45,11 +45,11 @@ const size = ref('md')
 </script>
 <template>
   <div class="c-row c-items-center c-wrap c-gutter-md">
-    <c-radio v-model="size" label="xs" value="xs" />
-    <c-radio v-model="size" label="sm" value="sm" />
-    <c-radio v-model="size" label="md" value="md" />
-    <c-radio v-model="size" label="lg" value="lg" />
-    <c-radio v-model="size" label="xl" value="xl" />
+    <c-radio v-model="size" label="xs" value="xs" size="xs" />
+    <c-radio v-model="size" label="sm" value="sm" size="sm" />
+    <c-radio v-model="size" label="md（默认）" value="md" />
+    <c-radio v-model="size" label="lg" value="lg" size="lg" />
+    <c-radio v-model="size" label="xl" value="xl" size="xl" />
   </div>
   <c-tabs v-model="activeItem" :items="items" :size="size">  
     <template #body-面板1>
