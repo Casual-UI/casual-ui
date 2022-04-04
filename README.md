@@ -1,6 +1,7 @@
 # Casual UI
 
-![logo](./packages/vue/docs/.vuepress/public/logo.svg)
+<img src="./packages/vue/docs/.vuepress/public/logo.svg" style="width: 200px;" />
+
 ### Introduction
 
 A casual ui library for both Vue3+ and React17+
