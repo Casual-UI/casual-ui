@@ -11,7 +11,7 @@ componentPath: interact/CTabs
     <template #body-面板1>
       面板1内容
     </template> 
-    <template #body-面板2> 
+    <template #body-面板222222> 
       面板2内容
     </template>
     <template #body-面板3>
@@ -23,7 +23,7 @@ componentPath: interact/CTabs
 import { ref } from 'vue'
 const items = [
   { name: '面板1' },
-  { name: '面板2' },
+  { name: '面板222222' },
   { name: '面板3' }
 ]
 const activeItem = ref('面板1')
