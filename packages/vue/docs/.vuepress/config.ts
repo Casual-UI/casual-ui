@@ -128,7 +128,10 @@ export default defineUserConfig<
         },
         {
           text: '数据展示',
-          children: ['/components/data-presentation/table/'],
+          children: [
+            '/components/data-presentation/table/',
+            '/components/data-presentation/list/',
+          ],
         },
       ],
       '/icons-preview/': iconsRoutes,

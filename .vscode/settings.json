@@ -1,10 +1,9 @@
 {
   "eslint.workingDirectories": [
-    "./packages/react/ui",
-    "./packages/react/docs",
-    "./packages/vue/ui",
     "./packages/vue/docs",
-    "./packages/vue/docs/.vuepress"
+    "./packages/vue/ui",
+    "./packages/vue/docs/.vuepress",
+    "./packages/react"
   ],
   "cSpell.words": [
     "clsx",
