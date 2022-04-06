@@ -166,7 +166,7 @@ const activeTab = ref('Props')
 </template>
 <style scoped lang="scss">
 .doc-api-container {
-  background-color: #fff;
+  background-color: var(--casual-table-bg);
   p {
     line-height: 2em;
   }

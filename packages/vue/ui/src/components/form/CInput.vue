@@ -58,7 +58,7 @@ interface OInputProps {
    */
   suffixDivider?: boolean
   /**
-   * 是否处于聚焦态，`v-model:focused`双向绑定用
+   * 是否处于聚焦态，<code>v-model:focused</code>双向绑定用
    */
   focused?: boolean
   /**
