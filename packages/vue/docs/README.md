@@ -6,6 +6,9 @@ actions:
   - text: 快速上手
     link: /guide/install/
     type: primary
+  - text: 组件一览
+    link: /components/
+    type: secondary
 features:
   - title: 拥抱Vue3
     details: 紧跟Vue3更新步伐

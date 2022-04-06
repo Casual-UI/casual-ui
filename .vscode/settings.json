@@ -1,7 +1,6 @@
 {
   "eslint.workingDirectories": [
-    "./packages/vue/docs",
-    "./packages/vue/ui",
+    "./packages/vue",
     "./packages/vue/docs/.vuepress",
     "./packages/react"
   ],

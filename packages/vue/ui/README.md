@@ -39,7 +39,7 @@ app.mount('#app')
 
 ```html
 <script setup>
-import { CButton } from 'casual-ui-vue'
+import { CButton } from 'casual-ui-vue' 
 </script>
 <template>
   <c-button label="A Button" />
