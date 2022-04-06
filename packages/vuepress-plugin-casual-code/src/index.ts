@@ -1,7 +1,7 @@
 import { uid } from 'uid'
 import { Plugin } from 'vuepress'
 import { parse } from 'vue-docgen-api'
-import { resolve } from 'path'
+import { path } from '@vuepress/utils'
 
 const componentDocMdContent = `
 ### Props
@@ -28,7 +28,7 @@ const markdownItVueDemoCodeBlock: Plugin = (options, app) => {
 
   return {
     name: 'vupress-plugin-casual-code',
-      clientAppEnhanceFiles: [resolve(__dirname, './clientAppEnhance.ts')],
+      clientAppEnhanceFiles: [path.resolve(__dirname, './clientAppEnhance.ts')],
         extendsMarkdown: async (md, app) => {
 
           const defaultRender = md.render
@@ -94,7 +94,7 @@ const markdownItVueDemoCodeBlock: Plugin = (options, app) => {
           page.frontmatter = page.frontmatter ?? {}
           if (page.frontmatter.componentPath) {
             const componentDocInfo = await parse(
-              resolve(
+              path.resolve(
                 __dirname,
                 `../../vue/ui/src/components/${page.frontmatter.componentPath}.vue`
               )

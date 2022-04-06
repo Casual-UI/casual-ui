@@ -25,6 +25,7 @@ import CDialog from './src/components/popup/CDialog.vue'
 import CList from './src/components/list/CList.vue'
 import CItem from './src/components/list/CItem.vue'
 import CToggle from './src/components/form/CToggle.vue'
+import CNotification from './src/components/popup/CNotification.vue'
 import NotificationPlugin, {
   useNotifications,
 } from './src/plugins/notification'
@@ -100,6 +101,7 @@ const CasualUI: Plugin = {
     app.component('CLoadingWifi', CLoadingWifi)
     app.component('CLoadingTail', CLoadingTail)
     app.component('ODatePanel', CDatePanel)
+    app.component('CNotification', CNotification)
 
     app.use(NotificationPlugin)
   },
@@ -129,6 +131,7 @@ export {
   CDatePicker,
   CDialog,
   CItem,
+  CNotification,
   CList,
   CCheckboxGroup,
   CLoadingBars,

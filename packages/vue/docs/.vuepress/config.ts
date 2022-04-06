@@ -33,7 +33,7 @@ export default defineUserConfig<
   clientAppEnhanceFiles: [path.resolve(__dirname, './clientAppEnhance.ts')],
   plugins: [casualCode],
   clientAppRootComponentFiles: [
-    path.resolve(__dirname, '../../ui/src/components/popup/CNotification.vue'),
+    path.resolve(__dirname, './components/UseCNotification.vue'),
   ],
   themeConfig: {
     logo: '/logo.svg',
