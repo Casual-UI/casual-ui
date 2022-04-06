@@ -48,6 +48,9 @@ defineProps<{
         {{ parseArrayElements(val.elements) }}
       </code>
     </template>
+    <template v-else>
+      <code>{{ val.name }}</code>
+    </template>
   </div>
 </template>
 <style lang="scss" scoped>

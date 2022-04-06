@@ -37,6 +37,7 @@ const props = withDefaults(defineProps<CRadioProps>(), {
 const emit = defineEmits<{
   /**
    * 值发生变化时触发
+   * @arg {any} newValue - 新的绑定值，值的类型取决于<code>props.value</code>属性
    */
   (e: 'update:modelValue', newModelValue: CRadioModel): void
 }>()

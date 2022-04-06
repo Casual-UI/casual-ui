@@ -40,6 +40,7 @@ const props = withDefaults(defineProps<CToggleProps>(), {
 const emit = defineEmits<{
   /**
    * 绑定值变更时触发
+   * @arg {any} newValue - 新的绑定值，值的类型取决于<code>props.checkValue</code>属性
    */
   (e: 'update:modelValue', newValue: any): void
 }>()

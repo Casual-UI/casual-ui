@@ -56,6 +56,7 @@ interface CSelectProps {
 const emit = defineEmits<{
   /**
    * 值变更触发，可用于<code>v-model</code>绑定
+   * @arg {string | number | Array<string | number>} newValue - 新的绑定值
    */
   (e: 'update:modelValue', v: CSelectModelValue): void
 }>()

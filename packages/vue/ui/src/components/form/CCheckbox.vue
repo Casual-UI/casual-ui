@@ -41,10 +41,10 @@ const props = withDefaults(defineProps<CCheckboxProps>(), {
 const { provideTheme: theme } = useInjectTheme(props)
 const { provideSize: size } = useInjectSize(props)
 
-// FIXME: 官方暂时不支持类型外部导入，暂时在组件内部定义类型
 const emit = defineEmits<{
   /**
    * 绑定值发生改变时触发
+   * @arg {any} newValue - 新的绑定值，值的类型取决于<code>props.checkedValue</code>属性
    */
   (e: 'update:modelValue', newValue: CCheckboxModel): void
 }>()
