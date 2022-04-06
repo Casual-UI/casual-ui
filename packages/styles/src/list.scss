@@ -7,6 +7,20 @@
 }
 
 .c-item {
+  position: relative;
+
+  &:not(:last-child) {
+    &::after {
+      content: " ";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(to right, var(--casual-input-prefix-suffix-divider), transparent);
+    }
+  }
+
   &--clickable {
     font-weight: 400;
     cursor: pointer;

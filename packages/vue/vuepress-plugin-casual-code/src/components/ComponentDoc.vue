@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { usePageFrontmatter } from '@vuepress/client'
-import { computed, Ref } from 'vue'
+import { computed, ref, Ref } from 'vue'
 import { ComponentDoc, ParamType } from 'vue-docgen-api'
+import TypeDom from './TypeDom.vue'
+import ItemDom from './ItemDom.vue'
 
 interface SlotDesc {
   name: string
@@ -33,13 +35,6 @@ const baseColumns = [
 ]
 
 const slotsColumns = [...baseColumns, { title: '绑定值', field: 'bindings' }]
-
-const propsColumns = [
-  ...baseColumns,
-  { title: '类型', field: 'type' },
-  { title: '是否必填', field: 'required', width: '80px' },
-  { title: '默认值', field: 'defaultValue', width: propDefaultValueWidth },
-]
 
 const eventsColumns = [
   { title: '名称', field: 'name', width: eventsNameWidth },
@@ -86,48 +81,58 @@ const getBindingItems = (val: any) => {
   if (!Array.isArray(val)) return []
   return val.map(bindingItem => ({ label: bindingItem.name, ...bindingItem }))
 }
+
+const items = [
+  { name: 'Props' },
+  { name: 'Slots' },
+  { name: 'Events' },
+  { name: 'Methods' },
+]
+const activeTab = ref('Props')
 </script>
 
 <template>
-  <c-table
-    v-if="type === 'props'"
-    class="doc-table"
-    :data="frontmatter.docInfo?.props || []"
-    :columns="propsColumns"
-    row-key="name"
-  >
-    <template #td-description="{ val }">
-      <!-- eslint-disable-next-line vue/no-v-html -->
-      <div v-html="val" />
-    </template>
-    <template #td-type="{ val }">
-      <code
-        v-if="
-          ['string', 'boolean', 'number', 'object'].some(v => v === val?.name)
-        "
-        >{{ val.name }}</code
-      >
-      <template v-else-if="val?.name === 'union'">
-        <template v-for="({ name }, i) in val.elements" :key="i">
-          <code>
-            {{ name }}
-          </code>
-          <template v-if="i < val.elements.length - 1"> | </template>
-        </template>
+  <div class="doc-api-container">
+    <c-tabs
+      v-model="activeTab"
+      :items="items"
+      :body-style="{ maxHeight: '30vh', overflow: 'auto' }"
+    >
+      <template #body-Props>
+        <c-list :items="frontmatter.docInfo?.props || []" size="xs">
+          <template #item="{ item }">
+            <ItemDom :value="item">
+              <template #after-name>
+                <div>
+                  <TypeDom :val="item.type" />
+                </div>
+                <div>
+                  <c-tag
+                    v-if="item.required"
+                    rounded
+                    size="xs"
+                    theme="secondary"
+                    label="必填"
+                  />
+                  <span v-else>
+                    默认值：<code>{{ item.defaultValue?.value }}</code>
+                  </span>
+                </div>
+              </template>
+            </ItemDom>
+          </template>
+        </c-list>
       </template>
-      <template v-else-if="val?.name === 'Array'">
-        <code>
-          {{ parseArrayElements(val.elements) }}
-        </code>
+
+      <template #body-Slots>
+        <c-list :items="frontmatter.docInfo?.slots || []" size="xs">
+          <template #item="{ item }">
+            <ItemDom :value="item"> </ItemDom>
+          </template>
+        </c-list>
       </template>
-    </template>
-    <template #td-required="{ val }">
-      <code>{{ val ? '是' : '否' }}</code>
-    </template>
-    <template #td-defaultValue="{ val }">
-      <code>{{ val ? val.value : '' }}</code>
-    </template>
-  </c-table>
+    </c-tabs>
+  </div>
   <c-table
     v-if="type === 'slots'"
     class="doc-table"
@@ -170,3 +175,11 @@ const getBindingItems = (val: any) => {
   >
   </c-table>
 </template>
+<style scoped lang="scss">
+.doc-api-container {
+  background-color: #fff;
+  p {
+    line-height: 2em;
+  }
+}
+</style>

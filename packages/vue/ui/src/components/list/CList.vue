@@ -22,6 +22,10 @@ interface OItemProps {
    * 计算列表项是否处于激活态的函数
    */
   activeFn?: (item: any) => boolean
+  /**
+   * 是否展示分割线
+   */
+  divider?: boolean
 }
 
 const props = withDefaults(defineProps<OItemProps>(), {
@@ -30,6 +34,7 @@ const props = withDefaults(defineProps<OItemProps>(), {
   clickable: false,
   size: undefined,
   activeFn: () => false,
+  divider: false,
 })
 
 defineEmits<{

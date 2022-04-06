@@ -22,11 +22,21 @@ interface CTabProps {
    * 尺寸
    */
   size?: CSize
+  /**
+   * 面板是否具有一个size尺寸的
+   */
+  panelPadding?: boolean
+  /**
+   * 自定义面板体样式
+   */
+  bodyStyle?: object
 }
 
 const props = withDefaults(defineProps<CTabProps>(), {
   items: () => [],
   size: undefined,
+  bodyStyle: () => ({}),
+  panelPadding: true,
 })
 
 const emit = defineEmits<{
@@ -109,14 +119,15 @@ watch([() => props.modelValue, () => props.size], () => {
         }"
       ></div>
     </div>
-    <div class="c-tabs--body">
+    <div
+      class="c-tabs--body"
+      :class="[{ [`c-pa-${realSize}`]: panelPadding }]"
+      :style="bodyStyle"
+    >
       <transition-group
         :name="isForward ? 'c-date-panel' : 'c-date-panel-reverse'"
       >
-        <div
-          :key="modelValue"
-          :class="['c-tabs--body-item', `c-pa-${realSize}`]"
-        >
+        <div :key="modelValue" :class="['c-tabs--body-item']">
           <slot :name="`body-${modelValue}`" />
         </div>
       </transition-group>

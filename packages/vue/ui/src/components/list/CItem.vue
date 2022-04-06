@@ -49,15 +49,16 @@ const onClick = () => {
       'c-item',
       { 'c-item--clickable': clickable },
       { 'c-item--active': active },
-      `c-h-${provideSize}`,
-      `c-font-${provideSize}`,
       `c-px-${provideSize}`,
+      `c-font-${provideSize}`,
     ]"
     @click.stop="onClick"
   >
     <!-- @slot 默认内容，会覆盖<code>label</code>属性 -->
     <slot>
-      {{ label }}
+      <span :class="[`c-h-${provideSize}`]">
+        {{ label }}
+      </span>
     </slot>
   </div>
 </template>

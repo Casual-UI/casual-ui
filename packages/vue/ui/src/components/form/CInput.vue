@@ -10,9 +10,9 @@ import {
   useDefaultVModel,
 } from 'casual-ui-vue'
 import { matHighlightOff } from '@quasar/extras/material-icons'
+import { CTheme } from 'casual-types'
 
 interface OInputProps {
-  // FIXME: 官方暂时不支持类型外部导入，暂时在组件内部定义类型
   /**
    * 输入框内的值，用于默认的<code>v-model</code>绑定
    */
@@ -20,7 +20,7 @@ interface OInputProps {
   /**
    * 主题
    */
-  theme?: 'primary' | 'secondary' | 'negative'
+  theme?: CTheme
   /**
    * 是否禁用
    */
@@ -69,7 +69,6 @@ interface OInputProps {
    * 输入框类型
    */
   type?: 'text' | 'password'
-
   /**
    * 是否使用自定义颜色状态，若设置为<code>true</code>，则聚焦不会触发边框颜色变更，包括背景色、边框色
    */
@@ -106,7 +105,6 @@ const props = withDefaults(defineProps<OInputProps>(), {
   focused: false,
   autoBlur: true,
   type: 'text',
-  customBorderStatus: false,
 })
 
 const { focused } = toRefs(props)
@@ -209,11 +207,11 @@ const onClearIconClick = () => {
         ]"
         @click="focusInput"
       >
-        <!-- @slot 输入框后置内容 -->
         <div :class="[{ 'c-mr-sm': loading }]">
+          <!-- @slot 输入框后置内容 -->
           <slot name="suffix" />
         </div>
-        <!-- @slot 自定义加载中表现 -->
+        <!-- @slot 自定义加载中 -->
         <slot v-if="loading" name="loading">
           <c-loading />
         </slot>

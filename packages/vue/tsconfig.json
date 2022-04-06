@@ -11,6 +11,6 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["ui/**/*", "docs/.vuepress/**/*"],
+  "include": ["/**/*", "docs/.vuepress/**/*"],
   "exclude": ["node_modules/**/*", "dist/**/*"]
 }
