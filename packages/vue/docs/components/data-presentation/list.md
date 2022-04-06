@@ -48,6 +48,22 @@ const size = ref('md')
 </template>
 ```
 
+### 带分割线
+
+```vue live
+<script setup>
+const items = [
+  { label: '香蕉' },
+  { label: '橘子' },
+  { label: '苹果' },
+  { label: '葡萄' },
+]
+</script>
+<template>
+  <c-list :items="items" divider />
+</template>
+```
+
 ### 可点击 & 激活态
 
 ```vue live
