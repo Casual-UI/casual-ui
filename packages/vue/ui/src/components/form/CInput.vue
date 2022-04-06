@@ -76,15 +76,16 @@ interface OInputProps {
 }
 
 const emit = defineEmits<{
-  // FIXME: 官方暂时不支持类型外部导入，暂时在组件内部定义类型
   /**
    * 输入框值发生变化时触发
+   * @arg {string} newValue - 新的输入框内的值
    */
   (e: 'update:modelValue', newValue: string | number): void
   /**
    * 聚焦状态发生变化时触发
+   * @arg {boolean} newFocusStatus - 新的聚焦状态
    */
-  (e: 'update:focused', newValue: boolean): void
+  (e: 'update:focused', newFocusStatus: boolean): void
   /**
    * 清除按钮触发
    */

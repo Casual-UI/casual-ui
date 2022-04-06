@@ -60,6 +60,7 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
+    'eslint-disable-next-line vue/no-v-html': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     'vue/component-tags-order': [
       'error',

@@ -1,7 +1,13 @@
 <script setup lang="ts">
-defineProps<{
-  value: any
-}>()
+withDefaults(
+  defineProps<{
+    value: any
+    descWrap?: boolean
+  }>(),
+  {
+    descWrap: true,
+  }
+)
 </script>
 <template>
   <div class="c-py-md">
@@ -10,8 +16,13 @@ defineProps<{
         <c-tag size="xs" :label="value.name" />
       </div>
       <slot name="after-name" />
+      <span
+        v-if="!descWrap"
+        class="description"
+        v-html="value.description"
+      ></span>
     </div>
-    <p class="description">
+    <p v-if="descWrap" class="description">
       <!-- eslint-disable-next-line vue/no-v-html -->
       <span class="description" v-html="value.description"></span>
     </p>

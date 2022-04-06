@@ -120,29 +120,31 @@ const activeTab = ref('Props')
           </template>
         </c-list>
       </template>
+
+      <template #body-Events>
+        <c-list :items="frontmatter.docInfo?.events || []" size="xs">
+          <template #item="{ item }">
+            <ItemDom :value="item">
+              <div v-if="item.tags" class="c-pl-md">
+                <b>入参</b>
+                <c-list :items="item.tags">
+                  <template #item="{ item: pItem }">
+                    <ItemDom :value="pItem" :desc-wrap="false">
+                      <template #after-name>
+                        <div>
+                          <TypeDom :val="pItem.type" />
+                        </div>
+                      </template>
+                    </ItemDom>
+                  </template>
+                </c-list>
+              </div>
+            </ItemDom>
+          </template>
+        </c-list>
+      </template>
     </c-tabs>
   </div>
-  <c-table
-    v-if="type === 'slots'"
-    class="doc-table"
-    :data="slotsData"
-    :columns="slotsColumns"
-    row-key="name"
-  >
-    <template #td-description="{ val }">
-      <!-- eslint-disable-next-line vue/no-v-html -->
-      <div v-html="val" />
-    </template>
-    <template #td-bindings="{ val }">
-      <c-list :items="getBindingItems(val)" size="xs">
-        <template #item="{ item }">
-          <code>{{ item.label }}: {{ item.type?.name }}</code
-          >：
-          <span>{{ item.description }}</span>
-        </template>
-      </c-list>
-    </template>
-  </c-table>
   <c-table
     v-if="type === 'events'"
     class="doc-table"
