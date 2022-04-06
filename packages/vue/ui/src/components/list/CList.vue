@@ -47,7 +47,7 @@ defineEmits<{
 const { provideSize: size } = useInjectSize(props)
 </script>
 <template>
-  <div class="c-list">
+  <div :class="['c-list', { 'c-list--with-divider': divider }]">
     <!-- @slot 没有数据时自定义内容 -->
     <slot v-if="items.length === 0" name="empty">
       <div :class="['c-list--empty', `c-px-${size}`]">No Data</div>

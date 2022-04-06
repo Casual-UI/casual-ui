@@ -4,45 +4,51 @@
     color: var(--casual-copywriting-light);
     font-size: 12px;
   }
-}
 
-.c-item {
-  position: relative;
+  .c-item {
+    position: relative;
 
-  &:not(:last-child) {
-    &::after {
-      content: " ";
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: linear-gradient(to right, var(--casual-input-prefix-suffix-divider), transparent);
+    &--clickable {
+      font-weight: 400;
+      cursor: pointer;
+      transition:
+        background var(--casual-ease-in-cubic) 0.2s,
+        color var(--casual-ease-in-cubic) 0.2s;
+
+      &:hover {
+        background-color: var(--casual-input-bg-darker);
+      }
+
+      &:active {
+        background-color: var(--casual-input-bg-darker2);
+      }
+    }
+
+    &--active {
+      color: var(--casual-primary);
+      background-color: var(--casual-primary-pale);
+
+      &:hover {
+        background-color: var(--casual-primary-pale-darker);
+      }
     }
   }
 
-  &--clickable {
-    font-weight: 400;
-    cursor: pointer;
-    transition:
-      background var(--casual-ease-in-cubic) 0.2s,
-      color var(--casual-ease-in-cubic) 0.2s;
+  &--with-divider {
+    .c-item {
+      position: relative;
 
-    &:hover {
-      background-color: var(--casual-input-bg-darker);
-    }
-
-    &:active {
-      background-color: var(--casual-input-bg-darker2);
-    }
-  }
-
-  &--active {
-    color: var(--casual-primary);
-    background-color: var(--casual-primary-pale);
-
-    &:hover {
-      background-color: var(--casual-primary-pale-darker);
+      &:not(:last-child) {
+        &::after {
+          content: " ";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 1px;
+          background: linear-gradient(to right, var(--casual-input-prefix-suffix-divider), transparent);
+        }
+      }
     }
   }
 }

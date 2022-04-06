@@ -10,7 +10,7 @@ withDefaults(
 )
 </script>
 <template>
-  <div class="c-py-md">
+  <div class="c-pt-sm">
     <div class="c-flex c-items-center c-gutter-sm c-wrap">
       <div>
         <c-tag size="xs" :label="value.name" />

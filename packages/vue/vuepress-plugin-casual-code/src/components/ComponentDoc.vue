@@ -68,7 +68,7 @@ const activeTab = ref('Props')
       :body-style="{ maxHeight: '30vh', overflow: 'auto' }"
     >
       <template #body-Props>
-        <c-list :items="frontmatter.docInfo?.props || []" size="xs">
+        <c-list :items="frontmatter.docInfo?.props || []" size="xs" divider>
           <template #item="{ item }">
             <ItemDom :value="item">
               <template #after-name>
@@ -94,12 +94,12 @@ const activeTab = ref('Props')
       </template>
 
       <template #body-Slots>
-        <c-list :items="frontmatter.docInfo?.slots || []" size="xs">
+        <c-list :items="frontmatter.docInfo?.slots || []" size="xs" divider>
           <template #item="{ item }">
             <ItemDom :value="item">
               <div v-if="item.bindings" class="c-pl-md">
                 <b>绑定值</b>
-                <c-list :items="item.bindings">
+                <c-list :items="item.bindings" divider>
                   <template #item="{ item: bItem }">
                     <ItemDom :value="bItem"></ItemDom>
                   </template>
@@ -111,12 +111,12 @@ const activeTab = ref('Props')
       </template>
 
       <template #body-Events>
-        <c-list :items="frontmatter.docInfo?.events || []" size="xs">
+        <c-list :items="frontmatter.docInfo?.events || []" size="xs" divider>
           <template #item="{ item }">
             <ItemDom :value="item">
               <div v-if="item.tags" class="c-pl-md">
                 <b>入参</b>
-                <c-list :items="item.tags">
+                <c-list :items="item.tags" divider>
                   <template #item="{ item: pItem }">
                     <ItemDom :value="pItem" :desc-wrap="false">
                       <template #after-name>
