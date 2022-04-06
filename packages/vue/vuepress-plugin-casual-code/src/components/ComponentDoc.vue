@@ -21,8 +21,6 @@ interface CustomFrontmatter {
 
 const frontmatter = usePageFrontmatter() as unknown as Ref<CustomFrontmatter>
 
-const { eventsNameWidth = '120px' } = frontmatter.value
-
 const inputAndReturnColumns = [
   { title: '入参', field: 'input' },
   { title: '返回', field: 'return' },
@@ -30,13 +28,6 @@ const inputAndReturnColumns = [
 
 const baseColumns = [
   { title: '名称', field: 'name', width: '100px' },
-  { title: '解释', field: 'description' },
-]
-
-const slotsColumns = [...baseColumns, { title: '绑定值', field: 'bindings' }]
-
-const eventsColumns = [
-  { title: '名称', field: 'name', width: eventsNameWidth },
   { title: '解释', field: 'description' },
 ]
 
@@ -143,18 +134,6 @@ const activeTab = ref('Props')
       </template>
     </c-tabs>
   </div>
-  <c-table
-    v-if="type === 'events'"
-    class="doc-table"
-    :data="frontmatter.docInfo?.events || []"
-    :columns="eventsColumns"
-    row-key="name"
-  >
-    <template #td-description="{ val }">
-      <!-- eslint-disable-next-line vue/no-v-html -->
-      <div v-html="val"></div>
-    </template>
-  </c-table>
   <c-table
     v-if="type === 'methods'"
     class="doc-table"
