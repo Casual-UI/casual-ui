@@ -11,7 +11,7 @@ interface CItem {
 
 interface CTabProps {
   /**
-   * 当前激活的tab
+   * 当前激活的tab，用于<code>v-model</code>绑定
    */
   modelValue: string
   /**

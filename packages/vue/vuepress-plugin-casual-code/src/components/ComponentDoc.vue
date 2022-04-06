@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { usePageFrontmatter } from '@vuepress/client'
 import { computed, ref, Ref } from 'vue'
-import { ComponentDoc, ParamType } from 'vue-docgen-api'
+import { ComponentDoc } from 'vue-docgen-api'
 import TypeDom from './TypeDom.vue'
 import ItemDom from './ItemDom.vue'
 
@@ -21,8 +21,7 @@ interface CustomFrontmatter {
 
 const frontmatter = usePageFrontmatter() as unknown as Ref<CustomFrontmatter>
 
-const { eventsNameWidth = '120px', propDefaultValueWidth = '100px' } =
-  frontmatter.value
+const { eventsNameWidth = '120px' } = frontmatter.value
 
 const inputAndReturnColumns = [
   { title: '入参', field: 'input' },
@@ -51,25 +50,6 @@ withDefaults(
     type: 'props',
   }
 )
-
-const parseUnion = (elements: any[]) =>
-  elements.reduce((str, t, idx) => `${str}${idx > 0 ? ' | ' : ''}${t.name}`, '')
-
-const parseArrayElements = (elements: ParamType[], start = 'Array'): string => {
-  if (['string', 'number'].includes(start)) return start
-  if (start === 'union') {
-    return parseUnion(elements)
-  }
-  return `${start}<${elements.reduce((str, { name, elements }) => {
-    if (!elements) return `${str}${name}`
-    if (elements.length > 1) {
-      return `${str}${name}<${elements
-        .map(ele => parseArrayElements(ele.elements || [], ele.name))
-        .join(', ')}>`
-    }
-    return `${str}${name}`
-  }, '')}>`
-}
 
 const slotsData = computed(() => {
   const { customSlots = [], docInfo = { slots: [] } } = frontmatter.value
@@ -127,7 +107,16 @@ const activeTab = ref('Props')
       <template #body-Slots>
         <c-list :items="frontmatter.docInfo?.slots || []" size="xs">
           <template #item="{ item }">
-            <ItemDom :value="item"> </ItemDom>
+            <ItemDom :value="item">
+              <div v-if="item.bindings" class="c-pl-md">
+                <b>绑定值</b>
+                <c-list :items="item.bindings">
+                  <template #item="{ item: bItem }">
+                    <ItemDom :value="bItem"></ItemDom>
+                  </template>
+                </c-list>
+              </div>
+            </ItemDom>
           </template>
         </c-list>
       </template>

@@ -15,6 +15,7 @@ defineProps<{
       <!-- eslint-disable-next-line vue/no-v-html -->
       <span class="description" v-html="value.description"></span>
     </p>
+    <slot />
   </div>
 </template>
 <style lang="scss" scoped>
