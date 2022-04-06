@@ -51,23 +51,21 @@ withDefaults(
   }
 )
 
-const slotsData = computed(() => {
-  const { customSlots = [], docInfo = { slots: [] } } = frontmatter.value
-  const { slots = [] } = docInfo
-  return [...customSlots, ...slots].filter(s => s.description)
-})
-
-const getBindingItems = (val: any) => {
-  if (!Array.isArray(val)) return []
-  return val.map(bindingItem => ({ label: bindingItem.name, ...bindingItem }))
-}
-
-const items = [
-  { name: 'Props' },
-  { name: 'Slots' },
-  { name: 'Events' },
-  { name: 'Methods' },
-]
+const items = computed(() =>
+  [
+    { name: 'props' },
+    { name: 'slots' },
+    { name: 'events' },
+    { name: 'methods' },
+  ]
+    .filter(item => {
+      const arr = frontmatter.value.docInfo[item.name]
+      return arr && arr.length > 0
+    })
+    .map(({ name }) => ({
+      name: name.toUpperCase().slice(0, 1) + name.slice(1),
+    }))
+)
 const activeTab = ref('Props')
 </script>
 
