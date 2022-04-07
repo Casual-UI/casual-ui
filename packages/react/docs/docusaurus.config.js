@@ -21,6 +21,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          sidebarCollapsed: false,
           routeBasePath: '/',
           sidebarPath: require.resolve('./config/sidebars.js'),
           editUrl:
@@ -54,6 +55,7 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      autoCollapseSidebarCategories: false,
       navbar: {
         title: 'Casual UI - React',
         logo: {
