@@ -4,8 +4,15 @@ componentPath: table/CTable
 customSlots:
   - name: th-[field]
     description: 自定义表头渲染
-  - name: td-[field]
-    description: 自定义列单元格渲染
+    bindings:
+      - name: title
+        description: 当前列标题
+        type:
+          name: string
+      - name: field
+        description: 当前列字段名称
+        type:
+          name: string
 ---
 
 ### 基础使用

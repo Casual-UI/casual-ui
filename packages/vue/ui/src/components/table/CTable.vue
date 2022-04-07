@@ -59,10 +59,17 @@ provide('columns', props.columns)
       <tbody>
         <c-tr v-for="row in data" :key="row[rowKey]">
           <c-td v-for="({ field, width }, idx) in columns" :key="field">
+            <!-- 
+              @slot 自定义单元格
+              @name td-[field] - 自定义对应<code>field</code>单元格渲染
+              @binding {any} row - 当前行数据
+              @binding {any} val - 当前单元格数据
+              @binding {number} idx - 当前单元格所在行下标
+              @binding {string} width - 当前单元格所在列宽度
+            -->
             <slot
               :name="`td-${field}`"
-              :width="width"
-              v-bind="{ field, val: row[field], idx, row }"
+              v-bind="{ val: row[field], idx, row, width }"
             >
               {{ row[field] }}
             </slot>

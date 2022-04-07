@@ -23,7 +23,7 @@ interface CTabProps {
    */
   size?: CSize
   /**
-   * 面板是否具有一个size尺寸的
+   * 面板是否具有一个size尺寸的内边距
    */
   panelPadding?: boolean
   /**
@@ -128,6 +128,10 @@ watch([() => props.modelValue, () => props.size], () => {
         :name="isForward ? 'c-date-panel' : 'c-date-panel-reverse'"
       >
         <div :key="modelValue" :class="['c-tabs--body-item']">
+          <!-- 
+            @slot
+            @name body-[item.name] - 对应名称面板内容 
+          -->
           <slot :name="`body-${modelValue}`" />
         </div>
       </transition-group>

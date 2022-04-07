@@ -10,37 +10,19 @@ interface SlotDesc {
   description: string
 }
 
-type DocType = 'props' | 'slots' | 'events' | 'methods'
-
 interface CustomFrontmatter {
   docInfo: ComponentDoc
-  customSlots: SlotDesc[]
+  customSlots?: SlotDesc[]
   eventsNameWidth?: number
   propDefaultValueWidth?: number
 }
 
 const frontmatter = usePageFrontmatter() as unknown as Ref<CustomFrontmatter>
 
-const inputAndReturnColumns = [
-  { title: '入参', field: 'input' },
-  { title: '返回', field: 'return' },
-]
-
-const baseColumns = [
-  { title: '名称', field: 'name', width: '100px' },
-  { title: '解释', field: 'description' },
-]
-
-const methodsColumns = [...baseColumns, ...inputAndReturnColumns]
-
-withDefaults(
-  defineProps<{
-    type: DocType
-  }>(),
-  {
-    type: 'props',
-  }
-)
+const slots = computed(() => [
+  ...(frontmatter.value.customSlots || []),
+  ...(frontmatter.value.docInfo.slots || []),
+])
 
 const items = computed(() =>
   [
@@ -58,6 +40,22 @@ const items = computed(() =>
     }))
 )
 const activeTab = ref('Props')
+
+const slotNameFormatter = (slotItem: any) => {
+  const name = slotItem.tags?.name
+  if (name && name.length > 0) {
+    return name[0].description.split(' - ')[0]
+  }
+  return slotItem.name
+}
+
+const descFormatter = (slotItem: any) => {
+  const name = slotItem.tags?.name
+  if (name && name.length > 0) {
+    return name[0].description.split(' - ')[1]
+  }
+  return slotItem.description
+}
 </script>
 
 <template>
@@ -94,12 +92,22 @@ const activeTab = ref('Props')
       </template>
 
       <template #body-Slots>
-        <c-list :items="frontmatter.docInfo?.slots || []" size="xs" divider>
+        <c-list :items="slots" size="xs" divider>
           <template #item="{ item }">
-            <ItemDom :value="item">
-              <div v-if="item.bindings" class="c-pl-md">
+            <ItemDom
+              :value="item"
+              :name-formatter="slotNameFormatter"
+              :desc-formatter="descFormatter"
+            >
+              <div
+                v-if="item.bindings?.filter((bItem: any) => bItem.name !== 'name').length > 0"
+                class="c-pl-md"
+              >
                 <b>绑定值</b>
-                <c-list :items="item.bindings" divider>
+                <c-list
+                  :items="item.bindings.filter((bItem: any) => bItem.name !== 'name')"
+                  divider
+                >
                   <template #item="{ item: bItem }">
                     <ItemDom :value="bItem"></ItemDom>
                   </template>
@@ -134,14 +142,6 @@ const activeTab = ref('Props')
       </template>
     </c-tabs>
   </div>
-  <c-table
-    v-if="type === 'methods'"
-    class="doc-table"
-    :data="frontmatter.docInfo?.methods || []"
-    :columns="methodsColumns"
-    row-key="name"
-  >
-  </c-table>
 </template>
 <style scoped lang="scss">
 .doc-api-container {
