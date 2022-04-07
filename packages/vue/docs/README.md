@@ -17,3 +17,35 @@ features:
   - title: TS编写
     details: 友好的类型提示
 ---
+
+<hr />
+
+<div className="c-pb-xl">
+  <p class="description">鸣谢</p>
+  <div className="c-row c-items-center c-gutter-md c-wrap c-justify-center">
+    <img src="/badges/react.svg" alt="" />
+    <img src="/badges/vue.svg" alt="" />
+    <img src="/badges/docusaurus.svg" alt="" />
+    <img src="/badges/quasar.svg" alt="" />
+    <img src="/badges/sass.svg" alt="" />
+    <img src="/badges/typescript.svg" alt="" />
+    <img src="/badges/vscode.svg" alt="" />
+    <img src="/badges/vite.svg" alt="" />
+    <img src="/badges/eslint.svg" alt="" />
+    <img src="/badges/javascript.svg" alt="" />
+    <img src="/badges/pnpm.svg" alt="" />
+    <img src="/badges/stylelint.svg" alt="" />
+    <img src="/badges/vuepress.svg" alt="" />
+  </div>
+</div>
+
+<style lang="scss" scoped> 
+.description {
+  max-width: 35rem;
+  font-size: 1.6rem;
+  text-align: center;
+  margin: 1em auto;
+  line-height: 1.3;
+  color: var(--c-text-lightest);
+}
+</style>
