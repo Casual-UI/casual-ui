@@ -106,6 +106,7 @@ const props = withDefaults(defineProps<OInputProps>(), {
   focused: false,
   autoBlur: true,
   type: 'text',
+  customColor: false,
 })
 
 const { focused } = toRefs(props)
