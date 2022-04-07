@@ -42,6 +42,7 @@ const props = withDefaults(defineProps<CTabProps>(), {
 const emit = defineEmits<{
   /**
    * 当前激活项发生变化时触发
+   * @arg {string} newValue - 新的激活态面板<code>name</code>值
    */
   (e: 'update:modelValue', newModelValue: string): void
 }>()
