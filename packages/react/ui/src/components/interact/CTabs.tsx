@@ -1,8 +1,7 @@
-import React, { useState, useRef, useEffect, useMemo } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import clsx from 'clsx'
 import { CSize, CSlot } from 'casual-types'
 import { useSize } from 'casual-ui-react'
-import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 interface CTabItem {
   /**
