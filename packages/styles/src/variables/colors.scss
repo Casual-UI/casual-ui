@@ -15,7 +15,7 @@ $primary-darker: color.adjust(#8952fd, $lightness: -5%, $alpha: 0.1);
 
 // 辅色
 $secondary: #66bb6a;
-$secondary-pale: lighten($secondary, 52%);
+$secondary-pale: lighten($secondary, 40%);
 $secondary-lighter: color.adjust($secondary, $lightness: 3%, $alpha: -0.1);
 $secondary-lighter2: color.adjust($secondary, $lightness: 10%);
 $secondary-darker: color.adjust($secondary, $lightness: -3%, $alpha: 0.1);
