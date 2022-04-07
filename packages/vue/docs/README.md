@@ -20,9 +20,9 @@ features:
 
 <hr />
 
-<div className="c-pb-xl">
+<div class="c-pb-xl">
   <p class="description">鸣谢</p>
-  <div className="c-row c-items-center c-gutter-md c-wrap c-justify-center">
+  <div class="c-row c-items-center c-gutter-md c-wrap c-justify-center">
     <img src="/badges/react.svg" alt="" />
     <img src="/badges/vue.svg" alt="" />
     <img src="/badges/docusaurus.svg" alt="" />
