@@ -41,6 +41,22 @@ const Logo = () => {
           </div>
         ))}
       </div>
+      <p className={homeStyle.description}>鸣谢</p>
+      <div className="c-row c-items-center c-gutter-md c-wrap c-justify-center c-py-md">
+        <img src="/badges/react.svg" alt="" />
+        <img src="/badges/vue.svg" alt="" />
+        <img src="/badges/docusaurus.svg" alt="" />
+        <img src="/badges/quasar.svg" alt="" />
+        <img src="/badges/sass.svg" alt="" />
+        <img src="/badges/typescript.svg" alt="" />
+        <img src="/badges/vscode.svg" alt="" />
+        <img src="/badges/vite.svg" alt="" />
+        <img src="/badges/eslint.svg" alt="" />
+        <img src="/badges/javascript.svg" alt="" />
+        <img src="/badges/pnpm.svg" alt="" />
+        <img src="/badges/stylelint.svg" alt="" />
+        <img src="/badges/vuepress.svg" alt="" />
+      </div>
     </div>
   )
 }
