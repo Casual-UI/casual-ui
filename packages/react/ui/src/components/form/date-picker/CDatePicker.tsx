@@ -8,11 +8,7 @@ import CInput from '../CInput'
 import CDatePanelHeader from './CDatePanelHeader'
 import CDateGridPanel from './CDateGridPanel'
 import CDatePanel from './CDatePanel'
-import {
-  CSSTransition,
-  SwitchTransition,
-  TransitionGroup,
-} from 'react-transition-group'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 type DateValue = Date | null
 type Formatter = (origin: DateValue, format: string) => string

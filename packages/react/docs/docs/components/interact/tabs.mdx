@@ -3,3 +3,29 @@ title: 标签页
 ---
 
 ### 基础使用
+
+```jsx live
+function Demo() {
+  const items = [
+    {
+      name: 'Apple',
+      content: 'Apple is awesome',
+    },
+    {
+      name: 'Banana',
+      content: 'Banana is awesome',
+    },
+    {
+      name: 'Orange',
+      content: 'Orange is awesome',
+    },
+    {
+      name: 'Grape',
+      content: 'Grape is awesome',
+    },
+  ]
+
+  const [current, setCurrrent] = useState('Apple')
+  return <CTabs items={items} activeTab={current} onTabChange={setCurrrent} />
+}
+```

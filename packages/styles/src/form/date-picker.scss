@@ -177,8 +177,8 @@ $ph: 252px;
 
 @keyframes c-date-panel-leave {
   0% {
-    transform: translateX(0);
     opacity: 1;
+    transform: translateX(0);
   }
 
   100% {
@@ -187,27 +187,31 @@ $ph: 252px;
   }
 }
 
-.c-date-panel-enter-active {
-  animation: c-date-panel 0.3s var(--casual-ease-in-out-cubic);
-}
-
 .c-date-panel-leave-active,
 .c-date-panel-reverse-leave-active {
   position: absolute;
+  z-index: 3;
   width: 100%;
   height: 100%;
   left: 0;
   right: 0;
+  bottom: 0;
+}
+
+$timeout: 0.3s;
+
+.c-date-panel-enter-active {
+  animation: c-date-panel $timeout var(--casual-ease-in-out-cubic);
 }
 
 .c-date-panel-leave-active {
-  animation: c-date-panel-leave 0.3s var(--casual-ease-in-out-cubic);
+  animation: c-date-panel-leave $timeout var(--casual-ease-in-out-cubic);
 }
 
 .c-date-panel-reverse-leave-active {
-  animation: c-date-panel 0.3s var(--casual-ease-in-out-cubic) reverse;
+  animation: c-date-panel $timeout var(--casual-ease-in-out-cubic) reverse;
 }
 
 .c-date-panel-reverse-enter-active {
-  animation: c-date-panel-leave 0.3s var(--casual-ease-in-out-cubic) reverse;
+  animation: c-date-panel-leave $timeout var(--casual-ease-in-out-cubic) reverse;
 }
