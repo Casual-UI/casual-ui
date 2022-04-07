@@ -98,20 +98,24 @@ const { formattedValue, dateRange, formattedDateRange } = toRefs(props)
 
 const emit = defineEmits<{
   /**
-   * 当前选中值发生变化时触发
+   * 用于日期单选时，当前选中日期值发生变化时触发
+   * @arg {Date | null} newValue - 新的选中日期值
    */
   (e: 'update:modelValue', newValue: Date | null): void
   /**
-   * 格式化后的值发生变化时触发
+   * 用于日期单选时，格式化后的值发生变化时触发
+   * @arg {string} newFormattedValue - 新的格式化后的值
    */
   (e: 'update:formattedValue', newValue: string): void
 
   /**
    * 日期段绑定值变化时触发
+   * @arg {[Date | null, Date | null]} newDateRange - 新的日期段绑定值
    */
   (e: 'update:dateRange', newRange: [Date | null, Date | null]): void
   /**
    * 日期段格式化之后的值变化时触发
+   * @arg {[string, string]} newFormattedDateRange - 新的日期段格式化之后的值
    */
   (
     e: 'update:formattedDateRange',
@@ -119,6 +123,7 @@ const emit = defineEmits<{
   ): void
   /**
    * 单位变化时触发
+   * @arg {Unit} newUnit - 新的单位
    */
   (e: 'update:unit', newValue: Unit): void
 }>()
