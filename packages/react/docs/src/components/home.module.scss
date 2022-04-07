@@ -1,6 +1,5 @@
 .home {
   max-width: 960px;
-  min-width: 560px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,9 +7,6 @@
 }
 .logo {
   width: 280px;
-}
-.logoContainer {
-  margin-top: 7vh;
 }
 
 .title {
@@ -76,5 +72,25 @@
   }
   p {
     color: #4e6e8e;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .home {
+    width: 100vw;
+  }
+  .title {
+    font-size: 2rem;
+  }
+  .features {
+    flex-direction: column;
+    align-items: center;
+    h2 {
+      white-space: nowrap;
+    }
+  }
+  .feature {
+    margin-top: 1em;
   }
 }
