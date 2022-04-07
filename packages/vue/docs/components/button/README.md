@@ -16,14 +16,32 @@ componentPath: basic/button/CButton
 
 ```vue live
 <template>
-  <c-button label="主色按钮" theme="primary" />
-  <c-button label="辅色按钮" theme="secondary" />
-  <c-button label="警告色按钮" theme="warning" />
-  <c-button label="消极色按钮" theme="negative" />
-  <c-button label="主色按钮" theme="primary" outlined />
-  <c-button label="辅色按钮" theme="secondary" outlined />
-  <c-button label="警告色按钮" theme="warning" outlined />
-  <c-button label="消极色按钮" theme="negative" outlined />
+  <div class="c-row c-gutter-md c-wrap">
+    <div>
+      <c-button label="主色按钮" theme="primary" />
+    </div>
+    <div>
+      <c-button label="辅色按钮" theme="secondary" />
+    </div>
+    <div>
+      <c-button label="警告色按钮" theme="warning" />
+    </div>
+    <div>
+      <c-button label="消极色按钮" theme="negative" />
+    </div>
+    <div>
+      <c-button label="主色按钮" theme="primary" outlined />
+    </div>
+    <div>
+      <c-button label="辅色按钮" theme="secondary" outlined />
+    </div>
+    <div>
+      <c-button label="警告色按钮" theme="warning" outlined />
+    </div>
+    <div>
+      <c-button label="消极色按钮" theme="negative" outlined />
+    </div>
+  </div>
 </template>
 ```
 ### 形状
@@ -40,11 +58,23 @@ componentPath: basic/button/CButton
 
 ```vue live
 <template>
-  <c-button label="超小尺寸" size="xs" theme="negative" />
-  <c-button label="小尺寸" size="sm" theme="negative" />
-  <c-button label="中等尺寸" size="md" theme="negative" />
-  <c-button label="大尺寸" size="lg" theme="negative" />
-  <c-button label="超大尺寸" size="xl" theme="negative" />
+  <div class="c-row c-items-center c-gutter-md c-wrap">
+    <div>
+      <c-button label="超小尺寸" size="xs" theme="negative" />
+    </div>
+    <div>
+      <c-button label="小尺寸" size="sm" theme="negative" />
+    </div>
+    <div>
+      <c-button label="中等尺寸" size="md" theme="negative" />
+    </div>
+    <div>
+      <c-button label="大尺寸" size="lg" theme="negative" />
+    </div>
+    <div>
+      <c-button label="超大尺寸" size="xl" theme="negative" />
+    </div>
+  </div>
 </template>
 ```
 

@@ -12,7 +12,7 @@ import { ref } from 'vue'
 const inputValue = ref('')
 </script>
 <template>
-  <div class="c-row c-items-center c-gutter-x-md">
+  <div class="c-row c-items-center c-gutter-md c-wrap">
     <div>
       <c-input v-model="inputValue" placeholder="预设内容" />
     </div>
@@ -36,7 +36,7 @@ import { ref } from 'vue'
 const inputValue = ref('')
 </script>
 <template>
-  <div class="c-row c-items-center c-gutter-x-md c-wrap">
+  <div class="c-row c-items-center c-gutter-md c-wrap">
     <div>
       <c-input v-model="inputValue" placeholder="超小尺寸" size="xs" />
     </div>
