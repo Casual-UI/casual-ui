@@ -21,6 +21,13 @@ const Logo = () => {
         >
           快速上手
         </a>
+        <a
+          href="/components/basic/button"
+          aria-label="组件一览"
+          className={`${homeStyle.actionsButton} ${homeStyle.primary}`}
+        >
+          组件一览
+        </a>
       </div>
       <div className={homeStyle.features}>
         {[

@@ -120,7 +120,7 @@ function Demo() {
   return (
     <SpaceItems>
       {loadings.map((LoadingInstance, i) => (
-        <div style={{ color: colors[i], fontSize: '3em' }}>
+        <div style={{ color: colors[i], fontSize: '3em' }} key={i}>
           <LoadingInstance />
         </div>
       ))}
