@@ -215,3 +215,11 @@ $timeout: 0.3s;
 .c-date-panel-reverse-enter-active {
   animation: c-date-panel-leave $timeout var(--casual-ease-in-out-cubic) reverse;
 }
+
+.c-date-panel-reverse-leave-initial {
+  transform: translateX(-100%);
+}
+
+.c-date-panel-leave-initial {
+  transform: translateX(100%);
+}

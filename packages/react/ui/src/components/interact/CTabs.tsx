@@ -3,6 +3,8 @@ import clsx from 'clsx'
 import { CSize, CSlot } from 'casual-types'
 import { useSize } from 'casual-ui-react'
 
+type SlotWithNext = (setNextName: (nextName: string) => void) => JSX.Element
+
 interface CTabItem {
   /**
    * 名称
@@ -11,7 +13,7 @@ interface CTabItem {
   /**
    * 面板内容
    */
-  content?: CSlot
+  content?: CSlot | SlotWithNext
   /**
    * 自定义头部
    */
@@ -43,6 +45,10 @@ interface CTabsProps {
    * 自定义面板体样式
    */
   bodyStyle?: React.CSSProperties
+  /**
+   * 是否展示头部
+   */
+  customHeader?: SlotWithNext
 }
 const CTabs = ({
   items,
@@ -51,6 +57,7 @@ const CTabs = ({
   size,
   panelPadding = true,
   bodyStyle,
+  customHeader,
 }: CTabsProps) => {
   const realSize = useSize(size)
 
@@ -64,29 +71,31 @@ const CTabs = ({
   const [enterClass, setEnterClass] = useState('')
   const [leaveClass, setLeaveClass] = useState('')
 
-  const updateModelValue = (newTab: string) => {
-    setNextName(newTab)
-  }
-
   useEffect(() => {
-    if (!header.current) return
+    if (!customHeader) {
+      if (!header.current) return
 
-    const activeItem = header.current.querySelector<HTMLDivElement>(
-      '.c-tabs--header-item-active'
-    )
-    if (!activeItem) return
-    setActiveBarLeft(`${activeItem.offsetLeft}px`)
-    setActiveBarWidth(`${activeItem.offsetWidth}px`)
+      const activeItem = header.current.querySelector<HTMLDivElement>(
+        '.c-tabs--header-item-active'
+      )
+      if (!activeItem) return
+      setActiveBarLeft(`${activeItem.offsetLeft}px`)
+      setActiveBarWidth(`${activeItem.offsetWidth}px`)
+    }
     const currentIdx = items.findIndex(item => item.name === activeTab)
     const newIdx = items.findIndex(item => item.name === nextName)
     if (newIdx < currentIdx) {
       // backwards
       setEnterClass('c-date-panel-reverse-enter-active')
-      setLeaveClass(`c-date-panel-reverse-leave-active c-pa-${realSize}`)
+      setLeaveClass(
+        `c-date-panel-reverse-leave-active c-date-panel-reverse-leave-initial c-pa-${realSize}`
+      )
     } else {
       // forwards
       setEnterClass('c-date-panel-enter-active')
-      setLeaveClass(`c-date-panel-leave-active c-pa-${realSize}`)
+      setLeaveClass(
+        `c-date-panel-leave-active c-date-panel-leave-initial c-pa-${realSize}`
+      )
     }
     setTimeout(() => {
       onTabChange?.(nextName)
@@ -95,30 +104,34 @@ const CTabs = ({
 
   return (
     <div className={clsx('c-tabs')}>
-      <div ref={header} className="c-tabs--header c-row c-items-center">
-        {items.map(item => (
+      {customHeader ? (
+        customHeader(setNextName)
+      ) : (
+        <div ref={header} className="c-tabs--header c-row c-items-center">
+          {items.map(item => (
+            <div
+              key={item.name}
+              className={clsx(
+                'c-tabs--header-item',
+                `c-h-${realSize}`,
+                `c-font-${realSize}`,
+                `c-px-${realSize}`,
+                nextName === item.name && 'c-tabs--header-item-active'
+              )}
+              onClick={() => setNextName(item.name)}
+            >
+              {item.header ? item.header : item.name}
+            </div>
+          ))}
           <div
-            key={item.name}
-            className={clsx(
-              'c-tabs--header-item',
-              `c-h-${realSize}`,
-              `c-font-${realSize}`,
-              `c-px-${realSize}`,
-              nextName === item.name && 'c-tabs--header-item-active'
-            )}
-            onClick={() => updateModelValue(item.name)}
-          >
-            {item.header ? item.header : item.name}
-          </div>
-        ))}
-        <div
-          className="c-tabs--header-active-bar"
-          style={{
-            left: activeBarLeft,
-            width: activeBarWidth,
-          }}
-        ></div>
-      </div>
+            className="c-tabs--header-active-bar"
+            style={{
+              left: activeBarLeft,
+              width: activeBarWidth,
+            }}
+          ></div>
+        </div>
+      )}
       <div
         style={bodyStyle}
         className={clsx('c-tabs--body', panelPadding && `c-pa-${realSize}`)}
@@ -137,7 +150,11 @@ const CTabs = ({
                     : leaveClass
                 )}
               >
-                {item.content ? item.content : item.name}
+                {item.content
+                  ? typeof item.content === 'function'
+                    ? item.content(setNextName)
+                    : item.content
+                  : item.name}
               </div>
             )
         )}

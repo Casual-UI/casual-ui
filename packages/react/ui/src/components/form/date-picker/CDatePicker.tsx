@@ -2,13 +2,12 @@ import React, { useEffect, useMemo, useState } from 'react'
 import clsx from 'clsx'
 import { CSize } from 'casual-types'
 import dayjs from 'dayjs'
-import { useSize, CSizeContext } from 'casual-ui-react'
+import { useSize, CSizeContext, CTabs } from 'casual-ui-react'
 import CDropdown from '../../interact/CDropdown'
 import CInput from '../CInput'
 import CDatePanelHeader from './CDatePanelHeader'
 import CDateGridPanel from './CDateGridPanel'
 import CDatePanel from './CDatePanel'
-import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 type DateValue = Date | null
 type Formatter = (origin: DateValue, format: string) => string
@@ -145,37 +144,19 @@ const CDatePicker = ({
       setShowDrop(false)
     }
   }
-  const [panelSwitchDirection, setPanelSwitchDirection] = useState<
-    'forward' | 'backward'
-  >('forward')
-  const onUpdateUnit = (newUnit: Unit) => {
-    if (newUnit === 'day') {
-      setPanelSwitchDirection('forward')
-    } else if (newUnit === 'year') {
-      setPanelSwitchDirection('backward')
-    } else {
-      if (innerUnit === 'day') {
-        setPanelSwitchDirection('backward')
-      } else {
-        setPanelSwitchDirection('forward')
-      }
-    }
-    setInnerUnit?.(newUnit)
-  }
-
-  const onMonthSet = (newMonth: number) => {
+  const onMonthSet = (newMonth: number, setNextName) => {
     setMonth(newMonth)
     onChange?.(
       new Date(value?.getFullYear() || year, newMonth, value?.getDate() || 1)
     )
     if (unit === 'day') {
-      onUpdateUnit('day')
+      setNextName('day')
       return
     }
     onDateSet()
   }
 
-  const onYearSet = (newYear: number) => {
+  const onYearSet = (newYear: number, setNextName) => {
     setYear(newYear)
     onChange?.(
       new Date(newYear, value?.getMonth() || month, value?.getDate() || 1)
@@ -184,7 +165,7 @@ const CDatePicker = ({
       onDateSet()
       return
     }
-    onUpdateUnit('month')
+    setNextName('month')
   }
 
   const contextSize = useSize(size)
@@ -217,61 +198,59 @@ const CDatePicker = ({
           widthWithinParent={false}
           disabled={disabled}
           dropContent={
-            <>
-              <CDatePanelHeader
-                year={year}
-                month={month}
-                yearRange={yearRange}
-                unit={innerUnit}
-                onYearChange={setYear}
-                onMonthChange={setMonth}
-                onUnitChange={onUpdateUnit}
-                onYearRangeChange={setYearRange}
-                unitSwitchable={!range}
-              />
-              <TransitionGroup
-                className={clsx(
-                  'c-date-picker--panel-wrapper',
-                  `c-px-${contextSize}`,
-                  `c-pb-${contextSize}`
-                )}
-              >
-                <CSSTransition
-                  timeout={300}
-                  key={innerUnit}
-                  classNames={{
-                    enterActive:
-                      panelSwitchDirection === 'forward'
-                        ? 'c-date-panel-enter-active'
-                        : 'c-date-panel-reverse-enter-active',
-                    exitActive:
-                      panelSwitchDirection === 'forward'
-                        ? 'c-date-panel-leave-active'
-                        : 'c-date-panel-reverse-leave-active',
-                  }}
-                >
-                  <>
-                    {innerUnit === 'month' && (
-                      <CDateGridPanel
-                        items={Array(12)
-                          .fill(0)
-                          .map((_, i) => i)}
-                        displayFormatter={getDisplayMonth}
-                        isActive={isMonthActive}
-                        onItemClick={onMonthSet}
-                      />
-                    )}
-                    {innerUnit === 'year' && (
+            <CTabs
+              customHeader={setNextName => (
+                <CDatePanelHeader
+                  year={year}
+                  month={month}
+                  yearRange={yearRange}
+                  unit={innerUnit}
+                  onYearChange={setYear}
+                  onMonthChange={setMonth}
+                  onUnitChange={setNextName}
+                  onYearRangeChange={setYearRange}
+                  unitSwitchable={!range}
+                />
+              )}
+              activeTab={innerUnit}
+              onTabChange={tab => {
+                setInnerUnit(tab as Unit)
+              }}
+              items={[
+                {
+                  name: 'year',
+                  content: setNextName => (
+                    <div className={clsx('c-date-picker--panel-wrapper')}>
                       <CDateGridPanel
                         items={Array(yearRange[1] - yearRange[0] + 1)
                           .fill(0)
                           .map((_, i) => i + yearRange[0])}
                         displayFormatter={item => item + ''}
                         isActive={isYearActive}
-                        onItemClick={onYearSet}
+                        onItemClick={y => onYearSet(y, setNextName)}
                       />
-                    )}
-                    {innerUnit === 'day' && (
+                    </div>
+                  ),
+                },
+                {
+                  name: 'month',
+                  content: setNextName => (
+                    <div className={clsx('c-date-picker--panel-wrapper')}>
+                      <CDateGridPanel
+                        items={Array(12)
+                          .fill(0)
+                          .map((_, i) => i)}
+                        displayFormatter={getDisplayMonth}
+                        isActive={isMonthActive}
+                        onItemClick={m => onMonthSet(m, setNextName)}
+                      />
+                    </div>
+                  ),
+                },
+                {
+                  name: 'day',
+                  content: (
+                    <div className={clsx('c-date-picker--panel-wrapper')}>
                       <CDatePanel
                         {...{
                           value,
@@ -287,11 +266,11 @@ const CDatePicker = ({
                           onDateRangeChange: onRangeChange,
                         }}
                       />
-                    )}
-                  </>
-                </CSSTransition>
-              </TransitionGroup>
-            </>
+                    </div>
+                  ),
+                },
+              ]}
+            />
           }
         >
           <CInput
