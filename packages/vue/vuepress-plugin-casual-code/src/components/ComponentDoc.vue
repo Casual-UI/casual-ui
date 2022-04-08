@@ -63,7 +63,7 @@ const descFormatter = (slotItem: any) => {
     <c-tabs
       v-model="activeTab"
       :items="items"
-      :body-style="{ maxHeight: '30vh', overflow: 'auto' }"
+      :body-style="{ maxHeight: '40vh', overflow: 'auto' }"
     >
       <template #body-Props>
         <c-list :items="frontmatter.docInfo?.props || []" size="xs" divider>
