@@ -83,6 +83,12 @@ export default defineUserConfig<
           },
         }
       }
+    ],
+    [
+      '@vuepress/plugin-google-analytics',
+      {
+        id: 'G-4H4K4S0QTD',
+      },
     ]
   ],
   clientAppRootComponentFiles: [
