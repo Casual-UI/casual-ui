@@ -32,10 +32,10 @@ export default defineUserConfig<
   theme: '@vuepress/theme-default',
   clientAppEnhanceFiles: [path.resolve(__dirname, './clientAppEnhance.ts')],
   plugins: [
-    casualCode, 
+    casualCode,
     [
-      docSearch, 
-      {  
+      docSearch,
+      {
         appId: 'GC34OK1KSK',
         apiKey: 'e29418351aacb050d006d9e76bdabe16',
         indexName: 'casual-ui-vue',
@@ -43,7 +43,7 @@ export default defineUserConfig<
         translations: {
           button: {
             buttonText: '搜索',
-            buttonAriaLabel: '搜索'
+            buttonAriaLabel: '搜索',
           },
           modal: {
             searchBox: {
@@ -81,15 +81,15 @@ export default defineUserConfig<
               reportMissingResultsLinkText: '报告缺失',
             },
           },
-        }
-      }
+        },
+      },
     ],
     [
       '@vuepress/plugin-google-analytics',
       {
         id: 'G-4H4K4S0QTD',
       },
-    ]
+    ],
   ],
   clientAppRootComponentFiles: [
     path.resolve(__dirname, './components/UseCNotification.vue'),

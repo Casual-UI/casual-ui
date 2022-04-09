@@ -8,7 +8,7 @@ $table-striped-bg-dark: color.adjust(#282c34, $lightness: 10%);
   --c-brand: var(--casual-primary);
   --c-brand-light: var(--casual-primary-lighter);
   --c-bg: #f7f8fa;
-  --doc-demo-bg: #fff;
+  --doc-demo-bg: #ffff;
   --c-tip-bg: var(--casual-primary-pale);
   --c-tip: var(--casual-primary);
 }
@@ -104,13 +104,18 @@ table {
   src: url("/fonts/CONSOLA.TTF");
 }
 
-.home .hero .action-button.primary {
-  transition: all .3s var(--casual-ease-in-out-cubic);
-  background-image: linear-gradient(45deg, #8952fd, #31e6b5);
-  background-size: 200% 200%;
-  background-position: 0 0;
-  border: none;
-  &:hover {
-    background-position: 100% 100%;
+.home .hero {
+  img {
+    margin: 0 auto;
   }
-} 
+  .action-button.primary {
+    transition: all .3s var(--casual-ease-in-out-cubic);
+    background-image: linear-gradient(45deg, #8952fd, #31e6b5);
+    background-size: 200% 200%;
+    background-position: 0 0;
+    border: none;
+    &:hover {
+      background-position: 100% 100%;
+    }
+  } 
+}
