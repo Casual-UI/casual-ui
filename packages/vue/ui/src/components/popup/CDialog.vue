@@ -75,7 +75,7 @@ interface CDialogProps {
 
 const props = withDefaults(defineProps<CDialogProps>(), {
   title: '',
-  width: '480px',
+  width: '40vw',
   bodyHeight: 'auto',
   bodyPadding: true,
   rounded: true,
@@ -197,7 +197,6 @@ const roundedClass = computed(() => {
                       <c-button
                         v-if="showCancelBtn"
                         :label="cancelBtnLabel"
-                        theme="secondary"
                         outlined
                         :rounded="rounded"
                       />

@@ -1,5 +1,5 @@
 import { CPosition } from 'casual-types'
-import { useInjectProp } from 'casual-ui-vue'
+import { useInjectProp, useScreen } from 'casual-ui-vue'
 
 export default (props: any) => {
   return {

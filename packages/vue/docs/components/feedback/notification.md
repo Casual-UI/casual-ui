@@ -61,22 +61,32 @@ const openWithTheme = (theme) => {
 }
 </script>
 <template>
-  <c-button label="打开通知" @click="openWithTheme('primary')" />
-  <c-button
-    theme="secondary"
-    label="打开通知"
-    @click="openWithTheme('secondary')"
-  />
-  <c-button
-    theme="warning"
-    label="打开通知"
-    @click="openWithTheme('warning')"
-  />
-  <c-button
-    theme="negative"
-    label="打开通知"
-    @click="openWithTheme('negative')"
-  />
+  <div class="c-row c-items-center c-wrap c-gutter-md">
+    <div>
+      <c-button label="打开通知" @click="openWithTheme('primary')" />
+    </div>
+    <div>
+      <c-button
+        theme="secondary"
+        label="打开通知"
+        @click="openWithTheme('secondary')"
+      />
+    </div>
+    <div>
+      <c-button
+        theme="warning"
+        label="打开通知"
+        @click="openWithTheme('warning')"
+      />
+    </div>
+    <div>
+      <c-button
+        theme="negative"
+        label="打开通知"
+        @click="openWithTheme('negative')"
+      />
+    </div>
+  </div>
 </template>
 ```
 
@@ -294,8 +304,3 @@ const openWithDynamicContent = () => {
   />
 </template>
 ```
-<style lang="scss" scoped>
-  :deep(.c-button) + .c-button {
-    margin-left: 12px;
-  }
-</style>

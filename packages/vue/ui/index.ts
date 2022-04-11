@@ -56,6 +56,7 @@ import CDatePanelHeader from './src/components/form/date-picker/CDatePanelHeader
 import CYearPanel from './src/components/form/date-picker/CYearPanel.vue'
 import CMonthPanel from './src/components/form/date-picker/CMonthPanel.vue'
 import CTabs from './src/components/interact/CTabs.vue'
+import useScreen from './src/usable/useScreen'
 
 const CasualUI: Plugin = {
   install: (app: App) => {
@@ -165,4 +166,5 @@ export {
   useInjectTheme,
   useVModel,
   useDefaultVModel,
+  useScreen,
 }

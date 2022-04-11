@@ -4,6 +4,7 @@ import {
   Notification,
   createNotificationGroups,
 } from 'casual-types'
+import { useScreen } from 'casual-ui-vue'
 import { reactive, Plugin } from 'vue'
 
 let notificationsCounter = 0
@@ -47,7 +48,10 @@ const open = (
     timeout = 3000,
     closeIcon = true,
     theme = 'primary',
-    alignX = 'end',
+    alignX = (() => {
+      const { is: { mobile } } = useScreen()
+      return mobile() ? 'center' : 'end'
+    })(),
     alignY = 'start',
   }: Partial<Notification> = {
     timeout: 3000,
