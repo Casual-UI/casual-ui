@@ -1,4 +1,5 @@
-import { Ref, onMounted, onUnmounted } from 'vue'
+import { onMounted, onUnmounted } from 'vue'
+import type { Ref } from 'vue'
 
 export default ({
   elRef,

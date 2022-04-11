@@ -13,10 +13,10 @@
   "devDependencies": {
     "@vuepress/plugin-docsearch": "^2.0.0-beta.38",
     "@vuepress/plugin-google-analytics": "^2.0.0-beta.38",
-    "vue-styleguidist": "^4.44.27",
-    "vuepress": "2.0.0-beta.38",
     "casual-styles": "workspace:*",
     "casual-ui-vue": "workspace:*",
+    "vue-styleguidist": "^4.44.28",
+    "vuepress": "^2.0.0-beta.39",
     "vuepress-plugin-casual-code": "workspace:*"
   },
   "scripts": {

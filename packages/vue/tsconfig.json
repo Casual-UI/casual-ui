@@ -1,4 +1,3 @@
 {
   "extends": "@vue/tsconfig/tsconfig.json",
-  "include": ["docs/.vuepress/**/*"],
 }

@@ -1,5 +1,5 @@
-import { ref, watch, Ref, UnwrapRef, toRefs } from 'vue'
-
+import { ref, watch, toRefs } from 'vue'
+import type { Ref, UnwrapRef } from 'vue'
 interface BaseVModelProps<T> {
   modelValue: T
 }
