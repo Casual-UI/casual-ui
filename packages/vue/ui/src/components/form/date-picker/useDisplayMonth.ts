@@ -1,4 +1,5 @@
-import { computed, Ref } from 'vue'
+import { computed } from 'vue'
+import type { Ref } from 'vue'
 
 export default (month: Ref<number>) => {
   return {

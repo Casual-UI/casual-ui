@@ -8,8 +8,8 @@ withDefaults(
   }>(),
   {
     descWrap: true,
-    nameFormatter: value => value.name,
-    descFormatter: value => value.description,
+    nameFormatter: (value: any) => value.name,
+    descFormatter: (value: any) => value.description,
   }
 )
 </script>

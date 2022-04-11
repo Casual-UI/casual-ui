@@ -1,7 +1,7 @@
 import { defineUserConfig } from 'vuepress'
 import type { DefaultThemeOptions } from 'vuepress'
 import { path } from '@vuepress/utils'
-import { UserConfig } from 'vite'
+import type { UserConfig } from 'vite'
 import casualCode from 'vuepress-plugin-casual-code'
 import docSearch from '@vuepress/plugin-docsearch'
 

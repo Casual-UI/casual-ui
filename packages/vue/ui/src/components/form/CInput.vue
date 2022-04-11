@@ -10,7 +10,7 @@ import {
   useDefaultVModel,
 } from 'casual-ui-vue'
 import { matHighlightOff } from '@quasar/extras/material-icons'
-import { CTheme } from 'casual-types'
+import type { CTheme } from 'casual-types'
 
 interface OInputProps {
   /**

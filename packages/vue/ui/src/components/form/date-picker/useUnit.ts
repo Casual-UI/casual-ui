@@ -1,5 +1,6 @@
 import { useVModel } from 'casual-ui-vue'
-import { Ref, toRefs } from 'vue'
+import { toRefs } from 'vue'
+import type { Ref } from 'vue'
 
 type Unit = 'year' | 'month' | 'day'
 

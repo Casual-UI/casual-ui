@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { usePageFrontmatter } from '@vuepress/client'
-import { computed, ref, Ref } from 'vue'
-import { ComponentDoc } from 'vue-docgen-api'
+import { computed, ref } from 'vue'
+import type { Ref } from 'vue'
+import type { ComponentDoc } from 'vue-docgen-api'
 import TypeDom from './TypeDom.vue'
 import ItemDom from './ItemDom.vue'
 
@@ -58,7 +59,7 @@ const descFormatter = (slotItem: any) => {
 }
 
 const getDefaultValue = (item: any) => {
-  if(item.type.name === 'CSize') {
+  if (item.type.name === 'CSize') {
     return 'md'
   }
   return item.defaultValue?.value
@@ -107,7 +108,10 @@ const getDefaultValue = (item: any) => {
               :desc-formatter="descFormatter"
             >
               <div
-                v-if="item.bindings?.filter((bItem: any) => bItem.name !== 'name').length > 0"
+                v-if="
+                  item.bindings?.filter((bItem: any) => bItem.name !== 'name').length >
+                  0
+                "
                 class="c-pl-md"
               >
                 <b>绑定值</b>

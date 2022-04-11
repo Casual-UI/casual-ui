@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ParamType } from 'vue-docgen-api'
+import type { ParamType } from 'vue-docgen-api'
 
 const parseUnion = (elements: any[]) =>
   elements.reduce((str, t, idx) => `${str}${idx > 0 ? ' | ' : ''}${t.name}`, '')

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { toRefs } from 'vue'
 import { useSizeThemeClass, CLoading, useInjectTheme } from 'casual-ui-vue'
-import { CTheme, CSize } from 'casual-types'
+import type { CTheme, CSize } from 'casual-types'
 
 interface CButtonProps {
   /**

@@ -3,7 +3,6 @@ import { inject, ref, computed, provide, onMounted, UnwrapRef } from 'vue'
 type DefaultValueFunction = () => any
 
 function isDefaultValueFunction(value: any): value is DefaultValueFunction {
-
   return typeof value === 'function'
 }
 
@@ -16,8 +15,10 @@ export default <T>({
   defaultValue: T | DefaultValueFunction
   props: any
 }) => {
-
-  const injectProp = inject(propName, ref(typeof defaultValue === 'function' ? undefined : defaultValue))
+  const injectProp = inject(
+    propName,
+    ref(typeof defaultValue === 'function' ? undefined : defaultValue)
+  )
 
   const provideProp = computed(() => {
     return props[propName] ? props[propName] : injectProp.value
@@ -25,7 +26,7 @@ export default <T>({
 
   provide(propName, provideProp)
 
-  if(isDefaultValueFunction(defaultValue)) {
+  if (isDefaultValueFunction(defaultValue)) {
     onMounted(() => {
       injectProp.value = defaultValue()
     })

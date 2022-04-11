@@ -18,7 +18,6 @@ const props = withDefaults(defineProps<CCheckboxGroupProps>(), {
   options: () => [],
 })
 
-// FIXME: 官方暂时不支持类型外部导入，暂时在组件内部定义类型
 const emit = defineEmits<{
   /**
    * 绑定值变化时触发

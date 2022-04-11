@@ -3,7 +3,7 @@ import { CButton, CIcon, CPopup, useVModel } from 'casual-ui-vue'
 import { toRefs, onMounted, onUnmounted, computed } from 'vue'
 import { ionCloseOutline } from '@quasar/extras/ionicons-v5'
 import usePosition from './usePosition'
-import { PositionGroup } from 'casual-types'
+import type { PositionGroup } from 'casual-types'
 
 interface CDialogProps {
   /**
@@ -148,7 +148,7 @@ const roundedClass = computed(() => {
       >
         <div
           v-if="innerValue"
-          :class="['c-dialog', { [roundedClass]: rounded }, customClass]"
+          :class="['c-dialog', rounded ? roundedClass : '', customClass]"
           :style="{
             width,
             ...customStyle,

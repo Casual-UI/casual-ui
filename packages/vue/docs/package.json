@@ -4,39 +4,27 @@
   "description": "Casual UI Vue Docs",
   "main": "index.js",
   "keywords": [],
-  "author": {
-    "email": "1197160272@qq.com",
-    "name": "Dongsheng Zhao"
-  },
+  "author": "Dongsheng Zhao <1197160272@qq.com>",
   "repository": {
-    "url": "https://github.com/Blackman99/casual-ui.git",
+    "url": "git+https://github.com/Blackman99/casual-ui.git",
     "directory": "/packages/vue/docs"
   },
   "license": "MIT",
   "devDependencies": {
-    "@rushstack/eslint-patch": "^1.1.1",
-    "@typescript-eslint/eslint-plugin": "^5.16.0",
-    "@typescript-eslint/parser": "^5.16.0",
-    "@vue/eslint-config-prettier": "^7.0.0",
-    "@vue/eslint-config-typescript": "^10.0.0",
     "@vuepress/plugin-docsearch": "^2.0.0-beta.38",
     "@vuepress/plugin-google-analytics": "^2.0.0-beta.38",
-    "casual-styles": "workspace:*",
-    "casual-ui-vue": "workspace:*",
-    "eslint": "^8.12.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-markdown": "^2.2.1",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-vue": "^8.5.0",
-    "prettier": "^2.6.1",
-    "uid": "^2.0.0",
-    "vite": "^2.9.1",
     "vue-styleguidist": "^4.44.27",
     "vuepress": "2.0.0-beta.38",
+    "casual-styles": "workspace:*",
+    "casual-ui-vue": "workspace:*",
     "vuepress-plugin-casual-code": "workspace:*"
   },
   "scripts": {
     "dev": "node ./cli/clearTemp && yarn vuepress dev .",
     "build": "vuepress build ."
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/Blackman99/casual-ui/issues"
+  },
+  "homepage": "https://github.com/Blackman99/casual-ui#readme"
 }

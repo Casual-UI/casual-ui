@@ -1,11 +1,12 @@
-import {
+import { createNotificationGroups } from 'casual-types'
+import type {
   NotificationGroups,
   PositionGroup,
   Notification,
-  createNotificationGroups,
 } from 'casual-types'
 import { useScreen } from 'casual-ui-vue'
-import { reactive, Plugin } from 'vue'
+import { reactive } from 'vue'
+import type { Plugin } from 'vue'
 
 let notificationsCounter = 0
 const notifications = reactive<NotificationGroups>(createNotificationGroups())
@@ -49,7 +50,9 @@ const open = (
     closeIcon = true,
     theme = 'primary',
     alignX = (() => {
-      const { is: { mobile } } = useScreen()
+      const {
+        is: { mobile },
+      } = useScreen()
       return mobile() ? 'center' : 'end'
     })(),
     alignY = 'start',

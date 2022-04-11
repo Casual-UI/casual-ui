@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CSize } from 'casual-types'
+import type { CSize } from 'casual-types'
 import { useInjectSize } from 'casual-ui-vue'
 
 interface CItemProps {

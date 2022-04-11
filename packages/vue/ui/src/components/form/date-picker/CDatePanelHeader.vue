@@ -5,11 +5,11 @@ import {
   matKeyboardArrowRight,
   matKeyboardDoubleArrowRight,
 } from '@quasar/extras/material-icons'
-import { CSize } from 'casual-types'
+import type { CSize } from 'casual-types'
 import { useInjectSize } from 'casual-ui-vue'
 import { computed, toRefs } from 'vue'
 import useDisplayMonth from './useDisplayMonth'
-import { Unit } from './useUnit'
+import type { Unit } from './useUnit'
 
 interface OMonthPanelProps {
   year?: number

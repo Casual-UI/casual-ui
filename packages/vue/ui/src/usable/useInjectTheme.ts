@@ -1,4 +1,4 @@
-import { CTheme } from 'casual-types'
+import type { CTheme } from 'casual-types'
 
 import useInjectProp from './useInjectProp'
 export default (props: any) => {

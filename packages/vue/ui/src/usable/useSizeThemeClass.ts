@@ -1,5 +1,6 @@
-import { CSize, CTheme } from 'casual-types'
-import { computed, Ref } from 'vue'
+import type { CSize, CTheme } from 'casual-types'
+import { computed } from 'vue'
+import type { Ref } from 'vue'
 
 export default ({
   size,

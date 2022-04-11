@@ -1,4 +1,4 @@
-import { CSize } from 'casual-types'
+import type { CSize } from 'casual-types'
 
 import useInjectProp from './useInjectProp'
 export default (props: any) => {

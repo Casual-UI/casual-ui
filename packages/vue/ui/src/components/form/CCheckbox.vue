@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CTheme, CSize } from 'casual-types'
+import type { CTheme, CSize } from 'casual-types'
 import { useDefaultVModel, useInjectSize, useInjectTheme } from 'casual-ui-vue'
 
 type CCheckboxModel = boolean | string | number

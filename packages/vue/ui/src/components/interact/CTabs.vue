@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CSize } from 'casual-types'
+import type { CSize } from 'casual-types'
 import { useInjectSize } from 'casual-ui-vue'
 import { watch, onMounted, ref, nextTick } from 'vue'
 
@@ -122,7 +122,7 @@ watch([() => props.modelValue, () => props.size], () => {
     </div>
     <div
       class="c-tabs--body"
-      :class="[{ [`c-pa-${realSize}`]: panelPadding }]"
+      :class="[panelPadding ? `c-pa-${realSize}` : '']"
       :style="bodyStyle"
     >
       <transition-group

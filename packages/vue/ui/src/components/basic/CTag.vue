@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CSize, CTheme } from 'casual-types'
+import type { CSize, CTheme } from 'casual-types'
 import { CIcon, useInjectSize, useInjectTheme } from 'casual-ui-vue'
 import { matClose } from '@quasar/extras/material-icons'
 
@@ -53,7 +53,7 @@ const { provideSize: size } = useInjectSize(props)
       `c-h-${size}`,
       `c-font-${size}`,
       `c-px-${size}`,
-      { [`c-rounded-${size}`]: rounded },
+      rounded ? `c-rounded-${size}` : '',
     ]"
   >
     <div class="c-tag--prefix">

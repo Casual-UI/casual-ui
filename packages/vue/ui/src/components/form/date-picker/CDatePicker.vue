@@ -13,7 +13,7 @@ import {
   CDatePanelHeader,
 } from 'casual-ui-vue'
 import { toRefs, watch, ref, computed } from 'vue'
-import { CSize } from 'casual-types'
+import type { CSize } from 'casual-types'
 import { matCalendarToday } from '@quasar/extras/material-icons'
 import useUnit from './useUnit'
 
@@ -74,7 +74,7 @@ interface ODatePickerProps {
 
 const props = withDefaults(defineProps<ODatePickerProps>(), {
   format: 'YYYY-MM-DD',
-  formatter: (d, f) => {
+  formatter: (d: Date | null, f: string) => {
     if (!d) return ''
     return dayjs(d).format(f)
   },
@@ -106,13 +106,13 @@ const emit = defineEmits<{
    * 用于日期单选时，格式化后的值发生变化时触发
    * @arg {string} newFormattedValue - 新的格式化后的值
    */
-  (e: 'update:formattedValue', newValue: string): void
+  (e: 'update:formattedValue', newFormattedValue: string): void
 
   /**
    * 日期段绑定值变化时触发
    * @arg {[Date | null, Date | null]} newDateRange - 新的日期段绑定值
    */
-  (e: 'update:dateRange', newRange: [Date | null, Date | null]): void
+  (e: 'update:dateRange', newDateRange: [Date | null, Date | null]): void
   /**
    * 日期段格式化之后的值变化时触发
    * @arg {[string, string]} newFormattedDateRange - 新的日期段格式化之后的值
@@ -125,7 +125,7 @@ const emit = defineEmits<{
    * 单位变化时触发
    * @arg {Unit} newUnit - 新的单位
    */
-  (e: 'update:unit', newValue: Unit): void
+  (e: 'update:unit', newUnit: Unit): void
 }>()
 
 const innerUnit = useUnit(emit, props)

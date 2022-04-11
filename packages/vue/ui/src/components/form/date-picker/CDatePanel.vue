@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { weeks } from 'casual-i18n'
 import { toRefs, computed, ref } from 'vue'
+import { weeks } from 'casual-i18n'
 import dayjs from 'dayjs'
 
 type Formatter = (origin: Date | null, format: string) => string
@@ -30,7 +30,7 @@ const props = withDefaults(defineProps<ODatePanelProps>(), {
   dateRange: () => [null, null],
   formattedDateRange: () => ['', ''],
   format: 'YYYY-MM-DD',
-  formatter: (d, f) => {
+  formatter: (d: Date | null, f: string) => {
     if (!d) return ''
     return dayjs(d).format(f)
   },

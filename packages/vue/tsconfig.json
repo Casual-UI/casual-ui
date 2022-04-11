@@ -1,16 +1,4 @@
 {
-  "compilerOptions": {
-    "baseUrl": ".",
-    "target": "esnext",
-    "module": "esnext",
-    "strict": true,
-    "jsx": "preserve",
-    "moduleResolution": "node",
-    "types": ["vite/client"],
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
-  },
-  "include": ["/**/*", "docs/.vuepress/**/*"],
-  "exclude": ["node_modules/**/*", "ui/dist/**/*"]
+  "extends": "@vue/tsconfig/tsconfig.json",
+  "include": ["docs/.vuepress/**/*"],
 }
