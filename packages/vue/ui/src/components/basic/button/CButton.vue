@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { toRefs } from 'vue'
 import { useSizeThemeClass, CLoading, useInjectTheme } from 'casual-ui-vue'
-import { CTheme } from 'casual-types'
+import { CTheme, CSize } from 'casual-types'
 
 interface CButtonProps {
   /**
@@ -19,7 +19,7 @@ interface CButtonProps {
   /**
    * 按钮尺寸
    */
-  size?: 'sm' | 'md' | 'lg'
+  size?: CSize
   /**
    * 是否现为圆角
    */
