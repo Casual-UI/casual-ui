@@ -49,9 +49,8 @@ const onClick = () => {
       'c-item',
       { 'c-item--clickable': clickable },
       { 'c-item--active': active },
-      `c-px-${provideSize}`,
       `c-font-${provideSize}`,
-      `c-py-${provideSize}`,
+      `c-pa-${provideSize}`,
     ]"
     @click.stop="onClick"
   >

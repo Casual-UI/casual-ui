@@ -1,0 +1,93 @@
+---
+title: 列表
+---
+
+### 基础使用
+
+```jsx live
+function Demo() {
+  const items = [
+    { label: '苹果' },
+    { label: '香蕉' },
+    { label: '橙子' },
+    { label: '葡萄' },
+  ]
+  return <CList items={items} itemKey="label" />
+}
+```
+
+### 尺寸
+
+```jsx live
+function Demo() {
+  const items = [
+    { label: '苹果' },
+    { label: '香蕉' },
+    { label: '橙子' },
+    { label: '葡萄' },
+  ]
+
+  const [size, setSize] = useState('md')
+
+  const sizes = ['xs', 'sm', 'md', 'lg', 'xl']
+  return (
+    <>
+      <SpaceItems>
+        {sizes.map(s => (
+          <CRadio
+            key={s}
+            value={size}
+            onChange={setSize}
+            label={s}
+            selectedValue={s}
+          />
+        ))}
+      </SpaceItems>
+      <CList size={size} items={items} itemKey="label" />
+    </>
+  )
+}
+```
+
+### 分割线
+
+```jsx live
+function Demo() {
+  const items = [
+    { label: '苹果' },
+    { label: '香蕉' },
+    { label: '橙子' },
+    { label: '葡萄' },
+  ]
+  return <CList items={items} divider itemKey="label" />
+}
+```
+
+### 激活项&可点击
+
+```jsx live
+function Demo() {
+  const items = [
+    { label: '苹果' },
+    { label: '香蕉' },
+    { label: '橙子' },
+    { label: '葡萄' },
+  ]
+
+  const [activeFruit, setActiveFruit] = useState('苹果')
+
+  return (
+    <CList
+      items={items}
+      clickable
+      itemKey="label"
+      activeFn={item => item.label === activeFruit}
+      onItemClick={item => setActiveFruit(item.label)}
+    />
+  )
+}
+```
+
+### API
+
+<PropTable name="CList" />
