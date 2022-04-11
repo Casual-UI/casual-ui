@@ -110,6 +110,10 @@ $positions: "start", "center", "end";
         stroke-dashoffset: 0;
         transform-origin: center;
         transform: rotate(-90deg);
+
+        &-with-initial-state {
+          stroke-dashoffset: -63;
+        }
       }
     }
 

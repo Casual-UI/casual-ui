@@ -44,7 +44,8 @@ const CNotificationItem = ({
                   fill="transparent"
                   className={clsx(
                     'c-notification--countdown-bar-circle',
-                    'c-with-close-count-down'
+                    'c-with-close-count-down',
+                    'c-notification--countdown-bar-circle-with-initial-state'
                   )}
                   style={{
                     animationDuration: `${timeout / 1000}s`,
