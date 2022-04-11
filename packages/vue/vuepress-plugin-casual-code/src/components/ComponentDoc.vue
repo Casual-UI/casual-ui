@@ -56,6 +56,13 @@ const descFormatter = (slotItem: any) => {
   }
   return slotItem.description
 }
+
+const getDefaultValue = (item: any) => {
+  if(item.type.name === 'CSize') {
+    return 'md'
+  }
+  return item.defaultValue?.value
+}
 </script>
 
 <template>
@@ -78,11 +85,11 @@ const descFormatter = (slotItem: any) => {
                     v-if="item.required"
                     rounded
                     size="xs"
-                    theme="secondary"
-                    label="必填"
+                    theme="negative"
+                    label="*"
                   />
                   <span v-else>
-                    默认值：<code>{{ item.defaultValue?.value }}</code>
+                    默认值：<code>{{ getDefaultValue(item) }}</code>
                   </span>
                 </div>
               </template>
