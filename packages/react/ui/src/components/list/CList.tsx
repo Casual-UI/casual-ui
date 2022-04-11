@@ -2,9 +2,10 @@ import { CSize } from 'casual-types'
 import { useSize } from 'casual-ui-react'
 import clsx from 'clsx'
 import React from 'react'
+import { CSizeContext } from '../../hooks/useSize'
 import CItem from './CItem'
 
-interface OItemProps {
+interface CListProps {
   /**
    * 列表项
    */
@@ -33,9 +34,13 @@ interface OItemProps {
    * 项点击触发
    */
   onItemClick?: (item: any) => void
+  /**
+   * 项之间是否具有分割线
+   */
+  divider?: boolean
 }
 
-const OItem = ({
+const CList = ({
   items = [],
   itemKey = 'id',
   clickable = false,
@@ -43,32 +48,35 @@ const OItem = ({
   customNoData,
   activeFn = () => false,
   onItemClick,
-}: OItemProps) => {
+  divider = false,
+}: CListProps) => {
   const contextSize = useSize(size)
 
   return (
-    <div className="c-list">
-      {items.length === 0 &&
-        (customNoData ? (
-          customNoData
-        ) : (
-          <div className={clsx('c-list--empty', `c-px-${contextSize}`)}>
-            No Data
-          </div>
+    <CSizeContext.Provider value={contextSize}>
+      <div className={clsx('c-list', divider && 'c-list--with-divider')}>
+        {items.length === 0 &&
+          (customNoData ? (
+            customNoData
+          ) : (
+            <div className={clsx('c-list--empty', `c-px-${contextSize}`)}>
+              No Data
+            </div>
+          ))}
+        {items.map(item => (
+          <CItem
+            key={item[itemKey]}
+            label={item.label}
+            clickable={clickable}
+            active={activeFn(item)}
+            onClick={() => onItemClick?.(item)}
+          />
         ))}
-      {items.map(item => (
-        <CItem
-          key={item[itemKey]}
-          label={item.label}
-          clickable={clickable}
-          active={activeFn(item)}
-          onClick={() => onItemClick?.(item)}
-        />
-      ))}
-    </div>
+      </div>
+    </CSizeContext.Provider>
   )
 }
 
-export default OItem
+export default CList
 
-export type { OItemProps }
+export type { CListProps }

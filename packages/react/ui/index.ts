@@ -44,6 +44,7 @@ import CLoadingTail from './src/components/basic/loading/CLoadingTail'
 import CLoadingWifi from './src/components/basic/loading/CLoadingWifi'
 import CDatePicker from './src/components/form/date-picker/CDatePicker'
 import CTabs from './src/components/interact/CTabs'
+import CList from './src/components/list/CList'
 
 export {
   CDatePicker,
@@ -82,6 +83,7 @@ export {
   CIcon,
   CTooltip,
   CTag,
+  CList,
   CRadio,
   CDialog,
   CNotification,

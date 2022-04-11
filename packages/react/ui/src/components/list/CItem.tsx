@@ -41,9 +41,8 @@ const CItem = ({
         'c-item',
         clickable && 'c-item--clickable',
         active && 'c-item--active',
-        `c-h-${contextSize}`,
         `c-font-${contextSize}`,
-        `c-px-${contextSize}`
+        `c-pa-${contextSize}`
       )}
       onClick={e => {
         e.stopPropagation()
