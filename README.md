@@ -1,3 +1,6 @@
+# Casual UI
+
+<img src="./packages/vue/docs/.vuepress/public/logo.svg" style="width: 200px;" />
 ### 介绍
 
 一个随意编写的支持Vue3+以及React17+的组件库
@@ -8,14 +11,6 @@
 
 * [Casual UI - React](https://casual-ui-react.donsen.site/)
 * [Casual UI - Vue](https://casual-ui-vue.donsen.site/)
-
-# Casual UI
-
-<img src="./packages/vue/docs/.vuepress/public/logo.svg" style="width: 200px;" />
-
-### 介绍
-
-一个随意编写的支持Vue3以及React17的组件库
 
 ### 安装 & 使用
 
