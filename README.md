@@ -2,42 +2,42 @@
 
 <img src="./packages/vue/docs/.vuepress/public/logo.svg" style="width: 200px;" />
 
-### 介绍
+### Introduction
 
-一个随意编写的支持Vue3+以及React17+的组件库
+A casual ui library for both Vue3+ and React17+
 
-[English README](./README.en_US.md)
+[简体中文](./README.zh_CN.md)
 
-### 在线示例 & 文档
+### Online Demos & Docs
 
 * [Casual UI - React](https://casual-ui-react.donsen.site/)
 * [Casual UI - Vue](https://casual-ui-vue.donsen.site/)
 
-### 安装 & 使用
+### Install
 
-#### Vue3用户
+#### For Vue3 users
 
-* 安装依赖 
+* install 
 
 ```sh
 npm install casual-ui-vue
 ```
 
-* 全局使用
+* global use
 
 ```js
 import { createApp } from 'vue'
 import CasualUI from 'casual-ui-vue'
-import 'casual/style.css'
+import 'casual-ui-vue/dist/style.css'
 
 const app = createApp()
 app.use(CasualUI)
 app.mount('#app')
 ```
 
-* 按需使用
+* single use
 
-__注意：按需使用也需要导入样式__
+__Notice：single usage also need import style__
 
 ```vue
 <!-- SomeComponent.vue -->
@@ -45,34 +45,39 @@ __注意：按需使用也需要导入样式__
 import { CButton } from 'casual-ui-vue'
 </script>
 <template>
-  <c-button label="一个按钮" />
+  <c-button label="A Button" />
 </template>
 ```
+#### For React17+ users
 
-#### React17+用户
-
-* 安装依赖
+* install
 
 ```sh
 npm install casual-ui-react
 ```
 
-* 使用
+* import styles in your entry file
+
+```js
+import 'casual-ui-react/dist/style.css'
+```
+
+* usage
 
 ```js
 import { CButton } from 'casual-ui-react'
 
 function SomeComponent() {
 
-  return <OButton label="一个按钮" />
+  return <OButton label="A Button" />
 }
 ```
 
-### 参与贡献
+### Contributing
 
-[贡献指南](./CONTRIBUTING.md)
+[CONTRIBUTING](./CONTRIBUTING.md)
 
-### 鸣谢
+### Thanks
 
 ![Vue](./badges/vue.svg)
 ![Vite](./badges/vite.svg)
@@ -87,6 +92,6 @@ function SomeComponent() {
 ![Docusaurus](./badges/docusaurus.svg)
 ![VSCode](./badges/vscode.svg)
 
-### 协议
+### LICENSE
 
 [MIT](./LICENSE)
