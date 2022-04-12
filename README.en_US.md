@@ -10,8 +10,8 @@ A casual ui library for both Vue3+ and React17+
 
 ### Online Demos & Docs
 
-* [React Docs](https://casual-ui-react.donsen.site/)
-* [Vue Docs](https://casual-ui-vue.donsen.site/)
+* [Casual UI - React](https://casual-ui-react.donsen.site/)
+* [Casual UI - Vue](https://casual-ui-vue.donsen.site/)
 
 ### Install
 
