@@ -93,11 +93,11 @@ const focused = ref(false)
 
 const { innerValue } = useVModel<CSelectModelValue>(
   modelValue,
-  multiple ? [] : '',
+  modelValue.value,
   v => emit('update:modelValue', v)
 )
 
-const inputValue = ref('')
+const inputValue = ref(modelValue.value as string)
 
 watch(
   innerValue,
