@@ -31,7 +31,9 @@ app.use(CasualUI)
 app.mount('#app')
 ```
 
-* 局部使用
+* 按需使用
+
+__注意：按需使用也需要导入样式__
 
 ```vue
 <!-- SomeComponent.vue -->

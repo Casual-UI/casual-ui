@@ -37,6 +37,8 @@ app.mount('#app')
 
 * single use
 
+__Notice：single usage also need import style__
+
 ```vue
 <!-- SomeComponent.vue -->
 <script setup>
