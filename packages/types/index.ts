@@ -9,6 +9,13 @@ type CSlot = JSX.Element | string | JSX.Element[]
 
 type CPosition = 'start' | 'center' | 'end'
 
+/**
+ * 验证规则函数，可以返回Promise做异步验证
+ */
+type CRule = (
+  v: string | number
+) => string | boolean | Promise<string | boolean>
+
 interface Notification {
   title?: string
   message?: string
@@ -96,6 +103,7 @@ interface EmitModel<T> {
 }
 
 export type {
+  CRule,
   CSlot,
   CTheme,
   CSize,

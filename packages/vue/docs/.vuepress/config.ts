@@ -167,6 +167,7 @@ export default defineUserConfig<
             '/components/form/checkbox/',
             '/components/form/toggle/',
             '/components/form/date-picker/',
+            '/components/form/form/',
           ],
         },
         {

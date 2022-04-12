@@ -2,21 +2,53 @@
 import useFormProps from './useFormProps'
 import CFormItem from './CFormItem.vue'
 import type { Component } from 'vue'
-/**
- * 验证规则函数，可以返回Promise做异步验证
- */
-type CRule = (
-  v: string | number
-) => string | boolean | Promise<string | boolean>
+import type { CRule } from 'casual-types'
+import { useDefaultVModel } from '../../usable/useVModel'
+import { CRadio } from 'casual-ui-vue'
+
+interface Option {
+  value: string | number
+  label: string
+}
+
+type FormItemComponent =
+  | 'input'
+  | 'select'
+  | 'checkbox'
+  | 'checkbox-group'
+  | 'radio'
+  | 'date-picker'
+  | 'toggle'
+  | Component
 
 /**
  * 表单项配置
  */
 interface CFormItemConfig {
-  component: 'input' | 'select' | 'checkbox' | 'radio' | 'date' | Component
+  /**
+   * 表单项类型，对应需要渲染的组件
+   */
+  component?: FormItemComponent
+  /**
+   * 需要传递给组件的额外props
+   */
+  componentProps?: object
+  /**
+   * 对应表单数据字段名称
+   */
   field: string
+  /**
+   * 表单项文案提示
+   */
   label?: string
+  /**
+   * 验证规则
+   */
   rules?: CRule[]
+  /**
+   * 选项数组，当component为select、radio、checkbox-group时生效
+   */
+  options?: Option[]
 }
 
 interface CFormProps {
@@ -24,7 +56,6 @@ interface CFormProps {
    * 表单项配置
    */
   items?: CFormItemConfig[]
-
   /**
    * 表单绑定值，用于<code>v-model</code>
    */
@@ -39,22 +70,60 @@ interface CFormProps {
   col?: number
 }
 
+const emit = defineEmits<{
+  /**
+   * 表单绑定值变化时触发
+   */
+  (e: 'update:modelValue', value: object): void
+}>()
+
 const props = withDefaults(defineProps<CFormProps>(), {
   items: () => [],
-  rules: () => ({}),
   labelWidth: '100px',
   col: 6,
 })
 
+const innerValue = useDefaultVModel(props, emit)
 const { size } = useFormProps(props)
+
+// 决定渲染何种组件，默认渲染输入框
+const getComponent = (component?: FormItemComponent) => {
+  if (!component) return 'c-input'
+  if (typeof component === 'string') {
+    return `c-${component}`
+  }
+  return component
+}
 </script>
 <template>
   <div
     :class="['c-form', 'c-row', 'c-items-center', 'c-wrap', `c-gutter-${size}`]"
   >
     <c-form-item v-for="item in items" :key="item.field">
-      <slot name>
-        <Component :is="item.component" />
+      <slot :name="item.field">
+        <template
+          v-if="
+            item.component === 'radio' &&
+            item.options &&
+            item.options.length > 0
+          "
+        >
+          <div class="c-flex c-items-center" :class="[`c-gutter-${size}`]">
+            <div v-for="{ label, value } in item.options" :key="value">
+              <c-radio
+                v-model="innerValue[item.field]"
+                :label="label"
+                :value="value"
+              />
+            </div>
+          </div>
+        </template>
+        <Component
+          :is="getComponent(item.component)"
+          v-else
+          v-model="innerValue[item.field]"
+          v-bind="item.componentProps"
+        />
       </slot>
     </c-form-item>
   </div>

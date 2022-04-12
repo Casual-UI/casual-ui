@@ -2,7 +2,7 @@ import { useInjectSize, useInjectProp } from 'casual-ui-vue'
 
 export default (props: any) => {
   return {
-    size: useInjectSize(props),
+    size: useInjectSize(props).provideSize,
     labelWidth: useInjectProp({
       propName: 'labelWidth',
       defaultValue: '100px',

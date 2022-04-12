@@ -57,6 +57,8 @@ import CYearPanel from './src/components/form/date-picker/CYearPanel.vue'
 import CMonthPanel from './src/components/form/date-picker/CMonthPanel.vue'
 import CTabs from './src/components/interact/CTabs.vue'
 import useScreen from './src/usable/useScreen'
+import CForm from './src/components/form/CForm.vue'
+import CFormItem from './src/components/form/CFormItem.vue'
 
 const CasualUI: Plugin = {
   install: (app: App) => {
@@ -103,6 +105,8 @@ const CasualUI: Plugin = {
     app.component('CLoadingTail', CLoadingTail)
     app.component('ODatePanel', CDatePanel)
     app.component('CNotification', CNotification)
+    app.component('CForm', CForm)
+    app.component('CFormItem', CFormItem)
 
     app.use(NotificationPlugin)
   },

@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import type { CSize } from 'casual-types'
+import type { CSize, CRule } from 'casual-types'
+import useFormProps from './useFormProps'
 
 interface CFormItemProps {
   /**
@@ -18,6 +19,10 @@ interface CFormItemProps {
    * 尺寸
    */
   size?: CSize
+  /**
+   * 验证规则
+   */
+  rules?: CRule[]
 }
 
 const props = withDefaults(defineProps<CFormItemProps>(), {
@@ -25,11 +30,17 @@ const props = withDefaults(defineProps<CFormItemProps>(), {
   labelWidth: undefined,
   col: undefined,
   size: undefined,
+  rules: () => [],
+  field: undefined,
 })
+
+const { col } = useFormProps(props)
 </script>
 <template>
-  <div class="c-form-item">
-    <!-- @slot 默认内容 -->
+  <div :class="['c-form-item', `c-col-${col}`]">
+    <!-- 
+      @slot 表单项内容 
+    -->
     <slot />
   </div>
 </template>
