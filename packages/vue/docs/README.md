@@ -16,6 +16,7 @@ features:
     details: 可以自定义你的主题
   - title: TS编写
     details: 友好的类型提示
+footer: MIT Licensed | Copyright © 2022-present Casual UI
 ---
 
 <hr />

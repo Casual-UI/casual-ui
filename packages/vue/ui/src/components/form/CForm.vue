@@ -1,6 +1,7 @@
 <script setup lang="ts">
 interface CFormItemConfig {
-  type: 'input' | 'select' | 'checkbox' | 'radio' | 'date' | 'datetime'
+  type: 'input' | 'select' | 'checkbox' | 'radio' | 'date'
+  label?: string
 }
 
 /**
@@ -25,11 +26,21 @@ interface CFormProps {
    * 表单绑定值，用于<code>v-model</code>
    */
   modelValue: object
+  /**
+   * 表单项提示文案长度
+   */
+  labelWidth?: string
+  /**
+   * 每个表单项占用的列数
+   */
+  col?: number
 }
 
 withDefaults(defineProps<CFormProps>(), {
   items: () => [],
   rules: () => ({}),
+  labelWidth: '100px',
+  col: 6,
 })
 </script>
 <template>
