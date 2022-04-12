@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useNotifications } from 'casual-ui-vue'
+
 const props = defineProps<{
   icons: {
     [name: string]: string
