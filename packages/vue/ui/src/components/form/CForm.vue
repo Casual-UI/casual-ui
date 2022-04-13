@@ -103,7 +103,7 @@ const props = withDefaults(defineProps<CFormProps>(), {
 })
 
 const innerValue = useDefaultVModel(props, emit)
-const { size } = useFormProps(props)
+useFormProps(props)
 
 // 决定渲染何种组件，默认渲染输入框
 const getComponent = (component?: FormItemComponent) => {

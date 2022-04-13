@@ -16,7 +16,7 @@ interface CRadioProps {
   /**
    * 文字
    */
-  label?: string
+  label?: string | number
   /**
    * 尺寸
    */
