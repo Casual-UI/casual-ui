@@ -16,8 +16,9 @@ const formData = ref({
 })
 
 const formItems = [
-  { field: 'name' },
+  { field: 'name', label: '姓名' },
   {
+    label: '性别',
     field: 'gender',
     component: 'radio',
     options: [
@@ -26,6 +27,7 @@ const formItems = [
     ]
   },
   {
+    label: '生日',
     field: 'birthday',
     component: 'date-picker',
     componentProps: {
@@ -33,6 +35,7 @@ const formItems = [
     }
   },
   {
+    label: '行业',
     field: 'industry',
     component: 'select',
     componentProps: {

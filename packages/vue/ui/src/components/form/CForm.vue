@@ -68,6 +68,10 @@ interface CFormProps {
    * 每个表单项占用的列数
    */
   col?: number
+  /**
+   * 文本排列方向，表现为flex-direction的对应值
+   */
+  labelDirection: 'row' | 'row-reverse' | 'column' | 'column-reverse'
 }
 
 const emit = defineEmits<{
@@ -99,7 +103,11 @@ const getComponent = (component?: FormItemComponent) => {
   <div
     :class="['c-form', 'c-row', 'c-items-center', 'c-wrap', `c-gutter-${size}`]"
   >
-    <c-form-item v-for="item in items" :key="item.field">
+    <c-form-item v-for="item in items" :key="item.field" :label="item.label">
+      <!-- 
+        @slot  
+        @name [field] 表单项的自定义内容
+      -->
       <slot :name="item.field">
         <template
           v-if="

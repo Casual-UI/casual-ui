@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { CSize, CRule } from 'casual-types'
-import useFormProps from './useFormProps'
+import useFormProps, { type LabelDirection } from './useFormProps'
 
 interface CFormItemProps {
   /**
@@ -23,6 +23,7 @@ interface CFormItemProps {
    * 验证规则
    */
   rules?: CRule[]
+  labelDirection?: LabelDirection
 }
 
 const props = withDefaults(defineProps<CFormItemProps>(), {
@@ -32,15 +33,26 @@ const props = withDefaults(defineProps<CFormItemProps>(), {
   size: undefined,
   rules: () => [],
   field: undefined,
+  labelDirection: undefined,
 })
 
-const { col } = useFormProps(props)
+const { col, labelDirection, size } = useFormProps(props)
 </script>
 <template>
-  <div :class="['c-form-item', `c-col-${col}`]">
+  <div
+    :class="[
+      'c-form-item',
+      `c-col-${col}`,
+      `c-${labelDirection}`,
+      'c-items-center',
+    ]"
+  >
     <!-- 
       @slot 表单项内容 
     -->
+    <div :class="['c-form-item--label', `c-font-${size}`, `c-mr-${size}`]">
+      {{ label }}
+    </div>
     <slot />
   </div>
 </template>

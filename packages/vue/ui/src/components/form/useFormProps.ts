@@ -1,5 +1,7 @@
 import { useInjectSize, useInjectProp } from 'casual-ui-vue'
 
+type LabelDirection = 'row' | 'row-reverse' | 'column' | 'column-reverse'
+
 export default (props: any) => {
   return {
     size: useInjectSize(props).provideSize,
@@ -13,5 +15,12 @@ export default (props: any) => {
       defaultValue: 3,
       props,
     }),
+    labelDirection: useInjectProp<LabelDirection>({
+      propName: 'labelDirection',
+      defaultValue: 'row',
+      props,
+    }),
   }
 }
+
+export type { LabelDirection }

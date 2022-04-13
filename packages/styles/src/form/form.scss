@@ -1,3 +1,7 @@
 .c-form {
-  // TODO
+  &-item {
+    &--label {
+      font-weight: bold;
+    }
+  }
 }
