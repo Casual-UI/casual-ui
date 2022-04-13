@@ -10,7 +10,7 @@ import {
   useDefaultVModel,
 } from 'casual-ui-vue'
 import { matHighlightOff } from '@quasar/extras/material-icons'
-import type { CTheme } from 'casual-types'
+import type { CSize, CTheme } from 'casual-types'
 
 interface OInputProps {
   /**
@@ -28,7 +28,7 @@ interface OInputProps {
   /**
    * 尺寸
    */
-  size?: 'sm' | 'md' | 'lg'
+  size?: CSize
   /**
    * 输入框预设文本
    */
