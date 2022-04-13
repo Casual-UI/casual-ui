@@ -60,7 +60,11 @@ const descFormatter = (slotItem: any) => {
 
 const getDefaultValue = (item: any) => {
   if (item.type.name === 'CSize') {
-    return 'md'
+    return `'md'`
+  }
+  if (item.type.name === 'CTheme') return `'primary'`
+  if (item.tags?.default) {
+    return item.tags.default[0].description
   }
   return item.defaultValue?.value
 }

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import useFormProps from './useFormProps'
+import useFormProps, { type LabelDirection } from './useFormProps'
 import CFormItem from './CFormItem.vue'
 import type { Component } from 'vue'
-import type { CRule } from 'casual-types'
+import type { CRule, CSize } from 'casual-types'
 import { useDefaultVModel } from '../../usable/useVModel'
 import { CRadio } from 'casual-ui-vue'
 
@@ -62,16 +62,24 @@ interface CFormProps {
   modelValue: object
   /**
    * 表单项提示文案长度
+   * @default '100px'
    */
   labelWidth?: string
   /**
    * 每个表单项占用的列数
+   * @default 6
    */
   col?: number
   /**
    * 文本排列方向，表现为flex-direction的对应值
+   * @default 'row'
    */
-  labelDirection: 'row' | 'row-reverse' | 'column' | 'column-reverse'
+  labelDirection?: LabelDirection
+  /**
+   * 尺寸
+   * @default 'md'
+   */
+  size?: CSize
 }
 
 const emit = defineEmits<{
@@ -83,8 +91,10 @@ const emit = defineEmits<{
 
 const props = withDefaults(defineProps<CFormProps>(), {
   items: () => [],
-  labelWidth: '100px',
-  col: 6,
+  labelWidth: undefined,
+  col: undefined,
+  labelDirection: undefined,
+  size: undefined,
 })
 
 const innerValue = useDefaultVModel(props, emit)
@@ -106,7 +116,7 @@ const getComponent = (component?: FormItemComponent) => {
     <c-form-item v-for="item in items" :key="item.field" :label="item.label">
       <!-- 
         @slot  
-        @name [field] 表单项的自定义内容
+        @name [field] - 表单项的自定义内容，field为表单项的field属性
       -->
       <slot :name="item.field">
         <template

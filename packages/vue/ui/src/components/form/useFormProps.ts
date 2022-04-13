@@ -12,7 +12,7 @@ export default (props: any) => {
     }),
     col: useInjectProp({
       propName: 'col',
-      defaultValue: 3,
+      defaultValue: 6,
       props,
     }),
     labelDirection: useInjectProp<LabelDirection>({
