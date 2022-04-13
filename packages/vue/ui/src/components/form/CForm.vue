@@ -80,6 +80,10 @@ interface CFormProps {
    * @default 'md'
    */
   size?: CSize
+  /**
+   * 表单项间隔尺寸
+   */
+  gutterSize?: CSize
 }
 
 const emit = defineEmits<{
@@ -95,6 +99,7 @@ const props = withDefaults(defineProps<CFormProps>(), {
   col: undefined,
   labelDirection: undefined,
   size: undefined,
+  gutterSize: 'md',
 })
 
 const innerValue = useDefaultVModel(props, emit)
@@ -111,7 +116,13 @@ const getComponent = (component?: FormItemComponent) => {
 </script>
 <template>
   <div
-    :class="['c-form', 'c-row', 'c-items-center', 'c-wrap', `c-gutter-${size}`]"
+    :class="[
+      'c-form',
+      'c-row',
+      'c-items-center',
+      'c-wrap',
+      `c-gutter-${gutterSize}`,
+    ]"
   >
     <c-form-item
       v-for="item in items"
@@ -131,7 +142,10 @@ const getComponent = (component?: FormItemComponent) => {
             item.options.length > 0
           "
         >
-          <div class="c-flex c-items-center" :class="[`c-gutter-${size}`]">
+          <div
+            class="c-flex c-items-center"
+            :class="[`c-gutter-${gutterSize}`]"
+          >
             <div v-for="{ label, value } in item.options" :key="value">
               <c-radio
                 v-model="innerValue[item.field]"

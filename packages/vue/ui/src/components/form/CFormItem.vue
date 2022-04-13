@@ -31,6 +31,7 @@ interface CFormItemProps {
   rules?: CRule[]
   /**
    * 提示文字排列方向
+   * @default 'row'
    */
   labelDirection?: LabelDirection
 }
