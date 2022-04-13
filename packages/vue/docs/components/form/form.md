@@ -1,6 +1,9 @@
 ---
 title: 表单&表单项
 componentPath: form/CForm
+additionalComponentPaths:
+  - name: CFormItem
+    path: form/CFormItem
 ---
 
 ### 基础使用

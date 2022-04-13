@@ -1,6 +1,9 @@
 ---
 title: 列表
 componentPath: list/CList
+additionalComponentPaths:
+  - name: CItem
+    path: list/CItem
 ---
 
 ### 基础使用

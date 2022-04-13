@@ -18,12 +18,31 @@ interface CustomFrontmatter {
   propDefaultValueWidth?: number
 }
 
+const props = defineProps<{
+  /**
+   * 如果传递该项，则会使用该项渲染，否则默认使用frontmatter中的docInfo
+   */
+  doc?: ComponentDoc
+}>()
+
 const frontmatter = usePageFrontmatter() as unknown as Ref<CustomFrontmatter>
 
-const slots = computed(() => [
-  ...(frontmatter.value.customSlots || []),
-  ...(frontmatter.value.docInfo.slots || []),
-])
+const propList = computed(() =>
+  props.doc ? props.doc.props || [] : frontmatter.value?.docInfo?.props || []
+)
+
+const slots = computed(() =>
+  props.doc
+    ? props.doc.slots || []
+    : [
+        ...(frontmatter.value.customSlots || []),
+        ...(frontmatter.value.docInfo.slots || []),
+      ]
+)
+
+const events = computed(() =>
+  props.doc ? props.doc.events || [] : frontmatter.value?.docInfo?.events || []
+)
 
 const items = computed(() =>
   [
@@ -78,7 +97,7 @@ const getDefaultValue = (item: any) => {
       :body-style="{ maxHeight: '40vh', overflow: 'auto' }"
     >
       <template #body-Props>
-        <c-list :items="frontmatter.docInfo?.props || []" size="xs" divider>
+        <c-list :items="propList" size="xs" divider>
           <template #item="{ item }">
             <ItemDom :value="item">
               <template #after-name>
@@ -134,7 +153,7 @@ const getDefaultValue = (item: any) => {
       </template>
 
       <template #body-Events>
-        <c-list :items="frontmatter.docInfo?.events || []" size="xs" divider>
+        <c-list :items="events" size="xs" divider>
           <template #item="{ item }">
             <ItemDom :value="item">
               <div v-if="item.tags" class="c-pl-md">

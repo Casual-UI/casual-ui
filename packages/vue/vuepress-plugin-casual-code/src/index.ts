@@ -3,14 +3,21 @@ import type { Plugin } from 'vuepress'
 import { parse } from 'vue-docgen-api'
 import { path } from '@vuepress/utils'
 
-const componentDocMdContent = `
-### API
+const componentDocMdContent = (name: string, doc?: boolean) => `
+### ${name} API
 
-<ComponentDoc />
+<ComponentDoc ${
+  doc ? `:doc="$frontmatter.additionalComponentInfo.${name}"` : ''
+} />
 `
 interface CasualCodePluginOptions {
   componentsBasePath: string
 }
+
+type AdditionalComponentPaths = {
+  name: string
+  path: string
+}[]
 
 const componentsIdMap: Record<string, string> = {}
 
@@ -24,11 +31,22 @@ const markdownItVueDemoCodeBlock: Plugin<CasualCodePluginOptions> = options => {
       md.render = function (src, env) {
         const { frontmatter = {} } = env
 
-        const { componentPath } = frontmatter
+        const { componentPath, additionalComponentPaths } = frontmatter
 
         let result = src
         if (componentPath) {
-          result = `${result} ${componentDocMdContent}`
+          result = `${result} ${componentDocMdContent(
+            componentPath.split('/').pop()
+          )}`
+        }
+        if (
+          additionalComponentPaths &&
+          Array.isArray(additionalComponentPaths) &&
+          additionalComponentPaths.length > 0
+        ) {
+          result = `${result} ${additionalComponentPaths
+            .map(({ name }) => componentDocMdContent(name, true))
+            .join('\n')}`
         }
         return defaultRender(result, env)
       }
@@ -76,7 +94,7 @@ const markdownItVueDemoCodeBlock: Plugin<CasualCodePluginOptions> = options => {
       `
       }
     },
-    extendsPage: async page => {
+    extendsPage: async (page: any) => {
       page.frontmatter = page.frontmatter ?? {}
       if (page.frontmatter.componentPath) {
         const componentDocInfo = await parse(
@@ -87,9 +105,19 @@ const markdownItVueDemoCodeBlock: Plugin<CasualCodePluginOptions> = options => {
         )
         page.frontmatter.docInfo = componentDocInfo
       }
-      // if (page.frontmatter.additionComponentPaths) {
-      //   page.frontmatter
-      // }
+      if (page.frontmatter.additionalComponentPaths) {
+        page.frontmatter.additionalComponentInfo = {}
+        const additionalComponentPaths = page.frontmatter
+          .additionalComponentPaths as AdditionalComponentPaths
+        for (const { name, path: singlePath } of additionalComponentPaths) {
+          page.frontmatter.additionalComponentInfo[name] = (await parse(
+            path.resolve(
+              __dirname,
+              `${options.componentsBasePath}${singlePath}.vue`
+            )
+          )) as any
+        }
+      }
     },
   }
 }

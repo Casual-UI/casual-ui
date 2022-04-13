@@ -1,6 +1,9 @@
 ---
 title: 勾选器
 componentPath: form/CCheckbox
+additionalComponentPaths:
+  - name: CCheckboxGroup
+    path: form/CCheckboxGroup
 ---
 
 ### 基础使用

@@ -60,7 +60,10 @@ const { provideSize: size } = useInjectSize(props)
         :active="activeFn(item)"
         @click="$emit('item-click', item)"
       >
-        <!-- @slot 自定义列表项 -->
+        <!-- 
+          @slot 自定义列表项 
+          @binding {any} item 当前列表项数据
+        -->
         <slot name="item" v-bind="{ item }">
           {{ item.label }}
         </slot>
