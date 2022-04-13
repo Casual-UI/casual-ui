@@ -1,5 +1,5 @@
 import { uid } from 'uid'
-import { Plugin } from 'vuepress'
+import type { Plugin } from 'vuepress'
 import { parse } from 'vue-docgen-api'
 import { path } from '@vuepress/utils'
 
@@ -8,10 +8,13 @@ const componentDocMdContent = `
 
 <ComponentDoc />
 `
+interface CasualCodePluginOptions {
+  componentsBasePath: string
+}
 
 const componentsIdMap: Record<string, string> = {}
 
-const markdownItVueDemoCodeBlock: Plugin = () => {
+const markdownItVueDemoCodeBlock: Plugin<CasualCodePluginOptions> = options => {
   return {
     name: 'vupress-plugin-casual-code',
     clientAppEnhanceFiles: [path.resolve(__dirname, './clientAppEnhance.ts')],
@@ -79,11 +82,14 @@ const markdownItVueDemoCodeBlock: Plugin = () => {
         const componentDocInfo = await parse(
           path.resolve(
             __dirname,
-            `../../ui/src/components/${page.frontmatter.componentPath}.vue`
+            `${options.componentsBasePath}${page.frontmatter.componentPath}.vue`
           )
         )
         page.frontmatter.docInfo = componentDocInfo
       }
+      // if (page.frontmatter.additionComponentPaths) {
+      //   page.frontmatter
+      // }
     },
   }
 }

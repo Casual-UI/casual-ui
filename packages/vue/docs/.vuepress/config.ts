@@ -32,7 +32,13 @@ export default defineUserConfig<
   theme: '@vuepress/theme-default',
   clientAppEnhanceFiles: [path.resolve(__dirname, './clientAppEnhance.ts')],
   plugins: [
-    casualCode,
+    [
+      casualCode,
+      {
+        componentsBasePath:
+          path.resolve(__dirname, '../../ui/src/components/') + '/',
+      },
+    ],
     [
       docSearch,
       {
