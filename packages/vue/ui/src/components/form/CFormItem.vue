@@ -4,15 +4,21 @@ import useFormProps, { type LabelDirection } from './useFormProps'
 
 interface CFormItemProps {
   /**
+   * 对应表单中的项的名称
+   */
+  field?: string
+  /**
    * 文本提示
    */
   label?: string
   /**
    * 文本提示宽度
+   * @default '100px'
    */
   labelWidth?: string
   /**
    * 表单项占用的列数，可覆盖CForm的col属性
+   * @default 6
    */
   col?: number
   /**
@@ -23,6 +29,9 @@ interface CFormItemProps {
    * 验证规则
    */
   rules?: CRule[]
+  /**
+   * 提示文字排列方向
+   */
   labelDirection?: LabelDirection
 }
 
@@ -37,6 +46,19 @@ const props = withDefaults(defineProps<CFormItemProps>(), {
 })
 
 const { col, labelDirection, size } = useFormProps(props)
+
+const isLabelVertical = (direction: LabelDirection) => {
+  return direction === 'column' || direction === 'column-reverse'
+}
+
+const getLabelMarginPosition = (direction: LabelDirection) => {
+  return new Map<LabelDirection, 't' | 'b' | 'l' | 'r'>([
+    ['row', 'r'],
+    ['row-reverse', 'l'],
+    ['column', 'b'],
+    ['column-reverse', 't'],
+  ]).get(direction)
+}
 </script>
 <template>
   <div
@@ -44,13 +66,19 @@ const { col, labelDirection, size } = useFormProps(props)
       'c-form-item',
       `c-col-${col}`,
       `c-${labelDirection}`,
-      'c-items-center',
+      isLabelVertical(labelDirection) ? 'c-items-start' : 'c-items-center',
     ]"
   >
     <!-- 
       @slot 表单项内容 
     -->
-    <div :class="['c-form-item--label', `c-font-${size}`, `c-mr-${size}`]">
+    <div
+      :class="[
+        'c-form-item--label',
+        `c-font-${size}`,
+        `c-m${getLabelMarginPosition(labelDirection)}-${size}`,
+      ]"
+    >
       {{ label }}
     </div>
     <slot />

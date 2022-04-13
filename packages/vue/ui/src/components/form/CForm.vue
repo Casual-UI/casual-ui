@@ -113,7 +113,12 @@ const getComponent = (component?: FormItemComponent) => {
   <div
     :class="['c-form', 'c-row', 'c-items-center', 'c-wrap', `c-gutter-${size}`]"
   >
-    <c-form-item v-for="item in items" :key="item.field" :label="item.label">
+    <c-form-item
+      v-for="item in items"
+      :key="item.field"
+      :label="item.label"
+      :field="item.field"
+    >
       <!-- 
         @slot  
         @name [field] - 表单项的自定义内容，field为表单项的field属性

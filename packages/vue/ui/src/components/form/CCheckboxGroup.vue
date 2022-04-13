@@ -9,7 +9,7 @@ interface CCheckboxGroupProps {
    */
   options?: Array<{ label: string; value: CCheckboxModel }>
   /**
-   * 当前选中值数组
+   * 当前选中值数组，用于<code>v-model</code>绑定
    */
   modelValue: CCheckboxModel[]
 }
