@@ -181,16 +181,17 @@ const sizes = ['xs', 'sm', 'md', 'lg', 'xl']
 </template>
 ```
 
-### label方向&label宽度
+### label排列方向、宽度、对齐方式
 
-编辑下方的label宽度以及label方向，即可实时查看效果
+编辑下方的label相关属性，查看实时效果
 
 ```vue live
 <script setup>
 import { ref } from 'vue'
 const formData = ref({
-  labelWidth: 60,
+  labelWidth: 100,
   labelDirection: 'row',
+  labelAlign: 'left',
   name: 'Micheal Jackson',
   gender: 'male',
   birthday: new Date('August 29, 1958'),
@@ -213,6 +214,17 @@ const formItems = [
       { label: 'row-reverse', value: 'row-reverse' },
       { label: 'column', value: 'column' },
       { label: 'column-reverse', value: 'column-reverse' },
+    ]
+  },
+  {
+    field: 'labelAlign',
+    label: 'label对齐方式',
+    component: 'radio',
+    col: 12,
+    options: [
+      { label: 'left', value: 'left' },
+      { label: 'center', value: 'center' },
+      { label: 'right', value: 'right' },
     ]
   },
   { field: 'name', label: '姓名' },
@@ -253,7 +265,9 @@ const formItems = [
     v-model="formData"
     :items="formItems"
     :label-direction="formData.labelDirection"
-    :label-width="`${formData.labelWidth}px`" />
+    :label-width="`${formData.labelWidth}px`"
+    :label-align="formData.labelAlign"
+  />
 </template>
 ```
 
@@ -328,5 +342,5 @@ const spans = [2, 3, 4, 6, 12]
 ```
 
 ::: tip 提示
-表单项的`col`配置可以覆盖表单整体的`col`配置，比如在上面的示例中，同意协议表单项始终使用`12`，即始终占一整行
+表单项的所有与表单整体同名的配置可以覆盖表单整体的配置
 :::

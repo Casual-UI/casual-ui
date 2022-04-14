@@ -110,3 +110,12 @@ $c-columns: 12;
     gap: #{$value};
   }
 }
+
+$text-aligns: left, right, center, justify, start, end, justify-all, match-parent;
+
+@each $align in $text-aligns {
+  .c-text-#{$align},
+  %c-text-#{$align} {
+    text-align: $align;
+  }
+}

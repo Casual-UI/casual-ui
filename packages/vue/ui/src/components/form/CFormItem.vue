@@ -30,10 +30,14 @@ interface CFormItemProps {
    */
   rules?: CRule[]
   /**
-   * 提示文字排列方向
+   * 提示文字与表单项排列方向，可覆盖表单整体的label-direction属性
    * @default 'row'
    */
   labelDirection?: LabelDirection
+  /**
+   * 文字对齐方式，表现为text-align的对应值，可覆盖表单整体的label-align属性
+   */
+  labelAlign?: 'left' | 'center' | 'right'
 }
 
 const props = withDefaults(defineProps<CFormItemProps>(), {
@@ -44,9 +48,11 @@ const props = withDefaults(defineProps<CFormItemProps>(), {
   rules: () => [],
   field: undefined,
   labelDirection: undefined,
+  labelAlign: undefined,
 })
 
-const { col, labelDirection, size, labelWidth } = useFormProps(props)
+const { col, labelDirection, size, labelWidth, labelAlign } =
+  useFormProps(props)
 
 const isLabelVertical = (direction: LabelDirection) => {
   return direction === 'column' || direction === 'column-reverse'
@@ -78,6 +84,7 @@ const getLabelMarginPosition = (direction: LabelDirection) => {
         'c-form-item--label',
         `c-font-${size}`,
         `c-m${getLabelMarginPosition(labelDirection)}-${size}`,
+        `c-text-${labelAlign}`,
       ]"
       :style="{
         width: labelWidth,

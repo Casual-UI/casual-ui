@@ -20,6 +20,11 @@ export default (props: any) => {
       defaultValue: 'row',
       props,
     }),
+    labelAlign: useInjectProp<'left' | 'center' | 'right'>({
+      propName: 'labelAlign',
+      defaultValue: 'left',
+      props,
+    }),
   }
 }
 

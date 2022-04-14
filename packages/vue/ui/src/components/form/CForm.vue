@@ -80,6 +80,11 @@ interface CFormProps {
    */
   labelDirection?: LabelDirection
   /**
+   * 文字对齐方式，表现为text-align的对应值
+   * @default 'left'
+   */
+  labelAlign?: 'left' | 'center' | 'right'
+  /**
    * 尺寸
    * @default 'md'
    */
@@ -104,6 +109,7 @@ const props = withDefaults(defineProps<CFormProps>(), {
   labelDirection: undefined,
   size: undefined,
   gutterSize: 'md',
+  labelAlign: undefined,
 })
 
 const innerValue = useDefaultVModel(props, emit)
