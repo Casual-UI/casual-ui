@@ -17,7 +17,7 @@ interface CFormItemProps {
    */
   labelWidth?: string
   /**
-   * 表单项占用的列数，可覆盖CForm的col属性
+   * 表单项占用的列数，可覆盖表单整体的col属性，可用于为项定制列宽
    * @default 6
    */
   col?: number
@@ -46,7 +46,7 @@ const props = withDefaults(defineProps<CFormItemProps>(), {
   labelDirection: undefined,
 })
 
-const { col, labelDirection, size } = useFormProps(props)
+const { col, labelDirection, size, labelWidth } = useFormProps(props)
 
 const isLabelVertical = (direction: LabelDirection) => {
   return direction === 'column' || direction === 'column-reverse'
@@ -79,6 +79,9 @@ const getLabelMarginPosition = (direction: LabelDirection) => {
         `c-font-${size}`,
         `c-m${getLabelMarginPosition(labelDirection)}-${size}`,
       ]"
+      :style="{
+        width: labelWidth,
+      }"
     >
       {{ label }}
     </div>

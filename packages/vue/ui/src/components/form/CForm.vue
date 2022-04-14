@@ -49,6 +49,10 @@ interface CFormItemConfig {
    * 选项数组，当component为select、radio、checkbox-group时生效
    */
   options?: Option[]
+  /**
+   * 项的自定义列宽
+   */
+  col?: number
 }
 
 interface CFormProps {
@@ -129,6 +133,7 @@ const getComponent = (component?: FormItemComponent) => {
       :key="item.field"
       :label="item.label"
       :field="item.field"
+      :col="item.col"
     >
       <!-- 
         @slot  

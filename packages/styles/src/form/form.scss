@@ -2,6 +2,7 @@
   &-item {
     &--label {
       font-weight: bold;
+      flex-shrink: 0;
     }
   }
 }

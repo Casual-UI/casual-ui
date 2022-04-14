@@ -7,7 +7,7 @@ export default (props: any) => {
     size: useInjectSize(props).provideSize,
     labelWidth: useInjectProp({
       propName: 'labelWidth',
-      defaultValue: '100px',
+      defaultValue: '60px',
       props,
     }),
     col: useInjectProp({
