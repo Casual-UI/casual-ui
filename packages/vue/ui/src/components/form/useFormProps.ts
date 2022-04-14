@@ -25,6 +25,11 @@ export default (props: any) => {
       defaultValue: 'left',
       props,
     }),
+    gutterSize: useInjectProp({
+      propName: 'gutterSize',
+      defaultValue: 'md',
+      props,
+    }),
   }
 }
 

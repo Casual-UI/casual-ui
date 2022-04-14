@@ -6,6 +6,29 @@ additionalComponentPaths:
     path: form/CFormItem
 ---
 
+### 基础使用
+
+```vue live
+<script setup>
+import { ref } from 'vue'
+const formData = ref({
+  name: 'Micheal Jackson',
+  gender: 'male',
+  birthday: new Date('August 29, 1958'),
+  industry: 'Entertainment'
+})
+</script>
+<template>
+  <c-form>
+    <c-form-item label="姓名">
+      <c-input v-model="formData.name" />
+    </c-form-item>
+    <c-form-item label="性别">
+    </c-form-item>
+  </c-form>
+</template>
+```
+
 ### 配置式
 
 ```vue live
@@ -23,11 +46,13 @@ const formItems = [
   {
     label: '性别',
     field: 'gender',
-    component: 'radio',
-    options: [
-      { label: 'Female', value: 'female' },
-      { label: 'Male', value: 'male' },
-    ]
+    component: 'radio-group',
+    componentProps: {
+      options: [
+        { label: 'Female', value: 'female' },
+        { label: 'Male', value: 'male' },
+      ]
+    }
   },
   {
     label: '生日',
@@ -74,11 +99,13 @@ const formItems = [
   {
     label: '性别',
     field: 'gender',
-    component: 'radio',
-    options: [
-      { label: 'Female', value: 'female' },
-      { label: 'Male', value: 'male' },
-    ]
+    component: 'radio-group',
+    componentProps: {
+      options: [
+        { label: 'Female', value: 'female' },
+        { label: 'Male', value: 'male' },
+      ]
+    }
   },
   {
     label: '生日',
@@ -136,11 +163,13 @@ const formItems = [
   {
     label: '性别',
     field: 'gender',
-    component: 'radio',
-    options: [
-      { label: 'Female', value: 'female' },
-      { label: 'Male', value: 'male' },
-    ]
+    component: 'radio-group',
+    componentProps: {
+      options: [
+        { label: 'Female', value: 'female' },
+        { label: 'Male', value: 'male' },
+      ]
+    }
   },
   {
     label: '生日',
@@ -231,11 +260,13 @@ const formItems = [
   {
     label: '性别',
     field: 'gender',
-    component: 'radio',
-    options: [
-      { label: 'Female', value: 'female' },
-      { label: 'Male', value: 'male' },
-    ]
+    component: 'radio-group',
+    componentProps: {
+      options: [
+        { label: 'Female', value: 'female' },
+        { label: 'Male', value: 'male' },
+      ]
+    }
   },
   {
     label: '生日',
@@ -286,14 +317,16 @@ const formData = ref({
 
 const formItems = [
   { field: 'name', label: '姓名' },
-  {
+ {
     label: '性别',
     field: 'gender',
-    component: 'radio',
-    options: [
-      { label: 'Female', value: 'female' },
-      { label: 'Male', value: 'male' },
-    ]
+    component: 'radio-group',
+    componentProps: {
+      options: [
+        { label: 'Female', value: 'female' },
+        { label: 'Male', value: 'male' },
+      ]
+    }
   },
   {
     label: '生日',

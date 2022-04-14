@@ -59,6 +59,7 @@ import CTabs from './src/components/interact/CTabs.vue'
 import useScreen from './src/usable/useScreen'
 import CForm from './src/components/form/CForm.vue'
 import CFormItem from './src/components/form/CFormItem.vue'
+import CRadioGroup from './src/components/form/CRadioGroup.vue'
 
 const CasualUI: Plugin = {
   install: (app: App) => {
@@ -107,6 +108,7 @@ const CasualUI: Plugin = {
     app.component('CNotification', CNotification)
     app.component('CForm', CForm)
     app.component('CFormItem', CFormItem)
+    app.component('CRadioGroup', CRadioGroup)
 
     app.use(NotificationPlugin)
   },
@@ -130,6 +132,7 @@ export {
   CLoadingSpinBox,
   CTable,
   CInput,
+  CRadioGroup,
   CTooltip,
   CExpansion,
   CSelect,

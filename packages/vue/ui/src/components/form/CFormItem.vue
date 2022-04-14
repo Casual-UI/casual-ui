@@ -36,6 +36,7 @@ interface CFormItemProps {
   labelDirection?: LabelDirection
   /**
    * 文字对齐方式，表现为text-align的对应值，可覆盖表单整体的label-align属性
+   * @default 'left'
    */
   labelAlign?: 'left' | 'center' | 'right'
 }

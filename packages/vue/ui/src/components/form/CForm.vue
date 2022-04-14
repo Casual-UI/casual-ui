@@ -63,7 +63,7 @@ interface CFormProps {
   /**
    * 表单绑定值，用于<code>v-model</code>
    */
-  modelValue: object
+  modelValue?: object
   /**
    * 表单项提示文案长度
    * @default '100px'
@@ -104,6 +104,7 @@ const emit = defineEmits<{
 
 const props = withDefaults(defineProps<CFormProps>(), {
   items: () => [],
+  modelValue: () => ({}),
   labelWidth: undefined,
   col: undefined,
   labelDirection: undefined,
@@ -134,45 +135,27 @@ const getComponent = (component?: FormItemComponent) => {
       `c-gutter-${gutterSize}`,
     ]"
   >
-    <c-form-item
-      v-for="item in items"
-      :key="item.field"
-      :label="item.label"
-      :field="item.field"
-      :col="item.col"
-    >
-      <!-- 
-        @slot  
-        @name [field] - 表单项的自定义内容，field为表单项的field属性
-      -->
-      <slot :name="item.field">
-        <template
-          v-if="
-            item.component === 'radio' &&
-            item.options &&
-            item.options.length > 0
-          "
-        >
-          <div
-            class="c-flex c-items-center"
-            :class="[`c-gutter-${gutterSize}`]"
-          >
-            <div v-for="{ label, value } in item.options" :key="value">
-              <c-radio
-                v-model="innerValue[item.field]"
-                :label="label"
-                :value="value"
-              />
-            </div>
-          </div>
-        </template>
-        <Component
-          :is="getComponent(item.component)"
-          v-else
-          v-model="innerValue[item.field]"
-          v-bind="item.componentProps"
-        />
-      </slot>
-    </c-form-item>
+    <!-- @slot 默认插槽，会覆盖配置式生成的内容 -->
+    <slot>
+      <c-form-item
+        v-for="item in items"
+        :key="item.field"
+        :label="item.label"
+        :field="item.field"
+        :col="item.col"
+      >
+        <!-- 
+          @slot  
+          @name [field] - 表单项的自定义内容，field为表单项的field属性
+        -->
+        <slot :name="item.field">
+          <Component
+            :is="getComponent(item.component)"
+            v-model="innerValue[item.field]"
+            v-bind="item.componentProps"
+          />
+        </slot>
+      </c-form-item>
+    </slot>
   </div>
 </template>

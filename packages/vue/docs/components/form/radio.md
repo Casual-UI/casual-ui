@@ -1,6 +1,9 @@
 ---
 title: 单选器
 componentPath: form/CRadio
+additionalComponentPaths:
+  - name: CRadioGroup
+    path: form/CRadioGroup
 ---
 
 ### 基础使用
@@ -69,5 +72,25 @@ const val2 = ref(true)
     <c-radio v-model="val1" label="禁用态" disabled />
     <c-radio v-model="val2" label="禁用态" disabled />
   </div>
+</template>
+```
+
+### 单选器组
+
+```vue live
+<script setup>
+import { ref } from 'vue'
+
+const selectedFruit = ref('Apple')
+const fruits = [
+  { label: '苹果', value: 'Apple' },
+  { label: '香蕉', value: 'Banana' },
+  { label: '桃子', value: 'Peach' },
+  { label: '葡萄', value: 'Grape' },
+]
+</script>
+<template>
+  {{ selectedFruit }}
+  <c-radio-group v-model="selectedFruit" :options="fruits" />
 </template>
 ```

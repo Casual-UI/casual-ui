@@ -23,7 +23,7 @@ pnpm install casual-ui-vue
 import { createApp } from 'vue'
 import App from './App.vue'
 import CasualUIVue from 'casual-ui-vue' // 引入全局Vue3插件
-import 'casual-ui-vue/style.css' // 引入样式文件
+import 'casual-ui-vue/dist/style.css' // 引入样式文件
 
 const app = createApp(App)
 
