@@ -17,6 +17,16 @@ const formData = ref({
   birthday: new Date('August 29, 1958'),
   industry: 'Entertainment'
 })
+const genderOptions = [
+  { label: 'Male', value: 'male' },
+  { label: 'Female', value: 'female' },
+]
+const industryOptions = [
+  { label: 'IT', value: 'IT' },
+  { label: 'Medical', value: 'Medical' },
+  { label: 'Entertainment', value: 'Entertainment' },
+  { label: 'Transportation', value: 'Transportation' }
+]
 </script>
 <template>
   <c-form>
@@ -24,6 +34,13 @@ const formData = ref({
       <c-input v-model="formData.name" />
     </c-form-item>
     <c-form-item label="性别">
+      <c-radio-group v-model="formData.gender" :options="genderOptions" />
+    </c-form-item>
+    <c-form-item label="生日">
+      <c-date-picker v-model="formData.birthday" format="MMM DD, YYYY" />
+    </c-form-item>
+    <c-form-item label="行业">
+      <c-select v-model="formData.industry" :options="industryOptions" />
     </c-form-item>
   </c-form>
 </template>
@@ -236,25 +253,29 @@ const formItems = [
   {
     field: 'labelDirection',
     label: 'label方向',
-    component: 'radio',
     col: 12,
-    options: [
-      { label: 'row', value: 'row' },
-      { label: 'row-reverse', value: 'row-reverse' },
-      { label: 'column', value: 'column' },
-      { label: 'column-reverse', value: 'column-reverse' },
-    ]
+    component: 'radio-group',
+    componentProps: {
+      options: [
+        { label: 'row', value: 'row' },
+        { label: 'row-reverse', value: 'row-reverse' },
+        { label: 'column', value: 'column' },
+        { label: 'column-reverse', value: 'column-reverse' },
+      ]
+    }
   },
   {
     field: 'labelAlign',
     label: 'label对齐方式',
-    component: 'radio',
     col: 12,
-    options: [
-      { label: 'left', value: 'left' },
-      { label: 'center', value: 'center' },
-      { label: 'right', value: 'right' },
-    ]
+    component: 'radio-group',
+    componentProps: {
+      options: [
+        { label: 'left', value: 'left' },
+        { label: 'center', value: 'center' },
+        { label: 'right', value: 'right' },
+      ]
+    }
   },
   { field: 'name', label: '姓名' },
   {
