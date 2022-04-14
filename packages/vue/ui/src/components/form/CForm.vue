@@ -4,7 +4,6 @@ import CFormItem from './CFormItem.vue'
 import type { Component } from 'vue'
 import type { CRule, CSize } from 'casual-types'
 import { useDefaultVModel } from '../../usable/useVModel'
-import { CRadio } from 'casual-ui-vue'
 
 interface Option {
   value: string | number
