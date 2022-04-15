@@ -103,7 +103,7 @@ interface CFormProps {
   gutterSize?: CSize
 
   /**
-   * 是否在验证中
+   * 是否在验证中，可用于<code>v-model:validating</code>绑定，在具有异步验证规则时可能会需要这个属性用作一些状态展示
    */
   validating?: boolean
 }
@@ -111,12 +111,14 @@ interface CFormProps {
 const emit = defineEmits<{
   /**
    * 表单绑定值变化时触发
+   * @arg {any} newModelValue 新的绑定值
    */
-  (e: 'update:modelValue', value: object): void
+  (e: 'update:modelValue', newModelValue: object): void
   /**
    * 表单验证进行中状态变更触发
+   * @arg {boolean} newValidating 新的验证状态
    */
-  (e: 'update:validating', value: boolean): void
+  (e: 'update:validating', newValidating: boolean): void
 }>()
 
 const props = withDefaults(defineProps<CFormProps>(), {
@@ -128,6 +130,7 @@ const props = withDefaults(defineProps<CFormProps>(), {
   size: undefined,
   gutterSize: 'md',
   labelAlign: undefined,
+  validating: false,
 })
 
 const innerValue = useDefaultVModel(props, emit)
