@@ -10,6 +10,7 @@ import {
 } from 'casual-ui-vue'
 import { matKeyboardArrowDown } from '@quasar/extras/material-icons'
 import { watch, nextTick, computed, onMounted, ref, toRefs } from 'vue'
+import useValidator from './useValidator'
 
 interface OOption {
   label: string
@@ -91,10 +92,15 @@ const { modelValue, multiple } = toRefs(props)
 
 const focused = ref(false)
 
+const { validate, hasError } = useValidator()
+
 const { innerValue } = useVModel<CSelectModelValue>(
   modelValue,
   modelValue.value,
-  v => emit('update:modelValue', v)
+  v => {
+    validate(v)
+    emit('update:modelValue', v)
+  }
 )
 
 const inputValue = ref(modelValue.value as string)
@@ -187,6 +193,7 @@ const onArrowClick = () => {
         { 'c-select--focused': focused },
         `c-font-${provideSize}`,
         { 'c-select--disabled': disabled },
+        { 'c-select--has-error': hasError },
       ]"
       :style="selectDomStyle"
     >

@@ -452,7 +452,10 @@ const formItems = [
         { label: 'Entertainment', value: 'Entertainment' },
         { label: 'Transportation', value: 'Transportation' }
       ]
-    }
+    },
+    rules: [
+      v => v !== 'IT' && v !== 'Entertainment' ? '只能选择IT或者Entertainment' : false
+    ]
   },
   {
     label: '爱好',

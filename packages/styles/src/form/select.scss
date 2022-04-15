@@ -16,6 +16,13 @@
     @include input-before;
   }
 
+  &--has-error {
+    &::before {
+      opacity: 1;
+      border-color: var(--casual-negative);
+    }
+  }
+
   &:not(&--disabled):hover {
     background-color: var(--casual-input-bg-darker);
   }
