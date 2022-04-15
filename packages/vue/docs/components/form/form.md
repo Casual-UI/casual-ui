@@ -404,7 +404,8 @@ const formData = ref({
   name: 'Micheal Jackson',
   gender: 'male',
   birthday: new Date('August 29, 1958'),
-  industry: 'Entertainment'
+  industry: 'Entertainment',
+  hobbies: []
 })
 
 const formItems = [
@@ -450,6 +451,21 @@ const formItems = [
         { label: 'Medical', value: 'Medical' },
         { label: 'Entertainment', value: 'Entertainment' },
         { label: 'Transportation', value: 'Transportation' }
+      ]
+    }
+  },
+  {
+    label: '爱好',
+    field: 'hobbies',
+    component: 'checkbox-group',
+    col: 12,
+    componentProps: {
+      options: [
+        { label: '旅游', value: 'Travel' },
+        { label: '健身', value: 'Work out' },
+        { label: '美食', value: 'Food' },
+        { label: '摇滚', value: 'Rock' },
+        { label: '肝剧', value: 'TV Series' },
       ]
     }
   }

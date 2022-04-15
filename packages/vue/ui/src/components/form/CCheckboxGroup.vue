@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import type { CSize } from 'casual-types'
 import { useVModel, CCheckbox } from 'casual-ui-vue'
 import { computed, toRefs } from 'vue'
+import useFormProps from './useFormProps'
 type CCheckboxModel = boolean | string | number
 
 interface CCheckboxGroupProps {
@@ -12,10 +14,22 @@ interface CCheckboxGroupProps {
    * 当前选中值数组，用于<code>v-model</code>绑定
    */
   modelValue: CCheckboxModel[]
+  /**
+   * 尺寸
+   * @default 'md'
+   */
+  size?: CSize
+  /**
+   * 勾选框间距尺寸
+   * @default 'md'
+   */
+  gutterSize?: CSize
 }
 
 const props = withDefaults(defineProps<CCheckboxGroupProps>(), {
   options: () => [],
+  size: undefined,
+  gutterSize: undefined,
 })
 
 const emit = defineEmits<{
@@ -51,15 +65,20 @@ const onCheckStatusChange = (val: CCheckboxModel) => {
   }
   innerValue.value.splice(idx, 1)
 }
+
+const { gutterSize } = useFormProps(props)
 </script>
 <template>
-  <div class="c-checkbox-group">
-    <c-checkbox
-      v-for="op in optionsWithCheckStatus"
-      :key="op.value"
-      :label="op.label"
-      :model-value="op.checked"
-      @update:model-value="onCheckStatusChange(op.value)"
-    />
+  <div
+    class="c-checkbox-group c-row c-items-center c-wrap"
+    :class="[`c-gutter-${gutterSize}`]"
+  >
+    <div v-for="op in optionsWithCheckStatus" :key="op.value">
+      <c-checkbox
+        :label="op.label"
+        :model-value="op.checked"
+        @update:model-value="onCheckStatusChange(op.value)"
+      />
+    </div>
   </div>
 </template>
