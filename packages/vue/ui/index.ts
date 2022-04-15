@@ -61,6 +61,8 @@ import CForm from './src/components/form/CForm.vue'
 import CFormItem from './src/components/form/CFormItem.vue'
 import CRadioGroup from './src/components/form/CRadioGroup.vue'
 import useValidator from './src/components/form/useValidator'
+import CInnerLoading from './src/components/basic/loading/CInnerLoading.vue'
+import { vLoading } from './src/directives'
 
 const CasualUI: Plugin = {
   install: (app: App) => {
@@ -110,6 +112,9 @@ const CasualUI: Plugin = {
     app.component('CForm', CForm)
     app.component('CFormItem', CFormItem)
     app.component('CRadioGroup', CRadioGroup)
+    app.component('CInnerLoading', CInnerLoading)
+
+    app.directive('loading', vLoading)
 
     app.use(NotificationPlugin)
   },
@@ -169,6 +174,7 @@ export {
   useClickOutside,
   useInjectSize,
   useNotifications,
+  CInnerLoading,
   useInjectProp,
   useSizeThemeClass,
   useInjectTheme,
@@ -176,4 +182,5 @@ export {
   useDefaultVModel,
   useScreen,
   useValidator,
+  vLoading,
 }

@@ -30,7 +30,10 @@ const tableColumns = [
 ]
 </script>
 <template>
-  <c-table row-key="name" :data="tableData" :columns="tableColumns" />
+  <c-table
+    row-key="name"
+    :data="tableData"
+    :columns="tableColumns" />
 </template>
 ```
 
