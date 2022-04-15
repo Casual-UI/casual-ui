@@ -32,6 +32,10 @@ $radio-sizes: ("xs": 15px, "sm": 17.5px );
   &--selected {
     color: var(--casual-primary);
 
+    &.c-radio--has-error {
+      color: var(--casual-negative);
+    }
+
     .c-radio--inner-circle {
       transform: scale(1);
     }

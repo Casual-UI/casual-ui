@@ -424,7 +424,10 @@ const formItems = [
         { label: 'Female', value: 'female' },
         { label: 'Male', value: 'male' },
       ]
-    }
+    },
+    rules: [
+      v => v !== 'male' ? '只能选择Male！' : false
+    ]
   },
   {
     label: '生日',

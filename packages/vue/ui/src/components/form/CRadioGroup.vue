@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { CSize } from 'casual-types'
 import useFormProps from './useFormProps'
+import useValidator from './useValidator'
 
 interface CRadioGroups {
   /**
@@ -28,7 +29,7 @@ const props = withDefaults(defineProps<CRadioGroups>(), {
   gutterSize: undefined,
 })
 
-defineEmits<{
+const emit = defineEmits<{
   /**
    * 当前值变化时触发
    * @param newValue 新值
@@ -37,6 +38,13 @@ defineEmits<{
 }>()
 
 const { gutterSize } = useFormProps(props)
+
+const { validate } = useValidator()
+
+const onUpdateModelValue = (newValue: string | number) => {
+  emit('update:modelValue', newValue)
+  validate(newValue)
+}
 </script>
 <template>
   <div class="c-flex c-items-center c-wrap" :class="[`c-gutter-${gutterSize}`]">
@@ -45,7 +53,7 @@ const { gutterSize } = useFormProps(props)
         :model-value="modelValue"
         :label="label"
         :value="value"
-        @update:model-value="$emit('update:modelValue', $event)"
+        @update:model-value="onUpdateModelValue"
       />
     </div>
   </div>

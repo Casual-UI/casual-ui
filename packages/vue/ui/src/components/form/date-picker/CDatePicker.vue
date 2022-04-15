@@ -11,6 +11,7 @@ import {
   CYearPanel,
   CMonthPanel,
   CDatePanelHeader,
+  useClickOutside,
 } from 'casual-ui-vue'
 import { toRefs, watch, ref, computed } from 'vue'
 import type { CSize } from 'casual-types'
@@ -190,7 +191,6 @@ const onDateSet = () => {
   if (props.hideOnSelect) {
     show.value = false
   }
-  validate(innerValue)
 }
 const onUpdateUnit = (newUnit: Unit) => {
   if (newUnit === 'day') {
@@ -225,9 +225,11 @@ const onYearSet = (newDate: Date | null) => {
   }
   onUpdateUnit('month')
 }
+const datePickerContainer = ref<HTMLDivElement | null>(null)
 </script>
 <template>
   <div
+    ref="datePickerContainer"
     :class="[
       'c-date-picker',
       `c-font-${size}`,
@@ -239,6 +241,13 @@ const onYearSet = (newDate: Date | null) => {
       v-model="show"
       :width-within-parent="false"
       :disabled="disabled"
+      @update:model-value="
+        newValue => {
+          if (!newValue) {
+            validate(innerValue)
+          }
+        }
+      "
     >
       <c-input
         :model-value="displayValue"

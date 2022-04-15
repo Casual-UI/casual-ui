@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { CSize } from 'casual-types'
 import { useInjectSize, useDefaultVModel } from 'casual-ui-vue'
+import useValidator from './useValidator'
 
 type CRadioModel = boolean | string | number
 
@@ -53,6 +54,7 @@ const onClick = () => {
   }
   innerValue.value = props.value
 }
+const { hasError } = useValidator()
 </script>
 <template>
   <div
@@ -63,6 +65,9 @@ const onClick = () => {
       `c-radio--size-${provideSize}`,
       { 'c-radio--selected': innerValue === value },
       { 'c-radio--disabled': disabled },
+      {
+        'c-radio--has-error': hasError,
+      },
     ]"
     @click="onClick"
   >
