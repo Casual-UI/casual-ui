@@ -11,6 +11,7 @@ import {
 } from 'casual-ui-vue'
 import { matHighlightOff } from '@quasar/extras/material-icons'
 import type { CSize, CTheme } from 'casual-types'
+import useValidator from './useValidator'
 
 interface OInputProps {
   /**
@@ -73,6 +74,14 @@ interface OInputProps {
    * 是否使用自定义颜色状态，若设置为<code>true</code>，则聚焦不会触发边框颜色变更，包括背景色、边框色
    */
   customColor?: boolean
+  /**
+   * 表单验证触发时机，默认为<code>'blur'</code>
+   */
+  validateTrigger?: 'change' | 'blur' | 'focus' | 'manual'
+  /**
+   * 是否在聚焦时清除验证状态
+   */
+  clearValidateOnFocus?: boolean
 }
 
 const emit = defineEmits<{
@@ -107,6 +116,8 @@ const props = withDefaults(defineProps<OInputProps>(), {
   autoBlur: true,
   type: 'text',
   customColor: false,
+  validateTrigger: 'blur',
+  clearValidateOnFocus: true,
 })
 
 const { focused } = toRefs(props)
@@ -124,17 +135,27 @@ const { innerValue: innerFocused } = useVModel(focused, false, newFocused => {
   emit('update:focused', newFocused)
 })
 
-const innerValue = useDefaultVModel(props, emit)
+const { hasError, validate, clearValidate } = useValidator()
+
+const innerValue = useDefaultVModel(props, emit, {
+  beforeEmit: props.validateTrigger === 'change' ? validate : undefined,
+})
 
 const inputDom = ref<HTMLInputElement | null>(null)
 
 const onFocus = () => {
+  if (props.clearValidateOnFocus) {
+    clearValidate()
+  }
   innerFocused.value = true
 }
 
 const onBlur = () => {
   if (props.autoBlur) {
     innerFocused.value = false
+  }
+  if (props.validateTrigger === 'blur') {
+    validate(innerValue.value)
   }
 }
 
@@ -160,6 +181,7 @@ const onClearIconClick = () => {
       { 'c-input--loading': loading },
       `c-h-${innerSize}`,
       `c-px-${innerSize}`,
+      { 'c-input--has-error': hasError },
     ]"
   >
     <div :class="['c-input--content-wrapper']">

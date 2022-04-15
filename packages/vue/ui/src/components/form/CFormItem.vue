@@ -1,6 +1,14 @@
+<script lang="ts">
+export const hasErrorKey = Symbol('hasError')
+export const validateKey = Symbol('validate')
+export const clearValidateKey = Symbol('clearValidate')
+</script>
 <script lang="ts" setup>
 import type { CSize, CRule } from 'casual-types'
+import { computed, inject, provide, ref } from 'vue'
+import type { Ref } from 'vue'
 import useFormProps, { type LabelDirection } from './useFormProps'
+import { errorKey } from './CForm.vue'
 
 interface CFormItemProps {
   /**
@@ -67,6 +75,53 @@ const getLabelMarginPosition = (direction: LabelDirection) => {
     ['column-reverse', 't'],
   ]).get(direction)
 }
+
+const errorStatus = inject<
+  Ref<{
+    [key: string]: {
+      error: boolean
+      message: string
+    }
+  }>
+>(errorKey, ref({}))
+
+const hasError = computed(() => {
+  if (!errorStatus.value) return false
+  const errorObj = errorStatus.value[props.field]
+  if (!errorObj) return false
+  if (errorObj.error) return errorObj.message
+  return false
+})
+
+provide(hasErrorKey, hasError)
+
+const validate = async (v: any) => {
+  if (!props.rules) return
+  const errorObj = errorStatus.value[props.field]
+  if (!errorObj) return
+  errorObj.error = false
+  errorObj.message = ''
+  for (const rule of props.rules) {
+    const result = await rule(v)
+    if (result) {
+      errorObj.error = true
+      errorObj.message = result
+      break
+    }
+  }
+}
+
+const clearValidate = () => {
+  if (!errorStatus.value) return
+  const errorObj = errorStatus.value[props.field]
+  if (!errorObj) return
+  errorObj.error = false
+  errorObj.message = ''
+}
+
+provide(validateKey, validate)
+
+provide(clearValidateKey, clearValidate)
 </script>
 <template>
   <div
@@ -75,11 +130,9 @@ const getLabelMarginPosition = (direction: LabelDirection) => {
       `c-col-${col}`,
       `c-${labelDirection}`,
       isLabelVertical(labelDirection) ? 'c-items-start' : 'c-items-center',
+      { 'c-form-item--has-error': hasError },
     ]"
   >
-    <!-- 
-      @slot 表单项内容 
-    -->
     <div
       :class="[
         'c-form-item--label',
@@ -93,6 +146,14 @@ const getLabelMarginPosition = (direction: LabelDirection) => {
     >
       {{ label }}
     </div>
-    <slot />
+    <div class="c-form-item--content-wrapper">
+      <!-- 
+        @slot 表单项内容 
+      -->
+      <slot />
+      <Transition name="c-form-item--error-tip">
+        <div v-if="hasError" class="c-form-item--error-tip">{{ hasError }}</div>
+      </Transition>
+    </div>
   </div>
 </template>

@@ -25,20 +25,24 @@ const useVModel = <T>(
   }
 }
 
-type UseDefaultVModel = <T, S extends BaseVModelEmit<T> = BaseVModelEmit<T>>(
-  props: Readonly<BaseVModelProps<T>>,
-  emit: S
-) => Ref<T>
+interface VModelHooks<T> {
+  beforeEmit?: (newInnerValue: UnwrapRef<T>) => void
+}
 
-export const useDefaultVModel: UseDefaultVModel = <
+export const useDefaultVModel = <
   T,
   S extends BaseVModelEmit<T> = BaseVModelEmit<T>
 >(
   props: Readonly<BaseVModelProps<T>>,
-  emit: S
+  emit: S,
+  hooks?: VModelHooks<T>
 ) => {
   const { modelValue } = toRefs(props)
   const { innerValue } = useVModel(modelValue, modelValue.value, newValue => {
+    if (hooks) {
+      const { beforeEmit } = hooks
+      beforeEmit?.(newValue)
+    }
     emit('update:modelValue', newValue)
   })
   return innerValue

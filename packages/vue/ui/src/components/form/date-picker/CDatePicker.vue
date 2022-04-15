@@ -16,6 +16,7 @@ import { toRefs, watch, ref, computed } from 'vue'
 import type { CSize } from 'casual-types'
 import { matCalendarToday } from '@quasar/extras/material-icons'
 import useUnit from './useUnit'
+import useValidator from '../useValidator'
 
 type Unit = 'year' | 'month' | 'day'
 
@@ -128,6 +129,8 @@ const emit = defineEmits<{
   (e: 'update:unit', newUnit: Unit): void
 }>()
 
+const { validate } = useValidator()
+
 const innerUnit = useUnit(emit, props)
 
 const innerValue = useDefaultVModel(props, emit)
@@ -187,6 +190,7 @@ const onDateSet = () => {
   if (props.hideOnSelect) {
     show.value = false
   }
+  validate(innerValue)
 }
 const onUpdateUnit = (newUnit: Unit) => {
   if (newUnit === 'day') {
@@ -242,10 +246,12 @@ const onYearSet = (newDate: Date | null) => {
         :placeholder="placeholder"
         :disabled="disabled"
         clearable
+        validate-trigger="manual"
         @clear="
           () => {
             innerValue = null
             innerRange = [null, null]
+            validate(innerValue)
           }
         "
       >

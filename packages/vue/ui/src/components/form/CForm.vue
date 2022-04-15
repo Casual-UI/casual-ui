@@ -1,7 +1,12 @@
+<script lang="ts">
+export const errorKey = Symbol('errorStatus')
+</script>
+
 <script setup lang="ts">
 import useFormProps, { type LabelDirection } from './useFormProps'
 import CFormItem from './CFormItem.vue'
 import type { Component } from 'vue'
+import { provide, ref } from 'vue'
 import type { CRule, CSize } from 'casual-types'
 import { useDefaultVModel } from '../../usable/useVModel'
 
@@ -123,6 +128,21 @@ const getComponent = (component?: FormItemComponent) => {
   }
   return component
 }
+
+const errorStatus = ref(
+  props.items.reduce(
+    (obj, { field }) => ({
+      ...obj,
+      [field]: {
+        error: false,
+        message: '',
+      },
+    }),
+    {}
+  )
+)
+
+provide(errorKey, errorStatus)
 </script>
 <template>
   <div
@@ -142,6 +162,7 @@ const getComponent = (component?: FormItemComponent) => {
         :label="item.label"
         :field="item.field"
         :col="item.col"
+        :rules="item.rules"
       >
         <!-- 
           @slot  

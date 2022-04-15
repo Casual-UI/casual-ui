@@ -395,6 +395,70 @@ const spans = [2, 3, 4, 6, 12]
 </template>
 ```
 
+### 表单验证
+
+```vue live
+<script setup>
+import { ref } from 'vue'
+const formData = ref({
+  name: 'Micheal Jackson',
+  gender: 'male',
+  birthday: new Date('August 29, 1958'),
+  industry: 'Entertainment'
+})
+
+const formItems = [
+  {
+    field: 'name',
+    label: '姓名',
+    rules: [
+      v => !v ? '请输入姓名' : false
+    ]
+  },
+  {
+    label: '性别',
+    field: 'gender',
+    component: 'radio-group',
+    componentProps: {
+      options: [
+        { label: 'Female', value: 'female' },
+        { label: 'Male', value: 'male' },
+      ]
+    }
+  },
+  {
+    label: '生日',
+    field: 'birthday',
+    component: 'date-picker',
+    componentProps: {
+      format: 'MMM DD, YYYY'
+    },
+    rules: [
+      v => !v ? '请选择日期' : false
+    ]
+  },
+  {
+    label: '行业',
+    field: 'industry',
+    component: 'select',
+    componentProps: {
+      options: [
+        { label: 'IT', value: 'IT' },
+        { label: 'Medical', value: 'Medical' },
+        { label: 'Entertainment', value: 'Entertainment' },
+        { label: 'Transportation', value: 'Transportation' }
+      ]
+    }
+  }
+]
+</script>
+<template>
+  <c-form v-model="formData" :items="formItems" class="c-pa-md" />
+</template>
+```
+
+
 ::: tip 提示
 表单项的所有与表单整体同名的配置可以覆盖表单整体的配置
 :::
+

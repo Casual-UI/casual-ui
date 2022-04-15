@@ -25,6 +25,13 @@
       @include input-before;
     }
 
+    &.c-input--has-error {
+      &::before {
+        opacity: 1;
+        border-color: var(--casual-negative);
+      }
+    }
+
     &:not(.c-input--disabled):not(.c-input--focused):not(.c-input--loading):hover {
       background-color: var(--casual-input-bg-darker);
     }
