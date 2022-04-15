@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { CTheme, CSize } from 'casual-types'
 import { useDefaultVModel, useInjectSize, useInjectTheme } from 'casual-ui-vue'
+import useValidator from './useValidator'
 
 type CCheckboxModel = boolean | string | number
 interface CCheckboxProps {
@@ -56,6 +57,8 @@ const onClick = () => {
   innerValue.value =
     innerValue.value === props.checkedValue ? false : props.checkedValue
 }
+
+const { hasError } = useValidator()
 </script>
 <template>
   <div
@@ -69,6 +72,9 @@ const onClick = () => {
       },
       {
         'c-checkbox--disabled': disabled,
+      },
+      {
+        'c-checkbox--has-error': hasError,
       },
     ]"
     @click="onClick"

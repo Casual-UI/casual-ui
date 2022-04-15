@@ -3,6 +3,7 @@ import type { CSize } from 'casual-types'
 import { useVModel, CCheckbox } from 'casual-ui-vue'
 import { computed, toRefs } from 'vue'
 import useFormProps from './useFormProps'
+import useValidator from './useValidator'
 type CCheckboxModel = boolean | string | number
 
 interface CCheckboxGroupProps {
@@ -56,14 +57,15 @@ const optionsWithCheckStatus = computed(() =>
     checked: innerValue.value.some(v => v === op.value),
   }))
 )
-
+const { validate } = useValidator()
 const onCheckStatusChange = (val: CCheckboxModel) => {
   const idx = innerValue.value.findIndex(v => v === val)
   if (idx === -1) {
     innerValue.value.push(val)
-    return
+  } else {
+    innerValue.value.splice(idx, 1)
   }
-  innerValue.value.splice(idx, 1)
+  validate(innerValue.value)
 }
 
 const { gutterSize } = useFormProps(props)

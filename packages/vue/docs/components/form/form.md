@@ -467,7 +467,10 @@ const formItems = [
         { label: '摇滚', value: 'Rock' },
         { label: '肝剧', value: 'TV Series' },
       ]
-    }
+    },
+    rules: [
+      v => v.length < 2 ? '请至少选择两项' : false
+    ]
   }
 ]
 </script>

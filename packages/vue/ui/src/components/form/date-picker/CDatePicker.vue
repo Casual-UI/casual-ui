@@ -11,7 +11,6 @@ import {
   CYearPanel,
   CMonthPanel,
   CDatePanelHeader,
-  useClickOutside,
 } from 'casual-ui-vue'
 import { toRefs, watch, ref, computed } from 'vue'
 import type { CSize } from 'casual-types'

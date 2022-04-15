@@ -27,6 +27,18 @@
     margin-left: 4px;
   }
 
+  &--has-error {
+    .c-checkbox {
+      &--label {
+        color: var(--casual-negative);
+      }
+
+      &--check-wrapper {
+        border-color: var(--casual-negative);
+      }
+    }
+  }
+
   &--checked {
     &.c-checkbox--theme {
       &-primary {
@@ -40,7 +52,7 @@
             stroke-dashoffset: 0;
           }
 
-          &--label {
+          &--label:not(.c-checkbox--has-error) {
             color: var(--casual-primary);
           }
         }
