@@ -393,13 +393,17 @@ const spans = [2, 3, 4, 6, 12]
       :key="s"
       v-model="col"
       :label="s"
-      :value="s" />
+      :value="s"
+    />
   </div>
   <c-form v-model="formData" :items="formItems" :col="col" />
 </template>
 ```
 
-### 表单验证
+### 表单验证 & 异步验证 & 验证状态
+
+下面的示例中：  
+爱好一栏，具有一个异步验证规则
 
 ```vue live
 <script setup>
@@ -413,7 +417,7 @@ const formData = ref({
   industry: 'Entertainment',
   hobbies: ['Work out', 'Rock']
 })
-
+const validating = ref(false)
 const formItems = [
   {
     field: 'name',
@@ -478,29 +482,38 @@ const formItems = [
       ]
     },
     rules: [
-      v => v.length < 2 ? '请至少选择两项' : false
+      v => v.length < 2 ? '请至少选择两项' : false,
+      // 异步验证
+      () => new Promise(resolve => {
+        setTimeout(() => {
+          resolve(false)
+        }, 3000)
+      })
     ]
   }
 ]
+
 const { open } = useNotifications()
 const form = ref(null)
 const doValidate = () => {
-  form.value?.validate().then(() => {
-    open({
-      title: '提示',
-      message: '验证通过！'
+  form.value?.validate()
+    .then(() => {
+      open({
+        title: '提示',
+        message: '验证通过！'
+      })
     })
-  })
 }
 </script>
 <template>
   <c-form
     ref="form"
     v-model="formData"
+    v-model:validating="validating"
     :items="formItems"
     class="c-pa-md"
   />
-  <c-button label="提交" @click="doValidate" />
+  <c-button label="提交" :loading="validating" @click="doValidate" />
 </template>
 ```
 

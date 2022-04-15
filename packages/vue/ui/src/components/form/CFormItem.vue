@@ -60,6 +60,11 @@ const props = withDefaults(defineProps<CFormItemProps>(), {
   labelAlign: undefined,
 })
 
+const emit = defineEmits<{
+  (e: 'validate-start'): void
+  (e: 'validate-end'): void
+}>()
+
 const { col, labelDirection, size, labelWidth, labelAlign } =
   useFormProps(props)
 
@@ -95,7 +100,10 @@ const hasError = computed(() => {
 
 provide(hasErrorKey, hasError)
 
-const validators = inject(validatorsKey, [] as ((formData: any) => void)[])
+const validators = inject(
+  validatorsKey,
+  [] as ((formData: any) => Promise<void>)[]
+)
 
 const validate = async (v: any) => {
   if (!props.rules) return
@@ -103,6 +111,7 @@ const validate = async (v: any) => {
   if (!errorObj) return
   errorObj.error = false
   errorObj.message = ''
+  emit('validate-start')
   for (const rule of props.rules) {
     const result = await rule(v)
     if (result) {
@@ -111,6 +120,7 @@ const validate = async (v: any) => {
       break
     }
   }
+  emit('validate-end')
 }
 
 validators.push(fd => validate(fd[props.field]))

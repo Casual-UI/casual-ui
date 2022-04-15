@@ -1,6 +1,8 @@
 <script lang="ts">
 export const errorKey = Symbol('errorStatus')
 export const validatorsKey = Symbol('validators')
+
+export default {}
 </script>
 
 <script setup lang="ts">
@@ -99,6 +101,11 @@ interface CFormProps {
    * 表单项间隔尺寸
    */
   gutterSize?: CSize
+
+  /**
+   * 是否在验证中
+   */
+  validating?: boolean
 }
 
 const emit = defineEmits<{
@@ -106,6 +113,10 @@ const emit = defineEmits<{
    * 表单绑定值变化时触发
    */
   (e: 'update:modelValue', value: object): void
+  /**
+   * 表单验证进行中状态变更触发
+   */
+  (e: 'update:validating', value: boolean): void
 }>()
 
 const props = withDefaults(defineProps<CFormProps>(), {
@@ -150,17 +161,37 @@ const errorStatus = ref<{
 )
 
 provide(errorKey, errorStatus)
-const validators: ((formData: any) => void)[] = []
+const validators: ((formData: any) => Promise<void>)[] = []
 provide(validatorsKey, validators)
-const validate = () =>
-  new Promise<void>(resolve => {
+const validatingCount = ref(0)
+
+const addOneValidate = () => {
+  if (validatingCount.value === 0) {
+    emit('update:validating', true)
+  }
+  validatingCount.value++
+}
+
+const reduceOneValidate = () => {
+  validatingCount.value--
+  if (validatingCount.value === 0) {
+    emit('update:validating', false)
+  }
+}
+const validate = () => {
+  return new Promise<void>(resolve => {
     validators.forEach(validator => validator(innerValue.value))
-    nextTick(() => {
-      if (Object.values(errorStatus.value).every(({ error }) => !error)) {
-        resolve()
+    Promise.all(validators.map(validator => validator(innerValue.value))).then(
+      () => {
+        nextTick(() => {
+          if (Object.values(errorStatus.value).every(({ error }) => !error)) {
+            resolve()
+          }
+        })
       }
-    })
+    )
   })
+}
 defineExpose({
   validate,
 })
@@ -184,6 +215,8 @@ defineExpose({
         :field="item.field"
         :col="item.col"
         :rules="item.rules"
+        @validate-start="addOneValidate"
+        @validate-end="reduceOneValidate"
       >
         <!-- 
           @slot  
