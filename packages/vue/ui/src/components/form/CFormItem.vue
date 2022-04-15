@@ -8,7 +8,7 @@ import type { CSize, CRule } from 'casual-types'
 import { computed, inject, provide, ref } from 'vue'
 import type { Ref } from 'vue'
 import useFormProps, { type LabelDirection } from './useFormProps'
-import { errorKey } from './CForm.vue'
+import { errorKey, validatorsKey } from './CForm.vue'
 
 interface CFormItemProps {
   /**
@@ -95,6 +95,8 @@ const hasError = computed(() => {
 
 provide(hasErrorKey, hasError)
 
+const validators = inject(validatorsKey, [] as ((formData: any) => void)[])
+
 const validate = async (v: any) => {
   if (!props.rules) return
   const errorObj = errorStatus.value[props.field]
@@ -110,6 +112,8 @@ const validate = async (v: any) => {
     }
   }
 }
+
+validators.push(fd => validate(fd[props.field]))
 
 const clearValidate = () => {
   if (!errorStatus.value) return

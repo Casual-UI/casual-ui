@@ -1,5 +1,6 @@
 <script lang="ts">
 export const errorKey = Symbol('errorStatus')
+export const validatorsKey = Symbol('validators')
 </script>
 
 <script setup lang="ts">
@@ -9,6 +10,7 @@ import type { Component } from 'vue'
 import { provide, ref } from 'vue'
 import type { CRule, CSize } from 'casual-types'
 import { useDefaultVModel } from '../../usable/useVModel'
+import { nextTick } from 'process'
 
 interface Option {
   value: string | number
@@ -129,7 +131,12 @@ const getComponent = (component?: FormItemComponent) => {
   return component
 }
 
-const errorStatus = ref(
+const errorStatus = ref<{
+  [key: string]: {
+    error: boolean
+    message: string
+  }
+}>(
   props.items.reduce(
     (obj, { field }) => ({
       ...obj,
@@ -143,6 +150,20 @@ const errorStatus = ref(
 )
 
 provide(errorKey, errorStatus)
+const validators: ((formData: any) => void)[] = []
+provide(validatorsKey, validators)
+const validate = () =>
+  new Promise<void>(resolve => {
+    validators.forEach(validator => validator(innerValue.value))
+    nextTick(() => {
+      if (Object.values(errorStatus.value).every(({ error }) => !error)) {
+        resolve()
+      }
+    })
+  })
+defineExpose({
+  validate,
+})
 </script>
 <template>
   <div

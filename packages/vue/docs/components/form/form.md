@@ -400,12 +400,14 @@ const spans = [2, 3, 4, 6, 12]
 ```vue live
 <script setup>
 import { ref } from 'vue'
+import { useNotifications } from 'casual-ui-vue'
+
 const formData = ref({
   name: 'Micheal Jackson',
   gender: 'male',
   birthday: new Date('August 29, 1958'),
   industry: 'Entertainment',
-  hobbies: []
+  hobbies: ['Work out', 'Rock']
 })
 
 const formItems = [
@@ -476,9 +478,25 @@ const formItems = [
     ]
   }
 ]
+const { open } = useNotifications()
+const form = ref(null)
+const doValidate = () => {
+  form.value?.validate().then(() => {
+    open({
+      title: '提示',
+      message: '验证通过！'
+    })
+  })
+}
 </script>
 <template>
-  <c-form v-model="formData" :items="formItems" class="c-pa-md" />
+  <c-form
+    ref="form"
+    v-model="formData"
+    :items="formItems"
+    class="c-pa-md"
+  />
+  <c-button label="提交" @click="doValidate" />
 </template>
 ```
 
