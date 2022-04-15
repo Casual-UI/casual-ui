@@ -48,6 +48,10 @@ const industryOptions = [
 
 ### 配置式
 
+::: warning 注意
+如果使用配置式，请确保全局使用了CasualUI，或者你也可以全局手动注册所有的表单相关组件
+:::
+
 ```vue live
 <script setup>
 import { ref } from 'vue'
