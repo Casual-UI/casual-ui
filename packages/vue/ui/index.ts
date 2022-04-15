@@ -60,6 +60,7 @@ import useScreen from './src/usable/useScreen'
 import CForm from './src/components/form/CForm.vue'
 import CFormItem from './src/components/form/CFormItem.vue'
 import CRadioGroup from './src/components/form/CRadioGroup.vue'
+import useValidator from './src/components/form/useValidator'
 
 const CasualUI: Plugin = {
   install: (app: App) => {
@@ -174,4 +175,5 @@ export {
   useVModel,
   useDefaultVModel,
   useScreen,
+  useValidator,
 }

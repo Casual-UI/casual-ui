@@ -8,6 +8,14 @@ A casual ui library for both Vue3+ and React17+
 
 [简体中文](./README.zh_CN.md)
 
+### Features
+
+* Small size
+* Written in TS
+* Support for dark mode
+* Support for customize theme color
+* Strong and flexible config form
+
 ### Online Demos & Docs
 
 * [Casual UI - React](https://casual-ui-react.donsen.site/)
