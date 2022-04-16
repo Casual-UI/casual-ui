@@ -19,6 +19,53 @@ const iconsRoutes = [
   '/icons-preview/mdi-v6/',
 ]
 
+const componentsRoutes = [
+  {
+    text: '基础组件',
+    children: [
+      '/components/button/',
+      '/components/loading/',
+      '/components/icon/',
+      '/components/tag/',
+    ],
+  },
+  {
+    text: '表单',
+    children: [
+      '/components/form/input',
+      '/components/form/select/',
+      '/components/form/radio/',
+      '/components/form/checkbox/',
+      '/components/form/toggle/',
+      '/components/form/date-picker/',
+      '/components/form/form/',
+    ],
+  },
+  {
+    text: '交互',
+    children: [
+      '/components/interact/expansion/',
+      '/components/interact/dropdown/',
+      '/components/interact/tabs/',
+    ],
+  },
+  {
+    text: '反馈',
+    children: [
+      '/components/feedback/tooltip/',
+      '/components/feedback/dialog/',
+      '/components/feedback/notification/',
+    ],
+  },
+  {
+    text: '数据展示',
+    children: [
+      '/components/data-presentation/table/',
+      '/components/data-presentation/list/',
+    ],
+  },
+]
+
 export default defineUserConfig<
   DefaultThemeOptions,
   {
@@ -125,15 +172,15 @@ export default defineUserConfig<
         ],
       },
       {
+        text: '组件',
+        children: componentsRoutes,
+      },
+      {
         text: '功能',
         children: [
           {
             text: '全局工具样式',
             link: '/global-style-utils/',
-          },
-          {
-            text: '组件',
-            link: '/components/',
           },
           {
             text: '可组合',
@@ -150,56 +197,7 @@ export default defineUserConfig<
       '/guide/': ['/guide/install/', '/guide/theme-customize/'],
       '/usable/': ['/usable/', '/usable/useClickOutside/'],
       '/global-style-utils/': ['/global-style-utils/'],
-      '/components/': [
-        {
-          text: '简介',
-          link: '/components/',
-        },
-        {
-          text: '基础组件',
-          children: [
-            '/components/button/',
-            '/components/loading/',
-            '/components/icon/',
-            '/components/tag/',
-          ],
-        },
-        {
-          text: '表单',
-          children: [
-            '/components/form/input',
-            '/components/form/select/',
-            '/components/form/radio/',
-            '/components/form/checkbox/',
-            '/components/form/toggle/',
-            '/components/form/date-picker/',
-            '/components/form/form/',
-          ],
-        },
-        {
-          text: '交互',
-          children: [
-            '/components/interact/expansion/',
-            '/components/interact/dropdown/',
-            '/components/interact/tabs/',
-          ],
-        },
-        {
-          text: '反馈',
-          children: [
-            '/components/feedback/tooltip/',
-            '/components/feedback/dialog/',
-            '/components/feedback/notification/',
-          ],
-        },
-        {
-          text: '数据展示',
-          children: [
-            '/components/data-presentation/table/',
-            '/components/data-presentation/list/',
-          ],
-        },
-      ],
+      '/components/': componentsRoutes,
       '/icons-preview/': iconsRoutes,
     },
   },
