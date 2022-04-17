@@ -16,6 +16,10 @@ features:
     details: 可以自定义你的主题
   - title: TS编写
     details: 友好的类型提示
+  - title: 灵活且强大的表单
+    details: 可配置&可自定义的表单
+  - title: 超小的代码体积
+    details: 无不必要的第三方库，所有复用逻辑均自主实现
 footer: MIT Licensed | Copyright © 2022-present Casual UI
 ---
 
