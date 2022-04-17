@@ -589,9 +589,94 @@ const formItems = [
 </template>
 ```
 
+### 自定义表单组件<Badge>高级</Badge>
+
+自写组件，可以使用`useValidator`获取当前表单项所处表单验证上下文，从而自定义验证方法、清除验证状态调用时机，以及错误状态的样式表现
+
+<c-tabs v-model="activeTab" :items="[{ name: 'CustomInput.vue' }, { name: '使用' }]">
+  <template #body-CustomInput.vue>
+
+@[code vue](./CustomInput.vue)
+  
+  </template>
+  <template #body-使用>
+
+```vue live
+<script setup>
+import { ref } from 'vue'
+import CustomInput from '@doc/components/form/CustomInput.vue'
+
+const formData = ref({
+  name: 'Micheal Jackson',
+  gender: 'male',
+  birthday: new Date('August 29, 1958'),
+  industry: 'Entertainment',
+  customField: 'custom value'
+})
+
+const formItems = [
+  { field: 'name', label: '姓名' },
+  {
+    label: '性别',
+    field: 'gender',
+    component: 'radio-group',
+    componentProps: {
+      options: [
+        { label: 'Female', value: 'female' },
+        { label: 'Male', value: 'male' },
+      ]
+    }
+  },
+  {
+    label: '生日',
+    field: 'birthday',
+    component: 'date-picker',
+    componentProps: {
+      format: 'MMM DD, YYYY'
+    }
+  },
+  {
+    label: '行业',
+    field: 'industry',
+    component: 'select',
+    componentProps: {
+      options: [
+        { label: 'IT', value: 'IT' },
+        { label: 'Medical', value: 'Medical' },
+        { label: 'Entertainment', value: 'Entertainment' },
+        { label: 'Transportation', value: 'Transportation' }
+      ]
+    }
+  },
+  {
+    label: '自定义项',
+    field: 'customField',
+    component: CustomInput,
+    rules: [
+      v => {
+        return v === 'custom value' ? false : '只能输入“custom value”'
+      }
+    ]
+  }
+]
+</script>
+<template>
+  <c-form v-model="formData" :items="formItems" class="c-pa-md" />
+</template>
+```
+
+  </template>
+</c-tabs>
+
+
 
 
 ::: tip 提示
 表单项的所有与表单整体同名的配置可以覆盖表单整体的配置
 :::
 
+
+<script setup>
+import { ref } from 'vue'
+const activeTab = ref('CustomInput.vue')
+</script>

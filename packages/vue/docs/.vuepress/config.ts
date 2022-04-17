@@ -201,4 +201,13 @@ export default defineUserConfig<
       '/icons-preview/': iconsRoutes,
     },
   },
+  bundlerConfig: {
+    viteOptions: {
+      resolve: {
+        alias: {
+          '@doc': path.resolve(__dirname, '../'),
+        },
+      },
+    },
+  },
 })
