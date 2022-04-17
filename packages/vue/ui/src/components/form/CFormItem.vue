@@ -61,7 +61,13 @@ const props = withDefaults(defineProps<CFormItemProps>(), {
 })
 
 const emit = defineEmits<{
+  /**
+   * 开始验证触发
+   */
   (e: 'validate-start'): void
+  /**
+   * 结束验证触发
+   */
   (e: 'validate-end'): void
 }>()
 
@@ -163,8 +169,15 @@ provide(clearValidateKey, clearValidate)
     <div class="c-form-item--content-wrapper">
       <!-- 
         @slot 表单项内容 
+          @binding {Function} validate 当前表单项验证方法
+          @binding {Function} clear-validate 当前表单项清除验证方法
+          @binding {boolean} has-error 当前表单项是否有错误
       -->
-      <slot />
+      <slot
+        :validate="validate"
+        :clear-validate="clearValidate"
+        :has-error="hasError"
+      />
       <Transition name="c-form-item--error-tip">
         <div v-if="hasError" class="c-form-item--error-tip">{{ hasError }}</div>
       </Transition>

@@ -517,6 +517,77 @@ const doValidate = () => {
 </template>
 ```
 
+### 自定义表单项
+
+```vue live
+<script setup>
+import { ref } from 'vue'
+const formData = ref({
+  name: 'Micheal Jackson',
+  gender: 'male',
+  birthday: new Date('August 29, 1958'),
+  industry: 'Entertainment',
+  customField: 'custom value'
+})
+
+const formItems = [
+  { field: 'name', label: '姓名' },
+  {
+    label: '性别',
+    field: 'gender',
+    component: 'radio-group',
+    componentProps: {
+      options: [
+        { label: 'Female', value: 'female' },
+        { label: 'Male', value: 'male' },
+      ]
+    }
+  },
+  {
+    label: '生日',
+    field: 'birthday',
+    component: 'date-picker',
+    componentProps: {
+      format: 'MMM DD, YYYY'
+    }
+  },
+  {
+    label: '行业',
+    field: 'industry',
+    component: 'select',
+    componentProps: {
+      options: [
+        { label: 'IT', value: 'IT' },
+        { label: 'Medical', value: 'Medical' },
+        { label: 'Entertainment', value: 'Entertainment' },
+        { label: 'Transportation', value: 'Transportation' }
+      ]
+    }
+  },
+  {
+    label: '自定义项',
+    field: 'customField',
+    rules: [
+      v => v === 'custom value' ? false : '只能输入“custom value”'
+    ]
+  }
+]
+</script>
+<template>
+  <c-form v-model="formData" :items="formItems" class="c-pa-md">
+    <template #customField="{ validate, clearValidate, hasError }">
+      <input
+        v-model="formData.customField"
+        :style="{ color: hasError ? 'red' : 'inherit' }"
+        @blur="validate"
+        @focus="clearValidate"
+      />
+    </template>
+  </c-form>
+</template>
+```
+
+
 
 ::: tip 提示
 表单项的所有与表单整体同名的配置可以覆盖表单整体的配置

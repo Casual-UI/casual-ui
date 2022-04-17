@@ -221,17 +221,31 @@ defineExpose({
         @validate-start="addOneValidate"
         @validate-end="reduceOneValidate"
       >
-        <!-- 
-          @slot  
-          @name [field] - 表单项的自定义内容，field为表单项的field属性
-        -->
-        <slot :name="item.field">
-          <Component
-            :is="getComponent(item.component)"
-            v-model="innerValue[item.field]"
-            v-bind="item.componentProps"
-          />
-        </slot>
+        <template
+          #default="{ validate: validateCurrentItem, clearValidate, hasError }"
+        >
+          <!-- 
+            @slot  
+            @name [field] - 表单项的自定义内容，field为表单项的field属性
+              @binding {Function} validate 当前表单项验证方法，调用立即触发当前表单项验证
+              @binding {Function} clearValidate 当前表单项清除验证方法，调用立即清除当前表单项验证
+              @binding {boolean} hasError 当前表单项是否有错误
+          -->
+          <slot
+            :name="item.field"
+            v-bind="{
+              validate: () => validateCurrentItem(modelValue[item.field]),
+              clearValidate,
+              hasError,
+            }"
+          >
+            <Component
+              :is="getComponent(item.component)"
+              v-model="innerValue[item.field]"
+              v-bind="item.componentProps"
+            />
+          </slot>
+        </template>
       </c-form-item>
     </slot>
   </div>

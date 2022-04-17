@@ -119,3 +119,19 @@ $text-aligns: left, right, center, justify, start, end, justify-all, match-paren
     text-align: $align;
   }
 }
+
+.c-text-primary {
+  color: var(--casual-primary);
+}
+
+.c-text-secondary {
+  color: var(--casual-secondary);
+}
+
+.c-text-warning {
+  color: var(--casual-warning);
+}
+
+.c-text-negative {
+  color: var(--casual-negative);
+}
