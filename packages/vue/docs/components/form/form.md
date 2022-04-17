@@ -519,6 +519,8 @@ const doValidate = () => {
 
 ### 自定义表单项
 
+通过`#[field]`插槽来自定义某个表单项，并且通过`{ validate, clearValidate, hasError }`来自定义触发验证、清除验证的调用时机，以及错误状态的样式表现
+
 ```vue live
 <script setup>
 import { ref } from 'vue'
