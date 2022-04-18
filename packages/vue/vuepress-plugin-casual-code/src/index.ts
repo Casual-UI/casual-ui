@@ -134,7 +134,12 @@ const markdownItVueDemoCodeBlock: Plugin<CasualCodePluginOptions> = options => {
           `./.temp/${hooksAPIPath}.json`
         )
         execSync(
-          `npx typedoc ${options.componentsBasePath}../${hooksAPIPath}.ts --json ${typesJsonPath}`
+          `npx typedoc ${
+            options.componentsBasePath
+          }../${hooksAPIPath}.ts --json ${typesJsonPath} --tsconfig ${path.resolve(
+            __dirname,
+            '../../tsconfig.json'
+          )}`
         )
         page.frontmatter.hooksInfo = require(typesJsonPath)
       }
