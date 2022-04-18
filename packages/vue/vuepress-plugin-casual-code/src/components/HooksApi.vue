@@ -79,6 +79,12 @@ const getParamDisplayString = (parameters: any[]) => {
           </code>
           {{ item.signatures[0].comment.shortText }}
         </div>
+        <div v-else-if="item.kindString === 'Type alias'">
+          <code> {{ item.name }} </code>:
+          <code>{{
+            getTypeDisplayString(item.type.declaration.signatures[0].type)
+          }}</code>
+        </div>
       </template>
     </c-list>
   </div>
