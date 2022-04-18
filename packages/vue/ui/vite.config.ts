@@ -6,7 +6,7 @@ import vitePluginVueAutoName from 'vite-plugin-vue-auto-name'
 const CWD_PATH = process.cwd()
 
 export default defineConfig({
-  plugins: [vue(), vitePluginVueAutoName()],
+  plugins: [vue, vitePluginVueAutoName],
   build: {
     outDir: 'dist',
     lib: {

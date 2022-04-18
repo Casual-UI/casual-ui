@@ -1,5 +1,6 @@
 ---
 title: 元素外部点击（useClickOutside）
+hooksPath: usable/useClickOutside
 ---
 
 ### 示例

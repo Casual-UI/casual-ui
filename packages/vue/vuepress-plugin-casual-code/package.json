@@ -5,7 +5,8 @@
   "dependencies": {
     "casual-ui-vue": "workspace:*",
     "uid": "^2.0.0",
-    "vue": "^3.2.31"
+    "vue": "^3.2.31",
+    "typedoc": "^0.22.15"
   },
   "main": "./src/index.ts",
   "scripts": {},

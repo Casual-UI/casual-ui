@@ -5,6 +5,7 @@ import type { Ref } from 'vue'
 import type { ComponentDoc } from 'vue-docgen-api'
 import TypeDom from './TypeDom.vue'
 import ItemDom from './ItemDom.vue'
+import { CList } from 'casual-ui-vue'
 
 interface SlotDesc {
   name: string

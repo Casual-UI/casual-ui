@@ -2,6 +2,7 @@ import { uid } from 'uid'
 import type { Plugin } from 'vuepress'
 import { parse } from 'vue-docgen-api'
 import { path } from '@vuepress/utils'
+import { execSync } from 'child_process'
 
 const componentDocMdContent = (name: string, doc?: boolean) => `
 ### ${name} API
@@ -31,7 +32,8 @@ const markdownItVueDemoCodeBlock: Plugin<CasualCodePluginOptions> = options => {
       md.render = function (src, env) {
         const { frontmatter = {} } = env
 
-        const { componentPath, additionalComponentPaths } = frontmatter
+        const { componentPath, additionalComponentPaths, hooksPath } =
+          frontmatter
 
         let result = src
         if (componentPath) {
@@ -48,6 +50,13 @@ const markdownItVueDemoCodeBlock: Plugin<CasualCodePluginOptions> = options => {
             .map(({ name }) => componentDocMdContent(name, true))
             .join('\n')}`
         }
+
+        if (hooksPath) {
+          result = `${result} \n ### ${hooksPath
+            .split('/')
+            .pop()} API \n <HooksApi />`
+        }
+
         return defaultRender(result, env)
       }
 
@@ -117,6 +126,14 @@ const markdownItVueDemoCodeBlock: Plugin<CasualCodePluginOptions> = options => {
             )
           )) as any
         }
+      }
+      const hooksAPIPath = page.frontmatter.hooksPath
+      if (hooksAPIPath) {
+        const typesJsonPath = path.resolve(__dirname, './.temp/types.json')
+        execSync(
+          `npx typedoc ${options.componentsBasePath}../${hooksAPIPath}.ts --json ${typesJsonPath}`
+        )
+        page.frontmatter.hooksInfo = require(typesJsonPath)
       }
     },
   }
