@@ -195,7 +195,11 @@ export default defineUserConfig<
     ],
     sidebar: {
       '/guide/': ['/guide/install/', '/guide/theme-customize/'],
-      '/usable/': ['/usable/', '/usable/useClickOutside/'],
+      '/usable/': [
+        '/usable/',
+        '/usable/useClickOutside/',
+        '/usable/useFormValidator/',
+      ],
       '/global-style-utils/': ['/global-style-utils/'],
       '/components/': componentsRoutes,
       '/icons-preview/': iconsRoutes,

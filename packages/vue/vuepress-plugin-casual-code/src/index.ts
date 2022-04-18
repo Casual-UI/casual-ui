@@ -129,7 +129,10 @@ const markdownItVueDemoCodeBlock: Plugin<CasualCodePluginOptions> = options => {
       }
       const hooksAPIPath = page.frontmatter.hooksPath
       if (hooksAPIPath) {
-        const typesJsonPath = path.resolve(__dirname, './.temp/types.json')
+        const typesJsonPath = path.resolve(
+          __dirname,
+          `./.temp/${hooksAPIPath}.json`
+        )
         execSync(
           `npx typedoc ${options.componentsBasePath}../${hooksAPIPath}.ts --json ${typesJsonPath}`
         )

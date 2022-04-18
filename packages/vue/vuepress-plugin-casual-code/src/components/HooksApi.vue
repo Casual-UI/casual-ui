@@ -8,6 +8,10 @@ const funcName = frontmatter.value.hooksPath.split('/').pop()
 const items = computed(() => frontmatter.value.hooksInfo.children)
 
 const getTypeDisplayString = (type: any) => {
+  if (type.type === 'literal') return type.value === false ? 'false' : 'true'
+  if (type.type === 'union') {
+    return type.types.map(getTypeDisplayString).join(' | ')
+  }
   if (!type.typeArguments || !type.typeArguments.length) {
     return type.name
   }
@@ -32,8 +36,8 @@ const getParamDisplayString = (parameters: any[]) => {
     <c-list :items="items" size="sm">
       <template #item="{ item }">
         <div v-if="item.kindString === 'Interface'">
-          <code> {{ item.kindString }} {{ item.name }} </code> -
-          {{ item.comment.shortText }} <br />
+          <code> {{ item.kindString }} {{ item.name }} </code>
+          {{ item.comment?.shortText }} <br />
           <div class="c-pl-lg c-py-md">
             <c-list :items="item.children">
               <template #item="{ item: propertyItem }">
