@@ -1,4 +1,5 @@
-import { ref, Ref } from 'vue'
+import { ref } from 'vue'
+import type { Ref } from 'vue'
 
 type DateRange = [Date | null, Date | null]
 export default (customRange?: Ref<DateRange>) => {

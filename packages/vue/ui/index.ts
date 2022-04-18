@@ -171,6 +171,8 @@ export {
   CMonthPanel,
   CDatePanelHeader,
   CYearPanel,
+  CForm,
+  CFormItem,
   useClickOutside,
   useInjectSize,
   useNotifications,

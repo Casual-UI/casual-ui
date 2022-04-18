@@ -1,15 +1,32 @@
 import { onMounted, onUnmounted } from 'vue'
 import type { Ref } from 'vue'
 
-export default ({
+/**
+ * 外部点击选项
+ */
+interface UseClickOutsideOptions {
+  /**
+   * 需要被监听的元素，需要通过ref="elRef"绑定的Ref值
+   */
+  elRef: Ref<any>
+  /**
+   * 当点击发生在目标元素内部时的回调
+   */
+  cbInside?: () => void
+  /**
+   * 当点击发生在目标元素外部时的回调
+   */
+  cbOutside?: () => void
+}
+
+/**
+ * 监听元素内部、外部点击
+ */
+const useClickOutside = ({
   elRef,
   cbInside,
   cbOutside,
-}: {
-  elRef: Ref<any>
-  cbInside?: () => void
-  cbOutside?: () => void
-}) => {
+}: UseClickOutsideOptions) => {
   let el: any
 
   const clickHandler = (e: MouseEvent) => {
@@ -33,3 +50,7 @@ export default ({
     window.removeEventListener('click', clickHandler)
   })
 }
+
+export default useClickOutside
+
+export type { UseClickOutsideOptions }

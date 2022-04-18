@@ -1,8 +1,6 @@
 <script lang="ts">
 export const errorKey = Symbol('errorStatus')
 export const validatorsKey = Symbol('validators')
-
-export default {}
 </script>
 
 <script setup lang="ts">

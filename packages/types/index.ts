@@ -3,10 +3,19 @@
  */
 type CTheme = 'primary' | 'secondary' | 'negative' | 'warning'
 
+/**
+ * 尺寸
+ */
 type CSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 
+/**
+ * 用于React中的插槽类型
+ */
 type CSlot = JSX.Element | string | JSX.Element[]
 
+/**
+ * 位置类型，可以类比于flex布局中的flex-start, center, flex-end
+ */
 type CPosition = 'start' | 'center' | 'end'
 
 /**
@@ -27,6 +36,9 @@ interface Notification {
   id: number
 }
 
+/**
+ * 位置组合，格式为：'横轴位置 纵轴位置'
+ */
 type PositionGroup =
   | 'start start'
   | 'start center'
@@ -94,10 +106,16 @@ export const createNotificationGroups: () => NotificationGroups = () => ({
   },
 })
 
+/**
+ * 用于默认v-model的基类型
+ */
 interface VModel<T> {
   modelValue: T
 }
 
+/**
+ * 用于默认v-model的事件基类型
+ */
 interface EmitModel<T> {
   (e: 'update:modelValue', newValue: T): void
 }

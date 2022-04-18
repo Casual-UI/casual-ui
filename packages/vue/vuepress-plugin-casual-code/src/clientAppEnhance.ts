@@ -5,7 +5,7 @@ import { CExpansion } from 'casual-ui-vue'
 import { defineAsyncComponent } from 'vue'
 
 export default defineClientAppEnhance(({ app }) => {
-  app.component(CExpansion.name, CExpansion)
+  app.component('CExpansion', CExpansion)
   app.component('ComponentDoc', ComponentDoc)
   app.component('DemoCode', DemoCode)
   app.config.globalProperties.$resolveCasual = defineAsyncComponent

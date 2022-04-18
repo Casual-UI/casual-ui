@@ -9,7 +9,6 @@ import { computed, inject, provide, ref } from 'vue'
 import type { Ref } from 'vue'
 import useFormProps, { type LabelDirection } from './useFormProps'
 import { errorKey, validatorsKey } from './CForm.vue'
-
 interface CFormItemProps {
   /**
    * 对应表单中的项的名称
