@@ -2,7 +2,7 @@
   "name": "casual-ui-vue",
   "version": "0.0.1-alpha.9.7",
   "description": "Casual UI Vue",
-  "main": "index.ts",
+  "main": "src/index.ts",
   "license": "MIT",
   "type": "module",
   "author": {

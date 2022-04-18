@@ -591,7 +591,7 @@ const formItems = [
 
 ### 自定义表单组件<Badge>高级</Badge>
 
-自写组件，可以使用`useValidator`获取当前表单项所处表单验证上下文，从而自定义验证方法、清除验证状态调用时机，以及错误状态的样式表现
+自写组件，可以使用[`useValidator`](/usable/useFormValidator.html#usevalidator-api)获取当前表单项所处表单验证上下文，从而自定义验证方法、清除验证状态调用时机，以及错误状态的样式表现
 
 <c-tabs v-model="activeTab" :items="[{ name: 'CustomInput.vue' }, { name: '使用' }]">
   <template #body-CustomInput.vue>

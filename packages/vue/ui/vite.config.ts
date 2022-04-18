@@ -11,7 +11,7 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     lib: {
-      entry: resolve(CWD_PATH, './index.ts'),
+      entry: resolve(CWD_PATH, './src/index.ts'),
       name: 'CasualUIVue',
       fileName: format => `casual-ui-vue.${format}.js`,
     },
