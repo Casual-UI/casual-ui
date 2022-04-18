@@ -1,6 +1,6 @@
 {
   "name": "casual-ui-vue",
-  "version": "0.0.1-alpha.9.6",
+  "version": "0.0.1-alpha.9.7",
   "description": "Casual UI Vue",
   "main": "index.ts",
   "license": "MIT",
@@ -9,6 +9,7 @@
     "email": "1197160272@qq.com",
     "name": "Dongsheng Zhao"
   },
+  "files": ["dist/*.js", "dist/*.d.ts", "dist/*.css"],
   "scripts": {
     "build": "vite build"
   },

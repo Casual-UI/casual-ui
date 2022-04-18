@@ -2,11 +2,12 @@ import { resolve } from 'path'
 import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
 import vitePluginVueAutoName from 'vite-plugin-vue-auto-name'
+import type { PluginOption } from 'vite'
 
 const CWD_PATH = process.cwd()
 
 export default defineConfig({
-  plugins: [vue(), vitePluginVueAutoName()],
+  plugins: [vue() as PluginOption, vitePluginVueAutoName() as PluginOption],
   build: {
     outDir: 'dist',
     lib: {
