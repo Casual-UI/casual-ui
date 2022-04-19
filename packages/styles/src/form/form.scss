@@ -7,10 +7,12 @@
 
     &--content-wrapper {
       position: relative;
+      align-self: stretch;
     }
 
     &--error-tip {
       font-size: 0.8em;
+      line-height: 0.8em;
       position: absolute;
       bottom: calc(-1em - 4px);
       left: 0;

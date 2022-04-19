@@ -80,7 +80,7 @@ const CFormItem = ({
     if (!formContextValue.errors) return false
     if (!field) return false
     return formContextValue.errors[field]
-  }, [formContextValue.errors])
+  }, [formContextValue.errors, field])
 
   const clearCurrent = () => {
     if (field) {
@@ -112,7 +112,7 @@ const CFormItem = ({
           <div
             className={clsx(
               'c-form-item',
-              `c-col-${col}`,
+              `c-col-${formContextValue.col}`,
               `c-${formContextValue.labelDirection}`,
               `c-col-${formContextValue.col}`,
               formContextValue.labelDirection === 'column' ||
@@ -136,10 +136,12 @@ const CFormItem = ({
             >
               {label}
             </div>
-            <div className="c-form-item--content-wrapper">{children}</div>
-            {hasError && (
-              <div className="c-form-item--error-tip">{hasError}</div>
-            )}
+            <div className="c-form-item--content-wrapper c-flex c-items-center">
+              {children}
+              {hasError && (
+                <div className="c-form-item--error-tip">{hasError}</div>
+              )}
+            </div>
           </div>
         </CGutterSizeContext.Provider>
       </CSizeContext.Provider>

@@ -48,15 +48,17 @@ export const useFormContext = (customValue: CFormContextProps) => {
     >
   >(
     () => ({
-      ...contextValue,
-      ...{
-        labelAlign: customValue.labelAlign || contextValue.labelAlign || 'left',
-        labelWidth:
-          customValue.labelWidth || contextValue.labelWidth || '100px',
-        labelDirection:
-          customValue.labelDirection || contextValue.labelDirection || 'row',
-        col: customValue.col || contextValue.col || 6,
-      },
+      labelAlign: customValue.labelAlign || contextValue.labelAlign || 'left',
+      labelWidth: customValue.labelWidth || contextValue.labelWidth || '100px',
+      labelDirection:
+        customValue.labelDirection || contextValue.labelDirection || 'row',
+      col: customValue.col || contextValue.col || 6,
+      clearAll: customValue.clearAll || contextValue.clearAll,
+      validateAll: customValue.validateAll || contextValue.validateAll,
+      addValidator: customValue.addValidator || contextValue.addValidator,
+      clearField: customValue.clearField || contextValue.clearField,
+      validateField: customValue.validateField || contextValue.validateField,
+      errors: customValue.errors || contextValue.errors,
     }),
     [customValue, contextValue]
   )

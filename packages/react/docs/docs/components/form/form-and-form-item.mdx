@@ -293,6 +293,107 @@ function Demo() {
 }
 ```
 
+### 表单验证
+
+```jsx live
+function Demo() {
+  const [formData, setFormData] = useState({
+    name: '',
+    gender: 'male',
+    birthday: null,
+    displayBirthday: '',
+    industry: '',
+  })
+
+  const setField = (k, v) =>
+    setFormData({
+      ...formData,
+      [k]: v,
+    })
+
+  const genderOptions = [
+    { label: 'Male', value: 'male' },
+    { label: 'Female', value: 'female' },
+  ]
+
+  const industryOptions = [
+    { label: 'IT', value: 'IT' },
+    { label: 'Medical', value: 'Medical' },
+    { label: 'Entertainment', value: 'Entertainment' },
+    { label: 'Transportation', value: 'Transportation' },
+  ]
+
+  const items = [
+    {
+      label: '姓名',
+      field: 'name',
+      rules: [v => (v ? false : '请输入姓名')],
+      children: (
+        <CInput
+          value={formData.name}
+          onChange={v => setField('name', v)}
+          placeholder="请输入姓名"
+        />
+      ),
+    },
+    {
+      label: '性别',
+      field: 'gender',
+      rules: [
+        v => {
+          return v === 'male' ? false : '只能选Male!'
+        },
+      ],
+      children: (
+        <CRadioGroup
+          value={formData.gender}
+          options={genderOptions}
+          onChange={v => setField('gender', v)}
+        />
+      ),
+    },
+    {
+      label: '生日',
+      field: 'birthday',
+      rules: [v => (!v ? '请选择生日' : false)],
+      children: (
+        <CDatePicker
+          format="MMM DD, YYYY"
+          value={formData.birthday}
+          placeholder="请选择生日"
+          onChange={v => setField('birthday', v)}
+          formattedValue={formData.displayBirthday}
+          onFormattedValueChange={v => setField('displayBirthday', v)}
+        />
+      ),
+    },
+    {
+      label: '行业',
+      field: 'industry',
+      rules: [
+        v =>
+          v !== 'IT' && v !== 'Entertainment'
+            ? '只能选IT或者Entertainment!'
+            : false,
+      ],
+      children: (
+        <CSelect
+          value={formData.industry}
+          onChange={v => setField('industry', v)}
+          options={industryOptions}
+        />
+      ),
+    },
+  ]
+
+  return (
+    <div className="c-pa-md">
+      <CForm value={formData} items={items} />
+    </div>
+  )
+}
+```
+
 ### CForm Props
 
 <PropTable name="CForm" typeWidth="200px" />

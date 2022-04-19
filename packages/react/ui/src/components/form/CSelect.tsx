@@ -7,6 +7,7 @@ import CTag from '../basic/tag/CTag'
 import CDropdown from '../interact/CDropdown'
 import CList from '../list/CList'
 import CInput from './CInput'
+import { useFormItemContext } from './CFormContext'
 
 /**
  * 选择器值类型
@@ -95,7 +96,15 @@ const CSelect = ({
     setInitialSelectDomHeight(selectDom.current?.clientHeight || -1)
   }, [])
 
+  const { hasError, validateCurrent } = useFormItemContext()
+
+  const [isFirst, setIsFirst] = useState(true)
+
   useEffect(() => {
+    if (!isFirst) {
+      validateCurrent?.(value)
+    }
+    setIsFirst(false)
     if (multiple) {
       const newHeight = tagsDom.current?.clientHeight || -1
       if (newHeight > initialSelectDomHeight) {
@@ -185,7 +194,8 @@ const CSelect = ({
             'c-select',
             focused && 'c-select--focused',
             `c-font-${contextSize}`,
-            disabled && 'c-select--disabled'
+            disabled && 'c-select--disabled',
+            hasError && 'c-select--has-error'
           )}
           style={selectDomStyle}
         >

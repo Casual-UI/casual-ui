@@ -8,6 +8,7 @@ import CInput from '../CInput'
 import CDatePanelHeader from './CDatePanelHeader'
 import CDateGridPanel from './CDateGridPanel'
 import CDatePanel from './CDatePanel'
+import { useFormItemContext } from '../CFormContext'
 
 type DateValue = Date | null
 type Formatter = (origin: DateValue, format: string) => string
@@ -113,8 +114,19 @@ const CDatePicker = ({
 
   const innerFormatter = (d: DateValue) => formatter(d, format)
 
+  const { validateCurrent } = useFormItemContext()
+
+  const [isFirst, setIsFirst] = useState(true)
+
   useEffect(() => {
-    if (!value) return
+    if (!isFirst) {
+      validateCurrent?.(value)
+    }
+    setIsFirst(false)
+    if (!value) {
+      onFormattedValueChange?.('')
+      return
+    }
     onFormattedValueChange?.(innerFormatter(value))
   }, [value])
 
@@ -139,9 +151,14 @@ const CDatePicker = ({
     year + 11,
   ])
   const [innerUnit, setInnerUnit] = useState(unit)
+
+  const openOrCloseDropDown = (v: boolean) => {
+    setShowDrop(v)
+  }
+
   const onDateSet = () => {
     if (hideOnSelect) {
-      setShowDrop(false)
+      openOrCloseDropDown(false)
     }
   }
   const onMonthSet = (newMonth: number, setNextName) => {
@@ -194,7 +211,7 @@ const CDatePicker = ({
       >
         <CDropdown
           value={showDrop}
-          onChange={setShowDrop}
+          onChange={openOrCloseDropDown}
           widthWithinParent={false}
           disabled={disabled}
           dropContent={
@@ -278,6 +295,10 @@ const CDatePicker = ({
             placeholder={placeholder}
             readonly
             disabled={disabled}
+            clearable
+            onClear={() => {
+              onChange?.(null)
+            }}
           />
         </CDropdown>
       </div>

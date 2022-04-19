@@ -3,6 +3,7 @@ import { CIcon, CLoading, useSize, useSizeThemeClass } from 'casual-ui-react'
 import { matHighlightOff } from '@quasar/extras/material-icons'
 import clsx from 'clsx'
 import React, { useEffect, useMemo, useState } from 'react'
+import { useFormItemContext } from './CFormContext'
 
 interface CInputProps<T = string | number> {
   /**
@@ -117,6 +118,8 @@ const CInput = ({
 }: CInputProps) => {
   const [innerFocused, setInnerFocused] = useState(focused)
 
+  const { validateCurrent, clearCurrent, hasError } = useFormItemContext()
+
   useEffect(() => {
     setFocused?.(innerFocused)
   }, [innerFocused])
@@ -127,7 +130,8 @@ const CInput = ({
 
   const canClear = useMemo(() => !!(clearable && value), [clearable, value])
 
-  const onClearIconClick = () => {
+  const onClearIconClick = (e: any) => {
+    e.stopPropagation()
     onChange?.('')
     onClear?.()
   }
@@ -136,6 +140,12 @@ const CInput = ({
     if (autoBlur) {
       setInnerFocused(false)
     }
+    validateCurrent?.(value)
+  }
+
+  const onFocus = () => {
+    setInnerFocused(true)
+    clearCurrent?.()
   }
 
   const contextSize = useSize(size)
@@ -151,26 +161,29 @@ const CInput = ({
         `c-font-${contextSize}`,
         `c-px-${contextSize}`,
         `c-h-${contextSize}`,
-        customColor && 'c-input--custom-color'
+        customColor && 'c-input--custom-color',
+        hasError && 'c-input--has-error'
       )}
     >
       <div className={clsx('c-input--content-wrapper')}>
-        <div
-          className={clsx(
-            'c-input--prefix',
-            prefix && `c-pr-sm c-input--prefix-with-content`,
-            withPrefixDivider && 'c-input--prefix-with-divider'
-          )}
-        >
-          {prefix && prefix}
-        </div>
+        {prefix && (
+          <div
+            className={clsx(
+              'c-input--prefix',
+              prefix && `c-pr-sm c-input--prefix-with-content`,
+              withPrefixDivider && 'c-input--prefix-with-divider'
+            )}
+          >
+            <div>{prefix}</div>
+          </div>
+        )}
         <div className="c-input--input-wrapper">
           <input
             disabled={disabled || loading}
             placeholder={placeholder}
             value={value}
             onChange={e => onChange?.(e.target.value)}
-            onFocus={() => setInnerFocused(true)}
+            onFocus={onFocus}
             onBlur={onBlur}
             className={clsx(prefix && `c-pl-sm`, suffix && 'c-pr-sm')}
             type={type}
@@ -192,8 +205,8 @@ const CInput = ({
         <div
           className={clsx(
             'c-input--suffix',
-            withSuffixDivider && 'c-input--prefix-with-divider',
-            suffix && !canClear && `c-pl-sm c-input--suffix-with-content`
+            withSuffixDivider && 'c-input--suffix-with-divider',
+            suffix && `c-pl-sm c-input--suffix-with-content`
           )}
         >
           <div className={clsx(loading && 'c-mr-sm')}>{suffix && suffix}</div>

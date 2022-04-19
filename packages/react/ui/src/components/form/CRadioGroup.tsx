@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import clsx from 'clsx'
 import { CSize } from 'casual-types'
 import useGutterSize, { CGutterSizeContext } from '../../hooks/useGutterSize'
 import useSize, { CSizeContext } from '../../hooks/useSize'
 import CRadio from './CRadio'
+import { useFormItemContext } from './CFormContext'
 
 interface CRadioGroupProps {
   /**
@@ -35,6 +36,12 @@ const CRadioGroup = ({
   value,
 }: CRadioGroupProps) => {
   const realGutterSize = useGutterSize(gutterSize)
+  const { validateCurrent } = useFormItemContext()
+  useEffect(() => {
+    if (value) {
+      validateCurrent?.(value)
+    }
+  }, [value])
   return (
     <CGutterSizeContext.Provider value={realGutterSize}>
       <CSizeContext.Provider value={useSize(size)}>
@@ -50,7 +57,9 @@ const CRadioGroup = ({
             <CRadio
               key={option.value}
               value={value}
-              onChange={onChange}
+              onChange={v => {
+                onChange?.(v)
+              }}
               selectedValue={option.value}
               label={option.label}
             />

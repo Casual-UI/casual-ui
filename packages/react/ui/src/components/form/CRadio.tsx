@@ -2,6 +2,7 @@ import React from 'react'
 import { CSize } from 'casual-types'
 import { useSize } from 'casual-ui-react'
 import clsx from 'clsx'
+import { useFormItemContext } from './CFormContext'
 
 type CRadioModel = boolean | string | number
 
@@ -41,7 +42,7 @@ const CRadio = ({
   disabled = false,
 }: CRadioProps) => {
   const realSize = useSize(size)
-
+  const { hasError } = useFormItemContext()
   return (
     <div
       className={clsx(
@@ -50,7 +51,8 @@ const CRadio = ({
         `c-h-${size}`,
         `c-radio--size-${size}`,
         value === selectedValue && 'c-radio--selected',
-        disabled && 'c-radio--disabled'
+        disabled && 'c-radio--disabled',
+        hasError && 'c-radio--has-error'
       )}
       onClick={() => {
         if (disabled) return

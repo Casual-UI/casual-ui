@@ -165,7 +165,7 @@ provide(clearValidateKey, clearValidate)
     >
       {{ label }}
     </div>
-    <div class="c-form-item--content-wrapper">
+    <div class="c-form-item--content-wrapper c-flex c-items-center">
       <!-- 
         @slot 表单项内容 
           @binding {Function} validate 当前表单项验证方法

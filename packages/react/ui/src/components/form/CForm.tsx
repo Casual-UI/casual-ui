@@ -61,13 +61,10 @@ const CForm = ({
   gutterSize,
   items = [],
 }: CFormProps) => {
-  const [validators, setValidators] = useState<Validators>({})
+  const validators: Validators = {}
 
   const addValidator = (field: string, newValidator: Validator[]) => {
-    setValidators({
-      ...validators,
-      [field]: newValidator,
-    })
+    validators[field] = newValidator
   }
 
   const [errors, setErrors] = useState<Errors>({})
@@ -98,6 +95,10 @@ const CForm = ({
 
   const validateField = async (field: string) => {
     const fieldRules = validators[field]
+    setErrors({
+      ...errors,
+      [field]: false,
+    })
     if (fieldRules) {
       for (const rule of fieldRules) {
         const error = await rule(value[field])
@@ -106,6 +107,7 @@ const CForm = ({
             ...errors,
             [field]: error,
           })
+          break
         }
       }
     }
