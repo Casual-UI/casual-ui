@@ -23,6 +23,7 @@ type FormItemComponent =
   | 'checkbox'
   | 'checkbox-group'
   | 'radio'
+  | 'radio-group'
   | 'date-picker'
   | 'toggle'
   | Component

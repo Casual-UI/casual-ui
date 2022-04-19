@@ -120,8 +120,14 @@ interface EmitModel<T> {
   (e: 'update:modelValue', newValue: T): void
 }
 
+/**
+ * label排列方向
+ */
+type CLabelDirection = 'row' | 'row-reverse' | 'column' | 'column-reverse'
+
 export type {
   CRule,
+  CLabelDirection,
   CSlot,
   CTheme,
   CSize,
