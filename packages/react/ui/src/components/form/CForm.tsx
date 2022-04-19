@@ -136,8 +136,8 @@ const CForm = ({
               `c-gutter-${realGutterSize}`
             )}
           >
-            {items.map(item => (
-              <CFormItem key={item.field} {...item} />
+            {items.map((item, i) => (
+              <CFormItem key={item.field ? item.field : i} {...item} />
             ))}
             {children}
           </div>

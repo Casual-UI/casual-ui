@@ -65,6 +65,227 @@ function Demo() {
 }
 ```
 
+### 配置式
+
+```jsx live
+function Demo() {
+  const [formData, setFormData] = useState({
+    name: 'Micheal Jackson',
+    gender: 'male',
+    birthday: new Date('August 29, 1958'),
+    displayBirthday: 'August 29, 1958',
+    industry: 'Entertainment',
+  })
+
+  const setField = (k, v) =>
+    setFormData({
+      ...formData,
+      [k]: v,
+    })
+
+  const genderOptions = [
+    { label: 'Male', value: 'male' },
+    { label: 'Female', value: 'female' },
+  ]
+
+  const industryOptions = [
+    { label: 'IT', value: 'IT' },
+    { label: 'Medical', value: 'Medical' },
+    { label: 'Entertainment', value: 'Entertainment' },
+    { label: 'Transportation', value: 'Transportation' },
+  ]
+
+  const items = [
+    {
+      label: '姓名',
+      children: (
+        <CInput value={formData.name} onChange={v => setField('name', v)} />
+      ),
+    },
+    {
+      label: '性别',
+      children: (
+        <CRadioGroup
+          value={formData.gender}
+          options={genderOptions}
+          onChange={v => setField('gender', v)}
+        />
+      ),
+    },
+    {
+      label: '生日',
+      children: (
+        <CDatePicker
+          format="MMM DD, YYYY"
+          value={formData.birthday}
+          onChange={v => setField('birthday', v)}
+          formattedValue={formData.displayBirthday}
+          onFormattedValueChange={v => setField('displayBirthday', v)}
+        />
+      ),
+    },
+    {
+      label: '行业',
+      children: (
+        <CSelect
+          value={formData.industry}
+          onChange={v => setField('industry', v)}
+          options={industryOptions}
+        />
+      ),
+    },
+  ]
+
+  return <CForm items={items} />
+}
+```
+
+### 尺寸&间隔尺寸&label 排列方向、对齐方式、宽度
+
+```jsx live
+function Demo() {
+  const [formData, setFormData] = useState({
+    name: 'Micheal Jackson',
+    gender: 'male',
+    birthday: new Date('August 29, 1958'),
+    displayBirthday: 'August 29, 1958',
+    industry: 'Entertainment',
+  })
+
+  const setField = (k, v) =>
+    setFormData({
+      ...formData,
+      [k]: v,
+    })
+
+  const genderOptions = [
+    { label: 'Male', value: 'male' },
+    { label: 'Female', value: 'female' },
+  ]
+
+  const industryOptions = [
+    { label: 'IT', value: 'IT' },
+    { label: 'Medical', value: 'Medical' },
+    { label: 'Entertainment', value: 'Entertainment' },
+    { label: 'Transportation', value: 'Transportation' },
+  ]
+
+  const sizes = ['xs', 'sm', 'md', 'lg', 'xl']
+  const [size, setSize] = useState('md')
+  const [gutterSize, setGutterSize] = useState('md')
+  const [labelWidth, setLabelWidth] = useState('80px')
+  const directions = ['row', 'row-reverse', 'column', 'column-reverse']
+  const [labelDirection, setLabelDirection] = useState('row')
+  const [labelAlign, setLabelAlign] = useState('left')
+  const items = [
+    {
+      label: '表单尺寸',
+      col: 12,
+      children: (
+        <CRadioGroup
+          value={size}
+          onChange={setSize}
+          options={sizes.map(s => ({ label: s, value: s }))}
+        />
+      ),
+    },
+    {
+      label: '项间隔尺寸',
+      col: 12,
+      children: (
+        <CRadioGroup
+          value={gutterSize}
+          onChange={setGutterSize}
+          options={sizes.map(s => ({ label: s, value: s }))}
+        />
+      ),
+    },
+    {
+      label: 'label宽度',
+      col: 12,
+      children: <CInput value={labelWidth} onChange={setLabelWidth} />,
+    },
+    {
+      label: 'label与元素排列方向',
+      col: 12,
+      children: (
+        <CRadioGroup
+          value={labelDirection}
+          onChange={setLabelDirection}
+          options={directions.map(d => ({
+            label: d,
+            value: d,
+          }))}
+        />
+      ),
+    },
+    {
+      label: 'label文字对齐方向',
+      col: 12,
+      children: (
+        <CRadioGroup
+          value={labelAlign}
+          onChange={setLabelAlign}
+          options={['left', 'center', 'right'].map(d => ({
+            label: d,
+            value: d,
+          }))}
+        />
+      ),
+    },
+    {
+      label: '姓名',
+      children: (
+        <CInput value={formData.name} onChange={v => setField('name', v)} />
+      ),
+    },
+    {
+      label: '性别',
+      children: (
+        <CRadioGroup
+          value={formData.gender}
+          options={genderOptions}
+          onChange={v => setField('gender', v)}
+        />
+      ),
+    },
+    {
+      label: '生日',
+      children: (
+        <CDatePicker
+          format="MMM DD, YYYY"
+          value={formData.birthday}
+          onChange={v => setField('birthday', v)}
+          formattedValue={formData.displayBirthday}
+          onFormattedValueChange={v => setField('displayBirthday', v)}
+        />
+      ),
+    },
+    {
+      label: '行业',
+      children: (
+        <CSelect
+          value={formData.industry}
+          onChange={v => setField('industry', v)}
+          options={industryOptions}
+        />
+      ),
+    },
+  ]
+
+  return (
+    <CForm
+      items={items}
+      size={size}
+      labelWidth={labelWidth}
+      gutterSize={gutterSize}
+      labelDirection={labelDirection}
+      labelAlign={labelAlign}
+    />
+  )
+}
+```
+
 ### CForm Props
 
 <PropTable name="CForm" typeWidth="200px" />

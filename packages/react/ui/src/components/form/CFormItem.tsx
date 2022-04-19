@@ -130,6 +130,9 @@ const CFormItem = ({
                 )}-${realSize}`,
                 `c-text-${formContextValue.labelAlign}`
               )}
+              style={{
+                width: formContextValue.labelWidth,
+              }}
             >
               {label}
             </div>
