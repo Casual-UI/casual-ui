@@ -20,6 +20,9 @@ const config = {
       'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
+        gtag: {
+          trackingID: 'G-6X1YBPZXL2',
+        },
         docs: {
           sidebarCollapsed: false,
           routeBasePath: '/',
