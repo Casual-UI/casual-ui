@@ -303,6 +303,7 @@ function Demo() {
     birthday: null,
     displayBirthday: '',
     industry: '',
+    hobbies: [],
   })
 
   const setField = (k, v) =>
@@ -381,6 +382,21 @@ function Demo() {
           value={formData.industry}
           onChange={v => setField('industry', v)}
           options={industryOptions}
+        />
+      ),
+    },
+    {
+      label: '爱好',
+      field: 'hobbies',
+      rules: [v => (v && v.length < 2 ? '至少选择两个爱好' : false)],
+      children: (
+        <CCheckboxGroup
+          value={formData.hobbies}
+          onChange={v => setField('hobbies', v)}
+          options={['Reading', 'Writing', 'Singing', 'Dancing'].map(h => ({
+            label: h,
+            value: h,
+          }))}
         />
       ),
     },

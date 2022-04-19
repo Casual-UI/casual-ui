@@ -1,6 +1,9 @@
+import { CSize } from '@site/../types'
 import clsx from 'clsx'
-import React, { useMemo } from 'react'
+import React, { useMemo, useEffect, useState } from 'react'
+import useGutterSize from '../../hooks/useGutterSize'
 import CCheckbox, { CCheckboxModel } from './CCheckbox'
+import { useFormItemContext } from './CFormContext'
 
 interface CCheckboxGroupProps {
   /**
@@ -19,6 +22,10 @@ interface CCheckboxGroupProps {
    * 自定义额外样式类
    */
   className?: string
+  /**
+   * 勾选框间隔尺寸
+   */
+  gutterSize?: CSize
 }
 
 const CCheckboxGroup = ({
@@ -26,6 +33,7 @@ const CCheckboxGroup = ({
   value,
   onChange,
   className,
+  gutterSize,
 }: CCheckboxGroupProps) => {
   const optionsWithCheckStatus = useMemo(
     () =>
@@ -45,8 +53,29 @@ const CCheckboxGroup = ({
     onChange?.([...value.slice(0, idx), ...value.slice(idx + 1)])
   }
 
+  const realGutterSize = useGutterSize(gutterSize)
+
+  const { validateCurrent } = useFormItemContext()
+
+  const [isFirst, setIsFirst] = useState(true)
+
+  useEffect(() => {
+    if (!isFirst) {
+      validateCurrent?.(value)
+    }
+    setIsFirst(false)
+  }, [value])
+
   return (
-    <div className={clsx('c-checkbox-group', className)}>
+    <div
+      className={clsx(
+        'c-checkbox-group',
+        className,
+        'c-row',
+        'c-items-center',
+        `c-gutter-${realGutterSize}`
+      )}
+    >
       {optionsWithCheckStatus.map(op => (
         <CCheckbox
           key={op.value as string}

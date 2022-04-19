@@ -2,7 +2,7 @@ import { CSize, CSlot, CTheme } from 'casual-types'
 import { CIcon, CLoading, useSize, useSizeThemeClass } from 'casual-ui-react'
 import { matHighlightOff } from '@quasar/extras/material-icons'
 import clsx from 'clsx'
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useFormItemContext } from './CFormContext'
 
 interface CInputProps<T = string | number> {
@@ -127,8 +127,6 @@ const CInput = ({
   useEffect(() => {
     setInnerFocused(focused)
   }, [focused])
-
-  const canClear = useMemo(() => !!(clearable && value), [clearable, value])
 
   const onClearIconClick = (e: any) => {
     e.stopPropagation()

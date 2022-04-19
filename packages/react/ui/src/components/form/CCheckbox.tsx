@@ -2,6 +2,7 @@ import { CSize, CTheme } from 'casual-types'
 import { useSize, useTheme } from 'casual-ui-react'
 import clsx from 'clsx'
 import React from 'react'
+import { useFormItemContext } from './CFormContext'
 type CCheckboxModel = boolean | string | number
 
 interface CCheckboxProps {
@@ -52,6 +53,8 @@ const CCheckbox = ({
   const realTheme = useTheme(theme)
   const realSize = useSize(size)
 
+  const { hasError } = useFormItemContext()
+
   return (
     <div
       className={clsx(
@@ -60,7 +63,8 @@ const CCheckbox = ({
         `c-h-${realSize}`,
         `c-font-${realSize}`,
         checkedValue === value && 'c-checkbox--checked',
-        disabled && 'c-checkbox--disabled'
+        disabled && 'c-checkbox--disabled',
+        hasError && 'c-checkbox--has-error'
       )}
       onClick={toggleCheckStatus}
     >
