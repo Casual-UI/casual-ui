@@ -1,0 +1,74 @@
+---
+title: 表单&表单项
+---
+
+### 基础使用
+
+```jsx live
+function Demo() {
+  const [formData, setFormData] = useState({
+    name: 'Micheal Jackson',
+    gender: 'male',
+    birthday: new Date('August 29, 1958'),
+    displayBirthday: 'August 29, 1958',
+    industry: 'Entertainment',
+  })
+
+  const setField = (k, v) =>
+    setFormData({
+      ...formData,
+      [k]: v,
+    })
+
+  const genderOptions = [
+    { label: 'Male', value: 'male' },
+    { label: 'Female', value: 'female' },
+  ]
+
+  const industryOptions = [
+    { label: 'IT', value: 'IT' },
+    { label: 'Medical', value: 'Medical' },
+    { label: 'Entertainment', value: 'Entertainment' },
+    { label: 'Transportation', value: 'Transportation' },
+  ]
+
+  return (
+    <CForm>
+      <CFormItem label="姓名">
+        <CInput value={formData.name} onChange={v => setField('name', v)} />
+      </CFormItem>
+      <CFormItem label="性别">
+        <CRadioGroup
+          value={formData.gender}
+          options={genderOptions}
+          onChange={v => setField('gender', v)}
+        />
+      </CFormItem>
+      <CFormItem label="生日">
+        <CDatePicker
+          format="MMM DD, YYYY"
+          value={formData.birthday}
+          onChange={v => setField('birthday', v)}
+          formattedValue={formData.displayBirthday}
+          onFormattedValueChange={v => setField('displayBirthday', v)}
+        />
+      </CFormItem>
+      <CFormItem label="行业">
+        <CSelect
+          value={formData.industry}
+          onChange={v => setField('industry', v)}
+          options={industryOptions}
+        />
+      </CFormItem>
+    </CForm>
+  )
+}
+```
+
+### CForm Props
+
+<PropTable name="CForm" typeWidth="200px" />
+
+### CFormItem Props
+
+<PropTable name="CFormItem" typeWidth="200px" />
