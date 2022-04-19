@@ -177,10 +177,10 @@ function Demo() {
   const directions = ['row', 'row-reverse', 'column', 'column-reverse']
   const [labelDirection, setLabelDirection] = useState('row')
   const [labelAlign, setLabelAlign] = useState('left')
+  const [col, setCol] = useState(6)
   const items = [
     {
       label: '表单尺寸',
-      col: 12,
       children: (
         <CRadioGroup
           value={size}
@@ -191,7 +191,6 @@ function Demo() {
     },
     {
       label: '项间隔尺寸',
-      col: 12,
       children: (
         <CRadioGroup
           value={gutterSize}
@@ -201,13 +200,21 @@ function Demo() {
       ),
     },
     {
+      label: '项列宽',
+      children: (
+        <CRadioGroup
+          value={col}
+          onChange={setCol}
+          options={[6, 12].map(s => ({ label: s, value: s }))}
+        />
+      ),
+    },
+    {
       label: 'label宽度',
-      col: 12,
       children: <CInput value={labelWidth} onChange={setLabelWidth} />,
     },
     {
       label: 'label与元素排列方向',
-      col: 12,
       children: (
         <CRadioGroup
           value={labelDirection}
@@ -221,7 +228,6 @@ function Demo() {
     },
     {
       label: 'label文字对齐方向',
-      col: 12,
       children: (
         <CRadioGroup
           value={labelAlign}
@@ -281,6 +287,7 @@ function Demo() {
       gutterSize={gutterSize}
       labelDirection={labelDirection}
       labelAlign={labelAlign}
+      col={col}
     />
   )
 }
