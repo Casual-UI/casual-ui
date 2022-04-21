@@ -47,6 +47,9 @@ module.exports = {
     {
       files: '**/*.{md,mdx}/**',
       extends: 'plugin:mdx/code-blocks',
+      rules: {
+        '@typescript-eslint/no-unused-vars': 'off',
+      },
     },
   ],
   rules: {

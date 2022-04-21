@@ -295,6 +295,32 @@ function Demo() {
 
 ### 表单验证
 
+Casual UI 的表单验证，需要配合`field`、`rules`属性  
+`rules`为验证函数数组，每个验证函数为一个接受当前表单项对应值并返回一个  
+`false | string | Promise<false | string>`  
+的函数：
+
+- 返回`false`则代表验证通过无错误，
+- 回`string`则会将该返回作为错误信息展示
+- 返回`Promise`则代表异步验证，内容也是`false`或者具体的`string`类型错误信息
+
+假设你想定义一个验证是否必填的验证规则，可以这样写:
+
+```js
+const rule = v => (v ? false : '该项是必填的')
+```
+
+它的等价异步逻辑大概是这样：
+
+```js
+const asyncRule = v =>
+  new Promise(resolve => {
+    setTimeout(() => {
+      resolve(v ? false : '该项是必填的')
+    }, 1000)
+  })
+```
+
 ```jsx live
 function Demo() {
   const [formData, setFormData] = useState({

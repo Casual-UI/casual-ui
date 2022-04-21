@@ -5,6 +5,7 @@ import React, {
   useMemo,
   useState,
   useImperativeHandle,
+  Ref,
 } from 'react'
 import { CRule, CSize, CLabelDirection, CSlot } from 'casual-types'
 import { CFormItemContext, useFormContext } from './CFormContext'
@@ -72,7 +73,11 @@ const CFormItemWithoutForwardRef = (
     col,
     children,
   }: CFormItemProps,
-  ref
+  ref: Ref<{
+    clearCurrent: () => void
+    validateCurrent: (value: any) => void | Promise<void>
+    hasError: false | string
+  }>
 ) => {
   const formContextValue = useFormContext({
     labelAlign,
