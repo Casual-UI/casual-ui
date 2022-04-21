@@ -18,12 +18,20 @@
       left: 0;
       color: var(--casual-negative);
 
-      &-enter-active {
+      &-enter-active,
+      &--show {
         animation: c-form-error-tip 0.3s;
       }
 
-      &-leave-active {
+      &-leave-active,
+      &--hidden {
         animation: c-form-error-tip-leave 0.2s;
+      }
+
+      &--hidden {
+        pointer-events: none;
+        opacity: 0;
+        transform: translateY(-100%);
       }
     }
   }

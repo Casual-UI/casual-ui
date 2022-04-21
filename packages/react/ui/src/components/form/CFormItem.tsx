@@ -1,5 +1,5 @@
-import React, { useMemo } from 'react'
 import clsx from 'clsx'
+import React, { useEffect, useMemo, useState } from 'react'
 import { CRule, CSize, CLabelDirection } from 'casual-types'
 import { CFormItemContext, useFormContext } from './CFormContext'
 import useSize, { CSizeContext } from '../../hooks/useSize'
@@ -99,6 +99,18 @@ const CFormItem = ({
     ]).get(direction)
   }
 
+  const [innerErrorMessage, setInnerErrorMessage] = useState(hasError)
+
+  useEffect(() => {
+    if (hasError === false) {
+      setTimeout(() => {
+        setInnerErrorMessage('')
+      }, 200)
+      return
+    }
+    setInnerErrorMessage(hasError)
+  }, [hasError])
+
   return (
     <CFormItemContext.Provider
       value={{
@@ -138,9 +150,16 @@ const CFormItem = ({
             </div>
             <div className="c-form-item--content-wrapper c-flex c-items-center">
               {children}
-              {hasError && (
-                <div className="c-form-item--error-tip">{hasError}</div>
-              )}
+              <div
+                className={clsx(
+                  'c-form-item--error-tip',
+                  hasError
+                    ? 'c-form-item--error-tip--show'
+                    : 'c-form-item--error-tip--hidden'
+                )}
+              >
+                {innerErrorMessage}
+              </div>
             </div>
           </div>
         </CGutterSizeContext.Provider>
