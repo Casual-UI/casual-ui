@@ -111,7 +111,6 @@ const CFormItemWithoutForwardRef = (
   const [innerErrorMessage, setInnerErrorMessage] = useState(hasError)
 
   useEffect(() => {
-    console.log(hasError)
     if (!hasError) {
       setTimeout(() => {
         setInnerErrorMessage('')
