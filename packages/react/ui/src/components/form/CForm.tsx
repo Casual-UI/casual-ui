@@ -1,10 +1,4 @@
-import React, {
-  useEffect,
-  forwardRef,
-  useState,
-  useImperativeHandle,
-  Ref,
-} from 'react'
+import React, { forwardRef, useState, useImperativeHandle, Ref } from 'react'
 import clsx from 'clsx'
 import {
   CFormContext,
@@ -17,8 +11,6 @@ import useSize, { CSizeContext } from '../../hooks/useSize'
 import { CSize, CSlot } from 'casual-types'
 import useGutterSize, { CGutterSizeContext } from '../../hooks/useGutterSize'
 import CFormItem, { CFormItemProps } from './CFormItem'
-import CLoadingLattice from '../basic/loading/CLoadingLattice'
-import CLoading from '../basic/loading/CLoading'
 import CLoadingBars from '../basic/loading/CLoadingBars'
 
 interface CFormProps {
