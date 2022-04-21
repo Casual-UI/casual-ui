@@ -53,7 +53,7 @@ interface CFormItemProps {
    */
   gutterSize?: CSize
 }
-const CFormItem = (
+const CFormItemWithoutForwardRef = (
   {
     field,
     label,
@@ -111,7 +111,8 @@ const CFormItem = (
   const [innerErrorMessage, setInnerErrorMessage] = useState(hasError)
 
   useEffect(() => {
-    if (hasError === false) {
+    console.log(hasError)
+    if (!hasError) {
       setTimeout(() => {
         setInnerErrorMessage('')
       }, 200)
@@ -176,6 +177,8 @@ const CFormItem = (
     </CFormItemContext.Provider>
   )
 }
+
+const CFormItem = forwardRef(CFormItemWithoutForwardRef)
 
 export default CFormItem
 export type { CFormItemProps }

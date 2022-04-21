@@ -105,22 +105,20 @@ const FormWithoutForward = (
 
   const validateField = async (field: string) => {
     const fieldRules = validators[field]
-    setErrors({
-      ...errors,
-      [field]: false,
-    })
+    let hasError: string | false = false
     if (fieldRules) {
       for (const rule of fieldRules) {
         const error = await rule(value[field])
         if (error) {
-          setErrors({
-            ...errors,
-            [field]: error,
-          })
+          hasError = error
           break
         }
       }
     }
+    setErrors({
+      ...errors,
+      [field]: hasError,
+    })
   }
 
   const formContextValue = useFormContext({
