@@ -411,6 +411,16 @@ function Demo() {
   return (
     <div className="c-pa-md">
       <CForm ref={formRef} value={formData} items={items} />
+      <div className="c-mt-xl">
+        <SpaceItems>
+          <CButton
+            outlined
+            label="清除验证状态"
+            onClick={() => formRef.current.clearAll()}
+          />
+          <CButton label="提交" onClick={() => formRef.current.validateAll()} />
+        </SpaceItems>
+      </div>
     </div>
   )
 }

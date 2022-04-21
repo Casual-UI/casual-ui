@@ -62,11 +62,9 @@ const FormWithoutForward = (
     gutterSize,
     items = [],
   }: CFormProps,
-  /**
-   * 表单组件的ref，可以调用验证相关方法
-   */
   ref: Ref<{
     validateAll: () => void | Promise<void>
+    clearAll: () => void
   }>
 ) => {
   const validators: Validators = {}
@@ -90,6 +88,10 @@ const FormWithoutForward = (
       }
     }
     setErrors(errors)
+  }
+
+  const clearAll = () => {
+    setErrors({})
   }
 
   const realGutterSize = useGutterSize(gutterSize)
@@ -130,11 +132,13 @@ const FormWithoutForward = (
     addValidator,
     clearField,
     validateField,
+    clearAll,
     errors,
   })
 
   useImperativeHandle(ref, () => ({
     validateAll,
+    clearAll,
   }))
 
   return (
