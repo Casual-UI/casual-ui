@@ -6,7 +6,7 @@ import React, {
   useState,
   useImperativeHandle,
 } from 'react'
-import { CRule, CSize, CLabelDirection } from 'casual-types'
+import { CRule, CSize, CLabelDirection, CSlot } from 'casual-types'
 import { CFormItemContext, useFormContext } from './CFormContext'
 import useSize, { CSizeContext } from '../../hooks/useSize'
 import useGutterSize, { CGutterSizeContext } from '../../hooks/useGutterSize'
@@ -39,7 +39,13 @@ interface CFormItemProps {
   /**
    * 具体的表单组件
    */
-  children?: JSX.Element
+  children?:
+    | JSX.Element
+    | ((context: {
+        validateCurrent: (value: any) => void
+        clearCurrent: () => void
+        hasError: false | string
+      }) => CSlot)
   /**
    * 验证规则
    */
@@ -158,7 +164,9 @@ const CFormItemWithoutForwardRef = (
               {label}
             </div>
             <div className="c-form-item--content-wrapper c-flex c-items-center">
-              {children}
+              {typeof children === 'function'
+                ? children({ validateCurrent, clearCurrent, hasError })
+                : children}
               <div
                 className={clsx(
                   'c-form-item--error-tip',
