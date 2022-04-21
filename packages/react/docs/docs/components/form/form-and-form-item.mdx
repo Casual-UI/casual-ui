@@ -296,12 +296,11 @@ function Demo() {
 ### 表单验证
 
 Casual UI 的表单验证，需要配合`field`、`rules`属性  
-`rules`为验证函数数组，每个验证函数为一个接受当前表单项对应值并返回一个  
-`false | string | Promise<false | string>`  
-的函数：
+`rules`为验证函数数组，每个验证函数为一个函数，该函数接受当前表单项对应值，返回：  
+`false | string | Promise<false | string>`，返回含义如下：
 
-- 返回`false`则代表验证通过无错误，
-- 回`string`则会将该返回作为错误信息展示
+- 返回`false`则代表验证通过无错误
+- 回`string`则代表有错误，并且返回值为具体的错误信息
 - 返回`Promise`则代表异步验证，内容也是`false`或者具体的`string`类型错误信息
 
 假设你想定义一个验证是否必填的验证规则，可以这样写:
@@ -331,6 +330,8 @@ function Demo() {
     industry: '',
     hobbies: [],
   })
+
+  const [validating, setValidating] = useState(false)
 
   const setField = (k, v) =>
     setFormData({
@@ -432,7 +433,13 @@ function Demo() {
 
   return (
     <div className="c-pa-md">
-      <CForm ref={formRef} value={formData} items={items} />
+      <CForm
+        ref={formRef}
+        value={formData}
+        items={items}
+        validating={validating}
+        onValidatingChange={setValidating}
+      />
       <div className="c-mt-xl">
         <SpaceItems>
           <CButton
@@ -460,6 +467,8 @@ function Demo() {
     industry: '',
     hobbies: [],
   })
+
+  const [validating, setValidating] = useState(false)
 
   const setField = (k, v) =>
     setFormData({
@@ -548,7 +557,7 @@ function Demo() {
           new Promise(resolve => {
             setTimeout(() => {
               resolve(v.length >= 2 ? false : '至少选择两个爱好')
-            }, 1000)
+            }, 3000)
           }),
       ],
       children: (
@@ -568,7 +577,13 @@ function Demo() {
 
   return (
     <div className="c-pa-md">
-      <CForm ref={formRef} value={formData} items={items} />
+      <CForm
+        ref={formRef}
+        value={formData}
+        items={items}
+        validating={validating}
+        onValidatingChange={setValidating}
+      />
       <div className="c-mt-xl">
         <SpaceItems>
           <CButton

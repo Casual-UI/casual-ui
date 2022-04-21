@@ -1,4 +1,6 @@
 .c-form {
+  position: relative;
+
   &-item {
     &--label {
       font-weight: bold;
@@ -34,6 +36,17 @@
         transform: translateY(-100%);
       }
     }
+  }
+
+  &--validating-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--casual-popup-bg);
+    color: var(--casual-popup-content-bg);
+    font-size: 2em;
   }
 }
 

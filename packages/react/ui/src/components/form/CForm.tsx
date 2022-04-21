@@ -1,4 +1,10 @@
-import React, { forwardRef, useState, useImperativeHandle, Ref } from 'react'
+import React, {
+  useEffect,
+  forwardRef,
+  useState,
+  useImperativeHandle,
+  Ref,
+} from 'react'
 import clsx from 'clsx'
 import {
   CFormContext,
@@ -11,6 +17,9 @@ import useSize, { CSizeContext } from '../../hooks/useSize'
 import { CSize, CSlot } from 'casual-types'
 import useGutterSize, { CGutterSizeContext } from '../../hooks/useGutterSize'
 import CFormItem, { CFormItemProps } from './CFormItem'
+import CLoadingLattice from '../basic/loading/CLoadingLattice'
+import CLoading from '../basic/loading/CLoading'
+import CLoadingBars from '../basic/loading/CLoadingBars'
 
 interface CFormProps {
   /**
@@ -49,6 +58,14 @@ interface CFormProps {
    * 自定义内容
    */
   children?: CSlot
+  /**
+   * 表单是否处于验证中
+   */
+  validating?: boolean
+  /**
+   * 表单验证中状态变更
+   */
+  onValidatingChange?: (validating: boolean) => void
 }
 const FormWithoutForward = (
   {
@@ -61,6 +78,8 @@ const FormWithoutForward = (
     value,
     gutterSize,
     items = [],
+    validating,
+    onValidatingChange,
   }: CFormProps,
   ref: Ref<{
     validateAll: () => void | Promise<void>
@@ -73,22 +92,7 @@ const FormWithoutForward = (
     validators[field] = newValidator
   }
 
-  const [errors, setErrors] = useState<Errors>({})
-
-  const validateAll = async () => {
-    const errors = {}
-    for (const field in validators) {
-      const rules = validators[field]
-      for (const rule of rules) {
-        const error = await rule(value[field])
-        if (error) {
-          errors[field] = error
-          break
-        }
-      }
-    }
-    setErrors(errors)
-  }
+  const [errors, setErrors] = useState<Errors>()
 
   const clearAll = () => {
     setErrors({})
@@ -119,6 +123,23 @@ const FormWithoutForward = (
       ...errors,
       [field]: hasError,
     })
+  }
+
+  const validateAll = async () => {
+    onValidatingChange?.(true)
+    const errors = {}
+    for (const field in validators) {
+      const rules = validators[field]
+      for (const rule of rules) {
+        const error = await rule(value[field])
+        if (error) {
+          errors[field] = error
+          break
+        }
+      }
+    }
+    setErrors(errors)
+    onValidatingChange?.(false)
   }
 
   const formContextValue = useFormContext({
@@ -156,6 +177,11 @@ const FormWithoutForward = (
               <CFormItem key={item.field ? item.field : i} {...item} />
             ))}
             {children}
+            {validating && (
+              <div className="c-form--validating-loading c-flex c-items-center c-justify-center">
+                <CLoadingBars />
+              </div>
+            )}
           </div>
         </CSizeContext.Provider>
       </CGutterSizeContext.Provider>

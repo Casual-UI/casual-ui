@@ -29,6 +29,10 @@ $radio-sizes: ("xs": 15px, "sm": 17.5px );
     margin-left: 2px;
   }
 
+  &--has-error {
+    color: var(--casual-negative);
+  }
+
   &--selected {
     color: var(--casual-primary);
 
