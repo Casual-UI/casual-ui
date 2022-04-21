@@ -1,5 +1,11 @@
 import clsx from 'clsx'
-import React, { useEffect, useMemo, useState } from 'react'
+import React, {
+  forwardRef,
+  useEffect,
+  useMemo,
+  useState,
+  useImperativeHandle,
+} from 'react'
 import { CRule, CSize, CLabelDirection } from 'casual-types'
 import { CFormItemContext, useFormContext } from './CFormContext'
 import useSize, { CSizeContext } from '../../hooks/useSize'
@@ -47,18 +53,21 @@ interface CFormItemProps {
    */
   gutterSize?: CSize
 }
-const CFormItem = ({
-  field,
-  label,
-  size,
-  gutterSize,
-  labelWidth,
-  labelAlign,
-  labelDirection,
-  rules,
-  col,
-  children,
-}: CFormItemProps) => {
+const CFormItem = (
+  {
+    field,
+    label,
+    size,
+    gutterSize,
+    labelWidth,
+    labelAlign,
+    labelDirection,
+    rules,
+    col,
+    children,
+  }: CFormItemProps,
+  ref
+) => {
   const formContextValue = useFormContext({
     labelAlign,
     labelDirection,
@@ -167,5 +176,6 @@ const CFormItem = ({
     </CFormItemContext.Provider>
   )
 }
+
 export default CFormItem
 export type { CFormItemProps }

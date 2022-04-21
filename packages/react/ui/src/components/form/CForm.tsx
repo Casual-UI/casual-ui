@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { forwardRef, useState, useImperativeHandle, Ref } from 'react'
 import clsx from 'clsx'
 import {
   CFormContext,
@@ -50,17 +50,25 @@ interface CFormProps {
    */
   children?: CSlot
 }
-const CForm = ({
-  size,
-  col = 6,
-  labelWidth = '100px',
-  labelAlign,
-  labelDirection,
-  children,
-  value,
-  gutterSize,
-  items = [],
-}: CFormProps) => {
+const FormWithoutForward = (
+  {
+    size,
+    col = 6,
+    labelWidth = '100px',
+    labelAlign,
+    labelDirection,
+    children,
+    value,
+    gutterSize,
+    items = [],
+  }: CFormProps,
+  /**
+   * 表单组件的ref，可以调用验证相关方法
+   */
+  ref: Ref<{
+    validateAll: () => void | Promise<void>
+  }>
+) => {
   const validators: Validators = {}
 
   const addValidator = (field: string, newValidator: Validator[]) => {
@@ -125,6 +133,10 @@ const CForm = ({
     errors,
   })
 
+  useImperativeHandle(ref, () => ({
+    validateAll,
+  }))
+
   return (
     <CFormContext.Provider value={formContextValue}>
       <CGutterSizeContext.Provider value={realGutterSize}>
@@ -148,5 +160,6 @@ const CForm = ({
     </CFormContext.Provider>
   )
 }
+const CForm = forwardRef(FormWithoutForward)
 export default CForm
 export type { CFormProps }
