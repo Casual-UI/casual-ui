@@ -103,6 +103,12 @@ const CFormItemWithoutForwardRef = (
     }
   }
 
+  useImperativeHandle(ref, () => ({
+    validateCurrent,
+    clearCurrent,
+    hasError,
+  }))
+
   const realSize = useSize(size)
 
   const getLabelMarginPosition = (direction: CLabelDirection) => {
