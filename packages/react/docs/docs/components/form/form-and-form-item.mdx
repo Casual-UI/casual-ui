@@ -541,10 +541,6 @@ function Demo() {
 
   const formRef = useRef(null)
 
-  useEffect(() => {
-    console.log(formRef)
-  }, [])
-
   return (
     <div className="c-pa-md">
       <CForm ref={formRef} value={formData} items={items} />
