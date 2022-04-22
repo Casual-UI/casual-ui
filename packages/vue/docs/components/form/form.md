@@ -402,8 +402,18 @@ const spans = [2, 3, 4, 6, 12]
 
 ### 表单验证 & 异步验证 & 验证状态
 
-下面的示例中：  
-爱好一栏，具有一个异步验证规则
+Casual UI 的表单验证，需要配合`field`、`rules`属性  
+`rules`为验证函数数组，每个验证函数为一个函数，该函数接受当前表单项对应值，返回：  
+`false | string | Promise<false | string>`，返回含义如下：
+
+- 返回`false`则代表验证通过无错误
+- 回`string`则代表有错误，并且返回值为具体的错误信息
+- 返回`Promise`则代表异步验证，内容也是`false`或者具体的`string`类型错误信息
+
+假设你想定义一个验证是否必填的验证规则，可以这样写:
+
+同时，在下面的示例中：  
+爱好(hobbies)一栏，具有异步验证规则
 
 ```vue live
 <script setup>
@@ -411,11 +421,11 @@ import { ref } from 'vue'
 import { useNotifications } from 'casual-ui-vue'
 
 const formData = ref({
-  name: 'Micheal Jackson',
-  gender: 'male',
-  birthday: new Date('August 29, 1958'),
-  industry: 'Entertainment',
-  hobbies: ['Work out', 'Rock']
+  name: '',
+  gender: '',
+  birthday: null,
+  industry: '',
+  hobbies: []
 })
 const validating = ref(false)
 const formItems = [
@@ -482,11 +492,10 @@ const formItems = [
       ]
     },
     rules: [
-      v => v.length < 2 ? '请至少选择两项' : false,
       // 异步验证
-      () => new Promise(resolve => {
+      v => new Promise(resolve => {
         setTimeout(() => {
-          resolve(false)
+          resolve(v.length < 2 ? '请至少选择两项' : false)
         }, 3000)
       })
     ]
@@ -504,6 +513,9 @@ const doValidate = () => {
       })
     })
 }
+const clearValidate = () => {
+  form.value?.clearValidate()
+}
 </script>
 <template>
   <c-form
@@ -513,7 +525,16 @@ const doValidate = () => {
     :items="formItems"
     class="c-pa-md"
   />
-  <c-button label="提交" :loading="validating" @click="doValidate" />
+  <div class="c-mt-xl">
+    <c-button
+      label="重置"
+      outlined
+      :loading="validating"
+      class="c-mr-md"
+      @click="clearValidate"
+    />
+    <c-button label="提交" :loading="validating" @click="doValidate" />
+  </div>
 </template>
 ```
 

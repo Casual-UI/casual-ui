@@ -194,8 +194,23 @@ const validate = () => {
     )
   })
 }
+
+const clearValidate = () => {
+  errorStatus.value = props.items.reduce(
+    (obj, { field }) => ({
+      ...obj,
+      [field]: {
+        error: false,
+        message: '',
+      },
+    }),
+    {}
+  )
+}
+
 defineExpose({
   validate,
+  clearValidate,
 })
 </script>
 <template>
