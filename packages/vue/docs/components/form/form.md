@@ -412,6 +412,21 @@ Casual UI 的表单验证，需要配合`field`、`rules`属性
 
 假设你想定义一个验证是否必填的验证规则，可以这样写:
 
+```js
+const rule = v => (v ? false : '该项是必填的')
+```
+
+它的等价异步逻辑大概是这样：
+
+```js
+const asyncRule = v =>
+  new Promise(resolve => {
+    setTimeout(() => {
+      resolve(v ? false : '该项是必填的')
+    }, 1000)
+  })
+```
+
 同时，在下面的示例中：  
 爱好(hobbies)一栏，具有异步验证规则
 
@@ -514,7 +529,7 @@ const doValidate = () => {
     })
 }
 const clearValidate = () => {
-  form.value?.clearValidate()
+  form.value?.clearAll()
 }
 </script>
 <template>
@@ -545,16 +560,23 @@ const clearValidate = () => {
 ```vue live
 <script setup>
 import { ref } from 'vue'
+import { useNotifications } from 'casual-ui-vue'
 const formData = ref({
-  name: 'Micheal Jackson',
-  gender: 'male',
-  birthday: new Date('August 29, 1958'),
-  industry: 'Entertainment',
-  customField: 'custom value'
+  name: '',
+  gender: '',
+  birthday: null,
+  industry: '',
+  customField: ''
 })
 
 const formItems = [
-  { field: 'name', label: '姓名' },
+  {
+    field: 'name',
+    label: '姓名',
+    rules: [
+      v => !v ? '请输入姓名' : false
+    ]
+  },
   {
     label: '性别',
     field: 'gender',
@@ -564,7 +586,10 @@ const formItems = [
         { label: 'Female', value: 'female' },
         { label: 'Male', value: 'male' },
       ]
-    }
+    },
+    rules: [
+      v => v !== 'male' ? '只能选择Male！' : false
+    ]
   },
   {
     label: '生日',
@@ -572,7 +597,10 @@ const formItems = [
     component: 'date-picker',
     componentProps: {
       format: 'MMM DD, YYYY'
-    }
+    },
+    rules: [
+      v => !v ? '请选择日期' : false
+    ]
   },
   {
     label: '行业',
@@ -585,7 +613,10 @@ const formItems = [
         { label: 'Entertainment', value: 'Entertainment' },
         { label: 'Transportation', value: 'Transportation' }
       ]
-    }
+    },
+    rules: [
+      v => v !== 'IT' && v !== 'Entertainment' ? '只能选择IT或者Entertainment' : false
+    ]
   },
   {
     label: '自定义项',
@@ -595,9 +626,30 @@ const formItems = [
     ]
   }
 ]
+const { open } = useNotifications()
+const form = ref(null)
+const doValidate = () => {
+  form.value?.validate()
+    .then(() => {
+      open({
+        title: '提示',
+        message: '验证通过！'
+      })
+    })
+}
+const clearAll = () => {
+  form.value?.clearAll()
+}
+const validating = ref(false)
 </script>
 <template>
-  <c-form v-model="formData" :items="formItems" class="c-pa-md">
+  <c-form
+    ref="form"
+    v-model="formData"
+    v-model:validating="validating"
+    :items="formItems"
+    class="c-pa-md"
+  >
     <template #customField="{ validate, clearValidate, hasError }">
       <input
         v-model="formData.customField"
@@ -607,6 +659,16 @@ const formItems = [
       />
     </template>
   </c-form>
+  <div class="c-mt-xl">
+    <c-button
+      label="重置"
+      outlined
+      :loading="validating"
+      class="c-mr-md"
+      @click="clearAll"
+    />
+    <c-button label="提交" :loading="validating" @click="doValidate" />
+  </div>
 </template>
 ```
 
@@ -625,18 +687,25 @@ const formItems = [
 ```vue live
 <script setup>
 import { ref } from 'vue'
+import { useNotifications } from 'casual-ui-vue'
 import CustomInput from '@doc/components/form/CustomInput.vue'
 
 const formData = ref({
-  name: 'Micheal Jackson',
-  gender: 'male',
-  birthday: new Date('August 29, 1958'),
-  industry: 'Entertainment',
-  customField: 'custom value'
+  name: '',
+  gender: '',
+  birthday: null,
+  industry: '',
+  customField: ''
 })
 
 const formItems = [
-  { field: 'name', label: '姓名' },
+  {
+    field: 'name',
+    label: '姓名',
+    rules: [
+      v => !v ? '请输入姓名' : false
+    ]
+  },
   {
     label: '性别',
     field: 'gender',
@@ -646,7 +715,10 @@ const formItems = [
         { label: 'Female', value: 'female' },
         { label: 'Male', value: 'male' },
       ]
-    }
+    },
+    rules: [
+      v => v !== 'male' ? '只能选择Male！' : false
+    ]
   },
   {
     label: '生日',
@@ -654,7 +726,10 @@ const formItems = [
     component: 'date-picker',
     componentProps: {
       format: 'MMM DD, YYYY'
-    }
+    },
+    rules: [
+      v => !v ? '请选择日期' : false
+    ]
   },
   {
     label: '行业',
@@ -667,7 +742,10 @@ const formItems = [
         { label: 'Entertainment', value: 'Entertainment' },
         { label: 'Transportation', value: 'Transportation' }
       ]
-    }
+    },
+    rules: [
+      v => v !== 'IT' && v !== 'Entertainment' ? '只能选择IT或者Entertainment' : false
+    ]
   },
   {
     label: '自定义项',
@@ -680,9 +758,39 @@ const formItems = [
     ]
   }
 ]
+const { open } = useNotifications()
+const form = ref(null)
+const doValidate = () => {
+  form.value?.validate()
+    .then(() => {
+      open({
+        title: '提示',
+        message: '验证通过！'
+      })
+    })
+}
+const clearAll = () => {
+  form.value?.clearAll()
+}
+const validating = ref(false)
 </script>
 <template>
-  <c-form v-model="formData" :items="formItems" class="c-pa-md" />
+  <c-form
+    ref="form"
+    v-model="formData"
+    :items="formItems"
+    class="c-pa-md"
+  />
+  <div class="c-mt-xl">
+    <c-button
+      label="重置"
+      outlined
+      :loading="validating"
+      class="c-mr-md"
+      @click="clearAll"
+    />
+    <c-button label="提交" :loading="validating" @click="doValidate" />
+  </div>
 </template>
 ```
 

@@ -195,7 +195,7 @@ const validate = () => {
   })
 }
 
-const clearValidate = () => {
+const clearAll = () => {
   errorStatus.value = props.items.reduce(
     (obj, { field }) => ({
       ...obj,
@@ -210,7 +210,7 @@ const clearValidate = () => {
 
 defineExpose({
   validate,
-  clearValidate,
+  clearAll,
 })
 </script>
 <template>

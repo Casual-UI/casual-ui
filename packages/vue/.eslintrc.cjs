@@ -15,6 +15,7 @@ module.exports = {
     {
       files: ['**/*.md/*.{js,ts,jsx,tsx,vue}'],
       rules: {
+        '@typescript-eslint/no-unused-vars': 'off',
         'no-multi-spaces': 'error',
         semi: ['error', 'never'],
         quotes: ['error', 'single'],
