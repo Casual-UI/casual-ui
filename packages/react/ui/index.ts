@@ -48,8 +48,12 @@ import CList from './src/components/list/CList'
 import CForm from './src/components/form/CForm'
 import CFormItem from './src/components/form/CFormItem'
 import CRadioGroup from './src/components/form/CRadioGroup'
+import { useFormItemContext } from './src/components/form/CFormContext'
+import { useFormContext } from './src/components/form/CFormContext'
 
 export {
+  useFormItemContext,
+  useFormContext,
   CRadioGroup,
   CForm,
   CFormItem,

@@ -734,8 +734,27 @@ function Demo() {
 
 ### 自定义表单组件
 
+使用`useFormItemContext`，获取`validateCurrent`、`clearCurrent`、`hasError`等方法，可以自定义表单组件  
+下面例子中的姓名一栏，采用自定义输入框组件实现
+
 ```jsx live
 function Demo() {
+  // 自定义一个简单的输入框
+  const CustomInput = ({ value, onChange }) => {
+    const { clearCurrent, validateCurrent, hasError } = useFormItemContext()
+    return (
+      <input
+        value={value}
+        onFocus={clearCurrent}
+        onBlur={validateCurrent}
+        onChange={e => onChange('name', e.target.value)}
+        style={{
+          borderColor: hasError ? 'red' : 'inherit',
+        }}
+      />
+    )
+  }
+
   const [formData, setFormData] = useState({
     name: '',
     gender: '',
@@ -768,15 +787,10 @@ function Demo() {
       label: '姓名',
       field: 'name',
       rules: [v => (v ? false : '请输入姓名')],
-      children: ({ validateCurrent, clearCurrent, hasError }) => (
-        <input
+      children: (
+        <CustomInput
           value={formData.name}
-          onFocus={clearCurrent}
-          onBlur={validateCurrent}
-          onChange={e => setField('name', e.target.value)}
-          style={{
-            borderColor: hasError ? 'red' : 'inherit',
-          }}
+          onChange={v => setField('name', v)}
         />
       ),
     },
