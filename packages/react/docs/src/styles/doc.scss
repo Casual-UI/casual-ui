@@ -17,7 +17,14 @@
   --ifm-color-primary-lightest: #3cad6e;
   --ifm-code-font-size: 95%;
 }
+.alert--success {
+  --ifm-alert-border-color: var(--casual-primary);
+  --ifm-alert-background-color: var(--casual-primary-pale);
+}
 
+.admonition-heading {
+  font-weight: bold;
+}
 html[data-theme="light"] {
   background-color: #f7f8fa;
 

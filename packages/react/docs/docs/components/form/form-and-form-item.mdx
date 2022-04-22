@@ -732,6 +732,143 @@ function Demo() {
 }
 ```
 
+### 自定义表单组件
+
+```jsx live
+function Demo() {
+  const [formData, setFormData] = useState({
+    name: '',
+    gender: '',
+    birthday: null,
+    displayBirthday: '',
+    industry: '',
+    hobbies: [],
+  })
+
+  const setField = (k, v) =>
+    setFormData({
+      ...formData,
+      [k]: v,
+    })
+
+  const genderOptions = [
+    { label: 'Male', value: 'male' },
+    { label: 'Female', value: 'female' },
+  ]
+
+  const industryOptions = [
+    { label: 'IT', value: 'IT' },
+    { label: 'Medical', value: 'Medical' },
+    { label: 'Entertainment', value: 'Entertainment' },
+    { label: 'Transportation', value: 'Transportation' },
+  ]
+
+  const items = [
+    {
+      label: '姓名',
+      field: 'name',
+      rules: [v => (v ? false : '请输入姓名')],
+      children: ({ validateCurrent, clearCurrent, hasError }) => (
+        <input
+          value={formData.name}
+          onFocus={clearCurrent}
+          onBlur={validateCurrent}
+          onChange={e => setField('name', e.target.value)}
+          style={{
+            borderColor: hasError ? 'red' : 'inherit',
+          }}
+        />
+      ),
+    },
+    {
+      label: '性别',
+      field: 'gender',
+      rules: [
+        v => {
+          return v === 'male' ? false : '只能选Male!'
+        },
+      ],
+      children: (
+        <CRadioGroup
+          value={formData.gender}
+          options={genderOptions}
+          onChange={v => setField('gender', v)}
+        />
+      ),
+    },
+    {
+      label: '生日',
+      field: 'birthday',
+      rules: [v => (!v ? '请选择生日' : false)],
+      children: (
+        <CDatePicker
+          format="MMM DD, YYYY"
+          value={formData.birthday}
+          placeholder="请选择生日"
+          onChange={v => setField('birthday', v)}
+          formattedValue={formData.displayBirthday}
+          onFormattedValueChange={v => setField('displayBirthday', v)}
+        />
+      ),
+    },
+    {
+      label: '行业',
+      field: 'industry',
+      rules: [
+        v =>
+          v !== 'IT' && v !== 'Entertainment'
+            ? '只能选IT或者Entertainment!'
+            : false,
+      ],
+      children: (
+        <CSelect
+          value={formData.industry}
+          onChange={v => setField('industry', v)}
+          options={industryOptions}
+        />
+      ),
+    },
+    {
+      label: '爱好',
+      field: 'hobbies',
+      rules: [v => (v && v.length < 2 ? '至少选择两个爱好' : false)],
+      children: (
+        <CCheckboxGroup
+          value={formData.hobbies}
+          onChange={v => setField('hobbies', v)}
+          options={['Reading', 'Writing', 'Singing', 'Dancing'].map(h => ({
+            label: h,
+            value: h,
+          }))}
+        />
+      ),
+    },
+  ]
+
+  const formRef = useRef(null)
+
+  return (
+    <div className="c-pa-md">
+      <CForm ref={formRef} value={formData} items={items} />
+      <div className="c-mt-xl">
+        <SpaceItems>
+          <CButton
+            outlined
+            label="清除验证状态"
+            onClick={() => formRef.current.clearAll()}
+          />
+          <CButton label="提交" onClick={() => formRef.current.validateAll()} />
+        </SpaceItems>
+      </div>
+    </div>
+  )
+}
+```
+
+:::tip 提示
+表单项所有的与表单同名配置，可以覆盖整体配置使某个表单项具有自身行为
+:::
+
 ### CForm Props
 
 <PropTable name="CForm" typeWidth="240px" />
