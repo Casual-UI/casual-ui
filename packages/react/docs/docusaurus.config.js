@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 const config = {
   title: 'Casual UI - React',
   tagline: '一个随意的React组件库',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://casual-ui-react.donsen.site',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -143,6 +143,11 @@ const config = {
         playgroundPosition: 'top',
       },
       showLastUpdateTime: true,
+      algolia: {
+        apiKey: 'e4cde0eff4725059b13ad81010ace04b',
+        appId: '79D0K7AVBK',
+        indexName: 'casual-ui',
+      },
     }),
 }
 
