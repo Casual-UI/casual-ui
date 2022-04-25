@@ -147,6 +147,7 @@ const config = {
         apiKey: 'e4cde0eff4725059b13ad81010ace04b',
         appId: '79D0K7AVBK',
         indexName: 'casual-ui',
+        contextualSearch: false,
       },
     }),
 }
