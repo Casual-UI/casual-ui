@@ -58,7 +58,6 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      autoCollapseSidebarCategories: false,
       navbar: {
         title: 'Casual UI - React',
         logo: {
@@ -148,6 +147,9 @@ const config = {
         appId: '79D0K7AVBK',
         indexName: 'casual-ui',
         contextualSearch: false,
+      },
+      docs: {
+        sidebar: { autoCollapseCategories: false },
       },
     }),
 }
