@@ -4,6 +4,7 @@
   "description": "Casual UI Vue Docs",
   "main": "index.js",
   "keywords": [],
+  "private": true,
   "author": "Dongsheng Zhao <1197160272@qq.com>",
   "repository": {
     "url": "git+https://github.com/Blackman99/casual-ui.git",
@@ -16,11 +17,11 @@
     "casual-styles": "workspace:*",
     "casual-ui-vue": "workspace:*",
     "vue-styleguidist": "^4.44.28",
-    "vuepress": "^2.0.0-beta.39",
+    "vuepress": "2.0.0-beta.46",
     "vuepress-plugin-casual-code": "workspace:*"
   },
   "scripts": {
-    "dev": "node ./cli/clearTemp && yarn vuepress dev .",
+    "dev": "node ./cli/clearTemp && npx vuepress dev .",
     "build": "vuepress build ."
   },
   "bugs": {

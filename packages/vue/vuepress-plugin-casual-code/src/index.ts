@@ -1,5 +1,4 @@
 import { uid } from 'uid'
-import type { Plugin } from 'vuepress'
 import { parse } from 'vue-docgen-api'
 import { path } from '@vuepress/utils'
 import { execSync } from 'child_process'
@@ -11,9 +10,6 @@ const componentDocMdContent = (name: string, doc?: boolean) => `
   doc ? `:doc="$frontmatter.additionalComponentInfo.${name}"` : ''
 } />
 `
-interface CasualCodePluginOptions {
-  componentsBasePath: string
-}
 
 type AdditionalComponentPaths = {
   name: string
@@ -22,14 +18,16 @@ type AdditionalComponentPaths = {
 
 const componentsIdMap: Record<string, string> = {}
 
-const markdownItVueDemoCodeBlock: Plugin<CasualCodePluginOptions> = options => {
+const markdownItVueDemoCodeBlock = (options: {
+  componentsBasePath: string
+}) => {
   return {
     name: 'vupress-plugin-casual-code',
-    clientAppEnhanceFiles: [path.resolve(__dirname, './clientAppEnhance.ts')],
-    extendsMarkdown: async (md, app) => {
+    clientConfigFile: path.resolve(__dirname, './clientConfig.ts'),
+    extendsMarkdown: async (md: any, app: any) => {
       const defaultRender = md.render
 
-      md.render = function (src, env) {
+      md.render = function (src: any, env: any) {
         const { frontmatter = {} } = env
 
         const { componentPath, additionalComponentPaths, hooksPath } =
@@ -62,7 +60,13 @@ const markdownItVueDemoCodeBlock: Plugin<CasualCodePluginOptions> = options => {
 
       const defaultFenceRenderer = md.renderer.rules.fence
 
-      md.renderer.rules.fence = function (tokens, idx, options, env, self) {
+      md.renderer.rules.fence = function (
+        tokens: any,
+        idx: any,
+        options: any,
+        env: any,
+        self: any
+      ) {
         if (!defaultFenceRenderer) return ''
         const key = `${env.filePathRelative}-${idx}`
 
@@ -134,12 +138,12 @@ const markdownItVueDemoCodeBlock: Plugin<CasualCodePluginOptions> = options => {
           `./.temp/${hooksAPIPath}.json`
         )
         execSync(
-          `npx typedoc ${
-            options.componentsBasePath
-          }../${hooksAPIPath}.ts --json ${typesJsonPath} --tsconfig ${path.resolve(
+          `npx typedoc --tsconfig ${path.resolve(
             __dirname,
             '../../tsconfig.json'
-          )}`
+          )} --json ${typesJsonPath} ${
+            options.componentsBasePath
+          }../${hooksAPIPath}.ts`
         )
         page.frontmatter.hooksInfo = require(typesJsonPath)
       }
