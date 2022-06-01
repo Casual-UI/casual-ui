@@ -108,12 +108,16 @@ export default defineUserConfig({
             link: '/global-style-utils/',
           },
           {
+            text: '指令',
+            link: '/directives/v-loading/',
+          },
+          {
             text: '可组合',
             link: '/usable/',
           },
           {
             text: '图标一览',
-            children: iconsRoutes,
+            link: '/icons-preview/material/',
           },
         ],
       },
@@ -128,6 +132,7 @@ export default defineUserConfig({
       '/global-style-utils/': ['/global-style-utils/'],
       '/components/': componentsRoutes,
       '/icons-preview/': iconsRoutes,
+      '/directives/': ['/directives/v-loading/'],
     },
   }),
   plugins: [

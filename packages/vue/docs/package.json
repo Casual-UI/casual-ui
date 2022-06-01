@@ -22,7 +22,8 @@
   },
   "scripts": {
     "dev": "node ./cli/clearTemp && npx vuepress dev .",
-    "build": "vuepress build ."
+    "build": "vuepress build .",
+    "build:deploy": "vuepress build --dest ../../deploy/dist-vue"
   },
   "bugs": {
     "url": "https://github.com/Blackman99/casual-ui/issues"
