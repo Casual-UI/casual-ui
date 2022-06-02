@@ -70,7 +70,7 @@ import { CButton } from 'casual-ui-react'
 
 function SomeComponent() {
 
-  return <OButton label="一个按钮" />
+  return <CButton label="一个按钮" />
 }
 ```
 
