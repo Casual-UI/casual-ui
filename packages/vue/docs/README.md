@@ -44,7 +44,7 @@ footer: MIT Licensed | Copyright © 2022-present Casual UI
   </div>
 </div>
 
-<style lang="scss" scoped> 
+<style scoped> 
 .description {
   max-width: 35rem;
   font-size: 1.6rem;

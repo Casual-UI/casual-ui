@@ -26,7 +26,7 @@ const colors = ['--casual-primary', '--casual-secondary', '--casual-warning', '-
     </div>
   </div>
 </template>
-<style scoped lang="scss">
+<style scoped>
 .color-card {
   height: 120px;
   line-height: 120px;

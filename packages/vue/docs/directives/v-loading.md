@@ -17,7 +17,7 @@ const loading = ref(false)
   >
   </div>
 </template>
-<style lang="scss" scoped>
+<style scoped>
 .loading-container {
   height: 30vh;
 }
@@ -26,21 +26,24 @@ const loading = ref(false)
 
 ### 自定义样式
 
-通过data-casual-样式名="样式值"，来设置loading容器的样式
+通过传递`v-loading:[自定义样式对象]`来自定义loading的样式
 
 ```vue live
 <script setup>
 import { ref } from 'vue'
 const loading = ref(false)
+const loadingConf = {
+  fontSize: '4rem',
+  color: 'cyan',
+  backgroundColor: 'rgba(0, 0, 0, .7)'
+}
 </script>
 <template>
   <c-toggle v-model="loading" label="点击打开/关闭Loading" />
   <div
-    v-loading="loading"
+    v-loading:[loadingConf]="loading"
     class="loading-container"
-    data-casual-background-color="rgba(0, 0, 0, .7)"
-    data-casual-font-size="4rem"
-    data-casual-color="cyan">
+  >
   </div>
 </template>
 <style lang="scss" scoped>

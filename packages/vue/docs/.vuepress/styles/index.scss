@@ -127,3 +127,7 @@ table {
     }
   } 
 }
+
+.c-button+.c-button {
+  margin-left: 12px;
+}

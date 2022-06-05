@@ -219,7 +219,7 @@ const show = ref(false)
   </c-dialog>
   <c-button label="打开对话框" @click="show = true" />
 </template>
-<style scoped lang="scss">
+<style scoped>
 .title-icon {
   width: 80px;
 }

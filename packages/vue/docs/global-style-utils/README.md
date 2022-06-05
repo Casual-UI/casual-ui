@@ -120,17 +120,15 @@ Casual UI 使用经典的 12 栅格机制
     </div>
   </div>
 </template>
-<style scoped lang="scss">
-.c-col-2,
-.c-col-3,
-.c-col-4 {
-  > div {
-    border: 1px solid #333;
-    background-color: var(--casual-primary);
-    padding: 12px 0;
-    color: #fff;
-    text-align: center;
-  }
+<style scoped>
+.c-col-2 > div ,
+.c-col-3 > div ,
+.c-col-4 > div {
+  border: 1px solid #333;
+  background-color: var(--casual-primary);
+  padding: 12px 0;
+  color: #fff;
+  text-align: center;
 }
 </style>
 ```
@@ -281,15 +279,13 @@ Casual UI 使用经典的 12 栅格机制
     </div>
   </div>
 </template>
-<style scoped lang="scss">
-.custom-grid {
-  &--item {
-    text-align: center;
-    background: var(--casual-primary);
-    color: #fff;
-    height: 80px;
-    line-height: 80px;
-  }
+<style scoped>
+.custom-grid--item {
+  text-align: center;
+  background: var(--casual-primary);
+  color: #fff;
+  height: 80px;
+  line-height: 80px;
 }
 </style>
 ```

@@ -9,7 +9,7 @@
     "email": "1197160272@qq.com",
     "name": "Dongsheng Zhao"
   },
-  "files": ["dist/*.js", "dist/*.d.ts", "dist/*.css"],
+  "files": ["dist"],
   "scripts": {
     "build": "vite build"
   },

@@ -32,12 +32,12 @@ componentPath: popup/CTooltip
     </c-tooltip>
   </div>
 </template>
-<style scoped lang="scss">
+<style scoped>
 .tooltips {
   display: flex;
-  div {
-    margin-right: 12px;
-  }
+}
+.tooltips>div {
+  margin-right: 12px;
 }
 </style>
 ```
@@ -56,7 +56,7 @@ componentPath: popup/CTooltip
     </template>
   </c-tooltip>
 </template>
-<style scoped lang="scss">
+<style scoped>
 .custom-content {
   white-space: nowrap;
   background: #333;
@@ -93,12 +93,13 @@ const toggleShow = () => {
     </div>
   </div>
 </template>
-<style scoped lang="scss">
+<style scoped>
 .popups {
   display: flex;
-  div + div {
-    margin-left: 12px;
-  }
 }
+div + div {
+  margin-left: 12px;
+}
+
 </style>
 ```

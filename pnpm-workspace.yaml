@@ -1,2 +1,3 @@
 packages:
   - 'packages/**'
+  - '../vue-repl-custom-app-hooks'

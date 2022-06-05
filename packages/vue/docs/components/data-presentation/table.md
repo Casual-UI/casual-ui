@@ -29,16 +29,9 @@ const tableColumns = [
   { title: '姓名', field: 'name' },
   { title: '性别', field: 'gender' },
 ]
-const loading = ref(false)
-const loadingConfig = {
-  fontSize: '3em',
-  color: 'purple'
-}
 </script>
 <template>
-  <c-toggle v-model="loading" />
   <c-table
-    v-loading:[loadingConfig]="loading"
     row-key="name"
     :data="tableData"
     :columns="tableColumns"

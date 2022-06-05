@@ -6,6 +6,8 @@ componentPath: basic/button/CButton
 ### 基础使用
 
 ```vue live
+<script setup>
+</script>
 <template>
   <c-button label="基础按钮" />
   <c-button label="轮廓按钮" outlined />
@@ -15,6 +17,8 @@ componentPath: basic/button/CButton
 ### 主题
 
 ```vue live
+<script setup>
+</script>
 <template>
   <div class="c-row c-gutter-md c-wrap">
     <div>
@@ -47,6 +51,9 @@ componentPath: basic/button/CButton
 ### 形状
 
 ```vue live
+<script setup>
+import { CButton } from 'casual-ui-vue'
+</script>
 <template>
   <c-button label="圆角按钮" rounded />
   <c-button label="圆边按钮" round />
@@ -179,9 +186,3 @@ import {
   </c-button>
 </template>
 ```
-
-<style lang="scss" scoped>
-  :deep(.c-button) + .c-button {
-    margin-left: 12px;
-  }
-</style>

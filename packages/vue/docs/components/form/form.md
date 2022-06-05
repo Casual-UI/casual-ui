@@ -11,6 +11,7 @@ additionalComponentPaths:
 ```vue live
 <script setup>
 import { ref } from 'vue'
+
 const formData = ref({
   name: 'Micheal Jackson',
   gender: 'male',

@@ -35,7 +35,7 @@ const show = ref(false)
     </template>
   </c-dropdown>
 </template>
-<style scoped lang="scss">
+<style scoped>
 .custom-width {
   width: 400px;
   padding: 24px;
@@ -61,7 +61,7 @@ const show = ref(false)
     </template>
   </c-dropdown>
 </template>
-<style scoped lang="scss">
+<style scoped>
 .custom-width {
   width: 400px;
   padding: 24px;

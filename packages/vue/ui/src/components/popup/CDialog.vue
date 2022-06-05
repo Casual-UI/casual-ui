@@ -51,6 +51,10 @@ interface CDialogProps {
    */
   customStyle?: object
   /**
+   * 自定义对话框内容样式类
+   */
+  customBodyStyle?: object
+  /**
    * 是否展示取消按钮
    */
   showCancelBtn?: boolean
@@ -89,6 +93,7 @@ const props = withDefaults(defineProps<CDialogProps>(), {
   showCancelBtn: false,
   showConfirmBtn: false,
   exchangeAnimationDirection: false,
+  customBodyStyle: () => ({}),
 })
 
 const { provideHorizontalAlign, provideVerticalAlign } = usePosition(props)
@@ -98,6 +103,10 @@ const emit = defineEmits<{
    * 绑定值发生变化时触发
    */
   (e: 'update:modelValue', newValue: boolean): void
+  /**
+   * 对话框打开并且动画行为完成时触发
+   */
+  (e: 'opened'): void
 }>()
 
 const { modelValue } = toRefs(props)
@@ -120,6 +129,7 @@ onUnmounted(() => {
   window.removeEventListener('keyup', listenKeyboard)
 })
 
+const onAfterEnter = () => emit('opened')
 const roundedClass = computed(() => {
   const classMap = new Map<PositionGroup, string>([
     ['start start', `c-rounded-br-md`],
@@ -145,6 +155,7 @@ const roundedClass = computed(() => {
     <c-popup :model-value="innerValue" addition-class="c-popup--dialog">
       <Transition
         :name="exchangeAnimationDirection ? 'c-dialog-reverse' : 'c-dialog'"
+        @after-enter="onAfterEnter"
       >
         <div
           v-if="innerValue"
@@ -179,6 +190,7 @@ const roundedClass = computed(() => {
             :class="['c-dialog--content', { 'c-px-md c-pb-md': bodyPadding }]"
             :style="{
               height: bodyHeight,
+              ...customBodyStyle,
             }"
           >
             <!-- @slot 默认内容 -->

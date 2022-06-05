@@ -28,7 +28,7 @@ useClickOutside({
     是否为外部点击：<code>{{ isOutsideClick }}</code>
   </p>
 </template>
-<style scoped lang="scss">
+<style scoped>
 .click-card {
   background-color: var(--casual-primary);
   padding: 24px 48px;

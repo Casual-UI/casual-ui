@@ -2,17 +2,14 @@ import { CLoading } from 'casual-ui-vue'
 import { createApp } from 'vue'
 import type { Directive } from 'vue'
 
-const createLoading = (el: any) => {
+const createLoading = (el: any, customStyles = {}) => {
   const loadingContainer = document.createElement('div')
   loadingContainer.dataset.cLoadingApp = ''
   loadingContainer.className =
     'c-inner-loading c-flex c-items-center c-justify-center'
-  Object.entries(el.dataset)
-    .filter(([key]) => key.startsWith('casual'))
-    .forEach(([key, value]: any) => {
-      const name = key.replace(/^casual/, '')
-      loadingContainer.style[name[0].toLowerCase() + name.slice(1)] = value
-    })
+  Object.entries(customStyles).forEach(([key, value]: any) => {
+    loadingContainer.style[key] = value
+  })
 
   el.append(loadingContainer)
   createApp(CLoading).mount(loadingContainer)
@@ -25,12 +22,12 @@ const vLoading: Directive = {
   created: (el, binding) => {
     el.style.position = 'relative'
     if (binding.value) {
-      createLoading(el)
+      createLoading(el, binding.arg)
     }
   },
   beforeUpdate: (el, binding) => {
     if (binding.value) {
-      createLoading(el)
+      createLoading(el, binding.arg)
     } else {
       el.querySelector('[data-c-loading-app]').remove()
     }
