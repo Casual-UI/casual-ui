@@ -1,3 +1,0 @@
-<template>
-  <c-loading />
-</template>
