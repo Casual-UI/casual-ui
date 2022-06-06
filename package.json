@@ -6,8 +6,16 @@
     "email": "1197160272@qq.com",
     "name": "Dongsheng Zhao"
   },
+  "homepage": "https://casual-ui-vue.donsen.site/",
   "repository": {
     "url": "https://github.com/Blackman99/casual-ui.git"
+  },
+  "devDependencies": {
+    "prettier": "^2.6.1",
+    "@typescript-eslint/eslint-plugin": "^5.16.0",
+    "@typescript-eslint/parser": "^5.16.0",
+    "eslint": "^8.12.0",
+    "typescript": "^4.6.3"
   },
   "keywords": [
     "ui components", 

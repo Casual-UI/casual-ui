@@ -8,7 +8,6 @@ module.exports = {
     'eslint:recommended',
     'plugin:mdx/recommended',
     'plugin:react/recommended',
-    'plugin:prettier/recommended',
     'plugin:@typescript-eslint/recommended',
   ],
   settings: {
@@ -18,7 +17,7 @@ module.exports = {
       version: 'detect',
     },
   },
-  plugins: ['react', 'prettier', '@typescript-eslint'],
+  plugins: ['react', '@typescript-eslint'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
@@ -28,14 +27,6 @@ module.exports = {
   overrides: [
     {
       files: ['*.md'],
-      rules: {
-        'prettier/prettier': [
-          2,
-          {
-            parser: 'markdown',
-          },
-        ],
-      },
     },
     {
       files: ['*.mdx'],
@@ -55,19 +46,5 @@ module.exports = {
   rules: {
     '@typescript-eslint/no-explicit-any': 'off',
     'react/react-in-jsx-scope': 'off',
-    'prettier/prettier': [
-      'error',
-      {
-        arrowParens: 'avoid',
-        trailingComma: 'es5',
-        tabWidth: 2,
-        semi: false,
-        singleQuote: true,
-        endOfLine: 'auto',
-      },
-      {
-        usePrettierrc: false,
-      },
-    ],
   },
 }

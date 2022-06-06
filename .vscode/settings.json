@@ -28,5 +28,4 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.stylelint": true
   },
-  "typescript.tsdk": "node_modules/typescript/lib"
 }

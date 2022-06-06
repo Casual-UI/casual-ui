@@ -8,8 +8,7 @@ import {
   CDialog,
 } from 'casual-ui-vue'
 import { ref } from 'vue'
-import { Repl, ReplStore, File } from '@vue/repl'
-import '@vue/repl/style.css'
+import { Repl, ReplStore, File } from 'casual-vue-repl'
 import App from './App'
 
 const { open } = useNotifications()
@@ -43,13 +42,6 @@ const openRepl = () => {
         'https://unpkg.com/casual-ui-vue/dist/casual-ui-vue.es.js',
     },
   })
-  // store.value.addFile(
-  //   new File(
-  //     'style.css',
-  //     '@import url("https://unpkg.com/casual-ui-vue/dist/style.css");',
-  //     true
-  //   )
-  // )
   store.value.addFile(new File('App.vue', `${codeContent}\n${App}`))
   showReplDialog.value = true
 }
@@ -108,6 +100,7 @@ const customHeadTags = [
         :custom-import-statements="customImportStatements"
         :custom-app-usage-codes="customAppUsageCodes"
         :custom-head-tags="customHeadTags"
+        :clear-console="false"
       />
     </c-dialog>
   </div>
@@ -132,6 +125,17 @@ const customHeadTags = [
 }
 .vue-repl-container {
   height: 100%;
+  overflow: auto;
+}
+:deep(.split-pane .left) {
+  display: flex;
+  flex-direction: column;
+}
+:deep(.file-selector) {
+  flex-shrink: 0;
+}
+:deep(.editor-container) {
+  flex-grow: 1;
   overflow: auto;
 }
 </style>

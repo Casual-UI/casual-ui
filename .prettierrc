@@ -1,0 +1,10 @@
+{
+  "singleQuote": true,
+  "semi": false,
+  "trailingComma": "es5",
+  "bracketSameLine": false,
+  "arrowParens": "avoid",
+  "auto": "auto",
+  "singleAttributePerLine": true,
+  "svelteSortOrder": "options-scripts-markup-styles"
+}

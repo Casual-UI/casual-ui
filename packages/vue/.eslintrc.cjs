@@ -20,7 +20,6 @@ module.exports = {
         semi: ['error', 'never'],
         quotes: ['error', 'single'],
         'no-trailing-spaces': ['error', { skipBlankLines: true }],
-        'prettier/prettier': 'off',
         'vue/max-attributes-per-line': [
           'error',
           {
@@ -48,14 +47,12 @@ module.exports = {
   ],
   extends: [
     'eslint:recommended',
-    'plugin:prettier/recommended',
     'plugin:markdown/recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:vue/vue3-recommended',
     '@vue/eslint-config-typescript/recommended',
-    '@vue/eslint-config-prettier',
   ],
-  plugins: ['vue', 'markdown', 'prettier', '@typescript-eslint'],
+  plugins: ['vue', 'markdown', '@typescript-eslint'],
   parserOptions: {
     parser: '@typescript-eslint/parser',
     sourceType: 'module',
@@ -67,20 +64,6 @@ module.exports = {
       'error',
       {
         order: ['script', 'template', 'style'],
-      },
-    ],
-    'prettier/prettier': [
-      'error',
-      {
-        arrowParens: 'avoid',
-        trailingComma: 'es5',
-        tabWidth: 2,
-        semi: false,
-        singleQuote: true,
-        endOfLine: 'auto',
-      },
-      {
-        usePrettierrc: false,
       },
     ],
     'eol-last': 'off',

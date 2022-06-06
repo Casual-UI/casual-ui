@@ -68,10 +68,11 @@ const componentsRoutes = [
 ]
 
 export default defineUserConfig({
-  head: [['link', { rel: 'icon', href: '/logo.svg' }]],
   lang: 'zh-CN',
   title: 'Casual UI - Vue',
   description: '一个随意的组件库',
+  templateDev: path.resolve(__dirname, 'template.dev.html'),
+  templateBuild: path.resolve(__dirname, 'template.build.html'),
   theme: defaultTheme({
     logo: '/logo.svg',
     logoDark: '/logo-dark.svg',
