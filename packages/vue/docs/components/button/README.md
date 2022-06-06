@@ -6,8 +6,6 @@ componentPath: basic/button/CButton
 ### 基础使用
 
 ```vue live
-<script setup>
-</script>
 <template>
   <c-button label="基础按钮" />
   <c-button label="轮廓按钮" outlined />
@@ -17,8 +15,6 @@ componentPath: basic/button/CButton
 ### 主题
 
 ```vue live
-<script setup>
-</script>
 <template>
   <div class="c-row c-gutter-md c-wrap">
     <div>

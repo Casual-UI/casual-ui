@@ -131,3 +131,12 @@ table {
 .c-button+.c-button {
   margin-left: 12px;
 }
+.CodeMirror .CodeMirror-line {
+  padding: 0;
+}
+.CodeMirror-vscrollbar {
+  display: none !important;
+}
+.CodeMirror-scroll {
+  overflow: hidden !important;
+}

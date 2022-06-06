@@ -2,6 +2,12 @@ import { uid } from 'uid'
 import { parse } from 'vue-docgen-api'
 import { path } from '@vuepress/utils'
 import { execSync } from 'child_process'
+import { writeFileSync, readFileSync, mkdirSync } from 'fs'
+import type { App } from 'vuepress'
+
+ const sandboxHTML = readFileSync(
+   path.resolve(__dirname, './sandbox.html')
+ ).toString()
 
 const componentDocMdContent = (name: string, doc?: boolean) => `
 ### ${name} API
@@ -16,11 +22,17 @@ type AdditionalComponentPaths = {
   path: string
 }[]
 
+interface ImportMap {
+  imports: Record<string, string>
+}
+
 const componentsIdMap: Record<string, string> = {}
 
-const markdownItVueDemoCodeBlock = (options: {
+const markdownItVueDemoCodeBlock = (pluginOptions: {
   componentsBasePath: string
+  importMap?: ImportMap
 }) => {
+  
   return {
     name: 'vupress-plugin-casual-code',
     clientConfigFile: path.resolve(__dirname, './clientConfig.ts'),
@@ -91,17 +103,18 @@ const markdownItVueDemoCodeBlock = (options: {
         )}${TempDemoCodeComponentName}.vue`
 
         app.writeTemp(path, content)
+        writeFileSync(
+          `${app.dir.public()}/sandbox-demos/${TempDemoCodeComponentName}.vue`,
+          content
+        )
         return `
         <div class="c-doc-demo">
-          <div class="c-pa-md">
-            <component :is="$resolveCasual(() => import('@temp/${path}'))" />
-          </div>
           ${
             meta.includes('hide-code')
-              ? ''
-              : `<DemoCode>
-                ${defaultResult}
-              </DemoCode>`
+              ? `<div class="c-pa-md">
+                  <component :is="$resolveCasual(() => import('@temp/${path}'))" />
+                </div>`
+              : `<DemoCode path="${TempDemoCodeComponentName}" />`
           }
         </div>
       `
@@ -113,7 +126,7 @@ const markdownItVueDemoCodeBlock = (options: {
         const componentDocInfo = await parse(
           path.resolve(
             __dirname,
-            `${options.componentsBasePath}${page.frontmatter.componentPath}.vue`
+            `${pluginOptions.componentsBasePath}${page.frontmatter.componentPath}.vue`
           )
         )
         page.frontmatter.docInfo = componentDocInfo
@@ -126,7 +139,7 @@ const markdownItVueDemoCodeBlock = (options: {
           page.frontmatter.additionalComponentInfo[name] = (await parse(
             path.resolve(
               __dirname,
-              `${options.componentsBasePath}${singlePath}.vue`
+              `${pluginOptions.componentsBasePath}${singlePath}.vue`
             )
           )) as any
         }
@@ -142,7 +155,7 @@ const markdownItVueDemoCodeBlock = (options: {
             __dirname,
             '../../tsconfig.json'
           )} --json ${typesJsonPath} ${
-            options.componentsBasePath
+            pluginOptions.componentsBasePath
           }../${hooksAPIPath}.ts`
         )
         page.frontmatter.hooksInfo = require(typesJsonPath)

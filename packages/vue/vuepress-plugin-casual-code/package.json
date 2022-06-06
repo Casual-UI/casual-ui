@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "description": "",
   "dependencies": {
-    "casual-vue-repl": "workspace:*",
     "casual-ui-vue": "workspace:*",
     "uid": "^2.0.0",
     "vue": "^3.2.31",

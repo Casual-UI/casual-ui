@@ -140,6 +140,15 @@ export default defineUserConfig({
     casualCode({
       componentsBasePath:
         path.resolve(__dirname, '../ui/src/components/') + '/',
+      importMap: {
+        imports: {
+          '@quasar/extras/material-icons':
+            'https://unpkg.com/@quasar/extras/material-icons/index.mjs',
+          'casual-ui-vue':
+            'https://unpkg.com/casual-ui-vue/dist/casual-ui-vue.es.js',
+          vue: 'https://unpkg.com/@vue/runtime-dom@3.2.36/dist/runtime-dom.esm-browser.js',
+        },
+      },
     }),
     docSearch({
       appId: 'GC34OK1KSK',

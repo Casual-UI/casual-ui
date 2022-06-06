@@ -3,3 +3,7 @@ declare module '*.vue' {
   const comp: Component
   export default comp
 }
+
+interface Window extends globalThis {
+  CodeMirror: any
+}
