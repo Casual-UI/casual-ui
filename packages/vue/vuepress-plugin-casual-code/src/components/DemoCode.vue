@@ -89,7 +89,8 @@ const onReplDialogOpened = () => {
       flexGrow: 1,
       height: 'unset',
       overflowY: 'auto',
-    }" 
+    }"
+    :close-on-esc="false"
     width="100vw" 
     @opened="onReplDialogOpened"
   >

@@ -75,6 +75,10 @@ interface CDialogProps {
    * 是否交换动画的先后方向，初始为先横向展开，后纵向展开，设置为true，则先纵向展开，后横向展开
    */
   exchangeAnimationDirection?: boolean
+  /**
+   * 是否在按下Esc按键后关闭对话框
+   */
+  closeOnEsc?: boolean
 }
 
 const props = withDefaults(defineProps<CDialogProps>(), {
@@ -94,6 +98,7 @@ const props = withDefaults(defineProps<CDialogProps>(), {
   showConfirmBtn: false,
   exchangeAnimationDirection: false,
   customBodyStyle: () => ({}),
+  closeOnEsc: true
 })
 
 const { provideHorizontalAlign, provideVerticalAlign } = usePosition(props)
@@ -116,7 +121,7 @@ const { innerValue } = useVModel(modelValue, modelValue.value, newValue => {
 })
 
 const listenKeyboard = (e: KeyboardEvent) => {
-  if (e.key === 'Escape' && innerValue.value) {
+  if (e.key === 'Escape' && innerValue.value && props.closeOnEsc) {
     innerValue.value = false
   }
 }

@@ -14,7 +14,7 @@ export default (id: string, source: string) => {
     id
   }).content.replace(/export default/, 'const App =') : `const App = { name: ${id} }`
 
-  const templateSource = sourceParsed.descriptor.template?.content
+  const templateSource = sourceParsed.descriptor.template?.content + `\n<c-notification />`
 
   return `
   <!doctype html>
@@ -46,7 +46,7 @@ export default (id: string, source: string) => {
           "imports": {
             "@quasar/extras/material-icons": "https://unpkg.com/@quasar/extras/material-icons/index.mjs",
             "casual-ui-vue": "https://unpkg.com/casual-ui-vue/dist/casual-ui-vue.es.js", 
-            "vue": "https://unpkg.com/@vue/runtime-dom@3.2.36/dist/runtime-dom.esm-browser.js"
+            "vue": "https://unpkg.com/vue@3.2.37/dist/vue.esm-browser.prod.js"
           }
         }
       </script>
@@ -65,13 +65,6 @@ export default (id: string, source: string) => {
           filename: 'App.vue',
         }).code.replace(/export/, '')}
         App.render = render
-        App.mounted = function () {
-          const appHeight = document.getElementById('${id}').offsetHeight
-          window.parent.dispatchEvent(new CustomEvent('sandbox-height', {
-            detail: { appHeight, id: '${id}' }
-          }))
-        }
-        App.__file = '${id}.vue'
         const app = createApp(App)
         app.config.unwrapInjectedRef = true
         app.config.errorHandler = e => console.error(e)
