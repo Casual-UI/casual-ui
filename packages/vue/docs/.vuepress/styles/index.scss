@@ -127,7 +127,9 @@ table {
     }
   } 
 }
-
+.CodeMirror {
+  height: 100%;
+}
 .c-button+.c-button {
   margin-left: 12px;
 }

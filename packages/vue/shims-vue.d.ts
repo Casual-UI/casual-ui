@@ -5,5 +5,5 @@ declare module '*.vue' {
 }
 
 interface Window extends globalThis {
-  CodeMirror: any
+  monaco: any
 }

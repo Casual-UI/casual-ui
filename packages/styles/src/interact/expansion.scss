@@ -1,6 +1,5 @@
 .c-expansion {
   position: relative;
-  overflow: hidden;
 
   &--header {
     @extend %c-py-md, %c-px-lg, %c-items-center, %c-flex, %c-justify-between;

@@ -1,7 +1,6 @@
 import {
   compileScript,
   compileTemplate,
-  rewriteDefault,
   parse
 } from 'vue/compiler-sfc'
 
@@ -22,8 +21,10 @@ export default (id: string, source: string) => {
   <html>
     <head>
       <style>
-        html,body {
+        body, html {
           height: 100%;
+          margin: 0;
+          padding: 0;
         }
         html {
           overflow-x: hidden;
@@ -51,7 +52,7 @@ export default (id: string, source: string) => {
       </script>
     </head>
     <body>
-      <div id="${id}" style="height:100%;">
+      <div id="${id}">
 
       </div>
       <script type="module">
@@ -64,6 +65,12 @@ export default (id: string, source: string) => {
           filename: 'App.vue',
         }).code.replace(/export/, '')}
         App.render = render
+        App.mounted = function () {
+          const appHeight = document.getElementById('${id}').offsetHeight
+          window.parent.dispatchEvent(new CustomEvent('sandbox-height', {
+            detail: { appHeight, id: '${id}' }
+          }))
+        }
         App.__file = '${id}.vue'
         const app = createApp(App)
         app.config.unwrapInjectedRef = true

@@ -16,14 +16,14 @@
     "@vuepress/plugin-google-analytics": "^2.0.0-beta.38",
     "casual-styles": "workspace:*",
     "casual-ui-vue": "workspace:*",
+    "vite-plugin-monaco-editor": "^1.0.10",
     "vue-styleguidist": "^4.44.28",
     "vuepress": "2.0.0-beta.46",
     "vuepress-plugin-casual-code": "workspace:*"
   },
   "scripts": {
-    "dev": "node ./cli/clearTemp && npx vuepress dev .",
-    "build": "vuepress build .",
-    "build:deploy": "vuepress build --dest ../../deploy/dist-vue"
+    "dev": "npx vuepress dev . --clean-temp",
+    "build": "vuepress build . --clean-temp --clean-cache"
   },
   "bugs": {
     "url": "https://github.com/Blackman99/casual-ui/issues"

@@ -2,12 +2,7 @@ import { uid } from 'uid'
 import { parse } from 'vue-docgen-api'
 import { path } from '@vuepress/utils'
 import { execSync } from 'child_process'
-import { writeFileSync, readFileSync, mkdirSync } from 'fs'
 import type { App } from 'vuepress'
-
- const sandboxHTML = readFileSync(
-   path.resolve(__dirname, './sandbox.html')
- ).toString()
 
 const componentDocMdContent = (name: string, doc?: boolean) => `
 ### ${name} API
@@ -40,10 +35,12 @@ const markdownItVueDemoCodeBlock = (pluginOptions: {
       const defaultRender = md.render
 
       md.render = function (src: any, env: any) {
-        const { frontmatter = {} } = env
+        if(!env.frontmatter) {
+          env.frontmatter = {}
+        }
 
         const { componentPath, additionalComponentPaths, hooksPath } =
-          frontmatter
+          env.frontmatter
 
         let result = src
         if (componentPath) {
@@ -67,7 +64,7 @@ const markdownItVueDemoCodeBlock = (pluginOptions: {
             .pop()} API \n <HooksApi />`
         }
 
-        return defaultRender(result, env)
+        return defaultRender(`${result}`, env)
       }
 
       const defaultFenceRenderer = md.renderer.rules.fence
@@ -97,25 +94,25 @@ const markdownItVueDemoCodeBlock = (pluginOptions: {
 
         const TempDemoCodeComponentName = `TempDemoCodeComponent${id}`
 
+        if(!env.frontmatter.sandboxCodes) {
+          env.frontmatter.sandboxCodes = {}
+        }
+        env.frontmatter.sandboxCodes[TempDemoCodeComponentName] = content
+        
         const path = `.casual/${env.filePathRelative.replace(
           /(\w|-)+\.md/,
           ''
         )}${TempDemoCodeComponentName}.vue`
 
         app.writeTemp(path, content)
-        writeFileSync(
-          `${app.dir.public()}/sandbox-demos/${TempDemoCodeComponentName}.vue`,
-          content
-        )
         return `
         <div class="c-doc-demo">
-          ${
-            meta.includes('hide-code')
-              ? `<div class="c-pa-md">
-                  <component :is="$resolveCasual(() => import('@temp/${path}'))" />
-                </div>`
-              : `<DemoCode path="${TempDemoCodeComponentName}" />`
-          }
+          <DemoCode path="${TempDemoCodeComponentName}">
+            <component :is="$resolveCasual(() => import('@temp/${path}'))"/>
+            <template #code>
+              ${defaultResult}
+            </template>
+          </DemoCode>
         </div>
       `
       }

@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ref, watch, onMounted, computed } from 'vue'
+import { toRefs, ref, onMounted, computed } from 'vue'
 import { CIcon } from 'casual-ui-vue'
 import { matKeyboardArrowDown } from '@quasar/extras/material-icons'
+import useVModel, { useDefaultVModel } from '../../usable/useVModel';
 
 interface CExpansionProps {
   /**
@@ -20,7 +21,7 @@ interface CExpansionProps {
 
 const props = withDefaults(defineProps<CExpansionProps>(), {
   title: '',
-  modelValue: true,
+  modelValue: false,
   icon: '',
 })
 
@@ -31,40 +32,38 @@ const emit = defineEmits<{
   (e: 'update:modelValue', newValue: boolean): void
 }>()
 
-const innerExpandStatus = ref(true)
 const bodyDom = ref<HTMLDivElement | null>(null)
 const initialBodyHeight = ref('auto')
+const innerValue = ref(true)
+const { modelValue } = toRefs(props)
 
-watch(
-  () => props.modelValue,
-  newValue => {
-    innerExpandStatus.value = newValue
-  }
-)
-
-watch(innerExpandStatus, newInnerExpandStatus => {
-  emit('update:modelValue', newInnerExpandStatus)
-})
+useDefaultVModel(props, emit)
 
 const onHeaderClick = () => {
-  innerExpandStatus.value = !innerExpandStatus.value
+  innerValue.value = !innerValue.value
 }
 
 onMounted(() => {
   initialBodyHeight.value = `${bodyDom.value?.clientHeight}px`
-  innerExpandStatus.value = props.modelValue
+  innerValue.value = props.modelValue
 })
 
 const realtimeBodyHeigh = computed(() =>
-  innerExpandStatus.value ? initialBodyHeight.value : 0
+  innerValue.value ? initialBodyHeight.value : 0
 )
+
+const setHeight = (h: number) => {
+  initialBodyHeight.value = `${h}px`
+}
+
+defineExpose({
+  setHeight
+})
 </script>
 <template>
-  <div
-    :class="['c-expansion', { 'c-expansion--expanded': innerExpandStatus }]"
-    :style="`--casual-expansion-height:${realtimeBodyHeigh};`"
-  >
-    <div class="c-expansion--header" @click="onHeaderClick">
+  <div :class="['c-expansion', { 'c-expansion--expanded': innerValue }]"
+    :style="`--casual-expansion-height:${realtimeBodyHeigh};`">
+    <div class="c-expansion--header" @click.stop="onHeaderClick">
       <div v-if="icon || $slots.icon" class="c-expansion--icon">
         <!-- @slot 自定义图标 -->
         <slot name="icon">
@@ -77,24 +76,22 @@ const realtimeBodyHeigh = computed(() =>
           {{ title }}
         </slot>
       </div>
-      <div
-        :class="[
-          'c-expansion--arrow',
-          { 'c-expansion--arrow-expanded': innerExpandStatus },
-        ]"
-      >
+      <div :class="[
+        'c-expansion--arrow',
+        { 'c-expansion--arrow-expanded': innerValue },
+      ]">
         <!-- 
           @slot 自定义箭头 
             @binding {boolean} expand-status 当前展开状态
           -->
-        <slot name="arrow" :expand-status="innerExpandStatus">
+        <slot name="arrow" :expand-status="innerValue">
           <c-icon class="" :content="matKeyboardArrowDown" />
         </slot>
       </div>
     </div>
     <div ref="bodyDom" class="c-expansion--body">
       <!-- @slot 默认展开内容 -->
-      <slot />
+      <slot v-bind="{ setHeight }" />
     </div>
   </div>
 </template>

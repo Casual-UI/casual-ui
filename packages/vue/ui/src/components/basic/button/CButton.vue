@@ -92,7 +92,7 @@ defineEmits<{
       ...sizeThemeClasses,
     ]"
     :disabled="disabled"
-    @click="$emit('click')"
+    @click.stop="$emit('click')"
   >
     <div :class="['c-button--content-wrapper']">
       <!-- @slot 默认插槽，如果设置了该插槽，则会覆盖<code>label</code>内容 -->

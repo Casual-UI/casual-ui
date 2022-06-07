@@ -5,28 +5,39 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="generator" content="VuePress {{ version }}">
+  <style>
+    :root {
+      --c-bg: #fff;
+    }
+
+    html.dark {
+      --c-bg: #22272e;
+    }
+
+    html,
+    body {
+      background-color: var(--c-bg);
+    }
+  </style>
+  <script>
+    const userMode = localStorage.getItem('vuepress-color-scheme');
+    const systemDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (userMode === 'dark' || (userMode !== 'light' && systemDarkMode)) {
+      document.documentElement.classList.toggle('dark', true);
+    }
+  </script>
   <link rel="shortcut icon" href="/logo.svg" type="image/x-icon">
-  <link rel="stylesheet" href="/codemirror/lib/codemirror.css">
-  <link rel="stylesheet" href="/codemirror/theme/material-darker.css">
-  <script src="/codemirror/lib/codemirror.js"></script>
-  <script src="/codemirror/mode/javascript/javascript.js"></script>
-  <script src="/codemirror/mode/css/css.js"></script>
-  <script src="/codemirror/mode/htmlmixed/htmlmixed.js"></script>
-  <script src="/codemirror/addon/edit/closebrackets.js"></script>
-  <script src="/codemirror/addon/edit/closetag.js"></script>
-  <script src="/codemirror/addon/comment/comment.js"></script>
-  <script src="/codemirror/addon/fold/foldcode.js"></script>
-  <script src="/codemirror/addon/fold/indent-fold.js"></script>
-  <script src="/codemirror/addon/fold/comment-fold.js"></script>
+  <script src="/monaco-editor/min/vs/loader.js"></script>
+  <script>
+    require.config({paths: {vs: '/monaco-editor/min/vs'}})
+  </script>
   <!--vuepress-ssr-head-->
   <!--vuepress-ssr-resources-->
   <!--vuepress-ssr-styles-->
 </head>
 
 <body>
-  <div id="app">
-    <!--vuepress-ssr-app-->
-  </div>
+  <div id="app"><!--vuepress-ssr-app--></div>
   <!--vuepress-ssr-scripts-->
 </body>
 
