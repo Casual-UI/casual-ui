@@ -1,4 +1,7 @@
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+>
 import { useClickOutside } from 'casual-ui-vue'
 import { ref, watch } from 'vue'
 interface CTooltipProps {

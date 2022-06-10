@@ -1,7 +1,8 @@
 import {
   compileScript,
   compileTemplate,
-  parse
+  parse,
+  compileStyle
 } from 'vue/compiler-sfc'
 
 export default (id: string, source: string) => {
@@ -11,10 +12,30 @@ export default (id: string, source: string) => {
   })
 
   const script = sourceParsed.descriptor.scriptSetup ? compileScript(sourceParsed.descriptor, {
-    id
+    id,
   }).content.replace(/export default/, 'const App =') : `const App = { name: ${id} }`
 
   const templateSource = sourceParsed.descriptor.template?.content + `\n<c-notification />`
+
+  const templateParsed = compileTemplate({
+    source: templateSource || '<h3>Hello World</h3>',
+    id,
+    filename: `${id}.vue`,
+    scoped: true
+  }).code.replace(/export/, '')
+
+  const styleCode = sourceParsed.descriptor.styles.reduce(
+    (r, style) => {
+      const styleParsed = compileStyle({
+        id,
+        filename: `${id}.vue`,
+        source: style.content,
+        scoped: style.scoped,
+      })
+      return `${r}\n${styleParsed.code}`
+    },
+    ''
+  )
 
   return `
   <!doctype html>
@@ -37,9 +58,9 @@ export default (id: string, source: string) => {
         .c-button + .c-button {
           margin-left: 12px;
         }
+        ${styleCode}
       </style>
       <link rel="stylesheet" href="https://unpkg.com/casual-ui-vue/dist/style.css">
-      <!-- ES Module Shims: Import maps polyfill for modules browsers without import maps support (all except Chrome 89+) -->
       <script async src="https://unpkg.com/es-module-shims@1.5.5/dist/es-module-shims.wasm.js"></script>
       <script type="importmap">
         {
@@ -59,11 +80,9 @@ export default (id: string, source: string) => {
         import { createApp } from 'vue'
         import CasualUI from 'casual-ui-vue'
         ${script}
-        ${compileTemplate({
-          source: templateSource || '<h3>Hello World</h3>',
-          id,
-          filename: 'App.vue',
-        }).code.replace(/export/, '')}
+        ${templateParsed}
+        App.__scopeId = 'data-v-${id}'
+        App.__file = '${id}.vue'
         App.render = render
         const app = createApp(App)
         app.config.unwrapInjectedRef = true

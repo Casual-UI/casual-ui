@@ -1,4 +1,7 @@
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+>
 import { usePageFrontmatter } from '@vuepress/client'
 import { computed, ref } from 'vue'
 import type { Ref } from 'vue'
@@ -98,7 +101,11 @@ const getDefaultValue = (item: any) => {
       :body-style="{ maxHeight: '40vh', overflow: 'auto' }"
     >
       <template #body-Props>
-        <c-list :items="propList" size="xs" divider>
+        <c-list
+          :items="propList"
+          size="xs"
+          divider
+        >
           <template #item="{ item }">
             <ItemDom :value="item">
               <template #after-name>
@@ -124,7 +131,11 @@ const getDefaultValue = (item: any) => {
       </template>
 
       <template #body-Slots>
-        <c-list :items="slots" size="xs" divider>
+        <c-list
+          :items="slots"
+          size="xs"
+          divider
+        >
           <template #item="{ item }">
             <ItemDom
               :value="item"
@@ -154,14 +165,27 @@ const getDefaultValue = (item: any) => {
       </template>
 
       <template #body-Events>
-        <c-list :items="events" size="xs" divider>
+        <c-list
+          :items="events"
+          size="xs"
+          divider
+        >
           <template #item="{ item }">
             <ItemDom :value="item">
-              <div v-if="item.tags" class="c-pl-md">
+              <div
+                v-if="item.tags"
+                class="c-pl-md"
+              >
                 <b>入参</b>
-                <c-list :items="item.tags" divider>
+                <c-list
+                  :items="item.tags"
+                  divider
+                >
                   <template #item="{ item: pItem }">
-                    <ItemDom :value="pItem" :desc-wrap="false">
+                    <ItemDom
+                      :value="pItem"
+                      :desc-wrap="false"
+                    >
                       <template #after-name>
                         <div>
                           <TypeDom :val="pItem.type" />
@@ -178,7 +202,10 @@ const getDefaultValue = (item: any) => {
     </c-tabs>
   </div>
 </template>
-<style scoped lang="scss">
+<style
+  scoped
+  lang="scss"
+>
 .doc-api-container {
   background-color: var(--casual-table-bg);
   p {

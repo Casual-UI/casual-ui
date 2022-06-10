@@ -1,18 +1,24 @@
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+>
 import { ionCodeOutline } from '@quasar/extras/ionicons-v5'
 import { matPlayArrow } from '@quasar/extras/material-icons'
-import { ref} from 'vue'
+import { ref } from 'vue'
 import createSandboxApp from './createSandboxApp'
 import { usePageFrontmatter } from '@vuepress/client'
 import { CExpansion, CButton, CDialog, CIcon, CTooltip } from 'casual-ui-vue'
 
-const props = withDefaults(defineProps<{
-  path?: string
-  content?: string
-}>(), {
-  path: '',
-  content: ''
-})
+const props = withDefaults(
+  defineProps<{
+    path?: string
+    content?: string
+  }>(),
+  {
+    path: '',
+    content: '',
+  }
+)
 
 const showDialog = ref(false)
 
@@ -43,9 +49,9 @@ const onReplDialogOpened = () => {
       tabSize: 4,
       lineHeight: 1.5,
     })
-  
+
     editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyS, run)
-  
+
     iframe.frameBorder = '0'
     iframe.width = '100%'
     iframe.style.flexGrow = '1'
@@ -62,11 +68,16 @@ const onReplDialogOpened = () => {
     <c-expansion v-model="show">
       <template #title>
         <div class="c-flex c-items-center c-justify-between">
-          <div>
-            点击打开/折叠代码
-          </div>
-          <c-tooltip content="点击打开交互式编辑器" @click.native.stop>
-            <c-button icon outlined @click="showDialog = true">
+          <div>点击打开/折叠代码</div>
+          <c-tooltip
+            content="点击打开交互式编辑器"
+            @click.native.stop
+          >
+            <c-button
+              icon
+              outlined
+              @click="showDialog = true"
+            >
               <c-icon :content="ionCodeOutline" />
             </c-button>
           </c-tooltip>
@@ -77,13 +88,13 @@ const onReplDialogOpened = () => {
       </div>
     </c-expansion>
   </div>
-  <c-dialog 
-    v-model="showDialog" 
+  <c-dialog
+    v-model="showDialog"
     :custom-style="{
       height: '100vh',
       display: 'flex',
       flexDirection: 'column',
-    }" 
+    }"
     :custom-body-style="{
       backgroundColor: 'var(--c-bg)',
       flexGrow: 1,
@@ -91,7 +102,7 @@ const onReplDialogOpened = () => {
       overflowY: 'auto',
     }"
     :close-on-esc="false"
-    width="100vw" 
+    width="100vw"
     @opened="onReplDialogOpened"
   >
     <template #title>
@@ -102,19 +113,22 @@ const onReplDialogOpened = () => {
     </template>
     <div class="c-flex repl c-items-stretch">
       <div class="editor-wrapper">
-        <div class="editor" ref="editorDom">
-
-        </div>
+        <div
+          class="editor"
+          ref="editorDom"
+        ></div>
       </div>
-      <div class="c-flex-grow c-pa-md sandbox" ref="sandbox">
-
-      </div>
+      <div
+        class="c-flex-grow c-pa-md sandbox"
+        ref="sandbox"
+      ></div>
     </div>
   </c-dialog>
 </template>
-<style lang="scss" scoped>
-
-
+<style
+  lang="scss"
+  scoped
+>
 .demo-code {
   position: relative;
   overflow: visible;

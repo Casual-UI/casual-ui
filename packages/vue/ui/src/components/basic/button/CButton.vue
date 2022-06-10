@@ -1,4 +1,7 @@
-<script lang="ts" setup>
+<script
+  lang="ts"
+  setup
+>
 import { toRefs } from 'vue'
 import { useSizeThemeClass, CLoading, useInjectTheme } from 'casual-ui-vue'
 import type { CTheme, CSize } from 'casual-types'
@@ -92,7 +95,7 @@ defineEmits<{
       ...sizeThemeClasses,
     ]"
     :disabled="disabled"
-    @click.stop="$emit('click')"
+    @click="$emit('click')"
   >
     <div :class="['c-button--content-wrapper']">
       <!-- @slot 默认插槽，如果设置了该插槽，则会覆盖<code>label</code>内容 -->
