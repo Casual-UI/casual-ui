@@ -3,7 +3,10 @@ export const hasErrorKey = Symbol('hasError')
 export const validateKey = Symbol('validate')
 export const clearValidateKey = Symbol('clearValidate')
 </script>
-<script lang="ts" setup>
+<script
+  lang="ts"
+  setup
+>
 import type { CSize, CRule } from 'casual-types'
 import { computed, inject, provide, ref } from 'vue'
 import type { Ref } from 'vue'
@@ -178,7 +181,12 @@ provide(clearValidateKey, clearValidate)
         :has-error="hasError"
       />
       <Transition name="c-form-item--error-tip">
-        <div v-if="hasError" class="c-form-item--error-tip">{{ hasError }}</div>
+        <div
+          v-if="hasError"
+          class="c-form-item--error-tip"
+        >
+          {{ hasError }}
+        </div>
       </Transition>
     </div>
   </div>
