@@ -62,6 +62,7 @@ import useValidator from './components/form/useValidator'
 import CInnerLoading from './components/basic/loading/CInnerLoading.vue'
 import { vLoading } from './directives'
 import { useBEM } from './usable/useBEM'
+import CInfoItem from './components/list/CInfoItem.vue'
 
 const CasualUI: Plugin = {
   install: (app: App) => {
@@ -112,6 +113,7 @@ const CasualUI: Plugin = {
     app.component('CFormItem', CFormItem)
     app.component('CRadioGroup', CRadioGroup)
     app.component('CInnerLoading', CInnerLoading)
+    app.component('CInfoItem', CInfoItem)
 
     app.directive('loading', vLoading)
 
@@ -125,6 +127,7 @@ export {
   CTabs,
   CButton,
   CIcon,
+  CInfoItem,
   CLoading,
   CLoadingAudio,
   CLoadingBar,

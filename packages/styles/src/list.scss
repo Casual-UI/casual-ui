@@ -52,3 +52,19 @@
     }
   }
 }
+
+.c-info-item {
+  &--icon {
+    font-size: 28px;
+  }
+
+  &--title {
+    font-size: 1rem;
+  }
+
+  &--subtitle {
+    font-size: 0.8rem;
+    line-height: 1.5em;
+    color: var(--casual-input-placeholder);
+  }
+}

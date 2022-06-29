@@ -1,4 +1,7 @@
-<script lang="ts" setup>
+<script
+  lang="ts"
+  setup
+>
 import type { CSize } from 'casual-types'
 import { CItem, useInjectSize } from 'casual-ui-vue'
 interface OItemProps {
@@ -49,7 +52,10 @@ const { provideSize: size } = useInjectSize(props)
 <template>
   <div :class="['c-list', { 'c-list--with-divider': divider }]">
     <!-- @slot 没有数据时自定义内容 -->
-    <slot v-if="items.length === 0" name="empty">
+    <slot
+      v-if="items.length === 0"
+      name="empty"
+    >
       <div :class="['c-list--empty', `c-px-${size}`]">No Data</div>
     </slot>
     <template v-else>
@@ -63,8 +69,13 @@ const { provideSize: size } = useInjectSize(props)
         <!-- 
           @slot 自定义列表项 
           @binding {any} item 当前列表项数据
+          @binding {boolean} isActive 是否处于激活态
+          @binding {boolean} clickable 是否可点击
         -->
-        <slot name="item" v-bind="{ item }">
+        <slot
+          name="item"
+          v-bind="{ item, clickable, isActive: activeFn(item) }"
+        >
           {{ item.label }}
         </slot>
       </c-item>

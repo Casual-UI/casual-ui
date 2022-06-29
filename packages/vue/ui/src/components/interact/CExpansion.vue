@@ -5,7 +5,7 @@
 import { toRefs, ref, onMounted, computed } from 'vue'
 import { CIcon } from 'casual-ui-vue'
 import { matKeyboardArrowDown } from '@quasar/extras/material-icons'
-import useVModel, { useDefaultVModel } from '../../usable/useVModel'
+import { useDefaultVModel } from '../../usable/useVModel'
 
 interface CExpansionProps {
   /**

@@ -3,7 +3,10 @@ export const errorKey = Symbol('errorStatus')
 export const validatorsKey = Symbol('validators')
 </script>
 
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+>
 import useFormProps, { type LabelDirection } from './useFormProps'
 import CFormItem from './CFormItem.vue'
 import type { Component } from 'vue'
@@ -70,7 +73,7 @@ interface CFormProps {
   /**
    * 表单绑定值，用于<code>v-model</code>
    */
-  modelValue?: object
+  modelValue?: Record<string, any>
   /**
    * 表单项提示文案长度
    * @default '100px'
