@@ -1,4 +1,7 @@
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+>
 import { ref, toRefs } from 'vue'
 import {
   useInjectTheme,
@@ -8,6 +11,7 @@ import {
   CLoading,
   CIcon,
   useDefaultVModel,
+  useBEM,
 } from 'casual-ui-vue'
 import { matHighlightOff } from '@quasar/extras/material-icons'
 import type { CSize, CTheme } from 'casual-types'
@@ -172,16 +176,18 @@ const onClearIconClick = () => {
   <div
     :class="[
       ...sizeThemeClasses,
-      { 'c-input--custom-color': customColor },
-      { 'c-input--focused': innerFocused },
-      { 'c-input--disabled': disabled },
-      { 'c-input--readonly': readonly },
+      ...useBEM('input', {
+        customColor,
+        focused: innerFocused,
+        disabled,
+        readonly,
+        loading,
+        hasError,
+      }),
       `c-font-${innerSize}`,
       rounded && `c-rounded-${innerSize}`,
-      { 'c-input--loading': loading },
       `c-h-${innerSize}`,
       `c-px-${innerSize}`,
-      { 'c-input--has-error': hasError },
     ]"
   >
     <div :class="['c-input--content-wrapper']">
@@ -236,7 +242,10 @@ const onClearIconClick = () => {
           <slot name="suffix" />
         </div>
         <!-- @slot 自定义加载中 -->
-        <slot v-if="loading" name="loading">
+        <slot
+          v-if="loading"
+          name="loading"
+        >
           <c-loading />
         </slot>
       </div>

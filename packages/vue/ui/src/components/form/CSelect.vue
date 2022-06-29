@@ -1,4 +1,7 @@
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+>
 import {
   CTag,
   CList,
@@ -11,6 +14,7 @@ import {
 import { matKeyboardArrowDown } from '@quasar/extras/material-icons'
 import { watch, nextTick, computed, onMounted, ref, toRefs } from 'vue'
 import useValidator from './useValidator'
+import { useBEM } from 'casual-ui-vue'
 
 interface OOption {
   label: string
@@ -52,6 +56,10 @@ interface CSelectProps {
    * 是否禁用
    */
   disabled?: boolean
+  /**
+   * 是否为圆角
+   */
+  rounded?: boolean
 }
 
 const emit = defineEmits<{
@@ -68,6 +76,7 @@ const props = withDefaults(defineProps<CSelectProps>(), {
   options: () => [],
   multiple: false,
   disabled: false,
+  rounded: false,
 })
 
 const selectDom = ref<HTMLDivElement | null>(null)
@@ -185,19 +194,28 @@ const onArrowClick = () => {
 }
 </script>
 <template>
-  <c-dropdown v-model="focused" :disabled="disabled">
+  <c-dropdown
+    v-model="focused"
+    :disabled="disabled"
+  >
     <div
       ref="selectDom"
       :class="[
-        'c-select',
-        { 'c-select--focused': focused },
         `c-font-${provideSize}`,
-        { 'c-select--disabled': disabled },
-        { 'c-select--has-error': hasError },
+        ...useBEM('select', {
+          disabled,
+          hasError,
+          focused,
+          rounded,
+        }),
+        rounded && `c-rounded-${provideSize}`,
       ]"
       :style="selectDomStyle"
     >
-      <div class="c-select--input-wrapper" @click="onSelectClick">
+      <div
+        class="c-select--input-wrapper"
+        @click="onSelectClick"
+      >
         <div
           v-if="multiple"
           :class="[
@@ -236,7 +254,10 @@ const onArrowClick = () => {
           ref="tagsContainer"
           :class="['c-select--multiple-tags', `c-px-sm`]"
         >
-          <div v-for="{ label, value } in selectedMultipleOptions" :key="value">
+          <div
+            v-for="{ label, value } in selectedMultipleOptions"
+            :key="value"
+          >
             <c-tag
               :label="label"
               size="xs"

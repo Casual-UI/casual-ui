@@ -20,7 +20,18 @@ const options = [
 ]
 </script>
 <template>
-  <c-select v-model="selectedValue" placeholder="请选择" :options="options" />
+  <c-select
+    v-model="selectedValue"
+    placeholder="请选择"
+    :options="options"
+  />
+  <c-select
+    v-model="selectedValue"
+    rounded
+    placeholder="圆角选择器"
+    :options="options"
+    class="c-ml-md"
+  />
 </template>
 ```
 
@@ -105,7 +116,8 @@ const options = [
     v-model="val"
     :options="options"
     placeholder="禁用态"
-    disabled />
+    disabled
+  />
 </template>
 ```
 

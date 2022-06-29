@@ -12,10 +12,6 @@
     width: 100%;
   }
 
-  &--rounded {
-    border-radius: var(--casual-rounded);
-  }
-
   &--content-wrapper {
     @extend %c-flex;
     @extend %c-items-center;

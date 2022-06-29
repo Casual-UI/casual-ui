@@ -61,6 +61,7 @@ import CRadioGroup from './components/form/CRadioGroup.vue'
 import useValidator from './components/form/useValidator'
 import CInnerLoading from './components/basic/loading/CInnerLoading.vue'
 import { vLoading } from './directives'
+import { useBEM } from './usable/useBEM'
 
 const CasualUI: Plugin = {
   install: (app: App) => {
@@ -183,4 +184,5 @@ export {
   useScreen,
   useValidator,
   vLoading,
+  useBEM,
 }
