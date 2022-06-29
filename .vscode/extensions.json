@@ -2,6 +2,7 @@
   "recommendations": [
     "dbaeumer.vscode-eslint",
     "johnsoncodehk.volar",
-    "stylelint.vscode-stylelint"
+    "vue.vscode-typescript-vue-plugin",
+    "Vue.volar"
   ]
 }
