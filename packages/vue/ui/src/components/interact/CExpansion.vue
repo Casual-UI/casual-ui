@@ -1,8 +1,11 @@
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+>
 import { toRefs, ref, onMounted, computed } from 'vue'
 import { CIcon } from 'casual-ui-vue'
 import { matKeyboardArrowDown } from '@quasar/extras/material-icons'
-import useVModel, { useDefaultVModel } from '../../usable/useVModel';
+import useVModel, { useDefaultVModel } from '../../usable/useVModel'
 
 interface CExpansionProps {
   /**
@@ -57,14 +60,22 @@ const setHeight = (h: number) => {
 }
 
 defineExpose({
-  setHeight
+  setHeight,
 })
 </script>
 <template>
-  <div :class="['c-expansion', { 'c-expansion--expanded': innerValue }]"
-    :style="`--casual-expansion-height:${realtimeBodyHeigh};`">
-    <div class="c-expansion--header" @click.stop="onHeaderClick">
-      <div v-if="icon || $slots.icon" class="c-expansion--icon">
+  <div
+    :class="['c-expansion', { 'c-expansion--expanded': innerValue }]"
+    :style="`--casual-expansion-height:${realtimeBodyHeigh};`"
+  >
+    <div
+      class="c-expansion--header"
+      @click.stop="onHeaderClick"
+    >
+      <div
+        v-if="icon || $slots.icon"
+        class="c-expansion--icon"
+      >
         <!-- @slot 自定义图标 -->
         <slot name="icon">
           <c-icon :content="icon" />
@@ -76,20 +87,31 @@ defineExpose({
           {{ title }}
         </slot>
       </div>
-      <div :class="[
-        'c-expansion--arrow',
-        { 'c-expansion--arrow-expanded': innerValue },
-      ]">
+      <div
+        :class="[
+          'c-expansion--arrow',
+          { 'c-expansion--arrow-expanded': innerValue },
+        ]"
+      >
         <!-- 
           @slot 自定义箭头 
             @binding {boolean} expand-status 当前展开状态
           -->
-        <slot name="arrow" :expand-status="innerValue">
-          <c-icon class="" :content="matKeyboardArrowDown" />
+        <slot
+          name="arrow"
+          :expand-status="innerValue"
+        >
+          <c-icon
+            class=""
+            :content="matKeyboardArrowDown"
+          />
         </slot>
       </div>
     </div>
-    <div ref="bodyDom" class="c-expansion--body">
+    <div
+      ref="bodyDom"
+      class="c-expansion--body"
+    >
       <!-- @slot 默认展开内容 -->
       <slot v-bind="{ setHeight }" />
     </div>
