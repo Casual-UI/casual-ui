@@ -1,4 +1,7 @@
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+>
 import dayjs from 'dayjs'
 import {
   CIcon,
@@ -225,6 +228,12 @@ const onYearSet = (newDate: Date | null) => {
   onUpdateUnit('month')
 }
 const datePickerContainer = ref<HTMLDivElement | null>(null)
+
+const onModelValueChange = (newValue: Date | null) => {
+  if (!newValue) {
+    validate(innerValue)
+  }
+}
 </script>
 <template>
   <div
@@ -240,13 +249,7 @@ const datePickerContainer = ref<HTMLDivElement | null>(null)
       v-model="show"
       :width-within-parent="false"
       :disabled="disabled"
-      @update:model-value="
-        newValue => {
-          if (!newValue) {
-            validate(innerValue)
-          }
-        }
-      "
+      @update:model-value="onModelValueChange"
     >
       <c-input
         :model-value="displayValue"
