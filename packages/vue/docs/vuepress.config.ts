@@ -58,10 +58,6 @@ export default defineUserConfig({
             text: '可组合',
             link: '/usable/',
           },
-          {
-            text: '图标一览',
-            link: '/icons-preview/material/',
-          },
         ],
       },
     ],
