@@ -9,7 +9,7 @@ title: 安装
 yarn add casual-ui-vue
 
 # use npm
-npm instal casual-ui-vue
+npm install casual-ui-vue
 
 # use pnpm
 pnpm install casual-ui-vue
@@ -17,7 +17,7 @@ pnpm install casual-ui-vue
 
 ### 全局使用
 
-* 入口文件引入样式以及注册全局插件
+- 入口文件引入样式以及注册全局插件
 
 ```js
 import { createApp } from 'vue'
@@ -30,7 +30,7 @@ const app = createApp(App)
 app.use(CasualUIVue) // 使用插件
 ```
 
-* 组件中使用
+- 组件中使用
 
 ```vue
 <template>
@@ -40,13 +40,13 @@ app.use(CasualUIVue) // 使用插件
 
 ### 局部使用
 
-* 入口文件引入样式
+- 入口文件引入样式
 
 ```js
 import 'casual-ui-vue/style.css'
 ```
 
-* 组件中使用
+- 组件中使用
 
 ```vue
 <script setup>
