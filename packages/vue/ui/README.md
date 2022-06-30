@@ -1,5 +1,9 @@
 # Casual UI Vue
 
+## Demos & Docs
+
+[Casual UI - Vue](https://casual-ui-vue.donsen.site/)
+
 ## Install
 
 ```bash
@@ -39,7 +43,7 @@ app.mount('#app')
 
 ```html
 <script setup>
-import { CButton } from 'casual-ui-vue' 
+  import { CButton } from 'casual-ui-vue'
 </script>
 <template>
   <c-button label="A Button" />

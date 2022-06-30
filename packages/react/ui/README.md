@@ -2,6 +2,10 @@
 
 A casual UI libs for React17+
 
+## Demos & Docs
+
+[Casual UI - React](https://casual-ui-react.donsen.site/)
+
 ## Install
 
 ```bash
