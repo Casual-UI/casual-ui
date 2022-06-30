@@ -1,17 +1,3 @@
-const iconsRoutes = [
-  '/icons-preview/material/',
-  '/icons-preview/material-outlined/',
-  '/icons-preview/material-round/',
-  '/icons-preview/fontawesome/',
-  '/icons-preview/fontawesome-v6/',
-  '/icons-preview/ionicons-v4/',
-  '/icons-preview/ionicons-v5/',
-  '/icons-preview/ionicons-v6/',
-  '/icons-preview/mdi-v4/',
-  '/icons-preview/mdi-v5/',
-  '/icons-preview/mdi-v6/',
-]
-
 const componentsRoutes = [
   {
     text: '基础组件',
@@ -59,4 +45,4 @@ const componentsRoutes = [
   },
 ]
 
-export { iconsRoutes, componentsRoutes }
+export { componentsRoutes }

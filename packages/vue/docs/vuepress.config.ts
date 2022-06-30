@@ -6,7 +6,7 @@ import { defaultTheme } from 'vuepress'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
 import { shikiPlugin } from '@vuepress/plugin-shiki'
-import { iconsRoutes, componentsRoutes } from './config/routes'
+import { componentsRoutes } from './config/routes'
 import nightOwlTheme from './config/night-owl.json'
 
 export default defineUserConfig({
@@ -74,7 +74,6 @@ export default defineUserConfig({
       ],
       '/global-style-utils/': ['/global-style-utils/'],
       '/components/': componentsRoutes,
-      '/icons-preview/': iconsRoutes,
       '/directives/': ['/directives/v-loading/'],
     },
   }),
