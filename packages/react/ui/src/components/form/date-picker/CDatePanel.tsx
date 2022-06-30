@@ -38,6 +38,7 @@ const CDatePanel = ({
   // 获取当前年月对应的日期
   const getCurrentYearMonthDate = () => {
     const d = new Date()
+    d.setDate(1)
     d.setFullYear(year)
     d.setMonth(month)
     return d
@@ -88,7 +89,13 @@ const CDatePanel = ({
     const rightPads = Array(42 - leftPads.length - middle.length)
       .fill('')
       .map((_, i) => middle.length + i + 1)
-    return [...leftPads, ...middle, ...rightPads]
+
+    const items = [...leftPads, ...middle, ...rightPads]
+    return {
+      items: items,
+      start: leftPads.length,
+      end: leftPads.length + middle.length
+    }
   }, [month, year])
 
   const [hoveringDate, setHoveringDate] = useState(dateRange[1])
@@ -151,13 +158,6 @@ const CDatePanel = ({
     return isSameDate(value, checkTarget)
   }
 
-  // 当前面板日期是否在当前面板所处月份中
-  const isCurrentDateInCurrentMonth = (date: number) => {
-    const d = getCurrentYearMonthDate()
-    d.setDate(date)
-    return d.getMonth() === month
-  }
-
   // 获取单元格应当展示的日期数字
   const getDisplayDateNum = (date: number) => {
     const d = getCurrentYearMonthDate()
@@ -173,7 +173,7 @@ const CDatePanel = ({
             {week}
           </div>
         ))}
-        {dates.map((date, i) => (
+        {dates.items.map((date, i) => (
           <div
             key={i}
             className={clsx(
@@ -192,7 +192,7 @@ const CDatePanel = ({
               className={clsx(
                 'c-date-panel--date-item--inner',
                 isSelected(date) && 'c-date-panel--date-item--inner-selected',
-                !isCurrentDateInCurrentMonth(date) &&
+                (i < dates.start || i >= dates.end) &&
                   'c-date-panel--date-item--inner-not-current-month'
               )}
             >

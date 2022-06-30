@@ -1,4 +1,7 @@
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+>
 import { toRefs, computed, ref } from 'vue'
 import { weeks } from 'casual-i18n'
 import dayjs from 'dayjs'
@@ -48,6 +51,7 @@ const { month, year, modelValue, dateRange, formattedDateRange } = toRefs(props)
 // 获取当前年月对应的日期
 const getCurrentYearMonthDate = () => {
   const d = new Date()
+  d.setDate(1)
   d.setFullYear(year.value)
   d.setMonth(month.value)
   return d
@@ -98,7 +102,14 @@ const dates = computed(() => {
   const rightPads = Array(42 - leftPads.length - middle.length)
     .fill('')
     .map((_, i) => middle.length + i + 1)
-  return [...leftPads, ...middle, ...rightPads]
+
+  const items = [...leftPads, ...middle, ...rightPads]
+
+  return {
+    items,
+    start: leftPads.length,
+    end: leftPads.length + middle.length,
+  }
 })
 
 // 鼠标上浮的结束日期
@@ -163,13 +174,6 @@ const isSelected = (date: number) => {
   return isSameDate(modelValue.value, checkTarget)
 }
 
-// 当前面板日期是否在当前面板所处月份中
-const isCurrentDateInCurrentMonth = (date: number) => {
-  const d = getCurrentYearMonthDate()
-  d.setDate(date)
-  return d.getMonth() === month.value
-}
-
 // 获取单元格应当展示的日期数字
 const getDisplayDateNum = (date: number) => {
   const d = getCurrentYearMonthDate()
@@ -180,11 +184,15 @@ const getDisplayDateNum = (date: number) => {
 <template>
   <div :class="['c-date-panel', 'c-date-picker--panel']">
     <div class="c-date-panel--body">
-      <div v-for="w in weeks" :key="w" class="c-date-panel--week-item">
+      <div
+        v-for="w in weeks"
+        :key="w"
+        class="c-date-panel--week-item"
+      >
         {{ w }}
       </div>
       <div
-        v-for="(d, i) in dates"
+        v-for="(d, i) in dates.items"
         :key="i"
         class="c-date-panel--date-item"
         :class="[
@@ -209,7 +217,7 @@ const getDisplayDateNum = (date: number) => {
             },
             {
               'c-date-panel--date-item--inner-not-current-month':
-                !isCurrentDateInCurrentMonth(d),
+                i < dates.start || i >= dates.end,
             },
           ]"
         >

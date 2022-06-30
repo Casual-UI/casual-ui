@@ -37,6 +37,7 @@ const CDatePanelHeader = ({
   // 获取当前年月对应的日期
   const getCurrentYearMonthDate = () => {
     const d = new Date()
+    d.setDate(1)
     d.setFullYear(year)
     d.setMonth(month)
     return d
@@ -83,6 +84,7 @@ const CDatePanelHeader = ({
 
   const displayMonth = useMemo(() => {
     const d = new Date()
+    d.setDate(1)
     d.setMonth(month)
     return d.toLocaleDateString('en-US', { month: 'short' })
   }, [month])

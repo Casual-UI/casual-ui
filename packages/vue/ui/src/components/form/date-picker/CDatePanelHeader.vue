@@ -1,4 +1,7 @@
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+>
 import {
   matKeyboardArrowLeft,
   matKeyboardDoubleArrowLeft,
@@ -43,6 +46,7 @@ const { year, month, unit } = toRefs(props)
 // 获取当前年月对应的日期
 const getCurrentYearMonthDate = () => {
   const d = new Date()
+  d.setDate(1)
   d.setFullYear(year.value)
   d.setMonth(month.value)
   return d
@@ -98,7 +102,10 @@ const setUnit = (newUnit: Unit) => {
 }
 </script>
 <template>
-  <div class="c-date-panel--header" :class="[`c-px-${size}`, `c-pt-${size}`]">
+  <div
+    class="c-date-panel--header"
+    :class="[`c-px-${size}`, `c-pt-${size}`]"
+  >
     <div class="c-flex c-items-center">
       <slot name="left">
         <c-icon
@@ -127,11 +134,17 @@ const setUnit = (newUnit: Unit) => {
       ]"
     >
       <slot name="title">
-        <span v-if="isDay" @click.stop="setUnit('month')">
+        <span
+          v-if="isDay"
+          @click.stop="setUnit('month')"
+        >
           {{ displayMonth }}
         </span>
         &nbsp;
-        <span v-if="isDay || isMonth" @click.stop="setUnit('year')">
+        <span
+          v-if="isDay || isMonth"
+          @click.stop="setUnit('year')"
+        >
           {{ year }}
         </span>
         <span v-else> {{ yearRange[0] }} - {{ yearRange[1] }} </span>

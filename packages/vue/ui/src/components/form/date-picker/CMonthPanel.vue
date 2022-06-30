@@ -1,4 +1,7 @@
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+>
 import { computed, toRefs } from 'vue'
 import CDateGridPanel from './CDateGridPanel.vue'
 
@@ -20,6 +23,7 @@ const { year, modelValue } = toRefs(props)
 
 const getDisplayMonth = (month: number) => {
   const d = new Date()
+  d.setDate(1)
   d.setFullYear(year.value)
   d.setMonth(month)
   return d.toLocaleDateString('en-US', { month: 'short' })
@@ -38,19 +42,19 @@ const items = computed(() =>
     .fill(0)
     .map((_, i) => i)
 )
+
+const onMonthClick = (month: number) => {
+  emit(
+    'update:modelValue',
+    new Date(year.value, month, modelValue.value?.getDate() || 1)
+  )
+}
 </script>
 <template>
   <c-date-grid-panel
     :is-active="isSelected"
     :items="items"
     :display-formatter="getDisplayMonth"
-    @item-click="
-      month => {
-        emit(
-          'update:modelValue',
-          new Date(year, month, modelValue?.getDate() || 1)
-        )
-      }
-    "
+    @item-click="onMonthClick"
   />
 </template>

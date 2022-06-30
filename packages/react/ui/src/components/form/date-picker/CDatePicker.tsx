@@ -16,6 +16,7 @@ type Unit = 'day' | 'month' | 'year'
 
 const getDisplayMonth = (month: number) => {
   const d = new Date()
+  d.setDate(1)
   d.setMonth(month)
   return d.toLocaleDateString('en-US', { month: 'short' })
 }
