@@ -1,6 +1,6 @@
 {
   "name": "casual-ui-react",
-  "version": "0.0.1-alpha.7.4",
+  "version": "0.0.3",
   "description": "Casual UI React",
   "main": "index.ts",
   "author": {
@@ -48,6 +48,7 @@
     "vite": "^2.8.6"
   },
   "license": "MIT",
+  "files": ["dist"],
   "publishConfig": {
     "main": "./dist/casual-ui-react.umd.js",
     "module": "./dist/casual-ui-react.es.js",
