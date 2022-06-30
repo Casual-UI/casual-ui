@@ -27,7 +27,6 @@ const markdownItVueDemoCodeBlock = (pluginOptions: {
   componentsBasePath: string
   importMap?: ImportMap
 }) => {
-  
   return {
     name: 'vupress-plugin-casual-code',
     clientConfigFile: path.resolve(__dirname, './clientConfig.ts'),
@@ -35,7 +34,7 @@ const markdownItVueDemoCodeBlock = (pluginOptions: {
       const defaultRender = md.render
 
       md.render = function (src: any, env: any) {
-        if(!env.frontmatter) {
+        if (!env.frontmatter) {
           env.frontmatter = {}
         }
 
@@ -94,11 +93,11 @@ const markdownItVueDemoCodeBlock = (pluginOptions: {
 
         const TempDemoCodeComponentName = `TempDemoCodeComponent${id}`
 
-        if(!env.frontmatter.sandboxCodes) {
+        if (!env.frontmatter.sandboxCodes) {
           env.frontmatter.sandboxCodes = {}
         }
         env.frontmatter.sandboxCodes[TempDemoCodeComponentName] = content
-        
+
         const path = `.casual/${env.filePathRelative.replace(
           /(\w|-)+\.md/,
           ''

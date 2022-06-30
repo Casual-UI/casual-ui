@@ -11,6 +11,7 @@ $table-striped-bg-dark: color.adjust(#282c34, $lightness: 10%);
   --doc-demo-bg: #ffff;
   --c-tip-bg: var(--casual-primary-pale);
   --c-tip: var(--casual-primary);
+  --font-family-code: DM, Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
 }
 
 html.dark {
@@ -104,12 +105,17 @@ table {
 .theme-default-content pre[class*="language-"] {
   margin-top: 0;
   margin-bottom: 0;
-  font-family: Consolas;
+  font-family: DM;
 }
 
 @font-face {
-  font-family: Consolas;
-  src: url("/fonts/CONSOLA.TTF");
+  font-family: DM;
+  src: url("/fonts/Dank Mono Regular.otf");
+}
+@font-face {
+  font-family: DM;
+  src: url("/fonts/Dank Mono Italic.otf");
+  font-style: italic;
 }
 
 .home .hero {
@@ -127,18 +133,10 @@ table {
     }
   } 
 }
-.CodeMirror {
-  height: 100%;
-}
 .c-button+.c-button {
   margin-left: 12px;
 }
-.CodeMirror .CodeMirror-line {
-  padding: 0;
-}
-.CodeMirror-vscrollbar {
-  display: none !important;
-}
-.CodeMirror-scroll {
-  overflow: hidden !important;
+
+code {
+  font-size: 1em;
 }
