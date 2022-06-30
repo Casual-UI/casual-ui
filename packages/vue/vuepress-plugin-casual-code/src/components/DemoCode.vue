@@ -8,6 +8,7 @@ import { ref } from 'vue'
 import createSandboxApp from './createSandboxApp'
 import { usePageFrontmatter } from '@vuepress/client'
 import { CExpansion, CButton, CDialog, CIcon, CTooltip } from 'casual-ui-vue'
+import nightOwlTheme from './night-owl.json'
 
 const props = withDefaults(
   defineProps<{
@@ -42,7 +43,8 @@ const onReplDialogOpened = () => {
     const monaco = window.monaco
     const source = (frontmatter.value.sandboxCodes as any)[props.path]
     iframe = document.createElement('iframe')
-    monaco.editor.setTheme('vs-dark')
+    monaco.editor.defineTheme('night-owl', nightOwlTheme)
+    monaco.editor.setTheme('night-owl')
     editor = monaco.editor.create(editorDom.value, {
       value: source,
       language: 'html',

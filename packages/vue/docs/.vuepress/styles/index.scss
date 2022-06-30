@@ -140,3 +140,11 @@ table {
 code {
   font-size: 1em;
 }
+.mtk1,
+.mtk4 {
+  font-style: italic;
+}
+.view-lines.monaco-mouse-cursor-text {
+  font-size: 16px !important;
+  font-family: var(--font-family-code) !important;
+}

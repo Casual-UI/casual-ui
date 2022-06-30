@@ -2,40 +2,39 @@ import {
   compileScript,
   compileTemplate,
   parse,
-  compileStyle
+  compileStyle,
 } from 'vue/compiler-sfc'
 
 export default (id: string, source: string) => {
-
   const sourceParsed = parse(source, {
     filename: `${id}.vue`,
   })
 
-  const script = sourceParsed.descriptor.scriptSetup ? compileScript(sourceParsed.descriptor, {
-    id,
-  }).content.replace(/export default/, 'const App =') : `const App = { name: ${id} }`
+  const script = sourceParsed.descriptor.scriptSetup
+    ? compileScript(sourceParsed.descriptor, {
+        id,
+      }).content.replace(/export default/, 'const App =')
+    : `const App = { name: ${id} }`
 
-  const templateSource = sourceParsed.descriptor.template?.content + `\n<c-notification />`
+  const templateSource =
+    sourceParsed.descriptor.template?.content + `\n<c-notification />`
 
   const templateParsed = compileTemplate({
     source: templateSource || '<h3>Hello World</h3>',
     id,
     filename: `${id}.vue`,
-    scoped: true
+    scoped: true,
   }).code.replace(/export/, '')
 
-  const styleCode = sourceParsed.descriptor.styles.reduce(
-    (r, style) => {
-      const styleParsed = compileStyle({
-        id,
-        filename: `${id}.vue`,
-        source: style.content,
-        scoped: style.scoped,
-      })
-      return `${r}\n${styleParsed.code}`
-    },
-    ''
-  )
+  const styleCode = sourceParsed.descriptor.styles.reduce((r, style) => {
+    const styleParsed = compileStyle({
+      id,
+      filename: `${id}.vue`,
+      source: style.content,
+      scoped: style.scoped,
+    })
+    return `${r}\n${styleParsed.code}`
+  }, '')
 
   return `
   <!doctype html>
@@ -54,6 +53,16 @@ export default (id: string, source: string) => {
           box-sizing: border-box;
           font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
           Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        }
+        
+        @font-face {
+          font-family: DM;
+          src: url("/fonts/Dank Mono Regular.otf");
+        }
+        @font-face {
+          font-family: DM;
+          src: url("/fonts/Dank Mono Italic.otf");
+          font-style: italic;
         }
         .c-button + .c-button {
           margin-left: 12px;
