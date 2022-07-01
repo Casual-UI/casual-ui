@@ -21,9 +21,7 @@ type CPosition = 'start' | 'center' | 'end'
 /**
  * 验证规则函数，可以返回Promise做异步验证
  */
-type CRule = (
-  v: any
-) => string | false | Promise<string | false>
+type CRule = (v: any) => string | false | Promise<string | false>
 
 interface Notification {
   title?: string
@@ -136,5 +134,5 @@ export type {
   PositionGroup,
   NotificationGroups,
   VModel,
-  EmitModel
+  EmitModel,
 }

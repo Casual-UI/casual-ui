@@ -4,34 +4,34 @@
 
 ### Introduction
 
-A casual ui library for both Vue3+ and React17+
+Just like the name, very casual
 
 [简体中文](./README.zh_CN.md)
 
 ### Features
 
-* Small size
-* Written in TS
-* Support for dark mode
-* Support for customize theme color
-* Strong and flexible config form
+- Small size
+- Written in TS
+- Support for dark mode
+- Support for customize theme color
+- Strong and flexible config form
 
 ### Online Demos & Docs
 
-* [Casual UI - React](https://casual-ui-react.donsen.site/)
-* [Casual UI - Vue](https://casual-ui-vue.donsen.site/)
+- [Casual UI - React](https://casual-ui-react.donsen.site/)
+- [Casual UI - Vue](https://casual-ui-vue.donsen.site/)
 
 ### Install
 
 #### For Vue3 users
 
-* install 
+- install
 
 ```sh
 npm install casual-ui-vue
 ```
 
-* global use
+- global use
 
 ```js
 import { createApp } from 'vue'
@@ -43,9 +43,9 @@ app.use(CasualUI)
 app.mount('#app')
 ```
 
-* single use
+- single use
 
-__Notice：single usage also need import style__
+**Notice：single usage also need import style**
 
 ```vue
 <!-- SomeComponent.vue -->
@@ -56,27 +56,27 @@ import { CButton } from 'casual-ui-vue'
   <c-button label="A Button" />
 </template>
 ```
+
 #### For React17+ users
 
-* install
+- install
 
 ```sh
 npm install casual-ui-react
 ```
 
-* import styles in your entry file
+- import styles in your entry file
 
 ```js
 import 'casual-ui-react/dist/style.css'
 ```
 
-* usage
+- usage
 
 ```js
 import { CButton } from 'casual-ui-react'
 
 function SomeComponent() {
-
   return <OButton label="A Button" />
 }
 ```
