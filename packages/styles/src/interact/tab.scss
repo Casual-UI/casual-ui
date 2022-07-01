@@ -32,6 +32,15 @@
   &--body {
     position: relative;
 
-    // TODO:
+    @each $name, $size in $basic-padding-sizes {
+      &.c-pa-#{$name} {
+        .c-tabs--body-item {
+          &.c-date-panel-leave-active,
+          &.c-date-panel-reverse-leave-active {
+            top: $size;
+          }
+        }
+      }
+    }
   }
 }
