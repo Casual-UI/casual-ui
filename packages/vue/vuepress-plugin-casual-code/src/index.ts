@@ -5,9 +5,9 @@ import { execSync } from 'child_process'
 import type { App } from 'vuepress'
 
 const componentDocMdContent = (name: string, doc?: boolean) => `
-### ${name} API
+### ${name} API  
 
-<ComponentDoc ${
+<ComponentDoc class="c-mt-md" ${
   doc ? `:doc="$frontmatter.additionalComponentInfo.${name}"` : ''
 } />
 `

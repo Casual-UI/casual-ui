@@ -1,7 +1,4 @@
-<script
-  setup
-  lang="ts"
->
+<script setup lang="ts">
 import { ionCodeOutline } from '@quasar/extras/ionicons-v5'
 import { matPlayArrow } from '@quasar/extras/material-icons'
 import { ref } from 'vue'
@@ -63,7 +60,7 @@ const onReplDialogOpened = () => {
 }
 </script>
 <template>
-  <div class="demo-code">
+  <div class="demo-code c-mt-md">
     <div class="c-pa-md">
       <slot />
     </div>
@@ -127,10 +124,7 @@ const onReplDialogOpened = () => {
     </div>
   </c-dialog>
 </template>
-<style
-  lang="scss"
-  scoped
->
+<style lang="scss" scoped>
 .demo-code {
   position: relative;
   overflow: visible;
