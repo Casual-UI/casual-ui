@@ -23,7 +23,7 @@ const CWD_PATH = process.cwd()
 
 module.exports = async function OComponentsDoc() {
   return {
-    name: 'o-components-doc',
+    name: 'casual-components-doc',
     async loadContent() {
       if (flagRef.value) return {}
       const files = await fg(['../ui/src/components/**/*.tsx'])

@@ -119,7 +119,7 @@ const FormWithoutForward = (
 
   const validateAll = async () => {
     onValidatingChange?.(true)
-    const errors = {}
+    const errors: Errors = {}
     for (const field in validators) {
       const rules = validators[field]
       for (const rule of rules) {
