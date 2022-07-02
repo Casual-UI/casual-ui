@@ -39,7 +39,7 @@ export const CFormContext = createContext<CFormContextProps>({
 
 export const CFormItemContext = createContext<CFormItemContextProps>({})
 
-export const useFormContext = (customValue: CFormContextProps) => {
+export const useFormContext = (customValue: CFormContextProps = {}) => {
   const contextValue = useContext(CFormContext)
   return useMemo<
     Required<

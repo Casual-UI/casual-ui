@@ -69,7 +69,7 @@ export const PropTable = ({ name, typeWidth = '120px' }: PropTableProps) => {
 
   useEffect(() => {
     if (name) {
-      import(`@site/.docusaurus/o-components-doc/default/${name}.json`).then(
+      import(`@site/.docusaurus/casual-components-doc/default/${name}.json`).then(
         r => {
           setData(Object.values(r.default[0].props))
         }

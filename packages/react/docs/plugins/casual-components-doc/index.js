@@ -21,7 +21,7 @@ const b1 = new cliProgress.SingleBar({
 
 const CWD_PATH = process.cwd()
 
-module.exports = async function OComponentsDoc() {
+module.exports = async function CasualComponentsDoc() {
   return {
     name: 'casual-components-doc',
     async loadContent() {
@@ -39,15 +39,14 @@ module.exports = async function OComponentsDoc() {
         return res
       }, {})
       b1.stop()
-
       return content
     },
     contentLoaded: async ({ content, actions: { createData } }) => {
       if (flagRef.value) return
+      flagRef.value = true
       for (const k in content) {
         await createData(k, JSON.stringify(content[k]))
       }
-      flagRef.value = true
     },
   }
 }

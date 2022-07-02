@@ -601,6 +601,28 @@ function Demo() {
 
 ### 自定义项
 
+每个表单项即可以是一个内置的表单组件，如：`CInput`，`CRadioGroup`，`CCheckboxGroup`，`CSelect`，`CDatePicker`等，也可以是自定义的组件。
+当需要自定义组件时，可以传递一个函数式组件，该函数接收一个对象作为参数，该对象具有如下属性：`validateCurrent, clearCurrent, hasError`，含义如下：
+* `validateCurrent`：验证当前项函数，调用即立刻触发验证当前项
+* `clearCurrent`：清除当前项函数，调用即立刻清除当前项的验证状态
+* `hasError`：当前项是否有错误，如果有错误，改值即为具体的错误信息，否则为`false`
+
+比如，我们需要自定义一个输入框，可以这样定义：
+
+```jsx
+const CustomInput = ({ validateCurrent, clearCurrent, hasError }) => (
+  <input
+    value={formData.name}
+    onFocus={clearCurrent}
+    onBlur={validateCurrent}
+    onChange={e => setField('name', e.target.value)}
+    style={{
+      borderColor: hasError ? 'red' : 'inherit',
+    }}
+  />
+)
+```
+
 ```jsx live
 function Demo() {
   const [formData, setFormData] = useState({
@@ -732,10 +754,28 @@ function Demo() {
 }
 ```
 
-### 自定义表单组件
+也可以使用`useFormItemContext`Hook，获取`validateCurrent`、`clearCurrent`、`hasError`
 
-使用`useFormItemContext`，获取`validateCurrent`、`clearCurrent`、`hasError`等方法，可以自定义表单组件  
-下面例子中的姓名一栏，采用自定义输入框组件实现
+这个时候的自定义组件可以这样写：
+
+```jsx
+const CustomInput = ({ value, onChange }) => {
+  const { clearCurrent, validateCurrent, hasError } = useFormItemContext()
+  return (
+    <input
+      value={value}
+      onFocus={clearCurrent}
+      onBlur={validateCurrent}
+      onChange={e => onChange(e.target.value)}
+      style={{
+        borderColor: hasError ? 'red' : 'inherit',
+      }}
+    />
+  )
+}
+```
+
+下面是一个示例：
 
 ```jsx live
 function Demo() {
@@ -747,7 +787,7 @@ function Demo() {
         value={value}
         onFocus={clearCurrent}
         onBlur={validateCurrent}
-        onChange={e => onChange('name', e.target.value)}
+        onChange={e => onChange(e.target.value)}
         style={{
           borderColor: hasError ? 'red' : 'inherit',
         }}
@@ -880,7 +920,7 @@ function Demo() {
 ```
 
 :::tip 提示
-表单项所有的与表单同名配置，可以覆盖整体配置使某个表单项具有自身行为
+表单项所有的与表单同名配置，可以覆盖整体配置，使某个表单项具有自身行为
 :::
 
 ### CForm Props

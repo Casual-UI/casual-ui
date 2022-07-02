@@ -13,7 +13,7 @@ const config = {
   onBrokenMarkdownLinks: 'warn',
   favicon: 'logo.svg',
   organizationName: 'Blackman99',
-  projectName: 'casual-ui',
+  projectName: 'casual-ui-react',
   githubHost: 'github.com',
   presets: [
     [
@@ -53,7 +53,7 @@ const config = {
       }),
     ],
   ],
-  plugins: ['docusaurus-plugin-sass', './plugins/o-components-doc'],
+  plugins: ['docusaurus-plugin-sass', './plugins/casual-components-doc'],
   themes: ['@docusaurus/theme-live-codeblock'],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
