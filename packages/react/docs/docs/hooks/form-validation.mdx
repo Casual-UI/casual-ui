@@ -7,8 +7,51 @@ hooksAPI:
 
 ### `useFromContext`
 
-对于每个`CForm`表单组件，都具有一个`CFormContext`，该上下文可以通过`useFormContext`方法获取。该方法的签名如下：
+对于每个`CForm`表单组件，都具有一个`CFormContext`，该上下文可以通过`useFormContext`方法获取。
+
+```ts
+const formContext: CFormContextProps = useFormContext()
+```
+
+```ts
+interface CFormContextProps {
+  col?: number
+  labelWidth?: string
+  labelDirection?: 'row' | 'row-reverse' | 'column' | 'column-reverse'
+  labelAlign?: 'left' | 'right' | 'center'
+  addValidator?: (field: string, newValidator: Validator[]) => void
+  validateAll?: () => Promise<void> | void
+  clearAll?: () => void
+  validateField?: (field: string, value: any) => void | Promise<void>
+  clearField?: (field: string) => void
+  errors?: Errors
+}
+
+interface Validators {
+  [key: string]: Validator[]
+}
+
+interface Errors {
+  [key: string]: string | false
+}
+
+type Validator = (value: any) => string | false | Promise<string | false>
+```
+
+更多使用方式可以查看：[CFormItem.tsx源码](https://github.com/Blackman99/casual-ui/blob/main/packages/react/ui/src/components/form/CFormItem.tsx)
 
 ### `useFormItemContext`
 
-对于每个`CFormItem`表单项组件，都具有一个`CFormItemContext`，该上下文可以通过`useFormItemContext`方法获取。该方法的签名如下：
+对于每个`CFormItem`表单项组件，都具有一个`CFormItemContext`，该上下文可以通过`useFormItemContext`方法获取。
+
+```ts
+const formItemContext: CFormItemContextProps = useFormItemContext()
+```
+
+```ts
+interface CFormItemContextProps {
+  clearCurrent?: () => void
+  validateCurrent?: (v: any) => void
+  hasError?: false | string
+}
+```
