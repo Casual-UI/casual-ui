@@ -11,7 +11,7 @@ interface PropTableProps {
   typeWidth?: string
 }
 
-export const PropTable = ({ name, typeWidth = '120px' }: PropTableProps) => {
+export const PropTable = ({ name, typeWidth = '200px' }: PropTableProps) => {
   const typeRender: CustomRender = ({ val }) => {
     return (
       <code>
@@ -69,13 +69,19 @@ export const PropTable = ({ name, typeWidth = '120px' }: PropTableProps) => {
 
   useEffect(() => {
     if (name) {
-      import(`@site/.docusaurus/casual-components-doc/default/${name}.json`).then(
-        r => {
-          setData(Object.values(r.default[0].props))
-        }
-      )
+      import(
+        `@site/.docusaurus/casual-components-doc/default/${name}.json`
+      ).then(r => {
+        setData(Object.values(r.default[0].props))
+      })
     }
   }, [])
 
-  return <CTable<PropItem> data={data} columns={columns} rowKey="name" />
+  return (
+    <CTable<PropItem>
+      data={data}
+      columns={columns}
+      rowKey="name"
+    />
+  )
 }
