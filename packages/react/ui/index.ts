@@ -50,8 +50,10 @@ import CFormItem from './src/components/form/CFormItem'
 import CRadioGroup from './src/components/form/CRadioGroup'
 import { useFormItemContext } from './src/components/form/CFormContext'
 import { useFormContext } from './src/components/form/CFormContext'
+import CInfoItem from './src/components/list/CInfoItem'
 
 export {
+  CInfoItem,
   useFormItemContext,
   useFormContext,
   CRadioGroup,

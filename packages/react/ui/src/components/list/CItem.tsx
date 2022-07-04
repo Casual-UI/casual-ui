@@ -1,4 +1,4 @@
-import { CSize } from 'casual-types'
+import { CSize, CSlot } from 'casual-types'
 import { useSize } from 'casual-ui-react'
 import clsx from 'clsx'
 import React from 'react'
@@ -24,6 +24,10 @@ interface CItemProps {
    * 点击事件触发
    */
   onClick?: () => void
+  /**
+   * 自定义内容
+   */
+  children?: CSlot
 }
 
 const CItem = ({
@@ -32,6 +36,7 @@ const CItem = ({
   clickable = false,
   active = false,
   onClick,
+  children,
 }: CItemProps) => {
   const contextSize = useSize(size)
 
@@ -49,7 +54,7 @@ const CItem = ({
         onClick?.()
       }}
     >
-      {label}
+      {children ? children : label}
     </div>
   )
 }

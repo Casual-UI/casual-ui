@@ -2,6 +2,7 @@
   setup
   lang="ts"
 >
+import type { CSize } from 'casual-types'
 import useInjectSize from '../../usable/useInjectSize'
 
 interface CInfoItemProps {
@@ -28,6 +29,10 @@ interface CInfoItemProps {
    * 图标的对齐方向，css的align-items属性
    */
   iconAlign?: 'start' | 'center' | 'end'
+  /**
+   * 尺寸，该值会影响标题、子标题、字体大小以及图标与标题间的间距
+   */
+  size?: CSize
 }
 
 const props = withDefaults(defineProps<CInfoItemProps>(), {

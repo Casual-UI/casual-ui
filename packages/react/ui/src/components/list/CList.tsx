@@ -1,4 +1,4 @@
-import { CSize } from 'casual-types'
+import { CSize, CSlot } from 'casual-types'
 import { useSize } from 'casual-ui-react'
 import clsx from 'clsx'
 import React from 'react'
@@ -38,6 +38,17 @@ interface CListProps {
    * 项之间是否具有分割线
    */
   divider?: boolean
+  /**
+   * 自定义项渲染
+   */
+  itemRender?: (params: {
+    item: any
+    clickable?: boolean
+    size?: CSize
+    onItemClick?: (item: any) => void
+    active?: boolean
+    divider?: boolean
+  }) => CSlot
 }
 
 const CList = ({
@@ -49,6 +60,7 @@ const CList = ({
   activeFn = () => false,
   onItemClick,
   divider = false,
+  itemRender,
 }: CListProps) => {
   const contextSize = useSize(size)
 
@@ -70,7 +82,17 @@ const CList = ({
             clickable={clickable}
             active={activeFn(item)}
             onClick={() => onItemClick?.(item)}
-          />
+          >
+            {itemRender &&
+              itemRender({
+                item,
+                active: activeFn(item),
+                onItemClick,
+                clickable,
+                size,
+                divider,
+              })}
+          </CItem>
         ))}
       </div>
     </CSizeContext.Provider>
