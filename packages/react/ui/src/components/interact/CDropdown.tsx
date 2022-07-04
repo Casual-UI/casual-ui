@@ -28,6 +28,10 @@ interface CDropdownProps {
    * 是否自动与默认内容保持一致宽度
    */
   widthWithinParent?: boolean
+  /**
+   * 是否手动控制
+   */
+  manual?: boolean
 }
 const CDropdown = ({
   value,
@@ -36,16 +40,17 @@ const CDropdown = ({
   dropContent,
   disabled = false,
   widthWithinParent = true,
+  manual = false,
 }: CDropdownProps) => {
   const dropdownDom = useRef(null)
   useClickOutside({
     domRef: dropdownDom,
     cbInside: () => {
-      if (disabled) return
+      if (disabled || manual) return
       onChange?.(true)
     },
     cbOutside: () => {
-      if (disabled) return
+      if (disabled || manual) return
       onChange?.(false)
     },
   })

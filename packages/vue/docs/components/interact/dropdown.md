@@ -28,7 +28,10 @@ import { ref } from 'vue'
 const show = ref(false)
 </script>
 <template>
-  <c-dropdown v-model="show" :width-within-parent="false">
+  <c-dropdown
+    v-model="show"
+    :width-within-parent="false"
+  >
     <c-button label="点击展开下拉" />
     <template #drop-content>
       <div class="custom-width">自定义内容宽度</div>
@@ -51,11 +54,16 @@ import { ref } from 'vue'
 const show = ref(false)
 </script>
 <template>
-  <c-button label="点击收起/展开下拉" @click="show = !show" />
-  <c-dropdown v-model="show" manual :width-within-parent="false">
-    <h3>
-      点击左边按钮收起/展开下拉
-    </h3>
+  <c-button
+    label="点击收起/展开下拉"
+    @click="show = !show"
+  />
+  <c-dropdown
+    v-model="show"
+    manual
+    :width-within-parent="false"
+  >
+    <h3>点击左边按钮收起/展开下拉</h3>
     <template #drop-content>
       <div class="custom-width">自定义内容宽度</div>
     </template>

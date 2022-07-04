@@ -19,3 +19,43 @@ function Demo() {
   )
 }
 ```
+
+### 自定义内容宽度
+
+```jsx live
+function Demo() {
+  const [show, setShow] = useState(false)
+
+  return (
+    <CDropdown
+      value={show}
+      onChange={setShow}
+      widthWithinParent={false}
+      dropContent={<p style={{ width: '400px' }}>一些下拉内容</p>}
+    >
+      <CButton label="点击展示下拉" />
+    </CDropdown>
+  )
+}
+```
+
+### 手动控制
+
+```jsx live
+function Demo() {
+  const [show, setShow] = useState(false)
+
+  return (
+    <>
+    <CButton label="点击收起/展开下拉" onClick={() => setShow(!show)} />
+    <CDropdown
+      value={show}
+      manual
+      dropContent={<p>一些下拉内容</p>}
+    >
+      <h3>点击左边按钮收起/展开下拉</h3>
+    </CDropdown>
+    </>
+  )
+}
+```
