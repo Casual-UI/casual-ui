@@ -1,6 +1,6 @@
 {
   "name": "casual-ui-vue",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Casual UI Vue",
   "main": "src/index.ts",
   "license": "MIT",
