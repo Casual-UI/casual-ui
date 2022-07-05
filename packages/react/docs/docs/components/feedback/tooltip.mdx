@@ -13,28 +13,45 @@ title: 工具提示
 ### 不同位置
 
 ```jsx live
-<div className="c-row c-gutter-x-md">
-  <div>
-    <CTooltip position="left" content="你好，世界">
-      <CButton label="左侧" />
-    </CTooltip>
-  </div>
-  <div>
-    <CTooltip content="你好，世界">
-      <CButton label="上方（默认）" />
-    </CTooltip>
-  </div>
-  <div>
-    <CTooltip position="bottom" content="你好，世界">
-      <CButton label="底部" />
-    </CTooltip>
-  </div>
-  <div>
-    <CTooltip position="right" content="你好，世界">
-      <CButton label="右侧" />
-    </CTooltip>
-  </div>
-</div>
+function Demo() {
+  const positions = [
+    'top-left',
+    'top',
+    'top-right',
+    'right-top',
+    'right',
+    'right-bottom',
+    'bottom-left',
+    'bottom',
+    'bottom-right',
+    'left-top',
+    'left',
+    'left-bottom',
+  ]
+  return (
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(3, 1fr)',
+        gap: '24px',
+      }}
+    >
+      {positions.map(p => (
+        <CTooltip
+          key={p}
+          position={p}
+          content={`来自于位置：${p}的tooltip信息`}
+        >
+          <div
+            style={{ color: '#fff', backgroundColor: 'var(--casual-primary)', lineHeight: '3em', textAlign: 'center' }}
+          >
+            {p}
+          </div>
+        </CTooltip>
+      ))}
+    </div>
+  )
+}
 ```
 
 ### 触发方式
@@ -47,16 +64,29 @@ function Demo() {
     <div className="c-row c-gutter-x-md">
       <div>
         <CTooltip content="你好，世界">
-          <CButton outlined rounded label="悬浮（默认）" />
+          <CButton
+            outlined
+            rounded
+            label="悬浮（默认）"
+          />
         </CTooltip>
       </div>
       <div>
-        <CTooltip trigger="click" content="你好，世界">
-          <CButton rounded label="点击" />
+        <CTooltip
+          trigger="click"
+          content="你好，世界"
+        >
+          <CButton
+            rounded
+            label="点击"
+          />
         </CTooltip>
       </div>
       <div>
-        <CButton label="手动" onClick={() => setShow(!show)} />
+        <CButton
+          label="手动"
+          onClick={() => setShow(!show)}
+        />
         <CTooltip
           trigger="manual"
           content="你好，世界"
@@ -78,7 +108,11 @@ function Demo() {
   content={
     <div>
       哇哦，支持自定义内容
-      <CButton label="我是自定义按钮" outlined round />
+      <CButton
+        label="我是自定义按钮"
+        outlined
+        round
+      />
     </div>
   }
   trigger="click"
@@ -89,4 +123,7 @@ function Demo() {
 
 ### Props
 
-<PropTable name="CTooltip" typeWidth="280px" />
+<PropTable
+  name="CTooltip"
+  typeWidth="280px"
+/>

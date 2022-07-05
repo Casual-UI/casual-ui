@@ -62,7 +62,8 @@ $popup-content-bg: #fff;
 $toggle-dot-bg: #fff;
 
 // 工具提示
-$tooltip-bg: #010101;
+$tooltip-bg: #090909;
+$tooltip-color: rgb(231 227 227);
 
 :root {
   // 背景色
@@ -133,4 +134,5 @@ $tooltip-bg: #010101;
 
   // 工具提示
   --casual-tooltip-bg: #{$tooltip-bg};
+  --casual-tooltip-color: #{$tooltip-color};
 }

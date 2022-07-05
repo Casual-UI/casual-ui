@@ -12,11 +12,12 @@ $copywriting-normal-dark: #dfdedd;
 $copywriting-light-dark: darken($copywriting-normal-dark, 40%);
 $normal-bg-dark: darken($normal-bg, 50%);
 $toggle-dot-bg-dark: darken($toggle-dot-bg, 10%);
-$tooltip-bg-dark: #fefefe;
+$tooltip-bg-dark: #e0ebee;
 $popup-content-bg-dark: #010101;
 $popup-bg-dark: rgba(#fff, 0.6);
 $light-bg-dark: #0d0904;
 $input-placeholder-dark: #3f456e;
+$tooltip-color-dark: rgb(41 38 38);
 
 html.dark,
 html[data-theme="dark"] {
@@ -43,6 +44,7 @@ html[data-theme="dark"] {
 
   // 工具提示
   --casual-tooltip-bg: #{$tooltip-bg-dark};
+  --casual-tooltip-color: #{$tooltip-color-dark};
   --casual-light-bg: #{$light-bg-dark};
 
   // 输入框

@@ -10,7 +10,19 @@ interface CTooltipProps {
   /**
    * 弹出位置
    */
-  position?: 'top' | 'right' | 'left' | 'bottom'
+  position?:
+    | 'top'
+    | 'top-left'
+    | 'top-right'
+    | 'right'
+    | 'right-top'
+    | 'right-bottom'
+    | 'left-top'
+    | 'left'
+    | 'left-bottom'
+    | 'bottom-left'
+    | 'bottom-right'
+    | 'bottom'
   /**
    * 触发方式
    */
