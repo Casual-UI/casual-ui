@@ -1,6 +1,7 @@
-import adapter from '@sveltejs/adapter-netlify'
-import preprocess from 'svelte-preprocess'
+import adapter from '@sveltejs/adapter-static'
 import { mdsvex } from 'mdsvex'
+import Unocss from 'unocss/vite'
+import { presetAttributify, presetUno } from 'unocss'
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -14,6 +15,13 @@ const config = {
 
   kit: {
     adapter: adapter(),
+    vite: {
+      plugins: [
+        Unocss({
+          presets: [presetAttributify(), presetUno()],
+        }),
+      ],
+    },
   },
 }
 
