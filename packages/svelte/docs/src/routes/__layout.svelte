@@ -1,36 +1,42 @@
 <script lang="ts">
-  import { attributeAtom } from '$utils/attributeAtom'
+  import { getStores } from '$app/stores'
 
+  import { attributeAtom } from '$utils/attributeAtom'
   import 'uno.css'
 
   let scrollY = 0
 
-  $: {
-    console.log(scrollY)
-  }
+  const { page } = getStores()
+
+  console.log(page)
 </script>
 
 <svelte:window bind:scrollY />
-<div flex flex-col min-h-screen pt-14 box-border text-t1>
+<div flex flex-col min-h-screen box-border text-t1 relative pt-18 font-mono>
   <header
     bg-white
-    flex
-    justify-between
+    bg-opacity-70
     fixed
     top-0
     left-0
-    right-0
-    h-14
-    leading-14
+    w-screen
+    h-18
+    leading-18
     {...attributeAtom({
       'shadow-md': scrollY > 10,
     })}
   >
-    <div>顶导</div>
+    <div max-w-360 mx-auto flex justify-between items-center>
+      <div flex items-center font->
+        <img h-14 src="/logo.svg" alt="" />
+        Casual UI - Svelte
+      </div>
+      <div>导航</div>
+    </div>
   </header>
 
   <div flex flex-grow>
-    <aside>左侧导航</aside>
+    <aside>Sidebar</aside>
     <div>
       <slot />
     </div>
@@ -39,3 +45,9 @@
     copyright © 2021 - {new Date().getFullYear()} Casual UI
   </footer>
 </div>
+
+<style>
+  header {
+    backdrop-filter: saturate(50%) blur(8px);
+  }
+</style>

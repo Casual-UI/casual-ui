@@ -2,22 +2,8 @@
 title: 首页
 ---
 
-# Welcome to SvelteKit
-
-Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation
-
-* 1
-* 2
+{#each Array(50).fill(0) as n}
 
 ### {title}
-### {title}
-### {title}
-### {title}
-### {title}
-### {title}
-### {title}
-### {title}
-### {title}
-### {title}
-### {title}
-### {title}
+
+{/each}

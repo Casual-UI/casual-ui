@@ -1,9 +1,4 @@
 {
-  "eslint.workingDirectories": [
-    "./packages/vue",
-    "./packages/vue/docs/.vuepress",
-    "./packages/react"
-  ],
   "cSpell.words": [
     "clsx",
     "CONSOLA",
@@ -32,4 +27,5 @@
     "editor.defaultFormatter": "svelte.svelte-vscode",
     "editor.formatOnSave": true,
   },
+  "unocss.root": "packages/svelte/docs"
 }
