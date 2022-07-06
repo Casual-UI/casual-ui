@@ -28,4 +28,8 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.stylelint": true
   },
+  "[svelte]": {
+    "editor.defaultFormatter": "svelte.svelte-vscode",
+    "editor.formatOnSave": true,
+  },
 }
