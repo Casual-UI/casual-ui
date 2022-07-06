@@ -42,6 +42,7 @@
     "casual-styles": "workspace:*",
     "casual-types": "workspace:*",
     "casual-ui-svelte": "workspace:*",
+    "casual-utils": "workspace:*",
     "clsx": "^1.1.1",
     "dayjs": "^1.11.0",
     "svelte": "^3.44.0",

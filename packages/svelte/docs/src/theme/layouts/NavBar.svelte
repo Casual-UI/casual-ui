@@ -1,22 +1,7 @@
 <script lang="ts">
-  import { attributeAtom } from '$utils/attributeAtom'
+  import Link from '$theme/Link.svelte'
+  import { attributeAtom } from 'casual-utils'
   let scrollY = 0
-
-  const navbars = [
-    {
-      label: '指南',
-      children: [
-        {
-          label: '安装',
-          to: '/guide/install/',
-        },
-        {
-          label: '主题定制',
-          to: '/guide/theme-customize/',
-        },
-      ],
-    },
-  ]
 </script>
 
 <svelte:window bind:scrollY />
@@ -35,12 +20,14 @@
   })}
 >
   <div max-w-360 mx-auto flex justify-between items-center>
-    <div flex items-center font->
-      <img h-14 src="/logo.svg" alt="" />
-      Casual UI - Svelte
+    <div flex items-center>
+      <Link flex items-center transition transition-opacity>
+        <img h-14 src="/logo.svg" alt="" />
+        Casual UI - Svelte
+      </Link>
     </div>
     <div flex items-center>
-      <a href="/components"> 组件 </a>
+      <Link to="/components" label="Components" />
     </div>
   </div>
 </header>

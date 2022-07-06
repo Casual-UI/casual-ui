@@ -1,6 +1,9 @@
 <script lang="ts">
   import { bem, useSize } from 'casual-ui-svelte'
   import type { CSize, CTheme } from 'casual-types'
+  import clsx from 'clsx'
+  import { attributeAtom } from 'casual-utils'
+  import { createEventDispatcher } from 'svelte'
 
   /**
    * The text of the button. You can also use the default slot to cover this prop
@@ -52,6 +55,8 @@
   export let theme: CTheme = 'primary'
 
   $: realSize = useSize(size)
+
+  const dispatch = createEventDispatcher()
 </script>
 
 <button
@@ -62,11 +67,20 @@
     loading,
     block,
     icon,
-    [`c-rounded--${realSize}`]: rounded,
-  })} c-button--theme-${theme} c-font-${realSize} c-h-${realSize} c-px-${realSize}`}
+  })} ${clsx(
+    `c-button--theme-${theme}`,
+    rounded && `c-rounded-${realSize}`,
+    `c-font-${realSize}`,
+    `c-h-${realSize}`,
+    `c-px-${realSize}`
+  )}`}
   {disabled}
+  {...attributeAtom($$restProps)}
+  on:click={() => dispatch('click')}
 >
-  <slot>
-    {label}
-  </slot>
+  <div class="c-button--content-wrapper">
+    <slot>
+      {label}
+    </slot>
+  </div>
 </button>

@@ -23,7 +23,8 @@
 		"unocss": "^0.43.1",
 		"vite": "^2.9.13",
 		"casual-ui-svelte": "workspace:*",
-		"casual-styles": "workspace:*"
+		"casual-styles": "workspace:*",
+		"casual-utils": "workspace:*"
 	},
 	"type": "module"
 }
