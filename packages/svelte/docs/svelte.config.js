@@ -17,6 +17,7 @@ const config = {
     adapter: adapter(),
     alias: {
       $utils: 'src/utils',
+      $theme: 'src/theme',
     },
   },
 }
