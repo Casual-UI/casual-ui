@@ -24,7 +24,7 @@ export default defineConfig({
         },
       },
       presets: [presetAttributify(), presetUno()],
-    }),
+    }) as any,
     sveltekit(),
   ],
 })

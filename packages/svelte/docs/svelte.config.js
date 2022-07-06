@@ -1,17 +1,11 @@
 import adapter from '@sveltejs/adapter-static'
-import { mdsvex } from 'mdsvex'
+import sveltePreprocess from 'svelte-preprocess'
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
   compilerOptions: {
     dev: true,
   },
-
-  preprocess: mdsvex({
-    extensions: ['.mdsv'],
-  }),
-
-  extensions: ['.svelte', '.mdsv'],
 
   kit: {
     adapter: adapter(),
@@ -20,6 +14,8 @@ const config = {
       $theme: 'src/theme',
     },
   },
+
+  preprocess: sveltePreprocess(),
 }
 
 export default config

@@ -1,7 +1,3 @@
----
-title: 首页
----
-
 <script>
   import Home from '$theme/Home.svelte'
 </script>

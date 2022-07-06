@@ -18,6 +18,10 @@
   ],
   "author": "Dongsheng Zhao",
   "license": "MIT",
+  "repository": {
+    "url": "https://github.com/Blackman99/casual-ui.git",
+    "directory": "/packages/svelte/ui"
+  },
   "publishConfig": {
     "main": "./dist/casual-ui-svelte.umd.js",
     "module": "./dist/casual-ui-svelte.mjs",
@@ -25,6 +29,10 @@
       ".": {
         "import": "./dist/casual-ui-svelte.mjs",
         "require": "./dist/casual-ui-svelte.umd.js"
+      },
+      "./dist/style.css": {
+        "import": "./dist/style.css",
+        "require": "./dist/style.css"
       }
     }
   },
@@ -34,8 +42,11 @@
     "casual-styles": "workspace:*",
     "casual-types": "workspace:*",
     "casual-ui-svelte": "workspace:*",
+    "clsx": "^1.1.1",
     "dayjs": "^1.11.0",
     "svelte": "^3.44.0",
+    "svelte-preprocess": "^4.10.6",
+    "typescript": "^4.7.4",
     "vite": "^2.9.13"
   }
 }

@@ -1,6 +1,7 @@
 <script lang="ts">
   import NavBar from '$theme/layouts/NavBar.svelte'
   import 'uno.css'
+  import 'casual-styles'
 </script>
 
 <div flex flex-col min-h-screen box-border text-t1 relative pt-18 font-mono>

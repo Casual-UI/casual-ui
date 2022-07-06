@@ -1,25 +1,25 @@
 /**
- * 主题色
+ * The themes of Casual UI
  */
 type CTheme = 'primary' | 'secondary' | 'negative' | 'warning'
 
 /**
- * 尺寸
+ * The size values of Casual UI
  */
 type CSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 
 /**
- * 用于React中的插槽类型
+ * Slot props used for React
  */
 type CSlot = JSX.Element | string | JSX.Element[]
 
 /**
- * 位置类型，可以类比于flex布局中的flex-start, center, flex-end
+ * Position types, use the flex-start, center, flex-end css values
  */
 type CPosition = 'start' | 'center' | 'end'
 
 /**
- * 验证规则函数，可以返回Promise做异步验证
+ * Form validation function type
  */
 type CRule = (v: any) => string | false | Promise<string | false>
 
