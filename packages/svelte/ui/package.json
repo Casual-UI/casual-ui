@@ -1,0 +1,41 @@
+{
+  "name": "casual-ui-svelte",
+  "version": "0.0.1",
+  "description": "Casual UI for Svelte",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./src/index.ts",
+  "scripts": {
+    "build": "vite build"
+  },
+  "keywords": [
+    "svelte",
+    "svelte3",
+    "ui components",
+    "svelte components"
+  ],
+  "author": "Dongsheng Zhao",
+  "license": "MIT",
+  "publishConfig": {
+    "main": "./dist/casual-ui-svelte.umd.js",
+    "module": "./dist/casual-ui-svelte.mjs",
+    "exports": {
+      ".": {
+        "import": "./dist/casual-ui-svelte.mjs",
+        "require": "./dist/casual-ui-svelte.umd.js"
+      }
+    }
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "1.0.0-next.49",
+    "casual-i18n": "workspace:*",
+    "casual-styles": "workspace:*",
+    "casual-types": "workspace:*",
+    "casual-ui-svelte": "workspace:*",
+    "dayjs": "^1.11.0",
+    "svelte": "^3.44.0",
+    "vite": "^2.9.13"
+  }
+}

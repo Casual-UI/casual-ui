@@ -9,14 +9,6 @@
 		"skipLibCheck": true,
 		"sourceMap": true,
 		"strict": true,
-		"baseUrl": ".",
-		"paths": {
-			"$utils/*": [
-				"src/utils/*"
-			],
-			"$theme/*": [
-				"src/theme/*"
-			]
-		}
+		"baseUrl": "."
 	}
 }

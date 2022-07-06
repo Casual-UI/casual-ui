@@ -2,8 +2,8 @@
 title: 首页
 ---
 
-{#each Array(50).fill(0) as n}
+<script>
+  import Home from '$theme/Home.svelte'
+</script>
 
-### {title}
-
-{/each}
+<Home />

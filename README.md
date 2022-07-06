@@ -4,7 +4,7 @@
 
 ### Introduction
 
-Just like the name, very casual
+A ui components for React17, Vue3, Svelte3(Coming soon)
 
 [简体中文](./README.zh_CN.md)
 
