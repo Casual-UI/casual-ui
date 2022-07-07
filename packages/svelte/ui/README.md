@@ -1,3 +1,7 @@
+### Online Demo & Docs
+
+[Casual UI - Svelte](https://casual-ui-svelte.donsen.site/)
+
 ### Install
 
 ```sh
