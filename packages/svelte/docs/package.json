@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "vite dev",
-		"build": "svelte-kit build",
+		"build": "vite build",
 		"package": "svelte-kit package",
 		"preview": "svelte-kit preview",
 		"prepare": "svelte-kit sync",
@@ -11,6 +11,7 @@
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
 	},
 	"devDependencies": {
+		"@iconify-json/openmoji": "^1.1.9",
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/adapter-static": "1.0.0-next.34",
 		"@sveltejs/kit": "next",

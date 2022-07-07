@@ -1,5 +1,4 @@
 export default {
-  features: [],
   navbar: [
     {
       label: '指南',
