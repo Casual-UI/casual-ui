@@ -1,4 +1,4 @@
-<div flex w-360 justify-center mx-auto>
+<div flex w-320 justify-center mx-auto>
   <div
     flex-grow
     flex

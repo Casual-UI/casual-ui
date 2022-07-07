@@ -1,12 +1,30 @@
+<script context="module" lang="ts">
+  export async function load({ fetch }: LoadEvent) {
+    const res = await fetch('/components.json', {
+      method: 'post',
+    })
+
+    const props = await res.json()
+    return {
+      status: res.status,
+      props,
+    }
+  }
+</script>
+
 <script lang="ts">
   import 'uno.css'
   import 'casual-styles'
-  import Sidebar from '$theme/layouts/Sidebar.svelte'
+  import Sidebar from '$theme/Sidebar.svelte'
+  import type { LoadEvent } from '@sveltejs/kit'
+
+  export let sidebar: any
 </script>
 
 <aside>
-  <Sidebar />
+  <Sidebar links={sidebar} />
 </aside>
 <div flex-grow>
   <slot />
 </div>
+<div>slug nav</div>
