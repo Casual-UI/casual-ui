@@ -1,14 +1,16 @@
+[[toc]]
+
 # Casual UI
 
 <img src="./packages/vue/docs/.vuepress/public/logo.svg" style="width: 200px;" />
 
-### Introduction
+## Introduction
 
-A ui components for React17, Vue3, Svelte3(Coming soon)
+A ui components for React17, Vue3, Svelte3(in progressing)
 
 [简体中文](./README.zh_CN.md)
 
-### Features
+## Features
 
 - Small size
 - Written in TS
@@ -16,14 +18,15 @@ A ui components for React17, Vue3, Svelte3(Coming soon)
 - Support for customize theme color
 - Strong and flexible config form
 
-### Online Demos & Docs
+## Online Demos & Docs
 
 - [Casual UI - React](https://casual-ui-react.donsen.site/)
 - [Casual UI - Vue](https://casual-ui-vue.donsen.site/)
+- [Casual UI - Svelte](https://casual-ui-svelte.donsen.site/) **(Still in progressing)**
 
-### Install
+## Install
 
-#### For Vue3 users
+### For Vue3 users
 
 - install
 
@@ -57,7 +60,7 @@ import { CButton } from 'casual-ui-vue'
 </template>
 ```
 
-#### For React17+ users
+### For React17+ users
 
 - install
 
@@ -81,11 +84,34 @@ function SomeComponent() {
 }
 ```
 
-### Contributing
+### For Svelte3+ users
+
+- install
+
+```sh
+npm install -D casual-ui-svelte
+```
+
+- import styles in your entry file
+
+```js
+import 'casual-ui-svelte/dist/style.css'
+```
+
+- use in .svelte files
+
+```html
+<script>
+  import { CButton } from 'casual-ui-svelte'
+</script>
+<CButton label="A Button" />
+```
+
+## Contributing
 
 [CONTRIBUTING](./CONTRIBUTING.md)
 
-### Thanks
+## Thanks
 
 ![Vue](./badges/vue.svg)
 ![Vite](./badges/vite.svg)
@@ -100,6 +126,6 @@ function SomeComponent() {
 ![Docusaurus](./badges/docusaurus.svg)
 ![VSCode](./badges/vscode.svg)
 
-### LICENSE
+## LICENSE
 
 [MIT](./LICENSE)

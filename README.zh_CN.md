@@ -2,11 +2,11 @@
 
 <img src="./packages/vue/docs/.vuepress/public/logo.svg" style="width: 200px;" />
 
-### 介绍
+## 介绍
 
-一个支持 React17, Vue3, Svelte3(很快就将到来)的组件库
+一个支持 React17, Vue3, Svelte3(仍处在开发中)的组件库
 
-### 功能特性
+## 功能特性
 
 - 超小的代码体积
 - 使用 TS 编写
@@ -14,14 +14,15 @@
 - 支持主题定制
 - 强大且灵活的表单
 
-### 在线示例 & 文档
+## 在线示例 & 文档
 
 - [Casual UI - React](https://casual-ui-react.donsen.site/)
 - [Casual UI - Vue](https://casual-ui-vue.donsen.site/)
+- [Casual UI - Svelte](https://casual-ui-svelte.donsen.site/) **(仍处在开发阶段)**
 
-### 安装 & 使用
+## 安装 & 使用
 
-#### Vue3 用户
+### Vue3 用户
 
 - 安装依赖
 
@@ -55,12 +56,18 @@ import { CButton } from 'casual-ui-vue'
 </template>
 ```
 
-#### React17+用户
+### React17+用户
 
 - 安装依赖
 
 ```sh
 npm install casual-ui-react
+```
+
+- 入口文件导入样式
+
+```js
+import 'casual-ui-svelte/dist/style.css'
 ```
 
 - 使用
@@ -73,11 +80,34 @@ function SomeComponent() {
 }
 ```
 
-### 参与贡献
+### Svelte3+ 用户
+
+- 安装依赖
+
+```sh
+npm install -D casual-ui-svelte
+```
+
+- 入口文件导入样式
+
+```js
+import 'casual-ui-svelte/dist/style.css'
+```
+
+- 在.svelte 文件中使用
+
+```html
+<script>
+  import { CButton } from 'casual-ui-svelte'
+</script>
+<CButton label="A Button" />
+```
+
+## 参与贡献
 
 [贡献指南](./CONTRIBUTING.md)
 
-### 鸣谢
+## 鸣谢
 
 ![Vue](./badges/vue.svg)
 ![Vite](./badges/vite.svg)
@@ -92,6 +122,6 @@ function SomeComponent() {
 ![Docusaurus](./badges/docusaurus.svg)
 ![VSCode](./badges/vscode.svg)
 
-### 协议
+## 协议
 
 [MIT](./LICENSE)
