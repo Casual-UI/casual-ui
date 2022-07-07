@@ -1,7 +1,4 @@
-<div flex>
-  <aside>
-    <slot name="aside" />
-  </aside>
+<div flex w-360 justify-center mx-auto>
   <div
     flex-grow
     flex
@@ -17,7 +14,12 @@
     <slot name="header" />
 
     <div flex flex-grow pb-8 w-full>
-      <slot />
+      <aside>
+        <slot name="aside" />
+      </aside>
+      <div>
+        <slot />
+      </div>
     </div>
 
     <slot name="footer">
