@@ -8,11 +8,24 @@
 <div w-288 mx-auto flex flex-col items-center>
   <div flex justify-between items-center w-full>
     <div>
-      <div text-12 class="title" leading-24 inline-block>
+      <div text-12 class="title" leading-24 inline-block relative>
         Casual UI - Svelte
+        <div
+          absolute
+          top-0
+          right-0
+          bg-primary
+          leading-6
+          text-3
+          px-2
+          rounded-1
+          text-white
+          translate-x-20
+        >
+          In progressing
+        </div>
       </div>
       <div text-6 leading-12 text-t2>A UI components supports for Svelte3</div>
-      <p />
       <div flex gap-4 mt-12>
         <CButton
           label="Guide"

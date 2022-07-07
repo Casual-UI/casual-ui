@@ -14,12 +14,7 @@
     <slot name="header" />
 
     <div flex flex-grow pb-8 w-full>
-      <aside>
-        <slot name="aside" />
-      </aside>
-      <div>
-        <slot />
-      </div>
+      <slot />
     </div>
 
     <slot name="footer">

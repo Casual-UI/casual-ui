@@ -12,6 +12,7 @@
   bg-opacity-70
   fixed
   top-0
+  z-999
   left-0
   w-screen
   h-18
