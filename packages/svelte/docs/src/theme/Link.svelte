@@ -3,12 +3,14 @@
 
   export let label = ''
   export let to = '/'
+  export let external = false
 </script>
 
 <a
   {...attributeAtom($$restProps)}
   hover="opacity-60"
   href={to}
+  target={external ? '_blank' : '_self'}
   active:text-primary
 >
   <slot>{label}</slot></a

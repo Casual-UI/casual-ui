@@ -1,4 +1,5 @@
 <script lang="ts">
+  import casualConfig from '$theme/casual.config'
   import Link from '$theme/Link.svelte'
   import { attributeAtom } from 'casual-utils'
   let scrollY = 0
@@ -26,8 +27,11 @@
         Casual UI - Svelte
       </Link>
     </div>
-    <div flex items-center>
+    <div flex items-center gap-2>
       <Link to="/components" label="Components" />
+      <Link to={casualConfig.github} text-8 external>
+        <div i-openmoji-github />
+      </Link>
     </div>
   </div>
 </header>

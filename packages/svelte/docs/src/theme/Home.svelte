@@ -1,28 +1,8 @@
 <script lang="ts">
   import { goto } from '$app/navigation'
-
   import { CButton } from 'casual-ui-svelte'
   import { attributeAtom } from 'casual-utils'
-
-  const features = [
-    {
-      label: 'Written in TS',
-      desc: 'Friendly typescript support',
-    },
-    {
-      label: 'Small size',
-      desc: 'No extra large third-party lib',
-    },
-    {
-      label: 'Support dark mode',
-      desc: 'All the components has a dark mode ui style',
-    },
-    {
-      label: 'Strong and flexiable form',
-      desc: 'Provide a form interface for you to fully customize your app',
-    },
-    // NOTICE: support for maximum 6 features
-  ]
+  import casualConfig from './casual.config'
 </script>
 
 <div w-288 mx-auto flex flex-col items-center>
@@ -55,7 +35,7 @@
     </div>
   </div>
   <div grid grid-cols-3 w-full gap-4>
-    {#each features as { label, desc }, i}
+    {#each casualConfig.features as { label, desc }, i}
       <div
         bg-white
         rounded-4
@@ -65,6 +45,7 @@
         p-4
         leading-8
       >
+        <!-- NOTICE: support for maximum 6 features -->
         <div
           p-4
           box-border
