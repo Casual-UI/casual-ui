@@ -8,10 +8,10 @@ const sidebar = Object.entries(components)
   )
   .map(([k, v]) => ({
     label: v.title || 'Untitled',
-    to: '/components/' + k.replace(/\.svelte$/, '').replace(/^\.\//, ''),
+    to: '/components/' + k.replace(/\.svelte$/, '').replace(/^\.\//, '') + '/',
   }))
 
-export const post: RequestHandler = async function ({}) {
+export const get: RequestHandler = async function ({}) {
   return {
     status: 200,
     body: {

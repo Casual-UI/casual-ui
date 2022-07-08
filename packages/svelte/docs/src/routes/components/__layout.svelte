@@ -1,8 +1,6 @@
 <script context="module" lang="ts">
   export async function load({ fetch }: LoadEvent) {
-    const res = await fetch('/components.json', {
-      method: 'post',
-    })
+    const res = await fetch('/components.json')
 
     const props = await res.json()
     return {
@@ -21,10 +19,10 @@
   export let sidebar: any
 </script>
 
-<aside>
+<aside pr-4>
   <Sidebar links={sidebar} />
 </aside>
-<div flex-grow>
+<div flex-grow pl-4>
   <slot />
 </div>
 <div>slug nav</div>

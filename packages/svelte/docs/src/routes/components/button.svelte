@@ -3,9 +3,12 @@
 </script>
 
 <script lang="ts">
+  import Doc from '$theme/Doc.svelte'
   import { CButton } from 'casual-ui-svelte'
 </script>
 
-<h3>3标题</h3>
+<svelte:head>
+  <title>{title} - Casual UI</title>
+</svelte:head>
 
-<CButton label="按钮" />
+<Doc title="示例代码" />

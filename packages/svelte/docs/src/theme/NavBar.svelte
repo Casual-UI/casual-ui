@@ -29,7 +29,7 @@
       </Link>
     </div>
     <div flex items-center gap-2>
-      <Link to="/components" label="Components" />
+      <Link to="/components/" label="Components" />
       <Link to={casualConfig.github} text-8 external>
         <div i-openmoji-github />
       </Link>

@@ -8,10 +8,10 @@ const config = {
   },
 
   kit: {
+    trailingSlash: 'always',
     adapter: adapter(),
     prerender: {
       default: true,
-      crawl: true,
     },
     alias: {
       $utils: 'src/utils',

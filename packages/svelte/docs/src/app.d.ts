@@ -15,3 +15,8 @@ declare namespace svelte.JSX {
     [key: string]: any
   }
 }
+
+interface Window extends globalThis {
+  MonacoEnvironment: any
+  monaco: any
+}
