@@ -1,3 +1,1 @@
-import { attributeAtom } from './attributeAtom'
-
-export { attributeAtom }
+export { attributeAtom } from './attributeAtom'

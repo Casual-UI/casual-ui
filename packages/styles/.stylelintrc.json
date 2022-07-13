@@ -4,6 +4,7 @@
     "stylelint-config-prettier",
     "stylelint-config-standard-scss"
   ],
+  "ignoreFiles": "dist/style.css",
   "rules": {
     "scss/no-global-function-names": null,
     "selector-class-pattern": "^c(-[a-z]+)+(--[a-z]+(-[a-z]+)*)*$",

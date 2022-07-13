@@ -3,8 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "type": "module",
-  "main": "./src/index.scss",
-  "module": "./src/index.scss",
+  "main": "./src/index.js",
   "author": {
     "email": "1197160272@qq.com",
     "name": "Dongsheng Zhao"
@@ -14,7 +13,9 @@
     "directory": "/packages/styles"
   },
   "devDependencies": {
-    "sass": "^1.49.9",
+    "rollup": "^2.76.0",
+    "rollup-plugin-scss": "3",
+    "sass": "^1.52.1",
     "stylelint": "^14.6.1",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-standard": "^25.0.0",

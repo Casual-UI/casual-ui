@@ -1,6 +1,6 @@
 {
   "name": "casual-ui-svelte",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "Casual UI for Svelte",
   "type": "module",
   "files": [
@@ -8,7 +8,7 @@
   ],
   "main": "./src/index.ts",
   "scripts": {
-    "build": "vite build"
+    "build": "rollup --config rollup.config.ts --configPlugin typescript"
   },
   "keywords": [
     "svelte",
@@ -23,12 +23,12 @@
     "directory": "/packages/svelte/ui"
   },
   "publishConfig": {
-    "main": "./dist/casual-ui-svelte.umd.js",
+    "main": "./dist/casual-ui-svelte.cjs",
     "module": "./dist/casual-ui-svelte.mjs",
     "exports": {
       ".": {
         "import": "./dist/casual-ui-svelte.mjs",
-        "require": "./dist/casual-ui-svelte.umd.js"
+        "require": "./dist/casual-ui-svelte.cjs"
       },
       "./dist/style.css": {
         "import": "./dist/style.css",
@@ -37,7 +37,8 @@
     }
   },
   "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "1.0.0-next.49",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-typescript": "^8.3.3",
     "@tsconfig/svelte": "^3.0.0",
     "casual-i18n": "workspace:*",
     "casual-styles": "workspace:*",
@@ -46,9 +47,13 @@
     "casual-utils": "workspace:*",
     "clsx": "^1.1.1",
     "dayjs": "^1.11.0",
+    "rollup": "^2.76.0",
+    "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-scss": "3",
+    "rollup-plugin-svelte": "^7.1.0",
+    "sass": "^1.49.9",
     "svelte": "^3.44.0",
     "svelte-preprocess": "^4.10.6",
-    "typescript": "^4.7.4",
-    "vite": "^2.9.13"
+    "typescript": "^4.7.4"
   }
 }
