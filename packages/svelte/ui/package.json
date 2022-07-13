@@ -1,14 +1,21 @@
 {
   "name": "casual-ui-svelte",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "Casual UI for Svelte",
   "type": "module",
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
-  "main": "./src/index.ts",
+  "main": "./src/index.js",
+  "exports": {
+    "./src/*": {
+      "import": "./src/*",
+      "require": "./src/*"
+    }
+  },
   "scripts": {
-    "build": "rollup --config rollup.config.ts --configPlugin typescript"
+    "build": "rollup --config rollup.config.js"
   },
   "keywords": [
     "svelte",
@@ -22,23 +29,8 @@
     "url": "https://github.com/Blackman99/casual-ui.git",
     "directory": "/packages/svelte/ui"
   },
-  "publishConfig": {
-    "main": "./dist/casual-ui-svelte.cjs",
-    "module": "./dist/casual-ui-svelte.mjs",
-    "exports": {
-      ".": {
-        "import": "./dist/casual-ui-svelte.mjs",
-        "require": "./dist/casual-ui-svelte.cjs"
-      },
-      "./dist/style.css": {
-        "import": "./dist/style.css",
-        "require": "./dist/style.css"
-      }
-    }
-  },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^13.3.0",
-    "@rollup/plugin-typescript": "^8.3.3",
     "@tsconfig/svelte": "^3.0.0",
     "casual-i18n": "workspace:*",
     "casual-styles": "workspace:*",
@@ -50,10 +42,8 @@
     "rollup": "^2.76.0",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-scss": "3",
-    "rollup-plugin-svelte": "^7.1.0",
     "sass": "^1.49.9",
     "svelte": "^3.44.0",
-    "svelte-preprocess": "^4.10.6",
     "typescript": "^4.7.4"
   }
 }

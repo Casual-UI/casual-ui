@@ -1,44 +1,57 @@
 <script lang="ts">
   import sandboxHtml from './sandbox.html?raw'
-  export let title = ''
-  import { onMount, tick } from 'svelte'
+  import { onMount } from 'svelte'
   import { compile } from 'svelte/compiler'
   import defaultDocCode from './defaultDocCode'
 
   export let code = defaultDocCode
 
+  export let title = ''
   let editor: any
+
+  let monacoEditorInstance: any
 
   let sandbox: HTMLDivElement
 
-  const render = () => {
-    const { css, js } = compile(editor?.getValue() || code)
-
+  const createIframe = (css: string, js: string) => {
     const iframe = document.createElement('iframe')
     iframe.style.border = 'none'
     iframe.style.width = '100%'
     iframe.style.maxHeight = '40vh'
 
     iframe.srcdoc = sandboxHtml
-      .replace(/\/\* COMPONENT-STYLE \*\//, css.code)
-      .replace(/\/\* COMPONENT-SCRIPT \*\//, js.code)
+      .replace(/\/\* COMPONENT-STYLE \*\//, css)
+      .replace(
+        /\/\* COMPONENT-SCRIPT \*\//,
+        js.replace(/export default Component;/g, '')
+      )
 
     sandbox.innerHTML = ''
     sandbox.append(iframe)
+  }
+
+  const render = () => {
+    const { css, js } = compile(monacoEditorInstance?.getValue() || code)
+
+    createIframe(css.code, js.code.replace(/export default Component;/g, ''))
   }
 
   onMount(() => {
     window.require(['vs/editor/editor.main'], function () {
       const monaco = window.monaco
       monaco.editor.setTheme('vs-dark')
-      editor = monaco.editor.create(editor, {
+      monacoEditorInstance = monaco.editor.create(editor, {
         value: code,
         language: 'html',
       })
-      editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyS, render)
-    })
 
-    render()
+      render()
+
+      monacoEditorInstance.addCommand(
+        monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyS,
+        render
+      )
+    })
   })
 </script>
 

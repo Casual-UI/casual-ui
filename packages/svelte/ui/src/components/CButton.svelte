@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { bem, useSize } from 'casual-ui-svelte'
+  import bem from '../utils/bem'
+  import useSize from '../hooks/useSize'
   import type { CSize, CTheme } from 'casual-types'
   import clsx from 'clsx'
   import { attributeAtom } from 'casual-utils'
