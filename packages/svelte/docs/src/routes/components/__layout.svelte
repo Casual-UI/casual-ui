@@ -1,4 +1,5 @@
 <script context="module" lang="ts">
+  import type { LoadEvent } from '@sveltejs/kit'
   export async function load({ fetch }: LoadEvent) {
     const res = await fetch('/components.json')
 
@@ -14,7 +15,6 @@
   import 'uno.css'
   import 'casual-styles'
   import Sidebar from '$theme/Sidebar.svelte'
-  import type { LoadEvent } from '@sveltejs/kit'
 
   export let sidebar: any
 </script>
@@ -22,7 +22,7 @@
 <aside pr-4>
   <Sidebar links={sidebar} />
 </aside>
-<div flex-grow pl-4>
+<div flex-grow pl-4 pt-4>
   <slot />
 </div>
 <div>slug nav</div>

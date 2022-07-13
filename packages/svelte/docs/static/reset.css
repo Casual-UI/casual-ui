@@ -9,3 +9,6 @@ a {
 body {
   background-color: #f9f9f9;
 }
+.monaco-editor {
+  padding: 12px 0;
+}
