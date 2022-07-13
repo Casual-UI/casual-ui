@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "1.0.0-next.49",
+    "@tsconfig/svelte": "^3.0.0",
     "casual-i18n": "workspace:*",
     "casual-styles": "workspace:*",
     "casual-types": "workspace:*",

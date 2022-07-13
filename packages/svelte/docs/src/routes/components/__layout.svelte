@@ -22,7 +22,7 @@
 <aside pr-4>
   <Sidebar links={sidebar} />
 </aside>
-<div flex-grow pl-4 pt-4>
+<div flex-grow p-4>
   <slot />
 </div>
 <div>slug nav</div>

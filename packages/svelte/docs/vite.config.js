@@ -31,6 +31,10 @@ export default defineConfig({
           /^bg-([A-Fa-f0-9]{6})$/,
           ([_, d]) => ({ 'background-color': `#${d}` }),
         ],
+        [
+          /^border-([A-Fa-f0-9]{6})$/,
+          ([_, d]) => ({ 'border-color': `#${d}` }),
+        ],
         [/fs-(\d+)/, ([_, d]) => ({ 'font-size': `${Number(d) / 16}rem` })],
       ],
     }),

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casual UI Svelte - Sandbox</title>
+  <link rel="stylesheet" href="https://unpkg.com/casual-ui-svelte/dist/style.css">
+  <style>
+    /* COMPONENT-STYLE */
+  </style>
+</head>
+<body>
+  <script async src="https://unpkg.com/es-module-shims@1.5.5/dist/es-module-shims.wasm.js"></script>
+  <script type="importmap">
+    {
+      "imports": {
+        "casual-ui-svelte": "https://unpkg.com/casual-ui-svelte/dist/casual-ui-svelte.es.js", 
+        "svelte": "https://unpkg.com/svelte/index.mjs",
+        "svelte/internal": "https://unpkg.com/svelte@3.49.0/internal/index.mjs"
+      }
+    }
+  </script>
+  <script type="module">
+    /* COMPONENT-SCRIPT */
+    new Component({
+      target: document.body
+    })
+  </script>
+</body>
+</html>

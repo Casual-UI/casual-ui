@@ -1,5 +1,6 @@
 <script context="module" lang="ts">
   export const title = 'Button'
+  import basic from './_demos/basic.svelte?raw'
 </script>
 
 <script lang="ts">
@@ -10,4 +11,4 @@
   <title>{title} - Casual UI</title>
 </svelte:head>
 
-<Doc title="Some demo code" />
+<Doc title="Basic Usage" code={basic} />

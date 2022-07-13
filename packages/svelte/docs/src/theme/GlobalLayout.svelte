@@ -19,7 +19,7 @@
 
     <slot name="footer">
       <footer text-t-3 text-3 text-center sticky bottom-0 h-8 leading-8>
-        copyright © 2021 - {new Date().getFullYear()} Casual UI
+        Copyright © 2021 - {new Date().getFullYear()} Casual UI
       </footer>
     </slot>
   </div>
