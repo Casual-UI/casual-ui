@@ -6,7 +6,10 @@
   transition: background 0.1s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   color: #fff;
-  min-width: 70px;
+
+  &:not(.c-button--icon) {
+    min-width: 70px;
+  }
 
   &--block {
     display: block;

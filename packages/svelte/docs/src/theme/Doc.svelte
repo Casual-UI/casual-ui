@@ -7,26 +7,34 @@
   export let component: any
   export let title = ''
   export let id = ''
+
+  let showLink = false
 </script>
 
-<div border-e9e9e9 border-1 rounded-2 bg-white mb-6 {id}>
+<div border-d9e9e9 border-1 rounded-2 mb-12 {id}>
   <div
     flex
     justify-between
     items-center
-    bg-f9f9f9
     rounded-t-2
     pt-4
     px-4
     text-5
     font-bold
     pb-5
+    on:mouseenter={() => (showLink = true)}
+    on:mouseleave={() => (showLink = false)}
   >
     <Link to={`#${id}`}>
-      {title}
+      <div flex items-center>
+        {title}
+        {#if showLink}
+          <div i-eva-link-2-fill ml-2 on:click|stopPropagation={() => {}} />
+        {/if}
+      </div>
     </Link>
   </div>
-  <div p-4>
+  <div p-4 bg-white>
     <svelte:component this={component} />
   </div>
   <CExpansion title="Expand/Fold Code">

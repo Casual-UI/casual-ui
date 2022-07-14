@@ -38,7 +38,7 @@
           round
           outlined
           hover:shadow-md
-          on:click={() => goto('/components')}
+          on:click={() => goto('/components/button/')}
         />
       </div>
     </div>

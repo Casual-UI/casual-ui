@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { page } from '$app/stores'
   import Link from '$theme/Link.svelte'
 
   export let links: {
@@ -7,10 +8,13 @@
   }[] = []
 </script>
 
-<ul>
+<div list-none leading-8 m-0 p-0 w-40>
   {#each links as { label, to }}
-    <li>
+    <div flex items-center>
       <Link {label} {to} />
-    </li>
+      {#if $page.url.href.includes(to)}
+        <div ph-caret-right-light />
+      {/if}
+    </div>
   {/each}
-</ul>
+</div>

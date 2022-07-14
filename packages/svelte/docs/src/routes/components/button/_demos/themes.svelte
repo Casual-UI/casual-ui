@@ -27,4 +27,9 @@
   <div>
     <CButton label="A Negative Button" theme="negative" outlined />
   </div>
+  <div>
+    <CButton icon>
+      <div i-carbon-apple />
+    </CButton>
+  </div>
 </div>

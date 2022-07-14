@@ -30,7 +30,7 @@
     </div>
     <div flex items-center gap-2>
       <Link to="/components/" label="Components" />
-      <Link to={casualConfig.github} text-8 external>
+      <Link to={casualConfig.github} text-8 external hideExternalIcon>
         <div i-openmoji-github />
       </Link>
     </div>

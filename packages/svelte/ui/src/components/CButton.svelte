@@ -55,6 +55,11 @@
    */
   export let theme: CTheme = 'primary'
 
+  /**
+   * custom style of the button.
+   */
+  export let style = ''
+
   $: realSize = useSize(size)
 
   const dispatch = createEventDispatcher()
@@ -73,10 +78,12 @@
     rounded && `c-rounded-${realSize}`,
     `c-font-${realSize}`,
     `c-h-${realSize}`,
-    `c-px-${realSize}`
+    `c-px-${realSize}`,
+    `c-button--size-${realSize}`
   )}`}
   {disabled}
   {...attributeAtom($$restProps)}
+  {style}
   on:click={() => dispatch('click')}
 >
   <div class="c-button--content-wrapper">

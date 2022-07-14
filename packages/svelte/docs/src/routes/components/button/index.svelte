@@ -1,9 +1,6 @@
 <script context="module" lang="ts">
   import type { LoadEvent } from '@sveltejs/kit'
-
-  function capitalizeFirstLetter(str: string) {
-    return str.charAt(0).toUpperCase() + str.slice(1)
-  }
+  import parseDemosFromEager from '$theme/utils/parseDemosFromEager'
 
   export async function load({ fetch }: LoadEvent) {
     const res = await fetch('/components/button.json')
@@ -15,20 +12,13 @@
   }
   export const title = 'Button'
 
-  const demos = Object.entries(import.meta.globEager('./_demos/*.svelte')).map(
-    ([k, v]) => {
-      const name = k.replace(/(^\.\/_demos\/)|(\.svelte$)/g, '') as string
-      return {
-        name,
-        title: name.split('-').map(capitalizeFirstLetter).join(' '),
-        comp: v.default,
-      }
-    }
-  )
+  const demos = parseDemosFromEager(import.meta.globEager('./_demos/*.svelte'))
 </script>
 
 <script lang="ts">
+  import Attension from '$theme/Attension.svelte'
   import Doc from '$theme/Doc.svelte'
+  import Link from '$theme/Link.svelte'
 
   export let demosCodeHTML: any = {}
 </script>
@@ -36,6 +26,16 @@
 <svelte:head>
   <title>{title} - Casual UI</title>
 </svelte:head>
+
+<div mb-8>
+  <Attension title="Notice" type="secondary">
+    In this documentation the <Link
+      external
+      to="https://github.com/unocss/unocss"
+      label="UnoCSS"
+    /> is used for icon button
+  </Attension>
+</div>
 
 {#each demos as { title, name, comp }}
   <Doc {title} code={demosCodeHTML[name]} component={comp} id={name} />

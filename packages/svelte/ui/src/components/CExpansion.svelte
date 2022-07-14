@@ -5,10 +5,16 @@
   import { onMount } from 'svelte'
 
   /**
-   * The icon
+   * The icon at the left of the title
    */
   export let icon = ''
+  /**
+   * The title of the expansion
+   */
   export let title = ''
+  /**
+   * Determine whether the expansion is expanded or not
+   */
   export let expanded = false
 
   let bodyDom: HTMLDivElement
