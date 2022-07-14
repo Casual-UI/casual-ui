@@ -11,20 +11,33 @@
   </style>
 </head>
 <body>
+  <div id="app">
+
+  </div>
+
   <script async src="https://unpkg.com/es-module-shims@1.5.5/dist/es-module-shims.wasm.js"></script>
+  <!-- <script type="importmap">
+    {
+      "imports": {
+        "casual-ui-svelte": "https://unpkg.com/casual-ui-svelte/dist/index.mjs", 
+        "svelte": "https://unpkg.com/svelte/index.mjs",
+        "svelte/internal": "https://unpkg.com/svelte@3.48.0/internal/index.mjs"
+      }
+    }
+  </script> -->
   <script type="importmap">
     {
       "imports": {
-        "casual-ui-svelte": "https://unpkg.com/casual-ui-svelte/dist/index.js", 
+        "casual-ui-svelte": "http://10.100.39.92:4000/index.mjs", 
         "svelte": "https://unpkg.com/svelte/index.mjs",
-        "svelte/internal": "https://unpkg.com/svelte@3.49.0/internal/index.mjs"
+        "svelte/internal": "https://unpkg.com/svelte/internal/index.mjs"
       }
     }
   </script>
   <script type="module">
     /* COMPONENT-SCRIPT */
     new Component({
-      target: document.body
+      target: document.getElementById('app')
     })
   </script>
 </body>

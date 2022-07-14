@@ -38,7 +38,6 @@ const emit = defineEmits<{
 const bodyDom = ref<HTMLDivElement | null>(null)
 const initialBodyHeight = ref('auto')
 const innerValue = ref(true)
-const { modelValue } = toRefs(props)
 
 useDefaultVModel(props, emit)
 

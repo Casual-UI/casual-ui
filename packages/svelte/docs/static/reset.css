@@ -7,8 +7,17 @@ a {
   text-decoration: none;
 }
 body {
+  scroll-behavior: smooth;
   background-color: #f9f9f9;
 }
 .monaco-editor {
   padding: 12px 0;
+}
+.shiki {
+  font-size: 14px;
+  padding: 12px;
+  margin: 0;
+  border-bottom-left-radius: .5rem;
+  border-bottom-right-radius: .5rem;
+  line-height: 1.5em;
 }

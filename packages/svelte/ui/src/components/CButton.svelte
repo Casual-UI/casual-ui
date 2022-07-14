@@ -1,10 +1,10 @@
 <script lang="ts">
-  import bem from '../utils/bem'
-  import useSize from '../hooks/useSize'
+  import { useSize, bem } from 'casual-ui-svelte'
   import type { CSize, CTheme } from 'casual-types'
   import clsx from 'clsx'
   import { attributeAtom } from 'casual-utils'
   import { createEventDispatcher } from 'svelte'
+  import CLoading from './CLoading.svelte'
 
   /**
    * The text of the button. You can also use the default slot to cover this prop
@@ -83,5 +83,11 @@
     <slot>
       {label}
     </slot>
+    {#if loading}
+      <span>&nbsp;</span>
+      <slot name="loading">
+        <CLoading />
+      </slot>
+    {/if}
   </div>
 </button>

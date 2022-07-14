@@ -28,5 +28,8 @@
 		"unocss": "^0.43.1",
 		"vite": "^2.9.13"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"shiki": "^0.10.1"
+	}
 }
