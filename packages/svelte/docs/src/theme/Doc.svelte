@@ -11,7 +11,7 @@
   let showLink = false
 </script>
 
-<div border-d9e9e9 border-1 rounded-2 mb-12 {id}>
+<div border-e9e9e9 border-1 rounded-2 mb-12 {id} hover:shadow-md>
   <div
     flex
     justify-between

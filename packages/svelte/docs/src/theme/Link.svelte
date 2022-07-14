@@ -20,7 +20,6 @@
 
 <div
   cursor-pointer
-  inline-block
   inline-flex
   items-center
   {...attributeAtom($$restProps)}
@@ -30,7 +29,7 @@
   })}
   on:click={onClick}
 >
-  <div>
+  <div flex items-center>
     <slot>{label}</slot>
   </div>
   {#if external && !hideExternalIcon}
