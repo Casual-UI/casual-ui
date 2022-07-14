@@ -37,7 +37,9 @@
   <div w-240 min-h-screen>
     <slot />
   </div>
-  <aside class="right" box-border fixed top-26 z-3>slug nav</aside>
+  <aside class="right" box-border fixed top-26 z-3>
+    <!-- TODO: implement slug nav -->
+  </aside>
 </div>
 
 <style>

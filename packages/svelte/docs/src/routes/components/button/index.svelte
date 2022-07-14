@@ -16,7 +16,7 @@
 </script>
 
 <script lang="ts">
-  import Attension from '$theme/Attension.svelte'
+  import Attention from '$theme/Attention.svelte'
   import Doc from '$theme/Doc.svelte'
   import Link from '$theme/Link.svelte'
 
@@ -28,13 +28,11 @@
 </svelte:head>
 
 <div mb-8>
-  <Attension title="Notice" type="secondary">
-    In this documentation the <Link
-      external
-      to="https://github.com/unocss/unocss"
-      label="UnoCSS"
-    /> is used for icon button
-  </Attension>
+  <Attention title="Notice" type="secondary">
+    In this documentation the
+    <Link external to="https://github.com/unocss/unocss" label="UnoCSS" />
+    is used for icon button
+  </Attention>
 </div>
 
 {#each demos as { title, name, comp }}

@@ -16,6 +16,10 @@
    * Determine whether the expansion is expanded or not
    */
   export let expanded = false
+  /**
+   * 折叠方向是否相反
+   */
+  export let reverse = false
 
   let bodyDom: HTMLDivElement
   let initialBodyHeight = 'auto'
@@ -45,6 +49,11 @@
   })}
   style={`--casual-expansion-height:${realtimeBodyHeigh};`}
 >
+  {#if reverse}
+    <div bind:this={bodyDom} class="c-expansion--body">
+      <slot {setHeight} />
+    </div>
+  {/if}
   <div class="c-expansion--header" on:click|stopPropagation={onHeaderClick}>
     {#if icon || $$slots.icon}
       <div class="c-expansion--icon">
@@ -69,7 +78,9 @@
       </slot>
     </div>
   </div>
-  <div bind:this={bodyDom} class="c-expansion--body">
-    <slot {setHeight} />
-  </div>
+  {#if !reverse}
+    <div bind:this={bodyDom} class="c-expansion--body">
+      <slot {setHeight} />
+    </div>
+  {/if}
 </div>

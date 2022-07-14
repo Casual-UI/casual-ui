@@ -24,11 +24,12 @@
   pt-4
   pb-2
   pl-4
+  fs-14
 >
-  <div text-4 font-bold text-t-1>
+  <div font-bold text-t-1>
     {title}
   </div>
-  <p fs-14>
+  <p>
     <slot />
   </p>
 </div>

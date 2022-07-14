@@ -19,7 +19,7 @@
     rounded-t-2
     pt-4
     px-4
-    text-5
+    text-4
     font-bold
     pb-5
     on:mouseenter={() => (showLink = true)}
@@ -37,7 +37,8 @@
   <div p-4 bg-white>
     <svelte:component this={component} />
   </div>
-  <CExpansion title="Expand/Fold Code">
+  <CExpansion reverse>
+    <div slot="title" fs-14>Expand/Fold Code</div>
     <div>
       {@html code}
     </div>
