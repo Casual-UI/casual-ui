@@ -12,8 +12,6 @@
 </script>
 
 <script lang="ts">
-  import 'uno.css'
-  import 'casual-styles'
   import Sidebar from '$theme/Sidebar.svelte'
 
   export let sidebar: any

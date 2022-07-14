@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { CExpansion } from 'casual-ui-svelte'
   import defaultDocCode from './defaultDocCode'
   import Link from './Link.svelte'
 
@@ -24,12 +25,14 @@
     <Link to={`#${id}`}>
       {title}
     </Link>
-    <div text-t-2 text-3 font-400>Copy</div>
   </div>
   <div p-4>
     <svelte:component this={component} />
   </div>
-  <div>
-    {@html code}
-  </div>
+  <CExpansion title="Expand/Fold Code">
+    <div>
+      {@html code}
+    </div>
+    <div i-vscode-icons-file-type-svelte slot="icon" />
+  </CExpansion>
 </div>

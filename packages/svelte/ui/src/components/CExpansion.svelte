@@ -1,5 +1,7 @@
 <script lang="ts">
   import { bem } from 'casual-ui-svelte'
+  import { attributeAtom } from 'casual-utils'
+  import clsx from 'clsx'
   import { onMount } from 'svelte'
 
   /**
@@ -21,8 +23,8 @@
   const setHeight = () => {}
 
   let initialExpaned = expanded
-  if (initialExpaned) {
-    expanded = false
+  if (!initialExpaned) {
+    expanded = true
   }
 
   onMount(() => {
@@ -51,11 +53,14 @@
       </slot>
     </div>
     <div
-      class={bem('expansion--arrow', {
-        expanded,
-      })}
+      class={clsx(
+        'c-expansion--arrow',
+        expanded && 'c-expansion--arrow-expanded'
+      )}
     >
-      <slot name="arrow">arrow</slot>
+      <slot name="arrow">
+        <div i-ph-caret-down-light />
+      </slot>
     </div>
   </div>
   <div bind:this={bodyDom} class="c-expansion--body">
