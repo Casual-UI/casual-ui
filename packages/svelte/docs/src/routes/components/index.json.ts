@@ -10,7 +10,7 @@ const sidebar = Object.entries(components)
       k.indexOf('_demos') === -1 &&
       k.indexOf('_components') === -1
   )
-  .map(([k, v]) => ({
+  .map(([k, v]: any) => ({
     label: v.title || 'Untitled',
     to:
       '/components/' +

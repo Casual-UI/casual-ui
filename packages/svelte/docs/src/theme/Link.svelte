@@ -8,18 +8,16 @@
   export let external = false
   export let hideExternalIcon = false
   export let customClass = ''
+  /**
+   * Whehter compare $page with to prop
+   */
+  export let computeActiveByPageUrl = true
 
   const onClick = () => {
     if (external) {
       window.open(to, '_blank')
       return
     }
-    // if (to.startsWith('#')) {
-    //   const target: any = document.querySelector(to)
-    //   if (!target) return
-    //   window.scrollTo(0, (target.offsetTop as number) - 90)
-    //   return
-    // }
     goto(to)
   }
 </script>
@@ -31,7 +29,7 @@
   {...attributeAtom($$restProps)}
   hover="opacity-60"
   {...attributeAtom({
-    'text-primary': $page.url.href.includes(to),
+    'text-primary': computeActiveByPageUrl && $page.url.href.includes(to),
   })}
   on:click={onClick}
   class={customClass}

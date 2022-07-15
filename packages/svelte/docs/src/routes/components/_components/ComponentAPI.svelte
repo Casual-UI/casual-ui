@@ -9,8 +9,8 @@
   $: propId = `${api.name} Props`
 </script>
 
-{#if api.data?.length}
-  <Doc title={propId} id="props">
+<Doc title={propId} id="props">
+  {#if api.data?.length}
     <ul m-0 fs-14>
       {#each api.data as { defaultValue, name, type, description }}
         <li>
@@ -25,5 +25,7 @@
         </li>
       {/each}
     </ul>
-  </Doc>
-{/if}
+  {:else}
+    No data
+  {/if}
+</Doc>

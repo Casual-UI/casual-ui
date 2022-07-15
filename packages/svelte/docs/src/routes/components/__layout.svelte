@@ -15,7 +15,8 @@
   import Sidebar from '$theme/Sidebar.svelte'
   import EditOnGithub from './_components/EditOnGithub.svelte'
   import PageSwitcher from './_components/PageSwitcher.svelte'
-  import { page, session } from '$app/stores'
+  import { page } from '$app/stores'
+  import SlugNav from '$theme/SlugNav.svelte'
 
   export let sidebar: {
     to: string
@@ -35,8 +36,6 @@
     currentPageIndex >= sidebar.length - 1
       ? null
       : sidebar[currentPageIndex + 1]
-
-  $: console.log($session)
 </script>
 
 <div flex pt-8 justify-center>
@@ -83,7 +82,7 @@
     </div>
   </div>
   <aside class="right" box-border fixed top-26 z-3>
-    <!-- TODO: implement slug nav -->
+    <SlugNav />
   </aside>
 </div>
 

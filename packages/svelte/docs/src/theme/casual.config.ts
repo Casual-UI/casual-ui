@@ -1,10 +1,7 @@
 export default {
   github: 'https://github.com/Blackman99/casual-ui',
+  // NOTICE: support for maximum 6 features
   features: [
-    {
-      label: 'Written in TS',
-      desc: 'Friendly typescript support',
-    },
     {
       label: 'Small size',
       desc: 'No extra large third-party lib',
@@ -17,7 +14,6 @@ export default {
       label: 'Strong and flexiable form',
       desc: 'Provide a form interface for you to fully customize your app',
     },
-    // NOTICE: support for maximum 6 features
   ],
   navbar: [
     {

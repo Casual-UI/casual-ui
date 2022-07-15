@@ -12,7 +12,9 @@
   }
   export const title = 'Button'
 
-  const demos = parseDemosFromEager(import.meta.globEager('./_demos/*.svelte'))
+  const demos = parseDemosFromEager(
+    import.meta.glob('./_demos/*.svelte', { eager: true })
+  )
 </script>
 
 <script lang="ts">
