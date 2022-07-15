@@ -13,9 +13,22 @@ body {
 .monaco-editor {
   padding: 12px 0;
 }
+@font-face {
+  font-family: DM;
+  src: url("/fonts/Dank Mono Regular.otf");
+}
+
+@font-face {
+  font-family: DM;
+  src: url("/fonts/Dank Mono Italic.otf");
+  font-style: italic;
+}
 .shiki {
   font-size: 14px;
   padding: 12px;
   margin: 0;
   line-height: 1.5em;
+}
+code {
+  font-family: DM;
 }

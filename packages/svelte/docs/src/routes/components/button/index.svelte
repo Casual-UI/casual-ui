@@ -19,8 +19,15 @@
   import Attention from '$theme/Attention.svelte'
   import Doc from '$theme/Doc.svelte'
   import Link from '$theme/Link.svelte'
+  import { session } from '$app/stores'
+  import { browser } from '$app/env'
 
   export let demosCodeHTML: any = {}
+
+  // in the browser pass demos to session
+  if (browser) {
+    $session = { demos }
+  }
 </script>
 
 <svelte:head>

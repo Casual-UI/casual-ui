@@ -15,7 +15,7 @@
   import Sidebar from '$theme/Sidebar.svelte'
   import EditOnGithub from './_components/EditOnGithub.svelte'
   import PageSwitcher from './_components/PageSwitcher.svelte'
-  import { page } from '$app/stores'
+  import { page, session } from '$app/stores'
 
   export let sidebar: {
     to: string
@@ -35,6 +35,8 @@
     currentPageIndex >= sidebar.length - 1
       ? null
       : sidebar[currentPageIndex + 1]
+
+  $: console.log($session)
 </script>
 
 <div flex pt-8 justify-center>
