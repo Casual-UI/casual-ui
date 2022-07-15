@@ -1,7 +1,7 @@
 <script lang="ts">
   import { goto } from '$app/navigation'
-  import { CButton } from 'casual-ui-svelte'
-  import { attributeAtom } from 'casual-utils'
+  import { CButton } from '$casual'
+  import { attributeAtom } from '$theme/utils/attributeAtom'
   import casualConfig from './casual.config'
 </script>
 

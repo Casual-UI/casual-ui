@@ -10,6 +10,7 @@
 		"skipLibCheck": true,
 		"sourceMap": true,
 		"strict": true,
-		"baseUrl": "."
+		"baseUrl": ".",
+		"moduleResolution": "node"
 	}
 }

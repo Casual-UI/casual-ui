@@ -2,12 +2,12 @@ html,
 body {
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
 }
 a {
   text-decoration: none;
 }
 body {
-  scroll-behavior: smooth;
   background-color: #f9f9f9;
 }
 .monaco-editor {
@@ -31,4 +31,7 @@ body {
 }
 code {
   font-family: DM;
+}
+.casual-doc-item:target {
+  padding-top: calc(4.5rem);
 }

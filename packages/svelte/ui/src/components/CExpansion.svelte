@@ -1,7 +1,6 @@
-<script lang="ts">
-  import { bem } from 'casual-ui-svelte'
-  import { attributeAtom } from 'casual-utils'
+<script>
   import clsx from 'clsx'
+  import bem from '../utils/bem'
   import { onMount } from 'svelte'
 
   /**
@@ -17,11 +16,11 @@
    */
   export let expanded = false
   /**
-   * 折叠方向是否相反
+   * Determine the expand direction, set `true`
    */
   export let reverse = false
 
-  let bodyDom: HTMLDivElement
+  let bodyDom
   let initialBodyHeight = 'auto'
 
   $: realtimeBodyHeigh = expanded ? initialBodyHeight : 0
@@ -51,6 +50,7 @@
 >
   {#if reverse}
     <div bind:this={bodyDom} class="c-expansion--body">
+      <!-- Expansion body content -->
       <slot {setHeight} />
     </div>
   {/if}
@@ -73,6 +73,7 @@
         expanded && 'c-expansion--arrow-expanded'
       )}
     >
+      <!-- Customize the arrow dom -->
       <slot name="arrow">
         <div i-ph-caret-down-light />
       </slot>
@@ -80,6 +81,7 @@
   </div>
   {#if !reverse}
     <div bind:this={bodyDom} class="c-expansion--body">
+      <!--  Expansion body content -->
       <slot {setHeight} />
     </div>
   {/if}

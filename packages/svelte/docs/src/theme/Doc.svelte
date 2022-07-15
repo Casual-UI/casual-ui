@@ -1,17 +1,20 @@
 <script lang="ts">
-  import { CExpansion } from 'casual-ui-svelte'
+  import { goto } from '$app/navigation'
+
+  import { CExpansion } from '$casual'
   import defaultDocCode from './defaultDocCode'
   import Link from './Link.svelte'
 
-  export let code = defaultDocCode
-  export let component: any
+  export let code: string | undefined = undefined
+  export let component: any = undefined
   export let title = ''
   export let id = ''
 
   let showLink = false
 </script>
 
-<div border-e9e9e9 border-1 rounded-2 mb-8 {id} hover:shadow-md>
+<div border-e9e9e9 border-1 rounded-2 mb-8 hover:shadow-md>
+  <div {id} relative top--26 />
   <div
     flex
     justify-between
@@ -25,23 +28,36 @@
     on:mouseenter={() => (showLink = true)}
     on:mouseleave={() => (showLink = false)}
   >
-    <Link to={`#${id}`}>
-      <div flex items-center>
-        {title}
-        {#if showLink}
-          <div i-eva-link-2-fill ml-2 on:click|stopPropagation={() => {}} />
-        {/if}
-      </div>
-    </Link>
-  </div>
-  <div p-4 bg-white>
-    <svelte:component this={component} />
-  </div>
-  <CExpansion reverse>
-    <div slot="title" fs-14>Expand/Fold Code</div>
-    <div>
-      {@html code}
+    <div class="casual-doc-item">
+      <Link to={`#${id}`}>
+        <div flex items-center>
+          {title}
+          {#if showLink}
+            <div i-eva-link-2-fill ml-2 />
+          {/if}
+        </div>
+      </Link>
     </div>
-    <div i-vscode-icons-file-type-svelte slot="icon" />
-  </CExpansion>
+  </div>
+  {#if component}
+    <div p-4 bg-white>
+      <svelte:component this={component} />
+    </div>
+  {/if}
+  <!-- The middle content -->
+  <slot />
+  {#if code}
+    <CExpansion reverse>
+      <div slot="title" fs-14>Expand/Fold Code</div>
+      <div>
+        {@html code}
+      </div>
+      <div i-vscode-icons-file-type-svelte slot="icon" />
+    </CExpansion>
+  {/if}
 </div>
+
+<style>
+  .casual-doc-item:tar {
+  }
+</style>

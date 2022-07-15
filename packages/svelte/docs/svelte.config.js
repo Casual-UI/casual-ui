@@ -16,6 +16,7 @@ const config = {
     alias: {
       $utils: 'src/utils',
       $theme: 'src/theme',
+      $casual: 'src/../../ui',
     },
   },
 

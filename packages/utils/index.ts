@@ -1,1 +1,3 @@
-export { attributeAtom } from './attributeAtom'
+import { attributeAtom } from './src/attributeAtom.js'
+
+export { attributeAtom }

@@ -21,8 +21,13 @@
   import Link from '$theme/Link.svelte'
   import { session } from '$app/stores'
   import { browser } from '$app/env'
+  import ComponentApi from '../_components/ComponentAPI.svelte'
 
+  // the demos rendered colored html content
   export let demosCodeHTML: any = {}
+
+  // the components api json data
+  export let componentAPI: any = {}
 
   // in the browser pass demos to session
   if (browser) {
@@ -36,16 +41,22 @@
 
 <div mb-8>
   <Attention>
-    In this documentation the
+    <div slot="title" flex items-center>
+      <div i-fluent-lightbulb-filament-16-regular mr-1 text-6 />
+      Tip
+    </div>
+    This documentation use
     <Link
       external
       to="https://github.com/unocss/unocss/tree/main/packages/preset-icons/"
       label="UnoCSS preset-icons"
     />
-    is used for icon button
+    for icon button
   </Attention>
 </div>
 
 {#each demos as { title, name, comp }}
   <Doc {title} code={demosCodeHTML[name]} component={comp} id={name} />
 {/each}
+
+<ComponentApi api={componentAPI} />

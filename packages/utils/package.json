@@ -7,18 +7,20 @@
     "dist"
   ],
   "main": "index.ts",
-  "scripts": {
-  },
-  "dependencies": {
-  },
+  "scripts": {},
   "devDependencies": {
+    "typescript": "^4.7.4"
   },
   "author": {
     "email": "1197160272@qq.com",
     "name": "Dongsheng Zhao"
   },
+  "publishConfig": {
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts"
+  },
   "repository": {
     "url": "https://github.com/Blackman99/casual-ui.git",
-    "directory": "/packages/lib"
+    "directory": "/packages/utils"
   }
 }

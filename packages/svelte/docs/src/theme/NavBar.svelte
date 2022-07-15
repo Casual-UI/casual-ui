@@ -1,11 +1,16 @@
 <script lang="ts">
   import casualConfig from '$theme/casual.config'
   import Link from '$theme/Link.svelte'
-  import { attributeAtom } from 'casual-utils'
+  import { attributeAtom } from '$theme/utils/attributeAtom'
   let scrollY = 0
 </script>
 
 <svelte:window bind:scrollY />
+
+<!-- 
+  @component
+  The navbar header of global layout
+ -->
 
 <header
   bg-white

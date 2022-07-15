@@ -4,6 +4,9 @@
   "private": true,
   "type": "module",
   "main": "./src/index.js",
+  "exports": {
+    "./dist/style.css": "./dist/style.css"
+  },
   "author": {
     "email": "1197160272@qq.com",
     "name": "Dongsheng Zhao"

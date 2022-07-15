@@ -1,5 +1,5 @@
 <script>
-  import { CButton } from 'casual-ui-svelte'
+  import { CButton } from '$casual'
 </script>
 
 <CButton label="A Disabled Button" disabled />

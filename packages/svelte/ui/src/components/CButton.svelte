@@ -1,13 +1,13 @@
-<script lang="ts">
-  import { useSize, bem } from 'casual-ui-svelte'
-  import type { CSize, CTheme } from 'casual-types'
+<script>
+  import bem from '../utils/bem'
+  import { attributeAtom } from '../utils/attributeAtom'
   import clsx from 'clsx'
-  import { attributeAtom } from 'casual-utils'
-  import { createEventDispatcher } from 'svelte'
   import CLoading from './CLoading.svelte'
+  import useSize from '../hooks/useSize'
 
   /**
    * The text of the button. You can also use the default slot to cover this prop
+   * @type {string}
    */
   export let label = ''
   /**
@@ -16,55 +16,63 @@
   export let outlined = false
 
   /**
-   * Determine the button has a rounded border or not
+   * Determine the button has a rounded border or not.
+   * @type {boolean}
    */
   export let rounded = false
 
   /**
    * Determine the button is disalbed or not.
+   * @type {boolean}
    */
   export let disabled = false
 
   /**
    * The size of the button.
+   * @type {boolean}
    */
-  export let size: CSize | undefined = undefined
+  export let size = undefined
 
   /**
    * Determine the button has a half circle round border or not.
+   * @type {boolean}
    */
   export let round = false
 
   /**
    * Determine the button take up full width or not.
+   * @type {boolean}
    */
   export let block = false
 
   /**
    * Determine the button is in loading state or not.
+   * @type {boolean}
    */
   export let loading = false
 
   /**
    * Determine the button show as a icon button, a full circle style.
+   * @type {boolean}
    */
   export let icon = false
 
   /**
    * The color theme of the button.
+   * @type {'primary' | 'secondary' | 'warning' | 'negative'}
    */
-  export let theme: CTheme = 'primary'
+  export let theme = 'primary'
 
   /**
-   * custom style of the button.
+   * Custom style of the button.
+   * @type {string}
    */
   export let style = ''
 
   $: realSize = useSize(size)
-
-  const dispatch = createEventDispatcher()
 </script>
 
+<!-- The click event -->
 <button
   class={`${bem('button', {
     round,
@@ -84,14 +92,16 @@
   {disabled}
   {...attributeAtom($$restProps)}
   {style}
-  on:click={() => dispatch('click')}
+  on:click
 >
   <div class="c-button--content-wrapper">
+    <!-- The internal content of the button. This slot can override `label` prop -->
     <slot>
       {label}
     </slot>
     {#if loading}
       <span>&nbsp;</span>
+      <!-- Customize the loading content. Used when you don't want to use the default loading style -->
       <slot name="loading">
         <CLoading />
       </slot>
