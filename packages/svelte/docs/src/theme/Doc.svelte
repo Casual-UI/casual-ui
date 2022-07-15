@@ -1,8 +1,14 @@
 <script lang="ts">
   import { CExpansion } from '$casual'
+  import CopyBtn from './CopyBtn.svelte'
   import Link from './Link.svelte'
 
-  export let code: string | undefined = undefined
+  export let code:
+    | {
+        code: string
+        html: string
+      }
+    | undefined = undefined
   export let component: any = undefined
   export let title = ''
   export let id = ''
@@ -46,8 +52,11 @@
   {#if code}
     <CExpansion reverse>
       <div slot="title" fs-14>Expand/Fold Code</div>
-      <div>
-        {@html code}
+      <div relative>
+        {@html code.html}
+        <div absolute top-4 right-4>
+          <CopyBtn code={code.code} />
+        </div>
       </div>
       <div i-vscode-icons-file-type-svelte slot="icon" />
     </CExpansion>
