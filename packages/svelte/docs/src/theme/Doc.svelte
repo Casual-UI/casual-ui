@@ -1,8 +1,5 @@
 <script lang="ts">
-  import { goto } from '$app/navigation'
-
   import { CExpansion } from '$casual'
-  import defaultDocCode from './defaultDocCode'
   import Link from './Link.svelte'
 
   export let code: string | undefined = undefined
