@@ -9,7 +9,6 @@
 
 <header
   bg-white
-  bg-opacity-70
   fixed
   top-0
   z-999
@@ -19,6 +18,7 @@
   leading-18
   {...attributeAtom({
     'shadow-md': scrollY > 10,
+    'bg-opacity-70': scrollY > 10,
   })}
 >
   <div max-w-360 mx-auto flex justify-between items-center>

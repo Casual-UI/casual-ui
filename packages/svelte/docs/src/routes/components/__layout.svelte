@@ -56,7 +56,7 @@
   >
     <Sidebar links={sidebar} />
   </aside>
-  <div w-240 min-h-screen>
+  <div w-240 pb-8>
     <slot />
     <EditOnGithub />
     <div border-t border-e9e9e9 mt-4 mb-8 />

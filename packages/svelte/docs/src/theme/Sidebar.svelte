@@ -6,15 +6,22 @@
     label: string
     to: string
   }[] = []
+
+  $: activeLink = $page.url.href
 </script>
 
 <div list-none leading-8 m-0 p-0 w-40>
   {#each links as { label, to }}
     <div flex items-center>
-      <Link {label} {to} />
-      {#if $page.url.href.includes(to)}
-        <div ph-caret-right-light />
+      {#if activeLink.includes(to)}
+        <div
+          i-emojione-monotone-backhand-index-pointing-right
+          text-primary
+          mr-2
+          text-4
+        />
       {/if}
+      <Link {label} {to} />
     </div>
   {/each}
 </div>
