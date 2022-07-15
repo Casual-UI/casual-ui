@@ -2,8 +2,8 @@
   import type { CTheme } from 'casual-types'
   import { attributeAtom } from 'casual-utils'
 
-  export let type: CTheme = 'primary'
-  export let title = ''
+  export let type: CTheme = 'secondary'
+  export let title = 'Tip'
 </script>
 
 <div

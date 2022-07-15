@@ -28,9 +28,13 @@
 </svelte:head>
 
 <div mb-8>
-  <Attention title="Notice" type="secondary">
+  <Attention>
     In this documentation the
-    <Link external to="https://github.com/unocss/unocss" label="UnoCSS" />
+    <Link
+      external
+      to="https://github.com/unocss/unocss/tree/main/packages/preset-icons/"
+      label="UnoCSS preset-icons"
+    />
     is used for icon button
   </Attention>
 </div>

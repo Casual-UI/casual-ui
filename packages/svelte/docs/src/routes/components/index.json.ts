@@ -7,7 +7,8 @@ const sidebar = Object.entries(components)
     ([k]) =>
       k.indexOf('__layout.svelte') === -1 &&
       k !== './index.svelte' &&
-      k.indexOf('_demos') === -1
+      k.indexOf('_demos') === -1 &&
+      k.indexOf('_components') === -1
   )
   .map(([k, v]) => ({
     label: v.title || 'Untitled',

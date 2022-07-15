@@ -13,8 +13,28 @@
 
 <script lang="ts">
   import Sidebar from '$theme/Sidebar.svelte'
+  import EditOnGithub from './_components/EditOnGithub.svelte'
+  import PageSwitcher from './_components/PageSwitcher.svelte'
+  import { page } from '$app/stores'
 
-  export let sidebar: any
+  export let sidebar: {
+    to: string
+    label: string
+  }[]
+
+  // current page in sidebar index
+  $: currentPageIndex = sidebar.findIndex(item =>
+    item.to.includes($page.routeId || '*#%@')
+  )
+
+  // previous page info
+  $: previousPage = currentPageIndex < 1 ? null : sidebar[currentPageIndex - 1]
+
+  // next page info
+  $: nextPage =
+    currentPageIndex >= sidebar.length - 1
+      ? null
+      : sidebar[currentPageIndex + 1]
 </script>
 
 <div flex pt-8 justify-center>
@@ -36,6 +56,29 @@
   </aside>
   <div w-240 min-h-screen>
     <slot />
+    <EditOnGithub />
+    <div border-t border-e9e9e9 mt-4 mb-8 />
+    <div flex justify-between gap-16>
+      <div flex-grow>
+        {#if previousPage}
+          <PageSwitcher
+            title="Previous page"
+            page={previousPage.label}
+            link={previousPage.to}
+          />
+        {/if}
+      </div>
+      <div flex-grow>
+        {#if nextPage}
+          <PageSwitcher
+            text-right
+            title="Next page"
+            page={nextPage.label}
+            link={nextPage.to}
+          />
+        {/if}
+      </div>
+    </div>
   </div>
   <aside class="right" box-border fixed top-26 z-3>
     <!-- TODO: implement slug nav -->
