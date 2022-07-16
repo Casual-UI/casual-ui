@@ -7,6 +7,9 @@
   "exports": {
     "./dist/style.css": "./dist/style.css"
   },
+  "scripts": {
+    "build": "rollup -c rollup.config.js"
+  },
   "author": {
     "email": "1197160272@qq.com",
     "name": "Dongsheng Zhao"
