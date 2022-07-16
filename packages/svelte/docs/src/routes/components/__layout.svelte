@@ -74,6 +74,7 @@
           <PageSwitcher
             text-right
             title="Next page"
+            direction="right"
             page={nextPage.label}
             link={nextPage.to}
           />

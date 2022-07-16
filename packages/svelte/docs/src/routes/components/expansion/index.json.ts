@@ -1,7 +1,7 @@
 import getDemoCodeHTMLFromEager from '$theme/utils/getDemoCodeHTMLFromEager'
 import type { RequestHandler } from '@sveltejs/kit'
 
-export const get: RequestHandler = async function () {
+export const GET: RequestHandler = async function () {
   return {
     status: 200,
     body: {

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { CButton } from '$casual'
+  import CButton from 'casual-ui-svelte/src/components/CButton.svelte'
 </script>
 
 <CButton size="xs" label="XS Button" rounded />

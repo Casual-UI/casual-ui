@@ -1,7 +1,7 @@
 <script lang="ts">
   import NavBar from '$theme/NavBar.svelte'
   import 'uno.css'
-  import 'casual-styles/dist/style.css'
+  import 'casual-styles/src/index.scss'
   import GlobalLayout from '$theme/GlobalLayout.svelte'
 </script>
 

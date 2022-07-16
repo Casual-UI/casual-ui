@@ -3,9 +3,10 @@
   "version": "0.0.1",
   "private": true,
   "type": "module",
-  "main": "./src/index.js",
+  "main": "src/index.js",
   "exports": {
-    "./dist/style.css": "./dist/style.css"
+    "./dist/style.css": "./dist/style.css",
+    "./src/*": "./src/*"
   },
   "scripts": {
     "build": "rollup -c rollup.config.js"

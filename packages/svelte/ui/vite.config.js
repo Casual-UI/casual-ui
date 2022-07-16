@@ -14,7 +14,7 @@ export default defineConfig({
   ],
   build: {
     lib: {
-      entry: resolve(process.cwd(), 'src/index.ts'),
+      entry: resolve(process.cwd(), 'index.js'),
       name: 'CasualUISvelte',
       fileName: format => `index.${format}.js`,
     },

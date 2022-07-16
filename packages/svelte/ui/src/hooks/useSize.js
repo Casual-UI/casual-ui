@@ -1,5 +1,4 @@
-import type { CSize } from 'casual-types'
 import { getContext, hasContext } from 'svelte'
 
-export default (size?: CSize) =>
+export default size =>
   size ? size : hasContext('c-size') ? getContext('c-size') : 'md'

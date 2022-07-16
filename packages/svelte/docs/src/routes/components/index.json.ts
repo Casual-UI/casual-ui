@@ -15,6 +15,7 @@ const sidebar = Object.entries(components)
       // exclude the docs components
       k.indexOf('_components') === -1
   )
+  // transfer the path to an sidebar item
   .map(([k, v]: any) => ({
     label: v.title || 'Untitled',
     to:
@@ -26,7 +27,7 @@ const sidebar = Object.entries(components)
       '/',
   }))
 
-export const get: RequestHandler = async function ({}) {
+export const GET: RequestHandler = async function ({}) {
   return {
     status: 200,
     body: {

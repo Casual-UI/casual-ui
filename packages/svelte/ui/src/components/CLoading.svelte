@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
   export let size = '1em'
   export let thickness = 5
   export let color = 'currentColor'

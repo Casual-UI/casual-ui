@@ -28,5 +28,6 @@
     "editor.defaultFormatter": "svelte.svelte-vscode",
     "editor.formatOnSave": true,
   },
-  "unocss.root": "packages/svelte/docs"
+  "unocss.root": "packages/svelte/docs",
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

@@ -29,7 +29,7 @@
 
   /**
    * The size of the button.
-   * @type {boolean}
+   * @type {'xs' | 'sm' | 'md' | 'lg' | 'xl'}
    */
   export let size = undefined
 

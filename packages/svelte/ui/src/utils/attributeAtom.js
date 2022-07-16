@@ -1,4 +1,4 @@
-export const attributeAtom = (attrs: Record<string, any>) =>
+export const attributeAtom = attrs =>
   Object.entries(attrs).reduce(
     (attrsNeeded, [name, exist]) => ({
       ...attrsNeeded,
