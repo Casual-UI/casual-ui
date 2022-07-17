@@ -37,11 +37,11 @@
     })}
   >
     {#if direction === 'left'}
-      <div i-ph-caret-double-left mr-2 />
+      <div i-ph-caret-double-left ml-2 />
     {/if}
     {page}
     {#if direction === 'right'}
-      <div ml-2 i-ph-caret-double-right />
+      <div ml-1 i-ph-caret-double-right />
     {/if}
   </div>
 </div>
