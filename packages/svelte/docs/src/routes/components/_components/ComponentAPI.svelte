@@ -9,7 +9,7 @@
   $: propId = `${api.name} Props`
 </script>
 
-<Doc title={propId} id="props">
+<Doc title={propId} id="props" mb-16>
   {#if api.data?.length}
     <ul m-0 fs-14>
       {#each api.data as { defaultValue, name, type, description }}

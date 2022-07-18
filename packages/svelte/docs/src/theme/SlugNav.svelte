@@ -46,7 +46,7 @@
 
   function computeActiveId() {
     if (!targetPositions.length) return
-    const baseTop = targetPositions[0][1]
+    const baseTop = targetPositions[0][1] + 72
     for (let i = 0; i < targetPositions.length; i++) {
       const [, pos] = targetPositions[i]
       if (i < targetPositions.length - 1) {
@@ -64,7 +64,6 @@
     }
     if (activeIdx > 0) {
       window.history.pushState({}, '', `#${targetPositions[activeIdx - 1][0]}`)
-      console.log(activeIdx, scrollY, targetPositions)
     }
   }
 </script>

@@ -2,6 +2,7 @@
   import { CExpansion } from '$casual'
   import CopyBtn from './CopyBtn.svelte'
   import Link from './Link.svelte'
+  import { attributeAtom } from './utils/attributeAtom'
 
   export let code:
     | {
@@ -16,7 +17,14 @@
   let showLink = false
 </script>
 
-<div border-e9e9e9 border-1 rounded-2 mb-8 hover:shadow-md>
+<div
+  border-e9e9e9
+  border-1
+  rounded-2
+  mb-8
+  hover:shadow-md
+  {...attributeAtom($$restProps)}
+>
   <div {id} relative top--26 />
   <div
     flex
