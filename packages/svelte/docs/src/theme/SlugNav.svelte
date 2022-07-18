@@ -18,7 +18,11 @@
     computeActiveId()
   }
 
-  const computeActiveId = debounce(() => {
+  const doPush = debounce((to: string) => {
+    window.history.pushState({}, '', to)
+  })
+
+  const computeActiveId = () => {
     if (!targetPositions.length) return
     const baseTop = targetPositions[0][1] + 72
     for (let i = 0; i < targetPositions.length; i++) {
@@ -37,9 +41,9 @@
       }
     }
     if (activeIdx > 0) {
-      window.history.pushState({}, '', `#${targetPositions[activeIdx - 1][0]}`)
+      doPush(`#${targetPositions[activeIdx - 1][0]}`)
     }
-  })
+  }
 
   let targetPositions: [string, number][] = []
 
@@ -47,6 +51,14 @@
     {
       title: 'Props',
       name: 'props',
+    },
+    {
+      title: 'Events',
+      name: 'events',
+    },
+    {
+      title: 'Slots',
+      name: 'slots',
     },
   ]
 

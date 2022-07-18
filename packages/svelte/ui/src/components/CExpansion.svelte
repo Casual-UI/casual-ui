@@ -40,6 +40,9 @@
 
   function onHeaderClick() {
     expanded = !expanded
+    /**
+     * Emit when the expand status change
+     */
     dispatch('toggle')
   }
 
@@ -52,6 +55,9 @@
     initialBodyHeight = `${bodyDom.clientHeight}px`
     expanded = initialExpaned
     tick().then(() => {
+      /**
+       * Emit when the initial height compute is done
+       */
       dispatch('ready')
     })
   })
@@ -75,6 +81,7 @@
   <div class="c-expansion--header" on:click|stopPropagation={onHeaderClick}>
     {#if $$slots.icon}
       <div class="c-expansion--icon">
+        <!-- The content before title -->
         <slot name="icon" />
       </div>
     {/if}
