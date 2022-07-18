@@ -41,6 +41,7 @@ footer: MIT Licensed | Copyright © 2022-present Casual UI
     <img src="/badges/pnpm.svg" alt="" />
     <img src="/badges/stylelint.svg" alt="" />
     <img src="/badges/vuepress.svg" alt="" />
+    <img src="/badges/svelte.svg.svg" alt="" />
   </div>
 </div>
 

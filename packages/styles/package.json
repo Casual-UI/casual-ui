@@ -6,7 +6,8 @@
   "main": "src/index.js",
   "exports": {
     "./dist/style.css": "./dist/style.css",
-    "./src/*": "./src/*"
+    "./src/*": "./src/*",
+    ".": "./src/index.js"
   },
   "scripts": {
     "build": "rollup -c rollup.config.js"

@@ -6,9 +6,9 @@ import { defineClientConfig } from '@vuepress/client'
 
 export default defineClientConfig({
   enhance({ app }) {
-    app.component('ComponentDoc', ComponentDoc)
-    app.component('DemoCode', DemoCode)
-    app.component('HooksApi', HooksApi)
+    app.component('ComponentDoc', ComponentDoc as any)
+    app.component('DemoCode', DemoCode as any)
+    app.component('HooksApi', HooksApi as any)
     app.config.globalProperties.$resolveCasual = defineAsyncComponent
   },
 })
