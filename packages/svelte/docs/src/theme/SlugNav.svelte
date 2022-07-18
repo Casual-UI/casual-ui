@@ -1,50 +1,24 @@
 <script lang="ts">
-  import { browser } from '$app/env'
-
   import { session } from '$app/stores'
+
+  import { onMount } from 'svelte'
+
   import Link from './Link.svelte'
-
-  $: sessionData = $session as any
-
-  $: demos = sessionData?.demos || []
+  import debounce from './utils/debounce'
 
   let scrollY: number
 
   let activeIdx = -1
 
+  export let demos: any = []
+
   $: {
     scrollY
+
     computeActiveId()
   }
 
-  const addtionItems = [
-    {
-      title: 'Props',
-      name: 'props',
-    },
-  ]
-
-  let targetPositions: [string, number][] = []
-
-  function computedTargetPositions() {
-    targetPositions = (
-      [...demos, ...addtionItems] as {
-        name: string
-        title: string
-        comp: any
-      }[]
-    ).map<[string, number]>(
-      ({ name }) => [name, document.getElementById(name)?.offsetTop ?? 0],
-      []
-    )
-  }
-
-  $: {
-    demos
-    computedTargetPositions()
-  }
-
-  function computeActiveId() {
+  const computeActiveId = debounce(() => {
     if (!targetPositions.length) return
     const baseTop = targetPositions[0][1] + 72
     for (let i = 0; i < targetPositions.length; i++) {
@@ -65,6 +39,32 @@
     if (activeIdx > 0) {
       window.history.pushState({}, '', `#${targetPositions[activeIdx - 1][0]}`)
     }
+  })
+
+  let targetPositions: [string, number][] = []
+
+  const addtionItems = [
+    {
+      title: 'Props',
+      name: 'props',
+    },
+  ]
+
+  onMount(() => {
+    computedTargetPositions()
+  })
+
+  export function computedTargetPositions() {
+    targetPositions = (
+      [...demos, ...addtionItems] as {
+        name: string
+        title: string
+        comp: any
+      }[]
+    ).map<[string, number]>(
+      ({ name }) => [name, document.getElementById(name)?.offsetTop ?? 0],
+      []
+    )
   }
 </script>
 

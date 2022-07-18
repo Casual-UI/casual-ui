@@ -4,12 +4,8 @@
   import Link from './Link.svelte'
   import { attributeAtom } from './utils/attributeAtom'
 
-  export let code:
-    | {
-        code: string
-        html: string
-      }
-    | undefined = undefined
+  export let code = ''
+  export let html = ''
   export let component: any = undefined
   export let title = ''
   export let id = ''
@@ -58,12 +54,12 @@
   <!-- The middle content -->
   <slot />
   {#if code}
-    <CExpansion reverse>
+    <CExpansion reverse on:toggle on:ready>
       <div slot="title" fs-14>Expand/Fold Code</div>
       <div relative>
-        {@html code.html}
+        {@html html}
         <div absolute top-4 right-4>
-          <CopyBtn code={code.code} />
+          <CopyBtn {code} />
         </div>
       </div>
       <div i-vscode-icons-file-type-svelte slot="icon" />

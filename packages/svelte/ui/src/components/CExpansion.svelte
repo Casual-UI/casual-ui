@@ -1,35 +1,47 @@
 <script>
   import clsx from 'clsx'
   import bem from '../utils/bem'
-  import { onMount } from 'svelte'
+  import { createEventDispatcher, onMount, tick } from 'svelte'
 
   /**
-   * The icon at the left of the title
-   */
-  export let icon = ''
-  /**
    * The title of the expansion
+   * @type {string}
    */
   export let title = ''
+
   /**
    * Determine whether the expansion is expanded or not
+   * @type {boolean}
    */
   export let expanded = false
+
   /**
-   * Determine the expand direction, set `true`
+   * Determine the expand direction, `false` means down, `true` means up
+   * @type {boolean}
    */
   export let reverse = false
 
+  /**
+   * The panel body dom
+   */
   let bodyDom
+
+  /**
+   * The initial height of panel body
+   */
   let initialBodyHeight = 'auto'
 
+  /**
+   * The real height of panel body
+   */
   $: realtimeBodyHeigh = expanded ? initialBodyHeight : 0
 
-  const onHeaderClick = () => {
-    expanded = !expanded
-  }
+  const dispatch = createEventDispatcher()
 
-  const setHeight = () => {}
+  function onHeaderClick() {
+    expanded = !expanded
+    dispatch('toggle')
+  }
 
   let initialExpaned = expanded
   if (!initialExpaned) {
@@ -37,9 +49,14 @@
   }
 
   onMount(() => {
-    initialBodyHeight = `${bodyDom?.clientHeight}px`
+    initialBodyHeight = `${bodyDom.clientHeight}px`
     expanded = initialExpaned
+    tick().then(() => {
+      dispatch('ready')
+    })
   })
+
+  const setHeight = () => {}
 </script>
 
 <div
@@ -54,15 +71,15 @@
       <slot {setHeight} />
     </div>
   {/if}
+  <!-- The header click function, emit the expand status exchange -->
   <div class="c-expansion--header" on:click|stopPropagation={onHeaderClick}>
-    {#if icon || $$slots.icon}
+    {#if $$slots.icon}
       <div class="c-expansion--icon">
-        <slot name="icon">
-          {icon}
-        </slot>
+        <slot name="icon" />
       </div>
     {/if}
     <div class="c-expansion--title">
+      <!-- Customize the title content -->
       <slot name="title">
         {title}
       </slot>

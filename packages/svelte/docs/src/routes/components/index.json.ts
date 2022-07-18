@@ -1,6 +1,6 @@
 import type { RequestHandler } from '@sveltejs/kit'
 
-const components = import.meta.glob('./**/*.svelte', { eager: true })
+const components: any = import.meta.glob('./**/*.svelte', { eager: true })
 
 // parse the sidebar info
 const sidebar = Object.entries(components)
@@ -27,7 +27,7 @@ const sidebar = Object.entries(components)
       '/',
   }))
 
-export const GET: RequestHandler = async function ({}) {
+export const GET: RequestHandler = async function () {
   return {
     status: 200,
     body: {

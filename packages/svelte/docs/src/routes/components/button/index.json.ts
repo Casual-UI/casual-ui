@@ -9,12 +9,14 @@ export const GET: RequestHandler = async function () {
     version: 3,
   })
 
+  const demosCodeHTML = await getDemoCodeHTMLFromEager(
+    import.meta.glob('./_demos/*.svelte', { as: 'raw', eager: true })
+  )
+
   return {
     status: 200,
     body: {
-      demosCodeHTML: await getDemoCodeHTMLFromEager(
-        import.meta.glob('./_demos/*.svelte', { as: 'raw', eager: true })
-      ),
+      demosCodeHTML,
       componentAPI,
     },
   }

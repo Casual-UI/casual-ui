@@ -19,6 +19,7 @@
   import SlugNav from '$theme/SlugNav.svelte'
   import ComponentApi from './_components/ComponentAPI.svelte'
   import Doc from '$theme/Doc.svelte'
+  import DocLayout from '$theme/DocLayout.svelte'
 
   export let sidebar: {
     to: string
@@ -40,34 +41,29 @@
       : sidebar[currentPageIndex + 1]
 
   $: sessionData = $session as any
+
+  $: demos = Array.isArray(sessionData.demos) ? sessionData.demos : []
+
+  let computedTargetPositions: any
+
+  function onDocExpandStatusChange() {
+    computedTargetPositions?.()
+  }
 </script>
 
-<div flex pt-8 justify-center>
-  <aside
-    fixed
-    top-18
-    bottom-0
-    fs-14
-    box-border
-    z-3
-    class="left"
-    flex
-    justify-end
-    pr-8
-    pt-8
-    bg-white
-  >
-    <Sidebar links={sidebar} />
-  </aside>
-  <div w-240 pb-8>
+<DocLayout>
+  <Sidebar slot="left" links={sidebar} />
+  <svelte:fragment>
     <slot />
-    {#if sessionData.demos}
-      {#each sessionData.demos as { title, name, comp }}
+    {#if demos.length}
+      {#each demos as { title, name, comp }}
         <Doc
           {title}
-          code={sessionData.demosCodeHTML[name]}
           component={comp}
           id={name}
+          {...sessionData.demosCodeHTML[name]}
+          on:ready={onDocExpandStatusChange}
+          on:toggle={onDocExpandStatusChange}
         />
       {/each}
     {/if}
@@ -100,21 +96,6 @@
         {/if}
       </div>
     </div>
-  </div>
-  <aside class="right" box-border fixed top-26 z-3>
-    {#if sessionData.demos && sessionData.demosCodeHTML}
-      <SlugNav />
-    {/if}
-  </aside>
-</div>
-
-<style>
-  .left {
-    left: 0;
-    right: calc(62rem + (100vw - 60rem) / 2);
-  }
-  .right {
-    left: calc(62rem + (100vw - 60rem) / 2);
-    right: 0;
-  }
-</style>
+  </svelte:fragment>
+  <SlugNav bind:computedTargetPositions {demos} slot="right" />
+</DocLayout>
