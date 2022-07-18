@@ -19,10 +19,26 @@
 
   export let installHTML = ''
   export let code = ''
+  export let importStyleCode = ''
+  export let importStyleHTML = ''
+  export let simpleUseHTML = ''
+  export let simpleUseCode = ''
 </script>
 
 <Doc title="Install" id="install">
   <CopyBtn {code}>
     {@html installHTML}
+  </CopyBtn>
+</Doc>
+
+<Doc title="Import Style" id="import-styles">
+  <CopyBtn code={importStyleCode}>
+    {@html importStyleHTML}
+  </CopyBtn>
+</Doc>
+
+<Doc title="Usage in .svelte files Style" id="usage">
+  <CopyBtn code={simpleUseCode}>
+    {@html simpleUseHTML}
   </CopyBtn>
 </Doc>

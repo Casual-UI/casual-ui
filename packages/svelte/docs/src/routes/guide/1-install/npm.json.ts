@@ -1,5 +1,7 @@
 import { codeToHTML } from '$theme/utils/getDemoCodeHTMLFromEager'
 import type { RequestHandler } from '@sveltejs/kit'
+import importStyle from './_demos/import-style?raw'
+import simpleUse from './_demos/simple-use.svelte?raw'
 
 const code = `# via npm
 npm install casual-ui-svelte
@@ -16,6 +18,10 @@ export const GET: RequestHandler = async function () {
     body: {
       installHTML: await codeToHTML(code, 'sh'),
       code,
+      importStyleHTML: await codeToHTML(importStyle, 'js'),
+      importStyleCode: importStyle,
+      simpleUseHTML: await codeToHTML(simpleUse),
+      simpleUseCode: simpleUse,
     },
   }
 }

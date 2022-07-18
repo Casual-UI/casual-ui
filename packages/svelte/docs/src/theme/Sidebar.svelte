@@ -10,7 +10,7 @@
   $: activeLink = $page.url.href
 </script>
 
-<div list-none leading-8 m-0 p-0 w-40>
+<div list-none leading-8 m-0 p-0 w-50>
   {#each links as { label, to }}
     <div flex items-center>
       {#if activeLink.includes(to)}

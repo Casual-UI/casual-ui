@@ -16,8 +16,8 @@
 
 <div relative>
   <slot />
-  <div absolute top-4 right-4>
-    <CButton icon style="font-size: 1.2rem;" on:click={onCopy} outlined>
+  <div absolute top-2 right-2>
+    <CButton icon style="font-size: 14px;" on:click={onCopy} outlined>
       {#if copyDone}
         <div i-material-symbols-done />
       {:else}

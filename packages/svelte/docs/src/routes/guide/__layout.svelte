@@ -18,7 +18,7 @@
   export let sidebar: any = []
 </script>
 
-<DocLayout>
+<DocLayout pages={sidebar}>
   <Sidebar slot="left" links={sidebar} />
   <slot />
 </DocLayout>
