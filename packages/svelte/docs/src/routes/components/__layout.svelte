@@ -15,8 +15,10 @@
   import Sidebar from '$theme/Sidebar.svelte'
   import EditOnGithub from './_components/EditOnGithub.svelte'
   import PageSwitcher from './_components/PageSwitcher.svelte'
-  import { page } from '$app/stores'
+  import { page, session } from '$app/stores'
   import SlugNav from '$theme/SlugNav.svelte'
+  import ComponentApi from './_components/ComponentAPI.svelte'
+  import Doc from '$theme/Doc.svelte'
 
   export let sidebar: {
     to: string
@@ -36,6 +38,8 @@
     currentPageIndex >= sidebar.length - 1
       ? null
       : sidebar[currentPageIndex + 1]
+
+  $: sessionData = $session as any
 </script>
 
 <div flex pt-8 justify-center>
@@ -57,6 +61,21 @@
   </aside>
   <div w-240 pb-8>
     <slot />
+    {#if sessionData.demos}
+      {#each sessionData.demos as { title, name, comp }}
+        <Doc
+          {title}
+          code={sessionData.demosCodeHTML[name]}
+          component={comp}
+          id={name}
+        />
+      {/each}
+    {/if}
+
+    {#if sessionData.componentAPI}
+      <ComponentApi api={sessionData.componentAPI} />
+    {/if}
+
     <EditOnGithub />
     <div border-t border-e9e9e9 mt-4 mb-8 />
     <div flex justify-between gap-16>
@@ -83,7 +102,9 @@
     </div>
   </div>
   <aside class="right" box-border fixed top-26 z-3>
-    <SlugNav />
+    {#if sessionData.demos && sessionData.demosCodeHTML}
+      <SlugNav />
+    {/if}
   </aside>
 </div>
 

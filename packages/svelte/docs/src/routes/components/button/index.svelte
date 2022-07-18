@@ -19,11 +19,9 @@
 
 <script lang="ts">
   import Attention from '$theme/Attention.svelte'
-  import Doc from '$theme/Doc.svelte'
   import Link from '$theme/Link.svelte'
   import { session } from '$app/stores'
   import { browser } from '$app/env'
-  import ComponentApi from '../_components/ComponentAPI.svelte'
 
   // the demos rendered colored html content
   export let demosCodeHTML: any = {}
@@ -33,7 +31,7 @@
 
   // in the browser pass demos to session
   if (browser) {
-    $session = { demos }
+    $session = { demos, componentAPI, demosCodeHTML }
   }
 </script>
 
@@ -56,9 +54,3 @@
     for icon button
   </Attention>
 </div>
-
-{#each demos as { title, name, comp }}
-  <Doc {title} code={demosCodeHTML[name]} component={comp} id={name} />
-{/each}
-
-<ComponentApi api={componentAPI} />
