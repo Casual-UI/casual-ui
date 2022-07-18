@@ -125,6 +125,7 @@ import 'casual-ui-svelte/dist/style.css'
 ![Javascript](./badges/javascript.svg)
 ![Docusaurus](./badges/docusaurus.svg)
 ![VSCode](./badges/vscode.svg)
+![Svelte](./badges/svelte.svg)
 
 ## LICENSE
 

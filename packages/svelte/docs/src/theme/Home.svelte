@@ -31,7 +31,7 @@
           label="Guide"
           round
           hover:shadow-md
-          on:click={() => goto('/guide')}
+          on:click={() => goto('/guide/1-install/')}
         />
         <CButton
           label="Components"
@@ -82,6 +82,29 @@
         </div>
       </div>
     {/each}
+  </div>
+
+  <div w-full pt-8 mt-16 text-center border-t border-e9e9e9>
+    <div flex items-center justify-center mb-8 text-6>
+      <div i-twemoji-red-heart mr-2 />
+      Thanks
+    </div>
+    <div class="c-row c-items-center c-gutter-md c-wrap c-justify-center">
+      <img src="/badges/react.svg" alt="" />
+      <img src="/badges/vue.svg" alt="" />
+      <img src="/badges/docusaurus.svg" alt="" />
+      <img src="/badges/quasar.svg" alt="" />
+      <img src="/badges/sass.svg" alt="" />
+      <img src="/badges/typescript.svg" alt="" />
+      <img src="/badges/vscode.svg" alt="" />
+      <img src="/badges/vite.svg" alt="" />
+      <img src="/badges/eslint.svg" alt="" />
+      <img src="/badges/javascript.svg" alt="" />
+      <img src="/badges/pnpm.svg" alt="" />
+      <img src="/badges/stylelint.svg" alt="" />
+      <img src="/badges/vuepress.svg" alt="" />
+      <img src="/badges/svelte.svg" alt="" />
+    </div>
   </div>
 </div>
 

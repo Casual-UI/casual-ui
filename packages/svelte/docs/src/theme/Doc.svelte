@@ -56,12 +56,9 @@
   {#if code}
     <CExpansion reverse on:toggle on:ready>
       <div slot="title" fs-14>Expand/Fold Code</div>
-      <div relative>
+      <CopyBtn {code}>
         {@html html}
-        <div absolute top-4 right-4>
-          <CopyBtn {code} />
-        </div>
-      </div>
+      </CopyBtn>
       <div i-vscode-icons-file-type-svelte slot="icon" />
     </CExpansion>
   {/if}
