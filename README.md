@@ -6,7 +6,7 @@
 
 ## Introduction
 
-A ui components for React17, Vue3, Svelte3(in progressing)
+A ui components for React17, Vue3, Svelte3
 
 [简体中文](./README.zh_CN.md)
 
@@ -22,7 +22,7 @@ A ui components for React17, Vue3, Svelte3(in progressing)
 
 - [Casual UI - React](https://casual-ui-react.donsen.site/)
 - [Casual UI - Vue](https://casual-ui-vue.donsen.site/)
-- [Casual UI - Svelte](https://casual-ui-svelte.donsen.site/) **(Still in progressing)**
+- [Casual UI - Svelte](https://casual-ui-svelte.donsen.site/)
 
 ## Install
 

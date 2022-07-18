@@ -4,7 +4,7 @@
 
 ## 介绍
 
-一个支持 React17, Vue3, Svelte3(仍处在开发中)的组件库
+一个支持 React17, Vue3, Svelte3 的组件库
 
 ## 功能特性
 
@@ -18,7 +18,7 @@
 
 - [Casual UI - React](https://casual-ui-react.donsen.site/)
 - [Casual UI - Vue](https://casual-ui-vue.donsen.site/)
-- [Casual UI - Svelte](https://casual-ui-svelte.donsen.site/) **(仍处在开发阶段)**
+- [Casual UI - Svelte](https://casual-ui-svelte.donsen.site/)
 
 ## 安装 & 使用
 
