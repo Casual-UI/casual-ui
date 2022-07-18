@@ -37,7 +37,7 @@
   </CopyBtn>
 </Doc>
 
-<Doc title="Usage in .svelte files Style" id="usage">
+<Doc title="Use in .svelte files" id="usage">
   <CopyBtn code={simpleUseCode}>
     {@html simpleUseHTML}
   </CopyBtn>

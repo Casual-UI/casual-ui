@@ -9,11 +9,27 @@
       props,
     }
   }
+
+  const anchors = [
+    {
+      title: 'Install',
+      name: 'install',
+    },
+    {
+      title: 'Import Style',
+      name: 'import-style',
+    },
+    {
+      title: 'Use in .svelte files',
+      name: 'usage',
+    },
+  ]
 </script>
 
 <script lang="ts">
   import DocLayout from '$theme/DocLayout.svelte'
   import Sidebar from '$theme/Sidebar.svelte'
+  import SlugNav from '$theme/SlugNav.svelte'
 
   export let sidebar: any = []
 </script>
@@ -21,4 +37,6 @@
 <DocLayout pages={sidebar}>
   <Sidebar slot="left" links={sidebar} />
   <slot />
+
+  <SlugNav slot="right" addtionItems={anchors} />
 </DocLayout>

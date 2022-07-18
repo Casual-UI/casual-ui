@@ -43,7 +43,7 @@
 
   let targetPositions: [string, number][] = []
 
-  const addtionItems = [
+  export let addtionItems = [
     {
       title: 'Props',
       name: 'props',

@@ -37,7 +37,7 @@
     })}
   >
     {#if direction === 'left'}
-      <div i-ph-caret-double-left ml-2 />
+      <div i-ph-caret-double-left mr-1 />
     {/if}
     {page}
     {#if direction === 'right'}
