@@ -1,5 +1,3 @@
-[[toc]]
-
 # Casual UI
 
 <img src="./packages/vue/docs/.vuepress/public/logo.svg" style="width: 200px;" />
