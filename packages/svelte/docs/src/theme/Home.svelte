@@ -6,7 +6,7 @@
 </script>
 
 <div w-288 mx-auto flex flex-col items-center>
-  <div flex justify-between items-center w-full>
+  <div flex justify-between items-center w-full px-8 box-border>
     <div>
       <div text-12 class="title" leading-24 inline-block relative>
         Casual UI - Svelte
@@ -47,7 +47,7 @@
       <img relative z-3 w-80 src="/logo.svg" alt="" />
     </div>
   </div>
-  <div grid grid-cols-3 w-full gap-4>
+  <div grid grid-cols-3 w-full gap-4 px-8 box-border>
     {#each casualConfig.features as { label, desc }, i}
       <div
         bg-white

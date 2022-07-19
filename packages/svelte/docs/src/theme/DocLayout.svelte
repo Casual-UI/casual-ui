@@ -22,7 +22,7 @@
     currentPageIndex >= pages.length - 1 ? null : pages[currentPageIndex + 1]
 </script>
 
-<div flex pt-8 justify-center>
+<div pt-8 justify-center>
   <aside
     fixed
     top-18
@@ -39,7 +39,7 @@
   >
     <slot name="left" />
   </aside>
-  <div w-240 pb-8>
+  <div max-w-200 pb-8 m-auto>
     <slot />
     <EditOnGithub />
     <div border-t border-e9e9e9 mt-4 mb-8 />
@@ -74,10 +74,10 @@
 <style>
   .left {
     left: 0;
-    right: calc(62rem + (100vw - 60rem) / 2);
+    right: calc(52rem + (100vw - 50rem) / 2);
   }
   .right {
-    left: calc(62rem + (100vw - 60rem) / 2);
+    left: calc(52rem + (100vw - 50rem) / 2);
     right: 0;
   }
 </style>

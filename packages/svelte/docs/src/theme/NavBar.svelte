@@ -18,7 +18,7 @@
   top-0
   z-999
   left-0
-  w-screen
+  right-0
   h-18
   leading-18
   {...attributeAtom({
@@ -26,7 +26,7 @@
     'bg-opacity-70': scrollY > 10,
   })}
 >
-  <div max-w-360 mx-auto flex justify-between items-center>
+  <div max-w-360 mx-auto flex justify-between items-center px-8>
     <div flex items-center>
       <Link flex items-center transition transition-opacity>
         <img h-14 src="/logo.svg" alt="" />
