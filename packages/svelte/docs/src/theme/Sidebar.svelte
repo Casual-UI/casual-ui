@@ -12,13 +12,17 @@
 
 <div list-none leading-8 m-0 p-0 w-45>
   {#each links as { label, to }}
-    <div flex items-center>
+    <div flex items-center relative>
       {#if activeLink.includes(to)}
         <div
+          absolute
+          left-0
+          top-1-2
           i-emojione-monotone-backhand-index-pointing-right
           text-primary
           mr-2
           text-4
+          style="transform: translateX(calc(-100% - 12px))"
         />
       {/if}
       <Link {label} {to} />

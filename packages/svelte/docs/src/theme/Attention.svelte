@@ -24,6 +24,7 @@
     'bg-negative': type === 'negative',
     'border-negative': type === 'negative',
     'text-negative': type === 'negative',
+    ...$$restProps,
   })}
   pt-4
   pb-2

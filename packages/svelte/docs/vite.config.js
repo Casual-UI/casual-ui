@@ -26,7 +26,13 @@ export default defineConfig({
           },
         },
       },
-      presets: [presetAttributify(), presetUno(), presetIcons()],
+      presets: [
+        presetAttributify({
+          ignoreAttributes: ['opacity'],
+        }),
+        presetUno(),
+        presetIcons(),
+      ],
       rules: [
         [/^text-([A-Fa-f0-9]{6})$/, ([_, d]) => ({ color: `#${d}` })],
         [
