@@ -1,6 +1,5 @@
 <script lang="ts">
   import Doc from '$theme/Doc.svelte'
-  import Link from '$theme/Link.svelte'
   import type { SvelteComponentDoc } from 'sveltedoc-parser'
   import InlineCode from './InlineCode.svelte'
 

@@ -93,7 +93,7 @@ npm install -D casual-ui-svelte
 - import styles in your entry file
 
 ```js
-import 'casual-ui-svelte/dist/style.css'
+import 'casual-ui-svelte/style.css'
 ```
 
 - use in .svelte files

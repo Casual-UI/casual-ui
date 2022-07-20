@@ -91,7 +91,7 @@ npm install -D casual-ui-svelte
 - 入口文件导入样式
 
 ```js
-import 'casual-ui-svelte/dist/style.css'
+import 'casual-ui-svelte/style.css'
 ```
 
 - 在.svelte 文件中使用

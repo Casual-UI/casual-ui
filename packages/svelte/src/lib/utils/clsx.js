@@ -1,3 +1,7 @@
+/**
+ *
+ * @param {*} mix
+ */
 function toVal(mix) {
   var k,
     y,
