@@ -16,7 +16,7 @@ const config = {
     alias: {
       $utils: 'src/utils',
       $theme: 'src/theme',
-      '$casual-style': '../../styles',
+      '$casual-style': '../styles',
     },
     package: {
       dir: 'dist',
