@@ -12,6 +12,7 @@
   export let component: any = undefined
   export let title = ''
   export let id = ''
+  export let hideSandboxIcon = false
 
   let showLink = false
 
@@ -49,16 +50,18 @@
       </div>
     </Link>
 
-    <CTooltip content="Try on stackbliz playground">
-      <Link
-        slot="trigger"
-        to={casualConfig.sandboxUrl}
-        external
-        hideExternalIcon
-      >
-        <div i-heroicons-outline-code text-4 cursor-pointer />
-      </Link>
-    </CTooltip>
+    {#if !hideSandboxIcon}
+      <CTooltip content="Try on stackbliz playground">
+        <Link
+          slot="trigger"
+          to={casualConfig.sandboxUrl}
+          external
+          hideExternalIcon
+        >
+          <div i-heroicons-outline-code text-4 cursor-pointer />
+        </Link>
+      </CTooltip>
+    {/if}
   </div>
   {#if component}
     <div p-4 bg-white box-border>

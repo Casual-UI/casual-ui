@@ -10,7 +10,7 @@
   $: slotsId = `${api.name} Slots`
 </script>
 
-<Doc title={propId} id="props">
+<Doc title={propId} id="props" hideSandboxIcon>
   {#if api.data?.length}
     <ul m-0 fs-14>
       {#each api.data as { defaultValue, name, type, description }}
@@ -35,7 +35,7 @@
   {/if}
 </Doc>
 
-<Doc title={eventId} id="events">
+<Doc title={eventId} id="events" hideSandboxIcon>
   {#if api.events?.length}
     <ul m-0 fs-14>
       {#each api.events as { name, description }}
@@ -52,7 +52,7 @@
   {/if}
 </Doc>
 
-<Doc title={slotsId} id="slots" mb-16>
+<Doc title={slotsId} id="slots" mb-16 hideSandboxIcon>
   {#if api.slots?.length}
     <ul m-0 fs-14>
       {#each api.slots as { name, description }}
