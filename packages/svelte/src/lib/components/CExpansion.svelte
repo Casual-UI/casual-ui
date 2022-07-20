@@ -23,6 +23,7 @@
 
   /**
    * The panel body dom
+   * @type {HTMLDivElement}
    */
   let bodyDom
 
