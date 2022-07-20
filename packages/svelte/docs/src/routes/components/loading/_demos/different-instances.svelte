@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import CLoadingAudio from 'casual-ui-svelte/src/components/loadings/CLoadingAudio.svelte'
   import CLoadingBar from 'casual-ui-svelte/src/components/loadings/CLoadingBar.svelte'
   import CLoadingBars from 'casual-ui-svelte/src/components/loadings/CLoadingBars.svelte'
@@ -14,7 +14,13 @@
   import CLoadingInfinity from 'casual-ui-svelte/src/components/loadings/CLoadingInfinity.svelte'
   import CLoadingLattice from 'casual-ui-svelte/src/components/loadings/CLoadingLattice.svelte'
   import CLoadingOrbit from 'casual-ui-svelte/src/components/loadings/CLoadingOrbit.svelte'
-  
+  import CLoadingOval from 'casual-ui-svelte/src/components/loadings/CLoadingOval.svelte'
+  import CLoadingPie from 'casual-ui-svelte/src/components/loadings/CLoadingPie.svelte'
+  import CLoadingPuff from 'casual-ui-svelte/src/components/loadings/CLoadingPuff.svelte'
+  import CLoadingRings from 'casual-ui-svelte/src/components/loadings/CLoadingRings.svelte'
+  import CLoadingSpinBox from 'casual-ui-svelte/src/components/loadings/CLoadingSpinBox.svelte'
+  import CLoadingTail from 'casual-ui-svelte/src/components/loadings/CLoadingTail.svelte'
+  import CLoadingWifi from 'casual-ui-svelte/src/components/loadings/CLoadingWifi.svelte'
 </script>
 
 <div class="c-flex c-gutter-md c-wrap" text-12>
@@ -43,13 +49,13 @@
     <CLoadingDot />
   </div>
   <div text-pink>
-    <CLoadingDots  />
+    <CLoadingDots />
   </div>
   <div text-purple>
-    <CLoadingGear/>
+    <CLoadingGear />
   </div>
   <div text-red-600>
-    <CLoadingHeart/>
+    <CLoadingHeart />
   </div>
   <div text-teal-500>
     <CLoadingHourglass />
@@ -58,9 +64,30 @@
     <CLoadingInfinity />
   </div>
   <div text-secondary>
-    <CLoadingLattice/>
+    <CLoadingLattice />
   </div>
   <div text-pink-600>
-    <CLoadingOrbit/>
+    <CLoadingOrbit />
+  </div>
+  <div text-purple-500>
+    <CLoadingOval />
+  </div>
+  <div text-yellow>
+    <CLoadingPie />
+  </div>
+  <div text-sky>
+    <CLoadingPuff />
+  </div>
+  <div text-lime>
+    <CLoadingRings />
+  </div>
+  <div text-rose>
+    <CLoadingSpinBox />
+  </div>
+  <div text-violet>
+    <CLoadingTail />
+  </div>
+  <div text-slate>
+    <CLoadingWifi />
   </div>
 </div>
