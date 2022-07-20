@@ -109,9 +109,9 @@
       style={`top: calc(${activeIdx} * 1.75rem)`}
     />
   {/if}
-  <li font-bold pl-4>On this page</li>
+  <li font-bold px-4>On this page</li>
   {#each [...demos, ...addtionItems] as demo}
-    <li pl-4>
+    <li px-4>
       <Link to={`#${demo.name}`} computeActiveByPageUrl={false}>
         <div>
           {demo.title}
