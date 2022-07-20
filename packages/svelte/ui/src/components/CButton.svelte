@@ -1,7 +1,7 @@
 <script>
   import bem from '../utils/bem'
   import { attributeAtom } from '../utils/attributeAtom'
-  import clsx from 'clsx'
+  import clsx from '../utils/clsx'
   import CLoading from './CLoading.svelte'
   import useSize from '../hooks/useSize'
 

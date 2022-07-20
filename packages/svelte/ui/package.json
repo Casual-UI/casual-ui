@@ -1,6 +1,6 @@
 {
   "name": "casual-ui-svelte",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Casual UI for Svelte",
   "type": "module",
   "main": "src/index.js",
@@ -10,7 +10,8 @@
     "./src/components/*": "./src/components/*"
   },
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "scripts": {
     "build": "vite build"
@@ -45,7 +46,6 @@
     "casual-types": "workspace:*",
     "casual-ui-svelte": "workspace:*",
     "casual-utils": "workspace:*",
-    "clsx": "^1.1.1",
     "dayjs": "^1.11.0",
     "sass": "^1.49.9",
     "svelte": "^3.48.0",

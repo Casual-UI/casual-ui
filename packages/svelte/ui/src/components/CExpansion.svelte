@@ -1,5 +1,5 @@
 <script>
-  import clsx from 'clsx'
+  import clsx from '../utils/clsx'
   import bem from '../utils/bem'
   import { createEventDispatcher, onMount, tick } from 'svelte'
 
