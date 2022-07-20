@@ -3,6 +3,19 @@ body {
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
+  font-family: "Inter var experimental",
+    "Inter var",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Fira Sans",
+    "Droid Sans",
+    "Helvetica Neue",
+    sans-serif;
 }
 a {
   text-decoration: none;
