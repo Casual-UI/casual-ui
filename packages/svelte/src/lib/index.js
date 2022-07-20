@@ -23,6 +23,7 @@ import CLoadingRings from './components/loadings/CLoadingRings.svelte'
 import CLoadingSpinBox from './components/loadings/CLoadingSpinBox.svelte'
 import CLoadingTail from './components/loadings/CLoadingTail.svelte'
 import CLoadingWifi from './components/loadings/CLoadingWifi.svelte'
+import CTooltip from './components/CTooltip.svelte'
 
 export {
   CButton,
@@ -50,4 +51,5 @@ export {
   CLoadingSpinBox,
   CLoadingTail,
   CLoadingWifi,
+  CTooltip,
 }

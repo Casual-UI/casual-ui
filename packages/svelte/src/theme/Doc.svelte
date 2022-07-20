@@ -1,5 +1,6 @@
 <script lang="ts">
   import { CExpansion } from '$lib'
+  import CTooltip from '$lib/components/CTooltip.svelte'
   import casualConfig from './casual.config'
   import CopyBtn from './CopyBtn.svelte'
   import Link from './Link.svelte'
@@ -45,9 +46,16 @@
       </div>
     </Link>
 
-    <Link to={casualConfig.sandboxUrl} external hideExternalIcon>
-      <div i-heroicons-outline-code text-4 cursor-pointer />
-    </Link>
+    <CTooltip content="Try on stackbliz playground">
+      <Link
+        slot="trigger"
+        to={casualConfig.sandboxUrl}
+        external
+        hideExternalIcon
+      >
+        <div i-heroicons-outline-code text-4 cursor-pointer />
+      </Link>
+    </CTooltip>
   </div>
   {#if component}
     <div p-4 bg-white>
