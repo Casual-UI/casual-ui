@@ -98,7 +98,7 @@ import 'casual-ui-svelte/dist/style.css'
 
 ```html
 <script>
-  import CButton from 'casual-ui-svelte/src/components/CButton.svelte'
+  import { CButton } from 'casual-ui-svelte'
 </script>
 <CButton label="一个按钮" />
 ```
