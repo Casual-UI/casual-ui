@@ -1,13 +1,14 @@
 {
   "name": "casual-ui-svelte",
-  "version": "0.0.11",
+  "version": "0.0.14",
   "description": "Casual UI for Svelte",
   "type": "module",
   "main": "src/index.js",
   "module": "src/index.js",
   "exports": {
     ".": "./src/index.js",
-    "./src/components/*": "./src/components/*"
+    "./src/components/*": "./src/components/*",
+    "./dist/style.css": "./dist/style.css"
   },
   "files": [
     "dist",
@@ -32,10 +33,11 @@
     "main": "./dist/my-lib.umd.js",
     "module": "./dist/my-lib.es.js",
     "exports": {
-      ".*": {
+      ".": {
         "import": "./dist/index.es.js",
         "require": "./dist/index.umd.js"
-      }
+      },
+      "./dist/style.css": "./dist/style.css"
     }
   },
   "devDependencies": {

@@ -1,5 +1,6 @@
 <script lang="ts">
   import { CExpansion } from '$casual'
+  import casualConfig from './casual.config'
   import CopyBtn from './CopyBtn.svelte'
   import Link from './Link.svelte'
   import { attributeAtom } from './utils/attributeAtom'
@@ -35,16 +36,18 @@
     on:mouseenter={() => (showLink = true)}
     on:mouseleave={() => (showLink = false)}
   >
-    <div class="casual-doc-item">
-      <Link to={`#${id}`}>
-        <div flex items-center>
-          {title}
-          {#if showLink}
-            <div i-eva-link-2-fill ml-2 />
-          {/if}
-        </div>
-      </Link>
-    </div>
+    <Link to={`#${id}`}>
+      <div flex items-center>
+        {title}
+        {#if showLink}
+          <div i-eva-link-2-fill ml-2 />
+        {/if}
+      </div>
+    </Link>
+
+    <Link to={casualConfig.sandboxUrl} external hideExternalIcon>
+      <div i-heroicons-outline-code text-4 cursor-pointer />
+    </Link>
   </div>
   {#if component}
     <div p-4 bg-white>
@@ -63,8 +66,3 @@
     </CExpansion>
   {/if}
 </div>
-
-<style>
-  .casual-doc-item:tar {
-  }
-</style>

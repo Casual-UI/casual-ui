@@ -4,5 +4,5 @@
 
 <CExpansion title="Expansion title">
   <p>Look at the arrow, is a smile!</p>
-  <div slot="arrow" i-bi-emoji-smile-upside-down />
+  <div text-6 slot="arrow" i-ant-design-smile-outlined />
 </CExpansion>
