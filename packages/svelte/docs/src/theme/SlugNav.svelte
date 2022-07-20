@@ -82,7 +82,17 @@
 
 <svelte:window bind:scrollY />
 
-<ul m-o p-0 list-none fs-14 leading-7 border-l border-e9e9e9 relative>
+<ul
+  m-o
+  p-0
+  list-none
+  fs-14
+  leading-7
+  border-l
+  border-e9e9e9
+  relative
+  inline-block
+>
   {#if activeIdx > 0}
     <div
       absolute
