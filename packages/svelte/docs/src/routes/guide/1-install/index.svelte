@@ -16,7 +16,6 @@
 <script lang="ts">
   import CopyBtn from '$theme/CopyBtn.svelte'
   import Doc from '$theme/Doc.svelte'
-
   export let installHTML = ''
   export let code = ''
   export let importStyleCode = ''

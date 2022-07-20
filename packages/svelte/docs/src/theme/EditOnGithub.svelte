@@ -7,6 +7,7 @@
   to={`https://github.com/Blackman99/casual-ui/edit/main/packages/svelte/docs/src/routes/${$page.routeId}/index.svelte`}
   external
   hideExternalIcon
+  mt-8
 >
   <div flex items-center text-primary>
     <div i-bx-edit text-5 mr-2 />

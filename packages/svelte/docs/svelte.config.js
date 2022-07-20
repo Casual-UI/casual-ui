@@ -17,6 +17,7 @@ const config = {
       $utils: 'src/utils',
       $theme: 'src/theme',
       $casual: 'src/../../ui',
+      '$casual-style': '../../styles',
     },
   },
 

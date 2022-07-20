@@ -36,7 +36,7 @@
       {title}
     </slot>
   </div>
-  <p text-t-1>
+  <p text-t-1 leading-6>
     <slot />
   </p>
 </div>
