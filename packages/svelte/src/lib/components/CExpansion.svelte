@@ -108,6 +108,7 @@
   </div>
   {#if !reverse && expanded}
     <div
+      transition:slide
       on:introend={onTransitionEnd}
       on:outroend={onTransitionEnd}
       bind:this={bodyDom}
