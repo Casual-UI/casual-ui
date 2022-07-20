@@ -1,6 +1,7 @@
 <script lang="ts">
   import { CExpansion } from '$lib'
   import CTooltip from '$lib/components/CTooltip.svelte'
+  import { tick, createEventDispatcher } from 'svelte'
   import casualConfig from './casual.config'
   import CopyBtn from './CopyBtn.svelte'
   import Link from './Link.svelte'
@@ -13,6 +14,8 @@
   export let id = ''
 
   let showLink = false
+
+  const dispatch = createEventDispatcher()
 </script>
 
 <div
@@ -58,14 +61,19 @@
     </CTooltip>
   </div>
   {#if component}
-    <div p-4 bg-white>
+    <div p-4 bg-white box-border>
       <svelte:component this={component} />
     </div>
   {/if}
   <!-- The middle content -->
   <slot />
   {#if code}
-    <CExpansion reverse on:toggle on:ready>
+    <CExpansion
+      reverse
+      on:toggled
+      on:ready
+      headerStyle="position: sticky; bottom: 0;"
+    >
       <div slot="title" fs-14>Expand/Fold Code</div>
       <CopyBtn {code}>
         {@html html}

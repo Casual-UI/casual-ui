@@ -1,5 +1,8 @@
 <script>
+  import useClickOutside from '$lib/hooks/useClickOutside'
+
   import bem from '$lib/utils/bem'
+  import { onMount } from 'svelte'
   /**
    * The content text of tooltip
    * @type {string}
@@ -39,6 +42,22 @@
     if (trigger === 'hover') {
       show = false
     }
+  }
+
+  if (trigger === 'click') {
+    onMount(() => {
+      const clear = useClickOutside({
+        // @ts-ignore
+        dom: tooltipDom,
+        cbInside: () => {
+          show = true
+        },
+        cbOutside: () => {
+          show = false
+        },
+      })
+      return clear
+    })
   }
 </script>
 

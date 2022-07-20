@@ -13,7 +13,7 @@
 
 <script lang="ts">
   import Sidebar from '$theme/Sidebar.svelte'
-  import { session } from '$app/stores'
+  import { page, session } from '$app/stores'
   import SlugNav from '$theme/SlugNav.svelte'
   import ComponentApi from './_components/ComponentAPI.svelte'
   import Doc from '$theme/Doc.svelte'
@@ -40,14 +40,14 @@
   <svelte:fragment>
     <slot />
     {#if demos.length}
-      {#each demos as { title, name, comp }}
+      {#each demos as { title, name, comp } (`${$page.routeId}-${name}`)}
         <Doc
           {title}
           component={comp}
           id={name}
           {...sessionData.demosCodeHTML[name]}
           on:ready={onDocExpandStatusChange}
-          on:toggle={onDocExpandStatusChange}
+          on:toggled={onDocExpandStatusChange}
         />
       {/each}
     {/if}

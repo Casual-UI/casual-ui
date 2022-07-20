@@ -1,7 +1,7 @@
 import * as shiki from 'shiki'
 import nightOwlTheme from './night-owl.json'
 
-export const codeToHTML = async (code: string, lang = 'html') =>
+export const codeToHTML = async (code: string, lang = 'svelte') =>
   (await shiki.getHighlighter({ theme: nightOwlTheme as any })).codeToHtml(
     code,
     { lang }

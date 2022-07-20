@@ -2,6 +2,7 @@
   import clsx from '../utils/clsx'
   import bem from '../utils/bem'
   import { createEventDispatcher, onMount, tick } from 'svelte'
+  import { slide } from 'svelte/transition'
 
   /**
    * The title of the expansion
@@ -22,39 +23,31 @@
   export let reverse = false
 
   /**
+   * Custom header style
+   * @type {string}
+   */
+  export let headerStyle = ''
+
+  /**
    * The panel body dom
    * @type {HTMLDivElement}
    */
   let bodyDom
 
-  /**
-   * The initial height of panel body
-   */
-  let initialBodyHeight = 'auto'
-
-  /**
-   * The real height of panel body
-   */
-  $: realtimeBodyHeigh = expanded ? initialBodyHeight : 0
-
   const dispatch = createEventDispatcher()
 
   function onHeaderClick() {
     expanded = !expanded
-    /**
-     * Emit when the expand status change
-     */
-    dispatch('toggle')
   }
 
-  let initialExpaned = expanded
-  if (!initialExpaned) {
-    expanded = true
+  function onTransitionEnd() {
+    /**
+     * Dispatch when the toggle transition end
+     */
+    dispatch('toggled')
   }
 
   onMount(() => {
-    initialBodyHeight = `${bodyDom.clientHeight}px`
-    expanded = initialExpaned
     tick().then(() => {
       /**
        * Emit when the initial height compute is done
@@ -63,23 +56,32 @@
     })
   })
 
-  const setHeight = () => {}
+  const resetHeight = () => {}
 </script>
 
 <div
   class={bem('expansion', {
     expanded,
   })}
-  style={`--casual-expansion-height:${realtimeBodyHeigh};`}
 >
-  {#if reverse}
-    <div bind:this={bodyDom} class="c-expansion--body">
+  {#if reverse && expanded}
+    <div
+      transition:slide
+      on:introend={onTransitionEnd}
+      on:outroend={onTransitionEnd}
+      bind:this={bodyDom}
+      class="c-expansion--body"
+    >
       <!-- Expansion body content -->
-      <slot {setHeight} />
+      <slot {resetHeight} />
     </div>
   {/if}
   <!-- The header click function, emit the expand status exchange -->
-  <div class="c-expansion--header" on:click|stopPropagation={onHeaderClick}>
+  <div
+    class="c-expansion--header"
+    style={headerStyle}
+    on:click|stopPropagation={onHeaderClick}
+  >
     {#if $$slots.icon}
       <div class="c-expansion--icon">
         <!-- The content before title -->
@@ -104,10 +106,15 @@
       </slot>
     </div>
   </div>
-  {#if !reverse}
-    <div bind:this={bodyDom} class="c-expansion--body">
+  {#if !reverse && expanded}
+    <div
+      on:introend={onTransitionEnd}
+      on:outroend={onTransitionEnd}
+      bind:this={bodyDom}
+      class="c-expansion--body"
+    >
       <!--  Expansion body content -->
-      <slot {setHeight} />
+      <slot {resetHeight} />
     </div>
   {/if}
 </div>

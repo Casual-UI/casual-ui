@@ -15,14 +15,18 @@
     <ul m-0 fs-14>
       {#each api.data as { defaultValue, name, type, description }}
         <li>
-          <span bg-primary bg-opacity-20 rounded-1 px-2 py-1>{name}</span>
-          <InlineCode>
-            {type?.text}
-          </InlineCode>
-          <span>default: <InlineCode>{defaultValue}</InlineCode></span>
-          <p text-t-2>
-            {description}
-          </p>
+          <div flex items-center flex-wrap>
+            <span bg-primary bg-opacity-20 rounded-1 px-2 py-1>{name}</span>
+            <div mx-2>
+              <InlineCode>
+                {type?.text}
+              </InlineCode>
+            </div>
+            <span>default: <InlineCode>{defaultValue}</InlineCode></span>
+            <p text-t-2 w-full>
+              {description}
+            </p>
+          </div>
         </li>
       {/each}
     </ul>
