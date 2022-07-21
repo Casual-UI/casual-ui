@@ -1,4 +1,7 @@
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+>
 import usePosition from './usePosition'
 
 interface CPopupProps {
@@ -31,7 +34,10 @@ const { provideHorizontalAlign, provideVerticalAlign } = usePosition(props)
 <template>
   <div :class="['c-popup', { 'c-popup--show': modelValue }, additionClass]">
     <Transition name="c-dialog-backdrop">
-      <div v-if="modelValue" class="c-popup--backdrop"></div>
+      <div
+        v-if="modelValue"
+        class="c-popup--backdrop"
+      ></div>
     </Transition>
     <div
       :class="[
@@ -40,7 +46,7 @@ const { provideHorizontalAlign, provideVerticalAlign } = usePosition(props)
         `c-justify-${provideVerticalAlign}`,
       ]"
     >
-      <div :class="['c-popup--content']">
+      <div class="c-popup--content">
         <slot />
       </div>
     </div>

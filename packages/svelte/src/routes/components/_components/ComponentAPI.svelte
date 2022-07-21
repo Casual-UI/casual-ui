@@ -24,7 +24,7 @@
             </div>
             <span>default: <InlineCode>{defaultValue}</InlineCode></span>
             <p text-t-2 w-full>
-              {description}
+              {@html description}
             </p>
           </div>
         </li>
@@ -42,7 +42,7 @@
         <li>
           <span bg-primary bg-opacity-20 rounded-1 px-2 py-1>{name}</span>
           <p text-t-2>
-            {description}
+            {@html description}
           </p>
         </li>
       {/each}
@@ -59,7 +59,7 @@
         <li>
           <span bg-primary bg-opacity-20 rounded-1 px-2 py-1>{name}</span>
           <p text-t-2>
-            {description}
+            {@html description}
           </p>
         </li>
       {/each}

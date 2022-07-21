@@ -20,6 +20,7 @@
 </script>
 
 <div
+  class="casual-ui-svelte--doc-item"
   border-e9e9e9
   border-1
   rounded-2

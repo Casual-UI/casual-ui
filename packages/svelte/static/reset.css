@@ -44,7 +44,13 @@ body {
 }
 code {
   font-family: DM;
+  background-color: #eee;
+  color: #3e2e8e;
 }
 .casual-doc-item:target {
   padding-top: calc(4.5rem);
+}
+.casual-ui-svelte--doc-item p {
+  margin: 4px 0;
+  line-height: 1.5em;
 }
