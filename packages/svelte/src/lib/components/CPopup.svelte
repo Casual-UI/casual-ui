@@ -1,7 +1,9 @@
 <script>
   import { useHorizontal, useVertical } from '$lib/hooks/usePosition'
   import bem from '$lib/utils/bem'
-  import { fade } from 'svelte/transition'
+  import { fade, fly } from 'svelte/transition'
+  import { onMount } from 'svelte'
+  import { cubicIn, circInOut, cubicOut } from 'svelte/easing'
 
   /**
    * Determine whether the popup is shown or not
@@ -32,20 +34,39 @@
 
   $: hAlign = useHorizontal(horizontalAlign)
   $: vAlign = useVertical(verticalAlign)
+
+  /**
+   * @type {*}
+   */
+  let popupContainer
+
+  onMount(() => {
+    document.body.append(popupContainer)
+  })
 </script>
 
 <div
   class={`${bem('popup', {
     show,
   })} ${customClass}`}
+  bind:this={popupContainer}
 >
   {#if show}
     <div transition:fade class="c-popup--backdrop" />
-  {/if}
-  <div class={`c-popup--content-warpper c-items-${hAlign} c-justify-${vAlign}`}>
-    <div class="c-popup--content">
-      <!-- The popup content -->
-      <slot />
+    <div
+      out:fade
+      in:fly={{
+        delay: 250,
+        duration: 300,
+        y: -50,
+        easing: cubicOut,
+      }}
+      class={`c-popup--content-wrapper c-items-${hAlign} c-justify-${vAlign}`}
+    >
+      <div class="c-popup--content">
+        <!-- The popup content -->
+        <slot />
+      </div>
     </div>
-  </div>
+  {/if}
 </div>

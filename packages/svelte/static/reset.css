@@ -42,6 +42,9 @@ body {
   line-height: 1.2em;
   overflow: auto;
 }
+.shiki code {
+  background-color: transparent;
+}
 code {
   font-family: DM;
   background-color: #eee;
