@@ -24,19 +24,19 @@
   export let simpleUseCode = ''
 </script>
 
-<Doc title="Install" id="install">
+<Doc title="Install" id="install" hideSandboxIcon>
   <CopyBtn {code}>
     {@html installHTML}
   </CopyBtn>
 </Doc>
 
-<Doc title="Import Style" id="import-styles">
+<Doc title="Import Style" id="import-styles" hideSandboxIcon>
   <CopyBtn code={importStyleCode}>
     {@html importStyleHTML}
   </CopyBtn>
 </Doc>
 
-<Doc title="Use in .svelte files" id="usage">
+<Doc title="Use in .svelte files" id="usage" hideSandboxIcon>
   <CopyBtn code={simpleUseCode}>
     {@html simpleUseHTML}
   </CopyBtn>
