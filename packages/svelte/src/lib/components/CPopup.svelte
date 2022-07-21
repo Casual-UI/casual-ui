@@ -1,9 +1,8 @@
 <script>
   import { useHorizontal, useVertical } from '$lib/hooks/usePosition'
   import bem from '$lib/utils/bem'
-  import { fade, fly } from 'svelte/transition'
+  import { fade } from 'svelte/transition'
   import { onMount } from 'svelte'
-  import { cubicIn, circInOut, cubicOut } from 'svelte/easing'
 
   /**
    * Determine whether the popup is shown or not
@@ -54,13 +53,6 @@
   {#if show}
     <div transition:fade class="c-popup--backdrop" />
     <div
-      out:fade
-      in:fly={{
-        delay: 250,
-        duration: 300,
-        y: -50,
-        easing: cubicOut,
-      }}
       class={`c-popup--content-wrapper c-items-${hAlign} c-justify-${vAlign}`}
     >
       <div class="c-popup--content">

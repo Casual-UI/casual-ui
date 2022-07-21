@@ -15,8 +15,6 @@
   export let hideSandboxIcon = false
 
   let showLink = false
-
-  const dispatch = createEventDispatcher()
 </script>
 
 <div
@@ -26,7 +24,6 @@
   rounded-2
   mb-8
   hover:shadow-md
-  pb-2
   {...attributeAtom($$restProps)}
 >
   <div {id} relative top--26 />

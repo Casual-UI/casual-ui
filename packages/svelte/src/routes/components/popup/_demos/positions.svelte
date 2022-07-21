@@ -1,5 +1,6 @@
 <script lang="ts">
   import { CButton, CPopup } from 'casual-ui-svelte'
+  import { scale, fly } from 'svelte/transition'
 
   let show = false
 
@@ -80,7 +81,30 @@
 </div>
 
 <CPopup {show} {verticalAlign} {horizontalAlign}>
-  <div bg-white p-4 rounded-2 w-80>
+  <div
+    bg-white
+    p-4
+    rounded-2
+    w-80
+    in:fly={{
+      x:
+        horizontalAlign === 'start'
+          ? -50
+          : horizontalAlign === 'center'
+          ? 0
+          : 50,
+      y: verticalAlign === 'start' ? -50 : verticalAlign === 'center' ? 0 : 50,
+    }}
+    out:fly={{
+      x:
+        horizontalAlign === 'start'
+          ? -50
+          : horizontalAlign === 'center'
+          ? 0
+          : 50,
+      y: verticalAlign === 'start' ? -50 : verticalAlign === 'center' ? 0 : 50,
+    }}
+  >
     <div pb-4 border-b border-gray-3 flex justify-between items-center>
       <div font-bold>Some Title</div>
       <div
