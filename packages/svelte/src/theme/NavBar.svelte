@@ -14,7 +14,8 @@
 
 <header
   bg-white
-  fixed
+  sm:fixed
+  sticky
   top-0
   z-999
   left-0

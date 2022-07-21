@@ -1,5 +1,13 @@
 <slot name="header" />
-<div flex-col flex text-t1 pt-14 md:pt-18 class="doc-container" overflow-auto>
+<div
+  flex-col
+  flex
+  text-t1
+  sm:pt-18
+  class="doc-container"
+  overflow-auto
+  sm:overflow-unset
+>
   <div flex-grow>
     <slot />
   </div>
