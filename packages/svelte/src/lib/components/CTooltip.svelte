@@ -47,10 +47,9 @@
   if (trigger === 'click') {
     onMount(() => {
       const clear = useClickOutside({
-        // @ts-ignore
         dom: tooltipDom,
         cbInside: () => {
-          show = true
+          show = !show
         },
         cbOutside: () => {
           show = false
