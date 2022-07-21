@@ -4,7 +4,7 @@
 </script>
 
 <Link
-  to={`https://github.com/Blackman99/casual-ui/edit/main/packages/svelte/docs/src/routes/${$page.routeId}/index.svelte`}
+  to={`https://github.com/Blackman99/casual-ui/edit/main/packages/svelte/src/routes/${$page.routeId}/index.svelte`}
   external
   hideExternalIcon
   mt-8
