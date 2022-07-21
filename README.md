@@ -4,7 +4,7 @@
 
 ## Introduction
 
-A ui components for React17, Vue3, Svelte3
+A components lib for React17, Vue3, Svelte3
 
 [简体中文](./README.zh_CN.md)
 
@@ -24,7 +24,7 @@ A ui components for React17, Vue3, Svelte3
 
 ## Install
 
-### For Vue3 users
+### For Vue3+ users
 
 - install
 
