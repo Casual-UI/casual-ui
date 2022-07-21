@@ -21,7 +21,9 @@ export default {
     presetAttributify({
       ignoreAttributes: ['opacity'],
     }),
-    presetUno(),
+    presetUno({
+      dark: 'class',
+    }),
     presetIcons(),
   ],
   rules: [

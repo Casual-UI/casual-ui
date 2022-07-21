@@ -1,5 +1,5 @@
+<slot name="header" />
 <div flex-col flex text-t1 pt-18 style="min-height: calc(100vh - 4.5rem);">
-  <slot name="header" />
   <div flex-grow>
     <slot />
   </div>

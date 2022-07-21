@@ -18,7 +18,7 @@
   top-0
   z-999
   left-0
-  right-0
+  w-screen
   h-18
   leading-18
   {...attributeAtom({
@@ -30,10 +30,10 @@
     <div flex items-center>
       <Link flex items-center transition transition-opacity>
         <img h-14 src="/logo.svg" alt="" />
-        Casual UI - Svelte
+        <span sm:fs-14 md:text-4> Casual UI - Svelte </span>
       </Link>
     </div>
-    <div flex items-center gap-2>
+    <div items-center gap-2 display-none md:flex>
       <Link to="/components/button/" label="Components" />
       <Link to={casualConfig.github} text-8 external hideExternalIcon>
         <div i-openmoji-github />

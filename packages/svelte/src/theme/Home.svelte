@@ -5,28 +5,49 @@
   import casualConfig from './casual.config'
 </script>
 
-<div w-288 mx-auto flex flex-col items-center>
-  <div flex justify-between items-center w-full px-8 box-border>
-    <div>
-      <div text-12 class="title" leading-24 inline-block relative>
+<div max-w-288 mx-auto flex flex-col items-center>
+  <div
+    md:flex-row
+    flex-col-reverse
+    flex
+    justify-between
+    items-center
+    w-full
+    px-8
+    box-border
+  >
+    <div flex flex-col items-center md:items-start>
+      <div
+        text-8
+        md:text-12
+        class="title"
+        leading-12
+        inline-block
+        relative
+        md:pt-8
+      >
         Casual UI - Svelte
         <div
           absolute
-          top-0
-          right-0
           bg-primary
           leading-6
           text-3
           px-2
           rounded-1
           text-white
-          translate-x-20
+          md:right-0
+          top--6
+          md:top-0
+          md:translate-x-0
+          class="right-1/2 translate-x-1/2"
         >
           In progressing
         </div>
       </div>
-      <div text-6 leading-12 text-t2>A UI components supports for Svelte3</div>
-      <div flex gap-4 mt-12>
+      <div text-4 md:text-6 leading-12 text-t2>
+        A UI components supports for Svelte3
+      </div>
+      <div flex gap-4 mt-4 md:mt-12>
         <CButton
           label="Guide"
           round
@@ -42,12 +63,22 @@
         />
       </div>
     </div>
-    <div p-4 relative>
+    <div md:p-4 relative>
       <div absolute z-2 top-0 left-0 h-full w-full class="logo-bg" />
-      <img relative z-3 w-80 src="/logo.svg" alt="" />
+      <img relative z-3 w-60 md:w-70 lg:w-80 src="/logo.svg" alt="" />
     </div>
   </div>
-  <div grid grid-cols-3 w-full gap-4 px-8 box-border>
+  <div
+    grid
+    grid-cols-1
+    md:grid-cols-3
+    w-full
+    gap-4
+    px-8
+    box-border
+    mt-8
+    md:mt-0
+  >
     {#each casualConfig.features as { label, desc }, i}
       <div
         bg-white
@@ -89,7 +120,7 @@
       <div i-twemoji-red-heart mr-2 />
       Thanks
     </div>
-    <div class="c-row c-items-center c-gutter-md c-wrap c-justify-center">
+    <div grid gap-4 grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 px-8>
       <img src="/badges/react.svg" alt="" />
       <img src="/badges/vue.svg" alt="" />
       <img src="/badges/docusaurus.svg" alt="" />
