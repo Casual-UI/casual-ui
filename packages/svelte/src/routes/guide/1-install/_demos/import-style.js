@@ -1,1 +1,1 @@
-import 'casual-ui-svelte/dist/style.css'
+import 'casual-ui-svelte/style.css'
