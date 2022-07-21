@@ -19,14 +19,16 @@
   z-999
   left-0
   w-screen
-  h-18
-  leading-18
+  h-14
+  md:h-18
+  leading-14
+  md:leading-18
   {...attributeAtom({
     'shadow-md': scrollY > 10,
     'bg-opacity-70': scrollY > 10,
   })}
 >
-  <div max-w-360 mx-auto flex justify-between items-center px-8>
+  <div max-w-300 mx-auto flex justify-between items-center md:px-8 px-2>
     <div flex items-center>
       <Link flex items-center transition transition-opacity>
         <img h-14 src="/logo.svg" alt="" />

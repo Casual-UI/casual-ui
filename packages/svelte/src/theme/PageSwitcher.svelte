@@ -13,8 +13,10 @@
   on:click={() => goto(link)}
   cursor-pointer
   select-none
-  py-4
-  px-6
+  py-2
+  px-4
+  md:py-4
+  md:px-6
   border-e9e9e9
   border-1
   rounded-2

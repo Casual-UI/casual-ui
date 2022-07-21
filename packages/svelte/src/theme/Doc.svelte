@@ -78,7 +78,7 @@
       headerStyle="position: sticky; bottom: 0;"
     >
       <div slot="title" fs-14>Expand/Fold Code</div>
-      <CopyBtn {code}>
+      <CopyBtn {code} fs-14 md:text-4>
         {@html html}
       </CopyBtn>
       <div i-vscode-icons-file-type-svelte slot="icon" />

@@ -1,5 +1,5 @@
 <slot name="header" />
-<div flex-col flex text-t1 pt-18 style="min-height: calc(100vh - 4.5rem);">
+<div flex-col flex text-t1 pt-14 md:pt-18 class="doc-container" overflow-auto>
   <div flex-grow>
     <slot />
   </div>
@@ -10,3 +10,14 @@
     </footer>
   </slot>
 </div>
+
+<style>
+  .doc-container {
+    min-height: calc(100vh - 3.5rem);
+  }
+  @media (min-width: 768px) {
+    .doc-container {
+      min-height: calc(100vh - 4.5rem);
+    }
+  }
+</style>

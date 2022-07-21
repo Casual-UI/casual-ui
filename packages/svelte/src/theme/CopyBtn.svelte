@@ -1,5 +1,6 @@
 <script lang="ts">
   import { CButton } from '$lib'
+  import { attributeAtom } from '$lib/utils/attributeAtom'
 
   export let code = ''
 
@@ -14,7 +15,7 @@
   }
 </script>
 
-<div relative>
+<div relative {...attributeAtom($$restProps)}>
   <slot />
   <div absolute top-2 right-2>
     <CButton icon style="font-size: 14px;" on:click={onCopy} outlined>

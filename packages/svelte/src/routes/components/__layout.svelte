@@ -30,9 +30,7 @@
 
   let computedTargetPositions: any
 
-  function onDocExpandStatusChange() {
-    computedTargetPositions?.()
-  }
+  let slugNav: SlugNav
 </script>
 
 <DocLayout pages={sidebar}>
@@ -46,8 +44,8 @@
           component={comp}
           id={name}
           {...sessionData.demosCodeHTML[name]}
-          on:ready={onDocExpandStatusChange}
-          on:toggled={onDocExpandStatusChange}
+          on:ready={() => slugNav?.computedTargetPositions()}
+          on:toggled={() => slugNav?.computedTargetPositions()}
         />
       {/each}
     {/if}
@@ -56,5 +54,5 @@
       <ComponentApi api={sessionData.componentAPI} />
     {/if}
   </svelte:fragment>
-  <SlugNav bind:computedTargetPositions {demos} slot="right" />
+  <SlugNav bind:this={slugNav} {demos} slot="right" />
 </DocLayout>

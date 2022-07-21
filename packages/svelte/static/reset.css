@@ -37,10 +37,10 @@ body {
   font-style: italic;
 }
 .shiki {
-  font-size: 1rem;
   padding: 12px;
   margin: 0;
   line-height: 1.2em;
+  overflow: auto;
 }
 code {
   font-family: DM;
