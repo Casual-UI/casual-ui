@@ -14,7 +14,7 @@
   {#if api.data?.length}
     <ul m-0 fs-14>
       {#each api.data as { defaultValue, name, type, description }}
-        <li>
+        <li mb-4>
           <div flex items-center flex-wrap>
             <span bg-primary bg-opacity-20 rounded-1 px-2 py-1>{name}</span>
             <div mx-2>
@@ -39,7 +39,7 @@
   {#if api.events?.length}
     <ul m-0 fs-14>
       {#each api.events as { name, description }}
-        <li>
+        <li mb-4>
           <span bg-primary bg-opacity-20 rounded-1 px-2 py-1>{name}</span>
           <p text-t-2>
             {@html description}
@@ -56,7 +56,7 @@
   {#if api.slots?.length}
     <ul m-0 fs-14>
       {#each api.slots as { name, description }}
-        <li>
+        <li mb-4>
           <span bg-primary bg-opacity-20 rounded-1 px-2 py-1>{name}</span>
           <p text-t-2>
             {@html description}
