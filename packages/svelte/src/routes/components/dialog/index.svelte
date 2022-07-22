@@ -1,7 +1,7 @@
 <script context="module" lang="ts">
   import parseDemosFromEager from '$theme/utils/parseDemosFromEager'
 
-  export const title = 'Popup'
+  export const title = 'Dialog'
 
   const demos = parseDemosFromEager(
     import.meta.glob('./_demos/*.svelte', { eager: true })
@@ -12,8 +12,8 @@
   import { session } from '$app/stores'
   import { browser } from '$app/env'
 
-  export let demosCodeHTML: any = {}
   export let componentAPI: any = {}
+  export let demosCodeHTML: any = {}
 
   if (browser) {
     $session = { demos, demosCodeHTML, componentAPI }

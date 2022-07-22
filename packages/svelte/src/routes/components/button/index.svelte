@@ -1,15 +1,6 @@
 <script context="module" lang="ts">
-  import type { LoadEvent } from '@sveltejs/kit'
   import parseDemosFromEager from '$theme/utils/parseDemosFromEager'
 
-  export async function load({ fetch }: LoadEvent) {
-    const res = await fetch('/components/button.json')
-    const props = await res.json()
-    return {
-      status: res.status,
-      props,
-    }
-  }
   export const title = 'Button'
 
   const demos = parseDemosFromEager(

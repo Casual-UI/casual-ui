@@ -1,15 +1,4 @@
 <script lang="ts" context="module">
-  import type { LoadEvent } from '@sveltejs/kit'
-  export async function load({ fetch }: LoadEvent) {
-    const res = await fetch('/guide/1-install/npm.json')
-
-    const props = await res.json()
-
-    return {
-      status: res.status,
-      props,
-    }
-  }
   export const title = 'Install'
 </script>
 

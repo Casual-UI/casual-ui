@@ -1,15 +1,5 @@
 <script lang="ts" context="module">
-  import type { LoadEvent } from '@sveltejs/kit'
   export const title = 'Theme Customization'
-  export async function load({ fetch }: LoadEvent) {
-    const res = await fetch('/guide/theme-customization.json')
-
-    const props = await res.json()
-    return {
-      status: res.status,
-      props,
-    }
-  }
 </script>
 
 <script lang="ts">
