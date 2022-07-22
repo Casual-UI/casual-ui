@@ -2,6 +2,10 @@ import { uid } from 'uid'
 import { parse } from 'vue-docgen-api'
 import { path } from '@vuepress/utils'
 import { execSync } from 'child_process'
+import MarkdownIt from 'markdown-it'
+import { frontmatterPlugin } from '@mdit-vue/plugin-frontmatter'
+
+const mdd = MarkdownIt().use(frontmatterPlugin)
 
 const componentDocMdContent = (name: string, doc?: boolean) => `
 ### ${name} API  
@@ -32,8 +36,10 @@ const markdownItVueDemoCodeBlock = (pluginOptions: {
     extendsMarkdown: async (md: any, app: any) => {
       const defaultRender = md.render
 
-      md.render = function (src: any, env: any) {
-        console.log(env)
+      md.render = function (src: any, env2: any) {
+        const env: any = {}
+
+        mdd.render(src, env)
 
         if (!env.frontmatter) {
           env.frontmatter = {}
@@ -64,7 +70,7 @@ const markdownItVueDemoCodeBlock = (pluginOptions: {
             .pop()} API \n <HooksApi />`
         }
 
-        return defaultRender(`${result}`, env)
+        return defaultRender(`${result}`, env2)
       }
 
       const defaultFenceRenderer = md.renderer.rules.fence
