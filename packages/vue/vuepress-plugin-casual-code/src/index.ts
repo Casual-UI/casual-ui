@@ -2,7 +2,6 @@ import { uid } from 'uid'
 import { parse } from 'vue-docgen-api'
 import { path } from '@vuepress/utils'
 import { execSync } from 'child_process'
-import type { App } from 'vuepress'
 
 const componentDocMdContent = (name: string, doc?: boolean) => `
 ### ${name} API  
@@ -34,6 +33,8 @@ const markdownItVueDemoCodeBlock = (pluginOptions: {
       const defaultRender = md.render
 
       md.render = function (src: any, env: any) {
+        console.log(env)
+
         if (!env.frontmatter) {
           env.frontmatter = {}
         }

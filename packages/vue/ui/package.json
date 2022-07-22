@@ -9,7 +9,9 @@
     "email": "1197160272@qq.com",
     "name": "Dongsheng Zhao"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "vite build"
   },
@@ -32,9 +34,9 @@
     "casual-types": "workspace:*",
     "casual-ui-vue": "workspace:*",
     "dayjs": "^1.11.0",
+    "vite": "~2.9.14",
     "vite-plugin-vue-auto-name": "^0.0.4",
-    "vue": "^3.2.31",
-    "vite": "^2.9.1"
+    "vue": "^3.2.31"
   },
   "publishConfig": {
     "main": "./dist/casual-ui-vue.umd.js",

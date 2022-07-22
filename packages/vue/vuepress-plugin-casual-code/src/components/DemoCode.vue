@@ -1,4 +1,7 @@
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+>
 import { ionCodeOutline } from '@quasar/extras/ionicons-v5'
 import { matPlayArrow } from '@quasar/extras/material-icons'
 import { ref } from 'vue'
@@ -64,7 +67,10 @@ const onReplDialogOpened = () => {
     <div class="c-pa-md">
       <slot />
     </div>
-    <c-expansion v-model="show">
+    <c-expansion
+      v-model="show"
+      reverse
+    >
       <template #title>
         <div class="c-flex c-items-center c-justify-between">
           <div>点击打开/折叠代码</div>
@@ -124,7 +130,10 @@ const onReplDialogOpened = () => {
     </div>
   </c-dialog>
 </template>
-<style lang="scss" scoped>
+<style
+  lang="scss"
+  scoped
+>
 .demo-code {
   position: relative;
   overflow: visible;

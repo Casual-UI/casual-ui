@@ -2,7 +2,7 @@
   setup
   lang="ts"
 >
-import { toRefs, ref, onMounted, computed } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { CIcon } from 'casual-ui-vue'
 import { matKeyboardArrowDown } from '@quasar/extras/material-icons'
 import { useDefaultVModel } from '../../usable/useVModel'
@@ -20,12 +20,17 @@ interface CExpansionProps {
    * 是否展开，用于<code>v-model</code>默认绑定
    */
   modelValue?: boolean
+  /**
+   * 是否反向展开，如果设置为<code>true</code>则会从上方展开
+   */
+  reverse?: boolean
 }
 
 const props = withDefaults(defineProps<CExpansionProps>(), {
   title: '',
   modelValue: false,
   icon: '',
+  reverse: false,
 })
 
 const emit = defineEmits<{
@@ -68,6 +73,14 @@ defineExpose({
     :style="`--casual-expansion-height:${realtimeBodyHeigh};`"
   >
     <div
+      v-if="reverse"
+      ref="bodyDom"
+      class="c-expansion--body"
+    >
+      <!-- @slot 默认展开内容 -->
+      <slot v-bind="{ setHeight }" />
+    </div>
+    <div
       class="c-expansion--header"
       @click.stop="onHeaderClick"
     >
@@ -108,6 +121,7 @@ defineExpose({
       </div>
     </div>
     <div
+      v-if="!reverse"
       ref="bodyDom"
       class="c-expansion--body"
     >

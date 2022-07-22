@@ -146,7 +146,7 @@ export default defineUserConfig({
     viteOptions: {
       resolve: {
         alias: {
-          '@doc': path.resolve(__dirname),
+          '@doc': process.cwd(),
         },
       },
     },
