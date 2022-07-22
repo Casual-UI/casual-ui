@@ -20,3 +20,8 @@ interface Window extends globalThis {
   MonacoEnvironment: any
   monaco: any
 }
+
+declare module 'markdown-it-container' {
+  const mic: any
+  export default mic
+}

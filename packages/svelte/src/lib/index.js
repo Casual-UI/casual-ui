@@ -25,6 +25,7 @@ import CLoadingTail from './components/loadings/CLoadingTail.svelte'
 import CLoadingWifi from './components/loadings/CLoadingWifi.svelte'
 import CTooltip from './components/CTooltip.svelte'
 import CPopup from './components/CPopup.svelte'
+import CDialog from './components/CDialog.svelte'
 
 export {
   CButton,
@@ -54,4 +55,5 @@ export {
   CLoadingWifi,
   CTooltip,
   CPopup,
+  CDialog,
 }

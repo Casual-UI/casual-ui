@@ -83,11 +83,11 @@
     icon,
   })} ${clsx(
     `c-button--theme-${theme}`,
-    rounded && `c-rounded-${realSize}`,
-    `c-font-${realSize}`,
-    `c-h-${realSize}`,
-    `c-px-${realSize}`,
-    `c-button--size-${realSize}`
+    rounded && `c-rounded-${$realSize}`,
+    `c-font-${$realSize}`,
+    `c-h-${$realSize}`,
+    `c-px-${$realSize}`,
+    `c-button--size-${$realSize}`
   )}`}
   {disabled}
   {...attributeAtom($$restProps)}

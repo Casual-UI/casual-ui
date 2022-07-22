@@ -1,8 +1,8 @@
 <script>
-  import { useHorizontal, useVertical } from '$lib/hooks/usePosition'
+  import { hKey, useHorizontal, useVertical } from '$lib/hooks/usePosition'
   import bem from '$lib/utils/bem'
   import { fade } from 'svelte/transition'
-  import { onMount } from 'svelte'
+  import { getContext, onMount } from 'svelte'
 
   /**
    * Determine whether the popup is shown or not
@@ -53,7 +53,7 @@
   {#if show}
     <div transition:fade class="c-popup--backdrop" />
     <div
-      class={`c-popup--content-wrapper c-items-${hAlign} c-justify-${vAlign}`}
+      class={`c-popup--content-wrapper c-items-${$hAlign} c-justify-${$vAlign}`}
     >
       <div class="c-popup--content">
         <!-- The popup content -->

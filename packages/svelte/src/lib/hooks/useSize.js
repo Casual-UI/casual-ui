@@ -1,4 +1,5 @@
 import { getContext, hasContext, setContext } from 'svelte'
+import { writable } from 'svelte/store'
 
 /**
  * The size context key
@@ -9,9 +10,12 @@ export const key = Symbol('c-size')
  * @param size {import('casual-types').CSize | undefined}
  */
 export default size => {
-  if (size) {
-    setContext(key, size)
-    return size
+  const contextSize = hasContext(key) ? getContext(key) : writable('md')
+  if (!hasContext(key)) {
+    setContext(key, contextSize)
   }
-  return hasContext(key) ? getContext(key) : 'md'
+  if (size) {
+    contextSize.set(size)
+  }
+  return contextSize
 }
