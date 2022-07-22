@@ -31,6 +31,11 @@
    */
   export let customClass = ''
 
+  /**
+   * If set to `true`. The popup would be hidden when click the backdrop.
+   */
+  export let closeOnClickBackdrop = false
+
   $: hAlign = useHorizontal(horizontalAlign)
   $: vAlign = useVertical(verticalAlign)
 
@@ -42,6 +47,12 @@
   onMount(() => {
     document.body.append(popupContainer)
   })
+
+  const onBackdropClick = () => {
+    if (closeOnClickBackdrop) {
+      show = false
+    }
+  }
 </script>
 
 <div
@@ -51,7 +62,7 @@
   bind:this={popupContainer}
 >
   {#if show}
-    <div transition:fade class="c-popup--backdrop" />
+    <div on:click={onBackdropClick} transition:fade class="c-popup--backdrop" />
     <div
       class={`c-popup--content-wrapper c-items-${$hAlign} c-justify-${$vAlign}`}
     >

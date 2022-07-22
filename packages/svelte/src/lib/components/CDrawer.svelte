@@ -31,6 +31,13 @@
   export let bodyHeight = '20vh'
 
   /**
+   * If set to `true`. The popup would be hidden when click the backdrop.
+   *
+   * This prop is the same as [CPopup](/components/popup)
+   */
+  export let closeOnClickBackdrop = false
+
+  /**
    * @type {Map<string, 'start' | 'center' | 'end'>}
    */
   const hMap = new Map([
@@ -62,6 +69,7 @@
   width={!isLeftOrRight ? '100vw' : width}
   customStyle={isLeftOrRight ? 'height: 100vh;' : ''}
   bodyHeight={!isLeftOrRight ? bodyHeight : undefined}
+  {closeOnClickBackdrop}
 >
   <!-- The same as [CDialog](/components/dialog) -->
   <slot name="title" slot="title">

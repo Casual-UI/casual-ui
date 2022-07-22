@@ -124,6 +124,13 @@
    */
   export let closeOnEsc = true
 
+  /**
+   * If set to `true`. The popup would be hidden when click the backdrop.
+   *
+   * This prop is the same as [CPopup](/components/popup)
+   */
+  export let closeOnClickBackdrop = false
+
   $: hAlign = useHorizontal(horizontalAlign)
   $: vAlign = useVertical(verticalAlign)
 
@@ -181,11 +188,30 @@
       window.removeEventListener('keyup', listenKeyboard)
     }
   })
+
+  /**
+   * @param {*} e
+   */
+  const onOutroStart = e => {
+    e.target && e.target.classList.add(leaveClassName)
+  }
+
+  /**
+   * @param {*} e
+   */
+  const onOutroEnd = e => {
+    e.target && e.target.classList.add('c-dialog-exit')
+
+    /**
+     * Emit when close transition is done
+     */
+    dispatch('closed')
+  }
 </script>
 
-<CPopup bind:show customClass="c-popup--dialog">
+<CPopup bind:show customClass="c-popup--dialog" {closeOnClickBackdrop}>
   {#if show}
-    <div
+    <divcloseOnClickBackdrop
       in:dialog
       out:dialog={{ out: true }}
       on:introstart={() => (inTransition = true)}
@@ -196,18 +222,8 @@
          */
         dispatch('opened')
       }}
-      on:outrostart={e => {
-        // @ts-ignore
-        e.target && e.target.classList.add(leaveClassName)
-      }}
-      on:outroend={e => {
-        // @ts-ignore
-        e.target && e.target.classList.add('c-dialog-exit')
-        /**
-         * Emit when close transition is done
-         */
-        dispatch('closed')
-      }}
+      on:outrostart={onOutroStart}
+      on:outroend={onOutroEnd}
       class={clsx(
         'c-dialog',
         rounded && roundedClass,
@@ -295,6 +311,6 @@
           </div>
         </slot>
       </div>
-    </div>
+    </divcloseOnClickBackdrop>
   {/if}
 </CPopup>
