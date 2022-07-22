@@ -73,3 +73,19 @@ import {
   </c-expansion>
 </template>
 ```
+
+### 从上方展开
+
+```vue live
+<script setup>
+import { CExpansion } from 'casual-ui-vue'
+</script>
+<template>
+  <CExpansion
+    title="Expanded from top"
+    reverse
+  >
+    <p>Some content</p>
+  </CExpansion>
+</template>
+```
