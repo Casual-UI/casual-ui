@@ -45,7 +45,7 @@
         </div>
       </div>
       <div text-4 md:text-6 leading-12 text-t2>
-        A UI components supports for Svelte3
+        A UI components lib supports for Svelte3
       </div>
       <div flex gap-4 mt-4 md:mt-12>
         <CButton

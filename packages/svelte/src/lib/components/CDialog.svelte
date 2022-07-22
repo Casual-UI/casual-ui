@@ -203,6 +203,10 @@
       on:outroend={e => {
         // @ts-ignore
         e.target && e.target.classList.add('c-dialog-exit')
+        /**
+         * Emit when close transition is done
+         */
+        dispatch('closed')
       }}
       class={clsx(
         'c-dialog',

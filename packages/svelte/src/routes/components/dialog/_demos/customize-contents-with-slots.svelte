@@ -1,6 +1,5 @@
 <script lang="ts">
-  import CButton from '$lib/components/CButton.svelte'
-  import CDialog from '$lib/components/CDialog.svelte'
+  import { CButton, CDialog } from 'casual-ui-svelte'
 
   let show = false
 </script>

@@ -26,11 +26,11 @@
   cursor-pointer
   inline-flex
   items-center
-  {...attributeAtom($$restProps)}
   hover="opacity-60"
   {...attributeAtom({
     'text-primary': computeActiveByPageUrl && $page.url.href.includes(to),
   })}
+  {...attributeAtom($$restProps)}
   on:click={onClick}
   class={customClass}
 >

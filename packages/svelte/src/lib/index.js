@@ -26,6 +26,7 @@ import CLoadingWifi from './components/loadings/CLoadingWifi.svelte'
 import CTooltip from './components/CTooltip.svelte'
 import CPopup from './components/CPopup.svelte'
 import CDialog from './components/CDialog.svelte'
+import CDrawer from './components/CDrawer.svelte'
 
 export {
   CButton,
@@ -56,4 +57,5 @@ export {
   CTooltip,
   CPopup,
   CDialog,
+  CDrawer,
 }
