@@ -36,14 +36,19 @@ interface CExpansionProps {
    * 折叠内容
    */
   children: CSlot
+  /**
+   * 是否从上方展开
+   */
+  reverse?: boolean
 }
 
 const CExpansion = ({
   icon,
   title = '',
-  open = true,
+  open = false,
   arrow,
   children,
+  reverse = false,
 }: CExpansionProps) => {
   const [innerOpen, setInnerOpen] = useState(true)
   const [initialBodyHeight, setInitialBodyHeight] = useState('auto')
@@ -73,6 +78,9 @@ const CExpansion = ({
         } as CSSProperties
       }
     >
+      {reverse && <div ref={bodyDom} className="c-expansion--body">
+        {children}
+      </div>}
       <div className="c-expansion--header" onClick={onHeaderClick}>
         {icon && <div className="c-expansion--icon">{icon}</div>}
         <div className="c-expansion--title">{title}</div>
@@ -85,9 +93,9 @@ const CExpansion = ({
           {arrow ? arrow(innerOpen) : <CIcon content={matKeyboardArrowDown} />}
         </div>
       </div>
-      <div ref={bodyDom} className="c-expansion--body">
+      {!reverse && <div ref={bodyDom} className="c-expansion--body">
         {children}
-      </div>
+      </div>}
     </div>
   )
 }

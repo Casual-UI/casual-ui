@@ -34,7 +34,7 @@ function ResultWithHeader() {
 function ThemedLiveEditor() {
   const isBrowser = useIsBrowser()
   return (
-    <CExpansion title="展开/收起代码" open={false}>
+    <CExpansion title="展开/收起代码" open={false} reverse>
       <LiveEditor key={isBrowser} className={styles.playgroundEditor} />
     </CExpansion>
   )

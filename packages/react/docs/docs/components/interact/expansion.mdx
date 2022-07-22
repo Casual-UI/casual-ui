@@ -19,7 +19,10 @@ title: 折叠器
 
 ```jsx live
 <>
-  <CExpansion title="左侧标题图标" icon={<CIcon content={MdIcons.matPeople} />}>
+  <CExpansion
+    title="左侧标题图标"
+    icon={<CIcon content={MdIcons.matPeople} />}
+  >
     <div className="c-pa-lg">
       <p>代码能够运行并满足业务要求是最低标准</p>
     </div>
@@ -60,6 +63,27 @@ title: 折叠器
 </>
 ```
 
+### 从上方展开
+
+### 基础使用
+
+```jsx live
+<CExpansion
+  title="点击展开/收起"
+  reverse
+>
+  <div className="c-pa-md">
+    <p>你好，世界</p>
+    <p>你好，世界</p>
+    <p>你好，世界</p>
+    <p>你好，世界</p>
+  </div>
+</CExpansion>
+```
+
 ### Props
 
-<PropTable name="CExpansion" typeWidth="260px" />
+<PropTable
+  name="CExpansion"
+  typeWidth="260px"
+/>
