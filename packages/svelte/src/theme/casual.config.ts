@@ -9,11 +9,11 @@ export default {
       desc: 'No extra large third-party lib',
     },
     {
-      label: 'Support dark mode',
-      desc: 'All the components has a dark mode ui style',
+      label: 'Supports dark mode',
+      desc: 'All the components have dark mode UI styles',
     },
     {
-      label: 'Strong and flexiable form',
+      label: 'Strong and flexible form',
       desc: 'Provide a form interface for you to fully customize your app',
     },
   ],

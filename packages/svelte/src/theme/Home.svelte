@@ -41,7 +41,7 @@
           md:translate-x-0
           class="right-1/2 translate-x-1/2"
         >
-          In progressing
+          In progress
         </div>
       </div>
       <div text-4 md:text-6 leading-12 text-t2>
