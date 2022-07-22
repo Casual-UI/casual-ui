@@ -63,12 +63,12 @@
   customStyle={isLeftOrRight ? 'height: 100vh;' : ''}
   bodyHeight={!isLeftOrRight ? bodyHeight : undefined}
 >
-  <!-- The some as [CDialog](/components/dialog) -->
+  <!-- The same as [CDialog](/components/dialog) -->
   <slot name="title" slot="title">
     {title}
   </slot>
 
-  <!-- The some as [CDialog](/components/dialog) -->
+  <!-- The same as [CDialog](/components/dialog) -->
   <slot slot="close-icon" name="close-icon">
     <div i-majesticons-close />
   </slot>
