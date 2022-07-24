@@ -16,7 +16,6 @@
   const notification = (node, params, intro) => {
     const style = getComputedStyle(node)
     const transform = style.transform === 'none' ? '' : style.transform
-    console.log(intro)
     return {
       duration: 300,
       easing: circOut,

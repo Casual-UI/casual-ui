@@ -97,7 +97,14 @@ const changeContentByPositionGroupAndID = (positionGroup, id, newContent) => {
 
 /**
  *
- * @param {*} params
+ * @param {object} [params]
+ * @param {string} [params.title]
+ * @param {string} [params.message]
+ * @param {'primary' | 'secondary' | 'warning' | 'negative'} [params.theme]
+ * @param {number} [params.timeout]
+ * @param {boolean} [params.closeIcon]
+ * @param {'start' | 'center' | 'end'} [params.alignX]
+ * @param {'start' | 'center' | 'end'} [params.alignY]
  * @returns
  */
 const open = (
@@ -156,7 +163,11 @@ const open = (
 
   /**
    *
-   * @param {*} content
+   * @param {object} content
+   * @param {string} [content.title]
+   * @param {string} [content.message]
+   * @param {number} [content.timeout]
+   * @param {'primary' | 'secondary' | 'warning' | 'negative'} [content.theme]
    */
   const changeContent = content => {
     changeContentByPositionGroupAndID(positionKey, id, content)
