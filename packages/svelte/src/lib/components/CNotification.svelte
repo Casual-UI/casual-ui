@@ -1,4 +1,6 @@
 <script>
+  // @ts-nocheck
+
   import {
     notifications,
     closeByPositionGroupAndID,
@@ -11,15 +13,22 @@
   /**
    * @type {(...parmas: any) => any}
    */
-  const notification = (node, params) => {
+  const notification = (node, params, intro) => {
     const style = getComputedStyle(node)
     const transform = style.transform === 'none' ? '' : style.transform
+    console.log(intro)
     return {
       duration: 300,
       easing: circOut,
       // @ts-ignore
       css: t => `
-        transform: ${transform} translateX(${100 - t * 100}px);
+        transform: ${transform} ${
+        params.x === 'start' ? `translateX(${-100 + t * 100}px)` : ''
+      } ${params.x === 'end' ? `translateX(${100 - t * 100}px)` : ''} ${
+        params.x === 'center'
+          ? `translateY(${(100 - t * 100) * (intro ? 1 : -1)}px)`
+          : ''
+      };
         opacity: ${t};
       `,
     }
@@ -43,7 +52,7 @@
   })
 </script>
 
-{#each Object.entries($notifications) as [groupName, { x, y, items }] (groupName)}
+{#each Object.entries($notifications) as [groupName, { x, y, items }]}
   <CPopup
     horizontalAlign={x}
     verticalAlign={y}
@@ -53,8 +62,8 @@
       {#each items as item (item.id)}
         <div
           animate:flip={{ duration: 300, easing: cubicInOut }}
-          in:receive={{ key: item.id }}
-          out:send={{ key: item.id }}
+          in:receive={{ key: item.id, x, y }}
+          out:send={{ key: item.id, x, y }}
           class={`c-notification--item-card c-notification--item-theme-${item.theme}`}
         >
           <div class="c-notification--header">

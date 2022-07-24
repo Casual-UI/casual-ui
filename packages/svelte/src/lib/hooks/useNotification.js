@@ -122,7 +122,6 @@ const open = (
    * @type {*}
    */
   const positionKey = `${alignX} ${alignY}`
-
   const newItem = {
     title,
     message,
