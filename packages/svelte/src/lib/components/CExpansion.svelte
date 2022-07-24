@@ -3,6 +3,7 @@
   import bem from '../utils/bem'
   import { createEventDispatcher, onMount, tick } from 'svelte'
   import { slide } from 'svelte/transition'
+  import { cubicInOut } from 'svelte/easing'
 
   /**
    * The title of the expansion
@@ -66,7 +67,10 @@
 >
   {#if reverse && expanded}
     <div
-      transition:slide
+      transition:slide={{
+        duration: 300,
+        easing: cubicInOut,
+      }}
       on:introend={onTransitionEnd}
       on:outroend={onTransitionEnd}
       bind:this={bodyDom}
