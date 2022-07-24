@@ -158,12 +158,6 @@
    * @param {*} params
    */
   const dialog = (node, params) => {
-    if (params.out) {
-      return {
-        delay: 0,
-        duration: 0,
-      }
-    }
     return {
       delay: 0,
       duration: 300,
@@ -212,8 +206,7 @@
 <CPopup bind:show customClass="c-popup--dialog" {closeOnClickBackdrop}>
   {#if show}
     <div
-      in:dialog
-      out:dialog={{ out: true }}
+      transition:dialog
       on:introstart={() => (inTransition = true)}
       on:introend={() => {
         inTransition = false
