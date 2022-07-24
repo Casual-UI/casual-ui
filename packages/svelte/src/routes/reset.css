@@ -1,0 +1,59 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  font-family: "Inter var experimental",
+    "Inter var",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Fira Sans",
+    "Droid Sans",
+    "Helvetica Neue",
+    sans-serif;
+}
+a {
+  text-decoration: none;
+}
+body {
+  background-color: #f9f9f9;
+}
+.monaco-editor {
+  padding: 12px 0;
+}
+@font-face {
+  font-family: DM;
+  src: url("/fonts/Dank Mono Regular.otf");
+}
+
+@font-face {
+  font-family: DM;
+  src: url("/fonts/Dank Mono Italic.otf");
+  font-style: italic;
+}
+.shiki {
+  padding: 12px;
+  margin: 0;
+  line-height: 1.2em;
+  overflow: auto;
+}
+.shiki code {
+  background-color: transparent;
+}
+code {
+  font-family: DM;
+  background-color: #eee;
+  color: #3e2e8e;
+}
+.casual-doc-item:target {
+  padding-top: calc(4.5rem);
+}
+.casual-ui-svelte--doc-item p {
+  margin: 4px 0;
+  line-height: 1.5em;
+}
