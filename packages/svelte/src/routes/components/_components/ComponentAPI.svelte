@@ -31,7 +31,7 @@
       {/each}
     </ul>
   {:else}
-    No data
+    <div text-t-2 px-4 pb-4>No data</div>
   {/if}
 </Doc>
 

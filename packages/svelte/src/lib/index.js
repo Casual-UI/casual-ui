@@ -27,8 +27,11 @@ import CTooltip from './components/CTooltip.svelte'
 import CPopup from './components/CPopup.svelte'
 import CDialog from './components/CDialog.svelte'
 import CDrawer from './components/CDrawer.svelte'
+import CNotification from './components/CNotification.svelte'
+import { open as openNotification } from './hooks/useNotification'
 
 export {
+  CNotification,
   CButton,
   CLoading,
   CExpansion,
@@ -58,4 +61,5 @@ export {
   CPopup,
   CDialog,
   CDrawer,
+  openNotification,
 }

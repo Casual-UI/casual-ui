@@ -63,13 +63,13 @@
 >
   {#if show}
     <div on:click={onBackdropClick} transition:fade class="c-popup--backdrop" />
-    <div
-      class={`c-popup--content-wrapper c-items-${$hAlign} c-justify-${$vAlign}`}
-    >
-      <div class="c-popup--content">
-        <!-- The popup content -->
-        <slot />
-      </div>
-    </div>
   {/if}
+  <div
+    class={`c-popup--content-wrapper c-items-${$hAlign} c-justify-${$vAlign}`}
+  >
+    <div class="c-popup--content">
+      <!-- The popup content -->
+      <slot />
+    </div>
+  </div>
 </div>

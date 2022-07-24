@@ -211,7 +211,7 @@
 
 <CPopup bind:show customClass="c-popup--dialog" {closeOnClickBackdrop}>
   {#if show}
-    <divcloseOnClickBackdrop
+    <div
       in:dialog
       out:dialog={{ out: true }}
       on:introstart={() => (inTransition = true)}
@@ -311,6 +311,6 @@
           </div>
         </slot>
       </div>
-    </divcloseOnClickBackdrop>
+    </div>
   {/if}
 </CPopup>
