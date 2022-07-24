@@ -11,7 +11,7 @@
   /**
    * @type {(...parmas: any) => any}
    */
-  const notification = (node, params, intro) => {
+  const notification = (node, params) => {
     const style = getComputedStyle(node)
     const transform = style.transform === 'none' ? '' : style.transform
     return {
