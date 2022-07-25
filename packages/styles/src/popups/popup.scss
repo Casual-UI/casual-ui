@@ -25,7 +25,13 @@
     z-index: 2;
   }
 
+  &--content {
+    pointer-events: all;
+  }
+
   &--content-wrapper {
+    pointer-events: none;
+
     @extend %c-column;
 
     z-index: 3;

@@ -35,7 +35,20 @@ const props = withDefaults(defineProps<CPopupProps>(), {
   closeOnClickBackdrop: true,
 })
 
+const emit = defineEmits<{
+  /**
+   * 弹出层展示状态切换触发
+   */
+  (e: 'update:modelValue', newValue: boolean): void
+}>()
+
 const { provideHorizontalAlign, provideVerticalAlign } = usePosition(props)
+const onBackdropClick = () => {
+  if (props.closeOnClickBackdrop) {
+    console.log('close')
+    emit('update:modelValue', false)
+  }
+}
 </script>
 <template>
   <div :class="['c-popup', { 'c-popup--show': modelValue }, additionClass]">
@@ -43,6 +56,7 @@ const { provideHorizontalAlign, provideVerticalAlign } = usePosition(props)
       <div
         v-if="modelValue"
         class="c-popup--backdrop"
+        @click="onBackdropClick"
       ></div>
     </Transition>
     <div

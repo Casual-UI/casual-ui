@@ -2,7 +2,7 @@
   setup
   lang="ts"
 >
-import { CButton, CIcon, CPopup, useVModel } from 'casual-ui-vue'
+import { CButton, CIcon, CPopup, useDefaultVModel } from 'casual-ui-vue'
 import { toRefs, onMounted, onUnmounted, computed } from 'vue'
 import { ionCloseOutline } from '@quasar/extras/ionicons-v5'
 import usePosition from './usePosition'
@@ -123,11 +123,7 @@ const emit = defineEmits<{
   (e: 'opened'): void
 }>()
 
-const { modelValue } = toRefs(props)
-
-const { innerValue } = useVModel(modelValue, modelValue.value, newValue => {
-  emit('update:modelValue', newValue)
-})
+const innerValue = useDefaultVModel(props, emit)
 
 const listenKeyboard = (e: KeyboardEvent) => {
   if (e.key === 'Escape' && innerValue.value && props.closeOnEsc) {
@@ -167,7 +163,7 @@ const roundedClass = computed(() => {
 <template>
   <Teleport to="body">
     <c-popup
-      :model-value="innerValue"
+      v-model="innerValue"
       addition-class="c-popup--dialog"
       :close-on-click-backdrop="closeOnClickBackdrop"
     >

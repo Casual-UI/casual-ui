@@ -48,7 +48,7 @@ const emit = defineEmits<{
   /**
    * 抽屉展开状态变化时触发
    */
-  (e: 'update:modelValue'): void
+  (e: 'update:modelValue', newValue: boolean): void
 }>()
 
 const hMap = new Map([
@@ -79,8 +79,8 @@ const innerValue = useDefaultVModel(props, emit)
     :vertical-align="vMap.get(position)"
     :exchange-animation-direction="isLeftOrRight"
     :width="isLeftOrRight ? width : '100vw'"
-    :custom-style="isLeftOrRight ? { height: '100vh' } : ''"
-    :body-height="isLeftOrRight ? bodyHeight : 'auto'"
+    :custom-style="isLeftOrRight ? { height: '100vh' } : {}"
+    :body-height="!isLeftOrRight ? bodyHeight : 'auto'"
     :close-on-click-backdrop="closeOnClickBackdrop"
   >
     <template #title>
