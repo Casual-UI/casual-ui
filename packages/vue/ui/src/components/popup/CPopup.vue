@@ -21,12 +21,18 @@ interface CPopupProps {
    * 额外根样式类
    */
   additionClass?: string
+
+  /**
+   * 点击遮罩是否关闭弹出层
+   */
+  closeOnClickBackdrop?: boolean
 }
 
 const props = withDefaults(defineProps<CPopupProps>(), {
   horizontalAlign: undefined,
   verticalAlign: undefined,
   additionClass: '',
+  closeOnClickBackdrop: true,
 })
 
 const { provideHorizontalAlign, provideVerticalAlign } = usePosition(props)

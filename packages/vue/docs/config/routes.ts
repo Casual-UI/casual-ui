@@ -33,6 +33,7 @@ const componentsRoutes = [
     children: [
       '/components/feedback/tooltip/',
       '/components/feedback/dialog/',
+      '/components/feedback/drawer/',
       '/components/feedback/notification/',
     ],
   },

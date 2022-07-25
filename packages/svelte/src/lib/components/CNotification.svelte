@@ -65,39 +65,44 @@
           out:send={{ key: item.id, x, y }}
           class={`c-notification--item-card c-notification--item-theme-${item.theme}`}
         >
-          <div class="c-notification--header">
-            <div class="c-notification--title">
-              {item.title}
-            </div>
-            {#if item.closeIcon}
-              <div
-                class="c-notification--close-icon"
-                on:click={() => closeByPositionGroupAndID(groupName, item.id)}
-              >
-                <svg class="c-notification--countdown-bar" viewBox="0 0 24 24">
-                  {#if item.timeout && item.timeout > 0}
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      fill="transparent"
-                      class="c-notification--countdown-bar-circle c-notification--countdown-bar-circle-with-initial-state"
-                      in:countDownBar={{ duration: item.timeout }}
-                    />
-                  {/if}
-                </svg>
-                <div
-                  i-majesticons-close
-                  class="c-notification--close-icon-icon"
-                />
+          <slot name="item" {...item}>
+            <div class="c-notification--header">
+              <div class="c-notification--title">
+                {item.title}
               </div>
-            {/if}
-          </div>
-          <div class="c-notification--message">
-            {item.message}
-          </div>
+              {#if item.closeIcon}
+                <div
+                  class="c-notification--close-icon"
+                  on:click={() => closeByPositionGroupAndID(groupName, item.id)}
+                >
+                  <svg
+                    class="c-notification--countdown-bar"
+                    viewBox="0 0 24 24"
+                  >
+                    {#if item.timeout && item.timeout > 0}
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        fill="transparent"
+                        class="c-notification--countdown-bar-circle c-notification--countdown-bar-circle-with-initial-state"
+                        in:countDownBar={{ duration: item.timeout }}
+                      />
+                    {/if}
+                  </svg>
+                  <div
+                    i-majesticons-close
+                    class="c-notification--close-icon-icon"
+                  />
+                </div>
+              {/if}
+            </div>
+            <div class="c-notification--message">
+              {item.message}
+            </div>
+          </slot>
         </div>
       {/each}
     </div>

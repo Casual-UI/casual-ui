@@ -63,6 +63,7 @@ import CInnerLoading from './components/basic/loading/CInnerLoading.vue'
 import { vLoading } from './directives'
 import { useBEM } from './usable/useBEM'
 import CInfoItem from './components/list/CInfoItem.vue'
+import CDrawer from './components/popup/CDrawer.vue'
 
 const CasualUI: Plugin = {
   install: (app: App) => {
@@ -114,6 +115,7 @@ const CasualUI: Plugin = {
     app.component('CRadioGroup', CRadioGroup)
     app.component('CInnerLoading', CInnerLoading)
     app.component('CInfoItem', CInfoItem)
+    app.component('CDrawer', CDrawer)
 
     app.directive('loading', vLoading)
 
@@ -124,6 +126,7 @@ const CasualUI: Plugin = {
 export default CasualUI
 
 export {
+  CDrawer,
   CTabs,
   CButton,
   CIcon,

@@ -1,4 +1,7 @@
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+>
 import { CButton, CIcon, CPopup, useVModel } from 'casual-ui-vue'
 import { toRefs, onMounted, onUnmounted, computed } from 'vue'
 import { ionCloseOutline } from '@quasar/extras/ionicons-v5'
@@ -79,6 +82,11 @@ interface CDialogProps {
    * 是否在按下Esc按键后关闭对话框
    */
   closeOnEsc?: boolean
+
+  /**
+   * 点击遮罩是否关闭弹出层
+   */
+  closeOnClickBackdrop?: boolean
 }
 
 const props = withDefaults(defineProps<CDialogProps>(), {
@@ -98,7 +106,8 @@ const props = withDefaults(defineProps<CDialogProps>(), {
   showConfirmBtn: false,
   exchangeAnimationDirection: false,
   customBodyStyle: () => ({}),
-  closeOnEsc: true
+  closeOnEsc: true,
+  closeOnClickBackdrop: true,
 })
 
 const { provideHorizontalAlign, provideVerticalAlign } = usePosition(props)
@@ -157,7 +166,11 @@ const roundedClass = computed(() => {
 </script>
 <template>
   <Teleport to="body">
-    <c-popup :model-value="innerValue" addition-class="c-popup--dialog">
+    <c-popup
+      :model-value="innerValue"
+      addition-class="c-popup--dialog"
+      :close-on-click-backdrop="closeOnClickBackdrop"
+    >
       <Transition
         :name="exchangeAnimationDirection ? 'c-dialog-reverse' : 'c-dialog'"
         @after-enter="onAfterEnter"

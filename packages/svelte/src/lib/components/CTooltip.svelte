@@ -27,11 +27,6 @@
    */
   export let show = false
 
-  /**
-   * @type {HTMLDivElement}
-   */
-  let tooltipDom
-
   const onMouseEnter = () => {
     if (trigger === 'hover') {
       show = true
@@ -44,29 +39,27 @@
     }
   }
 
-  if (trigger === 'click') {
-    onMount(() => {
-      const clear = useClickOutside({
-        dom: tooltipDom,
-        cbInside: () => {
-          show = !show
-        },
-        cbOutside: () => {
-          show = false
-        },
-      })
-      return clear
-    })
-  }
+  const clickOutside = useClickOutside({
+    cbInside: () => {
+      if (trigger === 'click') {
+        show = !show
+      }
+    },
+    cbOutside: () => {
+      if (trigger === 'click') {
+        show = false
+      }
+    },
+  })
 </script>
 
 <div
-  bind:this={tooltipDom}
   class={bem('tooltip', {
     show,
   })}
   on:mouseenter={onMouseEnter}
   on:mouseleave={onMouseLeave}
+  use:clickOutside
 >
   <div class="c-tooltip--trigger-content">
     <!-- The trigger content -->
