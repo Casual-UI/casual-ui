@@ -89,7 +89,7 @@ interface CDialogProps {
   /**
    * 对话框内容
    */
-  children: CSlot
+  children?: CSlot
   /**
    * 自定义底部
    */
@@ -98,6 +98,16 @@ interface CDialogProps {
    * 自定义底部操作按钮
    */
   customFooterActions?: CSlot
+
+  /**
+   * 是否点击遮罩关闭对话框
+   */
+  closeOnClickBackdrop?: boolean
+
+  /**
+   * 是否交换对话框动画顺序
+   */
+  exchangeAnimationDirection?: boolean
 }
 
 const CDialog = ({
@@ -123,6 +133,8 @@ const CDialog = ({
   customFooter,
   customFooterActions,
   customTitle,
+  closeOnClickBackdrop = true,
+  exchangeAnimationDirection = false,
 }: CDialogProps) => {
   useEffect(() => {
     const listenKeyboard = (e: KeyboardEvent) => {
@@ -160,14 +172,18 @@ const CDialog = ({
   return createPortal(
     <CPopup
       value={value}
+      onChange={onChange}
       horizontalAlign={horizontalAlign}
       verticalAlign={verticalAlign}
       className="c-popup--dialog"
+      closeOnClickBackdrop={closeOnClickBackdrop}
     >
       <CSSTransition
         in={value}
         timeout={300}
-        classNames="c-dialog"
+        classNames={
+          exchangeAnimationDirection ? 'c-dialog-reverse' : 'c-dialog'
+        }
         unmountOnExit
       >
         <div

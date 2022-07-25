@@ -8,6 +8,12 @@ interface CPopupProps {
    * 弹出层是否弹出
    */
   value: boolean
+
+  /**
+   * 弹出层状态改变触发
+   */
+  onChange?: (newValue: boolean) => void
+
   /**
    * 水平对齐方式
    */
@@ -24,15 +30,28 @@ interface CPopupProps {
    * 自定义类名
    */
   className?: string
+
+  /**
+   * 是否点击遮罩关闭弹出层
+   */
+  closeOnClickBackdrop?: boolean
 }
 
 const CPopup = ({
   value,
+  onChange,
   horizontalAlign = 'center',
   verticalAlign = 'center',
   children,
   className,
+  closeOnClickBackdrop = true,
 }: CPopupProps) => {
+  const onBackdropClick = () => {
+    if (closeOnClickBackdrop) {
+      onChange?.(false)
+    }
+  }
+
   return (
     <div className={clsx('c-popup', value && 'c-popup--show', className)}>
       <CSSTransition
@@ -41,7 +60,10 @@ const CPopup = ({
         classNames="c-dialog-backdrop"
         unmountOnExit
       >
-        <div className="c-popup--backdrop"></div>
+        <div
+          className="c-popup--backdrop"
+          onClick={onBackdropClick}
+        ></div>
       </CSSTransition>
       <div
         className={clsx(

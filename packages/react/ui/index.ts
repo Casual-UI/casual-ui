@@ -51,8 +51,10 @@ import CRadioGroup from './src/components/form/CRadioGroup'
 import { useFormItemContext } from './src/components/form/CFormContext'
 import { useFormContext } from './src/components/form/CFormContext'
 import CInfoItem from './src/components/list/CInfoItem'
+import CDrawer from './src/components/popup/CDrawer'
 
 export {
+  CDrawer,
   CInfoItem,
   useFormItemContext,
   useFormContext,

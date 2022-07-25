@@ -4,10 +4,10 @@
   "description": "",
   "dependencies": {
     "casual-ui-vue": "workspace:*",
-    "uid": "^2.0.0",
-    "vue": "^3.2.31",
+    "monaco-editor": "^0.33.0",
     "typedoc": "^0.22.15",
-    "monaco-editor": "^0.33.0"
+    "uid": "^2.0.0",
+    "vue": "^3.2.31"
   },
   "main": "./src/index.ts",
   "scripts": {},
