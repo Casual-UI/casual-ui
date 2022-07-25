@@ -12,7 +12,7 @@
   export let title = ''
 
   /**
-   * Determine whether the expansion is expanded or not
+   * Determine whether the expansion is expanded or not. It is recomended to use `bind:expanded`
    * @type {boolean}
    */
   export let expanded = false
@@ -76,8 +76,11 @@
       bind:this={bodyDom}
       class="c-expansion--body"
     >
-      <!-- Expansion body content -->
-      <slot {resetHeight} />
+      <!--  
+        Expansion body content 
+        @param {() => void} recomputedHeight The method to recomputed the body height.
+      -->
+      <slot recomputedHeight={resetHeight} />
     </div>
   {/if}
   <!-- The header click function, emit the expand status exchange -->
@@ -118,8 +121,11 @@
       bind:this={bodyDom}
       class="c-expansion--body"
     >
-      <!--  Expansion body content -->
-      <slot {resetHeight} />
+      <!--  
+        Expansion body content 
+        @param {() => void} recomputedHeight The method to recomputed the body height.
+      -->
+      <slot recomputedHeight={resetHeight} />
     </div>
   {/if}
 </div>

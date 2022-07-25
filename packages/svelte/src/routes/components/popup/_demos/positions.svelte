@@ -1,5 +1,6 @@
 <script lang="ts">
   import { CButton, CPopup } from 'casual-ui-svelte'
+  import { cubicInOut } from 'svelte/easing'
   import { scale, fly } from 'svelte/transition'
 
   let show = false
@@ -88,11 +89,12 @@
       rounded-2
       w-80
       in:fly={{
+        easing: cubicInOut,
         x:
           horizontalAlign === 'start'
             ? -50
             : horizontalAlign === 'center'
-            ? 0
+            ? -100
             : 50,
         y:
           verticalAlign === 'start' ? -50 : verticalAlign === 'center' ? 0 : 50,
@@ -102,7 +104,7 @@
           horizontalAlign === 'start'
             ? -50
             : horizontalAlign === 'center'
-            ? 0
+            ? 100
             : 50,
         y:
           verticalAlign === 'start' ? -50 : verticalAlign === 'center' ? 0 : 50,

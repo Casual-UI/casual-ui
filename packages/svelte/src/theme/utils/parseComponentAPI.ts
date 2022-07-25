@@ -39,7 +39,12 @@ export default async (name: string) => {
 
   api.events = api.events?.map(converter)
 
-  api.slots = api.slots?.map(converter)
+  api.slots = api.slots?.map(item => {
+    const newItem = converter(item)
+    newItem.params = newItem.params?.map(converter)
+
+    return newItem
+  })
 
   return api as any
 }

@@ -65,7 +65,11 @@
           out:send={{ key: item.id, x, y }}
           class={`c-notification--item-card c-notification--item-theme-${item.theme}`}
         >
-          <slot name="item" {...item}>
+          <!-- 
+            Customize the content of each notification item
+            @param {any} itemInfo all the item's props will be passed to this slot. <br />For example: `message`, `title`, `theme`, `timeout` 
+           -->
+          <slot name="item" itemInfo={item}>
             <div class="c-notification--header">
               <div class="c-notification--title">
                 {item.title}
