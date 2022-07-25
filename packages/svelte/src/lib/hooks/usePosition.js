@@ -1,5 +1,6 @@
 import { getContext, hasContext, setContext } from 'svelte'
 import { writable } from 'svelte/store'
+import useContextProp from './useContextProp'
 
 /**
  * The position horizontal context key
@@ -17,31 +18,10 @@ export const vKey = Symbol('c-position')
  *
  * The position prop will have a higher priority and will override the ancestors' position
  */
-export const useHorizontal = position => {
-  const contextPosition = hasContext(hKey)
-    ? getContext(hKey)
-    : writable('center')
-  if (!hasContext(hKey)) {
-    setContext(hKey, contextPosition)
-  }
-  if (position) {
-    contextPosition.set(position)
-  }
-  return contextPosition
-}
+export const useHorizontal = position =>
+  useContextProp(hKey, position, 'center')
 
 /**
  * @param {'start' | 'center' | 'end'} [position]
  */
-export const useVertical = position => {
-  const contextPosition = hasContext(vKey)
-    ? getContext(vKey)
-    : writable('center')
-  if (!hasContext(vKey)) {
-    setContext(vKey, contextPosition)
-  }
-  if (position) {
-    contextPosition.set(position)
-  }
-  return contextPosition
-}
+export const useVertical = position => useContextProp(vKey, position, 'center')

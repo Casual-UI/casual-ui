@@ -9,8 +9,6 @@
   $: propId = `${api.name} Props`
   $: eventId = `${api.name} Events`
   $: slotsId = `${api.name} Slots`
-
-  console.log(api)
 </script>
 
 <Doc title={propId} id="props" hideSandboxIcon pb-2>
