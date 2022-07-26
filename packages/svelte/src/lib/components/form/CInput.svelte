@@ -34,6 +34,9 @@
 
   /**
    * Determine whether the input has a rounded border or not.
+   * ::: tip TIP
+   * Notice that rounded border size will be along with input `size` prop.
+   * :::
    * @type {boolean}
    */
   export let rounded = false
@@ -76,7 +79,7 @@
    * Dose input auto blur.
    * @type {boolean}
    */
-  export let autoBlur = false
+  export let autoBlur = true
 
   /**
    * The type of input.
@@ -177,7 +180,7 @@
           class={clsx($$slots.prefix && 'c-pl-sm', $$slots.suffix && 'c-pr-sm')}
           {placeholder}
           {disabled}
-          {readonly}
+          readonly={readonly || loading}
           on:focus={onFocus}
           on:blur={onBlur}
         />
