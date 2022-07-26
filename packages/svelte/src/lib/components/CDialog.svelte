@@ -146,12 +146,18 @@
     ['end end', 'c-rounded-tl-md'],
   ]).get(`${$hAlign} ${$vAlign}`)
 
-  $: enterClassName = exchangeAnimationDirection
-    ? 'c-dialog-reverse-enter-active'
-    : 'c-dialog-enter-active'
-  $: leaveClassName = exchangeAnimationDirection
-    ? 'c-dialog-reverse-leave-active'
-    : 'c-dialog-leave-active'
+  $: forceChangeAnimationDirection =
+    `${$hAlign} ${$vAlign}` === 'start center' ||
+    `${$hAlign} ${$vAlign}` === 'end center'
+
+  $: enterClassName =
+    exchangeAnimationDirection || forceChangeAnimationDirection
+      ? 'c-dialog-reverse-enter-active'
+      : 'c-dialog-enter-active'
+  $: leaveClassName =
+    exchangeAnimationDirection || forceChangeAnimationDirection
+      ? 'c-dialog-reverse-leave-active'
+      : 'c-dialog-leave-active'
 
   /**
    * @param {*} node

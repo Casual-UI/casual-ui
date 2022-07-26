@@ -13,7 +13,13 @@
   }
 </script>
 
-<CDialog bind:show title="Hi, there!" {verticalAlign} {horizontalAlign}>
+<CDialog
+  bind:show
+  title="Hi, there!"
+  {verticalAlign}
+  {horizontalAlign}
+  bodyHeight="40vh"
+>
   some content
 </CDialog>
 
