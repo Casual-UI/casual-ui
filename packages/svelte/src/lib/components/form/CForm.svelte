@@ -1,19 +1,25 @@
 <script context="module">
   export const errorStatusKey = Symbol('errorStatus')
   export const validatorsKey = Symbol('validators')
+  export const validateSomeFieldKey = Symbol('validateSomeField')
+  export const clearSomeFieldKey = Symbol('clearSomeField')
 </script>
 
 <script>
   import { useFormProps } from '$lib/hooks/useForm'
   import { setContext } from 'svelte'
   import { writable } from 'svelte/store'
-  import { tick } from 'svelte/types/runtime/internal/scheduler'
-
   /**
    * The whole form data
-   * @type {object}
+   * @type {Record<string, any>}
    */
-  export let value
+  export let value = {}
+
+  /**
+   * The validators of each form item.
+   * @type {Record<string, Array<(val: any) => string | false | Promise<string | false>>>}
+   */
+  export let rules = {}
 
   /**
    * The label width of whole form
@@ -81,27 +87,73 @@
     )
   )
 
-  /**
-   * @type {import('svelte/types/runtime/store').Writable<((formData: any) => Promise<string | false> | string | false)[]>}
-   */
-  const validators = writable([])
-
   setContext(errorStatusKey, errorStatus)
 
-  setContext(validatorsKey, validators)
+  /**
+   * Validate a single field
+   * @param {string} f
+   */
+  const validateSomeField = async f => {
+    const validators = rules[f]
+    for (let i = 0; i < validators.length; i++) {
+      const validator = validators[i]
+      const r = await validator(value[f])
+      if (r) {
+        $errorStatus = {
+          ...$errorStatus,
+          [f]: r,
+        }
+        break
+      }
+    }
+  }
 
+  /**
+   * Clear a specified field error status
+   * @param {string} f
+   */
+  const clearSomeField = f => {
+    $errorStatus = {
+      ...$errorStatus,
+      [f]: false,
+    }
+  }
+
+  setContext(validateSomeFieldKey, validateSomeField)
+  setContext(clearSomeFieldKey, clearSomeField)
+
+  /**
+   * Validate all fields
+   */
   const validateAll = () =>
     new Promise(resolve => {
-      Promise.all($validators.map(validator => validator(value))).then(() => {
-        tick().then(() => {
+      validating = true
+      const validatorPromises = Object.keys(rules).map(validateSomeField)
+      Promise.all(validatorPromises)
+        .then(() => {
           if (Object.values($errorStatus).every(v => !v)) {
             resolve(void 0)
           }
         })
-      })
+        .finally(() => {
+          validating = false
+        })
     })
 
-  export { validateAll }
+  /**
+   * Clear all fields validate status
+   */
+  const clearAll = () => {
+    $errorStatus = Object.keys(value).reduce(
+      (obj, f) => ({
+        ...obj,
+        [f]: false,
+      }),
+      {}
+    )
+  }
+
+  export { validateAll, validateSomeField, clearAll }
 </script>
 
 <div
