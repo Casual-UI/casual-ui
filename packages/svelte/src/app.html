@@ -1,13 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="shortcut icon" href="/logo.svg" type="image/x-icon">
-		<meta name="description" content="A ui components lib that supports Svelte3+, Vue3+, React17+">
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		%sveltekit.head%
-	</head>
-	<body>
-		<div>%sveltekit.body%</div>
-	</body>
+
+<head>
+	<meta charset="utf-8" />
+	<link rel="shortcut icon" href="/logo.svg" type="image/x-icon">
+	<meta name="description" content="A ui components lib that supports Svelte3+, Vue3+, React17+">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-SLFJJENX54"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'G-SLFJJENX54');
+	</script>
+	%sveltekit.head%
+</head>
+
+<body>
+	<div>%sveltekit.body%</div>
+</body>
+
 </html>
