@@ -2,6 +2,7 @@
   import { goto } from '$app/navigation'
   import { CButton } from '$lib'
   import { attributeAtom } from '$theme/utils/attributeAtom'
+  import AnimationLogo from './AnimationLogo.svelte'
   import casualConfig from './casual.config'
 </script>
 
@@ -64,8 +65,7 @@
       </div>
     </div>
     <div md:p-4 relative>
-      <div absolute z-2 top-0 left-0 h-full w-full class="logo-bg" />
-      <img relative z-3 w-60 md:w-70 lg:w-80 src="/logo.svg" alt="" />
+      <AnimationLogo />
     </div>
   </div>
   <div
@@ -140,14 +140,6 @@
 </div>
 
 <style>
-  .logo-bg {
-    background: linear-gradient(
-      45deg,
-      rgb(108, 255, 250) 50%,
-      rgb(233, 124, 255) 50%
-    );
-    filter: saturate(60%) blur(80px);
-  }
   .title {
     background: linear-gradient(45deg, #bd34fe 30%, #41d1ff);
     color: transparent;
