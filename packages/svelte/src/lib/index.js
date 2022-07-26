@@ -32,8 +32,12 @@ import { open as openNotification } from './hooks/useNotification'
 import CForm from './components/form/CForm.svelte'
 import CFormItem from './components/form/CFormItem.svelte'
 import CInput from './components/form/CInput.svelte'
+import CSelect from './components/form/CSelect.svelte'
+import CTag from './components/CTag.svelte'
 
 export {
+  CTag,
+  CSelect,
   CForm,
   CInput,
   CFormItem,
