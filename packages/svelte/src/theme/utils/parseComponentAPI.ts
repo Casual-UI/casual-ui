@@ -41,7 +41,9 @@ export default async (name: string) => {
 
   api.slots = api.slots?.map(item => {
     const newItem = converter(item)
-    newItem.params = newItem.params?.map(converter)
+    newItem.params = newItem.params
+      ?.filter(item => item.name !== 'slot')
+      .map(converter)
 
     return newItem
   })

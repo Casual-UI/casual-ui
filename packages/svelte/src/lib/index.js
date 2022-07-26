@@ -29,8 +29,14 @@ import CDialog from './components/CDialog.svelte'
 import CDrawer from './components/CDrawer.svelte'
 import CNotification from './components/CNotification.svelte'
 import { open as openNotification } from './hooks/useNotification'
+import CForm from './components/form/CForm.svelte'
+import CFormItem from './components/form/CFormItem.svelte'
+import CInput from './components/form/CInput.svelte'
 
 export {
+  CForm,
+  CInput,
+  CFormItem,
   CNotification,
   CButton,
   CLoading,

@@ -1,11 +1,15 @@
+import { getContext } from 'svelte'
 import useContextProp from './useContextProp'
 import useSize from './useSize'
 
-export const labelAlignKey = Symbol('labelAlign')
-export const gutterSizeKey = Symbol('gutterSize')
-export const labelDirectionKey = Symbol('labelDirection')
-export const colKey = Symbol('col')
-export const labelWidthKey = Symbol('labelWidth')
+const hasErrorKey = Symbol('hasError')
+const validateCurrentKey = Symbol('validateCurrent')
+const clearCurrentKey = Symbol('clearCurrent')
+const labelAlignKey = Symbol('labelAlign')
+const gutterSizeKey = Symbol('gutterSize')
+const labelDirectionKey = Symbol('labelDirection')
+const colKey = Symbol('col')
+const labelWidthKey = Symbol('labelWidth')
 
 /**
  * @param {object} params
@@ -38,4 +42,32 @@ const useFormProps = ({
   }
 }
 
-export { useFormProps }
+const useValidator = () => {
+  /**
+   * @type {() => void=}
+   */
+  const validateCurrent = getContext(validateCurrentKey)
+
+  /**
+   * @type {() => void=}
+   */
+  const clearCurrent = getContext(clearCurrentKey)
+
+  /**
+   * @type {import('svelte/types/runtime/store').Writable<string | false>=}
+   */
+  const hasError = getContext(hasErrorKey)
+  return {
+    validateCurrent,
+    clearCurrent,
+    hasError,
+  }
+}
+
+export {
+  useFormProps,
+  useValidator,
+  hasErrorKey,
+  validateCurrentKey,
+  clearCurrentKey,
+}

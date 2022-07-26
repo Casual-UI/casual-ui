@@ -1,18 +1,14 @@
-<script context="module">
-  export const hasErrorKey = Symbol('hasError')
-  export const validateCurrentKey = Symbol('validateCurrent')
-  export const clearCurrentKey = Symbol('clearCurrent')
-</script>
-
 <script>
-  import { useFormProps } from '$lib/hooks/useForm'
+  import {
+    useFormProps,
+    validateCurrentKey,
+    hasErrorKey,
+    clearCurrentKey,
+  } from '$lib/hooks/useForm'
 
   import { writable } from 'svelte/store'
 
-  import {
-    getContext,
-    setContext,
-  } from 'svelte/types/runtime/internal/lifecycle'
+  import { getContext, setContext } from 'svelte'
   import {
     clearSomeFieldKey,
     errorStatusKey,
