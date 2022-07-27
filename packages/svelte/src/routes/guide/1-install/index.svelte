@@ -13,19 +13,19 @@
   export let simpleUseCode = ''
 </script>
 
-<Doc title="Install" id="install" hideSandboxIcon>
+<Doc title="Install" id="install" hideSandboxIcon hideEditIcon>
   <CopyBtn {code}>
     {@html installHTML}
   </CopyBtn>
 </Doc>
 
-<Doc title="Import Style" id="import-styles" hideSandboxIcon>
+<Doc title="Import Style" id="import-styles" hideSandboxIcon hideEditIcon>
   <CopyBtn code={importStyleCode}>
     {@html importStyleHTML}
   </CopyBtn>
 </Doc>
 
-<Doc title="Use in .svelte files" id="usage" hideSandboxIcon>
+<Doc title="Use in .svelte files" id="usage" hideSandboxIcon hideEditIcon>
   <CopyBtn code={simpleUseCode}>
     {@html simpleUseHTML}
   </CopyBtn>

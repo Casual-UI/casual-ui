@@ -1,7 +1,8 @@
 <script lang="ts">
+  import { page } from '$app/stores'
+
   import { CExpansion } from '$lib'
   import CTooltip from '$lib/components/CTooltip.svelte'
-  import { tick, createEventDispatcher } from 'svelte'
   import casualConfig from './casual.config'
   import CopyBtn from './CopyBtn.svelte'
   import Link from './Link.svelte'
@@ -13,6 +14,7 @@
   export let title = ''
   export let id = ''
   export let hideSandboxIcon = false
+  export let hideEditIcon = false
 
   let showLink = false
 </script>
@@ -49,18 +51,32 @@
       </div>
     </Link>
 
-    {#if !hideSandboxIcon}
-      <CTooltip content="Try on stackbliz playground">
-        <Link
-          slot="trigger"
-          to={casualConfig.sandboxUrl}
-          external
-          hideExternalIcon
-        >
-          <div i-heroicons-outline-code text-4 cursor-pointer />
-        </Link>
-      </CTooltip>
-    {/if}
+    <div class="c-flex c-gutter-x-xs">
+      {#if !hideEditIcon}
+        <CTooltip content="Edit this demo on github">
+          <Link
+            slot="trigger"
+            to={`https://github.com/Blackman99/casual-ui/edit/main/packages/svelte/src/routes/${$page.routeId}/_demos/${id}.svelte`}
+            external
+            hideExternalIcon
+          >
+            <div i-fluent-text-bullet-list-square-edit-20-regular />
+          </Link>
+        </CTooltip>
+      {/if}
+      {#if !hideSandboxIcon}
+        <CTooltip content="Try on stackbliz playground">
+          <Link
+            slot="trigger"
+            to={casualConfig.sandboxUrl}
+            external
+            hideExternalIcon
+          >
+            <div i-heroicons-outline-code text-4 cursor-pointer />
+          </Link>
+        </CTooltip>
+      {/if}
+    </div>
   </div>
   {#if component}
     <div p-4 bg-white box-border>

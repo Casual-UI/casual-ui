@@ -2,7 +2,6 @@
   import useClickOutside from '$lib/hooks/useClickOutside'
 
   import bem from '$lib/utils/bem'
-  import { onMount } from 'svelte'
   /**
    * The content text of tooltip
    * @type {string}
