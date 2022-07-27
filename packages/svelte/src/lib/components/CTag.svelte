@@ -1,9 +1,8 @@
 <script>
-  import useSize from '$lib/hooks/useSize'
-
   import useTheme from '$lib/hooks/useTheme'
   import clsx from '$lib/utils/clsx'
-  import { createEventDispatcher } from 'svelte'
+  import { hasContext, createEventDispatcher, getContext } from 'svelte'
+  import { writable } from 'svelte/store'
 
   /**
    * The text content of the tag
@@ -36,7 +35,11 @@
   export let closeable = false
 
   $: contextTheme = useTheme(theme)
-  $: contextSize = useSize(size)
+  $: contextSize = size
+    ? writable(size)
+    : hasContext(size)
+    ? getContext(size)
+    : writable('md')
 
   const dispatch = createEventDispatcher()
 

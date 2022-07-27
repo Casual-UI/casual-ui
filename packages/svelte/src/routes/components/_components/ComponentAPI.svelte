@@ -70,7 +70,7 @@
             <p>Bindings:</p>
             <ul>
               {#each params as param}
-                <li>
+                <li mb-4>
                   <VariableName>
                     {param.name}
                   </VariableName>

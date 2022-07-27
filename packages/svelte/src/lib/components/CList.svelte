@@ -12,7 +12,7 @@
   export let items = []
 
   /**
-   * Determine wether item in list is clickable or not.
+   * Determine whether item in list is clickable or not.
    * @type {boolean}
    */
   export let clickable = false
@@ -30,7 +30,7 @@
   export let activeFn = undefined
 
   /**
-   * Determine wether there is a divider between every item.
+   * Determine whether there is a divider between every item.
    * @type {boolean}
    */
   export let divider = false
@@ -54,25 +54,32 @@
   })}
 >
   {#if !items || items.length === 0}
+    <!-- Customize the empty content -->
     <slot name="empty">
       <div class={`c-list--empty c-px-${$contextSize}`}>No Data</div>
     </slot>
   {:else}
     {#each items as item}
-      <CItem
-        {clickable}
-        active={activeFn && activeFn(item)}
-        on:click={() => onItemClick(item)}
+      <!-- 
+        Customize item 
+        @param {any} itemObj the item obj that holds the whole item data.
+        @param {boolean} isClickable Determine whether the item is clickable or not.
+        @param {boolean} isActive Determine whether the item is active or not.
+      -->
+      <slot
+        name="item"
+        itemObj={item}
+        isClickable={clickable}
+        isActive={activeFn && activeFn(item)}
       >
-        <slot
-          name="item"
-          itemObj={item}
-          iisClickable={clickable}
-          isActive={activeFn && activeFn(item)}
+        <CItem
+          {clickable}
+          active={activeFn && activeFn(item)}
+          on:click={() => onItemClick(item)}
         >
           {item.label}
-        </slot>
-      </CItem>
+        </CItem>
+      </slot>
     {/each}
   {/if}
 </div>

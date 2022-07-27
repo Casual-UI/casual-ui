@@ -35,8 +35,16 @@ import CInput from './components/form/CInput.svelte'
 import CSelect from './components/form/CSelect.svelte'
 import CTag from './components/CTag.svelte'
 import CDropdown from './components/CDropdown.svelte'
+import CList from './components/CList.svelte'
+import CItem from './components/CItem.svelte'
+import CRadioGroup from './components/form/CRadioGroup.svelte'
+import CRadio from './components/form/CRadio.svelte'
 
 export {
+  CRadio,
+  CRadioGroup,
+  CList,
+  CItem,
   CTag,
   CSelect,
   CDropdown,

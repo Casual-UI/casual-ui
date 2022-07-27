@@ -41,19 +41,19 @@
   export let multiple = false
 
   /**
-   * Determine wether the select has a clear icon when selected selection is not empty
+   * Determine whether the select has a clear icon when selected selection is not empty
    * @type {boolean}
    */
   export let clearable = false
 
   /**
-   * Determine wether the select is diabled or not.
+   * Determine whether the select is diabled or not.
    * @type {boolean}
    */
   export let disabled = false
 
   /**
-   * Determine wether the select has a rounded border or not.
+   * Determine whether the select has a rounded border or not.
    * @type {boolean}
    */
   export let rounded = false
