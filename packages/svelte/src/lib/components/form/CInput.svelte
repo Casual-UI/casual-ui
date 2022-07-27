@@ -28,7 +28,7 @@
 
   /**
    * The placeholder of input dom.
-   * @type {string}
+   * @type {string=}
    */
   export let placeholder = ''
 
@@ -137,9 +137,9 @@
   const onClearIconClick = () => {
     value = ''
     /**
-     * Close icon click emit.
+     * Clear icon click emit.
      */
-    dispatch('close')
+    dispatch('clear')
   }
 </script>
 

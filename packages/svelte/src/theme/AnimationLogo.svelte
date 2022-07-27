@@ -55,7 +55,7 @@
       h-full
       w-full
       class="logo-bg"
-      transition:fade={{ delay: 2000, duration: 2000 }}
+      in:fade={{ delay: 2000, duration: 2000 }}
     />
     <img
       relative
@@ -66,7 +66,7 @@
       my-auto
       src="/logo.png"
       alt=""
-      transition:fade={{ delay: 2000, duration: 2000, easing: cubicInOut }}
+      in:fade={{ delay: 2000, duration: 2000, easing: cubicInOut }}
     />
   {/if}
 </div>

@@ -34,10 +34,12 @@ import CFormItem from './components/form/CFormItem.svelte'
 import CInput from './components/form/CInput.svelte'
 import CSelect from './components/form/CSelect.svelte'
 import CTag from './components/CTag.svelte'
+import CDropdown from './components/CDropdown.svelte'
 
 export {
   CTag,
   CSelect,
+  CDropdown,
   CForm,
   CInput,
   CFormItem,
