@@ -1,6 +1,8 @@
 <script lang="ts">
   import { page } from '$app/stores'
   import Link from '$theme/Link.svelte'
+  import { cubicInOut } from 'svelte/easing'
+  import { fly } from 'svelte/transition'
 
   export let links: {
     label: string
@@ -19,6 +21,7 @@
           left-0
           top-1-2
           i-emojione-monotone-backhand-index-pointing-right
+          transition:fly={{ x: -20, easing: cubicInOut, duration: 200 }}
           text-primary
           mr-2
           text-4
