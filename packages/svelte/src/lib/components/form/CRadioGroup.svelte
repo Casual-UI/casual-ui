@@ -28,7 +28,7 @@
   export let gutterSize = undefined
 
   /**
-   * If this group in a Form context. Set this prop to `true` will validate current field when selection change.
+   * If this group is in a Form context. Set this prop to `true` will validate current field when selection change.
    * @type {boolean}
    */
   export let validateOnChange = false
