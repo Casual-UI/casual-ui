@@ -4,10 +4,10 @@
   let selectedValue = ''
 
   const options = [
-    { label: 'Apple', value: 'Apple' },
-    { label: 'Banana', value: 'Banana' },
-    { label: 'Orange', value: 'Orange' },
-    { label: 'Peach', value: 'Peach' },
+    { label: 'Apple', value: '1' },
+    { label: 'Banana', value: '2' },
+    { label: 'Orange', value: '3' },
+    { label: 'Peach', value: '4' },
   ]
 </script>
 

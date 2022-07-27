@@ -7,12 +7,11 @@ import { writable } from 'svelte/store'
  * @param {*} defaultVal
  */
 export default (key, val, defaultVal) => {
-  const contextVal = hasContext(key) ? getContext(key) : writable(defaultVal)
-  if (!hasContext(key)) {
-    setContext(key, contextVal)
-  }
-  if (val) {
-    contextVal.set(val)
-  }
+  const contextVal = val
+    ? writable(val)
+    : hasContext(key)
+    ? getContext(key)
+    : writable(defaultVal)
+  setContext(key, contextVal)
   return contextVal
 }

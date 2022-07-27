@@ -5,7 +5,7 @@
   let value = ''
 </script>
 
-<div class="c-flex c-gutter-md c-wrap">
+<div class="c-flex c-gutter-md c-wrap c-items-center">
   <div>
     <CInput {value} placeholder="xs" size="xs" />
   </div>

@@ -5,6 +5,7 @@
   import useSize from '$lib/hooks/useSize'
   import bem from '$lib/utils/bem'
   import clsx from '$lib/utils/clsx'
+  import { onMount, tick } from 'svelte'
   import CDropdown from '../CDropdown.svelte'
   import CList from '../CList.svelte'
   import CTag from '../CTag.svelte'
@@ -67,19 +68,32 @@
    */
   let tagsContainer
 
+  if (multiple && !Array.isArray(value)) {
+    value = []
+  }
+
+  let inputValue = value
+
   let focused = false
 
   let selectDomHeight = -1
 
+  let initialSelectDomHeight = -1
+
   $: contextSize = useSize(size)
 
-  $: realPlaceholder = value.length > 0 ? value : placheholder
+  $: realPlaceholder = multiple
+    ? value.length > 0
+      ? ''
+      : placheholder
+    : placheholder
 
-  $: selectDomStyle = selectDomHeight < 0 ? '' : `${selectDomHeight}px`
+  $: selectDomStyle = selectDomHeight < 0 ? '' : `height:${selectDomHeight}px`
 
   $: selectedMultipleOptions = !multiple
     ? []
     : options.filter(op => value.some((/** @type {any} */ v) => v === op.value))
+
   const { hasError, clearCurrent, validateCurrent } = useValidator()
 
   const onSelectClick = () => {
@@ -111,13 +125,13 @@
    * @param {string | number} item.value
    */
   const onItemClick = item => {
-    if (multiple) {
-      // @ts-ignore
-      const idx = value.findIndex(v => v === item.value)
+    if (multiple && Array.isArray(value)) {
+      const idx = value.findIndex((/** @type {any} */ v) => v === item.value)
       if (idx === -1) {
-        value.push(item.value)
+        value = [...value, item.value]
       } else {
         value.splice(idx, 1)
+        value = value
       }
       return
     }
@@ -126,7 +140,7 @@
   }
 
   $: isItemActive = (/** @type {{ value: any; }} */ item) => {
-    if (multiple) {
+    if (multiple && Array.isArray(value)) {
       return value.some((/** @type {any} */ v) => v === item.value)
     }
     return item.value === value
@@ -136,6 +150,30 @@
     cbOutside: () => {
       focused = false
     },
+  })
+
+  const recomputedSelectHeight = async () => {
+    if (multiple && tagsContainer) {
+      await tick()
+      const newHeight = tagsContainer.clientHeight
+      if (newHeight > initialSelectDomHeight) {
+        selectDomHeight = newHeight
+        return
+      }
+      selectDomHeight = initialSelectDomHeight
+      return
+    }
+    const target = options.find(item => item.value === value)
+    inputValue = target ? target.label : ''
+  }
+
+  $: {
+    value
+    recomputedSelectHeight()
+  }
+
+  onMount(() => {
+    initialSelectDomHeight = selectDom.clientHeight
   })
 </script>
 
@@ -160,14 +198,14 @@
     >
       {#if multiple}
         <div
-          class={`c-select--placeholder c-h-${$contextSize} c-px-${$contextSize}`}
+          class={`c-select--placeholder c-font-${$contextSize} c-h-${$contextSize} c-px-${$contextSize}`}
         >
           {realPlaceholder}
         </div>
       {:else}
         <CInput
           bind:focused
-          {value}
+          value={inputValue}
           {disabled}
           {clearable}
           placeholder={realPlaceholder}
@@ -191,13 +229,15 @@
       {#if multiple}
         <div bind:this={tagsContainer} class="c-select--multiple-tags c-px-sm">
           {#each selectedMultipleOptions as { label, value }}
-            <CTag
-              {label}
-              size="xs"
-              rounded
-              closeable
-              on:close={() => onItemClick({ label, value })}
-            />
+            <div>
+              <CTag
+                {label}
+                size="xs"
+                rounded
+                closeable
+                on:close={() => onItemClick({ label, value })}
+              />
+            </div>
           {/each}
         </div>
       {/if}
