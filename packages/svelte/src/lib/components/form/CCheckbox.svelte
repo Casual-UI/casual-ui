@@ -4,6 +4,7 @@
   import { useSizeWithoutChangeParent } from '$lib/hooks/useSize'
   import bem from '$lib/utils/bem'
   import clsx from '$lib/utils/clsx'
+  import { createEventDispatcher } from 'svelte'
 
   /**
    * Determine whether the checkbox is checked or not. It is recommended to use `bind:value`.
@@ -41,13 +42,20 @@
    */
   export let disabled = false
 
+  const dispatch = createEventDispatcher()
+
   $: contextSize = useSizeWithoutChangeParent(size)
 
   const { hasError } = useValidator()
 
   const onClick = () => {
     if (disabled) return
-    value = value === checkedValue ? void 0 : checkedValue
+    const newValue = value === checkedValue ? void 0 : checkedValue
+    value = newValue
+    /**
+     * Emit when the checked status change.
+     */
+    dispatch('change', newValue)
   }
 </script>
 
