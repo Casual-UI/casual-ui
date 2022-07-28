@@ -5,6 +5,10 @@ export default {
   // NOTICE: support for maximum 6 features
   features: [
     {
+      label: 'Type friendly',
+      desc: 'All the components has detail type explanation',
+    },
+    {
       label: 'Small size',
       desc: 'No extra large third-party lib',
     },

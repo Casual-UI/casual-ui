@@ -71,7 +71,9 @@
   <div
     grid
     grid-cols-1
-    md:grid-cols-3
+    md:grid-cols-2
+    lg:grid-cols-3
+    class="2xl:grid-cols-4"
     w-full
     gap-4
     px-8
