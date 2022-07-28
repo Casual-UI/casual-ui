@@ -8,9 +8,7 @@ export default (files: any, prefix: string) =>
         // exclude the index pages
         k !== './index.svelte' &&
         // exclude the demo components
-        k.indexOf('_demos') === -1 &&
-        // exclude the docs components
-        k.indexOf('_components') === -1
+        k.indexOf('_demos') === -1
     )
     // transfer the path to an sidebar item
     .map(([k, v]: any) => ({

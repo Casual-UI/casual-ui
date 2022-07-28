@@ -12,7 +12,7 @@
   import { session } from '$app/stores'
   import { browser } from '$app/env'
   import Attention from '$theme/Attention.svelte'
-  import InlineCode from '../_components/InlineCode.svelte'
+  import InlineCode from '$theme/InlineCode.svelte'
 
   export let demosCodeHTML: any = {}
   export let componentAPI: any = {}

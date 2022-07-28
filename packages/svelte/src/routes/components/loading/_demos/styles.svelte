@@ -1,6 +1,6 @@
 <script lang="ts">
   import { CLoading } from 'casual-ui-svelte'
-  import InlineCode from '../../_components/InlineCode.svelte'
+  import InlineCode from '$theme/InlineCode.svelte'
 </script>
 
 <ul fs-14 leading-6>
