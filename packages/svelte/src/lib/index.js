@@ -41,8 +41,10 @@ import CRadioGroup from './components/form/CRadioGroup.svelte'
 import CRadio from './components/form/CRadio.svelte'
 import CCheckbox from './components/form/CCheckbox.svelte'
 import CCheckboxGroup from './components/form/CCheckboxGroup.svelte'
+import CToggle from './components/form/CToggle.svelte'
 
 export {
+  CToggle,
   CRadio,
   CCheckbox,
   CCheckboxGroup,
