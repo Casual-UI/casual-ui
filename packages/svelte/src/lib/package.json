@@ -11,5 +11,6 @@
       "./style.css": "./style.css"
     }
   },
+  "license": "MIT",
   "svelte": "index.js"
 }
