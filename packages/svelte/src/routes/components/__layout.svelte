@@ -15,7 +15,7 @@
   import Sidebar from '$theme/Sidebar.svelte'
   import { page, session } from '$app/stores'
   import SlugNav from '$theme/SlugNav.svelte'
-  import ComponentApi from './_components/ComponentAPI.svelte'
+  import ComponentApi from '$theme/ComponentAPI.svelte'
   import Doc from '$theme/Doc.svelte'
   import DocLayout from '$theme/DocLayout.svelte'
   import Attention from '$theme/Attention.svelte'
