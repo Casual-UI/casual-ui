@@ -36,4 +36,10 @@
       <svelte:fragment slot="suffix">@gmail.com</svelte:fragment>
     </CInput>
   </div>
+  <div>
+    <CInput {value} placeholder="Use icons">
+      <div slot="prefix" text-6 i-ph-address-book-thin />
+      <div slot="suffix" text-6 i-material-symbols-face-retouching-natural />
+    </CInput>
+  </div>
 </div>
