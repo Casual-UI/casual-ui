@@ -1,4 +1,7 @@
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+>
 import type { CTheme, CSize } from 'casual-types'
 import { useDefaultVModel, useInjectSize, useInjectTheme } from 'casual-ui-vue'
 import useValidator from './useValidator'
@@ -89,7 +92,7 @@ const { hasError } = useValidator()
         fill="none"
         d="M1.73,12.91 8.1,19.28 22.79,4.59"
       ></path>
-      // TODO: 半选态
+      <!-- TODO: 半选态 -->
       <!-- <path d="M4,14H20V10H4"></path> -->
     </svg>
     <div class="c-checkbox--label">{{ label }}</div>

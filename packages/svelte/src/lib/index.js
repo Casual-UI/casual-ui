@@ -39,9 +39,11 @@ import CList from './components/CList.svelte'
 import CItem from './components/CItem.svelte'
 import CRadioGroup from './components/form/CRadioGroup.svelte'
 import CRadio from './components/form/CRadio.svelte'
+import CCheckbox from './components/form/CCheckbox.svelte'
 
 export {
   CRadio,
+  CCheckbox,
   CRadioGroup,
   CList,
   CItem,

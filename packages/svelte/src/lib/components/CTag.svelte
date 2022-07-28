@@ -1,4 +1,6 @@
 <script>
+  import { useSizeWithoutChangeParent } from '$lib/hooks/useSize'
+
   import useTheme from '$lib/hooks/useTheme'
   import clsx from '$lib/utils/clsx'
   import { hasContext, createEventDispatcher, getContext } from 'svelte'
@@ -35,11 +37,7 @@
   export let closeable = false
 
   $: contextTheme = useTheme(theme)
-  $: contextSize = size
-    ? writable(size)
-    : hasContext(size)
-    ? getContext(size)
-    : writable('md')
+  $: contextSize = useSizeWithoutChangeParent(size)
 
   const dispatch = createEventDispatcher()
 
