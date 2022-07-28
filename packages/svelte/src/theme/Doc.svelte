@@ -45,12 +45,12 @@
     on:mouseleave={() => (showLink = false)}
   >
     <Link to={`#${id}`}>
-      <div flex items-center>
+      <h3 m-0 text-4 flex items-center>
         {title}
         {#if showLink}
           <div i-eva-link-2-fill ml-2 />
         {/if}
-      </div>
+      </h3>
     </Link>
 
     <div class="c-flex c-gutter-x-xs">

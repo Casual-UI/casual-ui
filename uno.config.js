@@ -1,5 +1,16 @@
 import { presetAttributify, presetUno, presetIcons } from 'unocss'
 
+function hexToRgb(hex) {
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
+  return result
+    ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16),
+      }
+    : null
+}
+
 export default {
   theme: {
     colors: {
@@ -31,7 +42,15 @@ export default {
   ],
   rules: [
     [/^text-([A-Fa-f0-9]{6})$/, ([_, d]) => ({ color: `#${d}` })],
-    [/^bg-([A-Fa-f0-9]{6})$/, ([_, d]) => ({ 'background-color': `#${d}` })],
+    [
+      /^bg-([A-Fa-f0-9]{6})$/,
+      ([_, d]) => {
+        const { r, g, b } = hexToRgb(`#${d}`)
+        return {
+          'background-color': `rgba(${r}, ${g}, ${b}, var(--un-bg-opacity))`,
+        }
+      },
+    ],
     [/^border-([A-Fa-f0-9]{6})$/, ([_, d]) => ({ 'border-color': `#${d}` })],
     [/fs-(\d+)/, ([_, d]) => ({ 'font-size': `${Number(d) / 16}rem` })],
   ],
