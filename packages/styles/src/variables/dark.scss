@@ -50,4 +50,7 @@ html[data-theme="dark"] {
   // 输入框
   --casual-input-placeholder: #{$input-placeholder-dark};
   --casual-input-prefix-suffix-divider: #{$input-placeholder-dark};
+  --casual-input-bg: #282c34;
+  --casual-input-bg-darker: #262626;
+  --casual-input-bg-darker2: #222;
 }

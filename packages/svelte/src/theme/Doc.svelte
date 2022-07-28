@@ -22,10 +22,12 @@
 <div
   class="casual-ui-svelte--doc-item"
   border-e9e9e9
+  dark:border-3e3e3e
   border-1
   rounded-2
   mb-8
   hover:shadow-md
+  dark:bg-282c34
   {...attributeAtom($$restProps)}
 >
   <div {id} relative top--26 />
@@ -79,7 +81,7 @@
     </div>
   </div>
   {#if component}
-    <div p-4 bg-white box-border>
+    <div p-4 bg-white box-border dark:bg-191919>
       <svelte:component this={component} />
     </div>
   {/if}

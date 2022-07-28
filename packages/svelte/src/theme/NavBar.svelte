@@ -2,6 +2,7 @@
   import casualConfig from '$theme/casual.config'
   import Link from '$theme/Link.svelte'
   import { attributeAtom } from '$theme/utils/attributeAtom'
+  import ToggleDark from './ToggleDark.svelte'
   let scrollY = 0
 </script>
 
@@ -14,6 +15,7 @@
 
 <header
   bg-white
+  dark:bg-222222
   sm:fixed
   sticky
   top-0
@@ -29,7 +31,16 @@
     'bg-opacity-70': scrollY > 10,
   })}
 >
-  <div max-w-300 mx-auto flex justify-between items-center md:px-8 px-2>
+  <div
+    max-w-300
+    class="2xl-max-w-380"
+    mx-auto
+    flex
+    justify-between
+    items-center
+    md:px-8
+    px-2
+  >
     <div flex items-center>
       <Link flex items-center transition transition-opacity>
         <img h-14 src="/logo.svg" alt="" />
@@ -38,6 +49,7 @@
     </div>
     <div items-center gap-2 display-none md:flex>
       <Link to="/components/button/" label="Components" />
+      <ToggleDark />
       <Link to={casualConfig.github} text-8 external hideExternalIcon>
         <div i-openmoji-github />
       </Link>

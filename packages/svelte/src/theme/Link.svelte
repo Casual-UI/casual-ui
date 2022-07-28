@@ -29,6 +29,8 @@
   hover="opacity-60"
   {...attributeAtom({
     'text-primary': computeActiveByPageUrl && $page.url.href.includes(to),
+    'dark:text-dark-primary':
+      computeActiveByPageUrl && $page.url.href.includes(to),
   })}
   {...attributeAtom($$restProps)}
   on:click={onClick}

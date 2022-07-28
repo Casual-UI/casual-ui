@@ -1,6 +1,7 @@
 <script lang="ts">
   import Doc from '$theme/Doc.svelte'
   import type { SvelteComponentDoc } from 'sveltedoc-parser'
+  import Description from './Description.svelte'
   import InlineCode from './InlineCode.svelte'
   import VariableName from './VariableName.svelte'
 
@@ -26,15 +27,15 @@
               </InlineCode>
             </div>
             <span>default: <InlineCode>{defaultValue}</InlineCode></span>
-            <p text-t-2 w-full>
+            <Description>
               {@html description}
-            </p>
+            </Description>
           </div>
         </li>
       {/each}
     </ul>
   {:else}
-    <div text-t-2 px-4 pb-4>No data</div>
+    <div text-t-2 px-4 pb-4 dark:text-8c8c8c>No data</div>
   {/if}
 </Doc>
 
@@ -46,14 +47,14 @@
           <VariableName>
             {name}
           </VariableName>
-          <p text-t-2>
+          <Description>
             {@html description}
-          </p>
+          </Description>
         </li>
       {/each}
     </ul>
   {:else}
-    <div text-t-2 px-4 pb-4>No data</div>
+    <div text-t-2 dark:text-8c8c8c px-4 pb-4>No data</div>
   {/if}
 </Doc>
 
@@ -63,9 +64,9 @@
       {#each api.slots as { name, description, params }}
         <li mb-4>
           <span bg-primary bg-opacity-20 rounded-1 px-2 py-1>{name}</span>
-          <p text-t-2>
+          <Description>
             {@html description}
-          </p>
+          </Description>
           {#if params && params.length}
             <p>Bindings:</p>
             <ul>
@@ -77,9 +78,9 @@
                   <InlineCode>
                     {param.type.text}
                   </InlineCode>
-                  <div text-t-2>
-                    {@html param.description}
-                  </div>
+                  <Description>
+                    {@html description}
+                  </Description>
                 </li>
               {/each}
             </ul>
@@ -88,6 +89,6 @@
       {/each}
     </ul>
   {:else}
-    <div text-t-2 px-4 pb-4>No data</div>
+    <div text-t-2 px-4 pb-4 dark:text-8c8c8c>No data</div>
   {/if}
 </Doc>

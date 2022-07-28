@@ -23,6 +23,7 @@
           i-emojione-monotone-backhand-index-pointing-right
           transition:fly={{ x: -20, easing: cubicInOut, duration: 200 }}
           text-primary
+          dark:text-dark-primary
           mr-2
           text-4
           style="transform: translateX(calc(-100% - 12px))"

@@ -18,14 +18,16 @@
   md:py-4
   md:px-6
   border-e9e9e9
+  dark:border-383838
   border-1
   rounded-2
   hover:border-primary
+  dark="hover:border-primary"
   transition
   transition-all
   {...attributeAtom($$restProps)}
 >
-  <div text-t-2 text-3>
+  <div text-t-2 text-3 dark:text-838383>
     {title}
   </div>
   <div

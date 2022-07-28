@@ -7,6 +7,9 @@ export default {
       secondary: '#66bb6a',
       warning: '#ff9100',
       negative: '#ff6472',
+      dark: {
+        primary: '#9a6bfd',
+      },
       t: {
         1: '#213547',
         2: 'rgba(60, 60, 60, .7)',

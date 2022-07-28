@@ -35,6 +35,7 @@
     pr-8
     pt-8
     bg-white
+    dark:bg-262626
     display-none
     md:flex
   >
@@ -43,7 +44,7 @@
   <div max-w-120 lg:max-w-150 xl:max-w-200 pb-8 m-auto px-4 md:px-0>
     <slot />
     <EditOnGithub />
-    <div border-t border-e9e9e9 mt-4 mb-8 />
+    <div border-t border-e9e9e9 dark:border-383838 mt-4 mb-8 />
     <div grid grid-cols-2 gap-4 md:gap-8 lg:gap-16>
       <div>
         {#if previousPage}

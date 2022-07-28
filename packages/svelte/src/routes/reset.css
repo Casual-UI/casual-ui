@@ -1,3 +1,9 @@
+:root {
+  --casual-svelte-doc-bg: #f9f9f9;
+}
+html.dark {
+  --casual-svelte-doc-bg: #212121;
+}
 html,
 body {
   margin: 0;
@@ -21,7 +27,11 @@ a {
   text-decoration: none;
 }
 body {
-  background-color: #f9f9f9;
+  background-color: var(--casual-svelte-doc-bg);
+}
+body,
+header {
+  transition: background var(--casual-ease-out-cubic) .2s;
 }
 .monaco-editor {
   padding: 12px 0;
@@ -50,10 +60,27 @@ code {
   background-color: #eee;
   color: #3e2e8e;
 }
+
+html.dark code {
+  background-color: #111;
+    color: var(--casual-primary);
+}
 .casual-doc-item:target {
   padding-top: calc(4.5rem);
 }
 .casual-ui-svelte--doc-item p {
   margin: 4px 0;
   line-height: 1.5em;
+}
+
+html.dark [text-primary] {
+  color: var(--casual-primary);
+}
+
+html.dark [text-secondary] {
+  color: var(--casual-secondary);
+}
+
+html.dark a {
+  color: var(--casual-primary);
 }

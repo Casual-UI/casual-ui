@@ -91,6 +91,7 @@
     leading-7
     border-l
     border-e9e9e9
+    dark:border-3e3e3e
     relative
     inline-block
   >
@@ -102,6 +103,7 @@
         w-full
         bg-primary
         bg-opacity-10
+        dark:bg-opacity-20
         border-l-2
         border-primary
         transition

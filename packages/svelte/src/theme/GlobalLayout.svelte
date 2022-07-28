@@ -3,6 +3,7 @@
   flex-col
   flex
   text-t1
+  dark:text-cecece
   sm:pt-18
   class="doc-container"
   overflow-auto
