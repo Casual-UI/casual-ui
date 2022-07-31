@@ -9,11 +9,6 @@
   export let value = null
 
   /**
-   * @type {'day' | 'month' | 'year'}
-   */
-  export let initialUnit
-
-  /**
    * @type {number}
    */
   export let year = new Date().getFullYear()
@@ -60,7 +55,6 @@
 <CGridPanel
   {items}
   isActive={isSelected}
-  reverseTransition={initialUnit === 'day'}
   displayFormattor={getDisplayMonth}
   on:item-click={e => onMonthClick(e.detail)}
 />

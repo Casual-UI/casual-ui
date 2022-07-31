@@ -2,6 +2,7 @@
   import useSize from '$lib/hooks/useSize'
   import clsx from '$lib/utils/clsx'
   import dayjs from 'dayjs'
+  import { tick } from 'svelte'
   import CDropdown from '../../CDropdown.svelte'
   import CInput from '../CInput.svelte'
   import CDatePanel from './CDatePanel.svelte'
@@ -80,7 +81,7 @@
   export let hideOnSelect = false
 
   /**
-   * Get the real formatter. If has `formatter` prop
+   * Get the real formatter. If has `formattor` prop
    * @param {Date | null} d
    */
   const innerFormattor = d => {
@@ -122,8 +123,6 @@
     getDisplayValue()
   }
 
-  const initialUnit = unit
-
   let year = value ? value.getFullYear() : new Date().getFullYear()
   let month = value ? value.getMonth() : new Date().getMonth()
 
@@ -131,11 +130,6 @@
    * @type {[number, number]}
    */
   let yearRange = [year, year + 11]
-
-  /**
-   * @type {HTMLDivElement}
-   */
-  let datePickerDontainer
 
   const onDateSet = () => {
     if (hideOnSelect) {
@@ -153,25 +147,14 @@
   /**
    * @param {'day' | 'month' | 'year'} newUnit
    */
-  const updateUnit = newUnit => {
-    if (newUnit === 'day') {
-      if (initialUnit !== 'day') {
-        return
-      }
-    } else if (newUnit === 'month') {
-      if (initialUnit === 'year') {
-        return
-      }
-    }
-    unit = newUnit
-  }
+  const updateUnit = async newUnit => {}
 
   /**
    * @param {Date} newDate
    */
   const onMonthChange = newDate => {
     month = newDate.getMonth()
-    updateUnit('day')
+    unit = 'day'
   }
 
   /**
@@ -179,12 +162,11 @@
    */
   const onYearChange = newDate => {
     year = newDate.getFullYear()
-    updateUnit('month')
+    unit = 'month'
   }
 </script>
 
 <div
-  bind:this={datePickerDontainer}
   class={clsx(
     `c-date-picker c-font-${$contextSize} c-date-picker--size-${$contextSize}`,
     disabled && 'c-date-picker--diabled'
@@ -198,8 +180,11 @@
       {placeholder}
       clearable
       validateTrigger="manual"
+      suffixDivider={false}
       on:clear={onClear}
-    />
+    >
+      <div slot="suffix" i-mdi-calendar-edit />
+    </CInput>
     <svelte:fragment slot="drop-content">
       <CDatePickerHeader
         bind:year
@@ -207,6 +192,7 @@
         bind:yearRange
         bind:unit
         unitSwitchable={!range}
+        on:unit-change={e => (unit = e.detail)}
       />
       <div
         class={`c-date-picker--panel-wrapper c-px-${$contextSize} c-pb-${$contextSize}`}
@@ -224,7 +210,6 @@
         {:else if unit === 'month'}
           <CMonthPanel
             bind:value
-            {initialUnit}
             {year}
             on:month-change={e => onMonthChange(e.detail)}
           />

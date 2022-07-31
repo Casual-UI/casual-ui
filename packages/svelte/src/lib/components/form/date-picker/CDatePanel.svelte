@@ -1,8 +1,8 @@
 <script>
   import clsx from '$lib/utils/clsx'
   import { weeks } from 'casual-i18n'
-  import { cubicInOut } from 'svelte/easing'
-  import { crossfade, fly, blur, fade } from 'svelte/transition'
+  import { circIn, circInOut, cubicIn, cubicInOut } from 'svelte/easing'
+  import { scale } from 'svelte/transition'
   /**
    * @type {number}
    */
@@ -210,16 +210,11 @@
     value
     dates = dates
   }
-
-  const [send, receive] = crossfade({
-    duration: 300,
-    easing: cubicInOut,
-  })
 </script>
 
 <div
   class={`c-date-panel c-date-picker--panel`}
-  transition:fly={{ duration: 300, easing: cubicInOut, x: -100 }}
+  transition:scale={{ duration: 300, easing: cubicIn }}
 >
   <div class="c-date-panel--body">
     {#each weeks as w}

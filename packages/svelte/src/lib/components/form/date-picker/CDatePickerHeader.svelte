@@ -1,6 +1,7 @@
 <script>
   import useSize from '$lib/hooks/useSize'
   import clsx from '$lib/utils/clsx'
+  import { createEventDispatcher } from 'svelte'
 
   /**
    * Current year value.
@@ -34,6 +35,8 @@
    * @type {boolean}
    */
   export let unitSwitchable = true
+
+  const dispatch = createEventDispatcher()
 
   const contextSize = useSize(size)
 
@@ -91,6 +94,13 @@
     displayMonth = d.toLocaleDateString('en-US', { month: 'short' })
   }
 
+  /**
+   * @param {'day' | 'month' | 'year'} newUnit
+   */
+  const changeUnit = newUnit => {
+    dispatch('unit-change', newUnit)
+  }
+
   $: month, recomputeDispalyMonth()
   $: isMonth = unit === 'month'
   $: isDay = unit === 'day'
@@ -125,13 +135,13 @@
   >
     <slot name="title">
       {#if isDay}
-        <span on:click|stopPropagation={() => (unit = 'month')}>
+        <span on:click|stopPropagation={() => changeUnit('month')}>
           {displayMonth}
         </span>
       {/if}
       &nbsp;
       {#if isDay || isMonth}
-        <span on:click|stopPropagation={() => (unit = 'year')}>{year}</span>
+        <span on:click|stopPropagation={() => changeUnit('year')}>{year}</span>
       {:else}
         <span>{yearRange[0]} - {yearRange[1]}</span>
       {/if}

@@ -2,8 +2,8 @@
   import clsx from '$lib/utils/clsx'
 
   import { createEventDispatcher } from 'svelte'
-  import { cubicInOut } from 'svelte/easing'
-  import { fly } from 'svelte/transition'
+  import { circIn, circInOut, cubicIn, cubicInOut } from 'svelte/easing'
+  import { scale } from 'svelte/transition'
 
   /**
    * @type {any[]}
@@ -16,11 +16,6 @@
   export let isActive
 
   /**
-   * @type {boolean}
-   */
-  export let reverseTransition = false
-
-  /**
    * @type {(item: any) => string}
    */
   export let displayFormattor = item => item
@@ -29,10 +24,9 @@
 </script>
 
 <div
-  transition:fly={{
+  transition:scale={{
     duration: 300,
-    easing: cubicInOut,
-    x: reverseTransition ? 100 : -100,
+    easing: cubicIn,
   }}
   class="c-date-picker--panel"
 >

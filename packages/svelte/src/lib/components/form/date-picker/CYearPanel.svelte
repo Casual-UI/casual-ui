@@ -19,11 +19,10 @@
   let years = []
 
   const getYears = () => {
-    const [start, end] = yearRange
-    for (let i = start; i <= end; i++) {
-      years.push(i)
-    }
-    years = years
+    const [start] = yearRange
+    years = Array(12)
+      .fill(0)
+      .map((_, i) => i + start)
   }
 
   /**
