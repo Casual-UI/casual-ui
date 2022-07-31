@@ -5,6 +5,7 @@
   import dayjs from 'dayjs'
   import CDropdown from '../../CDropdown.svelte'
   import CInput from '../CInput.svelte'
+  import CDatePanel from './CDatePanel.svelte'
   import CDatePickerHeader from './CDatePickerHeader.svelte'
   /**
    * The select unit.
@@ -32,6 +33,7 @@
 
   /**
    * The formatted range value. It is recommended to use `bind:formattedRangeValue`.
+   * @type {[string, string]}
    */
   export let formattedRangeValue = ['', '']
 
@@ -80,26 +82,18 @@
    * Get the real formatter. If has `formatter` prop
    * @param {Date | null} d
    */
-  const innerFormatter = d => {
+  const innerFormattor = d => {
     if (!d) return ''
     return formatter ? formatter(d, format) : dayjs(d).format(format)
   }
-  /**
-   * Compare two dates is the same date. Using the given `formattter` and the `formate` porp.
-   * @param {Date | null} d1
-   * @param {Date | null} d2
-   */
-  const isSameDate = (d1, d2) => {
-    return innerFormatter(d1) === innerFormatter(d2)
-  }
 
   const recomputeFormattedValue = () => {
-    formattedValue = innerFormatter(value)
+    formattedValue = innerFormattor(value)
   }
 
   const recomputeFormattedRangeValue = () => {
     const [start, end] = rangeValue
-    formattedRangeValue = [innerFormatter(start), innerFormatter(end)]
+    formattedRangeValue = [innerFormattor(start), innerFormattor(end)]
   }
 
   $: value, recomputeFormattedValue()
@@ -115,9 +109,9 @@
       const [start, end] = formattedRangeValue
 
       if (!start && !end) return ''
-      return `${start} - ${end}`
+      displayValue = `${start} - ${end}`
     }
-    return formattedValue
+    displayValue = formattedValue
   }
 
   $: {
@@ -135,12 +129,11 @@
    */
   let yearRange = [year, year + 11]
 
-  let initialUnit = unit
-
   /**
    * @type {HTMLDivElement}
    */
   let datePickerDontainer
+
   const onDateSet = () => {
     if (hideOnSelect) {
       show = false
@@ -183,7 +176,17 @@
       <div
         class={`c-date-picker--panel-wrapper c-px-${$contextSize} c-pb-${$contextSize}`}
       >
-        <!-- TODO:  -->
+        {#if unit === 'day'}
+          <CDatePanel
+            bind:value
+            bind:rangeValue
+            {formattedRangeValue}
+            {range}
+            {year}
+            {month}
+            formattor={innerFormattor}
+          />
+        {/if}
       </div>
     </svelte:fragment>
   </CDropdown>

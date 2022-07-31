@@ -2,8 +2,12 @@
   "name": "casual-i18n",
   "version": "0.0.1",
   "description": "Casual UI I18n",
-  "main": "index.ts",
-  "private": true,
+  "main": "index.js",
+  "type": "module",
+  "types": "index.d.ts",
+  "exports": {
+    ".": "./index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
