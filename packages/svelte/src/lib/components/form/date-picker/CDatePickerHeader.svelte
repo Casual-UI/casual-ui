@@ -120,7 +120,7 @@
   <div
     class={clsx(
       `c-date-panel--year`,
-      unit !== 'year' && unitSwitchable && 'c-date-panel--year-switckable'
+      unit !== 'year' && unitSwitchable && 'c-date-panel--year-switchable'
     )}
   >
     <slot name="title">

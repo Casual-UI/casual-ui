@@ -1,12 +1,14 @@
 <script>
   import useSize from '$lib/hooks/useSize'
   import clsx from '$lib/utils/clsx'
-
   import dayjs from 'dayjs'
+  import { cubicInOut } from 'svelte/easing'
+  import { fly, slide } from 'svelte/transition'
   import CDropdown from '../../CDropdown.svelte'
   import CInput from '../CInput.svelte'
   import CDatePanel from './CDatePanel.svelte'
   import CDatePickerHeader from './CDatePickerHeader.svelte'
+  import CMonthPanel from './CMonthPanel.svelte'
   /**
    * The select unit.
    * @type {'year' | 'month' | 'day'}
@@ -121,6 +123,8 @@
     getDisplayValue()
   }
 
+  const initialUnit = unit
+
   let year = value ? value.getFullYear() : new Date().getFullYear()
   let month = value ? value.getMonth() : new Date().getMonth()
 
@@ -145,6 +149,31 @@
   const onClear = () => {
     value = null
     rangeValue = [null, null]
+  }
+
+  /**
+   * @param {'day' | 'month' | 'year'} newUnit
+   */
+  const updateUnit = newUnit => {
+    if (newUnit === 'day') {
+      if (initialUnit !== 'day') {
+        return
+      }
+    }
+    unit = newUnit
+  }
+
+  /**
+   * @param {Date} newDate
+   */
+  const onMonthChange = newDate => {
+    month = newDate.getMonth()
+    updateUnit('day')
+  }
+
+  let flyConfig = {
+    duration: 300,
+    easing: cubicInOut,
   }
 </script>
 
@@ -185,6 +214,13 @@
             {year}
             {month}
             formattor={innerFormattor}
+          />
+        {:else if unit === 'month'}
+          <CMonthPanel
+            bind:value
+            {initialUnit}
+            {year}
+            on:month-change={e => onMonthChange(e.detail)}
           />
         {/if}
       </div>
