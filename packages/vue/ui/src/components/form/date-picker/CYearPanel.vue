@@ -26,12 +26,13 @@ const years = computed(() => {
 const isSelected = (year: number) => {
   return props.modelValue?.getFullYear() === year
 }
+const displayFormatter = (year: number) => year + ''
 </script>
 <template>
   <c-date-grid-panel
     :is-active="isSelected"
     :items="years"
-    :display-formatter="year => year + ''"
+    :display-formatter="displayFormatter"
     @item-click="
       year => {
         emit(

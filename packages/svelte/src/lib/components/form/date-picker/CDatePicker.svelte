@@ -2,13 +2,12 @@
   import useSize from '$lib/hooks/useSize'
   import clsx from '$lib/utils/clsx'
   import dayjs from 'dayjs'
-  import { cubicInOut } from 'svelte/easing'
-  import { fly, slide } from 'svelte/transition'
   import CDropdown from '../../CDropdown.svelte'
   import CInput from '../CInput.svelte'
   import CDatePanel from './CDatePanel.svelte'
   import CDatePickerHeader from './CDatePickerHeader.svelte'
   import CMonthPanel from './CMonthPanel.svelte'
+  import CYearPanel from './CYearPanel.svelte'
   /**
    * The select unit.
    * @type {'year' | 'month' | 'day'}
@@ -159,6 +158,10 @@
       if (initialUnit !== 'day') {
         return
       }
+    } else if (newUnit === 'month') {
+      if (initialUnit === 'year') {
+        return
+      }
     }
     unit = newUnit
   }
@@ -171,9 +174,12 @@
     updateUnit('day')
   }
 
-  let flyConfig = {
-    duration: 300,
-    easing: cubicInOut,
+  /**
+   * @param {Date} newDate
+   */
+  const onYearChange = newDate => {
+    year = newDate.getFullYear()
+    updateUnit('month')
   }
 </script>
 
@@ -221,6 +227,12 @@
             {initialUnit}
             {year}
             on:month-change={e => onMonthChange(e.detail)}
+          />
+        {:else}
+          <CYearPanel
+            bind:value
+            {yearRange}
+            on:year-change={e => onYearChange(e.detail)}
           />
         {/if}
       </div>
