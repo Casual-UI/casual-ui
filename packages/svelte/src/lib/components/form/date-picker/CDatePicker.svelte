@@ -1,4 +1,6 @@
 <script>
+  import useClickOutside from '$lib/hooks/useClickOutside'
+
   import useSize from '$lib/hooks/useSize'
   import clsx from '$lib/utils/clsx'
   import dayjs from 'dayjs'
@@ -78,7 +80,9 @@
    * Hide the dropdown when date is selected.
    * @type {boolean}
    */
-  export let hideOnSelect = false
+  export let hideOnSelect = true
+
+  const initialUnit = unit
 
   /**
    * Get the real formatter. If has `formattor` prop
@@ -154,7 +158,11 @@
    */
   const onMonthChange = newDate => {
     month = newDate.getMonth()
-    unit = 'day'
+    if (initialUnit === 'day') {
+      unit = 'day'
+    } else {
+      onDateSet()
+    }
   }
 
   /**
@@ -162,8 +170,20 @@
    */
   const onYearChange = newDate => {
     year = newDate.getFullYear()
-    unit = 'month'
+    if (initialUnit === 'year') {
+      onDateSet()
+    } else {
+      unit = 'month'
+    }
   }
+  const clickOutside = useClickOutside({
+    cbInside: () => {
+      show = true
+    },
+    cbOutside: () => {
+      show = false
+    },
+  })
 </script>
 
 <div
@@ -171,8 +191,9 @@
     `c-date-picker c-font-${$contextSize} c-date-picker--size-${$contextSize}`,
     disabled && 'c-date-picker--diabled'
   )}
+  use:clickOutside
 >
-  <CDropdown bind:show widthWithinParent={false} {disabled}>
+  <CDropdown bind:show widthWithinParent={false} {disabled} manual>
     <CInput
       value={displayValue}
       {disabled}
@@ -206,6 +227,7 @@
             {year}
             {month}
             formattor={innerFormattor}
+            on:date-set={onDateSet}
           />
         {:else if unit === 'month'}
           <CMonthPanel

@@ -2,7 +2,7 @@
   import clsx from '$lib/utils/clsx'
 
   import { createEventDispatcher } from 'svelte'
-  import { circIn, circInOut, cubicIn, cubicInOut } from 'svelte/easing'
+  import { cubicIn } from 'svelte/easing'
   import { scale } from 'svelte/transition'
 
   /**

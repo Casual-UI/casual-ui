@@ -1,7 +1,8 @@
 <script>
   import clsx from '$lib/utils/clsx'
   import { weeks } from 'casual-i18n'
-  import { circIn, circInOut, cubicIn, cubicInOut } from 'svelte/easing'
+  import { createEventDispatcher } from 'svelte'
+  import { cubicIn } from 'svelte/easing'
   import { scale } from 'svelte/transition'
   /**
    * @type {number}
@@ -37,6 +38,8 @@
    * @type {boolean}
    */
   export let range
+
+  const dispatch = createEventDispatcher()
 
   /**
    * @param {Date | null} d1
@@ -74,6 +77,7 @@
       }
       return
     }
+    dispatch('date-set', d)
     value = d
   }
 
