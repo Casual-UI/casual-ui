@@ -60,26 +60,26 @@
     </slot>
   {:else}
     {#each items as item}
-      <!-- 
-        Customize item 
-        @param {any} itemObj the item obj that holds the whole item data.
-        @param {boolean} isClickable Determine whether the item is clickable or not.
-        @param {boolean} isActive Determine whether the item is active or not.
-      -->
-      <slot
-        name="item"
-        itemObj={item}
-        isClickable={clickable}
-        isActive={activeFn && activeFn(item)}
+      <CItem
+        {clickable}
+        active={activeFn && activeFn(item)}
+        on:click={() => onItemClick(item)}
       >
-        <CItem
-          {clickable}
-          active={activeFn && activeFn(item)}
-          on:click={() => onItemClick(item)}
+        <!-- 
+          Customize item 
+          @param {any} itemObj the item obj that holds the whole item data.
+          @param {boolean} isClickable Determine whether the item is clickable or not.
+          @param {boolean} isActive Determine whether the item is active or not.
+        -->
+        <slot
+          name="item"
+          itemObj={item}
+          isClickable={clickable}
+          isActive={activeFn && activeFn(item)}
         >
           {item.label}
-        </CItem>
-      </slot>
+        </slot>
+      </CItem>
     {/each}
   {/if}
 </div>

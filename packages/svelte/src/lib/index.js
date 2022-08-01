@@ -43,7 +43,10 @@ import CCheckbox from './components/form/CCheckbox.svelte'
 import CCheckboxGroup from './components/form/CCheckboxGroup.svelte'
 import CToggle from './components/form/CToggle.svelte'
 import CDatePicker from './components/form/date-picker/CDatePicker.svelte'
+import CInfoItem from './components/CInfoItem.svelte'
+
 export {
+  CInfoItem,
   CDatePicker,
   CToggle,
   CRadio,
