@@ -114,8 +114,9 @@
     if (range) {
       const [start, end] = formattedRangeValue
 
-      if (!start && !end) return ''
+      if (!start && !end) displayValue = ''
       displayValue = `${start} - ${end}`
+      return
     }
     displayValue = formattedValue
   }

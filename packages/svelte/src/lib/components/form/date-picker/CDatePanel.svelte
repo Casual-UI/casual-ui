@@ -75,6 +75,7 @@
         rangeValue = fStart < target ? [start, d] : [d, start]
         return
       }
+      rangeValue = [d, null]
       return
     }
     dispatch('date-set', d)
@@ -217,6 +218,7 @@
   $: {
     value
     rangeValue
+    hoveringDate
     doLayout()
   }
 </script>
