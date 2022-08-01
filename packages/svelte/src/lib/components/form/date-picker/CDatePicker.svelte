@@ -178,9 +178,11 @@
   }
   const clickOutside = useClickOutside({
     cbInside: () => {
+      if (disabled) return
       show = true
     },
     cbOutside: () => {
+      if (disabled) return
       show = false
     },
   })

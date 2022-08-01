@@ -210,9 +210,14 @@
     return d.getDate()
   }
 
+  const doLayout = () => {
+    dates = dates
+  }
+
   $: {
     value
-    dates = dates
+    rangeValue
+    doLayout()
   }
 </script>
 
