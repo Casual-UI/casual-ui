@@ -118,17 +118,15 @@
     contextLabelAlign,
     contextLabelWidth,
     contextLabelDirection,
-  } = useFormProps(
-    {
-      size,
-      gutterSize,
-      labelAlign,
-      labelDirection,
-      labelWidth,
-      col,
-    },
-    true
-  )
+    contextGutterSize,
+  } = useFormProps({
+    size,
+    gutterSize,
+    labelAlign,
+    labelDirection,
+    labelWidth,
+    col,
+  })
 </script>
 
 <div
@@ -139,7 +137,7 @@
   <div
     class={`c-form-item--label c-font-${$contextSize} c-m${getLabelMarginPosition(
       $contextLabelDirection
-    )}-${$contextSize} c-text-${$contextLabelAlign}`}
+    )}-${$contextGutterSize} c-text-${$contextLabelAlign}`}
     style={`width: ${$contextLabelWidth}`}
   >
     {label}

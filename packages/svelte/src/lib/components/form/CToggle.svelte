@@ -1,5 +1,5 @@
 <script>
-  import { useSizeWithoutChangeParent } from '$lib/hooks/useSize'
+  import useSize from '$lib/hooks/useSize'
   import bem from '$lib/utils/bem'
   import clsx from '$lib/utils/clsx'
 
@@ -39,7 +39,7 @@
    */
   export let disabled = false
 
-  const contextSize = useSizeWithoutChangeParent(size)
+  const contextSize = useSize(size)
 
   $: checked = value === checkedValue
 

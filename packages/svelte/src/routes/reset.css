@@ -61,9 +61,13 @@ code {
   color: #3e2e8e;
 }
 
-html.dark code {
+html.dark .casual-ui-svelte--component-api code {
   background-color: #111;
-    color: var(--casual-primary);
+  color: var(--casual-primary);
+}
+html.dark .casual-ui-svelte--component-api .shiki code {
+  background-color: transparent;
+  color: inherit;
 }
 .casual-doc-item:target {
   padding-top: calc(4.5rem);

@@ -1,7 +1,7 @@
 <script>
   import { useValidator } from '$lib/hooks/useForm'
 
-  import { useSizeWithoutChangeParent } from '$lib/hooks/useSize'
+  import useSize from '$lib/hooks/useSize'
   import bem from '$lib/utils/bem'
   import clsx from '$lib/utils/clsx'
   import { createEventDispatcher } from 'svelte'
@@ -44,7 +44,7 @@
 
   const dispatch = createEventDispatcher()
 
-  $: contextSize = useSizeWithoutChangeParent(size)
+  $: contextSize = useSize(size)
 
   const { hasError } = useValidator()
 

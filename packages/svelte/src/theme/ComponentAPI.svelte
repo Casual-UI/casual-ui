@@ -14,7 +14,9 @@
   $: propList = api.data?.filter(d => d.kind === 'let') || []
 </script>
 
-<ApiList title={propId} id="props" apiList={propList} isProp />
-<ApiList title={eventId} id="events" apiList={api.events} />
-<ApiList title={slotsId} id="slots" apiList={api.slots} isSlot />
-<ApiList title={exportName} id="exports" apiList={exprotsList} />
+<div class="casual-ui-svelte--component-api">
+  <ApiList title={propId} id="props" apiList={propList} isProp />
+  <ApiList title={eventId} id="events" apiList={api.events} />
+  <ApiList title={slotsId} id="slots" apiList={api.slots} isSlot />
+  <ApiList title={exportName} id="exports" apiList={exprotsList} />
+</div>

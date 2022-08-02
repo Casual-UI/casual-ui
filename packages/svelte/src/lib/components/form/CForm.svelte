@@ -113,14 +113,15 @@
    */
   export let validating = false
 
-  const { contextGutterSize, contextSize, contextCol } = useFormProps({
-    labelAlign,
-    labelDirection,
-    labelWidth,
-    size,
-    gutterSize,
-    col,
-  })
+  const { contextGutterSize, contextSize, contextCol, contextLabelWidth } =
+    useFormProps({
+      labelAlign,
+      labelDirection,
+      labelWidth,
+      size,
+      gutterSize,
+      col,
+    })
 
   $: {
     if (size) {
@@ -137,6 +138,11 @@
   $: {
     if (col) {
       $contextCol = col
+    }
+  }
+  $: {
+    if (labelWidth) {
+      $contextLabelWidth = labelWidth
     }
   }
   /**

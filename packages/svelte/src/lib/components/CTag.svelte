@@ -1,10 +1,8 @@
 <script>
-  import { useSizeWithoutChangeParent } from '$lib/hooks/useSize'
-
+  import useSize from '$lib/hooks/useSize'
   import useTheme from '$lib/hooks/useTheme'
   import clsx from '$lib/utils/clsx'
-  import { hasContext, createEventDispatcher, getContext } from 'svelte'
-  import { writable } from 'svelte/store'
+  import { createEventDispatcher } from 'svelte'
 
   /**
    * The text content of the tag
@@ -37,7 +35,7 @@
   export let closeable = false
 
   $: contextTheme = useTheme(theme)
-  $: contextSize = useSizeWithoutChangeParent(size)
+  $: contextSize = useSize(size)
 
   const dispatch = createEventDispatcher()
 

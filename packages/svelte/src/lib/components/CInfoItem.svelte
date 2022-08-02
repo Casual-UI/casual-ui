@@ -1,5 +1,5 @@
 <script>
-  import { useSizeWithoutChangeParent } from '$lib/hooks/useSize'
+  import useSize from '$lib/hooks/useSize'
 
   /**
    * The title of the item.
@@ -31,7 +31,7 @@
    */
   export let size = undefined
 
-  const contextSize = useSizeWithoutChangeParent(size)
+  const contextSize = useSize(size)
 </script>
 
 <div class={`c-info-item c-flex cjustify-between c-items-${align}`}>
