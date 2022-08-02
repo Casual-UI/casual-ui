@@ -37,7 +37,13 @@
 
   const dispatch = createEventDispatcher()
 
-  $: contextSize = useSize(size)
+  const contextSize = useSize(size)
+
+  $: {
+    if (size) {
+      $contextSize = size
+    }
+  }
 
   /**
    *

@@ -113,15 +113,20 @@
    */
   export let validating = false
 
-  const { contextGutterSize, contextSize, contextCol, contextLabelWidth } =
-    useFormProps({
-      labelAlign,
-      labelDirection,
-      labelWidth,
-      size,
-      gutterSize,
-      col,
-    })
+  const {
+    contextGutterSize,
+    contextSize,
+    contextCol,
+    contextLabelWidth,
+    contextLabelAlign,
+  } = useFormProps({
+    labelAlign,
+    labelDirection,
+    labelWidth,
+    size,
+    gutterSize,
+    col,
+  })
 
   $: {
     if (size) {
@@ -140,11 +145,19 @@
       $contextCol = col
     }
   }
+
   $: {
     if (labelWidth) {
       $contextLabelWidth = labelWidth
     }
   }
+
+  $: {
+    if (labelAlign) {
+      $contextLabelAlign = labelAlign
+    }
+  }
+
   /**
    * @type {import('svelte/types/runtime/store').Writable<Record<string, false | string>>}
    */
