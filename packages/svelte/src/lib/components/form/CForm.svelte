@@ -58,31 +58,45 @@
   export let rules = {}
 
   /**
-   * The label width of whole form. Notice that the default value is `'80px'` instead of `undefined`
+   * The label width of whole form. Notice that the default value is `'80px'` instead of `undefined`.
    * @type {string=}
    */
   export let labelWidth = undefined
 
   /**
-   * The col span of each form item. Total cols are 12.
+   * The col span of each form item. Total cols are 12. Notice that default value is `6` instead of `undefined`
    * @type {number=}
    */
   export let col = undefined
 
   /**
-   * Label and form component arrangement direction. This prop use [CSS flex-direction](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction)
-   * @type {'row' | 'row-reverse' | 'column' | 'column-reverse'}
+   * Label and form component arrangement direction.
+   *
+   * Notice that the defualt value is `'row'` instead of `undefined`.
+   *
+   * This prop use [CSS flex-direction](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction).
+   * @type {'row' | 'row-reverse' | 'column' | 'column-reverse'=}
    */
-  export let labelDirection = 'row'
+  export let labelDirection = undefined
 
   /**
-   * The label itself arrangement direction. This prop use [CSS text-align](https://developer.mozilla.org/en-US/docs/Web/CSS/text-align)
-   * @type {'left' | 'center' | 'right'}
+   * The label itself arrangement direction.
+   *
+   * Notice that the default value is `'left'` instead of `undefined`
+   *
+   * This prop use [CSS text-align](https://developer.mozilla.org/en-US/docs/Web/CSS/text-align)
+   * @type {'left' | 'center' | 'right'=}
    */
-  export let labelAlign = 'left'
+  export let labelAlign = undefined
 
   /**
-   * The size of whole form. This prop will affect all the components that with the size props.
+   * The size of whole form.
+   *
+   * Notice that the default value is `'md'` instead of `undefined`.
+   *
+   * ::: tip TIP
+   * This prop will affect all the components that holds the size props.
+   * :::
    * @type {'xs' | 'sm' | 'md' | 'lg' | 'xl'=}
    */
   export let size = undefined
@@ -146,7 +160,7 @@
   }
 
   /**
-   * Clear a specified field error status
+   * Clear a specified field validate status
    * @param {string} f
    */
   const clearSomeField = f => {
@@ -190,7 +204,7 @@
     )
   }
 
-  export { validateAll, validateSomeField, clearAll }
+  export { validateAll, validateSomeField, clearAll, clearSomeField }
 </script>
 
 <div

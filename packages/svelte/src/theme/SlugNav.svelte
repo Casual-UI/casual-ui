@@ -58,6 +58,10 @@
       title: 'Slots',
       name: 'slots',
     },
+    {
+      title: 'Exports',
+      name: 'exports',
+    },
   ]
 
   $: all = [...demos, ...addtionItems]
