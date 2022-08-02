@@ -28,9 +28,9 @@
 
   /**
    * The label width of this form item. Notice that this prop will override the CForm's `labelWidth` prop
-   * @type {string}
+   * @type {string=}
    */
-  export let labelWidth = '100px'
+  export let labelWidth = undefined
 
   /**
    * This form item col span
@@ -103,7 +103,7 @@
   /**
    * @type {import('svelte/types/runtime/store').Writable<Record<string, false | string>>}
    */
-  $: errorStatus = getContext(errorStatusKey)
+  const errorStatus = getContext(errorStatusKey)
 
   errorStatus.subscribe(err => {
     if (field) {
@@ -111,7 +111,7 @@
     }
   })
 
-  $: formProps = useFormProps({
+  const formProps = useFormProps({
     size,
     gutterSize,
     labelAlign,
@@ -130,12 +130,12 @@
 </script>
 
 <div
-  class={`c-form-item c-col-${$contextCol} c-${labelDirection} ${
+  class={`c-form-item c-col-${$contextCol} c-${$contextLabelDirection} ${
     isLabelVertical ? 'c-items-start' : 'c-items-center'
   } ${hasError ? 'c-form-item--has-error' : ''}`}
 >
   <div
-    class={`c-form-item--label c-font-${size} c-m${getLabelMarginPosition(
+    class={`c-form-item--label c-font-${$contextSize} c-m${getLabelMarginPosition(
       $contextLabelDirection
     )}-${$contextSize} c-text-${$contextLabelAlign}`}
     style={`width: ${$contextLabelWidth}`}

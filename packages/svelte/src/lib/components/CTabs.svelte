@@ -88,6 +88,8 @@
    * @param {*} e
    */
   const onStart = e => {
+    // e.target.classList.remove('c-date-panel-leave-active')
+    // e.target.classList.remove('c-date-panel-reverse-leave-active')
     e.target.classList.add(
       reverse
         ? 'c-date-panel-reverse-enter-active'
@@ -110,6 +112,8 @@
    * @param {*} e
    */
   const onOutStart = e => {
+    // e.target.classList.remove('c-date-panel-enter-active')
+    // e.target.classList.remove('c-date-panel-reverse-enter-active')
     e.target.classList.add(
       reverse
         ? 'c-date-panel-reverse-leave-active'
@@ -164,11 +168,7 @@
       {#if activeItem === item.name}
         <div
           class="c-tabs--body-item"
-          transition:tab
-          on:introstart={onStart}
-          on:introend={onStartEnd}
-          on:outrostart={onOutStart}
-          on:outroend={onOutEnd}
+          transition:fly={{ x: reverse ? -100 : 100 }}
         >
           <svelte:component this={item.body} />
         </div>

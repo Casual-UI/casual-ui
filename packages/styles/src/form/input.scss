@@ -48,6 +48,7 @@
   &--content-wrapper {
     height: 100%;
 
+    @extend %c-flex-grow;
     @extend %c-inline-flex;
     @extend %c-items-stretch;
 
@@ -140,5 +141,11 @@
 
   &--input-wrapper {
     position: relative;
+
+    @extend %c-flex-grow;
+
+    input {
+      width: 100%;
+    }
   }
 }

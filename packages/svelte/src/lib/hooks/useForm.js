@@ -29,7 +29,7 @@ const useFormProps = ({
   labelWidth,
 } = {}) => {
   return {
-    contextLabelWidth: useContextProp(labelWidthKey, labelWidth, '100px'),
+    contextLabelWidth: useContextProp(labelWidthKey, labelWidth, '80px'),
     contextCol: useContextProp(colKey, col, 6),
     contextLabelDirection: useContextProp(
       labelDirectionKey,

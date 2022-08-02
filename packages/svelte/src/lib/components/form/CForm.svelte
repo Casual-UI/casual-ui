@@ -22,10 +22,10 @@
   export let rules = {}
 
   /**
-   * The label width of whole form
-   * @type {string}
+   * The label width of whole form. Notice that the default value is `'80px'` instead of `undefined`
+   * @type {string=}
    */
-  export let labelWidth = '100px'
+  export let labelWidth = undefined
 
   /**
    * The col span of each form item. Total cols are 12.
@@ -63,7 +63,7 @@
    */
   export let validating = false
 
-  $: formProps = useFormProps({
+  const formProps = useFormProps({
     labelAlign,
     labelDirection,
     labelWidth,
@@ -95,6 +95,7 @@
    */
   const validateSomeField = async f => {
     const validators = rules[f]
+    if (!validators) return
     for (let i = 0; i < validators.length; i++) {
       const validator = validators[i]
       const r = await validator(value[f])

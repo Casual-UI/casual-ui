@@ -10,6 +10,12 @@
     &--content-wrapper {
       position: relative;
       align-self: stretch;
+      flex-grow: 1;
+
+      & > .c-input,
+      & > .c-date-picker {
+        width: 100%;
+      }
     }
 
     &--error-tip {

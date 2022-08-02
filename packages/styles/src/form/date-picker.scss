@@ -12,6 +12,19 @@ $ph: 252px;
   text-align: center;
   display: inline-block;
 
+  .c-dropdown {
+    width: 100%;
+
+    .c-input {
+      width: 100%;
+      box-sizing: border-box;
+
+      &--content-wrapper {
+        width: 100%;
+      }
+    }
+  }
+
   &--panel {
     transform-origin: center;
 
