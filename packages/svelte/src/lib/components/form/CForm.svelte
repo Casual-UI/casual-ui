@@ -45,6 +45,7 @@
   import { useFormProps } from '$lib/hooks/useForm'
   import { setContext } from 'svelte'
   import { writable } from 'svelte/store'
+  import { tick } from 'svelte'
   /**
    * The whole form data
    * @type {Record<string, any>}
@@ -190,11 +191,11 @@
     for (let i = 0; i < validators.length; i++) {
       const validator = validators[i]
       const r = await validator(value[f])
+      $errorStatus = {
+        ...$errorStatus,
+        [f]: r,
+      }
       if (r) {
-        $errorStatus = {
-          ...$errorStatus,
-          [f]: r,
-        }
         break
       }
     }
@@ -235,7 +236,8 @@
   /**
    * Clear all fields validate status
    */
-  const clearAll = () => {
+  const clearAll = async () => {
+    await tick()
     $errorStatus = Object.keys(value).reduce(
       (obj, f) => ({
         ...obj,

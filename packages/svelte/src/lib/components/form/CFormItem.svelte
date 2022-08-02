@@ -128,6 +128,43 @@
   $: isLabelVertical =
     $contextLabelDirection === 'column' ||
     $contextLabelDirection === 'column-reverse'
+
+  /**
+   * @param {*} node
+   * @param {*} params
+   */
+  const errorTip = (node, params) => ({
+    duration: 300,
+  })
+
+  /**
+   * @param {*} e
+   */
+  const onInStart = e => {
+    e.target.classList.add('c-form-item--error-tip-enter-active')
+  }
+
+  /**
+   * @param {*} e
+   */
+  const onInEnd = e => {
+    e.target.classList.remove('c-form-item--error-tip-enter-active')
+  }
+
+  /**
+   * @param {*} e
+   */
+  const onOutStart = e => {
+    e.target.classList.add('c-form-item--error-tip-leave-active')
+    e.target.classList.add('c-form-item--error-tip--hidden')
+  }
+
+  /**
+   * @param {*} e
+   */
+  const onOutEnd = e => {
+    e.target.classList.remove('c-form-item--error-tip-leave-active')
+  }
 </script>
 
 <div
@@ -148,5 +185,18 @@
       The content of this form item. You can use built-in form components like CInput
      -->
     <slot />
+
+    {#if $hasError}
+      <div
+        class="c-form-item--error-tip"
+        transition:errorTip
+        on:introstart={onInStart}
+        on:introend={onInEnd}
+        on:outrostart={onOutStart}
+        on:outroend={onOutEnd}
+      >
+        {$hasError}
+      </div>
+    {/if}
   </div>
 </div>

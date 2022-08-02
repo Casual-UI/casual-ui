@@ -1,10 +1,11 @@
 <script>
   import useClickOutside from '$lib/hooks/useClickOutside'
+  import { validateCurrentKey } from '$lib/hooks/useForm'
 
   import useSize from '$lib/hooks/useSize'
   import clsx from '$lib/utils/clsx'
   import dayjs from 'dayjs'
-  import { tick } from 'svelte'
+  import { getContext, tick } from 'svelte'
   import CDropdown from '../../CDropdown.svelte'
   import CInput from '../CInput.svelte'
   import CDatePanel from './CDatePanel.svelte'
@@ -81,6 +82,12 @@
    * @type {boolean}
    */
   export let hideOnSelect = true
+
+  /**
+   * Determine whether do current form item validation on click outside or not.
+   * @type {boolean}
+   */
+  export let validateOnClickOutside = true
 
   const initialUnit = unit
 
@@ -177,13 +184,19 @@
       unit = 'month'
     }
   }
+
+  const validateCurrent = getContext(validateCurrentKey)
+
   const clickOutside = useClickOutside({
     cbInside: () => {
       if (disabled) return
       show = true
     },
-    cbOutside: () => {
-      if (disabled) return
+    cbOutside: async () => {
+      if (disabled || show === false) return
+      if (validateOnClickOutside && validateCurrent) {
+        validateCurrent()
+      }
       show = false
     },
   })

@@ -103,7 +103,7 @@
    * Determine whether the input would clear validate status when focused or not.
    * @type {boolean}
    */
-  export let clearValidateOnFocus = false
+  export let clearValidateOnFocus = true
 
   const { hasError, clearCurrent, validateCurrent } = useValidator()
 
@@ -151,7 +151,7 @@
       disabled,
       readonly,
       loading,
-      hasError: hasError && $hasError,
+      hasError: $hasError,
     }),
     `c-font-${$contextSize}`,
     rounded && `c-rounded-${$contextSize}`,

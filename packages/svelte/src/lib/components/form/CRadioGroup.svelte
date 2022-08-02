@@ -1,6 +1,7 @@
 <script>
   import { useFormProps, useValidator } from '$lib/hooks/useForm'
   import useSize from '$lib/hooks/useSize'
+  import { tick } from 'svelte'
   import CRadio from './CRadio.svelte'
 
   /**
@@ -31,30 +32,30 @@
    * If this group is in a Form context. Set this prop to `true` will validate current field when selection change.
    * @type {boolean}
    */
-  export let validateOnChange = false
+  export let validateOnChange = true
 
   const { contextGutterSize } = useFormProps({ gutterSize })
 
   const { validateCurrent } = useValidator()
 
-  const mayValidate = () => {
+  const mayValidate = async () => {
     if (validateOnChange) {
+      await tick()
       validateCurrent && validateCurrent()
     }
   }
-
-  $: {
-    value
-    mayValidate()
-  }
-
   useSize(size)
 </script>
 
 <div class={`c-flex c-items-center c-wrap c-gutter-x-${$contextGutterSize}`}>
   {#each options as op}
     <div>
-      <CRadio bind:value selectedValue={op.value} label={op.label} />
+      <CRadio
+        bind:value
+        selectedValue={op.value}
+        label={op.label}
+        on:change={mayValidate}
+      />
     </div>
   {/each}
 </div>

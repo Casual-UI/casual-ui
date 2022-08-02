@@ -2,6 +2,7 @@
   import { useValidator } from '$lib/hooks/useForm'
   import useSize from '$lib/hooks/useSize'
   import clsx from '$lib/utils/clsx'
+  import { createEventDispatcher } from 'svelte'
 
   /**
    * The radio selected status. It is recommended to use `bind:value`.
@@ -36,9 +37,12 @@
 
   const { hasError, validateCurrent, clearCurrent } = useValidator()
 
+  const dispatch = createEventDispatcher()
+
   const onClick = () => {
     if (disabled || value === selectedValue) return
     value = selectedValue
+    dispatch('change')
   }
 </script>
 

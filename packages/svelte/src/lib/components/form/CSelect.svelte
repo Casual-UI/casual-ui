@@ -59,6 +59,12 @@
   export let rounded = false
 
   /**
+   * Determine whether validate current form item on dropdown fold.
+   * @type {boolean}
+   */
+  export let validateOnFold = true
+
+  /**
    * @type {HTMLDivElement}
    */
   let selectDom
@@ -148,7 +154,11 @@
 
   const clickOutside = useClickOutside({
     cbOutside: () => {
+      if (!focused) return
       focused = false
+      if (validateOnFold && validateCurrent) {
+        validateCurrent()
+      }
     },
   })
 
@@ -211,6 +221,7 @@
           placeholder={realPlaceholder}
           suffixDivider={false}
           customColor
+          validateTrigger="manual"
           autoBlur={false}
           readonly
           on:clear={onClear}

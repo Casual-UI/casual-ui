@@ -6,7 +6,6 @@
     CSelect,
     CRadioGroup,
     CDatePicker,
-    useFormProps,
   } from 'casual-ui-svelte'
 
   let name = ''
@@ -46,10 +45,6 @@
       value: 12,
     },
   ]
-
-  const { contextCol } = useFormProps()
-
-  $: $contextCol, console.log($contextCol)
 </script>
 
 <CForm {col}>
