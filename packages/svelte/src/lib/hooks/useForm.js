@@ -1,6 +1,6 @@
 import { getContext } from 'svelte'
-import useContextProp from './useContextProp'
-import useSize from './useSize'
+import useContextProp, { useWithoutAffectAncestor } from './useContextProp'
+import useSize, { useSizeWithoutChangeParent } from './useSize'
 
 const hasErrorKey = Symbol('hasError')
 const validateCurrentKey = Symbol('validateCurrent')
@@ -20,25 +20,22 @@ const labelWidthKey = Symbol('labelWidth')
  * @param {number} [params.col]
  * @param {'row' | 'row-reverse' | 'column' | 'column-reverse'} [params.labelDirection]
  */
-const useFormProps = ({
-  gutterSize,
-  labelAlign,
-  size,
-  labelDirection,
-  col,
-  labelWidth,
-} = {}) => {
+const useFormProps = (
+  { gutterSize, labelAlign, size, labelDirection, col, labelWidth } = {},
+  breakParent = false
+) => {
+  const user = breakParent ? useWithoutAffectAncestor : useContextProp
   return {
-    contextLabelWidth: useContextProp(labelWidthKey, labelWidth, '80px'),
-    contextCol: useContextProp(colKey, col, 6),
-    contextLabelDirection: useContextProp(
-      labelDirectionKey,
-      labelDirection,
-      'row'
+    contextLabelWidth: user(labelWidthKey, labelWidth, '80px'),
+    contextCol: user(colKey, col, 6),
+    contextLabelDirection: user(labelDirectionKey, labelDirection, 'row'),
+    contextGutterSize: user(gutterSizeKey, gutterSize, 'md'),
+    contextSize: (breakParent ? useSizeWithoutChangeParent : useSize)(size),
+    contextLabelAlign: useWithoutAffectAncestor(
+      labelAlignKey,
+      labelAlign,
+      'left'
     ),
-    contextGutterSize: useContextProp(gutterSizeKey, gutterSize, 'md'),
-    contextSize: useSize(size),
-    contextLabelAlign: useContextProp(labelAlignKey, labelAlign, 'left'),
   }
 }
 

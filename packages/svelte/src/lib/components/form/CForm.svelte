@@ -122,8 +122,19 @@
     col,
   })
 
-  const { contextGutterSize } = formProps
+  const { contextGutterSize, contextSize } = formProps
 
+  $: {
+    if (size) {
+      contextSize.set(size)
+    }
+  }
+
+  $: {
+    if (gutterSize) {
+      contextGutterSize.set(gutterSize)
+    }
+  }
   /**
    * @type {import('svelte/types/runtime/store').Writable<Record<string, false | string>>}
    */

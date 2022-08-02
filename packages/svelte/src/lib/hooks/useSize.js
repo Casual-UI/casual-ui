@@ -16,4 +16,4 @@ export default size => useContextProp(key, size, 'md')
  * @param size {import('casual-types').CSize | undefined}
  */
 export const useSizeWithoutChangeParent = size =>
-  size ? writable(size) : hasContext(size) ? getContext(size) : writable('md')
+  size ? writable(size) : hasContext(key) ? getContext(key) : writable('md')

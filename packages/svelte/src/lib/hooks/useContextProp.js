@@ -1,5 +1,5 @@
 import { getContext, hasContext, setContext } from 'svelte'
-import { get, writable } from 'svelte/store'
+import { writable } from 'svelte/store'
 
 /**
  * @param {*} key
@@ -7,9 +7,10 @@ import { get, writable } from 'svelte/store'
  * @param {*} defaultVal
  */
 export default (key, val, defaultVal) => {
+  const hasVal = val !== void 0
   if (hasContext(key)) {
     const contextVal = getContext(key)
-    if (val === void 0) {
+    if (!hasVal) {
       return contextVal
     }
     contextVal.set(val)
@@ -18,4 +19,19 @@ export default (key, val, defaultVal) => {
   const contextVal = writable(val ? val : defaultVal)
   setContext(key, contextVal)
   return contextVal
+}
+
+/**
+ * @param {*} key
+ * @param {*} val
+ * @param {*} defaultVal
+ */
+export const useWithoutAffectAncestor = (key, val, defaultVal) => {
+  const hasVal = val !== void 0
+  if (!hasContext(key)) {
+    const contextVal = writable(hasVal ? val : defaultVal)
+    setContext(key, contextVal)
+    return contextVal
+  }
+  return writable(hasVal ? val : defaultVal)
 }

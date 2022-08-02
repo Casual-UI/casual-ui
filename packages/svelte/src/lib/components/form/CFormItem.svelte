@@ -51,7 +51,7 @@
   export let labelAlign = undefined
 
   /**
-   * The size of component in this form item.
+   * The size of component in this form item. Notice that the default value is `'md'` instead of `undefined`
    * @type {'xs' | 'sm' | 'md' | 'lg' | 'xl'=}
    */
   export let size = undefined
@@ -111,14 +111,17 @@
     }
   })
 
-  const formProps = useFormProps({
-    size,
-    gutterSize,
-    labelAlign,
-    labelDirection,
-    labelWidth,
-    col,
-  })
+  const formProps = useFormProps(
+    {
+      size,
+      gutterSize,
+      labelAlign,
+      labelDirection,
+      labelWidth,
+      col,
+    },
+    true
+  )
 
   const {
     contextSize,

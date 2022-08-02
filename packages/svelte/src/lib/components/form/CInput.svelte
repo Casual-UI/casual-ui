@@ -107,7 +107,7 @@
 
   const { hasError, clearCurrent, validateCurrent } = useValidator()
 
-  $: contextSize = useSize(size)
+  const contextSize = useSize(size)
 
   /**
    * @type {HTMLInputElement}
