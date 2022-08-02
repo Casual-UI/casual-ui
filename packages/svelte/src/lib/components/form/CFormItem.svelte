@@ -104,14 +104,21 @@
    * @type {import('svelte/types/runtime/store').Writable<Record<string, false | string>>}
    */
   const errorStatus = getContext(errorStatusKey)
+  if (errorStatus) {
+    errorStatus.subscribe(err => {
+      if (field) {
+        $hasError = err[field]
+      }
+    })
+  }
 
-  errorStatus.subscribe(err => {
-    if (field) {
-      $hasError = err[field]
-    }
-  })
-
-  const formProps = useFormProps(
+  const {
+    contextSize,
+    contextCol,
+    contextLabelAlign,
+    contextLabelWidth,
+    contextLabelDirection,
+  } = useFormProps(
     {
       size,
       gutterSize,
@@ -122,20 +129,12 @@
     },
     true
   )
-
-  const {
-    contextSize,
-    contextCol,
-    contextLabelAlign,
-    contextLabelWidth,
-    contextLabelDirection,
-  } = formProps
 </script>
 
 <div
   class={`c-form-item c-col-${$contextCol} c-${$contextLabelDirection} ${
     isLabelVertical ? 'c-items-start' : 'c-items-center'
-  } ${hasError ? 'c-form-item--has-error' : ''}`}
+  } ${$hasError ? 'c-form-item--has-error' : ''}`}
 >
   <div
     class={`c-form-item--label c-font-${$contextSize} c-m${getLabelMarginPosition(

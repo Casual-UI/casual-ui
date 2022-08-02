@@ -102,10 +102,10 @@
   export let size = undefined
 
   /**
-   * The gutte size between label and form component
+   * The gutte size between label and form component. Notice that the default value is `'md'` instead of `undefined`.
    * @type {'xs' | 'sm' | 'md' | 'lg' | 'xl'=}
    */
-  export let gutterSize = 'md'
+  export let gutterSize = undefined
 
   /**
    * The falg that determine form is in validating or not.
@@ -113,7 +113,7 @@
    */
   export let validating = false
 
-  const formProps = useFormProps({
+  const { contextGutterSize, contextSize, contextCol } = useFormProps({
     labelAlign,
     labelDirection,
     labelWidth,
@@ -122,17 +122,21 @@
     col,
   })
 
-  const { contextGutterSize, contextSize } = formProps
-
   $: {
     if (size) {
-      contextSize.set(size)
+      $contextSize = size
     }
   }
 
   $: {
     if (gutterSize) {
-      contextGutterSize.set(gutterSize)
+      $contextGutterSize = gutterSize
+    }
+  }
+
+  $: {
+    if (col) {
+      $contextCol = col
     }
   }
   /**

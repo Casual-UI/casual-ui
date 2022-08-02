@@ -13,8 +13,21 @@
       flex-grow: 1;
 
       & > .c-input,
-      & > .c-date-picker {
+      & > .c-date-picker,
+      & > .c-dropdown {
         width: 100%;
+
+        .c-select {
+          width: 100%;
+
+          &--input-wrapper {
+            width: 100%;
+
+            .c-input {
+              @extend %c-flex-grow;
+            }
+          }
+        }
       }
     }
 

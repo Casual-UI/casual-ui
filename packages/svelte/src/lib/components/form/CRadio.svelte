@@ -32,7 +32,7 @@
    */
   export let disabled = false
 
-  $: contextSize = useSize(size)
+  const contextSize = useSize(size)
 
   const { hasError, validateCurrent, clearCurrent } = useValidator()
 

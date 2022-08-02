@@ -25,12 +25,13 @@ const useFormProps = (
   breakParent = false
 ) => {
   const user = breakParent ? useWithoutAffectAncestor : useContextProp
+  const sizeUser = breakParent ? useSizeWithoutChangeParent : useSize
   return {
     contextLabelWidth: user(labelWidthKey, labelWidth, '80px'),
     contextCol: user(colKey, col, 6),
     contextLabelDirection: user(labelDirectionKey, labelDirection, 'row'),
     contextGutterSize: user(gutterSizeKey, gutterSize, 'md'),
-    contextSize: (breakParent ? useSizeWithoutChangeParent : useSize)(size),
+    contextSize: sizeUser(size),
     contextLabelAlign: useWithoutAffectAncestor(
       labelAlignKey,
       labelAlign,

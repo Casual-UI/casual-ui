@@ -60,7 +60,7 @@
 </script>
 
 <CForm gutterSize={size}>
-  <CFormItem label="Sizes" col={12}>
+  <CFormItem label="Gutter size" col={12}>
     <CRadioGroup bind:value={size} options={sizes} />
   </CFormItem>
   <CFormItem label="Name">
