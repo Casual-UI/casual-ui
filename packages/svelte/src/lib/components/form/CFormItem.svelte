@@ -88,9 +88,6 @@
   setContext(hasErrorKey, hasError)
   setContext(clearCurrentKey, clearCurrent)
 
-  $: isLabelVertical =
-    labelDirection === 'column' || labelDirection === 'column-reverse'
-
   // @ts-ignore
   const getLabelMarginPosition = direction =>
     new Map([
@@ -127,6 +124,10 @@
     labelWidth,
     col,
   })
+
+  $: isLabelVertical =
+    $contextLabelDirection === 'column' ||
+    $contextLabelDirection === 'column-reverse'
 </script>
 
 <div

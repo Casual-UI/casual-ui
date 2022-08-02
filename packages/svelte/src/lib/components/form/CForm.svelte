@@ -119,6 +119,7 @@
     contextCol,
     contextLabelWidth,
     contextLabelAlign,
+    contextLabelDirection,
   } = useFormProps({
     labelAlign,
     labelDirection,
@@ -155,6 +156,12 @@
   $: {
     if (labelAlign) {
       $contextLabelAlign = labelAlign
+    }
+  }
+
+  $: {
+    if (labelDirection) {
+      $contextLabelDirection = labelDirection
     }
   }
 
