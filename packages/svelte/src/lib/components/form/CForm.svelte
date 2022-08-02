@@ -1,7 +1,43 @@
 <script context="module">
+  /**
+   * The errorStatus inject key. Example:
+   *
+   * ```ts
+   * import { getContext } from 'svelte'
+   * import { errorStatusKey } from 'casual-ui-svelte/components/form/CForm.svelte'
+   * const errorStaus: ErrorStatus = getContext(errorStatusKey)
+   * type ErrorStatus = Writable<Record<string, string | false>>
+   * ```
+   * @type {symbol}
+   */
   export const errorStatusKey = Symbol('errorStatus')
-  export const validatorsKey = Symbol('validators')
+
+  /**
+   * The function to validate specify field. Example:
+   *
+   * ```ts
+   * import { validateSomeFieldKey } from 'casual-ui-svelte/components/form/CForm.svelte'
+   * import { getContext } from 'svelte'
+   * const validateSomeField = getContext(validateSomeFieldKey)
+   *
+   * // At some time
+   * validateSomeFiled?.('field')
+   * ```
+   */
   export const validateSomeFieldKey = Symbol('validateSomeField')
+
+  /**
+   * The function to clear specify field validate status. Example:
+   *
+   * ```ts
+   * import { clearSomeFieldKey } from 'casual-ui-svelte/components/form/CForm.svelte'
+   * import { getContext } from 'svelte'
+   * const clearSomeField = getContext(clearSomeFieldKey)
+   *
+   * // At some time
+   * clearSomeField?.('field')
+   * ```
+   */
   export const clearSomeFieldKey = Symbol('clearSomeField')
 </script>
 

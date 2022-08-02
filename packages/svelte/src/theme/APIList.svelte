@@ -12,6 +12,8 @@
   export let apiList: Array<any> = []
 
   export let isSlot = false
+
+  export let isProp = false
 </script>
 
 <Doc {title} {id} hideSandboxIcon pb-2 hideEditIcon>
@@ -23,12 +25,14 @@
             <VariableName>
               {name}
             </VariableName>
-            <div mx-2>
-              <InlineCode>
-                {type?.text}
-              </InlineCode>
-            </div>
-            <span>default: <InlineCode>{defaultValue}</InlineCode></span>
+            {#if isProp}
+              <div mx-2>
+                <InlineCode>
+                  {type?.text}
+                </InlineCode>
+              </div>
+              <span>default: <InlineCode>{defaultValue}</InlineCode></span>
+            {/if}
             <Description>
               {@html description}
             </Description>

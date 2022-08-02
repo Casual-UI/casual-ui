@@ -2,8 +2,16 @@ import { resolve } from 'path'
 import { parse } from 'sveltedoc-parser'
 import MarkdownIt from 'markdown-it'
 import markdownItContainer from 'markdown-it-container'
+import nightOwl from './night-owl.json'
+// @ts-ignore
+import Shiki from 'markdown-it-shiki'
 
 const md = MarkdownIt({ html: true })
+
+md.use(Shiki, {
+  theme: nightOwl,
+})
+
 md.use(markdownItContainer, 'tip', {
   validate: function (params: string) {
     return params.trim().match(/^tip\s+(.*)$/)
