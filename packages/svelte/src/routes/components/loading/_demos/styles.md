@@ -1,0 +1,3 @@
+- Use CSS attribute `font-size` to set the loading size
+- Use `thickness` prop to set the loading circle bar thickness
+- Use CSS attribute `color` to set the loading color

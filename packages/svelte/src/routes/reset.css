@@ -69,9 +69,6 @@ html.dark .casual-ui-svelte--component-api .shiki code {
   background-color: transparent;
   color: inherit;
 }
-.casual-doc-item:target {
-  padding-top: calc(4.5rem);
-}
 .casual-ui-svelte--doc-item p {
   margin: 4px 0;
   line-height: 1.5em;
@@ -87,4 +84,13 @@ html.dark [text-secondary] {
 
 html.dark a {
   color: var(--casual-primary);
+}
+
+.casual-ui-svelte--doc-item ul {
+  padding-left: 1em;
+  line-height: 1.5em;
+}
+
+.casual-ui-svelte--component-api .casual-ui-svelte--doc-item ul {
+  list-style: none;
 }

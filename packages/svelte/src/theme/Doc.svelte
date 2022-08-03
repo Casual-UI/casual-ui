@@ -10,6 +10,7 @@
 
   export let code = ''
   export let html = ''
+  export let mdDocContent = ''
   export let component: any = undefined
   export let title = ''
   export let id = ''
@@ -31,6 +32,7 @@
   {...attributeAtom($$restProps)}
 >
   <div {id} relative top--26 />
+
   <div
     flex
     justify-between
@@ -80,8 +82,13 @@
       {/if}
     </div>
   </div>
-  {#if component}
+  {#if component || mdDocContent}
     <div p-4 bg-white box-border dark:bg-191919>
+      {#if mdDocContent}
+        <div mb-4>
+          {@html mdDocContent}
+        </div>
+      {/if}
       <svelte:component this={component} />
     </div>
   {/if}

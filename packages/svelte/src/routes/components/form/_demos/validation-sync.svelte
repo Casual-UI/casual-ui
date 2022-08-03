@@ -19,6 +19,9 @@
 
   let birthday: Date | null = null
 
+  let validating = false
+  let nameLoading = false
+
   const genderOptions = [
     {
       label: 'Male',
@@ -40,7 +43,16 @@
   let form: CForm
 
   const rules = {
-    name: [(v: string) => (v ? false : 'Please enter name')],
+    name: [
+      (v: string) =>
+        new Promise<string | false>(resolve => {
+          nameLoading = true
+          setTimeout(() => {
+            resolve(v ? false : 'Please enter name')
+            nameLoading = false
+          }, 2000)
+        }),
+    ],
     gender: [(v: any) => (v === '' ? 'Please select gender' : false)],
     birthday: [(v: any) => (v ? false : 'Please select birthday')],
     industry: [(v: any) => (v === '' ? 'Please select industry' : false)],
@@ -68,9 +80,10 @@
     industry,
   }}
   {rules}
+  bind:validating
 >
   <CFormItem label="Name" field="name">
-    <CInput bind:value={name} placeholder="Your name" />
+    <CInput bind:value={name} placeholder="Your name" loading={nameLoading} />
   </CFormItem>
   <CFormItem label="Gender" field="gender">
     <CRadioGroup options={genderOptions} bind:value={gender} />
@@ -95,6 +108,6 @@
     <CButton label="Reset" outlined on:click={onReset} />
   </div>
   <div>
-    <CButton label="Submit" on:click={onSubmit} />
+    <CButton label="Submit" on:click={onSubmit} loading={validating} />
   </div>
 </div>
