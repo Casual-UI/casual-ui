@@ -20,7 +20,7 @@
    * import { getContext } from 'svelte'
    * const validateSomeField = getContext(validateSomeFieldKey)
    *
-   * // At some time
+   * // At some proper time
    * validateSomeFiled?.('field')
    * ```
    */
@@ -34,7 +34,7 @@
    * import { getContext } from 'svelte'
    * const clearSomeField = getContext(clearSomeFieldKey)
    *
-   * // At some time
+   * // At some proper time
    * clearSomeField?.('field')
    * ```
    */
