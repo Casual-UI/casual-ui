@@ -2,9 +2,7 @@
   import useSize from '$lib/hooks/useSize'
   import clsx from '$lib/utils/clsx'
   import { tick } from 'svelte'
-  import { flip } from 'svelte/animate'
-  import { cubicIn } from 'svelte/easing'
-  import { crossfade, fly } from 'svelte/transition'
+  import { cubicIn, cubicInOut } from 'svelte/easing'
 
   /**
    * The items config. If a config don't has `title` prop. Will use `name` as tab title.
@@ -65,71 +63,53 @@
 
   $: activeItem, computeActiveBar()
 
-  let reverse = false
+  let nextIdx = -1
+  let currentIdx = -1
 
   /**
    * @param {{ name: string }} item
    */
-  const onHeaderClick = item => {
-    const currentIdx = items.findIndex(item2 => item2.name === activeItem)
-    const nextIdx = items.findIndex(item2 => item2.name === item.name)
+  const onHeaderClick = async item => {
+    currentIdx = items.findIndex(item2 => item2.name === activeItem)
+    nextIdx = items.findIndex(item2 => item2.name === item.name)
+    await tick()
     activeItem = item.name
-    reverse = currentIdx > nextIdx
   }
 
   /**
-   * @type {*}
+   *
+   * @param {*} node
+   * @param {*} params
    */
-  const tab = () => {
-    return {}
-  }
-
-  /**
-   * @param {*} e
-   */
-  const onStart = e => {
-    // e.target.classList.remove('c-date-panel-leave-active')
-    // e.target.classList.remove('c-date-panel-reverse-leave-active')
-    e.target.classList.add(
-      reverse
-        ? 'c-date-panel-reverse-enter-active'
-        : 'c-date-panel-enter-active'
-    )
-  }
-
-  /**
-   * @param {*} e
-   */
-  const onStartEnd = e => {
-    e.target.classList.remove(
-      reverse
-        ? 'c-date-panel-reverse-enter-active'
-        : 'c-date-panel-enter-active'
-    )
-  }
-
-  /**
-   * @param {*} e
-   */
-  const onOutStart = e => {
-    // e.target.classList.remove('c-date-panel-enter-active')
-    // e.target.classList.remove('c-date-panel-reverse-enter-active')
-    e.target.classList.add(
-      reverse
-        ? 'c-date-panel-reverse-leave-active'
-        : 'c-date-panel-leave-active'
-    )
-  }
-
-  /**
-   * @param {*} e
-   */
-  const onOutEnd = e => {
-    e.target.classList.remove(
-      reverse
-        ? 'c-date-panel-reverse-leave-active'
-        : 'c-date-panel-leave-active'
-    )
+  const tab = (node, { reverse, mode }) => {
+    return {
+      easing: cubicInOut,
+      duration: 500,
+      css: t => {
+        let x
+        if (mode === 'in') {
+          if (reverse) {
+            x = -(100 - 100 * t)
+          } else {
+            x = 100 - 100 * t
+          }
+        } else {
+          if (!reverse) {
+            x = -100 + 100 * t
+          } else {
+            x = 100 - 100 * t
+          }
+        }
+        if (panelPadding && mode === 'out') {
+          node.classList.add(`c-pa-${$contextSize}`)
+        }
+        return `${
+          mode === 'out'
+            ? 'position: absolute;top:0;left:0;right:0;bottom:0;'
+            : ''
+        }transform: translateX(${x}px);opacity:${t};`
+      },
+    }
   }
 </script>
 
@@ -164,11 +144,12 @@
     class={clsx('c-tabs--body', panelPadding && `c-pa-${$contextSize}`)}
     style={bodyStyle}
   >
-    {#each items as item (item.name)}
+    {#each items as item, i (item.name)}
       {#if activeItem === item.name}
         <div
           class="c-tabs--body-item"
-          transition:fly={{ x: reverse ? -100 : 100 }}
+          in:tab={{ reverse: nextIdx < currentIdx, mode: 'in' }}
+          out:tab={{ reverse: nextIdx < currentIdx, mode: 'out' }}
         >
           <svelte:component this={item.body} />
         </div>
