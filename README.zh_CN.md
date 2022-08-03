@@ -16,9 +16,9 @@
 
 ## 在线示例 & 文档
 
-- [Casual UI - React](https://casual-ui-react.donsen.site/)
-- [Casual UI - Vue](https://casual-ui-vue.donsen.site/)
-- [Casual UI - Svelte](https://casual-ui-svelte.donsen.site/)
+- [Casual UI - React](https://casual-ui-react.donsen.site/) （目前仅有中文）
+- [Casual UI - Vue](https://casual-ui-vue.donsen.site/) （目前仅有中文）
+- [Casual UI - Svelte](https://casual-ui-svelte.donsen.site/) （目前仅有英文）
 
 ## 安装 & 使用
 
