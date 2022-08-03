@@ -10,7 +10,7 @@
   }[] = []
 
   // current page in sidebar index
-  $: currentPageIndex = pages.findIndex(item =>
+  $: currentPageIndex = pages?.findIndex(item =>
     item.to.includes($page.routeId || '*#%@')
   )
 

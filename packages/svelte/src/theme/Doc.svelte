@@ -3,6 +3,9 @@
 
   import { CExpansion } from '$lib'
   import CTooltip from '$lib/components/CTooltip.svelte'
+  import { flip } from 'svelte/animate'
+  import { cubicIn } from 'svelte/easing'
+  import { crossfade } from 'svelte/transition'
   import casualConfig from './casual.config'
   import CopyBtn from './CopyBtn.svelte'
   import Link from './Link.svelte'
@@ -16,7 +19,6 @@
   export let id = ''
   export let hideSandboxIcon = false
   export let hideEditIcon = false
-
   let showLink = false
 </script>
 
