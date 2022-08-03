@@ -110,6 +110,11 @@
 
   /**
    * The falg that determine form is in validating or not.
+   *
+   * It will be set to `true` when the `validateAll` or `validateSomeField` method is called.
+   *
+   * It will be restore to `false` when all validations are over.
+   *
    * @type {boolean}
    */
   export let validating = false

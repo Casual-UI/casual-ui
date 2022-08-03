@@ -211,12 +211,12 @@
         <!-- Customize suffix content -->
         <slot name="suffix" />
       </div>
-      {#if loading}
-        <!-- Customize loading content -->
-        <slot name="loading">
+      <!-- Customize loading content -->
+      <slot name="loading">
+        {#if loading}
           <CLoading />
-        </slot>
-      {/if}
+        {/if}
+      </slot>
     </div>
   </div>
 </div>
