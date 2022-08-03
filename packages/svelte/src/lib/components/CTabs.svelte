@@ -66,13 +66,15 @@
   let nextIdx = -1
   let currentIdx = -1
 
+  let reverse = false
+
   /**
    * @param {{ name: string }} item
    */
   const onHeaderClick = async item => {
     currentIdx = items.findIndex(item2 => item2.name === activeItem)
     nextIdx = items.findIndex(item2 => item2.name === item.name)
-    await tick()
+    reverse = nextIdx < currentIdx
     activeItem = item.name
   }
 
@@ -81,10 +83,14 @@
    * @param {*} node
    * @param {*} params
    */
-  const tab = (node, { reverse, mode }) => {
+  const tab = (node, { mode, name }) => {
+    console.log(name, reverse, mode)
     return {
       easing: cubicInOut,
       duration: 500,
+      /**
+       * @param {number} t
+       */
       css: t => {
         let x
         if (mode === 'in') {
@@ -148,8 +154,14 @@
       {#if activeItem === item.name}
         <div
           class="c-tabs--body-item"
-          in:tab={{ reverse: nextIdx < currentIdx, mode: 'in' }}
-          out:tab={{ reverse: nextIdx < currentIdx, mode: 'out' }}
+          in:tab={{
+            mode: 'in',
+            name: item.name,
+          }}
+          out:tab={{
+            mode: 'out',
+            name: item.name,
+          }}
         >
           <svelte:component this={item.body} />
         </div>
