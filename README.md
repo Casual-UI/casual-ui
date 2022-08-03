@@ -18,9 +18,9 @@ A components lib for React17, Vue3, Svelte3
 
 ## Online Demos & Docs
 
-- [Casual UI - React](https://casual-ui-react.donsen.site/)
-- [Casual UI - Vue](https://casual-ui-vue.donsen.site/)
-- [Casual UI - Svelte](https://casual-ui-svelte.donsen.site/)
+- [Casual UI - React](https://casual-ui-react.donsen.site/) (Currently only Chinese. Sorry about the inconvenience.)
+- [Casual UI - Vue](https://casual-ui-vue.donsen.site/) (Currently only Chinese. Sorry about the inconvenience.)
+- [Casual UI - Svelte](https://casual-ui-svelte.donsen.site/) (Currently only English. Sorry about the inconvenience.)
 
 ## Install
 
