@@ -46,8 +46,10 @@ import CDatePicker from './components/form/date-picker/CDatePicker.svelte'
 import CInfoItem from './components/CInfoItem.svelte'
 import CTabs from './components/CTabs.svelte'
 export { useFormProps } from './hooks/useForm'
+import CTable from './components/table/CTable.svelte'
 
 export {
+  CTable,
   CTabs,
   CInfoItem,
   CDatePicker,

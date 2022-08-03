@@ -1,8 +1,5 @@
 <script>
   import bem from '$lib/utils/bem'
-
-  import clsx from '$lib/utils/clsx'
-  import { each } from 'svelte/internal'
   import CTd from './CTd.svelte'
   import CTh from './CTh.svelte'
   import CTr from './CTr.svelte'
@@ -11,13 +8,13 @@
    * Determine whether the table is striped or not.
    * @type {boolean}
    */
-  let striped = false
+  export let striped = false
 
   /**
    * The columns config array.
-   * @type {Array<{ field: string; width?: string; title?: string | import('svelte').SvelteComponentTyped; cell?: import('svelte').ComponentType }>}
+   * @type {Array<{ field: string; width?: string; title?: string | import('svelte').ComponentType; cell?: import('svelte').ComponentType }>}
    */
-  let columns = []
+  export let columns = []
 
   /**
    * The table data.
@@ -56,12 +53,7 @@
           {#each columns as col}
             <CTd>
               {#if col.cell}
-                <svelte:component
-                  this={col.cell}
-                  colData={col}
-                  rowData={row}
-                  rowIdx={i}
-                />
+                <svelte:component this={col.cell} {col} {row} rowIndex={i} />
               {:else}
                 {row[col.field]}
               {/if}
