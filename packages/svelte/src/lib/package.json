@@ -1,6 +1,6 @@
 {
   "name": "casual-ui-svelte",
-  "version": "0.0.29",
+  "version": "0.0.30",
   "main": "index.js",
   "module": "index.js",
   "types": "index.d.ts",
