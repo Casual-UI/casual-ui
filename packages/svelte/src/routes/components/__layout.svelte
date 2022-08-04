@@ -58,12 +58,14 @@
     </Attention>
     <slot />
     {#if demos.length}
-      {#each demos as { title, name, comp } (`${$page.routeId}-${name}`)}
+      {#each demos as { title, name, comp, group } (`${$page.routeId}-${name}`)}
         <Doc
           {title}
           component={comp}
           id={name}
+          {group}
           {...sessionData.demosCodeHTML[name]}
+          demosCodeHTML={sessionData.demosCodeHTML}
           on:ready={() => slugNav?.computedTargetPositions()}
           on:toggled={() => slugNav?.computedTargetPositions()}
         />

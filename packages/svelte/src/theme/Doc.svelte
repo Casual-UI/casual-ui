@@ -1,15 +1,18 @@
 <script lang="ts">
   import { page } from '$app/stores'
 
-  import { CExpansion } from '$lib'
+  import { CExpansion, CTabs } from '$lib'
   import CTooltip from '$lib/components/CTooltip.svelte'
-  import { flip } from 'svelte/animate'
-  import { cubicIn } from 'svelte/easing'
-  import { crossfade } from 'svelte/transition'
   import casualConfig from './casual.config'
   import CopyBtn from './CopyBtn.svelte'
   import Link from './Link.svelte'
   import { attributeAtom } from './utils/attributeAtom'
+
+  interface CodeItem {
+    code?: string
+    html?: string
+    mdDocContent?: string
+  }
 
   export let code = ''
   export let html = ''
@@ -19,7 +22,26 @@
   export let id = ''
   export let hideSandboxIcon = false
   export let hideEditIcon = false
+  export let group: any[] = []
+  export let demosCodeHTML: Record<string, CodeItem> = {}
+
   let showLink = false
+
+  let activeItem = id
+
+  let tabItems = [{ name: id, title: 'App.svelte', body: component }, ...group]
+
+  $: activeCodeItem = group.length
+    ? Object.entries(demosCodeHTML).find(([k]) => k === activeItem)?.[1] || {
+        html: '',
+        code: '',
+        mdDocContent: '',
+      }
+    : {
+        html,
+        code,
+        mdDocContent,
+      }
 </script>
 
 <div
@@ -85,18 +107,22 @@
     </div>
   </div>
   {#if component || mdDocContent}
-    <div p-4 bg-white box-border dark:bg-191919>
-      {#if mdDocContent}
-        <div mb-4>
-          {@html mdDocContent}
-        </div>
-      {/if}
-      <svelte:component this={component} />
-    </div>
+    {#if !group.length}
+      <div p-4 bg-white box-border dark:bg-191919>
+        {#if mdDocContent}
+          <div mb-4>
+            {@html mdDocContent}
+          </div>
+        {/if}
+        <svelte:component this={component} />
+      </div>
+    {:else}
+      <CTabs bind:activeItem items={tabItems} />
+    {/if}
   {/if}
   <!-- The middle content -->
   <slot />
-  {#if code}
+  {#if activeCodeItem.code}
     <CExpansion
       reverse
       on:toggled
@@ -104,8 +130,8 @@
       headerStyle="position: sticky; bottom: 0;"
     >
       <div slot="title" fs-14>Expand/Fold Code</div>
-      <CopyBtn {code} fs-14 md:text-4>
-        {@html html}
+      <CopyBtn code={activeCodeItem.code} fs-14 md:text-4>
+        {@html activeCodeItem.html}
       </CopyBtn>
       <div i-vscode-icons-file-type-svelte slot="icon" />
     </CExpansion>

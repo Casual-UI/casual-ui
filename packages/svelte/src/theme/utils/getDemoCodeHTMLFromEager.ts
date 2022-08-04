@@ -16,11 +16,13 @@ export default async (modules: Record<string, any>) => {
   const demosCodeHTML: any = {}
 
   for (const [k, v] of svelteFiles) {
+    const code = v.replace(/<script context="module">[\s\S]*<\/script>\n+/, '')
+
     const mdFileName: string = k.replace(/\.svelte$/, '.md')
     demosCodeHTML[k.replace(/(^\.\/_demos\/)|(\.svelte$)/g, '')] = {
       mdDocContent: parseMarkdown(modules[mdFileName]),
-      code: v,
-      html: await codeToHTML(v),
+      code,
+      html: await codeToHTML(code),
     }
   }
 

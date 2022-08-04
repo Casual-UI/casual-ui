@@ -19,9 +19,9 @@
   <div mr-4>
     {rowIndex + 1}
   </div>
-  {#if row?.name === 'Apple'}
+  {#if row.name === 'Apple'}
     <div i-openmoji-red-apple />
-  {:else if row?.name === 'Banana'}
+  {:else if row.name === 'Banana'}
     <div i-openmoji-banana />
   {:else}
     <div i-openmoji-grapes />

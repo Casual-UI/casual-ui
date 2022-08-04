@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Casual UI relative types",
   "main": "index.ts",
+  "private": true,
   "scripts": {
   },
   "repository": {
