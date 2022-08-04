@@ -1,13 +1,13 @@
 <script lang="ts">
   import { CTable } from 'casual-ui-svelte'
-  import CustomCellNameApple from './custom-cell-name-apple.svelte'
+  import FruitIcon from './FruitIcon.svelte'
 
   const columns = [
     {
       title: 'Name',
       field: 'name',
       width: '200px',
-      cell: CustomCellNameApple,
+      cell: FruitIcon,
     },
     {
       title: 'Description',

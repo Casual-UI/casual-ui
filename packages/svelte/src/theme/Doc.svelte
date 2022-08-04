@@ -117,7 +117,7 @@
         <svelte:component this={component} />
       </div>
     {:else}
-      <CTabs bind:activeItem items={tabItems} />
+      <CTabs bind:activeItem items={tabItems} panelPadding={false} />
     {/if}
   {/if}
   <!-- The middle content -->

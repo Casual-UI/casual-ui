@@ -1,3 +1,7 @@
+<script context="module">
+  export const group = 'custom-column'
+</script>
+
 <script lang="ts">
   export let row: {
     name: string

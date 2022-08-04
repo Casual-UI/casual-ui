@@ -16,7 +16,10 @@ export default async (modules: Record<string, any>) => {
   const demosCodeHTML: any = {}
 
   for (const [k, v] of svelteFiles) {
-    const code = v.replace(/<script context="module">[\s\S]*<\/script>\n+/, '')
+    const code = v.replace(
+      /<script context="module">[\s\w'=-]*<\/script>\n+/,
+      ''
+    )
 
     const mdFileName: string = k.replace(/\.svelte$/, '.md')
     demosCodeHTML[k.replace(/(^\.\/_demos\/)|(\.svelte$)/g, '')] = {
