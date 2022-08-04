@@ -6,7 +6,7 @@
     {
       title: 'Name',
       field: 'name',
-      width: '200px',
+      width: '400px',
       cell: FruitIcon,
     },
     {

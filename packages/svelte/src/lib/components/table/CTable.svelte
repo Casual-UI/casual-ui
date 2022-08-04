@@ -37,7 +37,7 @@
     <thead>
       <CTr>
         {#each columns as col}
-          <CTh>
+          <CTh width={col.width}>
             {#if typeof col.title === 'string'}
               {col.title}
             {:else}
@@ -51,7 +51,7 @@
       {#each data as row, i}
         <CTr>
           {#each columns as col}
-            <CTd>
+            <CTd width={col.width}>
               {#if col.cell}
                 <svelte:component this={col.cell} {col} {row} rowIndex={i} />
               {:else}
