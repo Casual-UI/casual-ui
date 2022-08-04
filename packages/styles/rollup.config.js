@@ -8,4 +8,7 @@ export default defineConfig({
       output: 'dist/style.css',
     }),
   ],
+  output: {
+    dir: 'dist',
+  },
 })

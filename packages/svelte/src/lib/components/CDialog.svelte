@@ -131,8 +131,20 @@
    */
   export let closeOnClickBackdrop = false
 
-  $: hAlign = useHorizontal(horizontalAlign)
-  $: vAlign = useVertical(verticalAlign)
+  const hAlign = useHorizontal(horizontalAlign)
+
+  $: {
+    if (horizontalAlign) {
+      $hAlign = horizontalAlign
+    }
+  }
+  const vAlign = useVertical(verticalAlign)
+
+  $: {
+    if (verticalAlign) {
+      $vAlign = verticalAlign
+    }
+  }
 
   $: roundedClass = new Map([
     ['start start', `c-rounded-br-md`],

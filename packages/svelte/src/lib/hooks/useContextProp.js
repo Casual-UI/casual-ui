@@ -6,15 +6,21 @@ import { writable } from 'svelte/store'
  * @param {*} val
  * @param {*} defaultVal
  */
-export default (key, val, defaultVal) => {
+export default (key, val, defaultVal, affectAncestor = false) => {
   const hasVal = val !== void 0
   if (hasContext(key)) {
     let contextVal = getContext(key)
     if (!hasVal) {
       return contextVal
     }
+
+    if (affectAncestor) {
+      contextVal.set(val)
+      return contextVal
+    }
     contextVal = writable(val)
     setContext(key, contextVal)
+
     return contextVal
   }
   const contextVal = writable(val ? val : defaultVal)
