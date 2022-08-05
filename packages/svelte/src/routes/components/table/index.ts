@@ -7,7 +7,7 @@ export const GET: RequestHandler = async function () {
     status: 200,
     body: {
       demosCodeHTML: await getDemoCodeHTMLFromEager(
-        import.meta.glob('./_demos/*.svelte', { as: 'raw', eager: true })
+        import.meta.glob('./_demos/*.(svelte|md)', { as: 'raw', eager: true })
       ),
       componentAPI: await parseComponentAPI('table/CTable'),
     },

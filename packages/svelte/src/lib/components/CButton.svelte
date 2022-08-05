@@ -12,8 +12,15 @@
   export let label = ''
   /**
    * Determine button use outlined style or not.
+   * @type {boolean}
    */
   export let outlined = false
+
+  /**
+   * Determine whether the button has flat style or not.
+   * @type {boolean}
+   */
+  export let flat = false
 
   /**
    * Determine the button has a rounded border or not.
@@ -81,6 +88,7 @@
     loading,
     block,
     icon,
+    flat,
   })} ${clsx(
     `c-button--theme-${theme}`,
     rounded && `c-rounded-${$realSize}`,

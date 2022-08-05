@@ -86,7 +86,7 @@
   const tab = (node, { mode, name }) => {
     return {
       easing: cubicInOut,
-      duration: 500,
+      duration: 300,
       /**
        * @param {number} t
        */

@@ -117,6 +117,11 @@
         <svelte:component this={component} />
       </div>
     {:else}
+      {#if mdDocContent}
+        <div mb-4 px-4>
+          {@html mdDocContent}
+        </div>
+      {/if}
       <CTabs bind:activeItem items={tabItems} panelPadding={false} />
     {/if}
   {/if}

@@ -85,6 +85,7 @@
   {#if show}
     <div
       bg-white
+      dark:bg-222222
       p-4
       rounded-2
       w-80
@@ -110,7 +111,15 @@
           verticalAlign === 'start' ? -50 : verticalAlign === 'center' ? 0 : 50,
       }}
     >
-      <div pb-4 border-b border-gray-3 flex justify-between items-center>
+      <div
+        pb-4
+        border-b
+        border-gray-3
+        dark:border-gray-7
+        flex
+        justify-between
+        items-center
+      >
         <div font-bold>Some Title</div>
         <div
           i-material-symbols-close
@@ -119,7 +128,7 @@
           on:click={() => (show = false)}
         />
       </div>
-      <div text-gray-6>
+      <div text-gray-6 dark:text-gray-3>
         <p>Some description</p>
       </div>
       <div flex justify-end>

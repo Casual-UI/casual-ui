@@ -49,7 +49,7 @@
                     {param.type.text}
                   </InlineCode>
                   <Description>
-                    {@html description}
+                    {@html param.description}
                   </Description>
                 </li>
               {/each}

@@ -47,8 +47,12 @@ import CInfoItem from './components/CInfoItem.svelte'
 import CTabs from './components/CTabs.svelte'
 export { useFormProps } from './hooks/useForm'
 import CTable from './components/table/CTable.svelte'
+import CCarousel from './components/carousel/CCarousel.svelte'
+import CCarouselSlider from './components/carousel/CCarouselSlider.svelte'
 
 export {
+  CCarouselSlider,
+  CCarousel,
   CTable,
   CTabs,
   CInfoItem,
