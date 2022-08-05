@@ -4,7 +4,15 @@
    */
   export const slidesKey = Symbol('c-carousel-names')
 
+  /**
+   * The current index.
+   */
   export const activeIndexKey = Symbol('c-carousel-active-index')
+
+  /**
+   * The move direction. Can be `'forward'` or `'backward'`
+   */
+  export const directionKey = Symbol('c-carousel-direction')
 </script>
 
 <script>
@@ -15,6 +23,7 @@
   import { setContext } from 'svelte'
 
   import { writable } from 'svelte/store'
+  import { tick } from 'svelte'
   import CButton from '../CButton.svelte'
 
   /**
@@ -55,28 +64,37 @@
    */
   export let infinity = false
 
+  const direction = writable('forward')
+
   const slides = writable([])
-  setContext(slidesKey, slides)
 
   const activeIndexStore = writable(activeIndex)
+  setContext(slidesKey, slides)
   setContext(activeIndexKey, activeIndexStore)
+  setContext(directionKey, direction)
 
   const toPrev = () => {
     if (activeIndex > 0) {
+      $direction = 'backward'
       activeIndex--
       return
     }
     if (infinity) {
+      $direction = 'backward'
       activeIndex = $slides.length - 1
     }
   }
 
-  const toNext = () => {
+  const toNext = async () => {
     if (activeIndex < $slides.length - 1) {
+      $direction = 'forward'
+      await tick()
       activeIndex++
       return
     }
     if (infinity) {
+      $direction = 'forward'
+      await tick()
       activeIndex = 0
     }
   }

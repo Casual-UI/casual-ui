@@ -1,5 +1,6 @@
 .c-carousel {
   position: relative;
+  overflow: hidden;
 
   &--indicators {
     position: absolute;
@@ -12,7 +13,6 @@
   }
 
   &--sliders {
-    padding: 12px 48px;
   }
 
   &--slider-item {
