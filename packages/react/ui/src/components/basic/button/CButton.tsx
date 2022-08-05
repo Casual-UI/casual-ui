@@ -115,6 +115,7 @@ const CButton = ({
         if (!disabled && !loading) onClick?.()
       }}
     >
+      <div className="c-button--focus-helper"></div>
       <div className={clsx('c-button--content-wrapper')}>
         {children ? children : label}
         {loading && (
