@@ -13,6 +13,11 @@
    * The move direction. Can be `'forward'` or `'backward'`
    */
   export const directionKey = Symbol('c-carousel-direction')
+
+  /**
+   * The vertical context. Determine whether the carousel moving vertical.
+   */
+  export const verticalKey = Symbol('c-carousel-vertical')
 </script>
 
 <script>
@@ -71,9 +76,12 @@
   const slides = writable([])
 
   const activeIndexStore = writable(activeIndex)
+
+  const verticalContext = writable(vertical)
   setContext(slidesKey, slides)
   setContext(activeIndexKey, activeIndexStore)
   setContext(directionKey, direction)
+  setContext(verticalKey, verticalContext)
 
   /**
    * Goto specific slider
@@ -117,6 +125,10 @@
 
   $: {
     $activeIndexStore = activeIndex
+  }
+
+  $: {
+    $verticalContext = vertical
   }
 
   export { toPrev, toNext, toIndex }

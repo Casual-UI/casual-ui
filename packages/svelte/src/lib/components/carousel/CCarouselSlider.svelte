@@ -1,11 +1,18 @@
 <script>
   import { getContext } from 'svelte'
   import { linear } from 'svelte/easing'
-  import { activeIndexKey, directionKey, slidesKey } from './CCarousel.svelte'
+  import {
+    activeIndexKey,
+    directionKey,
+    slidesKey,
+    verticalKey,
+  } from './CCarousel.svelte'
 
   const slides = getContext(slidesKey)
   const direction = getContext(directionKey)
   const activeIndex = getContext(activeIndexKey)
+  const vertical = getContext(verticalKey)
+
   const currentIndex = $slides.length
 
   $slides.push(currentIndex)
@@ -39,7 +46,7 @@
             x = -100 + 100 * t
           }
         }
-        return `transform: translateX(${x}%);`
+        return `transform: translate${$vertical ? 'Y' : 'X'}(${x}%);`
       },
     }
   }

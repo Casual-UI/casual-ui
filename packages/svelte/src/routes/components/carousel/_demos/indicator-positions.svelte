@@ -4,7 +4,7 @@
   let activeIndex = 0
 
   let indicatorsPositionHorizontal: 'start' | 'center' | 'end' = 'center'
-  let indicatorsPositionVertical: 'start' | 'center' | 'end' = 'center'
+  let indicatorsPositionVertical: 'start' | 'center' | 'end' = 'end'
   let indicatorsAlignDirection:
     | 'row'
     | 'row-reverse'
@@ -53,6 +53,7 @@
   {indicatorsPositionHorizontal}
   {indicatorsPositionVertical}
   {indicatorsAlignDirection}
+  infinity
 >
   <CCarouselSlider>
     <div class="item">

@@ -54,6 +54,7 @@
     &.c-column-reverse {
       .c-carousel--indicator-item {
         height: 24px;
+        transition: height 0.2s var(--casual-ease-in-out-cubic);
         width: 3px;
 
         &--active {
@@ -79,6 +80,25 @@
 
     &--next {
       right: 1em;
+    }
+  }
+
+  &--vertical {
+    .c-carousel {
+      &--control {
+        top: unset;
+        right: unset;
+        left: 50%;
+        transform: translateX(-50%) rotate(90deg);
+
+        &--prev {
+          top: 1em;
+        }
+
+        &--next {
+          bottom: 1em;
+        }
+      }
     }
   }
 }
