@@ -15,4 +15,7 @@
   <div>
     <CButton label="A Round Button" round />
   </div>
+  <div>
+    <CButton label="A Flat Button" round flat />
+  </div>
 </div>

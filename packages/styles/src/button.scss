@@ -3,12 +3,42 @@
   display: inline-block;
   outline: none;
   border: 1px solid transparent;
-  transition: background 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: background box-shadow;
+  transition-duration: 0.1s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
   cursor: pointer;
-  color: #fff;
+
+  &--focus-helper {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: opacity 0.1s var(--casual-ease-in-cubic);
+    border-radius: inherit;
+  }
+
+  &:not(.c-button--flat) {
+    color: #fff;
+  }
 
   &:not(.c-button--icon) {
     min-width: 70px;
+  }
+
+  &:disabled {
+    background-color: var(--casual-disabled);
+    cursor: not-allowed;
+    color: #fff;
+  }
+
+  &:not(:disabled):not(.c-button--flat):active {
+    box-shadow:
+      0 3px 5px -1px #0003,
+      0 5px 8px #00000024,
+      0 1px 14px #0000001f;
   }
 
   &--block {
@@ -89,7 +119,57 @@
     }
   }
 
-  &:not(:disabled):not(.c-button--loading).c-button {
+  &--flat {
+    background-color: transparent;
+
+    &:hover {
+      .c-button--focus-helper {
+        opacity: 0.2;
+      }
+    }
+
+    &:active {
+      .c-button--focus-helper {
+        opacity: 0.4;
+      }
+    }
+
+    &.c-button--theme {
+      &-primary {
+        color: var(--casual-primary);
+
+        .c-button--focus-helper {
+          background-color: var(--casual-primary);
+        }
+      }
+
+      &-secondary {
+        color: var(--casual-secondary);
+
+        .c-button--focus-helper {
+          background-color: var(--casual-secondary);
+        }
+      }
+
+      &-warning {
+        color: var(--casual-warning);
+
+        .c-button--focus-helper {
+          background-color: var(--casual-warning);
+        }
+      }
+
+      &-negative {
+        color: var(--casual-negative);
+
+        .c-button--focus-helper {
+          background-color: var(--casual-negative);
+        }
+      }
+    }
+  }
+
+  &:not(:disabled):not(.c-button--loading):not(.c-button--flat).c-button {
     &--theme {
       &-primary {
         &:hover {
@@ -142,11 +222,5 @@
   &--loading {
     cursor: wait;
     opacity: 0.7;
-  }
-
-  &:disabled {
-    background-color: var(--casual-disabled);
-    cursor: not-allowed;
-    color: #fff;
   }
 }

@@ -27,4 +27,16 @@
   <div>
     <CButton label="A Negative Button" theme="negative" outlined />
   </div>
+  <div>
+    <CButton label="A Primary (default) Button" flat />
+  </div>
+  <div>
+    <CButton label="A Secondary Button" theme="secondary" flat />
+  </div>
+  <div>
+    <CButton label="A Warning Button" theme="warning" flat />
+  </div>
+  <div>
+    <CButton label="A Negative Button" theme="negative" flat />
+  </div>
 </div>

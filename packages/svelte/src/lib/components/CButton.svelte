@@ -102,6 +102,7 @@
   {style}
   on:click
 >
+  <div class="c-button--focus-helper" />
   <div class="c-button--content-wrapper">
     <!-- The internal content of the button. This slot can override `label` prop -->
     <slot>
