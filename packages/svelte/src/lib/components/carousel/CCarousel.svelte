@@ -160,7 +160,7 @@
       class="c-carousel--control c-carousel--control--prev"
       on:click={toPrev}
     >
-      <!-- Customize the to previous slider control content -->
+      <!-- Customize the to previous slide control content -->
       <slot name="control-prev">
         <CButton icon flat>
           <div i-ooui-previous-ltr />
@@ -174,7 +174,7 @@
       class="c-carousel--control c-carousel--control--next"
       on:click={toNext}
     >
-      <!-- Customize the to next slider control content -->
+      <!-- Customize the to next slide control content -->
       <slot name="control-next">
         <CButton icon flat>
           <div i-ooui-previous-rtl />
@@ -184,7 +184,7 @@
   {/if}
 
   <div class="c-carousel--sliders">
-    <!-- The sliders. It is recommended to use [CCarouselSlider](/components/carousel-slider) -->
+    <!-- The slides content. It is recommended to use [CCarouselSlider](/components/carousel-slider) -->
     <slot />
   </div>
 </div>
