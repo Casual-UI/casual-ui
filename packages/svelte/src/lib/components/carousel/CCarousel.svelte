@@ -17,17 +17,19 @@
 
 <script>
   import bem from '$lib/utils/bem'
-
   import clsx from '$lib/utils/clsx'
-
   import { setContext } from 'svelte'
-
   import { writable } from 'svelte/store'
-  import { tick } from 'svelte'
   import CButton from '../CButton.svelte'
 
   /**
-   * The current active slider index (from 0). It is recommended to use `bind:activeName`.
+   * The container height.
+   * @type {string}
+   */
+  export let height = '300px'
+
+  /**
+   * The current active slider index (from 0). You can use `bind:activeIndex`.
    * @type {number}
    */
   export let activeIndex = 0
@@ -36,13 +38,13 @@
    * Determine the indicators horizontal position.
    * @type {'start' | 'center' | 'end'}
    */
-  export let indicatorsPositionHorizontal = 'center'
+  export let indicatorsPositionHorizontal = 'end'
 
   /**
    * Determine the indicators vertical position.
    * @type {'start' | 'center' | 'end'}
    */
-  export let indicatorsPositionVertical = 'end'
+  export let indicatorsPositionVertical = 'center'
 
   /**
    * Determine the idicators align direction.
@@ -73,31 +75,39 @@
   setContext(activeIndexKey, activeIndexStore)
   setContext(directionKey, direction)
 
-  const toPrev = () => {
-    if (activeIndex > 0) {
-      $direction = 'backward'
-      activeIndex--
+  /**
+   * Goto specific slider
+   * @param {number} idx
+   */
+  const toIndex = idx => {
+    if (idx < activeIndex) {
+      if (idx >= 0) {
+        $direction = 'backward'
+        activeIndex = idx
+        return
+      }
+      if (infinity) {
+        $direction = 'backward'
+        activeIndex = $slides.length - 1
+      }
       return
     }
-    if (infinity) {
-      $direction = 'backward'
-      activeIndex = $slides.length - 1
+    if (idx > activeIndex) {
+      if (idx < $slides.length) {
+        $direction = 'forward'
+        activeIndex = idx
+        return
+      }
+      if (infinity) {
+        $direction = 'forward'
+        activeIndex = 0
+      }
     }
   }
 
-  const toNext = async () => {
-    if (activeIndex < $slides.length - 1) {
-      $direction = 'forward'
-      await tick()
-      activeIndex++
-      return
-    }
-    if (infinity) {
-      $direction = 'forward'
-      await tick()
-      activeIndex = 0
-    }
-  }
+  const toPrev = () => toIndex(activeIndex - 1)
+
+  const toNext = () => toIndex(activeIndex + 1)
 
   $: {
     $activeIndexStore = activeIndex
@@ -108,12 +118,13 @@
   class={bem('carousel', {
     vertical,
   })}
+  style={`height: ${height}`}
 >
   <div
     class={`c-carousel--indicators c-flex c-items-${indicatorsPositionHorizontal} c-justify-${indicatorsPositionVertical}`}
   >
     <div
-      class={`c-carousel--indicators-container c-flex c-${indicatorsAlignDirection}`}
+      class={`c-carousel--indicators-container c-gutter-sm c-flex c-${indicatorsAlignDirection}`}
     >
       <!--
         Customize the indicators content.
@@ -121,13 +132,16 @@
         @param {string[]} names The names array of this carousel.
       -->
       <slot name="indicators">
-        {#each $slides as slide, i}
-          <div
-            class={clsx(
-              `c-carousel--indicator-item`,
-              i === activeIndex && 'c-carousel--indicator-item--active'
-            )}
-          />
+        {#each $slides as _, i}
+          <div>
+            <div
+              class={clsx(
+                `c-carousel--indicator-item`,
+                i === activeIndex && 'c-carousel--indicator-item--active'
+              )}
+              on:click={() => toIndex(i)}
+            />
+          </div>
         {/each}
       </slot>
     </div>

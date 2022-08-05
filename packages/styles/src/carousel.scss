@@ -13,14 +13,40 @@
   }
 
   &--sliders {
+    height: 100%;
   }
 
   &--slider-item {
-    // TODO:
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
 
   &--indicator-item {
-    // TODO:
+    pointer-events: all;
+    height: 3px;
+    border-radius: 4px;
+    width: 24px;
+    transition: width 0.2s var(--casual-ease-in-out-cubic);
+    background-color: var(--casual-primary);
+    transform-origin: center;
+    opacity: 0.2;
+
+    &:not(.c-carousel--indicator-item--active) {
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.4;
+      }
+    }
+
+    &--active {
+      cursor: normal;
+      width: 32px;
+      opacity: 0.7;
+    }
   }
 
   &--control {
@@ -34,11 +60,11 @@
     }
 
     &--prev {
-      left: 0;
+      left: 1em;
     }
 
     &--next {
-      right: 0;
+      right: 1em;
     }
   }
 }
