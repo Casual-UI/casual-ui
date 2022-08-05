@@ -105,13 +105,21 @@
     }
   }
 
+  /**
+   * Go to previous slide. If current is the first slide and `infinity` is `true`. Will goto the last slide.
+   */
   const toPrev = () => toIndex(activeIndex - 1)
 
+  /**
+   * Go to previous slide. If current is the last and `infinity` is `true`. Will goto the first slide.
+   */
   const toNext = () => toIndex(activeIndex + 1)
 
   $: {
     $activeIndexStore = activeIndex
   }
+
+  export { toPrev, toNext, toIndex }
 </script>
 
 <div
