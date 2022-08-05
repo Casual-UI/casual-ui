@@ -85,6 +85,34 @@ componentPath: basic/button/CButton
         outlined
       />
     </div>
+    <div>
+      <c-button
+        label="主色按钮"
+        theme="primary"
+        flat
+      />
+    </div>
+    <div>
+      <c-button
+        label="辅色按钮"
+        theme="secondary"
+        flat
+      />
+    </div>
+    <div>
+      <c-button
+        label="警告色按钮"
+        theme="warning"
+        flat
+      />
+    </div>
+    <div>
+      <c-button
+        label="消极色按钮"
+        theme="negative"
+        flat
+      />
+    </div>
   </div>
 </template>
 ```
