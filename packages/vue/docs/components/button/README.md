@@ -12,6 +12,19 @@ componentPath: basic/button/CButton
     label="轮廓按钮"
     outlined
   />
+  <c-button
+    label="圆角按钮"
+    rounded
+  />
+  <c-button
+    label="圆边按钮"
+    round
+  />
+  <c-button
+    label="扁平按钮"
+    flat
+    rounded
+  />
 </template>
 ```
 
