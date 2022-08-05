@@ -1,13 +1,10 @@
 <script context="module">
   /**
-   * Determien the current active item name.
-   */
-  export const activeItemKey = Symbol('c-carousel-active-item')
-
-  /**
    * Records the names of this carousel.
    */
-  export const namesKey = Symbol('c-carousel-names')
+  export const slidesKey = Symbol('c-carousel-names')
+
+  export const activeIndexKey = Symbol('c-carousel-active-index')
 </script>
 
 <script>
@@ -18,12 +15,13 @@
   import { setContext } from 'svelte'
 
   import { writable } from 'svelte/store'
+  import CButton from '../CButton.svelte'
 
   /**
-   * The current active slider name. It is recommended to use `bind:activeName`.
-   * @type {string}
+   * The current active slider index (from 0). It is recommended to use `bind:activeName`.
+   * @type {number}
    */
-  export let activeName = ''
+  export let activeIndex = 0
 
   /**
    * Determine the indicators horizontal position.
@@ -51,14 +49,40 @@
    */
   export let vertical = false
 
-  const contextActiveName = writable(activeName)
+  /**
+   * Determine whether the sliders can be infinity loop.
+   * @type {boolean}
+   */
+  export let infinity = false
 
-  const contextNames = writable([])
+  const slides = writable([])
+  setContext(slidesKey, slides)
 
-  setContext(activeItemKey, contextActiveName)
+  const activeIndexStore = writable(activeIndex)
+  setContext(activeIndexKey, activeIndexStore)
+
+  const toPrev = () => {
+    if (activeIndex > 0) {
+      activeIndex--
+      return
+    }
+    if (infinity) {
+      activeIndex = $slides.length - 1
+    }
+  }
+
+  const toNext = () => {
+    if (activeIndex < $slides.length - 1) {
+      activeIndex++
+      return
+    }
+    if (infinity) {
+      activeIndex = 0
+    }
+  }
 
   $: {
-    $contextActiveName = activeName
+    $activeIndexStore = activeIndex
   }
 </script>
 
@@ -78,12 +102,12 @@
 
         @param {string[]} names The names array of this carousel.
       -->
-      <slot name="indicators" names={$contextNames}>
-        {#each $contextNames as name}
+      <slot name="indicators">
+        {#each $slides as slide, i}
           <div
             class={clsx(
               `c-carousel--indicator-item`,
-              activeName === name && 'c-carousel--indicator-item--active'
+              i === activeIndex && 'c-carousel--indicator-item--active'
             )}
           />
         {/each}
@@ -91,19 +115,33 @@
     </div>
   </div>
 
-  <div class="c-carousel--control-prev">
-    <!-- Customize the to previous slider control content -->
-    <slot name="control-prev">
-      <div i-ooui-previous-ltr />
-    </slot>
-  </div>
+  {#if infinity || activeIndex > 0}
+    <div
+      class="c-carousel--control c-carousel--control--prev"
+      on:click={toPrev}
+    >
+      <!-- Customize the to previous slider control content -->
+      <slot name="control-prev">
+        <CButton icon flat>
+          <div i-ooui-previous-ltr />
+        </CButton>
+      </slot>
+    </div>
+  {/if}
 
-  <div class="c-carousel--control-next">
-    <!-- Customize the to next slider control content -->
-    <slot name="control-next">
-      <div i-ooui-previous-rtl />
-    </slot>
-  </div>
+  {#if infinity || activeIndex < $slides.length - 1}
+    <div
+      class="c-carousel--control c-carousel--control--next"
+      on:click={toNext}
+    >
+      <!-- Customize the to next slider control content -->
+      <slot name="control-next">
+        <CButton icon flat>
+          <div i-ooui-previous-rtl />
+        </CButton>
+      </slot>
+    </div>
+  {/if}
 
   <div class="c-carousel--sliders">
     <!-- The sliders. It is recommended to use [CCarouselSlider](/components/carousel-slider) -->

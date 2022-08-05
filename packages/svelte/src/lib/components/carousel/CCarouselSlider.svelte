@@ -1,17 +1,18 @@
 <script>
   import { getContext } from 'svelte'
-  import { activeItemKey } from './CCarousel.svelte'
+  import { activeIndexKey, slidesKey } from './CCarousel.svelte'
 
-  /**
-   * The identical key of this slider.
-   * @type {string}
-   */
-  export let name
+  const slides = getContext(slidesKey)
 
-  const contextActiveName = getContext(activeItemKey)
+  const activeIndex = getContext(activeIndexKey)
+  const currentIndex = $slides.length
+
+  $slides.push(currentIndex)
+  $slides = $slides
+  console.log(currentIndex, $slides)
 </script>
 
-{#if name === $contextActiveName}
+{#if currentIndex === $activeIndex}
   <div class="c-carousel--slider-item">
     <slot />
   </div>

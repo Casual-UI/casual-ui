@@ -1,19 +1,19 @@
 <script lang="ts">
   import { CCarousel, CCarouselSlider } from 'casual-ui-svelte'
 
-  let activeName = 'apple'
+  let activeIndex = 0
 </script>
 
-<CCarousel bind:activeName>
-  <CCarouselSlider name="apple">
+<CCarousel bind:activeIndex>
+  <CCarouselSlider>
     <div i-openmoji-red-apple text-10 />
     Do you want some apples?
   </CCarouselSlider>
-  <CCarouselSlider name="banana">
+  <CCarouselSlider>
     <div i-openmoji-banana text-10 />
     Would you like some bananas?
   </CCarouselSlider>
-  <CCarouselSlider name="grapes">
+  <CCarouselSlider>
     <div i-openmoji-grapes text-10 />
     How about some grapes?
   </CCarouselSlider>
