@@ -38,13 +38,13 @@
    * Determine the indicators horizontal position.
    * @type {'start' | 'center' | 'end'}
    */
-  export let indicatorsPositionHorizontal = 'end'
+  export let indicatorsPositionHorizontal = 'center'
 
   /**
    * Determine the indicators vertical position.
    * @type {'start' | 'center' | 'end'}
    */
-  export let indicatorsPositionVertical = 'center'
+  export let indicatorsPositionVertical = 'end'
 
   /**
    * Determine the idicators align direction.
@@ -129,7 +129,7 @@
   style={`height: ${height}`}
 >
   <div
-    class={`c-carousel--indicators c-flex c-items-${indicatorsPositionHorizontal} c-justify-${indicatorsPositionVertical}`}
+    class={`c-carousel--indicators c-flex c-items-${indicatorsPositionVertical} c-justify-${indicatorsPositionHorizontal}`}
   >
     <div
       class={`c-carousel--indicators-container c-gutter-sm c-flex c-${indicatorsAlignDirection}`}

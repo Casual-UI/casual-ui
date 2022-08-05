@@ -49,6 +49,20 @@
     }
   }
 
+  &--indicators-container {
+    &.c-column,
+    &.c-column-reverse {
+      .c-carousel--indicator-item {
+        height: 24px;
+        width: 3px;
+
+        &--active {
+          height: 32px;
+        }
+      }
+    }
+  }
+
   &--control {
     position: absolute;
     z-index: 4;
