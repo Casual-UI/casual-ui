@@ -47,6 +47,10 @@ interface CButtonProps {
    */
   icon?: boolean
   /**
+   * 是否为扁平按钮
+   */
+  flat?: boolean
+  /**
    * 自定义样式
    */
   style?: CSSProperties
@@ -84,6 +88,7 @@ const CButton = ({
   loading = false,
   onClick,
   customLoading,
+  flat = false,
   icon = false,
   children,
   style,
@@ -99,6 +104,7 @@ const CButton = ({
         outlined && 'c-button--outlined',
         loading && 'c-button--loading',
         icon && 'c-button--icon',
+        flat && 'c-button--flat',
         `c-font-${size}`,
         `c-px-${size}`,
         `c-h-${size}`,

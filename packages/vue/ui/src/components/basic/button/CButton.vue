@@ -47,6 +47,10 @@ interface CButtonProps {
    * 是否表现为图标按钮
    */
   icon?: boolean
+  /**
+   * 是否为扁平按钮
+   */
+  flat?: boolean
 }
 
 const props = withDefaults(defineProps<CButtonProps>(), {
@@ -60,6 +64,7 @@ const props = withDefaults(defineProps<CButtonProps>(), {
   size: 'md',
   theme: undefined,
   icon: false,
+  flat: false,
 })
 
 const { size } = toRefs(props)
@@ -83,6 +88,7 @@ defineEmits<{
   <button
     :class="[
       'c-button',
+      { 'c-button--flat': flat },
       { 'c-button--outlined': outlined },
       { 'c-button--round': round },
       rounded ? `c-rounded-${size}` : '',
