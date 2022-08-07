@@ -18,6 +18,16 @@
    * The vertical context. Determine whether the carousel moving vertical.
    */
   export const verticalKey = Symbol('c-carousel-vertical')
+
+  /**
+   * The auto play interval key.
+   */
+  export const intervalKey = Symbol('c-carousel-interval')
+
+  /**
+   * To next function key.
+   */
+  export const toNextKey = Symbol('c-carousel-to-next')
 </script>
 
 <script>
@@ -32,6 +42,12 @@
    * @type {string}
    */
   export let height = '300px'
+
+  /**
+   * The auto play interval. If it set to a value less than 0. The auto play will be disabled.
+   * @type {number}
+   */
+  export let interval = 0
 
   /**
    * The current active slider index (from 0). You can use `bind:activeIndex`.
@@ -78,10 +94,13 @@
   const activeIndexStore = writable(activeIndex)
 
   const verticalContext = writable(vertical)
+
+  const intervalContext = writable(interval)
   setContext(slidesKey, slides)
   setContext(activeIndexKey, activeIndexStore)
   setContext(directionKey, direction)
   setContext(verticalKey, verticalContext)
+  setContext(intervalKey, intervalContext)
 
   /**
    * Goto specific slider
@@ -122,6 +141,8 @@
    * Go to previous slide. If current is the last and `infinity` is `true`. Will goto the first slide.
    */
   const toNext = () => toIndex(activeIndex + 1)
+
+  setContext(toNextKey, toNext)
 
   $: {
     $activeIndexStore = activeIndex

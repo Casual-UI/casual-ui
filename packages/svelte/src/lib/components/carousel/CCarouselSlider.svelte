@@ -4,7 +4,9 @@
   import {
     activeIndexKey,
     directionKey,
+    intervalKey,
     slidesKey,
+    toNextKey,
     verticalKey,
   } from './CCarousel.svelte'
 
@@ -12,7 +14,8 @@
   const direction = getContext(directionKey)
   const activeIndex = getContext(activeIndexKey)
   const vertical = getContext(verticalKey)
-
+  const interval = getContext(intervalKey)
+  const toNext = getContext(toNextKey)
   const currentIndex = $slides.length
 
   $slides.push(currentIndex)
@@ -50,6 +53,12 @@
       },
     }
   }
+
+  const onIntroEnd = () => {
+    if ($interval && toNext) {
+      setTimeout(toNext, $interval)
+    }
+  }
 </script>
 
 {#if currentIndex === $activeIndex}
@@ -57,6 +66,7 @@
     class="c-carousel--slider-item"
     in:carousel
     out:carousel={{ leave: true }}
+    on:introend={onIntroEnd}
   >
     <slot />
   </div>
