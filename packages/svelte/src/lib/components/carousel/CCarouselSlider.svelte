@@ -6,6 +6,7 @@
     directionKey,
     intervalKey,
     slidesKey,
+    timeoutKey,
     toNextKey,
     verticalKey,
   } from './CCarousel.svelte'
@@ -16,6 +17,7 @@
   const vertical = getContext(verticalKey)
   const interval = getContext(intervalKey)
   const toNext = getContext(toNextKey)
+  const timeoutFlag = getContext(timeoutKey)
   const currentIndex = $slides.length
 
   $slides.push(currentIndex)
@@ -56,7 +58,10 @@
 
   const onIntroEnd = () => {
     if ($interval && toNext) {
-      setTimeout(toNext, $interval)
+      if ($timeoutFlag) {
+        clearTimeout($timeoutFlag)
+      }
+      $timeoutFlag = setTimeout(toNext, $interval)
     }
   }
 </script>

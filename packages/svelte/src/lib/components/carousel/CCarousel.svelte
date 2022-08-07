@@ -28,6 +28,11 @@
    * To next function key.
    */
   export const toNextKey = Symbol('c-carousel-to-next')
+
+  /**
+   * The timeout flag key.
+   */
+  export const timeoutKey = Symbol('c-carousel-timeout-flag')
 </script>
 
 <script>
@@ -96,11 +101,14 @@
   const verticalContext = writable(vertical)
 
   const intervalContext = writable(interval)
+
+  const timeoutFlag = writable(null)
   setContext(slidesKey, slides)
   setContext(activeIndexKey, activeIndexStore)
   setContext(directionKey, direction)
   setContext(verticalKey, verticalContext)
   setContext(intervalKey, intervalContext)
+  setContext(timeoutKey, timeoutFlag)
 
   /**
    * Goto specific slider
