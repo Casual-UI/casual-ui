@@ -26,14 +26,11 @@
   <aside
     fixed
     top-18
-    bottom-0
+    style="height: calc(100vh - 4.5rem);"
     fs-14
-    box-border
     z-3
     class="left"
     justify-end
-    pr-8
-    pt-8
     bg-white
     dark:bg-262626
     display-none

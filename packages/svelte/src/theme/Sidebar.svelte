@@ -12,7 +12,7 @@
   $: activeLink = $page.url.href
 </script>
 
-<div list-none leading-8 m-0 p-0 inline-block pr-8>
+<div leading-8 p-8 box-border inline-block h-full overflow-y-auto>
   {#each links as { label, to } (to)}
     <div flex items-center relative>
       {#if activeLink.includes(to)}
