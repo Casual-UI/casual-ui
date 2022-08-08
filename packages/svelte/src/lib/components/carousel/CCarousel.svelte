@@ -39,7 +39,9 @@
   import bem from '$lib/utils/bem'
   import clsx from '$lib/utils/clsx'
   import { setContext } from 'svelte'
+  import { cubicInOut } from 'svelte/easing'
   import { writable } from 'svelte/store'
+  import { fade } from 'svelte/transition'
   import CButton from '../CButton.svelte'
 
   /**
@@ -91,6 +93,12 @@
    * @type {boolean}
    */
   export let infinity = false
+
+  /**
+   * Determine the indicators shown timing.
+   * @type {'always' | 'hover' | 'never'}
+   */
+  export let arrowTiming = 'always'
 
   const direction = writable('forward')
 
@@ -150,6 +158,20 @@
    */
   const toNext = () => toIndex(activeIndex + 1)
 
+  let showArrow = arrowTiming === 'always'
+
+  const onContainerMouseEnter = () => {
+    if (arrowTiming === 'hover') {
+      showArrow = true
+    }
+  }
+
+  const onContainerMouseLeave = () => {
+    if (arrowTiming === 'hover') {
+      showArrow = false
+    }
+  }
+
   setContext(toNextKey, toNext)
 
   $: {
@@ -168,6 +190,8 @@
     vertical,
   })}
   style={`height: ${height}`}
+  on:mouseenter={onContainerMouseEnter}
+  on:mouseleave={onContainerMouseLeave}
 >
   <div
     class={`c-carousel--indicators c-flex c-items-${indicatorsPositionVertical} c-justify-${indicatorsPositionHorizontal}`}
@@ -196,9 +220,10 @@
     </div>
   </div>
 
-  {#if infinity || activeIndex > 0}
+  {#if showArrow && (infinity || activeIndex > 0)}
     <div
       class="c-carousel--control c-carousel--control--prev"
+      transition:fade={{ duration: 300, easing: cubicInOut }}
       on:click={toPrev}
     >
       <!-- Customize the to previous slide control content -->
@@ -210,9 +235,10 @@
     </div>
   {/if}
 
-  {#if infinity || activeIndex < $slides.length - 1}
+  {#if showArrow && (infinity || activeIndex < $slides.length - 1)}
     <div
       class="c-carousel--control c-carousel--control--next"
+      transition:fade={{ duration: 300, easing: cubicInOut }}
       on:click={toNext}
     >
       <!-- Customize the to next slide control content -->
