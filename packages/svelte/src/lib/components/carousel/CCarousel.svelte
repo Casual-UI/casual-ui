@@ -36,6 +36,8 @@
 </script>
 
 <script>
+  import useContextProp from '$lib/hooks/useContextProp'
+
   import bem from '$lib/utils/bem'
   import clsx from '$lib/utils/clsx'
   import { setContext } from 'svelte'
@@ -49,6 +51,12 @@
    * @type {string}
    */
   export let height = '300px'
+
+  /**
+   * The theme of indicators and arrow controls.
+   * @type {'primary' | 'secondary' | 'warning' | 'negative'}
+   */
+  export let theme = 'primary'
 
   /**
    * The auto play interval. If it set to a value less than 0. The auto play will be disabled.
@@ -95,7 +103,7 @@
   export let infinity = false
 
   /**
-   * Determine the indicators shown timing.
+   * Determine the arrow controls shown timing.
    * @type {'always' | 'hover' | 'never'}
    */
   export let arrowTiming = 'always'
@@ -111,6 +119,7 @@
   const intervalContext = writable(interval)
 
   const timeoutFlag = writable(null)
+
   setContext(slidesKey, slides)
   setContext(activeIndexKey, activeIndexStore)
   setContext(directionKey, direction)
@@ -210,6 +219,7 @@
             <div
               class={clsx(
                 `c-carousel--indicator-item`,
+                `c-carousel--indicator-item--${theme}`,
                 i === activeIndex && 'c-carousel--indicator-item--active'
               )}
               on:click={() => toIndex(i)}
@@ -228,7 +238,7 @@
     >
       <!-- Customize the to previous slide control content -->
       <slot name="control-prev">
-        <CButton icon flat>
+        <CButton icon flat {theme}>
           <div i-ooui-previous-ltr />
         </CButton>
       </slot>
@@ -243,7 +253,7 @@
     >
       <!-- Customize the to next slide control content -->
       <slot name="control-next">
-        <CButton icon flat>
+        <CButton icon flat {theme}>
           <div i-ooui-previous-rtl />
         </CButton>
       </slot>
