@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "description": "Casual UI Vue Docs",
   "main": "index.js",
-  "type": "module",
   "keywords": [],
   "private": true,
   "author": "Dongsheng Zhao <1197160272@qq.com>",
