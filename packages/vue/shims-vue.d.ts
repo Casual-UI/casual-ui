@@ -14,6 +14,7 @@ declare namespace React.JSX {
     style?: CSSProperties | string
   }
   interface DetailedHTMLProps<T> {
+    name?: string
     [key: string]: any
   }
   interface IntrinsicElements {

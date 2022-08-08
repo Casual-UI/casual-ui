@@ -64,9 +64,12 @@ import { vLoading } from './directives'
 import { useBEM } from './usable/useBEM'
 import CInfoItem from './components/list/CInfoItem.vue'
 import CDrawer from './components/popup/CDrawer.vue'
-
+import CCarouselSlider from './components/carousel/CCarouselSlider.vue'
+import CCarousel from './components/carousel/CCarousel.vue'
 const CasualUI: Plugin = {
   install: (app: App) => {
+    app.component('CCarousel', CCarousel)
+    app.component('CCarouselSlider', CCarouselSlider)
     app.component('CTabs', CTabs)
     app.component('CButton', CButton)
     app.component('CLoading', CLoading)
@@ -126,6 +129,8 @@ const CasualUI: Plugin = {
 export default CasualUI
 
 export {
+  CCarousel,
+  CCarouselSlider,
   CDrawer,
   CTabs,
   CButton,

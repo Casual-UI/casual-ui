@@ -26,6 +26,7 @@ const componentsRoutes = [
       '/components/interact/expansion/',
       '/components/interact/dropdown/',
       '/components/interact/tabs/',
+      '/components/carousel/',
     ],
   },
   {

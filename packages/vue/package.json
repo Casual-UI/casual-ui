@@ -1,6 +1,7 @@
 {
   "private": true,
   "license": "MIT",
+  "type": "module",
   "devDependencies": {
     "@vue/tsconfig": "^0.1.3"
   }

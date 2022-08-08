@@ -89,6 +89,10 @@
       font-size: 20px;
     }
 
+    .c-icon {
+      font-size: 24px;
+    }
+
     &--prev {
       left: 1em;
     }
@@ -116,4 +120,45 @@
       }
     }
   }
+}
+
+.c-carousel-slider-enter-active,
+.c-carousel-slider-vertical-enter-active,
+.c-carousel-slider-reverse-enter-active,
+.c-carousel-slider-vertical-reverse-enter-active,
+.c-carousel-slider-leave-active,
+.c-carousel-slider-vertical-leave-active,
+.c-carousel-slider-reverse-leave-active,
+.c-carousel-slider-vertical-reverse-leave-active {
+  transition: transform 0.3s linear;
+}
+
+.c-carousel-slider-enter-from,
+.c-carousel-slider-reverse-leave-to {
+  transform: translateX(100%);
+}
+
+.c-carousel-slider-leave-to,
+.c-carousel-slider-reverse-enter-from {
+  transform: translateX(-100%);
+}
+
+.c-carousel-slider-vertical-enter-from,
+.c-carousel-slider-vertical-reverse-leave-to {
+  transform: translateY(100%);
+}
+
+.c-carousel-slider-vertical-leave-to,
+.c-carousel-slider-vertical-reverse-enter-from {
+  transform: translateY(-100%);
+}
+
+.c-carousel-control-enter-active,
+.c-carousel-control-leave-active {
+  transition: opacity 0.3s var(--casual-ease-in-out-cubic);
+}
+
+.c-carousel-control-enter-from,
+.c-carousel-control-leave-to {
+  opacity: 0;
 }

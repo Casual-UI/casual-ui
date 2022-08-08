@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Casual UI Vue Docs",
   "main": "index.js",
+  "type": "module",
   "keywords": [],
   "private": true,
   "author": "Dongsheng Zhao <1197160272@qq.com>",
@@ -12,11 +13,13 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@iconify/json": "^2.1.77",
     "@vuepress/plugin-docsearch": "^2.0.0-beta.49",
     "@vuepress/plugin-google-analytics": "^2.0.0-beta.49",
     "@vuepress/plugin-shiki": "2.0.0-beta.49",
     "casual-styles": "workspace:*",
     "casual-ui-vue": "workspace:*",
+    "unocss": "^0.43.1",
     "vue-styleguidist": "^4.44.28",
     "vuepress": "2.0.0-beta.49",
     "vuepress-plugin-casual-code": "workspace:*"

@@ -8,6 +8,8 @@ import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
 import { shikiPlugin } from '@vuepress/plugin-shiki'
 import { componentsRoutes } from './config/routes'
 import nightOwlTheme from './config/night-owl.json'
+import Unocss from 'unocss/vite'
+import { presetIcons } from 'unocss'
 
 export default defineUserConfig({
   lang: 'zh-CN',
@@ -149,6 +151,7 @@ export default defineUserConfig({
           '@doc': process.cwd(),
         },
       },
+      plugins: [Unocss({ presets: [presetIcons()] })],
     },
   }),
 })
