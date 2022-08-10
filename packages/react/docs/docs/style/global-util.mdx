@@ -2,7 +2,7 @@
 title: Global CSS Utils
 ---
 
-### 尺寸
+### Sizes
 
 ```scss
 $basic-font-sizes: (
@@ -14,15 +14,15 @@ $basic-font-sizes: (
 );
 ```
 
-| 类名     | 大概相当于 CSS                        |
-| -------- | ------------------------------------- |
-| `c-h-xs` | `font-size: 12px; line-height: 12px;` |
-| `c-h-sm` | `font-size: 12px; line-height: 12px;` |
-| `c-h-md` | `font-size: 14px; line-height: 14px;` |
-| `c-h-lg` | `font-size: 16px; line-height: 16px;` |
-| `c-h-xl` | `font-size: 16px; line-height: 16px;` |
+| Class name | Equals to css                         |
+| ---------- | ------------------------------------- |
+| `c-h-xs`   | `font-size: 12px; line-height: 12px;` |
+| `c-h-sm`   | `font-size: 12px; line-height: 12px;` |
+| `c-h-md`   | `font-size: 14px; line-height: 14px;` |
+| `c-h-lg`   | `font-size: 16px; line-height: 16px;` |
+| `c-h-xl`   | `font-size: 16px; line-height: 16px;` |
 
-### 圆角
+### Border Radius
 
 ```scss
 $basic-rounded-sizes: (
@@ -34,7 +34,7 @@ $basic-rounded-sizes: (
 );
 ```
 
-| 类名           | 大概相当于 CSS         |
+| Class name     | Equals to css          |
 | -------------- | ---------------------- |
 | `c-rounded-xs` | `border-radius: 4px;`  |
 | `c-rounded-sm` | `border-radius: 4px;`  |
@@ -42,11 +42,11 @@ $basic-rounded-sizes: (
 | `c-rounded-lg` | `border-radius: 12px;` |
 | `c-rounded-xl` | `border-radius: 12px;` |
 
-### flex 布局
+### Flex Layout
 
-| 类名                        | 大概相当于 CSS                    |
+| Class name                  | Equals to css                     |
 | --------------------------- | --------------------------------- |
-| `o-flex` `c-column` `c-row` | `display: inline-flex;`           |
+| `c-flex` `c-column` `c-row` | `display: inline-flex;`           |
 | `c-justify-start`           | `justify-content: flex-start;`    |
 | `c-justify-center`          | `justify-content: center;`        |
 | `c-justify-end`             | `justify-content: flex-end;`      |
@@ -59,7 +59,7 @@ $basic-rounded-sizes: (
 | `c-items-baseline`          | `align-items: baseline;`          |
 | `c-items-stretch`           | `align-items: stretch;`           |
 
-### 间距
+### Spaces
 
 ```scss
 $sizes: (
@@ -71,36 +71,36 @@ $sizes: (
 );
 ```
 
-`.o-[p | m][a | x | y| l | t | r | b]-[xs | sm | md | lg | xl]`
+`.c-[p | m][a | x | y| l | t | r | b]-[xs | sm | md | lg | xl]`
 
-| 类名      | 大概相当于 CSS                             |
-| --------- | ------------------------------------------ |
-| `c-pa-md` | `padding: 12px;`                           |
-| `c-mr-sm` | `margin-right: 8px;`                       |
-| `c-px-lg` | `padding-left: 16px; padding-right: 16px;` |
-| ...       | ...                                        |
+| Class name | Equals to css                              |
+| ---------- | ------------------------------------------ |
+| `c-pa-md`  | `padding: 12px;`                           |
+| `c-mr-sm`  | `margin-right: 8px;`                       |
+| `c-px-lg`  | `padding-left: 16px; padding-right: 16px;` |
+| ...        | ...                                        |
 
-### 栅格
+### Row & Spans
 
-Casual UI 使用经典的 12 栅格机制
+Casual UI use 12 cols a row. You can use them like this:
 
 `c-col-[colSize]`
 
-### 子元素间距
+### Gutters
 
-:::tip 提示
-该项需要配合`.c-row`或者`.c-column`使用
+:::tip TIP
+This class need to match with `.c-row` or `.c-column`
 :::
 
 `.c-gutter[-x | -y ]-[xs | sm | md | lg | xl]`
 
-| 类名                | 含义                                         |
-| ------------------- | -------------------------------------------- |
-| `c-gutter-x-[size]` | 水平方向上子元素具有`[size]`大小的间距       |
-| `c-gutter-y-[size]` | 垂直方向上子元素具有`[size]`大小的间距       |
-| `c-gutter-[size]`   | 水平与垂直方向上子元素具有`[size]`大小的间距 |
+| Class name          | Equals to css                                      |
+| ------------------- | -------------------------------------------------- |
+| `c-gutter-x-[size]` | has`[size]` gutter in horizontal                   |
+| `c-gutter-y-[size]` | has`[size]` gutter in vertical                     |
+| `c-gutter-[size]`   | has`[size]` gutter in both horizontal and vertical |
 
-### 一些示例
+### Some Examples
 
 ```jsx live
 function Demo() {
@@ -115,7 +115,10 @@ function Demo() {
     Array(n)
       .fill(0)
       .map((_, i) => (
-        <div key={i} className={`c-col-${span}`}>
+        <div
+          key={i}
+          className={`c-col-${span}`}
+        >
           <div style={colStyle}>col-{span} + gutter-sm</div>
         </div>
       ))
