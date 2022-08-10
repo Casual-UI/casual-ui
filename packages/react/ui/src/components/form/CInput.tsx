@@ -7,88 +7,109 @@ import { useFormItemContext } from './CFormContext'
 
 interface CInputProps<T = string | number> {
   /**
-   * 输入框内的值
+   * The input value
+   * @zh 输入框内的值
    */
   value: string | number
   /**
-   * 输入框值变化触发
+   * Emit when the input value change.
+   * @zh 输入框值变化触发
    */
   onChange?: (v: T) => void
   /**
-   * 主题
+   * The theme color of the input.
+   * @zh 主题色
    */
   theme?: CTheme
   /**
-   * 是否禁用
+   * Determine whether the input is disabled or not.
+   * @zh 是否禁用
    */
   disabled?: boolean
   /**
-   * 输入框尺寸
+   * The size of input.
+   * @zh 输入框尺寸
    */
   size?: CSize
   /**
-   * 输入框预设文本
+   * The placeholder of input.
+   * @zh 输入框预设文本
    */
   placeholder?: string
   /**
-   * 是否表现为圆角
+   * Determine whether the input has rounded border or not.
+   * @zh 是否表现为圆角
    */
   rounded?: boolean
   /**
-   * 输入框前置内容
+   * Customize the prefix content of input.
+   * @zh 输入框前置内容
    */
   prefix?: CSlot
   /**
-   * 输入框后置内容
+   * Customize the suffix content of input.
+   * @zh 输入框后置内容
    */
   suffix?: CSlot
   /**
-   * 是否处于加载态
+   * Determine whether the input is in loading or not.
+   * @zh 是否处于加载态
    */
   loading?: boolean
   /**
-   * 自定义加载内容
+   * Customize the loading icon content.
+   * @zh 自定义加载内容
    */
   customLoading?: CSlot
   /**
-   * 内容是否可清除
+   * Determine whether the input is clearable or not when it value is not empty.
+   * @zh 内容是否可清除
    */
   clearable?: boolean
   /**
-   * 是否按照输入框表现自动失去焦点
+   * Determine whether the input will auto blur like a normal input. It's useful when manual focus/blur status change is needed.
+   * @zh 是否按照输入框表现自动失去焦点，通常在需要手动控制聚焦状态时需要
    */
   autoBlur?: boolean
   /**
-   * 失去焦点触发
+   * Emit when the input lose focus status.
+   * @zh 失去焦点触发
    */
   setFocused?: (focused: boolean) => void
   /**
-   * 是否聚焦
+   * Determine whether the input is focused or not.
+   * @zh 是否聚焦
    */
   focused?: boolean
   /**
-   * 输入框类型
+   * The type attribute of origin input.
+   * @zh 输入框类型
    */
   type?: 'text' | 'password'
   /**
-   * 是否只读
+   * Determine whether the input is readonly or not.
+   * @zh 是否只读
    */
   readonly?: boolean
   /**
-   * 是否前置与输入框之间是否具有分割线
+   * Determine whether to show the divider between input content and prefix content or not.
+   * @zh 是否前置与输入框之间是否具有分割线
    */
   withPrefixDivider?: boolean
   /**
-   * 是否前置与输入框之间是否具有分割线
+   * Determine whether to show the divider between input content and suffix content or not.
+   * @zh 是否前置与输入框之间是否具有分割线
    */
   withSuffixDivider?: boolean
 
   /**
-   * 是否使用自定义颜色
+   * Determine wether to use custom color or not. It's useful when you want to disable the default focus color behavior.
+   * @zh 是否使用自定义颜色，通常在需要禁用自带的hover, focused样式表现时用到
    */
   customColor?: boolean
   /**
-   * 清除图标点击触发
+   * Emit when the clear icon is clicked.
+   * @zh 清除图标点击触发
    */
   onClear?: () => void
 }

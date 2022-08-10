@@ -22,35 +22,43 @@ type OOption = {
 
 interface CSelectProps {
   /**
-   * 预设文本
+   * The placeholder text.
+   * @zh 预设文本
    */
   placeholder?: string
   /**
-   * 尺寸
+   * The size of select.
+   * @zh 尺寸
    */
   size?: CSize
   /**
-   * 选择框的值
+   * The value of current selected option.
+   * @zh 当前选中选项对应的值
    */
   value: CSelectModelValue
   /**
-   * 值变化触发
+   * Emit when the current selected value change.
+   * @zh 当前选中值变化时触发
    */
   onChange: (newValue: CSelectModelValue) => void
   /**
-   * 选项数组
+   * The options array.
+   * @zh 选项数组
    */
   options?: OOption[]
   /**
-   * 是否内容可清除
+   * Determine whether the selected value is clearable or not.
+   * @zh 是否内容可清除
    */
   clearable?: boolean
   /**
-   * 是否可多选
+   * Determine the select can have multiple selected values.
+   * @zh 是否可多选
    */
   multiple?: boolean
   /**
-   * 是否禁用
+   * Determine whether the select is disabled or not.
+   * @zh 是否禁用
    */
   disabled?: boolean
 }
@@ -199,7 +207,10 @@ const CSelect = ({
           )}
           style={selectDomStyle}
         >
-          <div className="c-select--input-wrapper" onClick={onSelectClick}>
+          <div
+            className="c-select--input-wrapper"
+            onClick={onSelectClick}
+          >
             {multiple ? (
               <div
                 className={clsx(
@@ -242,7 +253,10 @@ const CSelect = ({
                 className={clsx('c-select--multiple-tags', 'c-px-sm')}
               >
                 {selectedOptions.map(op => (
-                  <div className="" key={op.value}>
+                  <div
+                    className=""
+                    key={op.value}
+                  >
                     <CTag
                       label={op.label}
                       size="xs"

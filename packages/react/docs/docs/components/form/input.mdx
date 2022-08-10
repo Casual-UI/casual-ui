@@ -3,7 +3,7 @@ title: Input
 sidebar_position: 1
 ---
 
-### 基础使用
+### Basic
 
 ```jsx live
 function Demo() {
@@ -11,40 +11,40 @@ function Demo() {
   return (
     <div className="c-row c-gutter-x-md">
       <div>
-        <CInput {...{ value, onChange }} placeholder="普通输入框" />
+        <CInput {...{ value, onChange }} placeholder="Normal Input" />
       </div>
       <div>
         <CInput
           {...{ value, onChange }}
-          placeholder="密码输入框"
+          placeholder="Password Input"
           type="password"
         />
       </div>
       <div>
-        <CInput {...{ value, onChange }} placeholder="圆角输入框" rounded />
+        <CInput {...{ value, onChange }} placeholder="Rounded Input" rounded />
       </div>
       <div>
-        <CInput {...{ value, onChange }} placeholder="禁用状态" disabled />
+        <CInput {...{ value, onChange }} placeholder="Disabled Input" disabled />
       </div>
     </div>
   )
 }
 ```
 
-### 可清除
+### Clearable
 
 ```jsx live
 function Demo() {
   const [value, onChange] = useState('')
   return (
     <>
-      <CInput {...{ value, onChange }} clearable placeholder="可清除内容" />
+      <CInput {...{ value, onChange }} clearable placeholder="Content Clearable" />
     </>
   )
 }
 ```
 
-### 不同尺寸
+### Sizes
 
 ```jsx live
 function Demo() {
@@ -52,40 +52,40 @@ function Demo() {
   return (
     <div className="c-row c-gutter-x-md c-items-center c-wrap">
       <div>
-        <CInput {...{ value, onChange }} size="xs" placeholder="超小尺寸" />
+        <CInput {...{ value, onChange }} size="xs" placeholder="xs" />
       </div>
       <div>
-        <CInput {...{ value, onChange }} size="sm" placeholder="小尺寸" />
+        <CInput {...{ value, onChange }} size="sm" placeholder="sm" />
       </div>
       <div>
         <CInput
           {...{ value, onChange }}
           size="md"
-          placeholder="中等（默认）尺寸"
+          placeholder="md (default)"
         />
       </div>
       <div>
-        <CInput {...{ value, onChange }} size="lg" placeholder="大尺寸" />
+        <CInput {...{ value, onChange }} size="lg" placeholder="lg" />
       </div>
       <div>
-        <CInput {...{ value, onChange }} size="xl" placeholder="超大尺寸" />
+        <CInput {...{ value, onChange }} size="xl" placeholder="xl" />
       </div>
     </div>
   )
 }
 ```
 
-### 前置&后置内容
+### Prefix & Suffix
 
 ```jsx live
 function Demo() {
-  const [value, onChange] = useState('abc')
+  const [value, onChange] = useState('')
   return (
-    <div className="c-row c-gutter-x-md">
+    <div className="c-row c-gutter-md c-wrap">
       <div>
         <CInput
           {...{ value, onChange }}
-          placeholder="前置内容&后置内容"
+          placeholder="Prefix&Suffix"
           prefix="+234"
           suffix="@someone"
         />
@@ -94,10 +94,22 @@ function Demo() {
         <CInput
           {...{ value, onChange }}
           rounded
-          placeholder="前置与后置图标"
+          placeholder="Prefix&Suffix Icons"
           clearable
           prefix={<CIcon content={MdIcons.matContactPhone} />}
           suffix={<CIcon content={MdIcons.matDateRange} />}
+        />
+      </div>
+      <div>
+        <CInput
+          {...{ value, onChange }}
+          rounded
+          placeholder="No divider"
+          clearable
+          prefix={<CIcon content={MdIcons.matContactPhone} />}
+          suffix={<CIcon content={MdIcons.matDateRange} />}
+          withPrefixDivider={false}
+          withSuffixDivider={false}
         />
       </div>
     </div>
@@ -105,7 +117,7 @@ function Demo() {
 }
 ```
 
-### 加载态
+### Loading
 
 ```jsx live
 function Demo() {
@@ -113,14 +125,14 @@ function Demo() {
   return (
     <div className="c-row c-gutter-x-md">
       <div>
-        <CInput {...{ value, onChange }} rounded placeholder="加载中" loading />
+        <CInput {...{ value, onChange }} rounded placeholder="Loading" loading />
       </div>
       <div>
         <CInput
           {...{ value, onChange }}
           rounded
           loading
-          placeholder="加载中"
+          placeholder="Loading"
           customLoading={<CLoadingBar color="purple" />}
         />
       </div>

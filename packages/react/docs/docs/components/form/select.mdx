@@ -3,7 +3,7 @@ title: Select
 sidebar_position: 2
 ---
 
-### 基础使用
+### Basic
 
 ```jsx live
 function Demo() {
@@ -19,7 +19,7 @@ function Demo() {
     <CSelect
       value={selectedValue}
       onChange={setSelectedValue}
-      placeholder="请选择"
+      placeholder="Please select"
       options={options}
     />
   )
@@ -44,7 +44,7 @@ function Demo() {
         <CSelect
           value={selectedValue}
           onChange={setSelectedValue}
-          placeholder="超小尺寸"
+          placeholder="xs select"
           size="xs"
           options={options}
         />
@@ -53,7 +53,7 @@ function Demo() {
         <CSelect
           value={selectedValue}
           onChange={setSelectedValue}
-          placeholder="小尺寸"
+          placeholder="sm select"
           size="sm"
           options={options}
         />
@@ -62,7 +62,7 @@ function Demo() {
         <CSelect
           value={selectedValue}
           onChange={setSelectedValue}
-          placeholder="中等（默认尺寸）"
+          placeholder="md select (default)"
           options={options}
         />
       </div>
@@ -70,7 +70,7 @@ function Demo() {
         <CSelect
           value={selectedValue}
           onChange={setSelectedValue}
-          placeholder="大尺寸"
+          placeholder="lg select"
           size="lg"
           options={options}
         />
@@ -79,7 +79,7 @@ function Demo() {
         <CSelect
           value={selectedValue}
           onChange={setSelectedValue}
-          placeholder="超大尺寸"
+          placeholder="xl select"
           size="xl"
           options={options}
         />
@@ -89,7 +89,7 @@ function Demo() {
 }
 ```
 
-### 禁用态
+### Disabled
 
 ```jsx live
 function Demo() {
@@ -101,19 +101,29 @@ function Demo() {
     { label: '500 - 1000', value: 4 },
   ]
   const [selectedValue, setSelectedValue] = useState('')
+  const [selectedValue2, setSelectedValue2] = useState(0)
   return (
-    <CSelect
-      value={selectedValue}
-      onChange={setSelectedValue}
-      placeholder="禁用态"
-      options={options}
-      disabled
-    />
+    <SpaceItems>
+      <CSelect
+        value={selectedValue}
+        onChange={setSelectedValue}
+        placeholder="A disabled select"
+        options={options}
+        disabled
+      />
+      <CSelect
+        value={selectedValue2}
+        onChange={setSelectedValue2}
+        placeholder="A disabled select"
+        options={options}
+        disabled
+      />
+    </SpaceItems>
   )
 }
 ```
 
-### 内容可清除
+### Clearable
 
 ```jsx live
 function Demo() {
@@ -129,7 +139,7 @@ function Demo() {
     <CSelect
       value={selectedValue}
       onChange={setSelectedValue}
-      placeholder="请选择"
+      placeholder="Select to see clear icon"
       options={options}
       clearable
     />
@@ -137,7 +147,7 @@ function Demo() {
 }
 ```
 
-### 多选
+### Multiple
 
 ```jsx live
 function Demo() {
@@ -153,7 +163,7 @@ function Demo() {
     <CSelect
       value={selectedValue}
       onChange={setSelectedValue}
-      placeholder="请选择"
+      placeholder="Select multiple options"
       multiple
       options={options}
       clearable
