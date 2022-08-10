@@ -9,7 +9,10 @@ export const toNextKey = Symbol('toNext')
 
 export type Direction = 'forward' | 'backward'
 </script>
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+>
 import { computed, provide, ref, toRefs } from 'vue'
 import CButton from '../basic/button/CButton.vue'
 import CIcon from '../basic/icon/CIcon.vue'
@@ -173,7 +176,10 @@ defineExpose({
       >
         <!-- 自定义指示器内容 -->
         <slot name="indicators">
-          <div v-for="(_, i) in slides">
+          <div
+            v-for="(_, i) in slides"
+            :key="i"
+          >
             <div
               :class="[
                 'c-carousel--indicator-item',

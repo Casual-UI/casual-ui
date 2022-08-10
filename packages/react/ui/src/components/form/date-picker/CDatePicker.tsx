@@ -162,7 +162,10 @@ const CDatePicker = ({
       openOrCloseDropDown(false)
     }
   }
-  const onMonthSet = (newMonth: number, setNextName) => {
+  const onMonthSet = (
+    newMonth: number,
+    setNextName: (name: string) => void
+  ) => {
     setMonth(newMonth)
     onChange?.(
       new Date(value?.getFullYear() || year, newMonth, value?.getDate() || 1)
@@ -174,7 +177,7 @@ const CDatePicker = ({
     onDateSet()
   }
 
-  const onYearSet = (newYear: number, setNextName) => {
+  const onYearSet = (newYear: number, setNextName: (name: string) => void) => {
     setYear(newYear)
     onChange?.(
       new Date(newYear, value?.getMonth() || month, value?.getDate() || 1)
@@ -188,7 +191,7 @@ const CDatePicker = ({
 
   const contextSize = useSize(size)
 
-  const isYearActive = yearNum => yearNum === value?.getFullYear()
+  const isYearActive = (yearNum: number) => yearNum === value?.getFullYear()
 
   const isMonthActive = (monthNum: number) => {
     const d = new Date()

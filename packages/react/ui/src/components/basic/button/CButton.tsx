@@ -8,7 +8,7 @@ interface CButtonProps {
   /**
    * 按钮里的文案
    */
-  label: string
+  label?: string
   /**
    * 是否表现为轮廓样式，默认：`false`
    * @default false

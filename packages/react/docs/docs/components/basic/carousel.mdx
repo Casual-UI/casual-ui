@@ -1,0 +1,326 @@
+---
+title: 轮播
+---
+
+### 基础使用
+
+```jsx live
+function Demo() {
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  const itemStyle = {
+    height: '100%',
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: '100px',
+  }
+
+  return (
+    <CCarousel
+      activeIndex={activeIndex}
+      onActiveIndexChange={setActiveIndex}
+    >
+      <CCarouselSlider>
+        <div style={itemStyle}>
+          Slider1
+        </div>
+      </CCarouselSlider>
+      <CCarouselSlider>
+        <div style={itemStyle}>
+           Slider2
+        </div>
+      </CCarouselSlider>
+      <CCarouselSlider>
+        <div style={itemStyle}>
+           Slider3
+        </div>
+      </CCarouselSlider>
+    </CCarousel>
+  )
+}
+```
+
+
+### 无限循环
+
+```jsx live
+function Demo() {
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  const itemStyle = {
+    height: '100%',
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: '100px',
+  }
+
+  return (
+    <CCarousel
+      activeIndex={activeIndex}
+      onActiveIndexChange={setActiveIndex}
+      infinity
+    >
+      <CCarouselSlider>
+        <div style={itemStyle}>
+          Slider1
+        </div>
+      </CCarouselSlider>
+      <CCarouselSlider>
+        <div style={itemStyle}>
+           Slider2
+        </div>
+      </CCarouselSlider>
+      <CCarouselSlider>
+        <div style={itemStyle}>
+           Slider3
+        </div>
+      </CCarouselSlider>
+    </CCarousel>
+  )
+}
+```
+
+
+### 箭头展示时机
+
+```jsx live
+function Demo() {
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  const itemStyle = {
+    height: '100%',
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: '100px',
+  }
+
+  return (
+    <CCarousel
+      activeIndex={activeIndex}
+      onActiveIndexChange={setActiveIndex}
+      arrowTiming="hover"
+      infinity
+    >
+      <CCarouselSlider>
+        <div style={itemStyle}>
+          Slider1
+        </div>
+      </CCarouselSlider>
+      <CCarouselSlider>
+        <div style={itemStyle}>
+           Slider2
+        </div>
+      </CCarouselSlider>
+      <CCarouselSlider>
+        <div style={itemStyle}>
+           Slider3
+        </div>
+      </CCarouselSlider>
+    </CCarousel>
+  )
+}
+```
+
+
+### 主题
+
+```jsx live
+function Demo() {
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  const itemStyle = {
+    height: '100%',
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: '100px',
+  }
+
+  const [theme, setTheme] = useState('primary')
+
+  const themeOptions = [
+    { label: 'primary', value: 'primary' },
+    { label: 'secondary', value: 'secondary' },
+    { label: 'warning', value: 'warning' },
+    { label: 'negative', value: 'negative' }
+  ]
+
+  return (
+    <>
+    <CRadioGroup options={themeOptions} value={theme} onChange={setTheme} />
+    <CCarousel
+      theme={theme}
+      activeIndex={activeIndex}
+      onActiveIndexChange={setActiveIndex}
+    >
+      <CCarouselSlider>
+        <div style={itemStyle}>
+          Slider1
+        </div>
+      </CCarouselSlider>
+      <CCarouselSlider>
+        <div style={itemStyle}>
+           Slider2
+        </div>
+      </CCarouselSlider>
+      <CCarouselSlider>
+        <div style={itemStyle}>
+           Slider3
+        </div>
+      </CCarouselSlider>
+    </CCarousel>
+    </>
+  )
+}
+```
+
+### 自定义箭头内容
+
+```jsx live
+function Demo() {
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  const itemStyle = {
+    height: '100%',
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: '100px',
+  }
+
+  return (
+    <CCarousel
+      activeIndex={activeIndex}
+      onActiveIndexChange={setActiveIndex}
+      customArrowPrev={<CButton flat icon theme="negative"><CIcon content={MdIcons.matKeyboardDoubleArrowLeft} /></CButton>}
+      customArrowNext={<CButton flat icon theme="negative"><CIcon content={MdIcons.matKeyboardDoubleArrowRight} /></CButton>}
+    >
+      <CCarouselSlider>
+        <div style={itemStyle}>
+          Slider1
+        </div>
+      </CCarouselSlider>
+      <CCarouselSlider>
+        <div style={itemStyle}>
+           Slider2
+        </div>
+      </CCarouselSlider>
+      <CCarouselSlider>
+        <div style={itemStyle}>
+           Slider3
+        </div>
+      </CCarouselSlider>
+    </CCarousel>
+  )
+}
+```
+
+### 自动播放
+
+```jsx live
+function Demo() {
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  const itemStyle = {
+    height: '100%',
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: '100px',
+  }
+
+  return (
+    <CCarousel
+      activeIndex={activeIndex}
+      onActiveIndexChange={setActiveIndex}
+      infinity
+      interval={5000}
+    >
+      <CCarouselSlider>
+        <div style={itemStyle}>
+          Slider1
+        </div>
+      </CCarouselSlider>
+      <CCarouselSlider>
+        <div style={itemStyle}>
+           Slider2
+        </div>
+      </CCarouselSlider>
+      <CCarouselSlider>
+        <div style={itemStyle}>
+           Slider3
+        </div>
+      </CCarouselSlider>
+    </CCarousel>
+  )
+}
+```
+
+### 纵向过渡
+
+
+```jsx live
+function Demo() {
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  const itemStyle = {
+    height: '100%',
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: '100px',
+  }
+
+  return (
+    <CCarousel
+      activeIndex={activeIndex}
+      onActiveIndexChange={setActiveIndex}
+      vertical
+      arrowTiming="hover"
+      infinity
+    >
+      <CCarouselSlider>
+        <div style={itemStyle}>
+          Slider1
+        </div>
+      </CCarouselSlider>
+      <CCarouselSlider>
+        <div style={itemStyle}>
+           Slider2
+        </div>
+      </CCarouselSlider>
+      <CCarouselSlider>
+        <div style={itemStyle}>
+           Slider3
+        </div>
+      </CCarouselSlider>
+    </CCarousel>
+  )
+}
+```
+
+
+### CCarousel API
+
+<PropTable name="CCarousel" />
+
+### CCarouselSlider API
+
+<PropTable name="CCarouselSlider" />

@@ -36,8 +36,6 @@
 </script>
 
 <script>
-  import useContextProp from '$lib/hooks/useContextProp'
-
   import bem from '$lib/utils/bem'
   import clsx from '$lib/utils/clsx'
   import { setContext } from 'svelte'

@@ -52,8 +52,12 @@ import { useFormItemContext } from './src/components/form/CFormContext'
 import { useFormContext } from './src/components/form/CFormContext'
 import CInfoItem from './src/components/list/CInfoItem'
 import CDrawer from './src/components/popup/CDrawer'
+import CCarousel from './src/components/carousel/CCarousel'
+import CCarouselSlider from './src/components/carousel/CCarouselSlider'
 
 export {
+  CCarousel,
+  CCarouselSlider,
   CDrawer,
   CInfoItem,
   useFormItemContext,
