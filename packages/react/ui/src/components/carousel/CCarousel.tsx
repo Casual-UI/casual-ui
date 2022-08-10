@@ -12,77 +12,92 @@ import Fade from '../transition/Fade'
 
 interface CCarouselProps {
   /**
-   * 容器的高度
+   * The height of container.
+   * @zh 容器的高度
    */
   height?: string
 
   /**
-   * 主题色，会影响指示器以及箭头控制器的颜色
+   * The theme color. It will affect the control arrow and the indicators' style.
+   * @zh 主题色，会影响指示器以及箭头控制器的颜色
    */
   theme?: CTheme
 
   /**
-   * 自动播放间隔，若该值大于0会以该值启动自动播放
+   * The autoplay interval. If the value is larger than 0 will set a autoplay. Notice that the transition time is not counting.
+   * @zh 自动播放间隔，若该值大于0会以该值启动自动播放。值得一提的是动画过渡时间并不会算在内
    */
   interval?: number
 
   /**
-   * 当前激活的轮播下标
+   * The current slider index (from 0).
+   * @zh 当前激活的轮播下标（从0开始）
    */
   activeIndex?: number
 
   /**
-   * 当前激活的轮播变化时触发
+   * Emit when the current slider index changed.
+   * @zh 当前激活的轮播变化时触发
    */
   onActiveIndexChange?: (newIndex: number) => void
 
   /**
-   * 指示器的横向位置
+   * The horizontal position of the indicators.
+   * @zh 指示器的横向位置
    */
   indicatorsPositionHorizontal?: 'start' | 'center' | 'end'
 
   /**
-   * 指示器的纵向位置
+   * The vertical position of the indicators.
+   * @zh 指示器的纵向位置
    */
   indicatorsPositionVertical?: 'start' | 'center' | 'end'
 
   /**
-   * 指示器排列方向
+   * The align direction of indicators.
+   * @zh 指示器排列方向
    */
   indicatorsAlignDirection?: 'row' | 'row-reverse' | 'column' | 'column-reverse'
 
   /**
-   * 是否纵向过渡
+   * Determine whether the transition is vertical or not.
+   * @zh 是否纵向过渡
    */
   vertical?: boolean
 
   /**
-   * 是否无限循环
+   * Determine the carousel can be infinity or not.
+   * @zh 是否无限循环
    */
   infinity?: boolean
 
   /**
-   * 箭头展示时机
+   * Determine the arrow shown method.
+   * @zh 箭头展示时机
    */
   arrowTiming?: 'always' | 'hover' | 'never'
 
   /**
-   * 自定义指示器内容
+   * Customize the indicators content.
+   * @zh 自定义指示器内容
    */
   customIndicators?: CSlot
 
   /**
-   * 自定义前一个箭头控制器
+   * Customize the to previous control arrow.
+   * @zh 自定义前一个箭头控制器
    */
   customArrowPrev?: CSlot
 
   /**
-   * 自定义后一个箭头控制器
+   * Customize the to next control arrow.
+   * @zh 自定义后一个箭头控制器
    */
   customArrowNext?: CSlot
 
   /**
-   * 内容，建议使用<code>CCarouselSlider</code>
+   * The content of carousel. It is recommended to use `CCarouselSlider`
+   * @zh 内容，建议使用<code>CCarouselSlider</code>
    */
   children: any[]
 }
