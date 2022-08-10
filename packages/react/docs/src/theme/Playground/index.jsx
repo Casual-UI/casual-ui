@@ -7,6 +7,7 @@ import { usePrismTheme } from '@docusaurus/theme-common'
 import styles from './styles.module.css'
 import useIsBrowser from '@docusaurus/useIsBrowser'
 import { CExpansion } from 'casual-ui-react'
+import { translate } from '@docusaurus/Translate'
 
 function LivePreviewLoader() {
   // Is it worth improving/translating?
@@ -34,7 +35,10 @@ function ResultWithHeader() {
 function ThemedLiveEditor() {
   const isBrowser = useIsBrowser()
   return (
-    <CExpansion title="展开/收起代码" open={false} reverse>
+    <CExpansion title={translate({
+      id: 'codeExpansion.title',
+      message: 'Fold/Expand Code'
+    })} open={false} reverse>
       <LiveEditor key={isBrowser} className={styles.playgroundEditor} />
     </CExpansion>
   )

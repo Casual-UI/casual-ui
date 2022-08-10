@@ -6,71 +6,86 @@ import { CSize, CSlot, CTheme } from 'casual-types'
 
 interface CButtonProps {
   /**
-   * 按钮里的文案
+   * The label text of button.
+   * @zh 按钮里的文字
    */
   label?: string
   /**
-   * 是否表现为轮廓样式，默认：`false`
-   * @default false
+   * Determine whether the button has a outlined style or not.
+   * @zh 是否表现为轮廓按钮
    */
   outlined?: boolean
   /**
-   * 是否禁用
+   * Determine whether the button is disabled or not. If set to <code>true</code>. The <code>onClick</code> event won't trigger.
+   * @zh 是否禁用，如果禁用，则不会触发<code>onClick</code>方法
    */
   disabled?: boolean
   /**
-   * 按钮尺寸
+   * The size of button.
+   * @zh 按钮尺寸
    */
   size?: CSize
   /**
-   * 是否为圆角
+   * Determine the button has a rounded border or not.
+   * @zh 是否具有圆角样式
    */
   rounded?: boolean
   /**
-   * 是否为圆弧
+   * Determine the button has half circle border or not.
+   * @zh 是否具有半圆形边框样式
    */
   round?: boolean
   /**
-   * 是否为块级
+   * Determine whether the button display as block element or not.
+   * @zh 是否为块级元素表现
    */
   block?: boolean
   /**
-   * 按钮主题
+   * The button theme color.
+   * @zh 按钮主题
    */
   theme?: CTheme
   /**
-   * 按钮是否处于加载中状态
+   * Determine whether the button is in loading or not.
+   * @zh 按钮是否处于加载中状态
    */
   loading?: boolean
   /**
-   * 是否表现为图标按钮
+   * Determine whether the button display as a icon button.
+   * @zh 是否表现为图标按钮
    */
   icon?: boolean
   /**
-   * 是否为扁平按钮
+   * Determine whether the button has flat style or not.
+   * @zh 是否为扁平按钮
    */
   flat?: boolean
   /**
-   * 自定义样式
+   * Customize the button style.
+   * @zh 自定义样式
    */
   style?: CSSProperties
 }
 
 interface CButtonJSXProps {
   /**
-   * 额外样式类
+   * Customize the button additional class names.
+   * @zh 额外样式类
    */
   className?: string
   /**
-   * 点击事件触发
+   * The click event
+   * @zh 点击事件触发
    */
   onClick?: () => void
   /**
-   * 是否使用自定义其他加载动画
+   * Customize the loading icon content.
+   * @zh 是否使用自定义其他加载动画
    */
   customLoading?: JSX.Element
   /**
-   * 子元素内容，该项会覆盖<code>label</code>属性
+   * Customize the button content. This prop will override the <code>label</code> prop.
+   * @zh 子元素内容，该项会覆盖<code>label</code>属性
    */
   children?: CSlot
 }

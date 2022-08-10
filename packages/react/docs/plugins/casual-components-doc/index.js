@@ -33,7 +33,9 @@ module.exports = async function CasualComponentsDoc() {
         const name = filePath.split('/').at(-1).replace(/\.tsx/, '.json')
         const res = {
           ...docs,
-          [name]: docgen.parse(path.resolve(CWD_PATH, filePath)),
+          [name]: docgen.parse(path.resolve(CWD_PATH, filePath), {
+            shouldIncludePropTagMap: true,
+          }),
         }
         b1.increment()
         return res

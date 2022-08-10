@@ -430,5 +430,32 @@
   },
   "homePage.tagsLine": {
     "message": "一个支持React17+的组件库"
+  },
+  "codeExpansion.title": {
+    "message": "折叠/展开 代码"
+  },
+  "propTable.name": {
+    "message": "名称"
+  },
+  "propTable.desc": {
+    "message": "描述"
+  },
+  "propTable.type": {
+    "message": "类型"
+  },
+  "propTable.required": {
+    "message": "是否必填"
+  },
+  "propTable.required.yes": {
+    "message": "是"
+  },
+  "propTable.required.no": {
+    "message": "否"
+  },
+  "propTable.defaultValue": {
+    "message": "默认值"
+  },
+  "The label text of button.": {
+    "message": "按钮里的文字"
   }
 }

@@ -3,12 +3,19 @@ import { CTable } from 'casual-ui-react'
 import {
   CustomRender,
   CTableColumn,
+  // @ts-ignore
 } from '@site/ui/src/components/table/CTable'
 import { PropItem } from 'react-docgen-typescript'
+import { translate } from '@docusaurus/Translate'
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 
 interface PropTableProps {
   name: string
   typeWidth?: string
+}
+
+const localeMap = {
+  'zh-CN': 'zh',
 }
 
 export const PropTable = ({ name, typeWidth = '200px' }: PropTableProps) => {
@@ -24,29 +31,72 @@ export const PropTable = ({ name, typeWidth = '200px' }: PropTableProps) => {
     )
   }
 
+  const { i18n } = useDocusaurusContext()
   const columns: CTableColumn<PropItem>[] = [
-    { title: '名称', field: 'name', width: '120px' },
     {
-      title: '描述',
-      field: 'description',
-      customRender: ({ val }) => (
-        <div dangerouslySetInnerHTML={{ __html: val }}></div>
-      ),
+      title: translate({
+        id: 'propTable.name',
+        message: 'Name',
+      }),
+      field: 'name',
+      width: '120px',
     },
     {
-      title: '类型',
+      title: translate({
+        id: 'propTable.desc',
+        message: 'Description',
+      }),
+      field: 'description',
+      customRender: ({ val, row }) => {
+        const tagName = localeMap[i18n.currentLocale]
+        return (
+          <div
+            dangerouslySetInnerHTML={{
+              __html:
+                i18n.currentLocale === 'en'
+                  ? val
+                  : tagName
+                  ? row.tags[tagName]
+                    ? row.tags[tagName]
+                    : `Please add @${tagName} to source code`
+                  : '',
+            }}
+          ></div>
+        )
+      },
+    },
+    {
+      title: translate({
+        id: 'propTable.type',
+        message: 'Type',
+      }),
       field: 'type',
       customRender: typeRender,
       width: typeWidth,
     },
     {
-      title: '必填',
+      title: translate({
+        id: 'propTable.required',
+        message: 'Required',
+      }),
       field: 'required',
-      customRender: ({ val }) => (val ? '是' : '否'),
-      width: '50px',
+      customRender: ({ val }) =>
+        val
+          ? translate({
+              id: 'propTable.required.yes',
+              message: 'Yes',
+            })
+          : translate({
+              id: 'propTable.required.no',
+              message: 'No',
+            }),
+      width: '100px',
     },
     {
-      title: '默认值',
+      title: translate({
+        id: 'propTable.defaultValue',
+        message: 'Default Value',
+      }),
       field: 'defaultValue',
       width: '100px',
       customRender: ({ val }) => {
