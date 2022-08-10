@@ -1,0 +1,289 @@
+---
+title: 通知
+---
+
+import { CNotification } from 'casual-ui-react'
+import BrowserOnly from '@docusaurus/BrowserOnly'
+
+<BrowserOnly>{() => <CNotification />}</BrowserOnly>
+
+### 使用方式
+
+- 将`<CNotification />`放置于`<App />`
+
+```jsx
+import { CNotification } from 'casual-ui-react'
+function APP {
+
+  return (
+    <>
+      <CNotification />
+      // 其他根组件内容
+    </>
+  )
+}
+```
+
+- 然后通过`useNotification`调用即可
+
+```jsx
+function Demo() {
+  const { open } = useNotification()
+
+  return (
+    <CButton
+      label="打开通知"
+      onClick={() => open({ title: '通知', message: '通知内容' })}
+    />
+  )
+}
+```
+
+:::tip 提示
+请确保`<CNotification />`在整个 APP 实例中仅加载一次，否则会导致`<CNotification />`多次渲染
+:::
+
+### 基础使用
+
+```jsx live
+function Demo() {
+  const { open } = useNotification()
+
+  return (
+    <CButton
+      label="打开通知"
+      onClick={() =>
+        open({
+          title: '标题',
+          message: '内容',
+        })
+      }
+    />
+  )
+}
+```
+
+### 主题
+
+```jsx live
+function Demo() {
+  const { open } = useNotification()
+
+  const openWithTheme = theme => {
+    open({
+      title: `${theme}主题`,
+      message: `这是一个${theme}主题的通知`,
+      theme,
+    })
+  }
+
+  return (
+    <>
+      <CButton label="Primary" onClick={() => openWithTheme('primary')} />
+      <CButton
+        label="Secondary"
+        theme="secondary"
+        onClick={() => openWithTheme('secondary')}
+      />
+      <CButton
+        label="Warning"
+        theme="warning"
+        onClick={() => openWithTheme('warning')}
+      />
+      <CButton
+        label="Negative"
+        theme="negative"
+        onClick={() => openWithTheme('negative')}
+      />
+    </>
+  )
+}
+```
+
+### 方向
+
+```jsx live
+function Demo() {
+  const {
+    matArrowBack,
+    matArrowUpward,
+    matArrowForward,
+    matArrowDownward,
+    matFullscreenExit,
+  } = MdIcons
+
+  const { open } = useNotification()
+
+  const openWithPosition = (alignX, alignY) => {
+    open({
+      title: '标题',
+      message: '内容',
+      alignX,
+      alignY,
+    })
+  }
+
+  return (
+    <>
+      <div className="c-row c-gutter-sm">
+        <div>
+          <CButton icon onClick={() => openWithPosition('start', 'start')}>
+            <CIcon
+              content={matArrowUpward}
+              style={{ transform: 'rotate(-45deg)' }}
+            />
+          </CButton>
+        </div>
+        <div>
+          <CButton icon onClick={() => openWithPosition('center', 'start')}>
+            <CIcon content={matArrowUpward} />
+          </CButton>
+        </div>
+        <div>
+          <CButton icon onClick={() => openWithPosition('end', 'start')}>
+            <CIcon
+              content={matArrowUpward}
+              style={{ transform: 'rotate(45deg)' }}
+            />
+          </CButton>
+        </div>
+      </div>
+      <div className="c-row c-gutter-sm">
+        <div>
+          <CButton icon onClick={() => openWithPosition('start', 'center')}>
+            <CIcon content={matArrowBack} />
+          </CButton>
+        </div>
+        <div>
+          <CButton icon onClick={() => openWithPosition('center', 'center')}>
+            <CIcon content={matFullscreenExit} />
+          </CButton>
+        </div>
+        <div>
+          <CButton icon onClick={() => openWithPosition('end', 'center')}>
+            <CIcon content={matArrowForward} />
+          </CButton>
+        </div>
+      </div>
+      <div className="c-row c-gutter-sm">
+        <div>
+          <CButton icon onClick={() => openWithPosition('start', 'end')}>
+            <CIcon
+              content={matArrowBack}
+              style={{ transform: 'rotate(-45deg)' }}
+            />
+          </CButton>
+        </div>
+        <div>
+          <CButton icon onClick={() => openWithPosition('center', 'end')}>
+            <CIcon content={matArrowDownward} />
+          </CButton>
+        </div>
+        <div>
+          <CButton icon onClick={() => openWithPosition('end', 'end')}>
+            <CIcon
+              content={matArrowForward}
+              style={{ transform: 'rotate(45deg)' }}
+            />
+          </CButton>
+        </div>
+      </div>
+    </>
+  )
+}
+```
+
+### 不自动关闭
+
+```jsx live
+function Demo() {
+  const { open } = useNotification()
+
+  return (
+    <CButton
+      label="打开通知"
+      onClick={() =>
+        open({
+          title: '标题',
+          message: '内容',
+          timeout: 0,
+          alignX: 'end',
+          alignY: 'center',
+        })
+      }
+    />
+  )
+}
+```
+
+### 隐藏关闭按钮&手动关闭
+
+```jsx live
+function Demo() {
+  const { open } = useNotification()
+
+  const [closeFunction, setCloseFunction] = useState(null)
+
+  const onClick = () => {
+    if (closeFunction) {
+      closeFunction()
+      setCloseFunction(null)
+      return
+    }
+    const { close } = open({
+      title: '通知',
+      message: '这是一个没有关闭图标的通知',
+      timeout: 0,
+      closeIcon: false,
+    })
+    setCloseFunction(() => close)
+  }
+
+  return (
+    <CButton
+      label={closeFunction ? '关闭通知' : '打开通知'}
+      theme={closeFunction ? 'negative' : 'primary'}
+      onClick={onClick}
+    />
+  )
+}
+```
+
+### 动态内容
+
+```jsx live
+function Demo() {
+  const { open } = useNotification()
+
+  const openWithDynamicContent = () => {
+    const { changeContent } = open({
+      title: '标题',
+      message: '信息',
+      timeout: 7000,
+    })
+
+    setTimeout(() => {
+      changeContent({
+        title: '警告',
+        message: '内容更改了哦',
+        theme: 'warning',
+      })
+      setTimeout(() => {
+        changeContent({
+          title: '错误',
+          message: '内容再次更改了哦',
+          theme: 'negative',
+        })
+        setTimeout(() => {
+          changeContent({
+            title: '再见',
+            message: '即将消失',
+            theme: 'secondary',
+          })
+        }, 2000)
+      }, 2000)
+    }, 2000)
+  }
+  return <CButton label="打开动态通知" onClick={openWithDynamicContent} />
+}
+```

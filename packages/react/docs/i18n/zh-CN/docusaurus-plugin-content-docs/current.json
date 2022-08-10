@@ -1,0 +1,42 @@
+{
+  "version.label": {
+    "message": "下一个",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.Hooks API": {
+    "message": "Hooks API",
+    "description": "The label for category Hooks API in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Guide": {
+    "message": "指南",
+    "description": "The label for category Guide in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Components": {
+    "message": "组件",
+    "description": "The label for category Components in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Basic": {
+    "message": "基础",
+    "description": "The label for category Basic in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Form": {
+    "message": "表单",
+    "description": "The label for category Form in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Data Presentation": {
+    "message": "数据展示",
+    "description": "The label for category Data Presentation in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Interact": {
+    "message": "交互",
+    "description": "The label for category Interact in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Feedback": {
+    "message": "反馈",
+    "description": "The label for category Feedback in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.CSS Utils": {
+    "message": "CSS 工具",
+    "description": "The label for category CSS Utils in sidebar tutorialSidebar"
+  }
+}

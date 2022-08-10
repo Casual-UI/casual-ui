@@ -1,0 +1,232 @@
+---
+title: 对话框
+---
+
+### 基础使用
+
+```jsx live
+function Demo() {
+  const [show, setShow] = useState(false)
+
+  return (
+    <>
+      <CDialog value={show} onChange={setShow} title="你好">
+        <div>你好，世界</div>
+      </CDialog>
+      <CButton label="打开对话框" onClick={() => setShow(true)} />
+    </>
+  )
+}
+```
+
+### 宽度&高度
+
+```jsx live
+function Demo() {
+  const [show, setShow] = useState(false)
+
+  return (
+    <>
+      <CDialog
+        value={show}
+        onChange={setShow}
+        title="你好"
+        width="60vw"
+        bodyHeight="60vh"
+      >
+        <div>你好，世界</div>
+      </CDialog>
+      <CButton label="打开对话框" onClick={() => setShow(true)} />
+    </>
+  )
+}
+```
+
+### 无关闭图标
+
+```jsx live
+function Demo() {
+  const [show, setShow] = useState(false)
+
+  return (
+    <>
+      <CDialog
+        value={show}
+        onChange={setShow}
+        title="你好"
+        width="60vw"
+        bodyHeight="60vh"
+        closeIcon={false}
+      >
+        <div>你好，世界</div>
+      </CDialog>
+      <CButton label="打开对话框" onClick={() => setShow(true)} />
+    </>
+  )
+}
+```
+
+### 位置
+
+```jsx live
+function Demo() {
+  const {
+    matArrowBack,
+    matArrowUpward,
+    matArrowForward,
+    matArrowDownward,
+    matFullscreenExit,
+  } = MdIcons
+  const [show, setShow] = useState(false)
+  const [horizontalAlign, setHorizontalAlign] = useState('center')
+  const [verticalAlign, setVerticalAlign] = useState('center')
+
+  const openWithPosition = (h, v) => {
+    setHorizontalAlign(h)
+    setVerticalAlign(v)
+    setShow(true)
+  }
+
+  return (
+    <>
+      <CDialog
+        value={show}
+        onChange={setShow}
+        title="你好"
+        horizontalAlign={horizontalAlign}
+        verticalAlign={verticalAlign}
+      >
+        <div>你好，世界</div>
+      </CDialog>
+      <div className="c-row c-gutter-sm">
+        <div>
+          <CButton icon onClick={() => openWithPosition('start', 'start')}>
+            <CIcon
+              content={matArrowUpward}
+              style={{ transform: 'rotate(-45deg)' }}
+            />
+          </CButton>
+        </div>
+        <div>
+          <CButton icon onClick={() => openWithPosition('center', 'start')}>
+            <CIcon content={matArrowUpward} />
+          </CButton>
+        </div>
+        <div>
+          <CButton icon onClick={() => openWithPosition('end', 'start')}>
+            <CIcon
+              content={matArrowUpward}
+              style={{ transform: 'rotate(45deg)' }}
+            />
+          </CButton>
+        </div>
+      </div>
+      <div className="c-row c-gutter-sm">
+        <div>
+          <CButton icon onClick={() => openWithPosition('start', 'center')}>
+            <CIcon content={matArrowBack} />
+          </CButton>
+        </div>
+        <div>
+          <CButton icon onClick={() => openWithPosition('center', 'center')}>
+            <CIcon content={matFullscreenExit} />
+          </CButton>
+        </div>
+        <div>
+          <CButton icon onClick={() => openWithPosition('end', 'center')}>
+            <CIcon content={matArrowForward} />
+          </CButton>
+        </div>
+      </div>
+      <div className="c-row c-gutter-sm">
+        <div>
+          <CButton icon onClick={() => openWithPosition('start', 'end')}>
+            <CIcon
+              content={matArrowBack}
+              style={{ transform: 'rotate(-45deg)' }}
+            />
+          </CButton>
+        </div>
+        <div>
+          <CButton icon onClick={() => openWithPosition('center', 'end')}>
+            <CIcon content={matArrowDownward} />
+          </CButton>
+        </div>
+        <div>
+          <CButton icon onClick={() => openWithPosition('end', 'end')}>
+            <CIcon
+              content={matArrowForward}
+              style={{ transform: 'rotate(45deg)' }}
+            />
+          </CButton>
+        </div>
+      </div>
+    </>
+  )
+}
+```
+
+### 底部按钮
+
+```jsx live
+function Demo() {
+  const [show, setShow] = useState(false)
+  return (
+    <>
+      <CDialog
+        value={show}
+        onChange={setShow}
+        title="标题"
+        showConfirmBtn
+        showCancelBtn
+      >
+        内容
+      </CDialog>
+      <CButton label="打开弹窗" onClick={() => setShow(true)} />
+    </>
+  )
+}
+```
+
+### 自定义内容
+
+```jsx live
+function Demo() {
+  const [show, setShow] = useState(false)
+
+  return (
+    <>
+      <CDialog
+        value={show}
+        onChange={setShow}
+        title="你好"
+        customTitle={<img style={{ width: '80px' }} src="/logo-dark.svg" />}
+        customCloseIcon={<CIcon content={MdIcons.matPeople} />}
+        customFooterActions={
+          <>
+            <CButton
+              size="sm"
+              label="关闭1"
+              theme="negative"
+              onClick={() => setShow(false)}
+            />
+            <CButton
+              size="sm"
+              label="关闭2"
+              theme="warning"
+              onClick={() => setShow(false)}
+            />
+          </>
+        }
+      >
+        <div>你好，世界</div>
+      </CDialog>
+      <CButton label="打开对话框" onClick={() => setShow(true)} />
+    </>
+  )
+}
+```
+
+### Props
+
+<PropTable name="CDialog" typeWidth="280px" />

@@ -1,95 +1,95 @@
 ---
-title: 按钮
+title: Button
 ---
 
-### 基础使用
+### Basic Usage
 
 ```jsx live
 function Demo() {
   return (
     <SpaceItems>
-      <CButton label="普通按钮" />
-      <CButton label="轮廓按钮" outlined />
-      <CButton label="禁用状态" disabled />
-      <CButton label="圆角按钮" rounded />
-      <CButton label="圆边按钮" round />
-      <CButton label="扁平按钮" rounded flat />
+      <CButton label="Normal Button" />
+      <CButton label="Outlined Button" outlined />
+      <CButton label="Disabled Button" disabled />
+      <CButton label="Rounded Button" rounded />
+      <CButton label="Round Button" round />
+      <CButton label="Flat Button" rounded flat />
     </SpaceItems>
   )
 }
 ```
 
-### 主题
+### Themes
 
 ```jsx live
 <SpaceItems>
-  <CButton label="主色按钮" theme="primary" />
-  <CButton label="辅色按钮" theme="secondary" />
-  <CButton label="警告色按钮" theme="warning" />
-  <CButton label="消极色按钮" theme="negative" />
-  <CButton label="主色按钮" theme="primary" outlined />
-  <CButton label="辅色按钮" theme="secondary" outlined />
-  <CButton label="警告色按钮" theme="warning" outlined />
-  <CButton label="消极色按钮" theme="negative" outlined />
-  <CButton label="主色按钮" theme="primary" flat />
-  <CButton label="辅色按钮" theme="secondary" flat />
-  <CButton label="警告色按钮" theme="warning" flat />
-  <CButton label="消极色按钮" theme="negative" flat />
+  <CButton label="Primary" theme="primary" />
+  <CButton label="Secondary" theme="secondary" />
+  <CButton label="Warning" theme="warning" />
+  <CButton label="Negative" theme="negative" />
+  <CButton label="Primary" theme="primary" outlined />
+  <CButton label="Secondary" theme="secondary" outlined />
+  <CButton label="Warning" theme="warning" outlined />
+  <CButton label="Negative" theme="negative" outlined />
+  <CButton label="Primary" theme="primary" flat />
+  <CButton label="Secondary" theme="secondary" flat />
+  <CButton label="Warning" theme="warning" flat />
+  <CButton label="Negative" theme="negative" flat />
 </SpaceItems>
 ```
 
-### 不同尺寸
+### Sizes
 
 ```jsx live
 <SpaceItems>
-  <CButton label="超小尺寸按钮" size="xs" />
-  <CButton label="小尺寸按钮" size="sm" />
-  <CButton label="中等尺寸钮" size="md" />
-  <CButton label="大尺寸按钮" size="lg" />
-  <CButton label="超大尺寸按钮" size="xl" />
+  <CButton label="xs size" size="xs" />
+  <CButton label="sm size" size="sm" />
+  <CButton label="md size (default)" size="md" />
+  <CButton label="lg size" size="lg" />
+  <CButton label="xl size" size="xl" />
 </SpaceItems>
 ```
 
-### 块级
+### Block Button
 
 ```jsx live
 <div>
   <div className="c-mb-md">
-    <CButton label="块级按钮" block size="lg" theme="warning" />
+    <CButton label="Block Button" block size="lg" theme="warning" />
   </div>
   <div className="c-mb-md">
-    <CButton label="块级按钮" block size="lg" rounded />
+    <CButton label="Block Button" block size="lg" rounded />
   </div>
   <div>
-    <CButton label="块级按钮" block size="lg" round theme="negative" outlined />
+    <CButton label="Block Button" block size="lg" round theme="negative" outlined />
   </div>
 </div>
 ```
 
-### 加载状态
+### Loading
 
 ```jsx live
 <SpaceItems>
-  <CButton label="提交中" size="sm" loading />
-  <CButton label="提交中" loading />
-  <CButton label="提交中" size="lg" loading />
-  <CButton rounded label="提交中" loading />
-  <CButton rounded label="提交中" loading outlined />
-  <CButton round label="提交中" loading />
-  <CButton round outlined label="提交中" loading />
+  <CButton label="Submitting" size="sm" loading />
+  <CButton label="Submitting" loading />
+  <CButton label="Submitting" size="lg" loading />
+  <CButton rounded label="Submitting" loading />
+  <CButton rounded label="Submitting" loading outlined />
+  <CButton round label="Submitting" loading />
+  <CButton round outlined label="Submitting" loading />
 </SpaceItems>
 ```
 
-### 自定义加载动画
+### Customize Loading Icon
 
 ```jsx live
 <SpaceItems>
-  <CButton label="提交中" loading customLoading={<CLoadingAudio />} />
-  <CButton label="提交中" outlined loading customLoading={<CLoadingCube />} />
+  <CButton label="Submitting" loading customLoading={<CLoadingAudio />} />
+  <CButton label="Submitting" outlined loading customLoading={<CLoadingCube />} />
 </SpaceItems>
 ```
 
-### 图标按钮
+### Icon Button
 
 ```jsx live
 <SpaceItems>

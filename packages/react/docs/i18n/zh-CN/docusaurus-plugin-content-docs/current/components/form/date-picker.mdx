@@ -1,0 +1,164 @@
+---
+title: 日期选择器
+---
+
+### 基础使用
+
+```jsx live
+function Demo() {
+  const [date, setDate] = useState(null)
+  const [formattedDate, setFormattedDate] = useState('')
+  return (
+    <>
+      <p>
+        <strong>选中日期：</strong>
+        {date && date.toString()}
+      </p>
+      <p>
+        <strong>选中日期格式化后的值：</strong>
+        {formattedDate}
+      </p>
+      <CDatePicker
+        value={date}
+        onChange={setDate}
+        formattedValue={formattedDate}
+        onFormattedValueChange={setFormattedDate}
+        placeholder="请选择日期"
+      />
+    </>
+  )
+}
+```
+
+### 禁用态
+
+```jsx live
+function Demo() {
+  const [date, setDate] = useState(null)
+  return (
+    <SpaceItems>
+      <CDatePicker
+        value={date}
+        onChange={setDate}
+        placeholder="不可选"
+        disabled
+      />
+    </SpaceItems>
+  )
+}
+```
+
+### 尺寸
+
+```jsx live
+function Demo() {
+  const [date, setDate] = useState(null)
+  const [formattedDate, setFormattedDate] = useState('')
+  const props = useMemo(
+    () => ({
+      value: date,
+      onChange: setDate,
+      formattedValue: formattedDate,
+      onFormattedValueChange: setFormattedDate,
+    }),
+    [date, setDate, formattedDate, setFormattedDate]
+  )
+  return (
+    <SpaceItems>
+      <CDatePicker size="xs" {...props} placeholder="超小" />
+      <CDatePicker size="sm" {...props} placeholder="较小" />
+      <CDatePicker {...props} placeholder="中等（默认）" />
+      <CDatePicker size="lg" {...props} placeholder="较大" />
+      <CDatePicker size="xl" {...props} placeholder="超大" />
+    </SpaceItems>
+  )
+}
+```
+
+### 日期段选择
+
+```jsx live
+function Demo() {
+  const [range, setRange] = useState([null, null])
+  const [rangeFmt, setRangeFmt] = useState(['', ''])
+  const strDate = d => d && d.toString()
+  return (
+    <>
+      <p>
+        <strong>选中日期段：</strong>
+        {range.map(strDate).join(' - ')}
+      </p>
+      <p>
+        <strong>选中日期格式化后的值：</strong>
+        {rangeFmt[0]} - {rangeFmt[1]}
+      </p>
+      <CDatePicker
+        range
+        placeholder="请选择日期段"
+        rangeValue={range}
+        onRangeChange={setRange}
+        formattedRangeValue={rangeFmt}
+        onFormattedRangeChange={setRangeFmt}
+      />
+    </>
+  )
+}
+```
+
+### 月份、年份选择
+
+```jsx live
+function Demo() {
+  const [month, setMonth] = useState(null)
+  const [year, setYear] = useState(null)
+  const [formattedMonth, setFormattedMonth] = useState('')
+  const [formattedYear, setFormattedYear] = useState('')
+  return (
+    <div className="c-row c-gutter-md" style={{ width: '100%' }}>
+      <div className="c-col-6">
+        <p>
+          <strong>选中月份：</strong>
+          {month && month.toString()}
+        </p>
+        <p>
+          <strong>选中月份格式化后的值：</strong>
+          {formattedMonth}
+        </p>
+        <CDatePicker
+          unit="month"
+          value={month}
+          onChange={setMonth}
+          format="MMM, YYYY"
+          formattedValue={formattedMonth}
+          onFormattedValueChange={setFormattedMonth}
+          placeholder="请选择月份"
+        />
+      </div>
+      <div className="c-col-6">
+        <p>
+          <strong>选中年份：</strong>
+          {year && year.toString()}
+        </p>
+        <p>
+          <strong>选中年份格式化后的值：</strong>
+          {formattedYear}
+        </p>
+
+        <CDatePicker
+          unit="year"
+          value={year}
+          onChange={setYear}
+          format="YYYY"
+          formattedValue={formattedYear}
+          onFormattedValueChange={setFormattedYear}
+          placeholder="请选择年份"
+        />
+      </div>
+    </div>
+  )
+}
+```
+
+### Props
+
+<PropTable name="CDatePicker" typeWidth="280px" />

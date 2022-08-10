@@ -6,6 +6,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "docusaurus start --no-open",
+    "dev:zh": "docusaurus start --no-open --locale zh-CN",
     "build": "docusaurus build"
   },
   "author": {

@@ -1,0 +1,135 @@
+---
+title: 全局样式工具
+---
+
+### 尺寸
+
+```scss
+$basic-font-sizes: (
+  'xs': 12px,
+  'sm': 12px,
+  'md': 14px,
+  'lg': 16px,
+  'xl': 16px,
+);
+```
+
+| 类名     | 大概相当于 CSS                        |
+| -------- | ------------------------------------- |
+| `c-h-xs` | `font-size: 12px; line-height: 12px;` |
+| `c-h-sm` | `font-size: 12px; line-height: 12px;` |
+| `c-h-md` | `font-size: 14px; line-height: 14px;` |
+| `c-h-lg` | `font-size: 16px; line-height: 16px;` |
+| `c-h-xl` | `font-size: 16px; line-height: 16px;` |
+
+### 圆角
+
+```scss
+$basic-rounded-sizes: (
+  'xs': 4px,
+  'sm': 4px,
+  'md': 8px,
+  'lg': 12px,
+  'xl': 12px,
+);
+```
+
+| 类名           | 大概相当于 CSS         |
+| -------------- | ---------------------- |
+| `c-rounded-xs` | `border-radius: 4px;`  |
+| `c-rounded-sm` | `border-radius: 4px;`  |
+| `c-rounded-md` | `border-radius: 8px;`  |
+| `c-rounded-lg` | `border-radius: 12px;` |
+| `c-rounded-xl` | `border-radius: 12px;` |
+
+### flex 布局
+
+| 类名                        | 大概相当于 CSS                    |
+| --------------------------- | --------------------------------- |
+| `o-flex` `c-column` `c-row` | `display: inline-flex;`           |
+| `c-justify-start`           | `justify-content: flex-start;`    |
+| `c-justify-center`          | `justify-content: center;`        |
+| `c-justify-end`             | `justify-content: flex-end;`      |
+| `c-justify-between`         | `justify-content: space-between;` |
+| `c-justify-evenly`          | `justify-content: space-evenly;`  |
+| `c-justify-around`          | `justify-content: space-around;`  |
+| `c-items-start`             | `align-items: flex-start;`        |
+| `c-items-center`            | `align-items: flex-center;`       |
+| `c-items-end`               | `align-items: flex-end;`          |
+| `c-items-baseline`          | `align-items: baseline;`          |
+| `c-items-stretch`           | `align-items: stretch;`           |
+
+### 间距
+
+```scss
+$sizes: (
+  'xs': 4px,
+  'sm': 8px,
+  'md': 12px,
+  'lg': 16px,
+  'xl': 24px,
+);
+```
+
+`.o-[p | m][a | x | y| l | t | r | b]-[xs | sm | md | lg | xl]`
+
+| 类名      | 大概相当于 CSS                             |
+| --------- | ------------------------------------------ |
+| `c-pa-md` | `padding: 12px;`                           |
+| `c-mr-sm` | `margin-right: 8px;`                       |
+| `c-px-lg` | `padding-left: 16px; padding-right: 16px;` |
+| ...       | ...                                        |
+
+### 栅格
+
+Casual UI 使用经典的 12 栅格机制
+
+`c-col-[colSize]`
+
+### 子元素间距
+
+:::tip 提示
+该项需要配合`.c-row`或者`.c-column`使用
+:::
+
+`.c-gutter[-x | -y ]-[xs | sm | md | lg | xl]`
+
+| 类名                | 含义                                         |
+| ------------------- | -------------------------------------------- |
+| `c-gutter-x-[size]` | 水平方向上子元素具有`[size]`大小的间距       |
+| `c-gutter-y-[size]` | 垂直方向上子元素具有`[size]`大小的间距       |
+| `c-gutter-[size]`   | 水平与垂直方向上子元素具有`[size]`大小的间距 |
+
+### 一些示例
+
+```jsx live
+function Demo() {
+  const colStyle = {
+    backgroundColor: 'lightblue',
+    textAlign: 'center',
+    color: '#fff',
+    padding: '12px 0',
+  }
+
+  const createRepeatCols = (n, span) =>
+    Array(n)
+      .fill(0)
+      .map((_, i) => (
+        <div key={i} className={`c-col-${span}`}>
+          <div style={colStyle}>col-{span} + gutter-sm</div>
+        </div>
+      ))
+
+  return (
+    <>
+      <div className="c-row c-gutter-x-sm">{createRepeatCols(6, 2)}</div>
+      <div className="c-row c-gutter-x-md c-mt-md">
+        {createRepeatCols(4, 3)}
+      </div>
+      <div className="c-row c-gutter-x-lg c-mt-md">
+        {createRepeatCols(3, 4)}
+      </div>
+    </>
+  )
+}
+```

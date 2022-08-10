@@ -1,0 +1,42 @@
+{
+  "title": {
+    "message": "Casual UI - React",
+    "description": "The title in the navbar"
+  },
+  "item.label.Guide": {
+    "message": "指南",
+    "description": "Navbar item with label Guide"
+  },
+  "item.label.Features": {
+    "message": "特性",
+    "description": "Navbar item with label Features"
+  },
+  "item.label.Github": {
+    "message": "Github",
+    "description": "Navbar item with label Github"
+  },
+  "item.label.Install": {
+    "message": "安装",
+    "description": "Navbar item with label Install"
+  },
+  "item.label.Theme customization": {
+    "message": "主题定制",
+    "description": "Navbar item with label Theme customization"
+  },
+  "item.label.Dark mode": {
+    "message": "暗黑模式",
+    "description": "Navbar item with label Dark mode"
+  },
+  "item.label.CSS Utils": {
+    "message": "CSS 工具",
+    "description": "Navbar item with label CSS Utils"
+  },
+  "item.label.Components": {
+    "message": "组件",
+    "description": "Navbar item with label Components"
+  },
+  "item.label.Hooks API": {
+    "message": "Hooks API",
+    "description": "Navbar item with label Hooks API"
+  }
+}

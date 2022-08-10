@@ -1,0 +1,134 @@
+---
+title: 加载中
+---
+
+### 基础使用
+
+```jsx title="JSX文件中"
+import { CLoading } from 'casual-ui/react'
+
+function Demo() {
+  return <CLoading />
+}
+```
+
+```jsx live
+<CLoading />
+```
+
+### 尺寸
+
+通过设置`size`属性，使用不同尺寸的加载态
+
+```jsx live
+<SpaceItems>
+  {['24px', '100px', '10vw'].map(size => (
+    <CLoading size={size} key={size} />
+  ))}
+</SpaceItems>
+```
+
+### 颜色
+
+通过设置`color`属性，设置不同的颜色
+
+```jsx live
+<SpaceItems>
+  <CLoading size="3em" color="rgb(0, 184, 118)" />
+  <CLoading size="3em" color="orange" />
+  <CLoading size="3em" color="#FF0080" />
+</SpaceItems>
+```
+
+:::tip 提示
+你也可以通过直接定义父容器的`color`属性来达到相同的效果
+
+```jsx live
+<span style={{ color: 'blue' }}>
+  <CLoading size="3em" />
+</span>
+```
+
+:::
+
+### 厚度
+
+```jsx live
+<SpaceItems>
+  <CLoading size="120px" color="#FF0080" thickness={2} />
+  <CLoading size="120px" color="#FF0080" thickness={5} />
+  <CLoading size="120px" color="#FF0080" thickness={10} />
+</SpaceItems>
+```
+
+### 不同的加载动画
+
+```jsx live
+function Demo() {
+  const colors = [
+    'rgb(255, 0, 128)',
+    'rgb(156, 39, 176)',
+    'rgb(255, 152, 0)',
+    'rgb(33, 150, 243)',
+    'rgb(244, 67, 54)',
+    'rgb(0, 188, 212)',
+    'rgb(255, 0, 128)',
+    'rgb(63, 81, 181)',
+    'blue',
+    'rgb(3, 169, 244)',
+    'rgb(0, 188, 212)',
+    'rgb(0, 150, 136)',
+    'rgb(76, 175, 80)',
+    'rgb(139, 195, 74)',
+    'rgb(25, 118, 210)',
+    'rgb(244, 67, 54)',
+    'rgb(33, 150, 243)',
+    'rgb(156, 39, 176)',
+    'rgb(255, 87, 34)',
+    'rgb(38, 166, 154)',
+    'rgb(121, 85, 72)',
+    'rgb(158, 158, 158)',
+    'rgb(96, 125, 139)',
+  ]
+
+  const loadings = [
+    CLoading,
+    CLoadingAudio,
+    CLoadingDot,
+    CLoadingBar,
+    CLoadingSpinBox,
+    CLoadingClock,
+    CLoadingComment,
+    CLoadingCube,
+    CLoadingDots,
+    CLoadingGear,
+    CLoadingHeart,
+    CLoadingHourglass,
+    CLoadingInfinity,
+    CLoadingLattice,
+    CLoadingOrbit,
+    CLoadingOval,
+    CLoadingPie,
+    CLoadingPuff,
+    CLoadingRings,
+    CLoadingTail,
+    CLoadingWifi,
+    CLoadingBars,
+    CLoadingCircleBars,
+  ]
+
+  return (
+    <SpaceItems>
+      {loadings.map((LoadingInstance, i) => (
+        <div style={{ color: colors[i], fontSize: '3em' }} key={i}>
+          <LoadingInstance />
+        </div>
+      ))}
+    </SpaceItems>
+  )
+}
+```
+
+### Props
+
+<PropTable name="CLoading" />

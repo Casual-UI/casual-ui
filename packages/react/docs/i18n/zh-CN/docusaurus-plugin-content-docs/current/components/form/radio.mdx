@@ -1,0 +1,179 @@
+---
+title: 单选器
+sidebar_position: 3
+---
+
+### 基础使用
+
+```jsx live
+function Demo() {
+  const [val, setVal] = useState('')
+
+  return (
+    <>
+      <div className="c-row c-gutter-x-md">
+        <CRadio
+          value={val}
+          onChange={setVal}
+          label="苹果"
+          selectedValue="Apple"
+        />
+        <CRadio
+          value={val}
+          onChange={setVal}
+          label="香蕉"
+          selectedValue="Banana"
+        />
+        <CRadio
+          value={val}
+          onChange={setVal}
+          label="桃子"
+          selectedValue="Peach"
+        />
+        <CRadio
+          value={val}
+          onChange={setVal}
+          label="葡萄"
+          selectedValue="Grape"
+        />
+      </div>
+      <div className="c-mt-md">当前选中值：{val}</div>
+    </>
+  )
+}
+```
+
+### 尺寸
+
+```jsx live
+function Demo() {
+  const [val, setVal] = useState('md')
+
+  return (
+    <>
+      <div className="c-row c-items-center c-gutter-x-md">
+        <CRadio
+          value={val}
+          onChange={setVal}
+          label="超小尺寸"
+          selectedValue="xs"
+          size="xs"
+        />
+        <CRadio
+          value={val}
+          onChange={setVal}
+          label="小尺寸"
+          selectedValue="sm"
+          size="sm"
+        />
+        <CRadio
+          value={val}
+          onChange={setVal}
+          label="中等（默认）"
+          selectedValue="md"
+          size="md"
+        />
+        <CRadio
+          value={val}
+          onChange={setVal}
+          label="大尺寸"
+          selectedValue="lg"
+          size="lg"
+        />
+        <CRadio
+          value={val}
+          onChange={setVal}
+          label="超大尺寸"
+          selectedValue="xl"
+          size="xl"
+        />
+      </div>
+      <div className="c-mt-md">当前选中值：{val}</div>
+    </>
+  )
+}
+```
+
+### 状态
+
+```jsx live
+function Demo() {
+  return (
+    <>
+      <CRadio value={false} disabled label="禁用态" />
+      <div>
+        <CRadio value={true} disabled label="禁用态" />
+      </div>
+    </>
+  )
+}
+```
+
+### 基础使用
+
+```jsx live
+function Demo() {
+  const [val, setVal] = useState('')
+
+  return (
+    <>
+      <div className="c-row c-gutter-x-md">
+        <CRadio
+          value={val}
+          onChange={setVal}
+          label="苹果"
+          selectedValue="Apple"
+        />
+        <CRadio
+          value={val}
+          onChange={setVal}
+          label="香蕉"
+          selectedValue="Banana"
+        />
+        <CRadio
+          value={val}
+          onChange={setVal}
+          label="桃子"
+          selectedValue="Peach"
+        />
+        <CRadio
+          value={val}
+          onChange={setVal}
+          label="葡萄"
+          selectedValue="Grape"
+        />
+      </div>
+      <div className="c-mt-md">当前选中值：{val}</div>
+    </>
+  )
+}
+```
+
+### 单选框组
+
+```jsx live
+function Demo() {
+  const [val, setVal] = useState('Apple')
+
+  const options = [
+    { label: '苹果', value: 'Apple' },
+    { label: '香蕉', value: 'Banana' },
+    { label: '桃子', value: 'Peach' },
+    { label: '葡萄', value: 'Grapes' },
+  ]
+
+  return (
+    <CRadioGroup
+      value={val}
+      onChange={setVal}
+      options={options}
+    />
+  )
+}
+```
+
+### CRadio Props
+
+<PropTable name="CRadio" typeWidth="260px" />
+
+### CRadioGroup Props

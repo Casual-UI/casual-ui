@@ -6,7 +6,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Casual UI - React',
-  tagline: '一个随意的React组件库',
+  tagline: 'A ui components lib that supports for React17+',
   url: 'https://casual-ui-react.donsen.site',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -15,6 +15,10 @@ const config = {
   organizationName: 'Blackman99',
   projectName: 'casual-ui-react',
   githubHost: 'github.com',
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'zh-CN'],
+  },
   presets: [
     [
       'classic',
@@ -68,34 +72,34 @@ const config = {
         items: [
           {
             position: 'right',
-            label: '指南',
+            label: 'Guide',
             type: 'dropdown',
             items: [
               {
-                label: '安装',
+                label: 'Install',
                 to: '/guide/install',
               },
               {
                 to: 'guide/theme-customize',
-                label: '主题定制',
+                label: 'Theme customization',
               },
               {
                 to: 'guide/dark-mode',
-                label: '暗黑模式',
+                label: 'Dark mode',
               },
             ],
           },
           {
             position: 'right',
-            label: '功能',
+            label: 'Features',
             type: 'dropdown',
             items: [
               {
-                label: '样式相关',
+                label: 'CSS Utils',
                 to: '/style/global-util/',
               },
               {
-                label: '组件',
+                label: 'Components',
                 to: '/components/basic/button',
               },
               {
@@ -103,6 +107,10 @@ const config = {
                 to: '/hooks/',
               },
             ],
+          },
+          {
+            type: 'localeDropdown',
+            position: 'right',
           },
           {
             href: 'https://github.com/Blackman99/casual-ui.git',
@@ -115,19 +123,19 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: '指南',
+            title: 'Guide',
             items: [
               {
-                label: '安装',
+                label: 'Install',
                 to: '/guide/install',
               },
             ],
           },
           {
-            title: '组件',
+            title: 'Components',
           },
           {
-            title: '更多',
+            title: 'More',
             items: [
               {
                 label: 'Github',
