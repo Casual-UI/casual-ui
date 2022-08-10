@@ -91,7 +91,7 @@ const Logo = () => {
           [
             translate({
               id: 'feature.darkMode.title',
-              message: 'Dark mode support',
+              message: 'Dark Mode Support',
             }),
             translate({
               id: 'feature.darkMode.desc',
@@ -101,7 +101,7 @@ const Logo = () => {
           [
             translate({
               id: 'feature.strongForm.title',
-              message: 'Strong an flexible form',
+              message: 'Strong And Flexible Form',
             }),
             translate({
               id: 'feature.strongForm.desc',
