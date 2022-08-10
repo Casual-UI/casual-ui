@@ -3,7 +3,7 @@ title: Checkbox
 sidebar_position: 4
 ---
 
-### 基础使用
+### Basic
 
 ```jsx live
 function Demo() {
@@ -14,13 +14,13 @@ function Demo() {
       checkedValue={true}
       value={val}
       onChange={setVal}
-      label="同意协议"
+      label="Agree to the agreement"
     />
   )
 }
 ```
 
-### 尺寸
+### Sizes
 
 ```jsx live
 function Demo() {
@@ -34,66 +34,66 @@ function Demo() {
           size="xs"
           value={val}
           onChange={setVal}
-          label="超小尺寸"
+          label="xs"
         />
         <CCheckbox
           checkedValue="sm"
           size="sm"
           value={val}
           onChange={setVal}
-          label="小尺寸"
+          label="sm"
         />
         <CCheckbox
           checkedValue="md"
           value={val}
           onChange={setVal}
-          label="中等尺寸（默认）"
+          label="md (default)"
         />
         <CCheckbox
           checkedValue="lg"
           size="lg"
           value={val}
           onChange={setVal}
-          label="大尺寸"
+          label="lg"
         />
         <CCheckbox
           checkedValue="xl"
           size="xl"
           value={val}
           onChange={setVal}
-          label="超大尺寸"
+          label="xl"
         />
       </div>
-      <div>当前值：{val}</div>
+      <div>current value: {val}</div>
     </>
   )
 }
 ```
 
-### 状态
+### Disabled
 
 ```jsx live
 function Demo() {
   return (
     <div className="c-row c-gutter-x-md">
-      <CCheckbox value={false} label="禁用态" disabled />
-      <CCheckbox value={true} label="禁用态" disabled />
+      <CCheckbox value={false} label="Uncheck Disabled" disabled />
+      <CCheckbox value={true} label="Checked Disabled" disabled />
     </div>
   )
 }
 ```
 
-### 勾选框组
+### CheckboxGroup
 
 ```jsx live
 function Demo() {
   const [val, setVal] = useState([])
 
   const options = [
-    { label: '苹果', value: 'Apple' },
-    { label: '香蕉', value: 'Banana' },
-    { label: '橘子', value: 'Orange' },
-    { label: '桃子', value: 'Peach' },
+    { label: 'Apple', value: 'Apple' },
+    { label: 'Banana', value: 'Banana' },
+    { label: 'Orange', value: 'Orange' },
+    { label: 'Peach', value: 'Peach' },
   ]
 
   return (
@@ -104,7 +104,7 @@ function Demo() {
         options={options}
         className="c-row c-item-center c-gutter-x-md"
       />
-      <div>当前值：{val.join('，')}</div>
+      <div>Current checked values: {val.join(',')}</div>
     </>
   )
 }
@@ -114,7 +114,7 @@ function Demo() {
 
 <PropTable name="CCheckbox" typeWidth="300px" />
 
-### 额外类型说明
+### Additional Types
 
 ```ts
 type CCheckboxModel = boolean | string | number

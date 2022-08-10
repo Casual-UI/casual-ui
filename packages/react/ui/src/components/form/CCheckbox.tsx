@@ -7,31 +7,38 @@ type CCheckboxModel = boolean | string | number
 
 interface CCheckboxProps {
   /**
-   * 主题
+   * The color theme of checkbox
+   * @zh 主题
    */
   theme?: CTheme
   /**
-   * 尺寸
+   * The size of checkbox
+   * @zh 尺寸
    */
   size?: CSize
   /**
-   * 文字
+   * The label text
+   * @zh 文字
    */
   label?: string
   /**
-   * 当前值
+   * The current value
+   * @zh 当前值
    */
   value: CCheckboxModel
   /**
-   * 当前值变化时触发
+   * Emit when the current value change
+   * @zh 当前值变化时触发
    */
   onChange?: (newValue: CCheckboxModel) => void
   /**
-   * 选中时的值
+   * The value used for checked
+   * @zh 选中时的值
    */
   checkedValue?: CCheckboxModel
   /**
-   * 是否禁用
+   * Determine whether the checkbox is disabled or not.
+   * @zh 是否禁用
    */
   disabled?: boolean
 }

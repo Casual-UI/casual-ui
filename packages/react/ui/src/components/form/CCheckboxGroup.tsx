@@ -1,4 +1,4 @@
-import { CSize } from '@site/../types'
+import { CSize } from 'casual-types'
 import clsx from 'clsx'
 import React, { useMemo, useEffect, useState } from 'react'
 import useGutterSize from '../../hooks/useGutterSize'
@@ -7,23 +7,28 @@ import { useFormItemContext } from './CFormContext'
 
 interface CCheckboxGroupProps {
   /**
-   * 选项数组
+   * The options array.
+   * @zh 选项数组
    */
   options?: Array<{ label: string; value: CCheckboxModel }>
   /**
-   * 当前选中值数组
+   * Current selected values.
+   * @zh 当前选中值数组
    */
   value: CCheckboxModel[]
   /**
-   * 勾选值发生变化时触发
+   * Emit when current values change.
+   * @zh 勾选值发生变化时触发
    */
   onChange?: (newValue: CCheckboxModel[]) => void
   /**
-   * 自定义额外样式类
+   * Custom class names.
+   * @zh 自定义额外样式类
    */
   className?: string
   /**
-   * 勾选框间隔尺寸
+   * The size of all checkbox inside this group.
+   * @zh 勾选框间隔尺寸
    */
   gutterSize?: CSize
 }

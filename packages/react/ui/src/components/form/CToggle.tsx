@@ -5,31 +5,38 @@ import React from 'react'
 
 interface CToggleProps {
   /**
-   * 文案
+   * The label text
+   * @zh 文案
    */
   label?: string
   /**
-   * 尺寸
+   * The size
+   * @zh 尺寸
    */
   size?: CSize
   /**
-   * 绑定值，用于<code>v-model</code>绑定用
+   * The current value.
+   * @zh 当前值
    */
   value: any
   /**
-   * 值变化时触发
+   * Emit when current value change
+   * @zh 值变化时触发
    */
   onChange?: (newValue: any) => void
   /**
-   * 选中时的值
+   * The value used when the toggle is on
+   * @zh 打开时的值
    */
   checkValue?: any
   /**
-   * 未选中时的值
+   * The value used when the toggle is off
+   * @zh 关闭时的值
    */
   uncheckValue?: any
   /**
-   * 是否禁用
+   * Determine wether the toggle is disabled or not.
+   * @zh 是否禁用
    */
   disabled?: boolean
 }

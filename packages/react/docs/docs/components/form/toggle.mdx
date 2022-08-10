@@ -3,7 +3,7 @@ title: Toggle
 sidebar_position: 5
 ---
 
-### 基础使用
+### Basic
 
 ```jsx live
 function Demo() {
@@ -12,13 +12,13 @@ function Demo() {
     <CToggle
       value={openNotify}
       onChange={setOpenNotify}
-      label={openNotify ? '点击关闭通知' : '点击打开通知'}
+      label={openNotify ? 'Click to off' : 'Click to on'}
     />
   )
 }
 ```
 
-### 尺寸
+### Sizes
 
 ```jsx live
 function Demo() {
@@ -41,7 +41,7 @@ function Demo() {
               onChange={v => setToggleStatus({ ...toggleStatus, [size]: v })}
               label={size}
             />
-            <p>状态：{toggleStatus[size] ? 'true' : 'false'}</p>
+            <p>Is on：{toggleStatus[size] ? 'true' : 'false'}</p>
           </div>
         ))}
       </div>
@@ -50,15 +50,15 @@ function Demo() {
 }
 ```
 
-### 禁用态
+### Disabled
 
 ```jsx live
 function Demo() {
   return (
-    <>
-      <CToggle value={false} disabled label="禁用态" />
-      <CToggle value={true} disabled label="禁用态" />
-    </>
+    <SpaceItems>
+      <CToggle value={false} disabled label="Disabled off" />
+      <CToggle value={true} disabled label="Disabled on" />
+    </SpaceItems>
   )
 }
 ```
