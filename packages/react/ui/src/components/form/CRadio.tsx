@@ -8,27 +8,33 @@ type CRadioModel = boolean | string | number
 
 interface CRadioProps {
   /**
-   * 当前值
+   * The current value.
+   * @zh 当前值
    */
   value: CRadioModel
   /**
-   * 值发生变化时触发
+   * Emit when the current value change.
+   * @zh 值发生变化时触发
    */
   onChange?: (newValue: CRadioModel) => void
   /**
-   * 选中时的值
+   * The value used for checked status.
+   * @zh 选中时的值
    */
   selectedValue?: CRadioModel
   /**
-   * 文字
+   * The label text.
+   * @zh 文字
    */
   label?: string
   /**
-   * 尺寸
+   * The size of radio.
+   * @zh 尺寸
    */
   size?: CSize
   /**
-   * 是否禁用
+   *  Determine whether the radio is disabled or not.
+   * @zh 是否禁用
    */
   disabled?: boolean
 }

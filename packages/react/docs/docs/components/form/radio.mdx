@@ -3,7 +3,7 @@ title: Radio
 sidebar_position: 3
 ---
 
-### 基础使用
+### Basic
 
 ```jsx live
 function Demo() {
@@ -15,35 +15,35 @@ function Demo() {
         <CRadio
           value={val}
           onChange={setVal}
-          label="苹果"
+          label="Apple"
           selectedValue="Apple"
         />
         <CRadio
           value={val}
           onChange={setVal}
-          label="香蕉"
+          label="Banana"
           selectedValue="Banana"
         />
         <CRadio
           value={val}
           onChange={setVal}
-          label="桃子"
+          label="Peach"
           selectedValue="Peach"
         />
         <CRadio
           value={val}
           onChange={setVal}
-          label="葡萄"
+          label="Grape"
           selectedValue="Grape"
         />
       </div>
-      <div className="c-mt-md">当前选中值：{val}</div>
+      <div className="c-mt-md">Current selected: {val}</div>
     </>
   )
 }
 ```
 
-### 尺寸
+### Sizes
 
 ```jsx live
 function Demo() {
@@ -55,125 +55,104 @@ function Demo() {
         <CRadio
           value={val}
           onChange={setVal}
-          label="超小尺寸"
+          label="xs"
           selectedValue="xs"
           size="xs"
         />
         <CRadio
           value={val}
           onChange={setVal}
-          label="小尺寸"
+          label="sm"
           selectedValue="sm"
           size="sm"
         />
         <CRadio
           value={val}
           onChange={setVal}
-          label="中等（默认）"
+          label="md (default)"
           selectedValue="md"
           size="md"
         />
         <CRadio
           value={val}
           onChange={setVal}
-          label="大尺寸"
+          label="lg"
           selectedValue="lg"
           size="lg"
         />
         <CRadio
           value={val}
           onChange={setVal}
-          label="超大尺寸"
+          label="xl"
           selectedValue="xl"
           size="xl"
         />
       </div>
-      <div className="c-mt-md">当前选中值：{val}</div>
+      <div className="c-mt-md">Current selected: {val}</div>
     </>
   )
 }
 ```
 
-### 状态
+### Disabled
 
 ```jsx live
 function Demo() {
   return (
     <>
-      <CRadio value={false} disabled label="禁用态" />
+      <CRadio
+        value={false}
+        disabled
+        label="Unselect Disabled"
+      />
       <div>
-        <CRadio value={true} disabled label="禁用态" />
+        <CRadio
+          value={true}
+          disabled
+          label="Selected Disabled"
+        />
       </div>
     </>
   )
 }
 ```
 
-### 基础使用
-
-```jsx live
-function Demo() {
-  const [val, setVal] = useState('')
-
-  return (
-    <>
-      <div className="c-row c-gutter-x-md">
-        <CRadio
-          value={val}
-          onChange={setVal}
-          label="苹果"
-          selectedValue="Apple"
-        />
-        <CRadio
-          value={val}
-          onChange={setVal}
-          label="香蕉"
-          selectedValue="Banana"
-        />
-        <CRadio
-          value={val}
-          onChange={setVal}
-          label="桃子"
-          selectedValue="Peach"
-        />
-        <CRadio
-          value={val}
-          onChange={setVal}
-          label="葡萄"
-          selectedValue="Grape"
-        />
-      </div>
-      <div className="c-mt-md">当前选中值：{val}</div>
-    </>
-  )
-}
-```
-
-### 单选框组
+### RadioGroup
 
 ```jsx live
 function Demo() {
   const [val, setVal] = useState('Apple')
 
   const options = [
-    { label: '苹果', value: 'Apple' },
-    { label: '香蕉', value: 'Banana' },
-    { label: '桃子', value: 'Peach' },
-    { label: '葡萄', value: 'Grapes' },
+    { label: 'Apple', value: 'Apple' },
+    { label: 'Banana', value: 'Banana' },
+    { label: 'Peach', value: 'Peach' },
+    { label: 'Grapes', value: 'Grapes' },
   ]
 
   return (
-    <CRadioGroup
-      value={val}
-      onChange={setVal}
-      options={options}
-    />
+    <>
+      <CRadioGroup
+        value={val}
+        onChange={setVal}
+        options={options}
+      />
+      <div className="c-mt-md">Current selected: {val}</div>
+    </>
   )
 }
 ```
 
 ### CRadio Props
 
-<PropTable name="CRadio" typeWidth="260px" />
+<PropTable
+  name="CRadio"
+  typeWidth="260px"
+/>
 
 ### CRadioGroup Props
+
+<PropTable
+  name="CRadioGroup"
+  typeWidth="260px"
+/>

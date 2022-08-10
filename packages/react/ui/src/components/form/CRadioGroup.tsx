@@ -8,23 +8,28 @@ import { useFormItemContext } from './CFormContext'
 
 interface CRadioGroupProps {
   /**
-   * 当前选中值
+   * The current value
+   * @zh 当前选中值
    */
   value: any
   /**
-   * 当前选中值变化时触发的回调
+   * Emit when the current change
+   * @zh 当前选中值变化时触发的回调
    */
   onChange?: (value: any) => void
   /**
-   * 选项数组
+   * The options array.
+   * @zh 选项数组
    */
   options: { value: string | number; label: string }[]
   /**
-   * 尺寸
+   * The size of all radio in this group.
+   * @zh 当前组下所有的单选器的尺寸
    */
   size?: CSize
   /**
-   * 选项间距
+   * The gutter size between each radio.
+   * @zh 选项间距大小
    */
   gutterSize?: CSize
 }
