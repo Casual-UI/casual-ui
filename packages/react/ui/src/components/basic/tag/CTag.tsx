@@ -6,31 +6,38 @@ import clsx from 'clsx'
 import CIcon from '../icon/CIcon'
 interface CTagProps {
   /**
-   * 标签内文字
+   * The label text.
+   * @zh 标签内文字
    */
   label?: string
   /**
-   * 主题
+   * The theme color.
+   * @zh 主题
    */
   theme?: CTheme
   /**
-   * 尺寸
+   * The size of tag.
+   * @zh 尺寸
    */
   size?: CSize
   /**
-   * 是否为圆角
+   * Determine whether the tag has rounded border or not.
+   * @zh 是否为圆角
    */
   rounded?: boolean
   /**
-   * 是否可关闭，设置为<code>true</code>会展示一个关闭图标
+   * Determine whether the tag has a close icon or not.
+   * @zh 是否可关闭，设置为<code>true</code>会展示一个关闭图标
    */
   closeable?: boolean
   /**
-   * 自定义前置内容
+   * Customize the prefix content
+   * @zh 自定义前置内容
    */
   prefix?: CSlot
   /**
-   * 点击关闭图标触发
+   * Emit when the close icon clicked.
+   * @zh 点击关闭图标触发
    */
   onClose?: () => void
 }

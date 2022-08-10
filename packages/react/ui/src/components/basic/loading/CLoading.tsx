@@ -1,31 +1,25 @@
 import React from 'react'
 import useLoadingSize from './useLoadingSize'
+import { CSSProperties } from 'react'
 
 interface CLoadingProps {
-  /**
-   * 尺寸
-   */
-  size?: string
   /**
    * 厚度
    */
   thickness?: number
   /**
-   * 颜色
+   * Customize style
+   * @zh 自定义样式
    */
-  color?: string
+  style?: CSSProperties
 }
 
-const CLoading = ({
-  size,
-  thickness = 5,
-  color = 'currentColor',
-}: CLoadingProps) => {
+const CLoading = ({ thickness = 5, style }: CLoadingProps) => {
   return (
     <svg
       className="c-loading c-loading--mat"
       viewBox="25 25 50 50"
-      {...useLoadingSize(size)}
+      style={style}
     >
       <circle
         className="c-loading--path"
@@ -33,7 +27,7 @@ const CLoading = ({
         cy="50"
         r="20"
         fill="none"
-        stroke={color}
+        stroke="currentColor"
         strokeWidth={thickness}
         strokeMiterlimit="10"
       ></circle>

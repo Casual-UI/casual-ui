@@ -2,7 +2,7 @@
 title: Loading
 ---
 
-### 基础使用
+### Basic Usage
 
 ```jsx title="JSX文件中"
 import { CLoading } from 'casual-ui/react'
@@ -16,27 +16,27 @@ function Demo() {
 <CLoading />
 ```
 
-### 尺寸
+### Sizes
 
-通过设置`size`属性，使用不同尺寸的加载态
+Directly use CSS `font-size` to set loading size
 
 ```jsx live
 <SpaceItems>
   {['24px', '100px', '10vw'].map(size => (
-    <CLoading size={size} key={size} />
+    <CLoading style={{ fontSize: size }} key={size} />
   ))}
 </SpaceItems>
 ```
 
-### 颜色
+### Custom Color
 
-通过设置`color`属性，设置不同的颜色
+Directly use CSS `color` attribute to set colors.
 
 ```jsx live
 <SpaceItems>
-  <CLoading size="3em" color="rgb(0, 184, 118)" />
-  <CLoading size="3em" color="orange" />
-  <CLoading size="3em" color="#FF0080" />
+  <CLoading style={{ color: 'rgb(0, 184, 118)', fontSize: '3em' }} />
+  <CLoading style={{ color: 'orange', fontSize: '3em' }} />
+  <CLoading style={{ color: '#FF0080', fontSize: '3em' }} />
 </SpaceItems>
 ```
 
@@ -51,14 +51,16 @@ function Demo() {
 
 :::
 
-### 厚度
+### Thickness
 
 ```jsx live
-<SpaceItems>
-  <CLoading size="120px" color="#FF0080" thickness={2} />
-  <CLoading size="120px" color="#FF0080" thickness={5} />
-  <CLoading size="120px" color="#FF0080" thickness={10} />
-</SpaceItems>
+<div style={{ fontSize: '120px' }}>
+  <SpaceItems>
+    <CLoading color="#FF0080" thickness={2} />
+    <CLoading color="#FF0080" thickness={5} />
+    <CLoading color="#FF0080" thickness={10} />
+  </SpaceItems>
+</div>
 ```
 
 ### 不同的加载动画
