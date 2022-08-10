@@ -68,7 +68,11 @@ export default defineUserConfig({
       },
     ],
     sidebar: {
-      '/guide/': ['/guide/install/', '/guide/theme-customize/'],
+      '/guide/': [
+        '/guide/install/',
+        '/guide/theme-customize/',
+        '/guide/dark-mode/',
+      ],
       '/usable/': [
         '/usable/',
         '/usable/useClickOutside/',

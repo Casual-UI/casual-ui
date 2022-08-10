@@ -79,6 +79,10 @@ const config = {
                 to: 'guide/theme-customize',
                 label: '主题定制',
               },
+              {
+                to: 'guide/dark-mode',
+                label: '暗黑模式',
+              },
             ],
           },
           {
