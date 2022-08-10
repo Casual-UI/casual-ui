@@ -39,6 +39,10 @@ export default defineUserConfig({
             text: '主题定制',
             link: '/guide/theme-customize/',
           },
+          {
+            text: '暗黑模式',
+            link: '/guide/dark-mode/',
+          },
         ],
       },
       {
@@ -151,7 +155,7 @@ export default defineUserConfig({
           '@doc': process.cwd(),
         },
       },
-      plugins: [Unocss({ presets: [presetIcons()] })],
+      plugins: [Unocss({ presets: [presetIcons()] }) as any],
     },
   }),
 })
