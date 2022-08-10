@@ -10,13 +10,13 @@ A casual UI libs for React17+
 
 ```bash
 # via npm
-npm install casual-ui-react
+npm install casual-ui-react react react-dom
 
 # via yarn
-yarn install casual-ui-react
+yarn install casual-ui-react react react-dom
 
 # via pnpm
-pnpm install casual-ui-react
+pnpm install casual-ui-react react react-dom
 ```
 
 ## Usage
