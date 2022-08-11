@@ -1,9 +1,9 @@
 ---
-title: Loading
+title: 加载中
 componentPath: basic/loading/CLoading
 ---
 
-### Basic Usage
+### 基础使用
 
 ```vue live
 <template>
@@ -11,9 +11,9 @@ componentPath: basic/loading/CLoading
 </template>
 ```
 
-### Sizes
+### 尺寸
 
-Directly use CSS `font-size`
+通过直接设置css的`font-size`属性，使用不同尺寸的加载态
 
 ```vue live
 <template>
@@ -23,9 +23,9 @@ Directly use CSS `font-size`
 </template>
 ```
 
-### Colors
+### 颜色
 
-Directly use CSS `color`
+直接设置css的`color`属性，设置不同的颜色
 
 ```vue live
 <template>
@@ -37,9 +37,9 @@ Directly use CSS `color`
 </template>
 ```
 
-::: tip
-Because `color` and `font-size` is inheritable
-Can also set parent dom's `color` and `font-size` to achieve the some effect.
+::: tip 提示
+因为`color`与`font-size`属性是可继承的  
+你也可以通过直接定义父容器的`color`以及`font-size`属性来达到相同的效果
 
 ```vue live
 <template>
@@ -51,7 +51,7 @@ Can also set parent dom's `color` and `font-size` to achieve the some effect.
 
 :::
 
-### Thickness
+### 厚度
 
 ```vue live
 <template>
@@ -63,7 +63,7 @@ Can also set parent dom's `color` and `font-size` to achieve the some effect.
 </template>
 ```
 
-### Loading Animations
+### 不同的加载动画
 
 ```vue live
 <template>

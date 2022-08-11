@@ -8,47 +8,58 @@ import type { CTheme, CSize } from 'casual-types'
 
 interface CButtonProps {
   /**
-   * 按钮文案
+   * The label text
+   * @zh 按钮文案
    */
   label?: string
   /**
-   * 是否表现为轮廓风格
+   * Determine whether the button is outlined or not.
+   * @zh 是否表现为轮廓风格
    */
   outlined?: boolean
   /**
-   * 是否为禁用态
+   * Determine whether the button is disabled or not.
+   * @zh 是否为禁用态
    */
   disabled?: boolean
   /**
-   * 按钮尺寸
+   * The size of button.
+   * @zh 按钮尺寸
    */
   size?: CSize
   /**
-   * 是否现为圆角
+   * Determine whether to have a rounded border or not.
+   * @zh 是否现为圆角
    */
   rounded?: boolean
   /**
-   * 是否现为圆边
+   * Determine whether to have a half circle border or not.
+   * @zh 是否现为圆边
    */
   round?: boolean
   /**
-   * 是否表现为块级
+   * Determine whether to display like a block element or not.
+   * @zh 是否表现为块级
    */
   block?: boolean
   /**
-   * 主题
+   * The theme color of button.
+   * @zh 主题
    */
   theme?: CTheme
   /**
-   * 是否处于加载中状态
+   * Determine whether the button is in loading status or not.
+   * @zh 是否处于加载中状态
    */
   loading?: boolean
   /**
-   * 是否表现为图标按钮
+   * Determine whether the button display as a icon button or not.
+   * @zh 是否表现为图标按钮
    */
   icon?: boolean
   /**
-   * 是否为扁平按钮
+   * Determine whether the button display a flat style or not.
+   * @zh 是否为扁平按钮
    */
   flat?: boolean
 }
@@ -79,7 +90,8 @@ const sizeThemeClasses = useSizeThemeClass({
 
 defineEmits<{
   /**
-   * 点击事件触发
+   * Emit when the button clicked.
+   * @zh 点击事件触发
    */
   (e: 'click'): void
 }>()
@@ -105,13 +117,19 @@ defineEmits<{
   >
     <div class="c-button--focus-helper"></div>
     <div :class="['c-button--content-wrapper']">
-      <!-- @slot 默认插槽，如果设置了该插槽，则会覆盖<code>label</code>内容 -->
+      <!-- 
+        @slot Default content. It will override the label prop.
+        @zh 默认插槽，如果设置了该插槽，则会覆盖<code>label</code>内容
+      -->
       <slot>
         {{ label }}
       </slot>
       <template v-if="loading">
         <span>&nbsp;</span>
-        <!-- @slot 自定义加载状态动画 -->
+        <!-- 
+          @slot Customize the loading content.
+          @zh 自定义加载状态动画 
+        -->
         <slot name="loading">
           <c-loading />
         </slot>

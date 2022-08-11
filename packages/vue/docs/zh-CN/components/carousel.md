@@ -1,12 +1,12 @@
 ---
-title: Carousel
+title: 轮播
 componentPath: carousel/CCarousel
 additionalComponentPaths:
   - name: CCarouselSlider
     path: carousel/CCarouselSlider
 ---
 
-### Basic Usage
+### 基础使用
 
 ```vue live
 <script setup>
@@ -22,7 +22,7 @@ const current = ref(0)
           i-openmoji-red-apple
           class="icon"
         ></div>
-        Would you like some apples?
+        要来一些苹果吗？
       </div>
     </c-carousel-slider>
     <c-carousel-slider>
@@ -31,7 +31,7 @@ const current = ref(0)
           i-openmoji-banana
           class="icon"
         ></div>
-        Would you like some bananas?
+        要来一些香蕉吗？
       </div>
     </c-carousel-slider>
     <c-carousel-slider>
@@ -40,7 +40,7 @@ const current = ref(0)
           class="icon"
           i-openmoji-grapes
         ></div>
-        Would you like some grapes?
+        要来一些葡萄吗？
       </div>
     </c-carousel-slider>
   </c-carousel>
@@ -61,7 +61,7 @@ const current = ref(0)
 </style>
 ```
 
-### Infinity
+### 无限循环
 
 ```vue live
 <script setup>
@@ -80,7 +80,7 @@ const current = ref(0)
           i-openmoji-red-apple
           class="icon"
         ></div>
-        Would you like some apples?
+        要来一些苹果吗？
       </div>
     </c-carousel-slider>
     <c-carousel-slider>
@@ -89,7 +89,7 @@ const current = ref(0)
           i-openmoji-banana
           class="icon"
         ></div>
-        Would you like some bananas?
+        要来一些香蕉吗？
       </div>
     </c-carousel-slider>
     <c-carousel-slider>
@@ -98,7 +98,7 @@ const current = ref(0)
           class="icon"
           i-openmoji-grapes
         ></div>
-       Would you like some grapes?
+        要来一些葡萄吗？
       </div>
     </c-carousel-slider>
   </c-carousel>
@@ -119,7 +119,7 @@ const current = ref(0)
 </style>
 ```
 
-### Arrow Timing
+### 箭头展示时机
 
 ```vue live
 <script setup>
@@ -138,7 +138,7 @@ const current = ref(0)
           i-openmoji-red-apple
           class="icon"
         ></div>
-        Would you like some apples?
+        要来一些苹果吗？
       </div>
     </c-carousel-slider>
     <c-carousel-slider>
@@ -147,7 +147,7 @@ const current = ref(0)
           i-openmoji-banana
           class="icon"
         ></div>
-        Would you like some bananas?
+        要来一些香蕉吗？
       </div>
     </c-carousel-slider>
     <c-carousel-slider>
@@ -156,7 +156,7 @@ const current = ref(0)
           class="icon"
           i-openmoji-grapes
         ></div>
-       Would you like some grapes?
+        要来一些葡萄吗？
       </div>
     </c-carousel-slider>
   </c-carousel>
@@ -177,7 +177,7 @@ const current = ref(0)
 </style>
 ```
 
-### Themes
+### 主题
 
 ```vue live
 <script setup>
@@ -207,7 +207,7 @@ const themeOptions = [
           i-openmoji-red-apple
           class="icon"
         ></div>
-        Would you like some apples?
+        要来一些苹果吗？
       </div>
     </c-carousel-slider>
     <c-carousel-slider>
@@ -216,7 +216,7 @@ const themeOptions = [
           i-openmoji-banana
           class="icon"
         ></div>
-        Would you like some bananas?
+        要来一些香蕉吗？
       </div>
     </c-carousel-slider>
     <c-carousel-slider>
@@ -225,7 +225,7 @@ const themeOptions = [
           class="icon"
           i-openmoji-grapes
         ></div>
-       Would you like some grapes?
+        要来一些葡萄吗？
       </div>
     </c-carousel-slider>
   </c-carousel>
@@ -246,7 +246,7 @@ const themeOptions = [
 </style>
 ```
 
-### Customize Arrow Control
+### 自定义箭头控制器
 
 ```vue live
 <script setup>
@@ -280,7 +280,7 @@ const current = ref(0)
           i-openmoji-red-apple
           class="icon"
         ></div>
-        Would you like some apples?
+        要来一些苹果吗？
       </div>
     </c-carousel-slider>
     <c-carousel-slider>
@@ -289,7 +289,7 @@ const current = ref(0)
           i-openmoji-banana
           class="icon"
         ></div>
-        Would you like some bananas?
+        要来一些香蕉吗？
       </div>
     </c-carousel-slider>
     <c-carousel-slider>
@@ -298,7 +298,7 @@ const current = ref(0)
           class="icon"
           i-openmoji-grapes
         ></div>
-       Would you like some grapes?
+        要来一些葡萄吗？
       </div>
     </c-carousel-slider>
   </c-carousel>
@@ -319,7 +319,7 @@ const current = ref(0)
 </style>
 ```
 
-### Auto Play
+### 自动播放
 
 ```vue live
 <script setup>
@@ -339,7 +339,7 @@ const current = ref(0)
           i-openmoji-red-apple
           class="icon"
         ></div>
-        Would you like some apples?
+        要来一些苹果吗？
       </div>
     </c-carousel-slider>
     <c-carousel-slider>
@@ -348,7 +348,7 @@ const current = ref(0)
           i-openmoji-banana
           class="icon"
         ></div>
-        Would you like some bananas?
+        要来一些香蕉吗？
       </div>
     </c-carousel-slider>
     <c-carousel-slider>
@@ -357,7 +357,7 @@ const current = ref(0)
           class="icon"
           i-openmoji-grapes
         ></div>
-       Would you like some grapes?
+        要来一些葡萄吗？
       </div>
     </c-carousel-slider>
   </c-carousel>
@@ -378,7 +378,7 @@ const current = ref(0)
 </style>
 ```
 
-### Vertical
+### 纵向
 
 ```vue live
 <script setup>
@@ -397,7 +397,7 @@ const current = ref(0)
           i-openmoji-red-apple
           class="icon"
         ></div>
-        Would you like some apples?
+        要来一些苹果吗？
       </div>
     </c-carousel-slider>
     <c-carousel-slider>
@@ -406,7 +406,7 @@ const current = ref(0)
           i-openmoji-banana
           class="icon"
         ></div>
-        Would you like some bananas?
+        要来一些香蕉吗？
       </div>
     </c-carousel-slider>
     <c-carousel-slider>
@@ -415,7 +415,7 @@ const current = ref(0)
           class="icon"
           i-openmoji-grapes
         ></div>
-       Would you like some grapes?
+        要来一些葡萄吗？
       </div>
     </c-carousel-slider>
   </c-carousel>
@@ -436,7 +436,7 @@ const current = ref(0)
 </style>
 ```
 
-### Indicator Positions
+### 指示器位置
 
 ```vue live
 <script setup>
@@ -497,7 +497,7 @@ const alignOptions = [
           i-openmoji-red-apple
           class="icon"
         ></div>
-        Would you like some apples?
+        要来一些苹果吗？
       </div>
     </c-carousel-slider>
     <c-carousel-slider>
@@ -506,7 +506,7 @@ const alignOptions = [
           i-openmoji-banana
           class="icon"
         ></div>
-        Would you like some bananas?
+        要来一些香蕉吗？
       </div>
     </c-carousel-slider>
     <c-carousel-slider>
@@ -515,7 +515,7 @@ const alignOptions = [
           class="icon"
           i-openmoji-grapes
         ></div>
-       Would you like some grapes?
+        要来一些葡萄吗？
       </div>
     </c-carousel-slider>
   </c-carousel>

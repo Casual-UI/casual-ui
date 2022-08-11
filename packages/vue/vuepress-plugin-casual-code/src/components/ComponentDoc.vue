@@ -2,6 +2,7 @@
   setup
   lang="ts"
 >
+// @ts-nocheck
 import { usePageFrontmatter } from '@vuepress/client'
 import { computed, ref } from 'vue'
 import type { Ref } from 'vue'
@@ -97,13 +98,13 @@ const getDefaultValue = (item: any) => {
   <div class="doc-api-container">
     <c-tabs
       v-model="activeTab"
+      :panel-padding="false"
       :items="items"
-      :body-style="{ maxHeight: '40vh', overflow: 'auto' }"
     >
       <template #body-Props>
         <c-list
+          size="sm"
           :items="propList"
-          size="xs"
           divider
         >
           <template #item="{ item }">
@@ -132,8 +133,8 @@ const getDefaultValue = (item: any) => {
 
       <template #body-Slots>
         <c-list
+          size="sm"
           :items="slots"
-          size="xs"
           divider
         >
           <template #item="{ item }">
@@ -166,19 +167,19 @@ const getDefaultValue = (item: any) => {
 
       <template #body-Events>
         <c-list
+          size="sm"
           :items="events"
-          size="xs"
           divider
         >
           <template #item="{ item }">
             <ItemDom :value="item">
               <div
-                v-if="item.tags"
+                v-if="item.tags?.some(tag => tag.name)"
                 class="c-pl-md"
               >
                 <b>入参</b>
                 <c-list
-                  :items="item.tags"
+                  :items="item.tags.filter(tag => tag.name)"
                   divider
                 >
                   <template #item="{ item: pItem }">

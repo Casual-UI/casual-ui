@@ -1,114 +1,114 @@
 ---
-title: Button
+title: 按钮
 componentPath: basic/button/CButton
 ---
 
-### Basic
+### 基础使用
 
 ```vue live
 <template>
-  <c-button label="Normal Button" />
+  <c-button label="基础按钮" />
   <c-button
-    label="Outlined Button"
+    label="轮廓按钮"
     outlined
   />
   <c-button
-    label="Rounded Button"
+    label="圆角按钮"
     rounded
   />
   <c-button
-    label="Round Button"
+    label="圆边按钮"
     round
   />
   <c-button
-    label="Flat Button"
+    label="扁平按钮"
     flat
     rounded
   />
 </template>
 ```
 
-### Themes
+### 主题
 
 ```vue live
 <template>
   <div class="c-row c-gutter-md c-wrap">
     <div>
       <c-button
-        label="Primary"
+        label="主色按钮"
         theme="primary"
       />
     </div>
     <div>
       <c-button
-        label="Secondary"
+        label="辅色按钮"
         theme="secondary"
       />
     </div>
     <div>
       <c-button
-        label="Warning"
+        label="警告色按钮"
         theme="warning"
       />
     </div>
     <div>
       <c-button
-        label="Negative"
+        label="消极色按钮"
         theme="negative"
       />
     </div>
     <div>
       <c-button
-        label="Primary"
+        label="主色按钮"
         theme="primary"
         outlined
       />
     </div>
     <div>
       <c-button
-        label="Secondary"
+        label="辅色按钮"
         theme="secondary"
         outlined
       />
     </div>
     <div>
       <c-button
-        label="Warning"
+        label="警告色按钮"
         theme="warning"
         outlined
       />
     </div>
     <div>
       <c-button
-        label="Negative"
+        label="消极色按钮"
         theme="negative"
         outlined
       />
     </div>
     <div>
       <c-button
-        label="Primary"
+        label="主色按钮"
         theme="primary"
         flat
       />
     </div>
     <div>
       <c-button
-        label="Secondary"
+        label="辅色按钮"
         theme="secondary"
         flat
       />
     </div>
     <div>
       <c-button
-        label="Warning"
+        label="警告色按钮"
         theme="warning"
         flat
       />
     </div>
     <div>
       <c-button
-        label="Negative"
+        label="消极色按钮"
         theme="negative"
         flat
       />
@@ -117,7 +117,7 @@ componentPath: basic/button/CButton
 </template>
 ```
 
-### Shapes
+### 形状
 
 ```vue live
 <script setup>
@@ -125,52 +125,52 @@ import { CButton } from 'casual-ui-vue'
 </script>
 <template>
   <c-button
-    label="Rounded"
+    label="圆角按钮"
     rounded
   />
   <c-button
-    label="Round"
+    label="圆边按钮"
     round
   />
 </template>
 ```
 
-### Sizes
+### 尺寸
 
 ```vue live
 <template>
   <div class="c-row c-items-center c-gutter-md c-wrap">
     <div>
       <c-button
-        label="xs Button"
+        label="超小尺寸"
         size="xs"
         theme="negative"
       />
     </div>
     <div>
       <c-button
-        label="sm Button"
+        label="小尺寸"
         size="sm"
         theme="negative"
       />
     </div>
     <div>
       <c-button
-        label="md Button"
+        label="中等尺寸"
         size="md"
         theme="negative"
       />
     </div>
     <div>
       <c-button
-        label="lg Button"
+        label="大尺寸"
         size="lg"
         theme="negative"
       />
     </div>
     <div>
       <c-button
-        label="xl Button"
+        label="超大尺寸"
         size="xl"
         theme="negative"
       />
@@ -179,28 +179,28 @@ import { CButton } from 'casual-ui-vue'
 </template>
 ```
 
-### Status
+### 状态
 
 ```vue live
 <template>
   <c-button
-    label="Disabled Button"
+    label="禁用状态"
     disabled
   />
   <c-button
-    label="Loading Button"
+    label="加载状态"
     loading
   />
 </template>
 ```
 
-### Block
+### 块级
 
 ```vue live
 <template>
   <div class="c-mb-md">
     <c-button
-      label="Block Button"
+      label="块级按钮"
       block
       size="lg"
       theme="warning"
@@ -208,7 +208,7 @@ import { CButton } from 'casual-ui-vue'
   </div>
   <div class="c-mb-md">
     <c-button
-      label="Block Button"
+      label="块级按钮"
       block
       size="lg"
       rounded
@@ -216,7 +216,7 @@ import { CButton } from 'casual-ui-vue'
   </div>
   <div>
     <c-button
-      label="Block Button"
+      label="块级按钮"
       block
       size="lg"
       round
@@ -227,12 +227,12 @@ import { CButton } from 'casual-ui-vue'
 </template>
 ```
 
-### Customize Loading Icon
+### 自定义 Loading 实例
 
 ```vue live
 <template>
   <c-button
-    label="Loading"
+    label="加载中"
     loading
   >
     <template #loading>
@@ -240,7 +240,7 @@ import { CButton } from 'casual-ui-vue'
     </template>
   </c-button>
   <c-button
-    label="Loading"
+    label="加载中"
     loading
     outlined
     round
@@ -250,7 +250,7 @@ import { CButton } from 'casual-ui-vue'
     </template>
   </c-button>
   <c-button
-    label="Loading"
+    label="加载中"
     outlined
     rounded
     loading
@@ -262,7 +262,7 @@ import { CButton } from 'casual-ui-vue'
 </template>
 ```
 
-### Icon Button
+### 图标按钮
 
 ```vue live
 <script setup>

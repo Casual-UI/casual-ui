@@ -13,7 +13,7 @@ export type Direction = 'forward' | 'backward'
   setup
   lang="ts"
 >
-import { computed, provide, ref, toRefs } from 'vue'
+import { computed, nextTick, provide, ref, toRefs } from 'vue'
 import CButton from '../basic/button/CButton.vue'
 import CIcon from '../basic/icon/CIcon.vue'
 import {
@@ -23,43 +23,53 @@ import {
 
 interface Props {
   /**
-   * 当前激活项下标，可使用<code>v-model</code>绑定
+   * The current active index (from 0). Can used with <code>v-model</code>
+   * @zh 当前激活项下标，可使用<code>v-model</code>绑定
    */
   modelValue?: number
   /**
-   * 轮播容器高度
+   * The height of container.
+   * @zh 轮播容器高度
    */
   height?: string
   /**
-   * 轮播主题，该值会指示器以及箭头控制器主题色
+   * The theme color. It will affect the indicators and controls' color.
+   * @zh 轮播主题，该值会指示器以及箭头控制器主题色
    */
   theme?: 'primary' | 'secondary' | 'warning' | 'negative'
   /**
-   * 自动播放时间间隔，单位为毫秒. 设置大于0时会开启自动播放
+   * The autoplay interval. If set to a value larger than 0. Autoplay will be set.
+   * @zh 自动播放时间间隔，单位为毫秒. 设置大于0时会开启自动播放
    */
   interval?: number
   /**
-   * 指示器水平方向的位置
+   * The indicators' horizontal position.
+   * @zh 指示器水平方向的位置
    */
   indicatorsPositionHorizontal?: 'start' | 'center' | 'end'
   /**
-   * 指示器垂直方向的位置
+   * The indicators' vertical position.
+   * @zh 指示器垂直方向的位置
    */
   indicatorsPositionVertical?: 'start' | 'center' | 'end'
   /**
-   * 指示器排列方式
+   * The indicators align direction.
+   * @zh 指示器排列方式
    */
   indicatorsAlignDirection?: 'row' | 'column' | 'row-reverse' | 'column-reverse'
   /**
-   * 是否为纵向过渡
+   * Determine whether the transition is vertical or not.
+   * @zh 是否为纵向过渡
    */
   vertical?: boolean
   /**
-   * 是否为循环播放
+   * Determine whether the sliders can be toggled infinity or not.
+   * @zh 是否为循环播放
    */
   infinity?: boolean
   /**
-   * 箭头控制器展示时机
+   * The arrow control shown timing.
+   * @zh 箭头控制器展示时机
    */
   arrowTiming?: 'always' | 'hover' | 'never'
 }
@@ -105,27 +115,32 @@ const onContainerMouseLeave = () => {
 }
 
 const toIndex = (idx: number) => {
+  const updateIndex = (i: number) => {
+    nextTick(() => {
+      emit('update:modelValue', i)
+    })
+  }
   if (idx < props.modelValue) {
     if (idx >= 0) {
       direction.value = 'backward'
-      emit('update:modelValue', idx)
+      updateIndex(idx)
       return
     }
     if (props.infinity) {
       direction.value = 'backward'
-      emit('update:modelValue', slides.value.length - 1)
+      updateIndex(slides.value.length - 1)
     }
     return
   }
   if (idx > props.modelValue) {
     if (idx < slides.value.length) {
       direction.value = 'forward'
-      emit('update:modelValue', idx)
+      updateIndex(idx)
       return
     }
     if (props.infinity) {
       direction.value = 'forward'
-      emit('update:modelValue', 0)
+      updateIndex(0)
     }
   }
 }
@@ -174,7 +189,10 @@ defineExpose({
           `c-${indicatorsAlignDirection}`,
         ]"
       >
-        <!-- 自定义指示器内容 -->
+        <!-- 
+          @slot Customize the indicators content. 
+          @zh 自定义指示器内容 
+        -->
         <slot name="indicators">
           <div
             v-for="(_, i) in slides"
@@ -199,7 +217,10 @@ defineExpose({
         class="c-carousel--control c-carousel--control--prev"
         @click="toPrev"
       >
-        <!-- @slot 自定义向前箭头控制器内容 -->
+        <!-- 
+          @slot Customize the to previous control arrow. 
+          @zh 自定义向前箭头控制器内容 
+        -->
         <slot name="control-prev">
           <c-button
             icon
@@ -218,7 +239,10 @@ defineExpose({
         class="c-carousel--control c-carousel--control--next"
         @click="toNext"
       >
-        <!-- @slot 自定义向后箭头控制器内容 -->
+        <!-- 
+          @slot Customize the to next control arrow. 
+          @zh 自定义向后箭头控制器内容 
+        -->
         <slot name="control-next">
           <c-button
             icon
@@ -232,7 +256,10 @@ defineExpose({
     </Transition>
 
     <div class="c-carousel--sliders">
-      <!-- @slot 轮播内容，推荐使用<code>c-carousel-slider</code> -->
+      <!-- 
+        @slot The content of carousel. It is recommended to use <code>c-carousel-slider</code>.
+        @zh 轮播内容，推荐使用<code>c-carousel-slider</code>
+      -->
       <slot />
     </div>
   </div>

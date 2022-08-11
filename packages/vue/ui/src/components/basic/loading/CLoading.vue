@@ -1,17 +1,13 @@
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+>
 interface LoadingProps {
   /**
-   * 尺寸
-   */
-  size?: string
-  /**
-   * 厚度
+   * The thickness
+   * @zh 厚度
    */
   thickness?: number
-  /**
-   * 颜色
-   */
-  color?: string
 }
 
 withDefaults(defineProps<LoadingProps>(), {
@@ -24,8 +20,8 @@ withDefaults(defineProps<LoadingProps>(), {
   <svg
     class="c-loading c-loading--mat"
     viewBox="25 25 50 50"
-    :width="size"
-    :height="size"
+    width="1em"
+    height="1em"
   >
     <circle
       class="c-loading--path"
@@ -33,7 +29,7 @@ withDefaults(defineProps<LoadingProps>(), {
       cy="50"
       r="20"
       fill="none"
-      :stroke="color"
+      stroke="currentColor"
       :stroke-width="thickness"
       stroke-miterlimit="10"
     ></circle>

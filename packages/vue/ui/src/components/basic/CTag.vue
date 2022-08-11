@@ -1,27 +1,35 @@
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+>
 import type { CSize, CTheme } from 'casual-types'
 import { CIcon, useInjectSize, useInjectTheme } from 'casual-ui-vue'
 import { matClose } from '@quasar/extras/material-icons'
 
 interface CTagProps {
   /**
-   * 标签内文字
+   * The label text.
+   * @zh 标签内文字
    */
   label?: string
   /**
-   * 主题
+   * The theme color.
+   * @zh 主题
    */
   theme?: CTheme
   /**
-   * 尺寸
+   * The size.
+   * @zh 尺寸
    */
   size?: CSize
   /**
-   * 是否为圆角
+   * Determine whether the tag has rounded border.
+   * @zh 是否为圆角
    */
   rounded?: boolean
   /**
-   * 是否可关闭，设置为<code>true</code>会展示一个关闭图标
+   * Determine whether to show a close icon or not.
+   * @zh 是否可关闭，设置为<code>true</code>会展示一个关闭图标
    */
   closeable?: boolean
 }
@@ -36,7 +44,8 @@ const props = withDefaults(defineProps<CTagProps>(), {
 
 defineEmits<{
   /**
-   * 点击关闭图标触发
+   * Emit when the close icon is clicked.
+   * @zh 点击关闭图标触发
    */
   (e: 'close'): void
 }>()
@@ -57,7 +66,10 @@ const { provideSize: size } = useInjectSize(props)
     ]"
   >
     <div class="c-tag--prefix">
-      <!-- @slot 自定义前置内容 -->
+      <!-- 
+        @slot Customize prefix content
+        @zh 自定义前置内容 
+      -->
       <slot name="prefix" />
     </div>
     <div class="c-tag--label">

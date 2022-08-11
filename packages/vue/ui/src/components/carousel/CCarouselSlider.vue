@@ -1,5 +1,9 @@
-<script lang="ts" setup>
-import { inject, onMounted, type Ref } from 'vue'
+<script
+  lang="ts"
+  setup
+>
+import { inject, onMounted } from 'vue'
+import type { Ref } from 'vue'
 import {
   toNextKey,
   activeIndexKey,
@@ -61,7 +65,10 @@ const transitionName = computed(() =>
       v-if="activeIndex === currentIndex"
       class="c-carousel--slider-item"
     >
-      <!-- @slot 内容 -->
+      <!-- 
+        @slot The content
+        @zh 内容 
+      -->
       <slot />
     </div>
   </Transition>

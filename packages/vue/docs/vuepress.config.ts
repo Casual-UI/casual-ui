@@ -6,7 +6,6 @@ import { defaultTheme } from 'vuepress'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
 import { shikiPlugin } from '@vuepress/plugin-shiki'
-import { componentsRoutes } from './config/routes'
 import nightOwlTheme from './config/night-owl.json'
 import Unocss from 'unocss/vite'
 import { presetIcons } from 'unocss'
@@ -48,12 +47,12 @@ export default defineUserConfig({
             ],
           },
           {
-            text: 'Components',
-            children: componentsRoutes,
-          },
-          {
             text: 'Features',
             children: [
+              {
+                text: 'Components',
+                link: '/components/button/',
+              },
               {
                 text: 'Global CSS Utils',
                 link: '/global-style-utils/',
@@ -75,13 +74,26 @@ export default defineUserConfig({
             '/guide/theme-customize/',
             '/guide/dark-mode/',
           ],
+          '/components/': [
+            {
+              text: 'Basic',
+              collapsible: true,
+              children: [
+                '/components/button/',
+                '/components/loading/',
+                '/components/tag/',
+                '/components/icon/',
+                '/components/carousel/',
+              ],
+            },
+          ],
           '/usable/': ['/usable/useClickOutside/', '/usable/useFormValidator/'],
           '/global-style-utils/': ['/global-style-utils/'],
-          '/components/': componentsRoutes,
           '/directives/': ['/directives/v-loading/'],
         },
       },
       '/zh-CN/': {
+        selectLanguageText: '简体中文',
         tip: '提示',
         contributorsText: '贡献者',
         lastUpdatedText: '最后更新于',
@@ -105,12 +117,12 @@ export default defineUserConfig({
             ],
           },
           {
-            text: '组件',
-            children: componentsRoutes,
-          },
-          {
             text: '功能',
             children: [
+              {
+                text: '组件',
+                link: '/zh-CN/components/button/',
+              },
               {
                 text: '全局工具样式',
                 link: '/zh-CN/global-style-utils/',
@@ -137,8 +149,20 @@ export default defineUserConfig({
             '/zh-CN/usable/useFormValidator/',
           ],
           '/zh-CN/global-style-utils/': ['/zh-CN/global-style-utils/'],
-          '/components/': componentsRoutes,
           '/zh-CN/directives/': ['/zh-CN/directives/v-loading/'],
+          '/zh-CN/components/': [
+            {
+              text: 'Basic',
+              collapsible: true,
+              children: [
+                '/zh-CN/components/button/',
+                '/zh-CN/components/loading/',
+                '/zh-CN/components/tag/',
+                '/zh-CN/components/icon/',
+                '/zh-CN/components/carousel/',
+              ],
+            },
+          ],
         },
       },
     },
