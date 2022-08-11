@@ -67,6 +67,19 @@ export default defineUserConfig({
               },
             ],
           },
+          {
+            text: 'More',
+            children: [
+              {
+                text: 'Casual UI - React',
+                link: 'https://casual-ui-react.donsen.site/',
+              },
+              {
+                text: 'Casual UI - Svelte',
+                link: 'https://casual-ui-svelte.donsen.site/',
+              },
+            ],
+          },
         ],
         sidebar: {
           '/guide/': [
@@ -134,6 +147,19 @@ export default defineUserConfig({
               {
                 text: '可组合',
                 link: '/zh-CN/usable/useClickOutside/',
+              },
+            ],
+          },
+          {
+            text: '更多',
+            children: [
+              {
+                text: 'Casual UI - React',
+                link: 'https://casual-ui-react.donsen.site/',
+              },
+              {
+                text: 'Casual UI - Svelte',
+                link: 'https://casual-ui-svelte.donsen.site/',
               },
             ],
           },
