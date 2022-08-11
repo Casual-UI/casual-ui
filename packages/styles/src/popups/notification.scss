@@ -152,7 +152,7 @@ $positions: "start", "center", "end";
       &-card {
         @extend %c-rounded-md, %c-ma-md, %c-pa-md;
 
-        width: 240px;
+        width: 320px;
         box-sizing: border-box;
         background-color: var(--casual-popup-content-bg);
         box-shadow: 0 2px 12px 0 rgb(0 0 0 / 5%);

@@ -81,7 +81,9 @@ const CNotification = () => {
                     }`,
                     exitActive: `c-notification-${x}-${y}-leave-to c-notification--with-transition`,
                   }}
-                  onEnter={node => onItemEnter(node, `${x} ${y}`)}
+                  onEnter={(node: HTMLElement) =>
+                    onItemEnter(node, `${x} ${y}`)
+                  }
                   onEntered={clearSiblingsTransition}
                   onExit={node => onItemExit(node, `${x} ${y}`)}
                   onExited={clearSiblingsTransition}

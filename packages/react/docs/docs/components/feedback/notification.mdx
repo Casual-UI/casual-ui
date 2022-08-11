@@ -1,5 +1,7 @@
 ---
 title: Notification
+hooksAPI:
+  - components/popup/notification/useNotification
 ---
 
 import { CNotification } from 'casual-ui-react'
@@ -7,9 +9,9 @@ import BrowserOnly from '@docusaurus/BrowserOnly'
 
 <BrowserOnly>{() => <CNotification />}</BrowserOnly>
 
-### 使用方式
+### How To Use
 
-- 将`<CNotification />`放置于`<App />`
+- Put `<CNotification />` in global layout
 
 ```jsx
 import { CNotification } from 'casual-ui-react'
@@ -18,13 +20,13 @@ function APP {
   return (
     <>
       <CNotification />
-      // 其他根组件内容
+      // Other global layout components
     </>
   )
 }
 ```
 
-- 然后通过`useNotification`调用即可
+- Then open notification by `useNotification` hook
 
 ```jsx
 function Demo() {
@@ -32,18 +34,18 @@ function Demo() {
 
   return (
     <CButton
-      label="打开通知"
-      onClick={() => open({ title: '通知', message: '通知内容' })}
+      label="Open notification"
+      onClick={() => open({ title: 'Hi, there', message: 'Some notification content' })}
     />
   )
 }
 ```
 
-:::tip 提示
-请确保`<CNotification />`在整个 APP 实例中仅加载一次，否则会导致`<CNotification />`多次渲染
+:::warning Attention
+Please make sure `<CNotification />` only used once in the whole app
 :::
 
-### 基础使用
+### Basic Usage
 
 ```jsx live
 function Demo() {
@@ -51,11 +53,11 @@ function Demo() {
 
   return (
     <CButton
-      label="打开通知"
+      label="Open Notification"
       onClick={() =>
         open({
-          title: '标题',
-          message: '内容',
+          title: 'Hi, there',
+          message: 'Hello, world',
         })
       }
     />
@@ -63,7 +65,7 @@ function Demo() {
 }
 ```
 
-### 主题
+### Themes
 
 ```jsx live
 function Demo() {
@@ -71,8 +73,8 @@ function Demo() {
 
   const openWithTheme = theme => {
     open({
-      title: `${theme}主题`,
-      message: `这是一个${theme}主题的通知`,
+      title: `Theme: ${theme}`,
+      message: `This is a ${theme} notification`,
       theme,
     })
   }
@@ -100,7 +102,7 @@ function Demo() {
 }
 ```
 
-### 方向
+### Positions
 
 ```jsx live
 function Demo() {
@@ -116,8 +118,8 @@ function Demo() {
 
   const openWithPosition = (alignX, alignY) => {
     open({
-      title: '标题',
-      message: '内容',
+      title: 'Hi, there',
+      message: 'Hello, world',
       alignX,
       alignY,
     })
@@ -193,7 +195,7 @@ function Demo() {
 }
 ```
 
-### 不自动关闭
+### No Auto Close
 
 ```jsx live
 function Demo() {
@@ -201,11 +203,11 @@ function Demo() {
 
   return (
     <CButton
-      label="打开通知"
+      label="Open Notification"
       onClick={() =>
         open({
-          title: '标题',
-          message: '内容',
+          title: 'Hi, there',
+          message: 'Hello, world',
           timeout: 0,
           alignX: 'end',
           alignY: 'center',
@@ -216,7 +218,7 @@ function Demo() {
 }
 ```
 
-### 隐藏关闭按钮&手动关闭
+### No Close Icon & Manual Close
 
 ```jsx live
 function Demo() {
@@ -231,8 +233,8 @@ function Demo() {
       return
     }
     const { close } = open({
-      title: '通知',
-      message: '这是一个没有关闭图标的通知',
+      title: 'Hi, there',
+      message: 'This is a notification without close icon.',
       timeout: 0,
       closeIcon: false,
     })
@@ -241,7 +243,7 @@ function Demo() {
 
   return (
     <CButton
-      label={closeFunction ? '关闭通知' : '打开通知'}
+      label={closeFunction ? 'Close notification' : 'Open Notification'}
       theme={closeFunction ? 'negative' : 'primary'}
       onClick={onClick}
     />
@@ -249,7 +251,7 @@ function Demo() {
 }
 ```
 
-### 动态内容
+### Dynamic Content
 
 ```jsx live
 function Demo() {
@@ -257,33 +259,33 @@ function Demo() {
 
   const openWithDynamicContent = () => {
     const { changeContent } = open({
-      title: '标题',
-      message: '信息',
+      title: 'Hi, there',
+      message: 'Hello, world',
       timeout: 7000,
     })
 
     setTimeout(() => {
       changeContent({
-        title: '警告',
-        message: '内容更改了哦',
+        title: 'Warning',
+        message: 'Content changed!',
         theme: 'warning',
       })
       setTimeout(() => {
         changeContent({
-          title: '错误',
-          message: '内容再次更改了哦',
+          title: 'Error',
+          message: 'Content changed again!',
           theme: 'negative',
         })
         setTimeout(() => {
           changeContent({
-            title: '再见',
-            message: '即将消失',
+            title: 'Goodbye',
+            message: 'About to disappear',
             theme: 'secondary',
           })
         }, 2000)
       }, 2000)
     }, 2000)
   }
-  return <CButton label="打开动态通知" onClick={openWithDynamicContent} />
+  return <CButton label="Open Dynamic Notification" onClick={openWithDynamicContent} />
 }
 ```
