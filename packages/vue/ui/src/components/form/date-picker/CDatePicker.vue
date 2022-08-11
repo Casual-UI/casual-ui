@@ -1,7 +1,4 @@
-<script
-  setup
-  lang="ts"
->
+<script setup lang="ts">
 import dayjs from 'dayjs'
 import {
   CIcon,
@@ -25,53 +22,65 @@ type Unit = 'year' | 'month' | 'day'
 
 interface ODatePickerProps {
   /**
-   * 当前选中值，用于<code>v-model</code>绑定
+   * Selected date. Can be used with <code>v-model</code>.
+   * @zh 当前选中值，用于<code>v-model</code>绑定
    */
   modelValue?: Date | null
   /**
-   * 格式化后的值，用于<code>v-model:formattedValue</code>绑定
+   * Selected date after formatted. Can be used with <code>v-model:formattedValue</code>.
+   * @zh 格式化后的值，用于<code>v-model:formattedValue</code>绑定
    */
   formattedValue?: string
   /**
-   * 选择日期范围时的值，用于<code>v-model:dateRage</code>绑定
+   * The selected date range. Can be used with <code>v-model:dateRange</code>.
+   * @zh 选择日期范围时的值，用于<code>v-model:dateRage</code>绑定
    */
   dateRange?: [Date | null, Date | null]
   /**
-   * 格式化后的日期段值，用于<code>v-model:formattedDateRange</code>绑定
+   * The selected date range after formatted. Can be used with <code>v-model:formattedDateRange</code>.
+   * @zh 格式化后的日期段值，用于<code>v-model:formattedDateRange</code>绑定
    */
   formattedDateRange?: [string, string]
   /**
-   * 格式化模板，详情参考 <a href="https://day.js.org/docs/en/display/format#list-of-all-available-formats" target="_blank">Dayjs</a>
+   * The format template. Refer to <a href="https://day.js.org/docs/en/displaying/format#list-of-all-available-formats">day.js</a> for more information.
+   * @zh 格式化模板，详情参考 <a href="https://day.js.org/docs/en/display/format#list-of-all-available-formats" target="_blank">Dayjs</a>
    */
   format?: string
   /**
-   * 自定义格式化函数
+   * Custom format function.
+   * @zh 自定义格式化函数
    */
   formatter?: (origin: Date | null, format: string) => string
   /**
-   * 尺寸
+   * The size of date picker.
+   * @zh 尺寸
    */
   size?: CSize
   /**
-   * 是否在选择后自动收起下拉
+   * Determine whether to fold dropdown when date selected or not.
+   * @zh 是否在选择后自动收起下拉
    */
   hideOnSelect?: boolean
 
   /**
-   * 是否使用日期段选择
+   * Determine whether is range select or not.
+   * @zh 是否使用日期段选择
    */
   range?: boolean
 
   /**
-   * 预设文本
+   * The placeholder of date picker.
+   * @zh 预设文本
    */
   placeholder?: string
   /**
-   * 是否禁用
+   * Determine whether is disabled or not.
+   * @zh 是否禁用
    */
   disabled?: boolean
   /**
-   * 选择单位，可用于<code>v-model:unit</code>绑定
+   * The select unit. Can be used with <code>v-model:unit</code>.
+   * @zh 选择单位，可用于<code>v-model:unit</code>绑定
    */
   unit?: Unit
 }
@@ -102,32 +111,42 @@ const { formattedValue, dateRange, formattedDateRange } = toRefs(props)
 
 const emit = defineEmits<{
   /**
-   * 用于日期单选时，当前选中日期值发生变化时触发
-   * @arg {Date | null} newValue - 新的选中日期值
+   * Emit when selected date change.
+   * @zh 用于日期单选时，当前选中日期值发生变化时触发
+   * @arg {Date | null} newValue_zh - 新的选中日期值
+   * @arg {Date | null} newValue - new date
    */
   (e: 'update:modelValue', newValue: Date | null): void
   /**
-   * 用于日期单选时，格式化后的值发生变化时触发
-   * @arg {string} newFormattedValue - 新的格式化后的值
+   * Emit when selected date formatted value change.
+   * @zh 用于日期单选时，格式化后的值发生变化时触发
+   * @arg {string} newFormattedValue_zh - 新的格式化后的值
+   * @arg {string} newFormattedValue - new formatted value
    */
   (e: 'update:formattedValue', newFormattedValue: string): void
 
   /**
-   * 日期段绑定值变化时触发
-   * @arg {[Date | null, Date | null]} newDateRange - 新的日期段绑定值
+   * Emit when selected date range change.
+   * @zh 日期段绑定值变化时触发
+   * @arg {[Date | null, Date | null]} newDateRange_zh - 新的日期段绑定值
+   * @arg {[Date | null, Date | null]} newDateRange - new date range
    */
   (e: 'update:dateRange', newDateRange: [Date | null, Date | null]): void
   /**
-   * 日期段格式化之后的值变化时触发
-   * @arg {[string, string]} newFormattedDateRange - 新的日期段格式化之后的值
+   * Emit when selected date range formatted value change.
+   * @zh 日期段格式化之后的值变化时触发
+   * @arg {[string, string]} newFormattedDateRange_zh - 新的日期段格式化之后的值
+   * @arg {[string, string]} newFormattedDateRange - new formatted date range
    */
   (
     e: 'update:formattedDateRange',
     newFormattedDateRange: [string, string]
   ): void
   /**
-   * 单位变化时触发
-   * @arg {Unit} newUnit - 新的单位
+   * Emit when select unit change.
+   * @zh 单位变化时触发
+   * @arg {Unit} newUnit - new unit
+   * @arg {Unit} newUnit_zh - 新的单位
    */
   (e: 'update:unit', newUnit: Unit): void
 }>()
