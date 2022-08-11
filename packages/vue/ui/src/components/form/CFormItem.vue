@@ -3,10 +3,7 @@ export const hasErrorKey = Symbol('hasError')
 export const validateKey = Symbol('validate')
 export const clearValidateKey = Symbol('clearValidate')
 </script>
-<script
-  lang="ts"
-  setup
->
+<script lang="ts" setup>
 import type { CSize, CRule } from 'casual-types'
 import { computed, inject, provide, ref } from 'vue'
 import type { Ref } from 'vue'
@@ -14,38 +11,46 @@ import useFormProps, { type LabelDirection } from './useFormProps'
 import { errorKey, validatorsKey } from './CForm.vue'
 interface CFormItemProps {
   /**
-   * 对应表单中的项的名称
+   * The filed key of whole form data.
+   * @zh 对应表单中的项的名称
    */
   field?: string
   /**
-   * 文本提示
+   * The label text.
+   * @zh 文本提示
    */
   label?: string
   /**
-   * 文本提示宽度
+   * The label width.
+   * @zh 文本提示宽度
    * @default '100px'
    */
   labelWidth?: string
   /**
-   * 表单项占用的列数，可覆盖表单整体的col属性，可用于为项定制列宽
+   * The col span of each item. Total cols are 12.
+   * @zh 表单项占用的列数，可覆盖表单整体的col属性，可用于为项定制列宽
    * @default 6
    */
   col?: number
   /**
-   * 尺寸
+   * The size of all components within.
+   * @zh 尺寸
    */
   size?: CSize
   /**
-   * 验证规则
+   * The validators.
+   * @zh 验证规则
    */
   rules?: CRule[]
   /**
-   * 提示文字与表单项排列方向，可覆盖表单整体的label-direction属性
+   * The label and form component direction.
+   * @zh 提示文字与表单项排列方向，可覆盖表单整体的label-direction属性
    * @default 'row'
    */
   labelDirection?: LabelDirection
   /**
-   * 文字对齐方式，表现为text-align的对应值，可覆盖表单整体的label-align属性
+   * The label align method.
+   * @zh 文字对齐方式，表现为text-align的对应值，可覆盖表单整体的label-align属性
    * @default 'left'
    */
   labelAlign?: 'left' | 'center' | 'right'
@@ -64,11 +69,13 @@ const props = withDefaults(defineProps<CFormItemProps>(), {
 
 const emit = defineEmits<{
   /**
-   * 开始验证触发
+   * Emit when the form item begin validating.
+   * @zh 开始验证触发
    */
   (e: 'validate-start'): void
   /**
-   * 结束验证触发
+   * Emit when the form item end validating.
+   * @zh 结束验证触发
    */
   (e: 'validate-end'): void
 }>()
@@ -170,7 +177,8 @@ provide(clearValidateKey, clearValidate)
     </div>
     <div class="c-form-item--content-wrapper c-flex c-items-center">
       <!-- 
-        @slot 表单项内容 
+        @slot The content.
+        @zh 表单项内容 
           @binding {Function} validate 当前表单项验证方法
           @binding {Function} clear-validate 当前表单项清除验证方法
           @binding {boolean} has-error 当前表单项是否有错误

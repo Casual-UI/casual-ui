@@ -1,12 +1,12 @@
 ---
-title: 表单&表单项
+title: Form & Form Item
 componentPath: form/CForm
 additionalComponentPaths:
   - name: CFormItem
     path: form/CFormItem
 ---
 
-### 基础使用
+### Basic Usage
 
 ```vue live
 <script setup>
@@ -16,7 +16,7 @@ const formData = ref({
   name: 'Micheal Jackson',
   gender: 'male',
   birthday: new Date('August 29, 1958'),
-  industry: 'Entertainment'
+  industry: 'Entertainment',
 })
 const genderOptions = [
   { label: 'Male', value: 'male' },
@@ -26,31 +26,41 @@ const industryOptions = [
   { label: 'IT', value: 'IT' },
   { label: 'Medical', value: 'Medical' },
   { label: 'Entertainment', value: 'Entertainment' },
-  { label: 'Transportation', value: 'Transportation' }
+  { label: 'Transportation', value: 'Transportation' },
 ]
 </script>
 <template>
   <c-form>
-    <c-form-item label="姓名">
+    <c-form-item label="Name">
       <c-input v-model="formData.name" />
     </c-form-item>
-    <c-form-item label="性别">
-      <c-radio-group v-model="formData.gender" :options="genderOptions" />
+    <c-form-item label="Gender">
+      <c-radio-group
+        v-model="formData.gender"
+        :options="genderOptions"
+      />
     </c-form-item>
-    <c-form-item label="生日">
-      <c-date-picker v-model="formData.birthday" format="MMM DD, YYYY" />
+    <c-form-item label="Birthday">
+      <c-date-picker
+        v-model="formData.birthday"
+        format="MMM DD, YYYY"
+      />
     </c-form-item>
-    <c-form-item label="行业">
-      <c-select v-model="formData.industry" :options="industryOptions" />
+    <c-form-item label="Industry">
+      <c-select
+        v-model="formData.industry"
+        :options="industryOptions"
+      />
     </c-form-item>
   </c-form>
 </template>
 ```
 
-### 配置式
+### Use with Items Config
 
-::: warning 注意
-如果使用配置式，请确保全局使用了CasualUI，或者你也可以全局手动注册所有的表单相关组件
+::: warning Attention
+If use with items config. Make sure use Casual UI as global plugin.  
+Or manually register all the form components
 :::
 
 ```vue live
@@ -60,32 +70,32 @@ const formData = ref({
   name: 'Micheal Jackson',
   gender: 'male',
   birthday: new Date('August 29, 1958'),
-  industry: 'Entertainment'
+  industry: 'Entertainment',
 })
 
 const formItems = [
-  { field: 'name', label: '姓名' },
+  { field: 'name', label: 'Name' },
   {
-    label: '性别',
+    label: 'Gender',
     field: 'gender',
     component: 'radio-group',
     componentProps: {
       options: [
         { label: 'Female', value: 'female' },
         { label: 'Male', value: 'male' },
-      ]
-    }
+      ],
+    },
   },
   {
-    label: '生日',
+    label: 'Birthday',
     field: 'birthday',
     component: 'date-picker',
     componentProps: {
-      format: 'MMM DD, YYYY'
-    }
+      format: 'MMM DD, YYYY',
+    },
   },
   {
-    label: '行业',
+    label: 'Industry',
     field: 'industry',
     component: 'select',
     componentProps: {
@@ -93,18 +103,21 @@ const formItems = [
         { label: 'IT', value: 'IT' },
         { label: 'Medical', value: 'Medical' },
         { label: 'Entertainment', value: 'Entertainment' },
-        { label: 'Transportation', value: 'Transportation' }
-      ]
-    }
-  }
+        { label: 'Transportation', value: 'Transportation' },
+      ],
+    },
+  },
 ]
 </script>
 <template>
-  <c-form v-model="formData" :items="formItems" />
+  <c-form
+    v-model="formData"
+    :items="formItems"
+  />
 </template>
 ```
 
-### 尺寸
+### Sizes
 
 ```vue live
 <script setup>
@@ -113,32 +126,32 @@ const formData = ref({
   name: 'Micheal Jackson',
   gender: 'male',
   birthday: new Date('August 29, 1958'),
-  industry: 'Entertainment'
+  industry: 'Entertainment',
 })
 
 const formItems = [
-  { field: 'name', label: '姓名' },
+  { field: 'name', label: 'Name' },
   {
-    label: '性别',
+    label: 'Gender',
     field: 'gender',
     component: 'radio-group',
     componentProps: {
       options: [
         { label: 'Female', value: 'female' },
         { label: 'Male', value: 'male' },
-      ]
-    }
+      ],
+    },
   },
   {
-    label: '生日',
+    label: 'Birthday',
     field: 'birthday',
     component: 'date-picker',
     componentProps: {
-      format: 'MMM DD, YYYY'
-    }
+      format: 'MMM DD, YYYY',
+    },
   },
   {
-    label: '行业',
+    label: 'Industry',
     field: 'industry',
     component: 'select',
     componentProps: {
@@ -146,10 +159,10 @@ const formItems = [
         { label: 'IT', value: 'IT' },
         { label: 'Medical', value: 'Medical' },
         { label: 'Entertainment', value: 'Entertainment' },
-        { label: 'Transportation', value: 'Transportation' }
-      ]
-    }
-  }
+        { label: 'Transportation', value: 'Transportation' },
+      ],
+    },
+  },
 ]
 const size = ref('md')
 const sizes = ['xs', 'sm', 'md', 'lg', 'xl']
@@ -162,13 +175,18 @@ const sizes = ['xs', 'sm', 'md', 'lg', 'xl']
       v-model="size"
       :size="s"
       :label="s"
-      :value="s" />
+      :value="s"
+    />
   </div>
-  <c-form v-model="formData" :items="formItems" :size="size" />
+  <c-form
+    v-model="formData"
+    :items="formItems"
+    :size="size"
+  />
 </template>
 ```
 
-### 表单项间隔尺寸
+### Gutter sizes
 
 ```vue live
 <script setup>
@@ -177,32 +195,32 @@ const formData = ref({
   name: 'Micheal Jackson',
   gender: 'male',
   birthday: new Date('August 29, 1958'),
-  industry: 'Entertainment'
+  industry: 'Entertainment',
 })
 
 const formItems = [
-  { field: 'name', label: '姓名' },
+  { field: 'name', label: 'Name' },
   {
-    label: '性别',
+    label: 'Gender',
     field: 'gender',
     component: 'radio-group',
     componentProps: {
       options: [
         { label: 'Female', value: 'female' },
         { label: 'Male', value: 'male' },
-      ]
-    }
+      ],
+    },
   },
   {
-    label: '生日',
+    label: 'Birthday',
     field: 'birthday',
     component: 'date-picker',
     componentProps: {
-      format: 'MMM DD, YYYY'
-    }
+      format: 'MMM DD, YYYY',
+    },
   },
   {
-    label: '行业',
+    label: 'Industry',
     field: 'industry',
     component: 'select',
     componentProps: {
@@ -210,10 +228,10 @@ const formItems = [
         { label: 'IT', value: 'IT' },
         { label: 'Medical', value: 'Medical' },
         { label: 'Entertainment', value: 'Entertainment' },
-        { label: 'Transportation', value: 'Transportation' }
-      ]
-    }
-  }
+        { label: 'Transportation', value: 'Transportation' },
+      ],
+    },
+  },
 ]
 const size = ref('md')
 const sizes = ['xs', 'sm', 'md', 'lg', 'xl']
@@ -226,15 +244,91 @@ const sizes = ['xs', 'sm', 'md', 'lg', 'xl']
       v-model="size"
       :size="s"
       :label="s"
-      :value="s" />
+      :value="s"
+    />
   </div>
-  <c-form v-model="formData" :items="formItems" :gutter-size="size" />
+  <c-form
+    v-model="formData"
+    :items="formItems"
+    :gutter-size="size"
+  />
 </template>
 ```
 
-### label排列方向、宽度、对齐方式
+### Label Direction
 
-编辑下方的label相关属性，查看实时效果
+```vue live
+<script setup>
+import { ref } from 'vue'
+const formData = ref({
+  labelDirection: 'row',
+  name: 'Micheal Jackson',
+  gender: 'male',
+  birthday: new Date('August 29, 1958'),
+  industry: 'Entertainment',
+})
+
+const formItems = [
+  {
+    field: 'labelDirection',
+    label: 'Label Direction',
+    col: 12,
+    component: 'radio-group',
+    componentProps: {
+      options: [
+        { label: 'row', value: 'row' },
+        { label: 'row-reverse', value: 'row-reverse' },
+        { label: 'column', value: 'column' },
+        { label: 'column-reverse', value: 'column-reverse' },
+      ],
+    },
+  },
+  { field: 'name', label: 'Name' },
+  {
+    label: 'Gender',
+    field: 'gender',
+    component: 'radio-group',
+    componentProps: {
+      options: [
+        { label: 'Female', value: 'female' },
+        { label: 'Male', value: 'male' },
+      ],
+    },
+  },
+  {
+    label: 'Birthday',
+    field: 'birthday',
+    component: 'date-picker',
+    componentProps: {
+      format: 'MMM DD, YYYY',
+    },
+  },
+  {
+    label: 'Industry',
+    field: 'industry',
+    component: 'select',
+    componentProps: {
+      options: [
+        { label: 'IT', value: 'IT' },
+        { label: 'Medical', value: 'Medical' },
+        { label: 'Entertainment', value: 'Entertainment' },
+        { label: 'Transportation', value: 'Transportation' },
+      ],
+    },
+  },
+]
+</script>
+<template>
+  <c-form
+    v-model="formData"
+    :items="formItems"
+    :label-direction="formData.labelDirection"
+    label-width="120px"
+  />
+</template>
+```
+
+### Label Align
 
 ```vue live
 <script setup>
@@ -246,32 +340,13 @@ const formData = ref({
   name: 'Micheal Jackson',
   gender: 'male',
   birthday: new Date('August 29, 1958'),
-  industry: 'Entertainment'
+  industry: 'Entertainment',
 })
 
 const formItems = [
   {
-    field: 'labelWidth',
-    label: 'label宽度',
-    col: 12
-  },
-  {
-    field: 'labelDirection',
-    label: 'label方向',
-    col: 12,
-    component: 'radio-group',
-    componentProps: {
-      options: [
-        { label: 'row', value: 'row' },
-        { label: 'row-reverse', value: 'row-reverse' },
-        { label: 'column', value: 'column' },
-        { label: 'column-reverse', value: 'column-reverse' },
-      ]
-    }
-  },
-  {
     field: 'labelAlign',
-    label: 'label对齐方式',
+    label: 'Label Align',
     col: 12,
     component: 'radio-group',
     componentProps: {
@@ -279,31 +354,31 @@ const formItems = [
         { label: 'left', value: 'left' },
         { label: 'center', value: 'center' },
         { label: 'right', value: 'right' },
-      ]
-    }
+      ],
+    },
   },
-  { field: 'name', label: '姓名' },
+  { field: 'name', label: 'Name' },
   {
-    label: '性别',
+    label: 'Gender',
     field: 'gender',
     component: 'radio-group',
     componentProps: {
       options: [
         { label: 'Female', value: 'female' },
         { label: 'Male', value: 'male' },
-      ]
-    }
+      ],
+    },
   },
   {
-    label: '生日',
+    label: 'Birthday',
     field: 'birthday',
     component: 'date-picker',
     componentProps: {
-      format: 'MMM DD, YYYY'
-    }
+      format: 'MMM DD, YYYY',
+    },
   },
   {
-    label: '行业',
+    label: 'Industry',
     field: 'industry',
     component: 'select',
     componentProps: {
@@ -311,24 +386,85 @@ const formItems = [
         { label: 'IT', value: 'IT' },
         { label: 'Medical', value: 'Medical' },
         { label: 'Entertainment', value: 'Entertainment' },
-        { label: 'Transportation', value: 'Transportation' }
-      ]
-    }
-  }
+        { label: 'Transportation', value: 'Transportation' },
+      ],
+    },
+  },
 ]
 </script>
 <template>
   <c-form
     v-model="formData"
     :items="formItems"
-    :label-direction="formData.labelDirection"
-    :label-width="`${formData.labelWidth}px`"
     :label-align="formData.labelAlign"
   />
 </template>
 ```
 
-### 自定义项列宽
+### Label Width
+
+```vue live
+<script setup>
+import { ref } from 'vue'
+const formData = ref({
+  labelWidth: '100px',
+  name: 'Micheal Jackson',
+  gender: 'male',
+  birthday: new Date('August 29, 1958'),
+  industry: 'Entertainment',
+})
+
+const formItems = [
+  {
+    field: 'labelWidth',
+    label: 'Label Width',
+    col: 12,
+  },
+  { field: 'name', label: 'Name' },
+  {
+    label: 'Gender',
+    field: 'gender',
+    component: 'radio-group',
+    componentProps: {
+      options: [
+        { label: 'Female', value: 'female' },
+        { label: 'Male', value: 'male' },
+      ],
+    },
+  },
+  {
+    label: 'Birthday',
+    field: 'birthday',
+    component: 'date-picker',
+    componentProps: {
+      format: 'MMM DD, YYYY',
+    },
+  },
+  {
+    label: 'Industry',
+    field: 'industry',
+    component: 'select',
+    componentProps: {
+      options: [
+        { label: 'IT', value: 'IT' },
+        { label: 'Medical', value: 'Medical' },
+        { label: 'Entertainment', value: 'Entertainment' },
+        { label: 'Transportation', value: 'Transportation' },
+      ],
+    },
+  },
+]
+</script>
+<template>
+  <c-form
+    v-model="formData"
+    :items="formItems"
+    :label-width="formData.labelWidth"
+  />
+</template>
+```
+
+### Col Span
 
 ```vue live
 <script setup>
@@ -342,28 +478,28 @@ const formData = ref({
 })
 
 const formItems = [
-  { field: 'name', label: '姓名' },
- {
-    label: '性别',
+  { field: 'name', label: 'Name' },
+  {
+    label: 'Gender',
     field: 'gender',
     component: 'radio-group',
     componentProps: {
       options: [
         { label: 'Female', value: 'female' },
         { label: 'Male', value: 'male' },
-      ]
-    }
+      ],
+    },
   },
   {
-    label: '生日',
+    label: 'Birthday',
     field: 'birthday',
     component: 'date-picker',
     componentProps: {
-      format: 'MMM DD, YYYY'
-    }
+      format: 'MMM DD, YYYY',
+    },
   },
   {
-    label: '行业',
+    label: 'Industry',
     field: 'industry',
     component: 'select',
     componentProps: {
@@ -372,20 +508,20 @@ const formItems = [
         { label: 'Medical', value: 'Medical' },
         { label: 'Entertainment', value: 'Entertainment' },
         { label: 'Transportation', value: 'Transportation' },
-      ]
-    }
+      ],
+    },
   },
   {
     field: 'agree',
     component: 'checkbox',
     col: 12,
     componentProps: {
-      label: '勾选即同意XXX协议',
+      label: 'Agree to agreement',
     },
-  }
+  },
 ]
 const col = ref(6)
-const spans = [2, 3, 4, 6, 12]
+const spans = [6, 12]
 </script>
 <template>
   <div class="c-row c-gutter-md c-items-center">
@@ -397,39 +533,42 @@ const spans = [2, 3, 4, 6, 12]
       :value="s"
     />
   </div>
-  <c-form v-model="formData" :items="formItems" :col="col" />
+  <c-form
+    v-model="formData"
+    :items="formItems"
+    :col="col"
+  />
 </template>
 ```
 
-### 表单验证 & 异步验证 & 验证状态
+### Validation Basic
 
-Casual UI 的表单验证，需要配合`field`、`rules`属性  
-`rules`为验证函数数组，每个验证函数为一个函数，该函数接受当前表单项对应值，返回：  
-`false | string | Promise<false | string>`，返回含义如下：
+The form validation of Casual UI，need to used with `field` `rules` of CFOrmItem.  
+`rules` is the validators. Each validator is a function that accept current value. And it need return `false | string | Promise<false | string>`.  
+The meaning of this return:
 
-- 返回`false`则代表验证通过无错误
-- 回`string`则代表有错误，并且返回值为具体的错误信息
-- 返回`Promise`则代表异步验证，内容也是`false`或者具体的`string`类型错误信息
+- `false` means validation passed.
+- `string` means validation failed and it's the error message
+- `Promise` means a async validation and the result is the same with above
 
-假设你想定义一个验证是否必填的验证规则，可以这样写:
+For example. This is a validator for some field is required.
 
 ```js
-const rule = v => (v ? false : '该项是必填的')
+const rule = v => (v ? false : 'This field is required')
 ```
 
-它的等价异步逻辑大概是这样：
+It's async validator would be like this:
 
 ```js
 const asyncRule = v =>
   new Promise(resolve => {
     setTimeout(() => {
-      resolve(v ? false : '该项是必填的')
+      resolve(v ? false : 'This field is required')
     }, 1000)
   })
 ```
 
-同时，在下面的示例中：  
-爱好(hobbies)一栏，具有异步验证规则
+### Validation Demo
 
 ```vue live
 <script setup>
@@ -441,44 +580,38 @@ const formData = ref({
   gender: '',
   birthday: null,
   industry: '',
-  hobbies: []
+  hobbies: [],
 })
 const validating = ref(false)
 const formItems = [
   {
     field: 'name',
-    label: '姓名',
-    rules: [
-      v => !v ? '请输入姓名' : false
-    ]
+    label: 'Name',
+    rules: [v => (!v ? 'Please input name' : false)],
   },
   {
-    label: '性别',
+    label: 'Gender',
     field: 'gender',
     component: 'radio-group',
     componentProps: {
       options: [
         { label: 'Female', value: 'female' },
         { label: 'Male', value: 'male' },
-      ]
+      ],
     },
-    rules: [
-      v => v !== 'male' ? '只能选择Male！' : false
-    ]
+    rules: [v => (v !== 'male' ? 'Can only select male！' : false)],
   },
   {
-    label: '生日',
+    label: 'Birthday',
     field: 'birthday',
     component: 'date-picker',
     componentProps: {
-      format: 'MMM DD, YYYY'
+      format: 'MMM DD, YYYY',
     },
-    rules: [
-      v => !v ? '请选择日期' : false
-    ]
+    rules: [v => (!v ? 'Please select birthday' : false)],
   },
   {
-    label: '行业',
+    label: 'Industry',
     field: 'industry',
     component: 'select',
     componentProps: {
@@ -486,48 +619,51 @@ const formItems = [
         { label: 'IT', value: 'IT' },
         { label: 'Medical', value: 'Medical' },
         { label: 'Entertainment', value: 'Entertainment' },
-        { label: 'Transportation', value: 'Transportation' }
-      ]
+        { label: 'Transportation', value: 'Transportation' },
+      ],
     },
     rules: [
-      v => v !== 'IT' && v !== 'Entertainment' ? '只能选择IT或者Entertainment' : false
-    ]
+      v =>
+        v !== 'IT' && v !== 'Entertainment'
+          ? 'Can only be IT or Entertainment'
+          : false,
+    ],
   },
   {
-    label: '爱好',
+    label: 'Hobbies',
     field: 'hobbies',
     component: 'checkbox-group',
     col: 12,
     componentProps: {
       options: [
-        { label: '旅游', value: 'Travel' },
-        { label: '健身', value: 'Work out' },
-        { label: '美食', value: 'Food' },
-        { label: '摇滚', value: 'Rock' },
-        { label: '肝剧', value: 'TV Series' },
-      ]
+        { label: 'Travel', value: 'Travel' },
+        { label: 'Work out', value: 'Work out' },
+        { label: 'Food', value: 'Food' },
+        { label: 'Rock', value: 'Rock' },
+        { label: 'TV Series', value: 'TV Series' },
+      ],
     },
     rules: [
-      // 异步验证
-      v => new Promise(resolve => {
-        setTimeout(() => {
-          resolve(v.length < 2 ? '请至少选择两项' : false)
-        }, 3000)
-      })
-    ]
-  }
+      // Async validator
+      v =>
+        new Promise(resolve => {
+          setTimeout(() => {
+            resolve(v.length < 2 ? 'At least check two' : false)
+          }, 3000)
+        }),
+    ],
+  },
 ]
 
 const { open } = useNotifications()
 const form = ref(null)
 const doValidate = () => {
-  form.value?.validate()
-    .then(() => {
-      open({
-        title: '提示',
-        message: '验证通过！'
-      })
+  form.value?.validate().then(() => {
+    open({
+      title: 'Notice',
+      message: 'All validations passed！',
     })
+  })
 }
 const clearValidate = () => {
   form.value?.clearAll()
@@ -543,20 +679,29 @@ const clearValidate = () => {
   />
   <div class="c-mt-xl">
     <c-button
-      label="重置"
+      label="Reset"
       outlined
       :loading="validating"
       class="c-mr-md"
       @click="clearValidate"
     />
-    <c-button label="提交" :loading="validating" @click="doValidate" />
+    <c-button
+      label="Submit"
+      :loading="validating"
+      @click="doValidate"
+    />
   </div>
 </template>
 ```
 
-### 自定义表单项
+### Customize Form Item
 
-通过`#[field]`插槽来自定义某个表单项，并且通过`{ validate, clearValidate, hasError }`来自定义触发验证、清除验证的调用时机，以及错误状态的样式表现
+Use `#[field]` dynamic slot to customize some form item.  
+Every `#[field]` slot have these bindings: `{ validate, clearValidate, hasError }`
+
+- `validate` is a function to validate current item
+- `clearValidate` is a function to clear current item validate status
+- `hasError` is the error status, can be a string or a `false`, string is the error message and `false` means no error
 
 ```vue live
 <script setup>
@@ -567,44 +712,38 @@ const formData = ref({
   gender: '',
   birthday: null,
   industry: '',
-  customField: ''
+  customField: '',
 })
 
 const formItems = [
   {
     field: 'name',
-    label: '姓名',
-    rules: [
-      v => !v ? '请输入姓名' : false
-    ]
+    label: 'Name',
+    rules: [v => (!v ? 'Please enter name' : false)],
   },
   {
-    label: '性别',
+    label: 'Gender',
     field: 'gender',
     component: 'radio-group',
     componentProps: {
       options: [
         { label: 'Female', value: 'female' },
         { label: 'Male', value: 'male' },
-      ]
+      ],
     },
-    rules: [
-      v => v !== 'male' ? '只能选择Male！' : false
-    ]
+    rules: [v => (v !== 'male' ? 'Can only be male' : false)],
   },
   {
-    label: '生日',
+    label: 'Birthday',
     field: 'birthday',
     component: 'date-picker',
     componentProps: {
-      format: 'MMM DD, YYYY'
+      format: 'MMM DD, YYYY',
     },
-    rules: [
-      v => !v ? '请选择日期' : false
-    ]
+    rules: [v => (!v ? 'Please select birthday' : false)],
   },
   {
-    label: '行业',
+    label: 'Industry',
     field: 'industry',
     component: 'select',
     componentProps: {
@@ -612,31 +751,33 @@ const formItems = [
         { label: 'IT', value: 'IT' },
         { label: 'Medical', value: 'Medical' },
         { label: 'Entertainment', value: 'Entertainment' },
-        { label: 'Transportation', value: 'Transportation' }
-      ]
+        { label: 'Transportation', value: 'Transportation' },
+      ],
     },
     rules: [
-      v => v !== 'IT' && v !== 'Entertainment' ? '只能选择IT或者Entertainment' : false
-    ]
+      v =>
+        v !== 'IT' && v !== 'Entertainment'
+          ? 'Can only be IT or Entertainment'
+          : false,
+    ],
   },
   {
-    label: '自定义项',
+    label: 'Custom Field',
     field: 'customField',
     rules: [
-      v => v === 'custom value' ? false : '只能输入“custom value”'
-    ]
-  }
+      v => (v === 'custom value' ? false : 'Can only input “custom value”'),
+    ],
+  },
 ]
 const { open } = useNotifications()
 const form = ref(null)
 const doValidate = () => {
-  form.value?.validate()
-    .then(() => {
-      open({
-        title: '提示',
-        message: '验证通过！'
-      })
+  form.value?.validate().then(() => {
+    open({
+      title: 'Notice',
+      message: 'All validations are passed!',
     })
+  })
 }
 const clearAll = () => {
   form.value?.clearAll()
@@ -662,28 +803,32 @@ const validating = ref(false)
   </c-form>
   <div class="c-mt-xl">
     <c-button
-      label="重置"
+      label="Reset"
       outlined
       :loading="validating"
       class="c-mr-md"
       @click="clearAll"
     />
-    <c-button label="提交" :loading="validating" @click="doValidate" />
+    <c-button
+      label="Submit"
+      :loading="validating"
+      @click="doValidate"
+    />
   </div>
 </template>
 ```
 
-### 自定义表单组件<Badge>高级</Badge>
+### Customize Form Component <Badge>Advanced</Badge>
 
-自写组件，可以使用[`useValidator`](/usable/useFormValidator.html#usevalidator-api)获取当前表单项所处表单验证上下文，从而自定义验证方法、清除验证状态调用时机，以及错误状态的样式表现
+Use [`useValidator`](/usable/useFormValidator.html#usevalidator-api) API to fetch current form item context
 
-<c-tabs v-model="activeTab" :items="[{ name: 'CustomInput.vue' }, { name: '使用' }]">
+<c-tabs v-model="activeTab" :items="[{ name: 'CustomInput.vue' }, { name: 'Usage' }]">
   <template #body-CustomInput.vue>
 
 @[code vue](./CustomInput.vue)
-  
+
   </template>
-  <template #body-使用>
+  <template #body-Usage>
 
 ```vue live
 <script setup>
@@ -696,44 +841,38 @@ const formData = ref({
   gender: '',
   birthday: null,
   industry: '',
-  customField: ''
+  customField: '',
 })
 
 const formItems = [
   {
     field: 'name',
-    label: '姓名',
-    rules: [
-      v => !v ? '请输入姓名' : false
-    ]
+    label: 'Name',
+    rules: [v => (!v ? 'Please enter name' : false)],
   },
   {
-    label: '性别',
+    label: 'Gender',
     field: 'gender',
     component: 'radio-group',
     componentProps: {
       options: [
         { label: 'Female', value: 'female' },
         { label: 'Male', value: 'male' },
-      ]
+      ],
     },
-    rules: [
-      v => v !== 'male' ? '只能选择Male！' : false
-    ]
+    rules: [v => (v !== 'male' ? 'Can only be male' : false)],
   },
   {
-    label: '生日',
+    label: 'Birthday',
     field: 'birthday',
     component: 'date-picker',
     componentProps: {
-      format: 'MMM DD, YYYY'
+      format: 'MMM DD, YYYY',
     },
-    rules: [
-      v => !v ? '请选择日期' : false
-    ]
+    rules: [v => (!v ? 'Please select birthday' : false)],
   },
   {
-    label: '行业',
+    label: 'Industry',
     field: 'industry',
     component: 'select',
     componentProps: {
@@ -741,34 +880,36 @@ const formItems = [
         { label: 'IT', value: 'IT' },
         { label: 'Medical', value: 'Medical' },
         { label: 'Entertainment', value: 'Entertainment' },
-        { label: 'Transportation', value: 'Transportation' }
-      ]
+        { label: 'Transportation', value: 'Transportation' },
+      ],
     },
     rules: [
-      v => v !== 'IT' && v !== 'Entertainment' ? '只能选择IT或者Entertainment' : false
-    ]
+      v =>
+        v !== 'IT' && v !== 'Entertainment'
+          ? 'Can only be IT or Entertainment'
+          : false,
+    ],
   },
   {
-    label: '自定义项',
+    label: 'Custom Component',
     field: 'customField',
     component: CustomInput,
     rules: [
       v => {
-        return v === 'custom value' ? false : '只能输入“custom value”'
-      }
-    ]
-  }
+        return v === 'custom value' ? false : 'Can only input “custom value”'
+      },
+    ],
+  },
 ]
 const { open } = useNotifications()
 const form = ref(null)
 const doValidate = () => {
-  form.value?.validate()
-    .then(() => {
-      open({
-        title: '提示',
-        message: '验证通过！'
-      })
+  form.value?.validate().then(() => {
+    open({
+      title: 'Notice',
+      message: 'All validations are passed!',
     })
+  })
 }
 const clearAll = () => {
   form.value?.clearAll()
@@ -778,19 +919,26 @@ const validating = ref(false)
 <template>
   <c-form
     ref="form"
+    col="12"
+    label-align="right"
+    label-width="140px"
     v-model="formData"
     :items="formItems"
     class="c-pa-md"
   />
   <div class="c-mt-xl">
     <c-button
-      label="重置"
+      label="Reset"
       outlined
       :loading="validating"
       class="c-mr-md"
       @click="clearAll"
     />
-    <c-button label="提交" :loading="validating" @click="doValidate" />
+    <c-button
+      label="Submit"
+      :loading="validating"
+      @click="doValidate"
+    />
   </div>
 </template>
 ```
@@ -798,13 +946,10 @@ const validating = ref(false)
   </template>
 </c-tabs>
 
-
-
-
-::: tip 提示
-表单项的所有与表单整体同名的配置可以覆盖表单整体的配置
+::: danger Attention
+All the form item's props which has the same name with form will override the form's value.  
+It's useful when you want to a special item to have different styles.
 :::
-
 
 <script setup>
 import { ref } from 'vue'
