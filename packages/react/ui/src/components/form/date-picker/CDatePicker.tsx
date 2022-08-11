@@ -23,67 +23,83 @@ const getDisplayMonth = (month: number) => {
 
 interface CDatePickerProps {
   /**
-   * 单选时选中的日期值
+   * The selected value when single select.
+   * @zh 单选时选中的日期值
    */
   value?: DateValue
   /**
-   * 单选时选中日期变化时触发事件
+   * Emit when the selected value change when single select.
+   * @zh 单选时选中日期变化时触发事件
    */
   onChange?: (value: DateValue) => void
   /**
-   * 单选时选中日期格式化后的值
+   * The selected value after formatted.
+   * @zh 单选时选中日期格式化后的值
    */
   formattedValue?: string
   /**
-   * 单选时选中日期格式化后的值变化时触发事件
+   * Emit when the selected formatted value change.
+   * @zh 单选时选中日期格式化后的值变化时触发事件
    */
   onFormattedValueChange?: (formattedValue: string) => void
   /**
-   * 日期段选择时选中的日期范围值
+   * The selected range value when range select.
+   * @zh 日期段选择时选中的日期范围值
    */
   rangeValue?: [DateValue, DateValue]
   /**
-   * 日期段选择时，选中的日期段格式化后的值
+   * The selected range value after formatted.
+   * @zh 日期段选择时，选中的日期段格式化后的值
    */
   formattedRangeValue?: [string, string]
   /**
-   * 日期段选择时，选中日期段变化时触发事件
+   * Emit when the range value change.
+   * @zh 日期段选择时，选中日期段变化时触发事件
    */
   onRangeChange?: (value: [DateValue, DateValue]) => void
   /**
-   * 日期段选择时，选中日期段格式化后的值变化时触发事件，<a href="https://day.js.org/docs/en/display/format#list-of-all-available-formats" target="_blank">Dayjs</a>
+   * Emit when the range formatted value change.
+   * @zh 日期段选择时，选中日期段格式化后的值变化时触发事件
    */
   onFormattedRangeChange?: (formattedValue: [string, string]) => void
   /**
-   * 格式化模板字符串，详情参考
+   * The format string. Details see <a href="https://day.js.org/docs/en/display/format#list-of-all-available-formats" target="_blank">Dayjs</a>
+   * @zh 格式化模板字符串，详情参考<a href="https://day.js.org/docs/en/display/format#list-of-all-available-formats" target="_blank">Dayjs</a>
    */
   format?: string
   /**
-   * 自定义格式化函数
+   * Custom formatter.
+   * @zh 自定义格式化函数
    */
   formatter?: Formatter
   /**
-   * 尺寸
+   * The size
+   * @zh 尺寸
    */
   size?: CSize
   /**
-   * 是否在完成选择时自动收起下拉
+   * Determine wether to fold panel when selected or not.
+   * @zh 是否在完成选择时自动收起下拉
    */
   hideOnSelect?: boolean
   /**
-   * 预设文本
+   * The placeholder text.
+   * @zh 预设文本
    */
   placeholder?: string
   /**
-   * 是否禁用
+   * Determine wether the date picker is disabled or not.
+   * @zh 是否禁用
    */
   disabled?: boolean
   /**
-   * 选择单位
+   * The select unit.
+   * @zh 选择单位
    */
   unit?: Unit
   /**
-   * 是否为日期段选择
+   * Determine wether the date picker is range or not.
+   * @zh 是否为日期段选择
    */
   range?: boolean
 }

@@ -2,7 +2,7 @@
 title: Date Picker
 ---
 
-### 基础使用
+### Basic Usage
 
 ```jsx live
 function Demo() {
@@ -11,11 +11,11 @@ function Demo() {
   return (
     <>
       <p>
-        <strong>选中日期：</strong>
+        <strong>Selected date:</strong>
         {date && date.toString()}
       </p>
       <p>
-        <strong>选中日期格式化后的值：</strong>
+        <strong>Selected date after formatted: </strong>
         {formattedDate}
       </p>
       <CDatePicker
@@ -23,14 +23,14 @@ function Demo() {
         onChange={setDate}
         formattedValue={formattedDate}
         onFormattedValueChange={setFormattedDate}
-        placeholder="请选择日期"
+        placeholder="Select date"
       />
     </>
   )
 }
 ```
 
-### 禁用态
+### Disabled
 
 ```jsx live
 function Demo() {
@@ -40,7 +40,7 @@ function Demo() {
       <CDatePicker
         value={date}
         onChange={setDate}
-        placeholder="不可选"
+        placeholder="A disabled date picker"
         disabled
       />
     </SpaceItems>
@@ -48,7 +48,7 @@ function Demo() {
 }
 ```
 
-### 尺寸
+### Sizes
 
 ```jsx live
 function Demo() {
@@ -65,17 +65,17 @@ function Demo() {
   )
   return (
     <SpaceItems>
-      <CDatePicker size="xs" {...props} placeholder="超小" />
-      <CDatePicker size="sm" {...props} placeholder="较小" />
-      <CDatePicker {...props} placeholder="中等（默认）" />
-      <CDatePicker size="lg" {...props} placeholder="较大" />
-      <CDatePicker size="xl" {...props} placeholder="超大" />
+      <CDatePicker size="xs" {...props} placeholder="xs" />
+      <CDatePicker size="sm" {...props} placeholder="sm" />
+      <CDatePicker {...props} placeholder="md (default)" />
+      <CDatePicker size="lg" {...props} placeholder="lg" />
+      <CDatePicker size="xl" {...props} placeholder="xl" />
     </SpaceItems>
   )
 }
 ```
 
-### 日期段选择
+### Date range
 
 ```jsx live
 function Demo() {
@@ -85,16 +85,16 @@ function Demo() {
   return (
     <>
       <p>
-        <strong>选中日期段：</strong>
+        <strong>Selected date range:</strong>
         {range.map(strDate).join(' - ')}
       </p>
       <p>
-        <strong>选中日期格式化后的值：</strong>
+        <strong>Selected date range after formatted:</strong>
         {rangeFmt[0]} - {rangeFmt[1]}
       </p>
       <CDatePicker
         range
-        placeholder="请选择日期段"
+        placeholder="Select date range"
         rangeValue={range}
         onRangeChange={setRange}
         formattedRangeValue={rangeFmt}
@@ -105,7 +105,7 @@ function Demo() {
 }
 ```
 
-### 月份、年份选择
+### Month & Year Select
 
 ```jsx live
 function Demo() {
@@ -117,11 +117,11 @@ function Demo() {
     <div className="c-row c-gutter-md" style={{ width: '100%' }}>
       <div className="c-col-6">
         <p>
-          <strong>选中月份：</strong>
+          <strong>Selected month:</strong>
           {month && month.toString()}
         </p>
         <p>
-          <strong>选中月份格式化后的值：</strong>
+          <strong>Selected month after formatted:</strong>
           {formattedMonth}
         </p>
         <CDatePicker
@@ -131,16 +131,16 @@ function Demo() {
           format="MMM, YYYY"
           formattedValue={formattedMonth}
           onFormattedValueChange={setFormattedMonth}
-          placeholder="请选择月份"
+          placeholder="Select month"
         />
       </div>
       <div className="c-col-6">
         <p>
-          <strong>选中年份：</strong>
+          <strong>Selected year:</strong>
           {year && year.toString()}
         </p>
         <p>
-          <strong>选中年份格式化后的值：</strong>
+          <strong>Selected year after formatted:</strong>
           {formattedYear}
         </p>
 
@@ -151,7 +151,7 @@ function Demo() {
           format="YYYY"
           formattedValue={formattedYear}
           onFormattedValueChange={setFormattedYear}
-          placeholder="请选择年份"
+          placeholder="Select year"
         />
       </div>
     </div>

@@ -14,31 +14,38 @@ import useGutterSize, { CGutterSizeContext } from '../../hooks/useGutterSize'
 
 interface CFormItemProps {
   /**
-   * 对应表单中的项的名称
+   * The field this form item. It need to be a key of whole form data.
+   * @zh 对应表单中的项的名称
    */
   field?: string
   /**
-   * 文本提示
+   * The text label
+   * @zh 表单项文本
    */
   label?: string
   /**
-   * 文本提示宽度
+   * The label width
+   * @zh 文本宽度
    */
   labelWidth?: string
   /**
-   * 文本提示与表单元素对齐方向
+   * The direction of label and form component.  It is based on <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction">flex-direction</a>
+   * @zh 文本与表单元素对齐方向 基于<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction">flex-direction</a>实现
    */
   labelDirection?: 'row' | 'row-reverse' | 'column' | 'column-reverse'
   /**
-   * 文本提示对齐方向，表现为text-align的值
+   * The label align method.  It is based on <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-align">text-align</a>
+   * @zh 文本对齐方式，表现为<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-align">text-align</a>的值
    */
   labelAlign?: 'left' | 'right' | 'center'
   /**
-   * 表单项所占列数，该值可覆盖父级表单的col属性
+   * The col span of this form item.
+   * @zh 表单项所占列数
    */
   col?: number
   /**
-   * 具体的表单组件
+   * The form component.
+   * @zh 具体的表单组件
    */
   children?:
     | JSX.Element
@@ -48,15 +55,18 @@ interface CFormItemProps {
         hasError: false | string
       }) => CSlot)
   /**
-   * 验证规则
+   * The validators.
+   * @zh 验证规则
    */
   rules?: CRule[]
   /**
-   * 尺寸
+   * The size
+   * @zh 尺寸
    */
   size?: CSize
   /**
-   * 元素间隔尺寸
+   * The gutter size.
+   * @zh 元素间隔尺寸
    */
   gutterSize?: CSize
 }

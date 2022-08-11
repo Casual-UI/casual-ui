@@ -4,7 +4,8 @@ import { CSSProperties } from 'react'
 
 interface CLoadingProps {
   /**
-   * 厚度
+   * The thickness
+   * @zh 厚度
    */
   thickness?: number
   /**

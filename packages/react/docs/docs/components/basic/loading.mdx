@@ -4,7 +4,7 @@ title: Loading
 
 ### Basic Usage
 
-```jsx title="JSX文件中"
+```jsx title="In JSX"
 import { CLoading } from 'casual-ui/react'
 
 function Demo() {
@@ -40,12 +40,12 @@ Directly use CSS `color` attribute to set colors.
 </SpaceItems>
 ```
 
-:::tip 提示
-你也可以通过直接定义父容器的`color`属性来达到相同的效果
+:::tip TIP
+You can also set the parent dom's `color` and `font-size`
 
 ```jsx live
-<span style={{ color: 'blue' }}>
-  <CLoading size="3em" />
+<span style={{ color: 'blue', fontSize: '3em' }}>
+  <CLoading />
 </span>
 ```
 

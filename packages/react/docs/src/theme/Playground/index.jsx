@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import * as React from 'react'
+import React from 'react'
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import BrowserOnly from '@docusaurus/BrowserOnly'
@@ -8,6 +8,7 @@ import styles from './styles.module.css'
 import useIsBrowser from '@docusaurus/useIsBrowser'
 import { CExpansion } from 'casual-ui-react'
 import { translate } from '@docusaurus/Translate'
+import ReactIcon from '../components/ReactIcon'
 
 function LivePreviewLoader() {
   // Is it worth improving/translating?
@@ -35,11 +36,23 @@ function ResultWithHeader() {
 function ThemedLiveEditor() {
   const isBrowser = useIsBrowser()
   return (
-    <CExpansion title={translate({
-      id: 'codeExpansion.title',
-      message: 'Fold/Expand Code'
-    })} open={false} reverse>
-      <LiveEditor key={isBrowser} className={styles.playgroundEditor} />
+    <CExpansion
+      title={
+        <div className="c-flex c-items-center">
+          <ReactIcon style={{ fontSize: '24px', color: '#61DAFB' }} className="c-mr-md" />
+          {translate({
+            id: 'codeExpansion.title',
+            message: 'Fold/Expand Code',
+          })}
+        </div>
+      }
+      open={false}
+      reverse
+    >
+      <LiveEditor
+        key={isBrowser}
+        className={styles.playgroundEditor}
+      />
     </CExpansion>
   )
 }

@@ -1,6 +1,7 @@
 interface CCarouselSliderProps {
   /**
-   * 内容
+   * The content
+   * @zh 内容
    */
   children?: any
 }
