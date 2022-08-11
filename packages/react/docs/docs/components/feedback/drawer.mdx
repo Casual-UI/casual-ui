@@ -2,66 +2,90 @@
 title: Drawer
 ---
 
-### 基础使用
+### Basic Usage
 
 ```jsx live
 function Demo() {
-
   const [show, setShow] = useState(false)
 
   return (
     <>
-      <CButton label="点击打开抽屉" onClick={() => setShow(true)} />
-      <CDrawer show={show} onShowChange={setShow} title="你好">
-        一些抽屉内容
+      <CButton
+        label="Click to open drawer"
+        onClick={() => setShow(true)}
+      />
+      <CDrawer
+        show={show}
+        onShowChange={setShow}
+        title="Hi, there"
+      >
+        Hello, world.
       </CDrawer>
     </>
   )
 }
 ```
 
-### 位置
+### Positions
 
 ```jsx live
-function Demo () {
-   const {
-    matArrowBack,
-    matArrowUpward,
-    matArrowForward,
-    matArrowDownward,
-  } = MdIcons
+function Demo() {
+  const { matArrowBack, matArrowUpward, matArrowForward, matArrowDownward } =
+    MdIcons
 
   const [show, setShow] = useState(false)
 
   const [position, setPosition] = useState('left')
 
-  const openWithPosition = (pos) => {
+  const openWithPosition = pos => {
     setPosition(pos)
     setShow(true)
   }
 
-  return (<div>
-    <SpaceItems>
-      <CButton icon onClick={() => openWithPosition('left')}>
-        <CIcon content={matArrowBack} />
-      </CButton>
-      <CButton icon onClick={() => openWithPosition('top')}>
-        <CIcon content={matArrowUpward} />
-      </CButton>
-      <CButton icon onClick={() => openWithPosition('right')}>
-        <CIcon content={matArrowForward} />
-      </CButton>
-      <CButton icon onClick={() => openWithPosition('bottom')}>
-        <CIcon content={matArrowDownward} />
-      </CButton>
-    </SpaceItems>
-    <CDrawer show={show} onShowChange={setShow} title="你好" position={position}>
-      一些抽屉内容
-    </CDrawer>
-  </div>)
+  return (
+    <div>
+      <SpaceItems>
+        <CButton
+          icon
+          onClick={() => openWithPosition('left')}
+        >
+          <CIcon content={matArrowBack} />
+        </CButton>
+        <CButton
+          icon
+          onClick={() => openWithPosition('top')}
+        >
+          <CIcon content={matArrowUpward} />
+        </CButton>
+        <CButton
+          icon
+          onClick={() => openWithPosition('right')}
+        >
+          <CIcon content={matArrowForward} />
+        </CButton>
+        <CButton
+          icon
+          onClick={() => openWithPosition('bottom')}
+        >
+          <CIcon content={matArrowDownward} />
+        </CButton>
+      </SpaceItems>
+      <CDrawer
+        show={show}
+        onShowChange={setShow}
+        title="Hi, there"
+        position={position}
+      >
+        Hello, world
+      </CDrawer>
+    </div>
+  )
 }
 ```
 
 ### Props
 
-<PropTable name="CDrawer" typeWidth="280px" />
+<PropTable
+  name="CDrawer"
+  typeWidth="280px"
+/>
