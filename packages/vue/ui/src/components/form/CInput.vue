@@ -1,7 +1,4 @@
-<script
-  setup
-  lang="ts"
->
+<script setup lang="ts">
 import { ref, toRefs } from 'vue'
 import {
   useInjectTheme,
@@ -19,88 +16,110 @@ import useValidator from './useValidator'
 
 interface OInputProps {
   /**
-   * 输入框内的值，用于默认的<code>v-model</code>绑定
+   * The input value. Can be used with <code>v-model</code>.
+   * @zh 输入框内的值，用于默认的<code>v-model</code>绑定
    */
   modelValue: string | number
   /**
-   * 主题
+   * The theme color.
+   * @zh 主题
    */
   theme?: CTheme
   /**
-   * 是否禁用
+   * Determine whether the input is disabled or not.
+   * @zh 是否禁用
    */
   disabled?: boolean
   /**
-   * 尺寸
+   * The size of input.
+   * @zh 尺寸
    */
   size?: CSize
   /**
-   * 输入框预设文本
+   * The input placeholder.
+   * @zh 输入框预设文本
    */
   placeholder?: string
   /**
-   * 是否表现为圆角
+   * Determine whether the input has a rounded border or not.
+   * @zh 是否表现为圆角
    */
   rounded?: boolean
   /**
-   * 是否处于加载态
+   * Determine whether the input is in loading status or not.
+   * @zh 是否处于加载态
    */
   loading?: boolean
   /**
-   * 内容是否可清除
+   * Determine whether the input content can be cleared by a clear icon or not.
+   * @zh 内容是否可清除
    */
   clearable?: boolean
   /**
-   * 是否是只读状态
+   * Determine whether the input is readonly or not.
+   * @zh 是否是只读状态
    */
   readonly?: boolean
   /**
-   * 是否展示前置内容与输入框之间的分割线
+   * Determine whether to be a divider between the input content and the prefix or not.
+   * @zh 是否展示前置内容与输入框之间的分割线
    */
   prefixDivider?: boolean
   /**
-   * 是否展示后置内容与输入框之间的分割线
+   * Determine whether to be a divider between the input content and the suffix or not.
+   * @zh 是否展示后置内容与输入框之间的分割线
    */
   suffixDivider?: boolean
   /**
-   * 是否处于聚焦态，<code>v-model:focused</code>双向绑定用
+   * Determine the input is in focused status or not.
+   * @zh 是否处于聚焦态，<code>v-model:focused</code>双向绑定用
    */
   focused?: boolean
   /**
-   * 是否自动根据input失去焦点事件blur
+   * Determine whether the input's focus status is controlled manual.
+   * @zh 是否自动根据input失去焦点事件blur
    */
   autoBlur?: boolean
   /**
-   * 输入框类型
+   * The input type.
+   * @zh 输入框类型
    */
   type?: 'text' | 'password'
   /**
-   * 是否使用自定义颜色状态，若设置为<code>true</code>，则聚焦不会触发边框颜色变更，包括背景色、边框色
+   * Determine whether to disabled the default style trigger by hover and focus status or not.s
+   * @zh 是否使用自定义颜色状态，若设置为<code>true</code>，则聚焦不会触发边框颜色变更，包括背景色、边框色
    */
   customColor?: boolean
   /**
-   * 表单验证触发时机，默认为<code>'blur'</code>
+   * The trigger to emit the form context validation which current input is in.
+   * @zh 表单验证触发时机
    */
   validateTrigger?: 'change' | 'blur' | 'focus' | 'manual'
   /**
-   * 是否在聚焦时清除验证状态
+   * Determine whether to clear the validate status when blur or not.
+   * @zh 是否在聚焦时清除验证状态
    */
   clearValidateOnFocus?: boolean
 }
 
 const emit = defineEmits<{
   /**
-   * 输入框值发生变化时触发
-   * @arg {string} newValue - 新的输入框内的值
+   * Emit when the input value changed.
+   * @zh 输入框值发生变化时触发
+   * @arg {string} newValue - new value
+   * @arg {string} newValue_zh - 新的值
    */
   (e: 'update:modelValue', newValue: string | number): void
   /**
-   * 聚焦状态发生变化时触发
-   * @arg {boolean} newFocusStatus - 新的聚焦状态
+   * Emit when the input's focused status changed.
+   * @zh 聚焦状态发生变化时触发
+   * @arg {boolean} newFocusStatus - new focus status
+   * @arg {boolean} newFocusStatus_zh - 新的聚焦状态
    */
   (e: 'update:focused', newFocusStatus: boolean): void
   /**
-   * 清除按钮触发
+   * Emit when the clear icon is clicked.
+   * @zh 清除按钮触发
    */
   (e: 'clear'): void
 }>()
@@ -199,7 +218,10 @@ const onClearIconClick = () => {
         ]"
         @click="focusInput"
       >
-        <!-- @slot 输入框前置内容 -->
+        <!-- 
+          @slot Customize prefix content.
+          @zh 输入框前置内容 
+        -->
         <slot name="prefix" />
       </div>
       <div class="c-input--input-wrapper">
@@ -238,10 +260,16 @@ const onClearIconClick = () => {
         @click="focusInput"
       >
         <div :class="[{ 'c-mr-sm': loading }]">
-          <!-- @slot 输入框后置内容 -->
+          <!-- 
+            @slot Customize suffix content.
+            @zh 输入框后置内容 
+          -->
           <slot name="suffix" />
         </div>
-        <!-- @slot 自定义加载中 -->
+        <!-- 
+          @slot Customize loading content.
+          @zh 自定义加载中 
+        -->
         <slot
           v-if="loading"
           name="loading"

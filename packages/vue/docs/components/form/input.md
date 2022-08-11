@@ -1,10 +1,10 @@
 ---
-title: 输入框
+title: Input
 componentPath: form/CInput
 eventsNameWidth: 140px
 ---
 
-### 基础使用
+### Basic Usage
 
 ```vue live
 <script setup>
@@ -14,21 +14,37 @@ const inputValue = ref('')
 <template>
   <div class="c-row c-items-center c-gutter-md c-wrap">
     <div>
-      <c-input v-model="inputValue" placeholder="预设内容" />
+      <c-input
+        v-model="inputValue"
+        placeholder="Enter something"
+      />
     </div>
     <div>
-      <c-input v-model="inputValue" type="password" placeholder="密码输入框" />
+      <c-input
+        v-model="inputValue"
+        type="password"
+        placeholder="Password input"
+      />
     </div>
     <div>
-      <c-input v-model="inputValue" rounded placeholder="圆角输入框" />
+      <c-input
+        v-model="inputValue"
+        rounded
+        placeholder="Rounded input"
+      />
     </div>
     <div>
-      <c-input v-model="inputValue" disabled placeholder="禁用态" />
+      <c-input
+        v-model="inputValue"
+        disabled
+        placeholder="Disabled input"
+      />
     </div>
   </div>
 </template>
 ```
-### 尺寸
+
+### Sizes
 
 ```vue live
 <script setup>
@@ -38,25 +54,44 @@ const inputValue = ref('')
 <template>
   <div class="c-row c-items-center c-gutter-md c-wrap">
     <div>
-      <c-input v-model="inputValue" placeholder="超小尺寸" size="xs" />
+      <c-input
+        v-model="inputValue"
+        placeholder="xs input"
+        size="xs"
+      />
     </div>
     <div>
-      <c-input v-model="inputValue" placeholder="小尺寸" size="sm" />
+      <c-input
+        v-model="inputValue"
+        placeholder="sm input"
+        size="sm"
+      />
     </div>
     <div>
-      <c-input v-model="inputValue" placeholder="中等尺寸（默认）" />
+      <c-input
+        v-model="inputValue"
+        placeholder="md (default) input"
+      />
     </div>
     <div>
-      <c-input v-model="inputValue" placeholder="大尺寸" size="lg" />
+      <c-input
+        v-model="inputValue"
+        placeholder="lg input"
+        size="lg"
+      />
     </div>
     <div>
-      <c-input v-model="inputValue" placeholder="超大尺寸" size="xl" />
+      <c-input
+        v-model="inputValue"
+        placeholder="xl input"
+        size="xl"
+      />
     </div>
   </div>
 </template>
 ```
 
-### 可清除
+### Clearable
 
 ```vue live
 <script setup>
@@ -64,11 +99,15 @@ import { ref } from 'vue'
 const inputValue = ref('')
 </script>
 <template>
-  <c-input v-model="inputValue" placeholder="请输入..." clearable />
+  <c-input
+    v-model="inputValue"
+    placeholder="Enter something"
+    clearable
+  />
 </template>
 ```
 
-### 前置与后置
+### Prefix & Suffix
 
 ```vue live
 <script setup>
@@ -80,13 +119,20 @@ const value = ref('')
 <template>
   <div class="c-row c-items-center c-gutter-x-lg">
     <div>
-      <c-input v-model="value">
+      <c-input
+        v-model="value"
+        placeholder="prefix and suffix"
+      >
         <template #prefix> +234 </template>
         <template #suffix> @someone </template>
       </c-input>
     </div>
     <div>
-      <c-input v-model="value" placeholder="suffix图标" clearable>
+      <c-input
+        v-model="value"
+        placeholder="Suffix Icon"
+        clearable
+      >
         <template #prefix>
           <c-icon :content="matContactPhone" />
         </template>
@@ -99,7 +145,7 @@ const value = ref('')
 </template>
 ```
 
-### 加载态
+### Loading
 
 ```vue live
 <script setup>
@@ -109,10 +155,18 @@ const value = ref('')
 <template>
   <div class="c-row c-gutter-x-md">
     <div>
-      <c-input v-model="value" loading placeholder="加载中..." />
+      <c-input
+        v-model="value"
+        loading
+        placeholder="加载中..."
+      />
     </div>
     <div>
-      <c-input v-model="value" loading placeholder="加载中...">
+      <c-input
+        v-model="value"
+        loading
+        placeholder="加载中..."
+      >
         <template #loading>
           <c-loading-bar color="cyan" />
         </template>

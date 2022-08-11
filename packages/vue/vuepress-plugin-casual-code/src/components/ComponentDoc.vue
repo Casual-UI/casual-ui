@@ -152,7 +152,7 @@ const isChinese = computed(() => lang.value === 'zh-CN')
                 "
                 class="c-pl-md"
               >
-                <b>绑定值</b>
+                <b>{{ isChinese ? '绑定值' : 'Bindings' }}</b>
                 <c-list
                   :items="item.bindings.filter((bItem: any) => bItem.name !== 'name')"
                   divider
@@ -179,9 +179,24 @@ const isChinese = computed(() => lang.value === 'zh-CN')
                 v-if="item.tags?.some(tag => tag.name)"
                 class="c-pl-md"
               >
-                <b>入参</b>
+                <b>{{ isChinese ? '入参' : 'Params' }}</b>
                 <c-list
-                  :items="item.tags.filter(tag => tag.name)"
+                  :items="
+                    item.tags
+                      .filter(tag => tag.name?.indexOf('_') === -1)
+                      .map(tag => {
+                        if (isChinese) {
+                          return {
+                            ...tag,
+                            description:
+                              item.tags.find(
+                                zhTag => zhTag.name === `${tag.name}_zh`
+                              )?.description || tag.description,
+                          }
+                        }
+                        return tag
+                      })
+                  "
                   divider
                 >
                   <template #item="{ item: pItem }">
