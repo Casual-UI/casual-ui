@@ -1,9 +1,9 @@
 ---
-title: 选择器
+title: Select
 componentPath: form/CSelect
 ---
 
-### 基础使用
+### Basic Usage
 
 ```vue live
 <script setup>
@@ -22,20 +22,20 @@ const options = [
 <template>
   <c-select
     v-model="selectedValue"
-    placeholder="请选择"
+    placeholder="Select something"
     :options="options"
   />
   <c-select
     v-model="selectedValue"
     rounded
-    placeholder="圆角选择器"
+    placeholder="Rounded Select"
     :options="options"
     class="c-ml-md"
   />
 </template>
 ```
 
-### 尺寸
+### Sizes
 
 ```vue live
 <script setup>
@@ -57,7 +57,7 @@ const options = [
       <c-select
         v-model="selectedValue"
         size="xs"
-        placeholder="超小尺寸"
+        placeholder="xs select"
         :options="options"
       />
     </div>
@@ -65,14 +65,14 @@ const options = [
       <c-select
         v-model="selectedValue"
         size="sm"
-        placeholder="小尺寸"
+        placeholder="sm select"
         :options="options"
       />
     </div>
     <div>
       <c-select
         v-model="selectedValue"
-        placeholder="中等尺寸（默认）"
+        placeholder="md select (default)"
         :options="options"
       />
     </div>
@@ -80,7 +80,7 @@ const options = [
       <c-select
         v-model="selectedValue"
         size="lg"
-        placeholder="大尺寸"
+        placeholder="lg select"
         :options="options"
       />
     </div>
@@ -88,7 +88,7 @@ const options = [
       <c-select
         v-model="selectedValue"
         size="xl"
-        placeholder="超大尺寸"
+        placeholder="xl select"
         :options="options"
       />
     </div>
@@ -96,7 +96,7 @@ const options = [
 </template>
 ```
 
-### 禁用态
+### Disabled
 
 ```vue live
 <script setup>
@@ -115,13 +115,13 @@ const options = [
   <c-select
     v-model="val"
     :options="options"
-    placeholder="禁用态"
+    placeholder="Disabled select"
     disabled
   />
 </template>
 ```
 
-### 可清除
+### Clearable
 
 ```vue live
 <script setup>
@@ -140,14 +140,14 @@ const options = [
 <template>
   <c-select
     v-model="selectedValue"
-    placeholder="请选择"
+    placeholder="Clearable something"
     :options="options"
     clearable
   />
 </template>
 ```
 
-### 多选
+### Multiple
 
 ```vue live
 <script setup>
@@ -166,7 +166,7 @@ const options = [
 <template>
   <c-select
     v-model="selectedValue"
-    placeholder="请选择"
+    placeholder="Multiple select"
     :options="options"
     clearable
     multiple

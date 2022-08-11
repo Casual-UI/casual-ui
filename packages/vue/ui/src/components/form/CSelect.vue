@@ -1,7 +1,4 @@
-<script
-  setup
-  lang="ts"
->
+<script setup lang="ts">
 import {
   CTag,
   CList,
@@ -23,49 +20,60 @@ interface OOption {
 }
 
 /**
- * 选择器值类型
+ * The value types.
+ * @zh 选择器值类型
  */
 type CSelectModelValue = string | number | Array<string | number>
 
 interface CSelectProps {
   /**
-   * 预设文本
+   * The placeholder.
+   * @zh 预设文本
    */
   placeholder?: string
   /**
-   * 尺寸
+   * The size of select.
+   * @zh 尺寸
    */
   size?: 'sm' | 'md' | 'lg'
   /**
-   * 选中值，用于<code>v-model</code>绑定
+   * The select value. Can be used with <code>v-model</code>.
+   * @zh 选中值，用于<code>v-model</code>绑定
    */
   modelValue: CSelectModelValue
   /**
-   * 选项
+   * The options.
+   * @zh 选项
    */
   options?: OOption[]
   /**
-   * 是否支持多选
+   * Determine whether the select can have multiple selected options or not.
+   * @zh 是否支持多选
    */
   multiple?: boolean
   /**
-   * 内容是否可清除
+   * Determine whether the select's value can be cleared by a clear icon or not.
+   * @zh 内容是否可清除
    */
   clearable?: boolean
   /**
-   * 是否禁用
+   * Determine whether the select is disabled or not.
+   * @zh 是否禁用
    */
   disabled?: boolean
   /**
-   * 是否为圆角
+   * Determine whether the select has a rounded border or not.
+   * @zh 是否为圆角
    */
   rounded?: boolean
 }
 
 const emit = defineEmits<{
   /**
-   * 值变更触发，可用于<code>v-model</code>绑定
-   * @arg {string | number | Array<string | number>} newValue - 新的绑定值
+   * Emit when the select value is changed.
+   * @zh 值变更触发，可用于<code>v-model</code>绑定
+   * @arg {string | number | Array<string | number>} newValue - new selected value
+   * @arg {string | number | Array<string | number>} newValue_zh - 新的绑定值
    */
   (e: 'update:modelValue', v: CSelectModelValue): void
 }>()

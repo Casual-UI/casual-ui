@@ -7,23 +7,28 @@ type CRadioModel = boolean | string | number
 
 interface CRadioProps {
   /**
-   * 当前值，用于<code>v-model</code>绑定用
+   * Current value. Can be used with <code>v-model</code>.
+   * @zh 当前值，用于<code>v-model</code>绑定用
    */
   modelValue: CRadioModel
   /**
-   * 选中时的值
+   * The value used for selected.
+   * @zh 选中时的值
    */
   value?: CRadioModel
   /**
-   * 文字
+   * The label text.
+   * @zh 文字
    */
   label?: string | number
   /**
-   * 尺寸
+   * The size
+   * @zh 尺寸
    */
   size?: CSize
   /**
-   * 是否禁用
+   * Determine whether the radio is disabled or not.
+   * @zh 是否禁用
    */
   disabled?: boolean
 }
@@ -37,8 +42,10 @@ const props = withDefaults(defineProps<CRadioProps>(), {
 
 const emit = defineEmits<{
   /**
-   * 值发生变化时触发
-   * @arg {any} newValue - 新的绑定值，值的类型取决于<code>props.value</code>属性
+   * Emit when the radio value changed.
+   * @zh 值发生变化时触发
+   * @arg {any} newValue_zh - 新的绑定值
+   * @arg {any} newValue - new selected value
    */
   (e: 'update:modelValue', newModelValue: CRadioModel): void
 }>()

@@ -1,12 +1,12 @@
 ---
-title: 单选器
+title: Radio
 componentPath: form/CRadio
 additionalComponentPaths:
   - name: CRadioGroup
     path: form/CRadioGroup
 ---
 
-### 基础使用
+### Basic Usage
 
 ```vue live
 <script setup>
@@ -15,16 +15,32 @@ const val = ref('')
 </script>
 <template>
   <div class="c-row c-gutter-x-md">
-    <c-radio v-model="val" label="苹果" value="Apple" />
-    <c-radio v-model="val" label="香蕉" value="Banana" />
-    <c-radio v-model="val" label="桃子" value="Peach" />
-    <c-radio v-model="val" label="葡萄" value="Grape" />
+    <c-radio
+      v-model="val"
+      label="Apple"
+      value="Apple"
+    />
+    <c-radio
+      v-model="val"
+      label="Banana"
+      value="Banana"
+    />
+    <c-radio
+      v-model="val"
+      label="Peach"
+      value="Peach"
+    />
+    <c-radio
+      v-model="val"
+      label="Grapes"
+      value="Grape"
+    />
   </div>
-  <div class="c-mt-md">当前选中值：{{ val }}</div>
+  <div class="c-mt-md">Current value: {{ val }}</div>
 </template>
 ```
 
-### 尺寸
+### Sizes
 
 ```vue live
 <script setup>
@@ -35,31 +51,39 @@ const val = ref('')
   <div class="c-row c-gutter-x-md c-items-center">
     <c-radio
       v-model="val"
-      label="超小尺寸"
+      label="xs"
       value="xs"
-      size="xs" />
+      size="xs"
+    />
     <c-radio
       v-model="val"
-      label="小尺寸"
+      label="sm"
       value="sm"
-      size="sm" />
-    <c-radio v-model="val" label="中等尺寸（默认）" value="md" />
+      size="sm"
+    />
     <c-radio
       v-model="val"
-      label="大尺寸"
+      label="md (default)"
+      value="md"
+    />
+    <c-radio
+      v-model="val"
+      label="lg"
       value="lg"
-      size="lg" />
+      size="lg"
+    />
     <c-radio
       v-model="val"
-      label="超大尺寸"
+      label="xl"
       value="xl"
-      size="xl" />
+      size="xl"
+    />
   </div>
-  <div class="c-mt-md">当前选中值：{{ val }}</div>
+  <div class="c-mt-md">Current value: {{ val }}</div>
 </template>
 ```
 
-### 状态
+### Status
 
 ```vue live
 <script setup>
@@ -69,13 +93,21 @@ const val2 = ref(true)
 </script>
 <template>
   <div class="c-row c-gutter-x-md">
-    <c-radio v-model="val1" label="禁用态" disabled />
-    <c-radio v-model="val2" label="禁用态" disabled />
+    <c-radio
+      v-model="val1"
+      label="Disabled"
+      disabled
+    />
+    <c-radio
+      v-model="val2"
+      label="Disabled"
+      disabled
+    />
   </div>
 </template>
 ```
 
-### 单选器组
+### RadioGroup
 
 ```vue live
 <script setup>
@@ -83,14 +115,17 @@ import { ref } from 'vue'
 
 const selectedFruit = ref('Apple')
 const fruits = [
-  { label: '苹果', value: 'Apple' },
-  { label: '香蕉', value: 'Banana' },
-  { label: '桃子', value: 'Peach' },
-  { label: '葡萄', value: 'Grape' },
+  { label: 'Apple', value: 'Apple' },
+  { label: 'Banana', value: 'Banana' },
+  { label: 'Peach', value: 'Peach' },
+  { label: 'Grapes', value: 'Grape' },
 ]
 </script>
 <template>
-  {{ selectedFruit }}
-  <c-radio-group v-model="selectedFruit" :options="fruits" />
+  Current value: {{ selectedFruit }}
+  <c-radio-group
+    v-model="selectedFruit"
+    :options="fruits"
+  />
 </template>
 ```
