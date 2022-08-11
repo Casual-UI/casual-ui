@@ -3,28 +3,30 @@ home: true
 heroImage: /logo.svg
 heroImageDark: /logo-dark.svg
 actions:
-  - text: Quick Start
+  - text: 快速上手
     link: /guide/install/
     type: primary
-  - text: Components List
+  - text: 组件一览
     link: /components/
     type: secondary
 features:
-  - title: Type Friendly
-    details: All written with Typescript
-  - title: Theme Customizable
-    details: All theme colors can be override by css vars
-  - title: Dark Mode Support
-    details: Easy to toggle dark mode
-  - title: Strong And Flexible Form
-    details: Provide a fully customizable interfaces for customizing form components
+  - title: 拥抱Vue3
+    details: 紧跟Vue3更新步伐
+  - title: 支持暗黑模式&主题定制
+    details: 可以自定义你的主题
+  - title: TS编写
+    details: 友好的类型提示
+  - title: 灵活且强大的表单
+    details: 可配置&可自定义的表单
+  - title: 超小的代码体积
+    details: 无不必要的第三方库，所有复用逻辑均自主实现
 footer: MIT Licensed | Copyright © 2022-present Casual UI
 ---
 
 <hr />
 
 <div class="c-pb-xl">
-  <p class="description">Thanks To</p>
+  <p class="description">鸣谢</p>
   <div class="c-row c-items-center c-gutter-md c-wrap c-justify-center">
     <img src="/badges/react.svg" alt="" />
     <img src="/badges/vue.svg" alt="" />

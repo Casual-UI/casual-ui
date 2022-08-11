@@ -1,8 +1,8 @@
 ---
-title: 暗黑模式
+title: Dark Mode
 ---
 
-* 第一步
-在你的html标签上添加`class="dark"`
-* 第二步
-没了
+* Step 1
+add `class="dark"` to html tag
+* Step 2
+There are no further steps

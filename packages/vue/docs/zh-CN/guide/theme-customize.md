@@ -1,8 +1,8 @@
 ---
-title: Theme Customization
+title: 主题定制
 ---
 
-### Theme Colors
+### 主题色
 
 ```vue live
 <script setup>
@@ -36,7 +36,9 @@ const colors = ['--casual-primary', '--casual-secondary', '--casual-warning', '-
 </style>
 ```
 
-All Theme colors shown below can be override with CSS variables
-### Variables
+Casual UI支持通过CSS变量定制主题
 
-@[code](../../../styles/src/variables/colors.scss)
+下面的所有变量均可以通过自定义css变量覆盖
+### 变量一览
+
+@[code](../../../../styles/src/variables/colors.scss)

@@ -6,7 +6,7 @@ import { ionCodeOutline } from '@quasar/extras/ionicons-v5'
 import { matPlayArrow } from '@quasar/extras/material-icons'
 import { ref } from 'vue'
 import createSandboxApp from './createSandboxApp'
-import { usePageFrontmatter } from '@vuepress/client'
+import { usePageFrontmatter, usePageLang } from '@vuepress/client'
 import { CExpansion, CButton, CDialog, CIcon, CTooltip } from 'casual-ui-vue'
 import nightOwlTheme from './night-owl.json'
 
@@ -61,6 +61,8 @@ const onReplDialogOpened = () => {
     sandbox.value.appendChild(iframe)
   })
 }
+
+const lang = usePageLang()
 </script>
 <template>
   <div class="demo-code c-mt-md">
@@ -73,7 +75,11 @@ const onReplDialogOpened = () => {
     >
       <template #title>
         <div class="c-flex c-items-center c-justify-between">
-          <div>点击打开/折叠代码</div>
+          <div>
+            {{
+              lang === 'zh-CN' ? '点击展开/收起代码' : 'Click to open/fold code'
+            }}
+          </div>
           <c-tooltip
             content="点击打开交互式编辑器"
             @click.native.stop

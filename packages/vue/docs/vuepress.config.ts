@@ -12,76 +12,145 @@ import Unocss from 'unocss/vite'
 import { presetIcons } from 'unocss'
 
 export default defineUserConfig({
-  lang: 'zh-CN',
   title: 'Casual UI - Vue',
-  description: '一个随意的组件库',
   templateDev: path.resolve(__dirname, 'template.dev.html'),
   templateBuild: path.resolve(__dirname, 'template.build.html'),
+  locales: {
+    '/': {
+      lang: 'en-US',
+      description: 'A ui components lib that supports for Vue3+',
+    },
+    '/zh-CN/': {
+      lang: 'zh-CN',
+      description: '一个支持Vue3+的组件库',
+    },
+  },
   theme: defaultTheme({
     logo: '/logo.svg',
+    locales: {
+      '/': {
+        navbar: [
+          {
+            text: 'Guide',
+            children: [
+              {
+                text: 'Install',
+                link: '/guide/install/',
+              },
+              {
+                text: 'Theme Customization',
+                link: '/guide/theme-customize/',
+              },
+              {
+                text: 'Dark Mode',
+                link: '/guide/dark-mode/',
+              },
+            ],
+          },
+          {
+            text: 'Components',
+            children: componentsRoutes,
+          },
+          {
+            text: 'Features',
+            children: [
+              {
+                text: 'Global CSS Utils',
+                link: '/global-style-utils/',
+              },
+              {
+                text: 'Directives',
+                link: '/directives/v-loading/',
+              },
+              {
+                text: 'Composable',
+                link: '/usable/',
+              },
+            ],
+          },
+        ],
+        sidebar: {
+          '/guide/': [
+            '/guide/install/',
+            '/guide/theme-customize/',
+            '/guide/dark-mode/',
+          ],
+          '/usable/': [
+            '/usable/',
+            '/usable/useClickOutside/',
+            '/usable/useFormValidator/',
+          ],
+          '/global-style-utils/': ['/global-style-utils/'],
+          '/components/': componentsRoutes,
+          '/directives/': ['/directives/v-loading/'],
+        },
+      },
+      '/zh-CN/': {
+        tip: '提示',
+        contributorsText: '贡献者',
+        lastUpdatedText: '最后更新于',
+        editLinkText: '在Github上编辑此页',
+        navbar: [
+          {
+            text: '指南',
+            children: [
+              {
+                text: '安装',
+                link: '/zh-CN/guide/install/',
+              },
+              {
+                text: '主题定制',
+                link: '/zh-CN/guide/theme-customize/',
+              },
+              {
+                text: '暗黑模式',
+                link: '/zh-CN/guide/dark-mode/',
+              },
+            ],
+          },
+          {
+            text: '组件',
+            children: componentsRoutes,
+          },
+          {
+            text: '功能',
+            children: [
+              {
+                text: '全局工具样式',
+                link: '/global-style-utils/',
+              },
+              {
+                text: '指令',
+                link: '/directives/v-loading/',
+              },
+              {
+                text: '可组合',
+                link: '/usable/',
+              },
+            ],
+          },
+        ],
+        sidebar: {
+          '/zh-CN/guide/': [
+            '/zh-CN/guide/install/',
+            '/zh-CN/guide/theme-customize/',
+            '/zh-CN/guide/dark-mode/',
+          ],
+          '/usable/': [
+            '/usable/',
+            '/usable/useClickOutside/',
+            '/usable/useFormValidator/',
+          ],
+          '/global-style-utils/': ['/global-style-utils/'],
+          '/components/': componentsRoutes,
+          '/directives/': ['/directives/v-loading/'],
+        },
+      },
+    },
     logoDark: '/logo-dark.svg',
     repo: 'https://github.com/Blackman99/casual-ui',
     repoLabel: 'Github',
-    contributorsText: '贡献者',
-    lastUpdatedText: '最后更新于',
-    editLinkText: '在Github上编辑此页',
     editLinkPattern: ':repo/edit/:branch/packages/vue/docs/:path',
-    tip: '提示',
-    navbar: [
-      {
-        text: '指南',
-        children: [
-          {
-            text: '安装',
-            link: '/guide/install/',
-          },
-          {
-            text: '主题定制',
-            link: '/guide/theme-customize/',
-          },
-          {
-            text: '暗黑模式',
-            link: '/guide/dark-mode/',
-          },
-        ],
-      },
-      {
-        text: '组件',
-        children: componentsRoutes,
-      },
-      {
-        text: '功能',
-        children: [
-          {
-            text: '全局工具样式',
-            link: '/global-style-utils/',
-          },
-          {
-            text: '指令',
-            link: '/directives/v-loading/',
-          },
-          {
-            text: '可组合',
-            link: '/usable/',
-          },
-        ],
-      },
-    ],
-    sidebar: {
-      '/guide/': [
-        '/guide/install/',
-        '/guide/theme-customize/',
-        '/guide/dark-mode/',
-      ],
-      '/usable/': [
-        '/usable/',
-        '/usable/useClickOutside/',
-        '/usable/useFormValidator/',
-      ],
-      '/global-style-utils/': ['/global-style-utils/'],
-      '/components/': componentsRoutes,
-      '/directives/': ['/directives/v-loading/'],
-    },
   }),
   plugins: [
     shikiPlugin({

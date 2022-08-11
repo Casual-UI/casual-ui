@@ -1,8 +1,8 @@
 ---
-title: Install
+title: 安装
 ---
 
-### Install Dependencies
+### 安装依赖
 
 ```sh
 # use yarn
@@ -15,9 +15,9 @@ npm install casual-ui-vue
 pnpm install casual-ui-vue
 ```
 
-### Global Usage
+### 全局使用
 
-- Import Styles & Use as a Plugin
+- 入口文件引入样式以及注册全局插件
 
 ```js
 import { createApp } from 'vue'
@@ -30,29 +30,29 @@ const app = createApp(App)
 app.use(CasualUIVue) // 使用插件
 ```
 
-- Directly use in vue files
+- 组件中使用
 
 ```vue
 <template>
-  <c-button label="A Button" />
+  <c-button label="按钮" />
 </template>
 ```
 
-### Usage on Demand
+### 局部使用
 
-- Import styles in client entry file
+- 入口文件引入样式
 
 ```js
 import 'casual-ui-vue/style.css'
 ```
 
-- Use in vue files
+- 组件中使用
 
 ```vue
 <script setup>
 import { CButton } from 'casual-ui-vue'
 </script>
 <template>
-  <c-button label="A Button" />
+  <c-button label="按钮" />
 </template>
 ```
