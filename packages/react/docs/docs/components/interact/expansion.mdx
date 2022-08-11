@@ -2,79 +2,79 @@
 title: Expansion
 ---
 
-### 基础使用
+### Basic Usage
 
 ```jsx live
-<CExpansion title="点击展开/收起">
+<CExpansion title="Click to open/fold">
   <div className="c-pa-md">
-    <p>你好，世界</p>
-    <p>你好，世界</p>
-    <p>你好，世界</p>
-    <p>你好，世界</p>
+    <p>Hello, World</p>
+    <p>Hello, World</p>
+    <p>Hello, World</p>
+    <p>Hello, World</p>
   </div>
 </CExpansion>
 ```
 
-### 标题图标
+### Icon
 
 ```jsx live
 <>
   <CExpansion
-    title="左侧标题图标"
+    title="Some Icon"
     icon={<CIcon content={MdIcons.matPeople} />}
   >
     <div className="c-pa-lg">
-      <p>代码能够运行并满足业务要求是最低标准</p>
+      <p>Some expandable content</p>
     </div>
   </CExpansion>
   <CExpansion
-    title="左侧标题图标"
+    title="Some Icon"
     icon={<CIcon content={MdIcons.matNaturePeople} />}
   >
     <div className="c-pa-lg">
-      <p>代码能够运行并满足业务要求是最低标准</p>
+      <p>Some expandable content</p>
     </div>
   </CExpansion>
 </>
 ```
 
-### 自定义箭头
+### Customize Arrow
 
 ```jsx live
 <>
   <CExpansion
-    title="自定义arrow图标"
+    title="Customize Arrow"
     arrow={() => <CIcon content={MdIcons.matArrowCircleDown} />}
   >
     <div className="c-pa-lg">
-      <p>哇哦，自定义箭头</p>
+      <p>Look! It's custom arrow</p>
     </div>
   </CExpansion>
   <CExpansion
-    title="自定义arrow图标"
+    title="Customize Arrow"
     arrow={open => (
       <CIcon content={open ? MdIcons.matPeople : MdIcons.matNaturePeople} />
     )}
   >
     <div className="c-pa-lg">
-      <p>展开、折叠状态展示不同图标</p>
+      <p>Different icon when folded/opened</p>
     </div>
   </CExpansion>
 </>
 ```
 
-### 从上方展开
+### Expand From Top
 
 ```jsx live
 <CExpansion
-  title="点击展开/收起"
+  title="Click to open/fold"
   reverse
 >
   <div className="c-pa-md">
-    <p>你好，世界</p>
-    <p>你好，世界</p>
-    <p>你好，世界</p>
-    <p>你好，世界</p>
+    <p>Hello, World</p>
+    <p>Hello, World</p>
+    <p>Hello, World</p>
+    <p>Hello, World</p>
   </div>
 </CExpansion>
 ```

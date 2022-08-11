@@ -54,19 +54,23 @@ interface CTableProps<
   S extends keyof T
 > {
   /**
-   * 是否为条纹表格
+   * Determine whether the table is striped or not.
+   * @zh 是否为条纹表格
    */
   striped?: boolean
   /**
-   * 表格列配置
+   * The columns config
+   * @zh 表格列配置
    */
   columns?: CTableColumn<T, S>[]
   /**
-   * 表格数据
+   * The table data
+   * @zh 表格数据
    */
   data?: Array<T>
   /**
-   * 行数据唯一键
+   * The row unique key.
+   * @zh 行数据唯一键
    */
   rowKey?: string
 }

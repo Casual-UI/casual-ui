@@ -7,46 +7,56 @@ type SlotWithNext = (setNextName: (nextName: string) => void) => JSX.Element
 
 interface CTabItem {
   /**
-   * 名称
+   * The name
+   * @zh 名称
    */
   name: string
   /**
-   * 面板内容
+   * The panel content
+   * @zh 面板内容
    */
   content?: CSlot | SlotWithNext
   /**
-   * 自定义头部
+   * Customize the header content
+   * @zh 自定义头部
    */
   header?: CSlot
 }
 
 interface CTabsProps {
   /**
-   * 面板项配置
+   * Tab panels config
+   * @zh 面板项配置
    */
   items: CTabItem[]
   /**
-   * 当前激活的面板项名称
+   * Current active tab name.
+   * @zh 当前激活的面板项名称
    */
   activeTab: string
   /**
-   * 面板项切换时触发事件
+   * Emit when the active name change.
+   * @zh 面板项切换时触发事件
    */
   onTabChange?: (tab: string) => void
   /**
-   * 尺寸
+   * The size
+   * @zh 尺寸
    */
   size?: CSize
   /**
-   * 面板是否具有根据跟随size的内边距
+   * Determine whether the panel has padding.
+   * @zh 面板是否具有根据跟随size的内边距
    */
   panelPadding?: boolean
   /**
-   * 自定义面板体样式
+   * Customize the body style.
+   * @zh 自定义面板体样式
    */
   bodyStyle?: React.CSSProperties
   /**
-   * 是否展示头部
+   * Customize the header content.
+   * @zh 自定义头部部分
    */
   customHeader?: SlotWithNext
 }
@@ -107,7 +117,10 @@ const CTabs = ({
       {customHeader ? (
         customHeader(setNextName)
       ) : (
-        <div ref={header} className="c-tabs--header c-row c-items-center">
+        <div
+          ref={header}
+          className="c-tabs--header c-row c-items-center"
+        >
           {items.map(item => (
             <div
               key={item.name}

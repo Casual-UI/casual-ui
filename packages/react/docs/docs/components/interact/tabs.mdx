@@ -2,7 +2,7 @@
 title: Tabs
 ---
 
-### 基础使用
+### Basic Usage
 
 ```jsx live
 function Demo() {
@@ -20,13 +20,13 @@ function Demo() {
       content: 'Orange is awesome',
     },
     {
-      name: 'Grape',
-      content: 'Grape is awesome',
+      name: 'Grapes',
+      content: 'Grapes are awesome',
     },
   ]
 
-  const [current, setCurrrent] = useState('Apple')
-  return <CTabs items={items} activeTab={current} onTabChange={setCurrrent} />
+  const [current, setCurrent] = useState('Apple')
+  return <CTabs items={items} activeTab={current} onTabChange={setCurrent} />
 }
 ```
 
