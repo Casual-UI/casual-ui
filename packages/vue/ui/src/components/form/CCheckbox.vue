@@ -1,7 +1,4 @@
-<script
-  setup
-  lang="ts"
->
+<script setup lang="ts">
 import type { CTheme, CSize } from 'casual-types'
 import { useDefaultVModel, useInjectSize, useInjectTheme } from 'casual-ui-vue'
 import useValidator from './useValidator'
@@ -9,27 +6,33 @@ import useValidator from './useValidator'
 type CCheckboxModel = boolean | string | number
 interface CCheckboxProps {
   /**
-   * 是否处于勾选状态，用于<code>v-model</code>绑定用
+   * Checked status. Can be used with <code>v-model</code>.
+   * @zh 是否处于勾选状态，用于<code>v-model</code>绑定用
    */
   modelValue: CCheckboxModel
   /**
-   * 主题
+   * The theme color
+   * @zh 主题
    */
   theme?: CTheme
   /**
-   * 尺寸
+   * The size of checkbox.
+   * @zh 尺寸
    */
   size?: CSize
   /**
-   * 文字
+   * The label text.
+   * @zh 文字
    */
   label?: string
   /**
-   * 选中时的值
+   * The value used for checked status.
+   * @zh 选中时的值
    */
   checkedValue?: CCheckboxModel
   /**
-   * 是否禁用
+   * Determine whether the checkbox is disabled or not.
+   * @zh 是否禁用
    */
   disabled?: boolean
 }
@@ -47,8 +50,10 @@ const { provideSize: size } = useInjectSize(props)
 
 const emit = defineEmits<{
   /**
-   * 绑定值发生改变时触发
-   * @arg {any} newValue - 新的绑定值，值的类型取决于<code>props.checkedValue</code>属性
+   * Emit when the checkbox value changed.
+   * @zh 绑定值发生改变时触发
+   * @arg {any} newValue - new value
+   * @arg {any} newValue_zh - 新的绑定值s
    */
   (e: 'update:modelValue', newValue: CCheckboxModel): void
 }>()

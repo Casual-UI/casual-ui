@@ -8,20 +8,24 @@ type CCheckboxModel = boolean | string | number
 
 interface CCheckboxGroupProps {
   /**
-   * 选项数组
+   * The options array.
+   * @zh 选项数组
    */
   options?: Array<{ label: string; value: CCheckboxModel }>
   /**
-   * 当前选中值数组，用于<code>v-model</code>绑定
+   * The value of current checked values. Can be used with <code>v-model</code>.
+   * @zh 当前选中值数组，用于<code>v-model</code>绑定
    */
   modelValue: CCheckboxModel[]
   /**
-   * 尺寸
+   * The size
+   * @zh 尺寸
    * @default 'md'
    */
   size?: CSize
   /**
-   * 勾选框间距尺寸
+   * The gutter size between each checkbox.
+   * @zh 勾选框间距尺寸
    * @default 'md'
    */
   gutterSize?: CSize
@@ -35,7 +39,10 @@ const props = withDefaults(defineProps<CCheckboxGroupProps>(), {
 
 const emit = defineEmits<{
   /**
-   * 绑定值变化时触发
+   * Emit when the checked values changed.
+   * @zh 绑定值变化时触发
+   * @arg {any[]} newValue - new value
+   * @arg {any[]} newValue_zh - 新zhi
    */
   (e: 'update:modelValue', newValue: CCheckboxModel[]): void
 }>()
@@ -75,7 +82,10 @@ const { gutterSize } = useFormProps(props)
     class="c-checkbox-group c-row c-items-center c-wrap"
     :class="[`c-gutter-${gutterSize}`]"
   >
-    <div v-for="op in optionsWithCheckStatus" :key="op.value">
+    <div
+      v-for="op in optionsWithCheckStatus"
+      :key="op.value"
+    >
       <c-checkbox
         :label="op.label"
         :model-value="op.checked"

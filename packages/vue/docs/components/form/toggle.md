@@ -1,9 +1,9 @@
 ---
-title: 切换器/开关
+title: Toggle
 componentPath: form/CToggle
 ---
 
-### 基础使用
+### Basic Usage
 
 ```vue live
 <script setup>
@@ -11,11 +11,14 @@ import { ref } from 'vue'
 const checked = ref(false)
 </script>
 <template>
-  <c-toggle v-model="checked" label="打开通知" />
+  <c-toggle
+    v-model="checked"
+    label="Turn on something"
+  />
 </template>
 ```
 
-### 尺寸
+### Sizes
 
 ```vue live
 <script setup>
@@ -32,26 +35,46 @@ const checkStatus = reactive({
 <template>
   <div class="c-row c-gutter-x-md c-items-center">
     <div>
-      <c-toggle v-model="checkStatus.xs" size="xs" label="超小" />
+      <c-toggle
+        v-model="checkStatus.xs"
+        size="xs"
+        label="xs"
+      />
     </div>
     <div>
-      <c-toggle v-model="checkStatus.sm" size="sm" label="小型" />
+      <c-toggle
+        v-model="checkStatus.sm"
+        size="sm"
+        label="sm"
+      />
     </div>
     <div>
-      <c-toggle v-model="checkStatus.md" size="md" label="中等（默认）" />
+      <c-toggle
+        v-model="checkStatus.md"
+        size="md"
+        label="md"
+      />
     </div>
     <div>
-      <c-toggle v-model="checkStatus.lg" size="lg" label="大型" />
+      <c-toggle
+        v-model="checkStatus.lg"
+        size="lg"
+        label="lg"
+      />
     </div>
     <div>
-      <c-toggle v-model="checkStatus.xl" size="xl" label="超大" />
+      <c-toggle
+        v-model="checkStatus.xl"
+        size="xl"
+        label="xl"
+      />
     </div>
   </div>
-  状态： <code>{{ checkStatus }}</code>
+  Current Value: <code>{{ checkStatus }}</code>
 </template>
 ```
 
-### 状态
+### Disabled
 
 ```vue live
 <script setup>
@@ -60,11 +83,16 @@ const checked1 = ref(false)
 const checked2 = ref(true)
 </script>
 <template>
-  <c-toggle v-model="checked1" label="禁用态" disabled />
+  <c-toggle
+    v-model="checked1"
+    label="Disabled off"
+    disabled
+  />
   <c-toggle
     v-model="checked2"
-    label="禁用态"
+    label="Disabled on"
     disabled
-    class="c-ml-md" />
+    class="c-ml-md"
+  />
 </template>
 ```

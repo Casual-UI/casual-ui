@@ -4,27 +4,33 @@ import { useInjectSize, useDefaultVModel } from 'casual-ui-vue'
 
 interface CToggleProps {
   /**
-   * 文案
+   * The label text.
+   * @zh 文案
    */
   label?: string
   /**
-   * 尺寸
+   * The size of toggle.
+   * @zh 尺寸
    */
   size?: CSize
   /**
+   * Current value. Can be used with <code>v-model</code>.
    * 绑定值，用于<code>v-model</code>绑定用
    */
   modelValue: any
   /**
-   * 选中时的值
+   * The value used for toggle on.
+   * @zh 选中时的值
    */
   checkValue?: any
   /**
-   * 未选中时的值
+   * The value used for toggle off.
+   * @zh 未选中时的值
    */
   uncheckValue?: any
   /**
-   * 是否禁用
+   * Determine whether the toggle is disabled or not.
+   * @zh 是否禁用
    */
   disabled?: boolean
 }
@@ -39,8 +45,10 @@ const props = withDefaults(defineProps<CToggleProps>(), {
 
 const emit = defineEmits<{
   /**
-   * 绑定值变更时触发
-   * @arg {any} newValue - 新的绑定值，值的类型取决于<code>props.checkValue</code>属性
+   * Emit when the toggle binding value changed.
+   * @zh 绑定值变更时触发
+   * @arg {any} newValue - new value
+   * @arg {any} newValue_zh - 新的绑定值
    */
   (e: 'update:modelValue', newValue: any): void
 }>()
