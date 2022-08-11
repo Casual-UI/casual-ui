@@ -2,13 +2,13 @@
 title: Table
 ---
 
-### 基础使用
+### Basic
 
 ```jsx live
 <CTable
   columns={[
-    { title: '名称', field: 'name' },
-    { title: '性别', field: 'gender' },
+    { title: 'Name', field: 'name' },
+    { title: 'Gender', field: 'gender' },
   ]}
   data={[
     { name: 'Jason', gender: 'male' },
@@ -18,20 +18,20 @@ title: Table
 />
 ```
 
-### 自定义表头
+### Custom Header
 
 ```jsx live
 function Demo() {
   const columns = [
     {
-      title: '姓名',
+      title: 'Name',
       field: 'name',
       customHeader: ({ title }) => (
         <span style={{ color: 'purple', fontSize: '48px' }}>{title}</span>
       ),
     },
     {
-      title: '性别',
+      title: 'Gender',
       field: 'gender',
       customHeader: ({ title }) => (
         <span style={{ color: 'cyan', fontSize: '48px' }}>{title}</span>
@@ -48,25 +48,25 @@ function Demo() {
 }
 ```
 
-### 自定义单元格
+### Custom Column
 
 ```jsx live
 function Demo() {
   const columns = [
     {
-      title: '姓名',
+      title: 'Name',
       field: 'name',
     },
     {
-      title: '性别',
+      title: 'Gender',
       field: 'gender',
     },
     {
-      title: '操作',
+      title: 'Actions',
       customRender: ({ row }) => (
         <>
-          <CButton label="编辑" size="sm" />
-          <CButton label="删除" theme="negative" size="sm" />
+          <CButton label="Edit" size="sm" />
+          <CButton label="Delete" theme="negative" size="sm" />
         </>
       ),
     },

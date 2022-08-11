@@ -2,7 +2,7 @@
 title: Dropdown
 ---
 
-### 基础使用
+### Basic Usage
 
 ```jsx live
 function Demo() {
@@ -12,15 +12,15 @@ function Demo() {
     <CDropdown
       value={show}
       onChange={setShow}
-      dropContent={<p>一些下拉内容</p>}
+      dropContent={<p>Some dropdown content</p>}
     >
-      <CButton label="点击展示下拉" />
+      <CButton label="Click to show dropdown" />
     </CDropdown>
   )
 }
 ```
 
-### 自定义内容宽度
+### Width Exceed Parent
 
 ```jsx live
 function Demo() {
@@ -31,15 +31,17 @@ function Demo() {
       value={show}
       onChange={setShow}
       widthWithinParent={false}
-      dropContent={<p style={{ width: '400px' }}>一些下拉内容</p>}
+      dropContent={
+        <p style={{ width: '400px' }}>Some long content. Some long content.</p>
+      }
     >
-      <CButton label="点击展示下拉" />
+      <CButton label="Click to show dropdown" />
     </CDropdown>
   )
 }
 ```
 
-### 手动控制
+### Manual Control
 
 ```jsx live
 function Demo() {
@@ -47,15 +49,22 @@ function Demo() {
 
   return (
     <>
-    <CButton label="点击收起/展开下拉" onClick={() => setShow(!show)} />
-    <CDropdown
-      value={show}
-      manual
-      dropContent={<p>一些下拉内容</p>}
-    >
-      <h3>点击左边按钮收起/展开下拉</h3>
-    </CDropdown>
+      <CButton
+        label={`Click to ${show ? 'fold' : 'show'}`}
+        onClick={() => setShow(!show)}
+      />
+      <CDropdown
+        value={show}
+        manual
+        dropContent={<p>Some dropdown content</p>}
+      >
+        <h3>Click the left to control</h3>
+      </CDropdown>
     </>
   )
 }
 ```
+
+### Props
+
+<PropTable name="CDropdown" />

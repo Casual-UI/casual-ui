@@ -24,23 +24,28 @@ type CustomRender = (props: CustomRenderProps) => JSX.Element | string
 
 interface CTableColumn<T = any, S extends keyof T = any> {
   /**
-   * 列标题
+   * The column title.
+   * @zh 列标题
    */
   title: string
   /**
-   * 列对应字段名
+   * The column field.
+   * @zh 列对应字段名
    */
   field: S
   /**
-   * 自定义单元格渲染
+   * Customize the column render.
+   * @zh 自定义单元格渲染
    */
   customRender?: CustomRender
   /**
-   * 自定义表头渲染
+   * Customize the header render.
+   * @zh 自定义表头渲染
    */
   customHeader?: CustomHeaderRender
   /**
-   * 列宽
+   * The column width.
+   * @zh 列宽
    */
   width?: string
 }
@@ -83,7 +88,10 @@ function CTable<T>({
         <thead>
           <CTr>
             {columns.map(({ field, title, customHeader, width }) => (
-              <CTh key={String(field)} width={width}>
+              <CTh
+                key={String(field)}
+                width={width}
+              >
                 {customHeader
                   ? customHeader({
                       field,
@@ -96,9 +104,13 @@ function CTable<T>({
         </thead>
         <tbody>
           {data.map((row, idx) => (
+            // @ts-ignore
             <CTr key={row[rowKey]}>
               {columns.map(({ field, customRender, width }) => (
-                <CTd key={String(field)} width={width}>
+                <CTd
+                  key={String(field)}
+                  width={width}
+                >
                   {customRender
                     ? customRender({
                         row,

@@ -7,39 +7,48 @@ import CItem from './CItem'
 
 interface CListProps {
   /**
-   * 列表项
+   * List item config array.
+   * @zh 列表项配置
    */
   items?: any[]
   /**
-   * 列表项的唯一键值
+   * The key of each item.
+   * @zh 列表项的唯一键值
    */
   itemKey?: string
   /**
-   * 是否可点击
+   * Determine whether the items is clickable or not.
+   * @zh 列表项是否可点击
    */
   clickable?: boolean
   /**
-   * 尺寸
+   * The size
+   * @zh 尺寸
    */
   size?: CSize
   /**
-   * 计算列表项是否处于激活态的函数
+   * Function to determine whether item is in active status or not.
+   * @zh 计算列表项是否处于激活态的函数
    */
   activeFn?: (item: any) => boolean
   /**
-   * 自定义无数据时内容
+   * Customize the content display when no items is provided.
+   * @zs 自定义无数据时内容
    */
   customNoData?: JSX.Element | string
   /**
-   * 项点击触发
+   * Emit when the item is clicked.
+   * @zh 项点击触发
    */
   onItemClick?: (item: any) => void
   /**
-   * 项之间是否具有分割线
+   * Determine whether to use a divider between each item or not.
+   * @zh 项之间是否具有分割线
    */
   divider?: boolean
   /**
-   * 自定义项渲染
+   * Custom item render.
+   * @zh 自定义项渲染
    */
   itemRender?: (params: {
     item: any

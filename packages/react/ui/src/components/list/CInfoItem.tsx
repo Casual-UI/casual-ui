@@ -5,31 +5,38 @@ import React from 'react'
 
 interface CInfoItemProps {
   /**
-   * 图标，可以是图标字符串或者CIcon组件JSX
+   * The icon content.
+   * @zh 图标内容
    */
   icon?: string | typeof CIcon
   /**
-   * 标题
+   * The title.
+   * @zh 标题
    */
   title?: string
   /**
-   * 副标题
+   * The subtitle.
+   * @zh 副标题
    */
   subtitle?: string
   /**
-   * 左右侧内容纵向对齐方式
+   * The vertical align direction of left and right content.
+   * @zh 左右侧内容纵向对齐方式
    */
   align?: 'start' | 'center' | 'end'
   /**
-   * 图标与标题的对齐方式
+   * The vertical align direction of icon and title.
+   * @zh 图标与标题的对齐方式
    */
   iconAlign?: 'start' | 'center' | 'end'
   /**
-   * 尺寸
+   * The size.
+   * @zh 尺寸
    */
   size?: CSize
   /**
-   * 右侧追加内容
+   * The right content.
+   * @zh 右侧追加内容
    */
   append?: CSlot
 }

@@ -4,32 +4,39 @@ import clsx from 'clsx'
 import React, { useRef } from 'react'
 interface CDropdownProps {
   /**
-   * 是否展开
+   * The dropdown shown status.
+   * @zh 是否展开
    */
   value: boolean
   /**
-   * 展开状态发生变化时触发
+   * Emit when the shown status change.
+   * @zh 展开状态发生变化时触发
    */
   onChange?: (newValue: boolean) => void
   /**
-   * 默认触发内容
+   * The trigger content.
+   * @zh 默认触发内容
    */
   children: CSlot
   /**
-   * 下拉内容
+   * The dropdown content
+   * @zh 下拉内容
    */
   dropContent: CSlot
 
   /**
-   * 是否禁用
+   * Determine whether the dropdown is disabled or not.
+   * @zh 是否禁用
    */
   disabled?: boolean
   /**
-   * 是否自动与默认内容保持一致宽度
+   * Determine whether the content maintain the same width with parent or not.
+   * @zh 是否自动与默认内容保持一致宽度
    */
   widthWithinParent?: boolean
   /**
-   * 是否手动控制
+   * Determine whether to enable manual control or not.
+   * @zh 是否手动控制
    */
   manual?: boolean
 }

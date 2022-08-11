@@ -5,27 +5,33 @@ import React from 'react'
 
 interface CItemProps {
   /**
-   * 文字
+   * The label text.
+   * @zh 文字
    */
   label?: string | number
   /**
-   * 尺寸
+   * The size
+   * @zh 尺寸
    */
   size?: CSize
   /**
-   * 是否表现为可点击交互
+   * Determine whether the item is clickable or not.
+   * @zh 是否表现为可点击交互
    */
   clickable?: boolean
   /**
-   * 是否处于激活态
+   * Determine whether the item is in active status.
+   * @zh 是否处于激活态
    */
   active?: boolean
   /**
-   * 点击事件触发
+   * Emit when item is clicked.
+   * @zh 点击事件触发
    */
   onClick?: () => void
   /**
-   * 自定义内容
+   * Customize content
+   * @zh 自定义内容
    */
   children?: CSlot
 }

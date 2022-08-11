@@ -2,15 +2,15 @@
 title: List & ListItem
 ---
 
-### 基础使用
+### Basic
 
 ```jsx live
 function Demo() {
   const items = [
-    { label: '苹果' },
-    { label: '香蕉' },
-    { label: '橙子' },
-    { label: '葡萄' },
+    { label: 'Apple' },
+    { label: 'Banana' },
+    { label: 'Orange' },
+    { label: 'Grapes' },
   ]
   return (
     <CList
@@ -21,15 +21,15 @@ function Demo() {
 }
 ```
 
-### 尺寸
+### Sizes
 
 ```jsx live
 function Demo() {
   const items = [
-    { label: '苹果' },
-    { label: '香蕉' },
-    { label: '橙子' },
-    { label: '葡萄' },
+    { label: 'Apple' },
+    { label: 'Banana' },
+    { label: 'Banana' },
+    { label: 'Grapes' },
   ]
 
   const [size, setSize] = useState('md')
@@ -58,15 +58,15 @@ function Demo() {
 }
 ```
 
-### 分割线
+### Divider
 
 ```jsx live
 function Demo() {
   const items = [
-    { label: '苹果' },
-    { label: '香蕉' },
-    { label: '橙子' },
-    { label: '葡萄' },
+    { label: 'Apple' },
+    { label: 'Banana' },
+    { label: 'Orange' },
+    { label: 'Grapes' },
   ]
   return (
     <CList
@@ -78,18 +78,18 @@ function Demo() {
 }
 ```
 
-### 激活项&可点击
+### Active & Clickable
 
 ```jsx live
 function Demo() {
   const items = [
-    { label: '苹果' },
-    { label: '香蕉' },
-    { label: '橙子' },
-    { label: '葡萄' },
+    { label: 'Apple' },
+    { label: 'Banana' },
+    { label: 'Orange' },
+    { label: 'Grapes' },
   ]
 
-  const [activeFruit, setActiveFruit] = useState('苹果')
+  const [activeFruit, setActiveFruit] = useState('Apple')
 
   return (
     <CList
@@ -103,7 +103,7 @@ function Demo() {
 }
 ```
 
-### 自定义项
+### Custom Item
 
 ```jsx live
 function Demo() {
@@ -116,10 +116,10 @@ function Demo() {
   } = MdIcons
 
   const items = [
-    { title: '通知', subtitle: '一些通知相关的内容', icon: matOfflineBolt },
-    { title: '个人', subtitle: '一些个人相关的内容', icon: matPersonAddAlt1 },
-    { title: '设置', subtitle: '一些系统相关的设置', icon: matSettings },
-    { title: '退出', subtitle: '用于退出登录', icon: matSettingsPower },
+    { title: 'Notification', subtitle: 'Some notifications description', icon: matOfflineBolt },
+    { title: 'Profile', subtitle: 'Some personal description', icon: matPersonAddAlt1 },
+    { title: 'Settings', subtitle: 'Some settings description', icon: matSettings },
+    { title: 'Exit', subtitle: 'Some exit description', icon: matSettingsPower },
   ]
 
   const [activeItem, setActiveItem] = useState('')
