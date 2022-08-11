@@ -1,5 +1,8 @@
-<script setup lang="ts">
-import { usePageFrontmatter } from '@vuepress/client'
+<script
+  setup
+  lang="ts"
+>
+import { usePageFrontmatter, usePageLang } from '@vuepress/client'
 import type { Ref } from 'vue'
 import { computed } from 'vue'
 
@@ -30,14 +33,27 @@ const getParamDisplayString = (parameters: any[]) => {
     })
     .join(', ')
 }
+
+const lang = usePageLang()
+
+const isChinese = computed(() => lang.value === 'zh-CN')
+
+const getTranslation = (item: any) =>
+  isChinese.value
+    ? item?.tags.find((tag: { tag: string }) => tag.tag === 'zh')?.text
+    : item?.shortText
 </script>
 <template>
   <div class="hooks-api">
-    <c-list :items="items" size="sm">
+    <c-list
+      :items="items"
+      size="sm"
+    >
       <template #item="{ item }">
         <div v-if="item.kindString === 'Interface'">
           <code> {{ item.kindString }} {{ item.name }} </code>
-          {{ item.comment?.shortText }} <br />
+          {{ getTranslation(items.comment) }}
+          <br />
           <div class="c-pl-lg c-py-md">
             <c-list :items="item.children">
               <template #item="{ item: propertyItem }">
@@ -61,10 +77,10 @@ const getParamDisplayString = (parameters: any[]) => {
                     *
                   </span>
                   <span v-if="propertyItem.kindString === 'Property'">
-                    {{ propertyItem.comment.shortText }}
+                    {{ getTranslation(propertyItem.comment) }}
                   </span>
                   <span v-else-if="propertyItem.kindString === 'Method'">
-                    {{ propertyItem.signatures[0].comment.shortText }}
+                    {{ getTranslation(propertyItem.signatures[0].comment) }}
                   </span>
                 </div>
               </template>
@@ -77,7 +93,7 @@ const getParamDisplayString = (parameters: any[]) => {
               getParamDisplayString(item.signatures[0].parameters || [])
             }}): {{ item.signatures[0].type.name }}
           </code>
-          {{ item.signatures[0].comment.shortText }}
+          {{ getTranslation(item.signatures[0].comment) }}
         </div>
         <div v-else-if="item.kindString === 'Type alias'">
           <code> {{ item.name }} </code>:
@@ -89,7 +105,10 @@ const getParamDisplayString = (parameters: any[]) => {
     </c-list>
   </div>
 </template>
-<style lang="scss" scoped>
+<style
+  lang="scss"
+  scoped
+>
 .hooks-api {
   background-color: var(--casual-light-bg);
 }

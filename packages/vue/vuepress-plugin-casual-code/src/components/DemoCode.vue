@@ -4,7 +4,7 @@
 >
 import { ionCodeOutline } from '@quasar/extras/ionicons-v5'
 import { matPlayArrow } from '@quasar/extras/material-icons'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import createSandboxApp from './createSandboxApp'
 import { usePageFrontmatter, usePageLang } from '@vuepress/client'
 import { CExpansion, CButton, CDialog, CIcon, CTooltip } from 'casual-ui-vue'
@@ -63,6 +63,8 @@ const onReplDialogOpened = () => {
 }
 
 const lang = usePageLang()
+
+const isChinese = computed(() => lang.value === 'zh-CN')
 </script>
 <template>
   <div class="demo-code c-mt-md">
@@ -76,12 +78,12 @@ const lang = usePageLang()
       <template #title>
         <div class="c-flex c-items-center c-justify-between">
           <div>
-            {{
-              lang === 'zh-CN' ? '点击展开/收起代码' : 'Click to open/fold code'
-            }}
+            {{ isChinese ? '点击展开/收起代码' : 'Click to open/fold code' }}
           </div>
           <c-tooltip
-            content="点击打开交互式编辑器"
+            :content="
+              isChinese ? '点击打开交互式编辑器' : 'Open Vue Repl Editor'
+            "
             @click.native.stop
           >
             <c-button
@@ -119,7 +121,7 @@ const lang = usePageLang()
     <template #title>
       <c-button @click="run">
         <c-icon :content="matPlayArrow" />
-        点击运行（Ctrl + S）
+        {{ isChinese ? '点击运行' : 'Click to Run' }}（Ctrl + S）
       </c-button>
     </template>
     <div class="c-flex repl c-items-stretch">

@@ -64,7 +64,7 @@ export default defineUserConfig({
               },
               {
                 text: 'Composable',
-                link: '/usable/',
+                link: '/usable/useClickOutside/',
               },
             ],
           },
@@ -75,11 +75,7 @@ export default defineUserConfig({
             '/guide/theme-customize/',
             '/guide/dark-mode/',
           ],
-          '/usable/': [
-            '/usable/',
-            '/usable/useClickOutside/',
-            '/usable/useFormValidator/',
-          ],
+          '/usable/': ['/usable/useClickOutside/', '/usable/useFormValidator/'],
           '/global-style-utils/': ['/global-style-utils/'],
           '/components/': componentsRoutes,
           '/directives/': ['/directives/v-loading/'],
@@ -121,11 +117,11 @@ export default defineUserConfig({
               },
               {
                 text: '指令',
-                link: '/directives/v-loading/',
+                link: '/zh-CN/directives/v-loading/',
               },
               {
                 text: '可组合',
-                link: '/usable/',
+                link: '/zh-CN/usable/useClickOutside/',
               },
             ],
           },
@@ -136,10 +132,9 @@ export default defineUserConfig({
             '/zh-CN/guide/theme-customize/',
             '/zh-CN/guide/dark-mode/',
           ],
-          '/usable/': [
-            '/usable/',
-            '/usable/useClickOutside/',
-            '/usable/useFormValidator/',
+          '/zh-CN/usable/': [
+            '/zh-CN/usable/useClickOutside/',
+            '/zh-CN/usable/useFormValidator/',
           ],
           '/zh-CN/global-style-utils/': ['/zh-CN/global-style-utils/'],
           '/components/': componentsRoutes,
@@ -173,46 +168,49 @@ export default defineUserConfig({
       appId: 'GC34OK1KSK',
       apiKey: 'e29418351aacb050d006d9e76bdabe16',
       indexName: 'casual-ui-vue',
-      placeholder: '搜索文档',
-      translations: {
-        button: {
-          buttonText: '搜索',
-          buttonAriaLabel: '搜索',
-        },
-        modal: {
-          searchBox: {
-            resetButtonTitle: '重置查询',
-            resetButtonAriaLabel: '重置查询',
-            cancelButtonText: '取消',
-            cancelButtonAriaLabel: '取消',
-          },
-          startScreen: {
-            recentSearchesTitle: '最近',
-            noRecentSearchesText: '无最近搜索',
-            saveRecentSearchButtonTitle: '保存当前搜索',
-            removeRecentSearchButtonTitle: '从历史中删除当前搜索',
-            favoriteSearchesTitle: '最爱的搜索',
-            removeFavoriteSearchButtonTitle: '从最爱中移除',
-          },
-          errorScreen: {
-            titleText: '无法获取搜索结果',
-            helpText: '请检查网络连接',
-          },
-          footer: {
-            selectText: '请选择',
-            selectKeyAriaLabel: '输入关键字',
-            navigateText: '导航',
-            navigateUpKeyAriaLabel: '向上',
-            navigateDownKeyAriaLabel: '向下',
-            closeText: '关闭',
-            closeKeyAriaLabel: '关闭',
-            searchByText: '根据文字搜索',
-          },
-          noResultsScreen: {
-            noResultsText: '没有找到结果',
-            suggestedQueryText: '您可能想搜索',
-            reportMissingResultsText: '没有找到结果？请报告缺失',
-            reportMissingResultsLinkText: '报告缺失',
+      locales: {
+        '/zh-CN/': {
+          translations: {
+            button: {
+              buttonText: '搜索',
+              buttonAriaLabel: '搜索',
+            },
+            modal: {
+              searchBox: {
+                resetButtonTitle: '重置查询',
+                resetButtonAriaLabel: '重置查询',
+                cancelButtonText: '取消',
+                cancelButtonAriaLabel: '取消',
+              },
+              startScreen: {
+                recentSearchesTitle: '最近',
+                noRecentSearchesText: '无最近搜索',
+                saveRecentSearchButtonTitle: '保存当前搜索',
+                removeRecentSearchButtonTitle: '从历史中删除当前搜索',
+                favoriteSearchesTitle: '最爱的搜索',
+                removeFavoriteSearchButtonTitle: '从最爱中移除',
+              },
+              errorScreen: {
+                titleText: '无法获取搜索结果',
+                helpText: '请检查网络连接',
+              },
+              footer: {
+                selectText: '请选择',
+                selectKeyAriaLabel: '输入关键字',
+                navigateText: '导航',
+                navigateUpKeyAriaLabel: '向上',
+                navigateDownKeyAriaLabel: '向下',
+                closeText: '关闭',
+                closeKeyAriaLabel: '关闭',
+                searchByText: '根据文字搜索',
+              },
+              noResultsScreen: {
+                noResultsText: '没有找到结果',
+                suggestedQueryText: '您可能想搜索',
+                reportMissingResultsText: '没有找到结果？请报告缺失',
+                reportMissingResultsLinkText: '报告缺失',
+              },
+            },
           },
         },
       },

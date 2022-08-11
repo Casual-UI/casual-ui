@@ -4,21 +4,25 @@ import { clearValidateKey, hasErrorKey, validateKey } from './CFormItem.vue'
 
 interface UseValidatorReturn {
   /**
-   * 当前表单项是否具有错误，若为string，则是具体的错误信息
+   * Determine current form item has error or not. string is the error message. false means no error.
+   * @zh 当前表单项是否具有错误，若为string，则是具体的错误信息
    */
   hasError: ComputedRef<false | string>
   /**
-   * 当前表单项验证方法
+   * The function to validate current form item.
+   * @zh 当前表单项验证方法
    */
   validate: CRule
   /**
-   * 清除当前项验证结果
+   * The function to clear current form item's validate result.
+   * @zh 清除当前项验证结果
    */
   clearValidate: () => void
 }
 
 /**
- * 获取当前表单项相关的验证方法、状态
+ * Fetch current form item context.
+ * @zh 获取当前表单项相关的验证方法、状态
  */
 const useFormValidator: () => UseValidatorReturn = () => ({
   hasError: inject(

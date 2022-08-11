@@ -1,9 +1,9 @@
 ---
-title: 元素外部点击（useClickOutside）
+title: useClickOutSide
 hooksPath: usable/useClickOutside
 ---
 
-### 示例
+### Example
 
 ```vue live
 <script setup>
@@ -23,9 +23,9 @@ useClickOutside({
 })
 </script>
 <template>
-  <div ref="domRef" class="click-card">点击内部或者外部</div>
+  <div ref="domRef" class="click-card">Click inside or outside</div>
   <p>
-    是否为外部点击：<code>{{ isOutsideClick }}</code>
+    Is outside click: <code>{{ isOutsideClick }}</code>
   </p>
 </template>
 <style scoped>
