@@ -143,7 +143,7 @@ export default defineUserConfig({
           ],
           '/zh-CN/global-style-utils/': ['/zh-CN/global-style-utils/'],
           '/components/': componentsRoutes,
-          '/directives/': ['/directives/v-loading/'],
+          '/zh-CN/directives/': ['/zh-CN/directives/v-loading/'],
         },
       },
     },

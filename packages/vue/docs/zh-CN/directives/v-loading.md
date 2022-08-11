@@ -2,7 +2,7 @@
 title: v-loading
 ---
 
-### Usage
+### 使用
 
 ```vue live
 <script setup>
@@ -10,7 +10,7 @@ import { ref } from 'vue'
 const loading = ref(false)
 </script>
 <template>
-  <c-toggle v-model="loading" label="Click to open/close Loading" />
+  <c-toggle v-model="loading" label="点击打开/关闭Loading" />
   <div
     v-loading="loading"
     class="loading-container"
@@ -24,9 +24,9 @@ const loading = ref(false)
 </style>
 ```
 
-### Custom Styles
+### 自定义样式
 
-Use with `v-loading:[custom style object]` to customize loading style
+通过传递`v-loading:[自定义样式对象]`来自定义loading的样式
 
 ```vue live
 <script setup>
@@ -39,7 +39,7 @@ const loadingConf = {
 }
 </script>
 <template>
-  <c-toggle v-model="loading" label="Click to open/close Loading" />
+  <c-toggle v-model="loading" label="点击打开/关闭Loading" />
   <div
     v-loading:[loadingConf]="loading"
     class="loading-container"
