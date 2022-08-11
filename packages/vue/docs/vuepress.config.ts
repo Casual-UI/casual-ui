@@ -117,7 +117,7 @@ export default defineUserConfig({
             children: [
               {
                 text: '全局工具样式',
-                link: '/global-style-utils/',
+                link: '/zh-CN/global-style-utils/',
               },
               {
                 text: '指令',
@@ -141,7 +141,7 @@ export default defineUserConfig({
             '/usable/useClickOutside/',
             '/usable/useFormValidator/',
           ],
-          '/global-style-utils/': ['/global-style-utils/'],
+          '/zh-CN/global-style-utils/': ['/zh-CN/global-style-utils/'],
           '/components/': componentsRoutes,
           '/directives/': ['/directives/v-loading/'],
         },
