@@ -11,101 +11,125 @@ import { useMemo } from 'react'
 
 interface CDialogProps {
   /**
-   * 对话框是否打开
+   * The dialog open status.
+   * @zh 对话框是否打开
    */
   value: boolean
   /**
-   * 打开/关闭触发
+   * Emit when the dialog open status change.
+   * @zh 打开/关闭触发
    */
   onChange?: (newValue: boolean) => void
   /**
-   * 标题
+   * Title
+   * @zh 标题
    */
   title?: string
   /**
-   * 自定义标题
+   * Customize the title content.
+   * @zh 自定义标题
    */
   customTitle?: CSlot
   /**
-   * 宽度
+   * The dialog width.
+   * @zh 宽度
    */
   width?: string
   /**
-   * 对话框体高度
+   * The dialog content height. Which doesn't include header and action footer.
+   * @zh 对话框体高度，不包含头部以及底部动作按钮
    */
   bodyHeight?: string
   /**
-   * 是否具有内容内边距
+   * Determine whether the content has padding or not.
+   * @zh 是否具有内容内边距
    */
   bodyPadding?: boolean
   /**
-   * 是否表现为圆角
+   * Determine whether the dialog has rounded border or not.
+   * @zh 是否表现为圆角
    */
   rounded?: boolean
   /**
-   * 是否展示关闭图标
+   * Determine whether to show the close icon or not.
+   * @zh 是否展示关闭图标
    */
   closeIcon?: boolean
   /**
-   * 水平对齐方式
+   * The horizontal align position of dialog.
+   * @zh 水平位置
    */
   horizontalAlign?: 'start' | 'center' | 'end'
   /**
-   * 垂直对齐方式
+   * The vertical align position of dialog.
+   * @zh 垂直位置
    */
   verticalAlign?: 'start' | 'center' | 'end'
   /**
-   * 自定义对话框DOM样式类
+   * Some additional custom CSS classes.
+   * @zh 自定义对话框DOM样式类
    */
   customClass?: string
   /**
-   * 自定义对话框DOM样式
+   * Some additional custom CSS styles.
+   * @zh 自定义对话框DOM样式
    */
   customStyle?: CSSProperties
   /**
-   * 是否展示取消按钮
+   * Determine whether to show the cancel button or not.
+   * @zh 是否展示取消按钮
    */
   showCancelBtn?: boolean
   /**
-   * 取消按钮文字
+   * The cancel button text.
+   * @zh 取消按钮文字
    */
   cancelBtnLabel?: string
   /**
-   * 是否展示确认按钮
+   * Determine whether to show the confirm button or not.
+   * @zh 是否展示确认按钮
    */
   showConfirmBtn?: boolean
   /**
-   * 确认按钮文字
+   * The confirm button text.
+   * @zh 确认按钮文字
    */
   confirmBtnLabel?: string
   /**
-   * 自定义头部内容
+   * Customize the header content.
+   * @zh 自定义头部内容
    */
   customHeader?: CSlot
   /**
-   * 自定义关闭图标
+   * Customize the close icon.
+   * @zh 自定义关闭图标
    */
   customCloseIcon?: CSlot
   /**
-   * 对话框内容
+   * The dialog content.
+   * @zh 对话框内容
    */
   children?: CSlot
   /**
-   * 自定义底部
+   * Customize the footer content.
+   * @zh 自定义底部
    */
   customFooter?: CSlot
   /**
-   * 自定义底部操作按钮
+   * Customize the footer action buttons.
+   * @zh 自定义底部操作按钮
    */
   customFooterActions?: CSlot
 
   /**
-   * 是否点击遮罩关闭对话框
+   * Determine whether to close the dialog on backdrop clicked or not.
+   * @zh 是否点击遮罩关闭对话框
    */
   closeOnClickBackdrop?: boolean
 
   /**
-   * 是否交换对话框动画顺序
+   * Determine whether to exchange the open animation order.
+   * @zh 是否交换对话框动画顺序
    */
   exchangeAnimationDirection?: boolean
 }
@@ -237,8 +261,7 @@ const CDialog = ({
                       {showCancelBtn && (
                         <CButton
                           label={cancelBtnLabel}
-                          theme="secondary"
-                          outlined
+                          flat
                           rounded={rounded}
                         />
                       )}

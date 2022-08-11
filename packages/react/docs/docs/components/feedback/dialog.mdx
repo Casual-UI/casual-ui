@@ -2,7 +2,7 @@
 title: Dialog
 ---
 
-### 基础使用
+### Basic Usage
 
 ```jsx live
 function Demo() {
@@ -10,16 +10,16 @@ function Demo() {
 
   return (
     <>
-      <CDialog value={show} onChange={setShow} title="你好">
-        <div>你好，世界</div>
+      <CDialog value={show} onChange={setShow} title="Hi, there">
+        <div>Hello, World</div>
       </CDialog>
-      <CButton label="打开对话框" onClick={() => setShow(true)} />
+      <CButton label="Open dialog" onClick={() => setShow(true)} />
     </>
   )
 }
 ```
 
-### 宽度&高度
+### Height & Width
 
 ```jsx live
 function Demo() {
@@ -30,19 +30,19 @@ function Demo() {
       <CDialog
         value={show}
         onChange={setShow}
-        title="你好"
+        title="Hi, there"
         width="60vw"
         bodyHeight="60vh"
       >
-        <div>你好，世界</div>
+        <div>Hello, world</div>
       </CDialog>
-      <CButton label="打开对话框" onClick={() => setShow(true)} />
+      <CButton label="Open dialog" onClick={() => setShow(true)} />
     </>
   )
 }
 ```
 
-### 无关闭图标
+### Without Close Icon (Press esc to close)
 
 ```jsx live
 function Demo() {
@@ -53,20 +53,20 @@ function Demo() {
       <CDialog
         value={show}
         onChange={setShow}
-        title="你好"
+        title="Hi, there"
         width="60vw"
         bodyHeight="60vh"
         closeIcon={false}
       >
-        <div>你好，世界</div>
+        <div>Hello, world</div>
       </CDialog>
-      <CButton label="打开对话框" onClick={() => setShow(true)} />
+      <CButton label="Open dialog" onClick={() => setShow(true)} />
     </>
   )
 }
 ```
 
-### 位置
+### Positions
 
 ```jsx live
 function Demo() {
@@ -92,11 +92,11 @@ function Demo() {
       <CDialog
         value={show}
         onChange={setShow}
-        title="你好"
+        title="Hi, there"
         horizontalAlign={horizontalAlign}
         verticalAlign={verticalAlign}
       >
-        <div>你好，世界</div>
+        <div>Hello, world</div>
       </CDialog>
       <div className="c-row c-gutter-sm">
         <div>
@@ -166,7 +166,7 @@ function Demo() {
 }
 ```
 
-### 底部按钮
+### Footer Actions
 
 ```jsx live
 function Demo() {
@@ -176,19 +176,19 @@ function Demo() {
       <CDialog
         value={show}
         onChange={setShow}
-        title="标题"
+        title="Title"
         showConfirmBtn
         showCancelBtn
       >
-        内容
+        content
       </CDialog>
-      <CButton label="打开弹窗" onClick={() => setShow(true)} />
+      <CButton label="Open dialog" onClick={() => setShow(true)} />
     </>
   )
 }
 ```
 
-### 自定义内容
+### Customize Content
 
 ```jsx live
 function Demo() {
@@ -199,29 +199,29 @@ function Demo() {
       <CDialog
         value={show}
         onChange={setShow}
-        title="你好"
+        title="Hi, there"
         customTitle={<img style={{ width: '80px' }} src="/logo-dark.svg" />}
         customCloseIcon={<CIcon content={MdIcons.matPeople} />}
         customFooterActions={
           <>
             <CButton
+              flat
               size="sm"
-              label="关闭1"
+              label="Custom button 1"
               theme="negative"
               onClick={() => setShow(false)}
             />
             <CButton
               size="sm"
-              label="关闭2"
-              theme="warning"
+              label="Custom button 2"
               onClick={() => setShow(false)}
             />
           </>
         }
       >
-        <div>你好，世界</div>
+        <div>Hello, world</div>
       </CDialog>
-      <CButton label="打开对话框" onClick={() => setShow(true)} />
+      <CButton label="Open dialog" onClick={() => setShow(true)} />
     </>
   )
 }
