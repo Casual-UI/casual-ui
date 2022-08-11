@@ -1,7 +1,4 @@
-<script
-  setup
-  lang="ts"
->
+<script setup lang="ts">
 interface LoadingProps {
   /**
    * The thickness
@@ -11,9 +8,7 @@ interface LoadingProps {
 }
 
 withDefaults(defineProps<LoadingProps>(), {
-  size: '1em',
   thickness: 5,
-  color: 'currentColor',
 })
 </script>
 <template>

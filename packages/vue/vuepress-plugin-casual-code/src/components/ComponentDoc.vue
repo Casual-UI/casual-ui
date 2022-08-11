@@ -1,9 +1,6 @@
-<script
-  setup
-  lang="ts"
->
+<script setup lang="ts">
 // @ts-nocheck
-import { usePageFrontmatter } from '@vuepress/client'
+import { usePageFrontmatter, usePageLang } from '@vuepress/client'
 import { computed, ref } from 'vue'
 import type { Ref } from 'vue'
 import type { ComponentDoc } from 'vue-docgen-api'
@@ -92,6 +89,9 @@ const getDefaultValue = (item: any) => {
   }
   return item.defaultValue?.value
 }
+
+const lang = usePageLang()
+const isChinese = computed(() => lang.value === 'zh-CN')
 </script>
 
 <template>
@@ -122,7 +122,9 @@ const getDefaultValue = (item: any) => {
                     label="*"
                   />
                   <span v-else>
-                    默认值：<code>{{ getDefaultValue(item) }}</code>
+                    {{ isChinese ? '默认值' : 'Default' }} &nbsp;<code>{{
+                      getDefaultValue(item)
+                    }}</code>
                   </span>
                 </div>
               </template>
@@ -203,10 +205,7 @@ const getDefaultValue = (item: any) => {
     </c-tabs>
   </div>
 </template>
-<style
-  scoped
-  lang="scss"
->
+<style scoped lang="scss">
 .doc-api-container {
   background-color: var(--casual-table-bg);
   p {
