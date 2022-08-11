@@ -91,21 +91,6 @@ const config = {
           },
           {
             position: 'right',
-            label: 'More',
-            type: 'dropdown',
-            items: [
-              {
-                label: 'Casual UI - Vue',
-                to: 'https://casual-ui-vue.donsen.site/',
-              },
-              {
-                label: 'Casual UI - Svelte',
-                to: 'https://casual-ui-svelte.donsen.site/',
-              },
-            ],
-          },
-          {
-            position: 'right',
             label: 'Features',
             type: 'dropdown',
             items: [
@@ -120,6 +105,21 @@ const config = {
               {
                 label: 'Hooks API',
                 to: '/hooks/',
+              },
+            ],
+          },
+          {
+            position: 'right',
+            label: 'More',
+            type: 'dropdown',
+            items: [
+              {
+                label: 'Casual UI - Vue',
+                to: 'https://casual-ui-vue.donsen.site/',
+              },
+              {
+                label: 'Casual UI - Svelte',
+                to: 'https://casual-ui-svelte.donsen.site/',
               },
             ],
           },

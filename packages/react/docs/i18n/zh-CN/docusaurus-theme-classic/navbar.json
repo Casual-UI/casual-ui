@@ -38,5 +38,17 @@
   "item.label.Hooks API": {
     "message": "Hooks API",
     "description": "Navbar item with label Hooks API"
+  },
+  "item.label.More": {
+    "message": "更多",
+    "description": "Navbar item with label More"
+  },
+  "item.label.Casual UI - Vue": {
+    "message": "Casual UI - Vue",
+    "description": "Navbar item with label Casual UI - Vue"
+  },
+  "item.label.Casual UI - Svelte": {
+    "message": "Casual UI - Svelte",
+    "description": "Navbar item with label Casual UI - Svelte"
   }
 }
