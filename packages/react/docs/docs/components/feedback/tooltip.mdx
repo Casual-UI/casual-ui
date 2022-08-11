@@ -2,15 +2,15 @@
 title: Tooltip
 ---
 
-### 基础使用
+### Basic Usage
 
 ```jsx live
-<CTooltip content="你好，世界">
+<CTooltip content="Hello, world">
   <CButton label="Hover Me" />
 </CTooltip>
 ```
 
-### 不同位置
+### Positions
 
 ```jsx live
 function Demo() {
@@ -40,7 +40,7 @@ function Demo() {
         <CTooltip
           key={p}
           position={p}
-          content={`来自于位置：${p}的tooltip信息`}
+          content={`Message from position: ${p}`}
         >
           <div
             style={{ color: '#fff', backgroundColor: 'var(--casual-primary)', lineHeight: '3em', textAlign: 'center' }}
@@ -54,7 +54,7 @@ function Demo() {
 }
 ```
 
-### 触发方式
+### Trigger Methods
 
 ```jsx live
 function Demo() {
@@ -63,37 +63,37 @@ function Demo() {
   return (
     <div className="c-row c-gutter-x-md">
       <div>
-        <CTooltip content="你好，世界">
+        <CTooltip content="Hello, world">
           <CButton
-            outlined
+            flat
             rounded
-            label="悬浮（默认）"
+            label="Hover (default)"
           />
         </CTooltip>
       </div>
       <div>
         <CTooltip
           trigger="click"
-          content="你好，世界"
+          content="Hello, world"
         >
           <CButton
             rounded
-            label="点击"
+            label="Click"
           />
         </CTooltip>
       </div>
       <div>
         <CButton
-          label="手动"
+          label="Manual"
           onClick={() => setShow(!show)}
         />
         <CTooltip
           trigger="manual"
-          content="你好，世界"
+          content="Hello, world"
           show={show}
           toggleShow={setShow}
         >
-          点击左侧按钮手动触发
+          Click left button to show
         </CTooltip>
       </div>
     </div>
@@ -101,23 +101,22 @@ function Demo() {
 }
 ```
 
-### 自定义内容
+### Customize Content
 
 ```jsx live
 <CTooltip
   content={
     <div>
-      哇哦，支持自定义内容
+      Look! This is some custom content.
       <CButton
-        label="我是自定义按钮"
-        outlined
+        label="Even with a button"
+        flat
         round
       />
     </div>
   }
-  trigger="click"
 >
-  <CButton label="点我" />
+  <CButton label="Hover Me" />
 </CTooltip>
 ```
 

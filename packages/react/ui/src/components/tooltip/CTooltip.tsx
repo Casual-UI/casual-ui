@@ -4,11 +4,13 @@ import { CSlot } from 'casual-types'
 import { useClickOutside } from 'casual-ui-react'
 interface CTooltipProps {
   /**
-   * 弹出的内容文字，如果设置了<code>popup</code>插槽，则会覆盖该项
+   * The popup content.
+   * @zh 弹出的内容文字
    */
   content?: CSlot
   /**
-   * 弹出位置
+   * Popup positions
+   * @zh 弹出位置
    */
   position?:
     | 'top'
@@ -24,19 +26,23 @@ interface CTooltipProps {
     | 'bottom-right'
     | 'bottom'
   /**
-   * 触发方式
+   * The trigger method.
+   * @zh 触发方式
    */
   trigger?: 'hover' | 'click' | 'manual'
   /**
-   * 是否展示弹出内容，用于<code>trigger = 'manual'</code>时
+   * The tooltip shown status. Used when the trigger is set to manual.
+   * @zh 是否展示弹出内容，用于<code>trigger = 'manual'</code>时
    */
   show?: boolean
   /**
-   * 切换展示/收起状态
+   * Emit when the shown status change.
+   * @zh 切换展示/收起状态
    */
   toggleShow?: (newShow: boolean) => void
   /**
-   * 默认内容
+   * The trigger content.
+   * @zh 默认内容，用于触发提示
    */
   children: CSlot
 }
