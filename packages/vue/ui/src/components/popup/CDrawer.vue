@@ -9,28 +9,34 @@ import { ionCloseOutline } from '@quasar/extras/ionicons-v5'
 
 interface Props {
   /**
-   * 是否展示抽屉，用于<code>v-model</code>绑定
+   * The drawer shown status. Can be used with <code>v-model</code>.
+   * @zh 是否展示抽屉，用于<code>v-model</code>绑定
    */
   modelValue?: boolean
   /**
-   * 抽屉弹出位置
+   * The position of drawer.
+   * @zh 抽屉弹出位置
    */
   position?: 'left' | 'top' | 'right' | 'bottom'
   /**
-   * 抽屉的标题
+   * The title.
+   * @zh 抽屉的标题
    */
   title?: string
   /**
-   * 抽屉的宽度，该属性仅在左右弹出抽屉时可用
+   * The width of drawer. This is only working when the drawer is left or right.
+   * @zh 抽屉的宽度，该属性仅在左右弹出抽屉时可用
    */
   width?: string
   /**
-   * 抽屉的高度，该属性仅在上下弹出抽屉时可用
+   * The height of drawer. This is only working when the drawer is top or bottom.
+   * @zh 抽屉的高度，该属性仅在上下弹出抽屉时可用
    */
   bodyHeight?: string
 
   /**
-   * 点击遮罩是否关闭抽屉
+   * Determine whether to close the drawer when backdrop clicked or not.
+   * @zh 点击遮罩是否关闭抽屉
    */
   closeOnClickBackdrop?: boolean
 }
@@ -46,7 +52,8 @@ const props = withDefaults(defineProps<Props>(), {
 
 const emit = defineEmits<{
   /**
-   * 抽屉展开状态变化时触发
+   * Emit when the open status change.
+   * @zh 抽屉展开状态变化时触发
    */
   (e: 'update:modelValue', newValue: boolean): void
 }>()
@@ -84,22 +91,24 @@ const innerValue = useDefaultVModel(props, emit)
     :close-on-click-backdrop="closeOnClickBackdrop"
   >
     <template #title>
-      <!-- @slot 自定义标题内容 -->
+      <!-- 
+        @slot Customize the title content
+        @zh 自定义标题内容 -->
       <slot name="title"> {{ title }} </slot>
     </template>
 
     <template #close-icon>
-      <!-- @slot 自定义关闭图标 -->
+      <!-- 
+        @slot Customize the close icon
+        @zh 自定义关闭图标 -->
       <slot name="close-icon">
         <c-icon :content="ionCloseOutline" />
       </slot>
     </template>
 
-    <!-- @slot 抽屉内容 -->
+    <!-- 
+      @slot The drawer content. 
+      @zh 抽屉内容 -->
     <slot />
   </CDialog>
 </template>
-<style
-  lang="scss"
-  scoped
-></style>

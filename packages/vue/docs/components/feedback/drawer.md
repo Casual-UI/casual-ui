@@ -1,9 +1,9 @@
 ---
-title: 抽屉
+title: Drawer
 componentPath: popup/CDrawer
 ---
 
-### 基础使用
+### Basic Usage
 
 ```vue live
 <script setup>
@@ -13,20 +13,20 @@ const show = ref(false)
 
 <template>
   <CButton
-    label="点击打开抽屉"
+    label="Click to open drawer"
     @click="show = true"
   />
 
   <CDrawer
-    title="你好"
+    title="Hi, there"
     v-model="show"
   >
-    我是一些抽屉内容
+    Some drawer content
   </CDrawer>
 </template>
 ```
 
-### 不同位置
+### Positions
 
 ```vue live
 <script setup>
@@ -84,11 +84,11 @@ function openWithPosition(pos) {
   </div>
 
   <c-drawer
-    title="你好"
+    title="Hi, there"
     :position="position"
     v-model="show"
   >
-    我是一些抽屉内容
+    I'm some drawer content
   </c-drawer>
 </template>
 ```

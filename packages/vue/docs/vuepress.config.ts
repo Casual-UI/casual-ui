@@ -225,6 +225,16 @@ export default defineUserConfig({
                 '/zh-CN/components/form/form/',
               ],
             },
+            {
+              text: 'Popups',
+              collapsible: true,
+              children: [
+                '/zh-CN/components/feedback/dialog/',
+                '/zh-CN/components/feedback/drawer/',
+                '/zh-CN/components/feedback/notification/',
+                '/zh-CN/components/feedback/tooltip/',
+              ],
+            },
           ],
         },
       },
