@@ -1,29 +1,37 @@
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+>
 import type { CSize } from 'casual-types'
 import { useInjectSize } from 'casual-ui-vue'
 
 interface CItemProps {
   /**
-   * 文字
+   * The label text of item.
+   * @zh 文字
    */
   label?: string | number
   /**
-   * 尺寸
+   * The size of item.
+   * @zh 尺寸
    */
   size?: CSize
   /**
-   * 是否表现为可点击交互
+   * Determine whether the item is clickable or not.
+   * @zh 是否表现为可点击交互
    */
   clickable?: boolean
   /**
-   * 是否处于激活态
+   * Determine whether the item is in active status or not.
+   * @zh 是否处于激活态
    */
   active?: boolean
 }
 
 const emit = defineEmits<{
   /**
-   * clickable为true时，点击项目触发
+   * Emit when the item is clicked. Only working when the clickable is true.
+   * @zh 当clickable为true时，点击项目触发
    */
   (e: 'click'): void
 }>()
@@ -54,7 +62,9 @@ const onClick = () => {
     ]"
     @click.stop="onClick"
   >
-    <!-- @slot 默认内容，会覆盖<code>label</code>属性 -->
+    <!-- 
+      @slot The content of item.
+      @zh 默认内容，会覆盖<code>label</code>属性 -->
     <slot>
       <span :class="[`c-h-${provideSize}`]">
         {{ label }}

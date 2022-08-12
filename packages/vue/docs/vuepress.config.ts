@@ -131,6 +131,14 @@ export default defineUserConfig({
                 '/components/interact/tabs/',
               ],
             },
+            {
+              text: 'Data Presentation',
+              collapsible: true,
+              children: [
+                '/components/data-presentation/list',
+                '/components/data-presentation/table',
+              ],
+            },
           ],
           '/usable/': ['/usable/useClickOutside/', '/usable/useFormValidator/'],
           '/global-style-utils/': ['/global-style-utils/'],
@@ -251,6 +259,14 @@ export default defineUserConfig({
                 '/zh-CN/components/interact/dropdown/',
                 '/zh-CN/components/interact/expansion/',
                 '/zh-CN/components/interact/tabs/',
+              ],
+            },
+            {
+              text: '数据展示',
+              collapsible: true,
+              children: [
+                '/zh-CN/components/data-presentation/list',
+                '/zh-CN/components/data-presentation/table',
               ],
             },
           ],
