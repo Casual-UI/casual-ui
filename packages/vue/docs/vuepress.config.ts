@@ -122,6 +122,15 @@ export default defineUserConfig({
                 '/components/feedback/tooltip/',
               ],
             },
+            {
+              text: 'Interact',
+              collapsible: true,
+              children: [
+                '/components/interact/dropdown/',
+                '/components/interact/expansion/',
+                '/components/interact/tabs/',
+              ],
+            },
           ],
           '/usable/': ['/usable/useClickOutside/', '/usable/useFormValidator/'],
           '/global-style-utils/': ['/global-style-utils/'],
@@ -202,7 +211,7 @@ export default defineUserConfig({
           '/zh-CN/directives/': ['/zh-CN/directives/v-loading/'],
           '/zh-CN/components/': [
             {
-              text: 'Basic',
+              text: '基础',
               collapsible: true,
               children: [
                 '/zh-CN/components/button/',
@@ -213,7 +222,7 @@ export default defineUserConfig({
               ],
             },
             {
-              text: 'Form',
+              text: '表单',
               collapsible: true,
               children: [
                 '/zh-CN/components/form/input/',
@@ -226,13 +235,22 @@ export default defineUserConfig({
               ],
             },
             {
-              text: 'Popups',
+              text: '弹出层',
               collapsible: true,
               children: [
                 '/zh-CN/components/feedback/dialog/',
                 '/zh-CN/components/feedback/drawer/',
                 '/zh-CN/components/feedback/notification/',
                 '/zh-CN/components/feedback/tooltip/',
+              ],
+            },
+            {
+              text: '交互',
+              collapsible: true,
+              children: [
+                '/zh-CN/components/interact/dropdown/',
+                '/zh-CN/components/interact/expansion/',
+                '/zh-CN/components/interact/tabs/',
               ],
             },
           ],

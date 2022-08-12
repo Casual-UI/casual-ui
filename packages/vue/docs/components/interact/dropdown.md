@@ -1,9 +1,9 @@
 ---
-title: 下拉
+title: Dropdown
 componentPath: interact/CDropdown
 ---
 
-### 基础使用
+### Basic Usage
 
 ```vue live
 <script setup>
@@ -12,15 +12,15 @@ const show = ref(false)
 </script>
 <template>
   <c-dropdown v-model="show">
-    <c-button label="点击展开下拉" />
+    <c-button label="Click to show dropdown" />
     <template #drop-content>
-      <p>一些下拉内容</p>
+      <p>Some dropdown content</p>
     </template>
   </c-dropdown>
 </template>
 ```
 
-### 自定义内容宽度
+### Content Width
 
 ```vue live
 <script setup>
@@ -32,9 +32,14 @@ const show = ref(false)
     v-model="show"
     :width-within-parent="false"
   >
-    <c-button label="点击展开下拉" />
+    <c-button label="Click to show dropdown" />
     <template #drop-content>
-      <div class="custom-width">自定义内容宽度</div>
+      <div class="custom-width">
+        Some long content.
+        Some long content.
+        Some long content.
+        Some long content.
+      </div>
     </template>
   </c-dropdown>
 </template>
@@ -46,7 +51,7 @@ const show = ref(false)
 </style>
 ```
 
-### 手动控制
+### Manual Control
 
 ```vue live
 <script setup>
@@ -55,7 +60,8 @@ const show = ref(false)
 </script>
 <template>
   <c-button
-    label="点击收起/展开下拉"
+    :label="`Click top ${show ? 'close' : 'open'} dropdown`"
+    :theme="show ? 'negative' : 'primary'"
     @click="show = !show"
   />
   <c-dropdown
@@ -63,13 +69,21 @@ const show = ref(false)
     manual
     :width-within-parent="false"
   >
-    <h3>点击左边按钮收起/展开下拉</h3>
+    <h3>Click the button</h3>
     <template #drop-content>
-      <div class="custom-width">自定义内容宽度</div>
+      <div class="custom-width">
+        Some long content.
+        Some long content.
+        Some long content.
+        Some long content.
+      </div>
     </template>
   </c-dropdown>
 </template>
 <style scoped>
+h3 {
+  margin-left: 12px;
+}
 .custom-width {
   width: 400px;
   padding: 24px;

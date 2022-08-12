@@ -1,22 +1,29 @@
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+>
 import { useClickOutside, useVModel } from 'casual-ui-vue'
 import { toRefs, ref } from 'vue'
 
 interface CDropdownProps {
   /**
-   * 下拉是否展示，用于<code>v-model</code>绑定用
+   * The dropdown shown status. Can be use with <code>v-model</code>
+   * @zh 下拉是否展示，用于<code>v-model</code>绑定用
    */
   modelValue: boolean
   /**
-   * 是否禁用
+   * Determine whether the dropdown is disabled or not.
+   * @zh 是否禁用
    */
   disabled?: boolean
   /**
-   * 是否自动与默认内容保持一致宽度
+   * Determine whether to keep the same width with parent or not.
+   * @zh 是否自动与默认内容保持一致宽度
    */
   widthWithinParent?: boolean
   /**
-   * 是否手动控制
+   * Determine whether to use manual control or not.
+   * @zh 是否手动控制
    */
   manual?: boolean
 }
@@ -29,7 +36,8 @@ const props = withDefaults(defineProps<CDropdownProps>(), {
 
 const emit = defineEmits<{
   /**
-   * 下拉状态变化时触发
+   * Emit when the shown status change.
+   * @zh 下拉状态变化时触发
    */
   (e: 'update:modelValue', newValue: boolean): void
 }>()
@@ -59,7 +67,9 @@ useClickOutside({
     :class="['c-dropdown', { 'c-dropdown--dropped': innerValue }]"
   >
     <div class="c-dropdown--trigger">
-      <!-- @slot 默认内容 -->
+      <!-- 
+        @slot The trigger content 
+        @zh 用于触发下拉的内容 -->
       <slot />
     </div>
     <div
@@ -68,7 +78,9 @@ useClickOutside({
         { 'c-dropdown--drop-content-auto-width': !widthWithinParent },
       ]"
     >
-      <!-- @slot 下拉内容 -->
+      <!-- 
+        @slot The dropdown content. 
+        @zh 下拉内容 -->
       <slot name="drop-content" />
     </div>
   </div>
