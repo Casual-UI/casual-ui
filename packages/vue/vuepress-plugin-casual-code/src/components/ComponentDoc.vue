@@ -1,4 +1,7 @@
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+>
 // @ts-nocheck
 import { usePageFrontmatter, usePageLang } from '@vuepress/client'
 import { computed, ref } from 'vue'
@@ -19,6 +22,9 @@ interface CustomFrontmatter {
   eventsNameWidth?: number
   propDefaultValueWidth?: number
 }
+
+const lang = usePageLang()
+const isChinese = computed(() => lang.value === 'zh-CN')
 
 const props = defineProps<{
   /**
@@ -73,8 +79,11 @@ const slotNameFormatter = (slotItem: any) => {
 
 const descFormatter = (slotItem: any) => {
   const name = slotItem.tags?.name
+  const zhName = slotItem.tags?.name_zh
   if (name && name.length > 0) {
-    return name[0].description.split(' - ')[1]
+    return isChinese.value
+      ? zhName[0]?.description
+      : name[0].description.split(' - ')[1]
   }
   return slotItem.description
 }
@@ -89,9 +98,6 @@ const getDefaultValue = (item: any) => {
   }
   return item.defaultValue?.value
 }
-
-const lang = usePageLang()
-const isChinese = computed(() => lang.value === 'zh-CN')
 </script>
 
 <template>
@@ -108,7 +114,15 @@ const isChinese = computed(() => lang.value === 'zh-CN')
           divider
         >
           <template #item="{ item }">
-            <ItemDom :value="item">
+            <ItemDom
+              :value="item"
+              :desc-formatter="
+                propItem =>
+                  isChinese
+                    ? propItem.tags?.zh?.[0]?.description
+                    : propItem.description
+              "
+            >
               <template #after-name>
                 <div>
                   <TypeDom :val="item.type" />
@@ -158,7 +172,16 @@ const isChinese = computed(() => lang.value === 'zh-CN')
                   divider
                 >
                   <template #item="{ item: bItem }">
-                    <ItemDom :value="bItem"></ItemDom>
+                    <ItemDom
+                      :value="bItem"
+                      :desc-formatter="
+                        binding =>
+                          isChinese
+                            ? item.tags?.[`${binding.name}_zh`]?.[0]
+                                ?.description
+                            : binding.description
+                      "
+                    ></ItemDom>
                   </template>
                 </c-list>
               </div>
@@ -174,7 +197,15 @@ const isChinese = computed(() => lang.value === 'zh-CN')
           divider
         >
           <template #item="{ item }">
-            <ItemDom :value="item">
+            <ItemDom
+              :value="item"
+              :desc-formatter="
+                eItem =>
+                  isChinese
+                    ? eItem.tags?.find(tag => tag.title === 'zh')?.content
+                    : eItem.description
+              "
+            >
               <div
                 v-if="item.tags?.some(tag => tag.name)"
                 class="c-pl-md"
@@ -220,7 +251,10 @@ const isChinese = computed(() => lang.value === 'zh-CN')
     </c-tabs>
   </div>
 </template>
-<style scoped lang="scss">
+<style
+  scoped
+  lang="scss"
+>
 .doc-api-container {
   background-color: var(--casual-table-bg);
   p {

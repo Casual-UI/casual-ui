@@ -3,9 +3,8 @@
   lang="ts"
 >
 import { usePageLang } from '@vuepress/client'
-import { computed } from 'vue'
 
-const props = withDefaults(
+withDefaults(
   defineProps<{
     value: any
     descWrap?: boolean
@@ -19,15 +18,6 @@ const props = withDefaults(
   }
 )
 const lang = usePageLang()
-
-const descZh = computed(
-  () =>
-    props.value?.tags?.zh?.[0]?.description ||
-    // @ts-ignore
-    props.value?.tags?.find(tag => tag.title === 'zh')?.content
-)
-
-const isChinese = computed(() => lang.value === 'zh-CN')
 </script>
 <template>
   <div class="c-pt-sm">
@@ -51,7 +41,7 @@ const isChinese = computed(() => lang.value === 'zh-CN')
     >
       <span
         class="description"
-        v-html="isChinese ? descZh : descFormatter(value)"
+        v-html="descFormatter(value)"
       ></span>
     </p>
     <slot />

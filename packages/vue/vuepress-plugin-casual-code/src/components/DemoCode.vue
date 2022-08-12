@@ -1,4 +1,7 @@
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+>
 import { ionCodeOutline } from '@quasar/extras/ionicons-v5'
 import { matPlayArrow } from '@quasar/extras/material-icons'
 import { ref, computed } from 'vue'
@@ -75,7 +78,7 @@ const isChinese = computed(() => lang.value === 'zh-CN')
       <template #icon>
         <div
           i-logos-vue
-          text-6
+          text-5
         ></div>
       </template>
       <template #title>
@@ -141,7 +144,10 @@ const isChinese = computed(() => lang.value === 'zh-CN')
     </div>
   </c-dialog>
 </template>
-<style lang="scss" scoped>
+<style
+  lang="scss"
+  scoped
+>
 .demo-code {
   position: relative;
   overflow: visible;

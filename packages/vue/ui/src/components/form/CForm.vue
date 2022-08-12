@@ -3,7 +3,10 @@ export const errorKey = Symbol('errorStatus')
 export const validatorsKey = Symbol('validators')
 </script>
 
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+>
 import useFormProps, { type LabelDirection } from './useFormProps'
 import CFormItem from './CFormItem.vue'
 import type { Component } from 'vue'
@@ -261,10 +264,14 @@ defineExpose({
         >
           <!-- 
             @slot 
-            @name [field] - 表单项的自定义内容，field为表单项的field属性
-              @binding {Function} validate 当前表单项验证方法，调用立即触发当前表单项验证
-              @binding {Function} clearValidate 当前表单项清除验证方法，调用立即清除当前表单项验证
-              @binding {boolean} hasError 当前表单项是否有错误
+            @name_zh 表单项的自定义内容，field为表单项的field属性
+            @name [field] - Customize a specific form item. Field is the FormItem field prop.  
+              @binding {Function} validate The function to validate current item.
+              @validate_zh 验证当前表单项的方法
+              @binding {Function} clearValidate The function clear current item validate status.
+              @clearValidate_zh 清除当前表单项验证状态的方法
+              @binding {boolean} hasError Determine whether the current item has error or not.
+              @hasError_zh 当前表单项是否有错误
           -->
           <slot
             :name="item.field"
