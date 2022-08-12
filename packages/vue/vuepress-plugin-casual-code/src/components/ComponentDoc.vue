@@ -79,13 +79,13 @@ const slotNameFormatter = (slotItem: any) => {
 
 const descFormatter = (slotItem: any) => {
   const name = slotItem.tags?.name
-  const zhName = slotItem.tags?.name_zh
+  const zhName = slotItem.tags?.zh?.[0] || slotItem.tags?.name_zh?.[0]
   if (name && name.length > 0) {
     return isChinese.value
-      ? zhName[0]?.description
+      ? zhName.description
       : name[0].description.split(' - ')[1]
   }
-  return slotItem.description
+  return isChinese.value ? zhName.description : slotItem.description
 }
 
 const getDefaultValue = (item: any) => {
@@ -104,6 +104,7 @@ const kebabToCamel = str =>
     .split('-')
     .map((s, i) => (i === 0 ? s : s[0].toUpperCase() + s.slice(1)))
     .join('')
+
 </script>
 
 <template>

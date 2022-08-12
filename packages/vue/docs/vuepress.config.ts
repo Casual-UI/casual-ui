@@ -119,7 +119,8 @@ export default defineUserConfig({
         },
       },
       '/zh-CN/': {
-        selectLanguageText: '简体中文',
+        selectLanguageText: '选择语言',
+        selectLanguageName: '简体中文',
         tip: '提示',
         contributorsText: '贡献者',
         lastUpdatedText: '最后更新于',
