@@ -221,7 +221,17 @@
                 i === activeIndex && 'c-carousel--indicator-item--active'
               )}
               on:click={() => toIndex(i)}
-            />
+            >
+              <div class="c-carousel--indicator-item--bg" />
+              <div
+                class="c-carousel--indicator-item--progress-bar"
+                style={i === activeIndex && interval
+                  ? `animation-name: c-carousel-active-indicator-bar; animation-duration: ${
+                      interval + 300
+                    }ms; animation-iteration-count: 1;`
+                  : ''}
+              />
+            </div>
           </div>
         {/each}
       </slot>

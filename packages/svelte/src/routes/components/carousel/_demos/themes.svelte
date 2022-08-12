@@ -27,7 +27,7 @@
 
 <hr />
 
-<CCarousel bind:activeIndex {theme}>
+<CCarousel bind:activeIndex {theme} interval={3000} infinity>
   <CCarouselSlider>
     <div class="item">
       <div i-openmoji-red-apple class="icon" />

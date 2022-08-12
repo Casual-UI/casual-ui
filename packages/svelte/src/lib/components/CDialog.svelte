@@ -293,7 +293,7 @@
                 {#if showCancelBtn}
                   <CButton
                     label={cancelBtnLabel}
-                    outlined
+                    flat
                     {rounded}
                     on:click={() => {
                       /**

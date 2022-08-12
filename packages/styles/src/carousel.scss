@@ -9,35 +9,81 @@
     width: 24px;
     transition: width 0.2s var(--casual-ease-in-out-cubic);
     transform-origin: center;
-    opacity: 0.2;
+    overflow: hidden;
+    position: relative;
+
+    &--progress-bar,
+    &--bg {
+      opacity: 0.2;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 3;
+    }
+
+    &--progress-bar {
+      animation-timing-function: linear;
+    }
+
+    &--bg {
+      opacity: 0.2;
+      z-index: 2;
+    }
 
     &--primary {
-      background-color: var(--casual-primary);
+      .c-carousel--indicator-item {
+        &--progress-bar,
+        &--bg {
+          background-color: var(--casual-primary);
+        }
+      }
     }
 
     &--secondary {
-      background-color: var(--casual-secondary);
+      .c-carousel--indicator-item {
+        &--progress-bar,
+        &--bg {
+          background-color: var(--casual-secondary);
+        }
+      }
     }
 
     &--warning {
-      background-color: var(--casual-warning);
+      .c-carousel--indicator-item {
+        &--progress-bar,
+        &--bg {
+          background-color: var(--casual-warning);
+        }
+      }
     }
 
     &--negative {
-      background-color: var(--casual-negative);
+      .c-carousel--indicator-item {
+        &--progress-bar,
+        &--bg {
+          background-color: var(--casual-negative);
+        }
+      }
     }
 
     &--active {
       cursor: normal;
       width: 32px;
-      opacity: 0.7;
+
+      .c-carousel--indicator-item--progress-bar {
+        opacity: 0.7;
+      }
     }
 
     &:not(.c-carousel--indicator-item--active) {
       cursor: pointer;
 
       &:hover {
-        opacity: 0.4;
+        .c-carousel--indicator-item--progress-bar {
+          opacity: 0.4;
+        }
       }
     }
   }
@@ -161,4 +207,14 @@
 .c-carousel-control-enter-from,
 .c-carousel-control-leave-to {
   opacity: 0;
+}
+
+@keyframes c-carousel-active-indicator-bar {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
 }
