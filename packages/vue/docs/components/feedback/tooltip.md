@@ -1,19 +1,19 @@
 ---
-title: 工具提示
+title: Tooltip
 componentPath: popup/CTooltip
 ---
 
-### 使用
+### Usage
 
 ```vue live
 <template>
-  <c-tooltip content="一些tooltip信息">
+  <c-tooltip content="Some tooltip message">
     <c-button label="Hover Me" />
   </c-tooltip>
 </template>
 ```
 
-### 位置
+### Positions
 
 ```vue live
 <script setup>
@@ -36,7 +36,7 @@ const positions = [
   <div class="tooltips">
     <c-tooltip
       v-for="p in positions"
-      :content="`来自于位置${p}的tooltip信息`"
+      :content="`A message rom position ${p}`"
       :position="p"
     >
       {{ p }}
@@ -58,7 +58,7 @@ const positions = [
 </style>
 ```
 
-### 自定义内容
+### Custom Content
 
 ```vue live
 <template>
@@ -66,14 +66,14 @@ const positions = [
     position="right"
     trigger="click"
   >
-    <c-button label="点我" />
+    <c-button label="Click Me" />
     <template #popup>
       <div class="custom-content">
-        哇，可以使用任何元素作为自定义内容哦
+        I'm a custom content.
         <c-button
           rounded
-          outlined
-          label="自定义按钮"
+          flat
+          label="Even with a button"
         />
       </div>
     </template>
@@ -89,7 +89,7 @@ const positions = [
 </style>
 ```
 
-### 触发方式
+### Trigger Methods
 
 ```vue live
 <script setup>
@@ -102,33 +102,35 @@ const toggleShow = () => {
 </script>
 <template>
   <div class="popups">
-    <c-tooltip content="你好，世界">
+    <c-tooltip content="Hello, world">
       <c-button
         outlined
         rounded
-        label="悬浮（默认）"
+        label="Hover (default)"
       />
     </c-tooltip>
     <c-tooltip
       trigger="click"
-      content="你好，世界"
+      content="Hello, world"
     >
       <c-button
         rounded
-        label="点击"
+        label="Click"
       />
     </c-tooltip>
     <div>
       <c-button
-        label="手动"
+        label="Manual"
+        flat
         @click="toggleShow"
       />
       <c-tooltip
         v-model:show="show"
         trigger="manual"
-        content="你好，世界"
+        content="Hello, world"
+        style="margin-left: 12px;"
       >
-        点击左侧按钮手动触发
+        Click the left button
       </c-tooltip>
     </div>
   </div>

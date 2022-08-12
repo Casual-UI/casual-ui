@@ -6,11 +6,13 @@ import { useClickOutside } from 'casual-ui-vue'
 import { ref, watch } from 'vue'
 interface CTooltipProps {
   /**
-   * 弹出的内容文字，如果设置了<code>popup</code>插槽，则会覆盖该项
+   * The popup content.
+   * @zh 弹出的内容文字
    */
   content?: string
   /**
-   * 弹出位置
+   * The popup position.
+   * @zh 弹出位置
    */
   position?:
     | 'top-left'
@@ -26,18 +28,21 @@ interface CTooltipProps {
     | 'right'
     | 'right-bottom'
   /**
-   * 触发方式
+   * The trigger method.
+   * @zh 触发方式
    */
   trigger?: 'hover' | 'click' | 'manual'
   /**
-   * 是否展示弹出内容，用于<code>trigger = 'manual'</code>时
+   * The show status of tooltip. Can be used with <code>v-model:show</code>. And only working when the trigger is <code>'manual'</code>
+   * @zh 是否展示弹出内容，可以使用<code>v-model:show</code>，仅在<code>trigger = 'manual'</code>时可用
    */
   show?: boolean
 }
 
 defineEmits<{
   /**
-   * 手动触发时使用，用于<code>v-model:show</code>绑定
+   * Emit when the show status change.
+   * @zh 手动触发时使用，用于<code>v-model:show</code>绑定
    */
   (e: 'update:show', newShow: boolean): void
 }>()
@@ -92,7 +97,9 @@ if (props.trigger === 'click') {
     @mouseleave="onMouseLeave"
   >
     <div class="c-tooltip--trigger-content">
-      <!-- @slot 默认内容，用于触发tooltip -->
+      <!-- 
+        @slot The trigger content.
+        @zh 默认内容，用于触发tooltip -->
       <slot />
     </div>
     <div
@@ -100,7 +107,9 @@ if (props.trigger === 'click') {
       :class="[`c-tooltip--position-${position}`]"
       @click.stop
     >
-      <!-- @slot 弹出层内容，如果设置了该插槽，会覆盖<code>content</code>属性 -->
+      <!-- 
+        @slot The popup content. Will override the content prop. 
+        @zh 弹出层内容，如果设置了该插槽，会覆盖<code>content</code>属性 -->
       <slot name="popup">
         <div class="c-tooltip--popper-content">
           {{ content }}
