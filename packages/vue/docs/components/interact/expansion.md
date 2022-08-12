@@ -1,21 +1,21 @@
 ---
-title: 折叠器
+title: Expansion
 componentPath: interact/CExpansion
 ---
 
-### 基础示例
+### Basic Usage
 
 ```vue live
 <template>
-  <c-expansion title="点我打开/关闭">
+  <c-expansion title="Open to expand/fold">
     <div class="c-px-lg">
-      <p>代码能够运行并满足业务要求是最低标准</p>
+      <p>Hello, world</p>
     </div>
   </c-expansion>
 </template>
 ```
 
-### 标题图标
+### Title Icon
 
 ```vue live
 <script setup>
@@ -23,14 +23,14 @@ import { matPeople } from '@quasar/extras/material-icons'
 </script>
 <template>
   <c-expansion
-    title="标题左侧图标"
+    title="A custom icon"
     :icon="matPeople"
   >
     <div class="c-px-lg">
-      <p>代码能够运行并满足业务要求是最低标准</p>
+      <p>Hello, world</p>
     </div>
   </c-expansion>
-  <c-expansion title="自定义icon插槽图标">
+  <c-expansion title="A custom icon with icon slot">
     <template #icon>
       <img
         style="width: 80px;"
@@ -38,13 +38,13 @@ import { matPeople } from '@quasar/extras/material-icons'
       />
     </template>
     <div class="c-px-lg">
-      <p>代码能够运行并满足业务要求是最低标准</p>
+      <p>Hello, world</p>
     </div>
   </c-expansion>
 </template>
 ```
 
-### 自定义箭头
+### Custom Arrow
 
 ```vue live
 <script setup>
@@ -55,26 +55,26 @@ import {
 } from '@quasar/extras/material-icons'
 </script>
 <template>
-  <c-expansion title="自定义arrow插槽图标">
+  <c-expansion title="A custom arrow">
     <template #arrow>
       <c-icon :content="matArrowCircleDown" />
     </template>
     <div class="c-px-lg">
-      <p>你可以通过<code>expandStatus</code>为展开/折叠状态设置不同的icon</p>
+      <p>Hello, world</p>
     </div>
   </c-expansion>
-  <c-expansion title="自定义arrow插槽图标">
+  <c-expansion title="Different custom arrow with expand/fold status">
     <template #arrow="{ expandStatus }">
       <c-icon :content="expandStatus ? matPeople : matNaturePeople" />
     </template>
     <div class="c-px-lg">
-      <p>你可以通过<code>expandStatus</code>为展开/折叠状态设置不同的icon</p>
+      <p>Hello, world</p>
     </div>
   </c-expansion>
 </template>
 ```
 
-### 从上方展开
+### Expand From Top
 
 ```vue live
 <script setup>

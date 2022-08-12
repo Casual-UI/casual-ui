@@ -9,19 +9,23 @@ import { useDefaultVModel } from '../../usable/useVModel'
 
 interface CExpansionProps {
   /**
-   * 图标
+   * The icon string.
+   * @zh 图标
    */
   icon?: string
   /**
-   * 标题
+   * The title.
+   * @zh 标题
    */
   title?: string
   /**
-   * 是否展开，用于<code>v-model</code>默认绑定
+   * The expand status. Can be used with <code>v-model</code>.
+   * @zh 是否展开，用于<code>v-model</code>默认绑定
    */
   modelValue?: boolean
   /**
-   * 是否反向展开，如果设置为<code>true</code>则会从上方展开
+   * Determine whether to expand from top or not.
+   * @zh 是否反向展开，如果设置为<code>true</code>则会从上方展开
    */
   reverse?: boolean
 }
@@ -35,7 +39,8 @@ const props = withDefaults(defineProps<CExpansionProps>(), {
 
 const emit = defineEmits<{
   /**
-   * 展开状态变化时触发
+   * Emit when the expand status change.
+   * @zh 展开状态变化时触发
    */
   (e: 'update:modelValue', newValue: boolean): void
 }>()
@@ -77,7 +82,9 @@ defineExpose({
       ref="bodyDom"
       class="c-expansion--body"
     >
-      <!-- @slot 默认展开内容 -->
+      <!-- 
+        @slot The expanded content. 
+        @zh 默认展开内容 -->
       <slot v-bind="{ setHeight }" />
     </div>
     <div
@@ -88,13 +95,17 @@ defineExpose({
         v-if="icon || $slots.icon"
         class="c-expansion--icon"
       >
-        <!-- @slot 自定义图标 -->
+        <!-- 
+          @slot Customize the icon content.
+          @zh 自定义图标 -->
         <slot name="icon">
           <c-icon :content="icon" />
         </slot>
       </div>
       <div class="c-expansion--title">
-        <!-- @slot 自定义标题 -->
+        <!-- 
+          @slot Customize the title content. 
+          @zh 自定义标题 -->
         <slot name="title">
           {{ title }}
         </slot>
@@ -106,8 +117,10 @@ defineExpose({
         ]"
       >
         <!-- 
-          @slot 自定义箭头 
+          @slot Customize the arrow 
+          @zh 自定义箭头 
             @binding {boolean} expand-status 当前展开状态
+            @expandStatus_zh 当前展开状态
           -->
         <slot
           name="arrow"
@@ -125,7 +138,9 @@ defineExpose({
       ref="bodyDom"
       class="c-expansion--body"
     >
-      <!-- @slot 默认展开内容 -->
+      <!-- 
+        @slot The expanded content.
+        @zh 默认展开内容 -->
       <slot v-bind="{ setHeight }" />
     </div>
   </div>

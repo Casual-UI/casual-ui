@@ -1,4 +1,7 @@
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+>
 import type { CSize } from 'casual-types'
 import { useInjectSize } from 'casual-ui-vue'
 import { watch, onMounted, ref, nextTick } from 'vue'
@@ -11,23 +14,28 @@ interface CItem {
 
 interface CTabProps {
   /**
-   * 当前激活的tab，用于<code>v-model</code>绑定
+   * The current active tab name. Can be used with
+   * @zh 当前激活的名称，用于<code>v-model</code>绑定
    */
   modelValue: string
   /**
-   * 标签项
+   * The items config.
+   * @zh 标签项
    */
   items: CItem[]
   /**
-   * 尺寸
+   * The size of tabs.
+   * @zh 尺寸
    */
   size?: CSize
   /**
-   * 面板是否具有一个size尺寸的内边距
+   * Determine whether the panel has a padding or not.
+   * @zh 面板是否具有一个size尺寸的内边距
    */
   panelPadding?: boolean
   /**
-   * 自定义面板体样式
+   * Customize the panel body style.
+   * @zh 自定义面板体样式
    */
   bodyStyle?: object
 }
@@ -41,8 +49,10 @@ const props = withDefaults(defineProps<CTabProps>(), {
 
 const emit = defineEmits<{
   /**
-   * 当前激活项发生变化时触发
-   * @arg {string} newValue - 新的激活态面板<code>name</code>值
+   * Emit when the current active tab name change.
+   * @zh 当前激活项发生变化时触发
+   * @arg {string} newValue - the new active tab name
+   * @newValue_zh 新的激活态面板的名称
    */
   (e: 'update:modelValue', newModelValue: string): void
 }>()
@@ -88,7 +98,10 @@ watch([() => props.modelValue, () => props.size], () => {
 </script>
 <template>
   <div class="c-tabs">
-    <div ref="header" class="c-tabs--header c-row c-items-center">
+    <div
+      ref="header"
+      class="c-tabs--header c-row c-items-center"
+    >
       <div
         v-for="tabItem in items"
         :key="tabItem.name"
@@ -128,10 +141,14 @@ watch([() => props.modelValue, () => props.size], () => {
       <transition-group
         :name="isForward ? 'c-date-panel' : 'c-date-panel-reverse'"
       >
-        <div :key="modelValue" :class="['c-tabs--body-item']">
+        <div
+          :key="modelValue"
+          :class="['c-tabs--body-item']"
+        >
           <!-- 
             @slot
-            @name body-[item.name] - 对应名称面板内容 
+            @name body-[item.name] - The content of the item.
+            @name_zh 对应名称面板的内容
           -->
           <slot :name="`body-${modelValue}`" />
         </div>
