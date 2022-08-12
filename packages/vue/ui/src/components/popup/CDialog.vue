@@ -10,81 +10,100 @@ import type { PositionGroup } from 'casual-types'
 
 interface CDialogProps {
   /**
-   * 对话框是否打开，可用于<code>v-model</code>绑定
+   * The open status of dialog. Can be used with <code>v-model</code>
+   * @zh 对话框是否打开，可用于<code>v-model</code>绑定
    */
   modelValue: boolean
   /**
-   * 标题
+   * The title.
+   * @zh 标题
    */
   title?: string
   /**
-   * 宽度
+   * The dialog width.
+   * @zh 宽度
    */
   width?: string
   /**
-   * 对话框体高度
+   * The body height. This doesn't contain the header and footer height.
+   * @zh 对话框体高度
    */
   bodyHeight?: string
   /**
-   * 是否具有内容内边距
+   * Determine whether the body content has a padding or not.
+   * @zh 是否具有内容内边距
    */
   bodyPadding?: boolean
   /**
-   * 是否表现为圆角
+   * Determine whether the dialog have a rounded border or not.
+   * @zh 是否表现为圆角
    */
   rounded?: boolean
   /**
-   * 是否展示关闭图标
+   * Determine whether to show the close icon or not.
+   * @zh 是否展示关闭图标
    */
   closeIcon?: boolean
   /**
-   * 水平对齐方式
+   * The horizontal position of dialog.
+   * @zh 水平对齐方式
    */
   horizontalAlign?: 'start' | 'center' | 'end'
   /**
-   * 垂直对齐方式
+   * The vertical position of dialog.
+   * @zh 垂直对齐方式
    */
   verticalAlign?: 'start' | 'center' | 'end'
   /**
-   * 自定义对话框DOM样式类
+   * The custom class add to container.
+   * @zh 自定义对话框DOM样式类
    */
   customClass?: string
   /**
-   * 自定义对话框DOM样式
+   * The custom style add to container.
+   * @zh 自定义对话框DOM样式
    */
   customStyle?: object
   /**
-   * 自定义对话框内容样式类
+   * The custom body style add to content body.
+   * @zh 自定义对话框内容样式类
    */
   customBodyStyle?: object
   /**
-   * 是否展示取消按钮
+   * Determine whether to show the cancel button or not.
+   * @zh 是否展示取消按钮
    */
   showCancelBtn?: boolean
   /**
-   * 取消按钮文字
+   * The cancel button text.
+   * @zh 取消按钮文字
    */
   cancelBtnLabel?: string
   /**
-   * 是否展示确认按钮
+   * Determine whether to show the confirm button or not.
+   * @zh 是否展示确认按钮
    */
   showConfirmBtn?: boolean
   /**
-   * 确认按钮文字
+   * The confirm button text.
+   * @zh 确认按钮文字
    */
   confirmBtnLabel?: string
 
   /**
-   * 是否交换动画的先后方向，初始为先横向展开，后纵向展开，设置为true，则先纵向展开，后横向展开
+   * Determine whether to exchange the dialog animation direction order.
+   * @zh 是否交换动画的先后方向，初始为先横向展开，后纵向展开，设置为true，则先纵向展开，后横向展开
    */
   exchangeAnimationDirection?: boolean
   /**
-   * 是否在按下Esc按键后关闭对话框
+   * Determine whether to close the dialog when ESC pressed or not.
+   * @zh 是否在按下Esc按键后关闭对话框
    */
   closeOnEsc?: boolean
 
   /**
-   * 点击遮罩是否关闭弹出层
+   * Determine whether to close the dialog when backdrop clicked or not.
+   * @zh 点击遮罩是否关闭弹出层
    */
   closeOnClickBackdrop?: boolean
 }
@@ -114,11 +133,13 @@ const { provideHorizontalAlign, provideVerticalAlign } = usePosition(props)
 
 const emit = defineEmits<{
   /**
-   * 绑定值发生变化时触发
+   * Emit when the open status change.
+   * @zh 绑定值发生变化时触发
    */
   (e: 'update:modelValue', newValue: boolean): void
   /**
-   * 对话框打开并且动画行为完成时触发
+   * Emit when the dialog opened and transition animation is done.
+   * @zh 对话框打开并且动画行为完成时触发
    */
   (e: 'opened'): void
 }>()
@@ -180,9 +201,13 @@ const roundedClass = computed(() => {
           }"
         >
           <div class="c-dialog--header">
-            <!-- @slot 自定义对话框头部内容 -->
+            <!-- 
+              @slot Customize the header content.
+              @zh 自定义对话框头部内容 -->
             <slot name="header">
-              <!-- @slot 自定义标题内容 -->
+              <!-- 
+                @slot Customize the title content.
+                @zh 自定义标题内容 -->
               <div class="c-dialog--title">
                 <slot name="title">
                   {{ title }}
@@ -193,7 +218,9 @@ const roundedClass = computed(() => {
                 class="c-dialog--close-btn"
                 @click="innerValue = false"
               >
-                <!-- @slot 自定义关闭图标 -->
+                <!-- 
+                  @slot Customize the close icon.
+                  @zh 自定义关闭图标 -->
                 <slot name="close-icon">
                   <c-icon :content="ionCloseOutline" />
                 </slot>
@@ -207,15 +234,20 @@ const roundedClass = computed(() => {
               ...customBodyStyle,
             }"
           >
-            <!-- @slot 默认内容 -->
+            <!-- 
+              @slot The dialog content.
+              @zh 默认内容 -->
             <slot />
           </div>
           <div class="c-dialog--footer">
-            <!-- @slot 自定义对话框底部内容 -->
+            <!-- 
+              @slot Customize the footer content. 
+              @zh 自定义对话框底部内容 -->
             <slot name="footer">
               <div class="c-row c-gutter-x-sm">
                 <!-- 
-                    @slot 自定义底部操作按钮 
+                    @slot Customize the footer actions.
+                    @zh 自定义底部操作按钮
                   -->
                 <slot name="footer-actions">
                   <div class="c-row c-gutter-x-sm">
@@ -223,7 +255,7 @@ const roundedClass = computed(() => {
                       <c-button
                         v-if="showCancelBtn"
                         :label="cancelBtnLabel"
-                        outlined
+                        flat
                         :rounded="rounded"
                       />
                     </div>

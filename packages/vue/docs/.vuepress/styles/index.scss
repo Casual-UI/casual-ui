@@ -148,3 +148,10 @@ code {
   font-size: 16px !important;
   font-family: var(--font-family-code) !important;
 }
+
+
+.demo-code .c-expansion--header {
+  position: sticky;
+  bottom: 0;
+  z-index: 3;
+}

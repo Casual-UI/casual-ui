@@ -112,6 +112,16 @@ export default defineUserConfig({
                 '/components/form/form/',
               ],
             },
+            {
+              text: 'Popups',
+              collapsible: true,
+              children: [
+                '/components/feedback/dialog/',
+                '/components/feedback/drawer/',
+                '/components/feedback/notification/',
+                '/components/feedback/tooltip/',
+              ],
+            },
           ],
           '/usable/': ['/usable/useClickOutside/', '/usable/useFormValidator/'],
           '/global-style-utils/': ['/global-style-utils/'],

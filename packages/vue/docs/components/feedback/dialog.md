@@ -1,9 +1,9 @@
 ---
-title: 对话框
+title: Dialog
 componentPath: popup/CDialog
 ---
 
-### 基础使用
+### Basic Usage
 
 ```vue live
 <script setup>
@@ -11,15 +11,15 @@ import { ref } from 'vue'
 const show = ref(false)
 </script>
 <template>
-  <c-dialog v-model="show" title="你好">
-    <div>你好，世界</div>
+  <c-dialog v-model="show" title="Hi, there">
+    <div>Hello, world</div>
   </c-dialog>
-  <c-button label="打开对话框" @click="show = true" />
+  <c-button label="Open Dialog" @click="show = true" />
 </template>
 
 ```
 
-### 宽度&高度
+### Height & Width
 
 ```vue live
 <script setup>
@@ -29,17 +29,17 @@ const show = ref(false)
 <template>
   <c-dialog
     v-model="show"
-    title="你好"
+    title="Hi, there"
     width="60vw"
     body-height="60vh"
   >
-    <div>你好，世界</div>
+    <div>Hello, world</div>
   </c-dialog>
-  <c-button label="打开对话框" @click="show = true" />
+  <c-button label="Open Dialog" @click="show = true" />
 </template>
 ```
 
-### 无关闭图标
+### Without Close Icon
 
 ```vue live
 <script setup>
@@ -49,18 +49,18 @@ const show = ref(false)
 <template>
   <c-dialog
     v-model="show"
-    title="你好"
+    title="Hi, there"
     width="60vw"
     body-height="60vh"
     :close-icon="false"
   >
-    <div>你好，世界</div>
+    <div>Hello, world</div>
   </c-dialog>
-  <c-button label="打开对话框（按esc键关闭）" @click="show = true" />
+  <c-button label="Open Dialog（Press ESC to close）" @click="show = true" />
 </template>
 ```
 
-### 底部按钮
+### Footer Actions
 
 ```vue live
 <script setup>
@@ -70,19 +70,19 @@ const show = ref(false)
 <template>
   <c-dialog
     v-model="show"
-    title="你好"
+    title="Hi, there"
     show-confirm-btn
     show-cancel-btn
-    confirm-btn-label="确认"
-    cancel-btn-label="取消"
+    confirm-btn-label="Confirm"
+    cancel-btn-label="Cancel"
   >
-    <div>你好，世界</div>
+    <div>Hello, world</div>
   </c-dialog>
-  <c-button label="打开对话框" @click="show = true" />
+  <c-button label="Open Dialog" @click="show = true" />
 </template>
 ```
 
-### 位置
+### Positions
 
 ```vue live
 <script setup>
@@ -108,11 +108,11 @@ const openWithPosition = (h, v) => {
 <template>
   <c-dialog
     v-model="show"
-    title="你好"
+    title="Hi, there"
     :horizontal-align="horizontalAlign"
     :vertical-align="verticalAlign"
   >
-    <div>你好，世界</div>
+    <div>Hello, world</div>
   </c-dialog>
   <div class="c-row c-gutter-sm">
     <div>
@@ -184,7 +184,7 @@ const openWithPosition = (h, v) => {
 </template>
 ```
 
-### 通过插槽自定义一些内容
+### Customize Content With Slots
 
 ```vue live
 <script setup>
@@ -204,20 +204,20 @@ const show = ref(false)
       <div>
         <c-button
           size="sm"
-          label="关闭"
+          label="Close"
           theme="negative"
           @click="show = false"
         />
         <c-button
           size="sm"
-          label="关闭"
+          label="Close"
           theme="warning"
           @click="show = false"
         />
       </div>
     </template>
   </c-dialog>
-  <c-button label="打开对话框" @click="show = true" />
+  <c-button label="Open Dialog" @click="show = true" />
 </template>
 <style scoped>
 .title-icon {
@@ -226,7 +226,7 @@ const show = ref(false)
 </style>
 ```
 
-### 模拟抽屉
+### Drawer Simulation
 
 ```vue live
 <script setup>
@@ -240,7 +240,7 @@ const bottom = ref(false)
   <c-dialog
     v-model="left"
     exchange-animation-direction
-    title="左侧抽屉"
+    title="Left Drawer"
     :rounded="false"
     :custom-style="{
       height: '100vh'
@@ -253,7 +253,7 @@ const bottom = ref(false)
   <c-dialog
     v-model="right"
     exchange-animation-direction
-    title="右侧抽屉"
+    title="Right Drawer"
     :rounded="false"
     width="80vw"
     :custom-style="{
@@ -261,38 +261,38 @@ const bottom = ref(false)
     }"
     vertical-align="center"
     horizontal-align="end">
-    内容
+    Content
   </c-dialog>
   <c-dialog
     v-model="top"
-    title="顶部抽屉"
+    title="Top Drawer"
     :rounded="false"
     width="100vw"
     vertical-align="start"
     horizontal-align="center">
-    内容
+    Content
   </c-dialog>
   <c-dialog
     v-model="bottom"
-    title="底部抽屉"
+    title="Bottom Drawer"
     :rounded="false"
     width="100vw"
     vertical-align="end"
     horizontal-align="center">
-    内容
+    Content
   </c-dialog>
   <div class="c-row c-items-center c-wrap c-gutter-md">
     <div>
-      <c-button label="打开左侧抽屉" @click="left = true" />
+      <c-button label="Open left drawer" @click="left = true" />
     </div>
     <div>
-      <c-button label="打开顶部抽屉" @click="top = true" />
+      <c-button label="Open top drawer" @click="top = true" />
     </div>
     <div>
-      <c-button label="打开右侧抽屉" @click="right = true" />
+      <c-button label="Open right drawer" @click="right = true" />
     </div>
     <div>
-      <c-button label="打开底部抽屉" @click="bottom = true" />
+      <c-button label="Open bottom drawer" @click="bottom = true" />
     </div>
   </div>
 </template>
