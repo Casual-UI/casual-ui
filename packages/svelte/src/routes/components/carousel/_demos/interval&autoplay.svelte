@@ -4,7 +4,16 @@
   let activeIndex = 0
 </script>
 
-<CCarousel bind:activeIndex interval={5000} infinity>
+<CCarousel
+  bind:activeIndex
+  interval={5000}
+  infinity
+  arrowTiming="hover"
+  vertical
+  indicatorsPositionHorizontal="start"
+  indicatorsPositionVertical="center"
+  indicatorsAlignDirection="column"
+>
   <CCarouselSlider>
     <div class="item">
       <div i-openmoji-red-apple class="icon" />

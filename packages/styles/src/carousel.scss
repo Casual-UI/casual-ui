@@ -218,3 +218,13 @@
     transform: translateX(100%);
   }
 }
+
+@keyframes c-carousel-active-indicator-bar-vertical {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(100%);
+  }
+}

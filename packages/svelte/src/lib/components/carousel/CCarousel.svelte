@@ -33,6 +33,11 @@
    * The timeout flag key.
    */
   export const timeoutKey = Symbol('c-carousel-timeout-flag')
+
+  /**
+   * The pause on hover key.
+   */
+  export const pauseOnHoverKey = Symbol('c-carousel-pause-on-hover')
 </script>
 
 <script>
@@ -106,6 +111,12 @@
    */
   export let arrowTiming = 'always'
 
+  /**
+   * Determine to pause the transition when hovering the carousel.
+   * @type {boolean}
+   */
+  export let pauseOnHover = true
+
   const direction = writable('forward')
 
   const slides = writable([])
@@ -118,12 +129,15 @@
 
   const timeoutFlag = writable(null)
 
+  const pauseOnHoverContext = writable(pauseOnHover)
+
   setContext(slidesKey, slides)
   setContext(activeIndexKey, activeIndexStore)
   setContext(directionKey, direction)
   setContext(verticalKey, verticalContext)
   setContext(intervalKey, intervalContext)
   setContext(timeoutKey, timeoutFlag)
+  setContext(pauseOnHoverKey, pauseOnHoverContext)
 
   /**
    * Goto specific slider
@@ -167,13 +181,24 @@
 
   let showArrow = arrowTiming === 'always'
 
+  /**
+   * @type {'running' | 'paused'}
+   */
+  let indicatorsAnimationPlayState = 'running'
+
   const onContainerMouseEnter = () => {
+    if (pauseOnHover) {
+      indicatorsAnimationPlayState = 'paused'
+    }
     if (arrowTiming === 'hover') {
       showArrow = true
     }
   }
 
   const onContainerMouseLeave = () => {
+    if (pauseOnHover) {
+      indicatorsAnimationPlayState = 'running'
+    }
     if (arrowTiming === 'hover') {
       showArrow = false
     }
@@ -208,25 +233,29 @@
     >
       <!--
         Customize the indicators content.
-
         @param {string[]} names The names array of this carousel.
       -->
       <slot name="indicators">
         {#each $slides as _, i}
+          {@const isActive = activeIndex === i}
           <div>
             <div
               class={clsx(
                 `c-carousel--indicator-item`,
                 `c-carousel--indicator-item--${theme}`,
-                i === activeIndex && 'c-carousel--indicator-item--active'
+                isActive && 'c-carousel--indicator-item--active'
               )}
               on:click={() => toIndex(i)}
             >
               <div class="c-carousel--indicator-item--bg" />
               <div
                 class="c-carousel--indicator-item--progress-bar"
-                style={i === activeIndex && interval
-                  ? `animation-name: c-carousel-active-indicator-bar; animation-duration: ${
+                style={isActive && interval
+                  ? `animation-play-state: ${indicatorsAnimationPlayState}; animation-name: c-carousel-active-indicator-bar${
+                      indicatorsAlignDirection.startsWith('column')
+                        ? '-vertical'
+                        : ''
+                    }; animation-duration: ${
                       interval + 300
                     }ms; animation-iteration-count: 1;`
                   : ''}

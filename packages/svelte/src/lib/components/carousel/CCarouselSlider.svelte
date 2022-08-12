@@ -56,13 +56,27 @@
     }
   }
 
+  let timeout = Date.now()
+
   const onIntroEnd = () => {
     if ($interval && toNext) {
       if ($timeoutFlag) {
         clearTimeout($timeoutFlag)
       }
+      timeout = Date.now()
       $timeoutFlag = setTimeout(toNext, $interval)
     }
+  }
+
+  const onHover = () => {
+    if ($timeoutFlag) {
+      timeout = Date.now() - timeout
+      clearTimeout($timeoutFlag)
+    }
+  }
+
+  const onLeave = () => {
+    $timeoutFlag = setTimeout(toNext, $interval - timeout)
   }
 </script>
 
@@ -72,6 +86,8 @@
     in:carousel
     out:carousel={{ leave: true }}
     on:introend={onIntroEnd}
+    on:mouseenter={onHover}
+    on:mouseleave={onLeave}
   >
     <slot />
   </div>
