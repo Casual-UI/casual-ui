@@ -78,14 +78,17 @@ const slotNameFormatter = (slotItem: any) => {
 }
 
 const descFormatter = (slotItem: any) => {
+  if (slotItem.custom) {
+    return slotItem?.description
+  }
   const name = slotItem.tags?.name
   const zhName = slotItem.tags?.zh?.[0] || slotItem.tags?.name_zh?.[0]
   if (name && name.length > 0) {
     return isChinese.value
-      ? zhName.description
+      ? zhName?.description
       : name[0].description.split(' - ')[1]
   }
-  return isChinese.value ? zhName.description : slotItem.description
+  return isChinese.value ? zhName?.description : slotItem?.description
 }
 
 const getDefaultValue = (item: any) => {
@@ -105,6 +108,7 @@ const kebabToCamel = str =>
     .map((s, i) => (i === 0 ? s : s[0].toUpperCase() + s.slice(1)))
     .join('')
 
+console.log(slots)
 </script>
 
 <template>
@@ -183,7 +187,9 @@ const kebabToCamel = str =>
                       :value="bItem"
                       :desc-formatter="
                         binding =>
-                          isChinese
+                          item.custom
+                            ? binding.description
+                            : isChinese
                             ? item.tags?.[
                                 `${kebabToCamel(binding.name)}_zh`
                               ]?.[0]?.description

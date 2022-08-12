@@ -1,21 +1,21 @@
 ---
-title: 表格
+title: Table
 componentPath: table/CTable
 customSlots:
   - name: th-[field]
-    description: 自定义表头渲染
+    description: Customize the header content
     bindings:
       - name: title
-        description: 当前列标题
+        description: The title
         type:
           name: string
       - name: field
-        description: 当前列字段名称
+        description: The key of row data
         type:
           name: string
 ---
 
-### 基础使用
+### Basic Usage
 
 ```vue live
 <script setup>
@@ -26,8 +26,8 @@ const tableData = [
 ]
 
 const tableColumns = [
-  { title: '姓名', field: 'name' },
-  { title: '性别', field: 'gender' },
+  { title: 'Name', field: 'name' },
+  { title: 'Gender', field: 'gender' },
 ]
 </script>
 <template>
@@ -39,7 +39,7 @@ const tableColumns = [
 </template>
 ```
 
-### 自定义表头
+### Customize Header
 
 ```vue live
 <script setup>
@@ -49,8 +49,8 @@ const tableData = [
 ]
 
 const tableColumns = [
-  { title: '姓名', field: 'name' },
-  { title: '性别', field: 'gender' },
+  { title: 'Name', field: 'name' },
+  { title: 'Gender', field: 'gender' },
 ]
 </script>
 <template>
@@ -64,7 +64,7 @@ const tableColumns = [
 </template>
 ```
 
-### 自定义列单元格
+### Customize Column
 
 ```vue live
 <script setup>
@@ -74,16 +74,16 @@ const tableData = [
 ]
 
 const tableColumns = [
-  { title: '姓名', field: 'name' },
-  { title: '性别', field: 'gender' },
-  { title: '操作', field: 'operations' },
+  { title: 'Name', field: 'name' },
+  { title: 'Gender', field: 'gender' },
+  { title: 'Operations', field: 'operations' },
 ]
 </script>
 <template>
   <c-table row-key="name" :data="tableData" :columns="tableColumns">
     <template #td-operations>
-      <c-button label="编辑" size="sm" />
-      <c-button label="删除" theme="negative" size="sm" />
+      <c-button label="Edit" round size="sm" />
+      <c-button label="Delete" round theme="negative" size="sm" />
     </template>
   </c-table>
 </template>

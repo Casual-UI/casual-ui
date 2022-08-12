@@ -3,6 +3,7 @@ title: 表格
 componentPath: table/CTable
 customSlots:
   - name: th-[field]
+    custom: true
     description: 自定义表头渲染
     bindings:
       - name: title
