@@ -98,6 +98,12 @@ const getDefaultValue = (item: any) => {
   }
   return item.defaultValue?.value
 }
+
+const kebabToCamel = str =>
+  str
+    .split('-')
+    .map((s, i) => (i === 0 ? s : s[0].toUpperCase() + s.slice(1)))
+    .join('')
 </script>
 
 <template>
@@ -177,8 +183,9 @@ const getDefaultValue = (item: any) => {
                       :desc-formatter="
                         binding =>
                           isChinese
-                            ? item.tags?.[`${binding.name}_zh`]?.[0]
-                                ?.description
+                            ? item.tags?.[
+                                `${kebabToCamel(binding.name)}_zh`
+                              ]?.[0]?.description
                             : binding.description
                       "
                     ></ItemDom>

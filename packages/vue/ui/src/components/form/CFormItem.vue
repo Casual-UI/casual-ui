@@ -3,7 +3,10 @@ export const hasErrorKey = Symbol('hasError')
 export const validateKey = Symbol('validate')
 export const clearValidateKey = Symbol('clearValidate')
 </script>
-<script lang="ts" setup>
+<script
+  lang="ts"
+  setup
+>
 import type { CSize, CRule } from 'casual-types'
 import { computed, inject, provide, ref } from 'vue'
 import type { Ref } from 'vue'
@@ -178,10 +181,13 @@ provide(clearValidateKey, clearValidate)
     <div class="c-form-item--content-wrapper c-flex c-items-center">
       <!-- 
         @slot The content.
-        @zh 表单项内容 
-          @binding {Function} validate 当前表单项验证方法
-          @binding {Function} clear-validate 当前表单项清除验证方法
-          @binding {boolean} has-error 当前表单项是否有错误
+        @name_zh 表单项内容 
+          @binding {Function} validate The function to validate current item.
+          @validate_zh 当前表单项验证方法
+          @binding {Function} clear-validate The function to clear current validate status.
+          @clearValidate_zh 当前表单项清除验证方法
+          @binding {boolean} has-error The error status of current item.
+          @hasError_zh 当前表单项是否有错误
       -->
       <slot
         :validate="validate"
