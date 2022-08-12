@@ -150,7 +150,7 @@ $positions: "start", "center", "end";
       }
 
       &-card {
-        @extend %c-rounded-md, %c-ma-md, %c-pa-md;
+        @extend %c-rounded-md, %c-ma-md, %c-px-md, %c-pt-md, %c-pb-xl;
 
         width: 320px;
         box-sizing: border-box;

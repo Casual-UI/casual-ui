@@ -1,28 +1,29 @@
 ---
-title: 通知
+title: Notification
 ---
 
-### 使用方式
+### Use Guide
 
-在根组件（通常是 APP.vue）内引入并使用`<c-notification />`即可
+Add `c-notification` in root or global layout.
 
-APP.vue
+For example, in APP.vue
 
 ```vue
 <template>
   <c-notification />
-  <!-- 其他内容 -->
+  <!-- Some other root/global content -->
   <router-view />
+  <!-- Assume this is your back to top component -->
   <back-to-top />
-  <!-- 其他内容 -->
+  <!-- Some other root/global content -->
 </template>
 ```
 
-::: tip 提示
-请确保`c-notification`实例在整个`createApp`得到的应用内仅全局挂载一次
+::: danger Attention
+Please make sure `c-notification` only used once in whole application.
 :::
 
-### 基础使用
+### Basic Usage
 
 ```vue live
 <script setup>
@@ -34,17 +35,17 @@ let count = 0
 const openWithCount = () => {
   count++
   open({
-    title: `标题${count}`,
-    message: '内容',
+    title: `The number ${count}`,
+    message: 'Hello, world',
   })
 }
 </script>
 <template>
-  <c-button label="打开通知" @click="openWithCount" />
+  <c-button label="Open notification" @click="openWithCount" />
 </template>
 ```
 
-### 主题
+### Themes
 
 ```vue live
 <script setup>
@@ -54,8 +55,8 @@ const { open } = useNotifications()
 
 const openWithTheme = (theme) => {
   open({
-    title: `${theme}主题`,
-    message: '内容',
+    title: `Theme ${theme}`,
+    message: 'Hello, world',
     theme,
   })
 }
@@ -63,26 +64,26 @@ const openWithTheme = (theme) => {
 <template>
   <div class="c-row c-items-center c-wrap c-gutter-md">
     <div>
-      <c-button label="打开通知" @click="openWithTheme('primary')" />
+      <c-button label="Open primary notification" @click="openWithTheme('primary')" />
     </div>
     <div>
       <c-button
         theme="secondary"
-        label="打开通知"
+        label="Open secondary notification"
         @click="openWithTheme('secondary')"
       />
     </div>
     <div>
       <c-button
         theme="warning"
-        label="打开通知"
+        label="Open warning notification"
         @click="openWithTheme('warning')"
       />
     </div>
     <div>
       <c-button
         theme="negative"
-        label="打开通知"
+        label="Open negative notification"
         @click="openWithTheme('negative')"
       />
     </div>
@@ -90,7 +91,7 @@ const openWithTheme = (theme) => {
 </template>
 ```
 
-### 方向
+### Directions
 
 ```vue live
 <script setup>
@@ -107,8 +108,8 @@ const { open } = useNotifications()
 
 const openWithPosition = (alignX, alignY) => {
   open({
-    title: '标题',
-    message: '内容',
+    title: 'Title',
+    message: 'message',
     alignX,
     alignY,
   })
@@ -186,9 +187,9 @@ const openWithPosition = (alignX, alignY) => {
 
 ```
 
-### 不自动关闭
+### Disable Auto Close
 
-通过设置`timeout`为`0`，使得通知不自动关闭
+Set `timeout` to `0` to disable the auto close.
 
 ```vue live
 <script setup>
@@ -198,11 +199,11 @@ const { open } = useNotifications()
 </script>
 <template>
   <c-button
-    label="打开通知"
+    label="Open notification"
     @click="
       open({
-        title: '通知',
-        message: '这是一个不会自动关闭的通知',
+        title: 'Title',
+        message: 'This is a notification that won\'t auto close',
         timeout: 0,
         alignX: 'end',
         alignY: 'center',
@@ -212,7 +213,7 @@ const { open } = useNotifications()
 </template>
 ```
 
-### 隐藏关闭按钮&手动关闭
+### Hide Close Icon & Manual Close
 
 ```vue live
 <script setup>
@@ -226,8 +227,8 @@ let close = ref(null)
 const onClick = () => {
   if (!close.value) {
     close.value = open({
-      title: '通知',
-      message: '这是一个没有关闭图标的通知',
+      title: 'Title',
+      message: 'This is a notification that only can be closed by manual',
       timeout: 0,
       closeIcon: false,
     }).close
@@ -239,7 +240,7 @@ const onClick = () => {
 </script>
 <template>
   <c-button
-    :label="close ? '关闭通知' : '打开通知'"
+    :label="close ? 'Close notification' : 'Open notification'"
     :theme="close ? 'negative' : 'primary'"
     @click="onClick"
   />
@@ -247,7 +248,7 @@ const onClick = () => {
 
 ```
 
-### 动态内容
+### Dynamic Content
 
 ```vue live
 <script setup>
@@ -256,26 +257,26 @@ const { open } = useNotifications()
 
 const openWithDynamicContent = () => {
   const { changeContent } = open({
-    title: '标题',
-    message: '信息',
+    title: 'Title',
+    message: 'message',
     timeout: 7000,
   })
   setTimeout(() => {
     changeContent({
-      title: '警告',
-      message: '内容更改了哦',
+      title: 'Warning',
+      message: 'Content changed!',
       theme: 'warning',
     })
     setTimeout(() => {
       changeContent({
-        title: '错误',
-        message: '内容再次更改了哦',
+        title: 'Error',
+        message: 'Content changed again!',
         theme: 'negative',
       })
       setTimeout(() => {
         changeContent({
-          title: '再见',
-          message: '即将消失',
+          title: 'Goodbye',
+          message: 'About to disappear',
           theme: 'secondary',
         })
       }, 2000)
@@ -284,21 +285,21 @@ const openWithDynamicContent = () => {
 }
 </script>
 <template>
-  <c-button label="打开通知" @click="openWithDynamicContent" />
+  <c-button label="Open dynamic notification" @click="openWithDynamicContent" />
 </template>
 
 ```
 
-### $notify 调用
+### Call by $notify 
 
 ```vue live
 <template>
   <c-button
-    label="打开通知"
+    label="Open notification"
     @click="
       $notify({
-        title: '标题',
-        message: '这是一条通过$notify打开的通知',
+        title: 'Title',
+        message: 'This is notification opened by $notify',
       })
     "
   />
