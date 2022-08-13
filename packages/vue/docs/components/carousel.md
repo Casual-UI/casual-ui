@@ -98,7 +98,7 @@ const current = ref(0)
           class="icon"
           i-openmoji-grapes
         ></div>
-       Would you like some grapes?
+        Would you like some grapes?
       </div>
     </c-carousel-slider>
   </c-carousel>
@@ -156,7 +156,7 @@ const current = ref(0)
           class="icon"
           i-openmoji-grapes
         ></div>
-       Would you like some grapes?
+        Would you like some grapes?
       </div>
     </c-carousel-slider>
   </c-carousel>
@@ -225,7 +225,7 @@ const themeOptions = [
           class="icon"
           i-openmoji-grapes
         ></div>
-       Would you like some grapes?
+        Would you like some grapes?
       </div>
     </c-carousel-slider>
   </c-carousel>
@@ -298,7 +298,7 @@ const current = ref(0)
           class="icon"
           i-openmoji-grapes
         ></div>
-       Would you like some grapes?
+        Would you like some grapes?
       </div>
     </c-carousel-slider>
   </c-carousel>
@@ -357,7 +357,7 @@ const current = ref(0)
           class="icon"
           i-openmoji-grapes
         ></div>
-       Would you like some grapes?
+        Would you like some grapes?
       </div>
     </c-carousel-slider>
   </c-carousel>
@@ -415,7 +415,7 @@ const current = ref(0)
           class="icon"
           i-openmoji-grapes
         ></div>
-       Would you like some grapes?
+        Would you like some grapes?
       </div>
     </c-carousel-slider>
   </c-carousel>
@@ -462,21 +462,21 @@ const alignOptions = [
 </script>
 <template>
   <div>
-    <b>横向位置：</b>
+    <b>Indicators position horizontal</b>
     <c-radio-group
       v-model="indicatorsPositionHorizontal"
       :options="positionOptions"
     />
   </div>
   <div>
-    <b>纵向位置：</b>
+    <b>Indicators position vertical</b>
     <c-radio-group
       v-model="indicatorsPositionVertical"
       :options="positionOptions"
     />
   </div>
   <div>
-    <b>排列方向：</b>
+    <b>Indicators align direction</b>
     <c-radio-group
       v-model="indicatorsAlignDirection"
       :options="alignOptions"
@@ -515,7 +515,7 @@ const alignOptions = [
           class="icon"
           i-openmoji-grapes
         ></div>
-       Would you like some grapes?
+        Would you like some grapes?
       </div>
     </c-carousel-slider>
   </c-carousel>
