@@ -6,13 +6,11 @@ export const verticalKey = Symbol('vertical')
 export const intervalKey = Symbol('interval')
 export const timeoutKey = Symbol('timeout')
 export const toNextKey = Symbol('toNext')
+export const pauseOnHoverKey = Symbol('pauseOnHover')
 
 export type Direction = 'forward' | 'backward'
 </script>
-<script
-  setup
-  lang="ts"
->
+<script setup lang="ts">
 import { computed, nextTick, provide, ref, toRefs } from 'vue'
 import CButton from '../basic/button/CButton.vue'
 import CIcon from '../basic/icon/CIcon.vue'
@@ -72,6 +70,11 @@ interface Props {
    * @zh 箭头控制器展示时机
    */
   arrowTiming?: 'always' | 'hover' | 'never'
+  /**
+   * Determine whether to pause transition count down when the slider is hovered.
+   * @zh 是否在鼠标悬停时暂停过渡倒计时
+   */
+  pauseOnHover?: boolean
 }
 const props = withDefaults(defineProps<Props>(), {
   modelValue: 0,
@@ -84,6 +87,7 @@ const props = withDefaults(defineProps<Props>(), {
   vertical: false,
   infinity: false,
   arrowTiming: 'always',
+  pauseOnHover: true,
 })
 const emit = defineEmits<{
   (e: 'update:modelValue', newIndex: number): void
@@ -92,7 +96,9 @@ const slides = ref([])
 const direction = ref<Direction>('forward')
 const timeoutFlag = ref(null)
 
-const { modelValue, vertical, interval } = toRefs(props)
+const indicatorsAnimationPlayState = ref<'running' | 'paused'>('running')
+
+const { modelValue, vertical, interval, pauseOnHover } = toRefs(props)
 
 provide(slidesKey, slides)
 provide(activeIndexKey, modelValue)
@@ -100,15 +106,22 @@ provide(directionKey, direction)
 provide(verticalKey, vertical)
 provide(intervalKey, interval)
 provide(timeoutKey, timeoutFlag)
+provide(pauseOnHoverKey, pauseOnHover)
 
 const showArrow = ref(props.arrowTiming === 'always')
 
 const onContainerMouseEnter = () => {
+  if (props.pauseOnHover) {
+    indicatorsAnimationPlayState.value = 'paused'
+  }
   if (props.arrowTiming === 'hover') {
     showArrow.value = true
   }
 }
 const onContainerMouseLeave = () => {
+  if (props.pauseOnHover) {
+    indicatorsAnimationPlayState.value = 'running'
+  }
   if (props.arrowTiming === 'hover') {
     showArrow.value = false
   }
@@ -205,7 +218,26 @@ defineExpose({
                 { 'c-carousel--indicator-item--active': i === modelValue },
               ]"
               @click="toIndex(i)"
-            ></div>
+            >
+              <div class="c-carousel--indicator-item--bg" />
+              <div
+                class="c-carousel--indicator-item--progress-bar"
+                :style="
+                  i === modelValue && interval
+                    ? {
+                        animationPlayState: indicatorsAnimationPlayState,
+                        animationName: `c-carousel-active-indicator-bar${
+                          indicatorsAlignDirection.startsWith('column')
+                            ? '-vertical'
+                            : ''
+                        }`,
+                        animationDuration: `${interval + 300}ms`,
+                        animationIterationCount: 1,
+                      }
+                    : {}
+                "
+              />
+            </div>
           </div>
         </slot>
       </div>
