@@ -96,6 +96,12 @@ interface CCarouselProps {
   customArrowNext?: CSlot
 
   /**
+   * Determine whether to pause the autoplay when the carousel is hovered.
+   * @zh 鼠标悬浮时是否暂停自动播放
+   */
+  hoverOnPause?: boolean
+
+  /**
    * The content of carousel. It is recommended to use `CCarouselSlider`
    * @zh 内容，建议使用<code>CCarouselSlider</code>
    */

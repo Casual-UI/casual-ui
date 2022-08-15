@@ -22,12 +22,12 @@ pnpm install casual-ui-vue
 ```js
 import { createApp } from 'vue'
 import App from './App.vue'
-import CasualUIVue from 'casual-ui-vue' // 引入全局Vue3插件
-import 'casual-ui-vue/dist/style.css' // 引入样式文件
+import CasualUIVue from 'casual-ui-vue' // import global plugin
+import 'casual-ui-vue/dist/style.css' // import styles
 
 const app = createApp(App)
 
-app.use(CasualUIVue) // 使用插件
+app.use(CasualUIVue) // use plugin
 ```
 
 - Directly use in vue files
