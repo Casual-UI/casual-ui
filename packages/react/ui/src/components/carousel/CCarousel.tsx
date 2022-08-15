@@ -118,6 +118,8 @@ const TransitionWrapper = ({
   toNext,
   interval,
   vertical,
+  onEntered,
+  onStart,
 }: {
   direction: Direction
   activeIndex: number
@@ -126,6 +128,8 @@ const TransitionWrapper = ({
   toNext: () => void
   interval: number
   vertical: boolean
+  onEntered?: () => void
+  onStart?: () => void
 }) => {
   const [timeoutFlag, setTimeoutFlag] = useState<null | ReturnType<
     typeof setTimeout
@@ -142,6 +146,7 @@ const TransitionWrapper = ({
     leave: {
       x: direction === 'forward' ? -100 : 100,
     },
+    onStart,
     onRest({ value: { x } }: any) {
       if (x !== 0 || activeIndex !== currentIndex) {
         if (timeoutFlag) {
@@ -161,6 +166,7 @@ const TransitionWrapper = ({
           }, interval)
         )
       }
+      onEntered?.()
     },
   })
 
@@ -203,7 +209,11 @@ const CCarousel = ({
   customArrowPrev,
   customArrowNext,
   children,
+  hoverOnPause = true,
 }: CCarouselProps) => {
+  const [indicatorAnimationState, setIndicatorAnimationState] = useState<
+    'running' | 'paused'
+  >('running')
   const [direction, setDirection] = useState<Direction>('forward')
 
   const [showArrow, setShowArrow] = useState(arrowTiming === 'always')
@@ -273,6 +283,12 @@ const CCarousel = ({
           toNext={toNext}
           interval={interval}
           vertical={vertical}
+          onStart={() => {
+            setIndicatorAnimationState('paused')
+          }}
+          onEntered={() => {
+            setIndicatorAnimationState('running')
+          }}
         />
       )),
     [children, activeIndex, direction]
@@ -305,18 +321,40 @@ const CCarousel = ({
         >
           {customIndicators
             ? customIndicators
-            : children.map((_, i) => (
-                <div key={`indicators-${i}`}>
-                  <div
-                    className={clsx(
-                      'c-carousel--indicator-item',
-                      `c-carousel--indicator-item--${theme}`,
-                      i === activeIndex && 'c-carousel--indicator-item--active'
-                    )}
-                    onClick={() => toIndex(i)}
-                  ></div>
-                </div>
-              ))}
+            : children.map((_, i) => {
+                const isActive = i === activeIndex
+                return (
+                  <div key={`indicators-${i}`}>
+                    <div
+                      className={clsx(
+                        'c-carousel--indicator-item',
+                        `c-carousel--indicator-item--${theme}`,
+                        isActive && 'c-carousel--indicator-item--active'
+                      )}
+                      onClick={() => toIndex(i)}
+                    >
+                      <div className="c-carousel--indicator-item--bg"></div>
+                      <div
+                        className="c-carousel--indicator-item--progress-bar"
+                        style={
+                          isActive
+                            ? {
+                                animationPlayState: indicatorAnimationState,
+                                animationName: `c-carousel-active-indicator-bar${
+                                  indicatorsAlignDirection.startsWith('col')
+                                    ? '-vertical'
+                                    : ''
+                                }`,
+                                animationDuration: `${interval}ms`,
+                                animationIterationCount: 1,
+                              }
+                            : {}
+                        }
+                      ></div>
+                    </div>
+                  </div>
+                )
+              })}
         </div>
       </div>
       <Fade show={showPrevArrow}>
