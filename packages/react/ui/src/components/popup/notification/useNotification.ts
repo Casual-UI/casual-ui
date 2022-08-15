@@ -10,8 +10,8 @@ let notificationListeners: any[] = []
 
 const notifications: NotificationGroups = createNotificationGroups()
 
-// 通知全局计数器
-// 同时也作为通知项唯一ID
+// global notification counter
+// also the unique id
 let notificationsCounter = 0
 
 const notifyAll = () => {

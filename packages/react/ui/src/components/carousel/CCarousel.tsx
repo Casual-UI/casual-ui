@@ -4,12 +4,13 @@ import {
 } from '@quasar/extras/material-icons'
 import { CSlot, CTheme } from 'casual-types'
 import clsx from 'clsx'
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useMemo, useState, useEffect } from 'react'
 import CButton from '../basic/button/CButton'
 import CIcon from '../basic/icon/CIcon'
 import { useTransition, animated, config } from 'react-spring'
 import Fade from '../transition/Fade'
-
+import useTimer from './useTimer'
+import useHoverState from './useHoverState'
 interface CCarouselProps {
   /**
    * The height of container.
@@ -99,7 +100,7 @@ interface CCarouselProps {
    * Determine whether to pause the autoplay when the carousel is hovered.
    * @zh 鼠标悬浮时是否暂停自动播放
    */
-  hoverOnPause?: boolean
+  pauseOnHover?: boolean
 
   /**
    * The content of carousel. It is recommended to use `CCarouselSlider`
@@ -131,9 +132,11 @@ const TransitionWrapper = ({
   onEntered?: () => void
   onStart?: () => void
 }) => {
-  const [timeoutFlag, setTimeoutFlag] = useState<null | ReturnType<
-    typeof setTimeout
-  >>(null)
+  const { reset, begin, resume, pause } = useTimer(toNext, interval)
+
+  const [entered, setEntered] = useState(false)
+  const [hovering] = useHoverState()
+
   const transition = useTransition(activeIndex === currentIndex, {
     from: {
       x: direction === 'forward' ? 100 : -100,
@@ -146,37 +149,33 @@ const TransitionWrapper = ({
     leave: {
       x: direction === 'forward' ? -100 : 100,
     },
-    onStart,
+    onStart: () => {
+      onStart?.()
+      reset()
+    },
     onRest({ value: { x } }: any) {
       if (x !== 0 || activeIndex !== currentIndex) {
-        if (timeoutFlag) {
-          clearTimeout(timeoutFlag)
-          setTimeoutFlag(null)
-        }
         return
       }
-      if (interval > 0) {
-        setTimeoutFlag(
-          setTimeout(() => {
-            toNext()
-            if (timeoutFlag) {
-              clearTimeout(timeoutFlag)
-            }
-            setTimeoutFlag(null)
-          }, interval)
-        )
+      if (!hovering) {
+        begin()
       }
+      setEntered(true)
       onEntered?.()
     },
   })
 
   useEffect(() => {
-    return () => {
-      if (timeoutFlag) {
-        clearTimeout(timeoutFlag)
+    if (activeIndex !== currentIndex) return
+    if (hovering) {
+      pause()
+    } else {
+      if (entered) {
+        resume()
       }
     }
-  }, [timeoutFlag])
+    return reset
+  }, [hovering, activeIndex, currentIndex])
 
   return transition(
     ({ x }, item) =>
@@ -209,11 +208,8 @@ const CCarousel = ({
   customArrowPrev,
   customArrowNext,
   children,
-  hoverOnPause = true,
+  pauseOnHover = true,
 }: CCarouselProps) => {
-  const [indicatorAnimationState, setIndicatorAnimationState] = useState<
-    'running' | 'paused'
-  >('running')
   const [direction, setDirection] = useState<Direction>('forward')
 
   const [showArrow, setShowArrow] = useState(arrowTiming === 'always')
@@ -228,16 +224,20 @@ const CCarousel = ({
     [showArrow, infinity, activeIndex]
   )
 
+  const [hovering, setHovering] = useHoverState()
+
   const onMouseEnter = () => {
     if (arrowTiming === 'hover') {
       setShowArrow(true)
     }
+    setHovering(true)
   }
 
   const onMouseLeave = () => {
     if (arrowTiming === 'hover') {
       setShowArrow(false)
     }
+    setHovering(false)
   }
 
   const toIndex = useCallback(
@@ -271,29 +271,12 @@ const CCarousel = ({
 
   const toNext = useCallback(() => toIndex(activeIndex + 1), [activeIndex])
 
-  const slides = useMemo(
-    () =>
-      children.map((c, i) => (
-        <TransitionWrapper
-          key={i}
-          children={c}
-          direction={direction}
-          activeIndex={activeIndex}
-          currentIndex={i}
-          toNext={toNext}
-          interval={interval}
-          vertical={vertical}
-          onStart={() => {
-            setIndicatorAnimationState('paused')
-          }}
-          onEntered={() => {
-            setIndicatorAnimationState('running')
-          }}
-        />
-      )),
-    [children, activeIndex, direction]
-  )
+  const [transitioning, setTransitioning] = useState(false)
 
+  const indicatorAnimationState = useMemo<'running' | 'paused'>(
+    () => ((pauseOnHover && hovering) || transitioning ? 'paused' : 'running'),
+    [pauseOnHover, hovering, transitioning]
+  )
   return (
     <div
       className={clsx('c-carousel', vertical && 'c-carousel--vertical')}
@@ -303,6 +286,7 @@ const CCarousel = ({
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
+      Hovering{hovering ? 'true' : 'false'}
       <div
         className={clsx(
           'c-carousel--indicators',
@@ -314,7 +298,7 @@ const CCarousel = ({
         <div
           className={clsx(
             'c-carousel--indicators-container',
-            'c-gutter-sm',
+            'c-gutter-xs',
             'c-flex',
             `c-${indicatorsAlignDirection}`
           )}
@@ -393,8 +377,22 @@ const CCarousel = ({
           )}
         </div>
       </Fade>
-
-      <div className="c-carousel--sliders">{slides}</div>
+      <div className="c-carousel--sliders">
+        {children.map((c, i) => (
+          <TransitionWrapper
+            key={i}
+            children={c}
+            direction={direction}
+            activeIndex={activeIndex}
+            currentIndex={i}
+            toNext={toNext}
+            interval={interval}
+            vertical={vertical}
+            onStart={() => setTransitioning(true)}
+            onEntered={() => setTransitioning(false)}
+          />
+        ))}
+      </div>
     </div>
   )
 }
