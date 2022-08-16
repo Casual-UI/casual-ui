@@ -1,3 +1,5 @@
 packages:
   - 'packages/**'
   - '!**/dist/**'
+  - '!**/lib/**'
+  - 'packages/svelte/dist/**'

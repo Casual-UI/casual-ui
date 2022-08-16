@@ -2,6 +2,7 @@
   "name": "vuepress-plugin-casual-code",
   "version": "0.0.1",
   "description": "",
+  "private": true,
   "dependencies": {
     "casual-ui-vue": "workspace:*",
     "monaco-editor": "^0.33.0",
