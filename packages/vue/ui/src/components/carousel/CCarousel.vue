@@ -77,7 +77,7 @@ interface Props {
    */
   arrowTiming?: 'always' | 'hover' | 'never'
   /**
-   * Determine whether to pause transition count down when the slider is hovered.
+   * Determine whether to pause transition count down when the slider is hovering.
    * @zh 是否在鼠标悬停时暂停过渡倒计时
    */
   pauseOnHover?: boolean

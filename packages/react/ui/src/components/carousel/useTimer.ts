@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState } from 'react'
-import useClickOutside from 'src/hooks/useClickOutside'
 
 export default (cb: (...params: any) => any, delay: number) => {
   const [flag, setFlag] = useState<ReturnType<typeof setTimeout> | null>(null)
@@ -21,36 +20,24 @@ export default (cb: (...params: any) => any, delay: number) => {
     setStart(Date.now())
     if (flag) {
       clearTimeout(flag)
-      setFlag(null)
     }
   }, [flag])
 
   const begin = useCallback(() => {
     reset()
-    setFlag(
-      setTimeout(() => {
-        cb()
-        setRemain(delay)
-      }, remain)
-    )
-  }, [cb, flag])
+    setFlag(setTimeout(cb, remain))
+  }, [cb, flag, reset])
 
   const resume = useCallback(() => {
     if (remain < 1) {
       return
     }
-    setFlag(
-      setTimeout(() => {
-        cb()
-        setRemain(delay)
-      }, remain)
-    )
-  }, [cb, flag, remain])
+    setFlag(setTimeout(cb, remain))
+  }, [cb, remain])
 
   const pause = useCallback(() => {
     if (flag) {
       clearTimeout(flag)
-      setFlag(null)
     }
     setRemain(remain - (Date.now() - start))
   }, [flag, remain, start])
