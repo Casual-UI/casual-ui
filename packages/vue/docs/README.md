@@ -24,7 +24,7 @@ footer: MIT Licensed | Copyright © 2022-present Casual UI
 <hr />
 
 <div class="c-pb-xl">
-  <p class="description">Thanks To</p>
+  <p class="description">Thanks</p>
   <div class="c-row c-items-center c-gutter-md c-wrap c-justify-center">
     <img src="/badges/react.svg" alt="" />
     <img src="/badges/vue.svg" alt="" />

@@ -35,9 +35,24 @@
   export const timeoutKey = Symbol('c-carousel-timeout-flag')
 
   /**
-   * The pause on hover key.
+   * The hovering flag key.
    */
-  export const pauseOnHoverKey = Symbol('c-carousel-pause-on-hover')
+  export const hoveringKey = Symbol('c-carousel-hovering')
+
+  /**
+   * The slidering flag key.
+   */
+  export const slideringKey = Symbol('c-carousel-slidering')
+
+  /**
+   * The pause functions key.
+   */
+  export const pausesKey = Symbol('c-carousel-pauses')
+
+  /**
+   * The resume functions key.
+   */
+  export const resumesKey = Symbol('c-carousel-pauses')
 </script>
 
 <script>
@@ -129,15 +144,24 @@
 
   const timeoutFlag = writable(null)
 
-  const pauseOnHoverContext = writable(pauseOnHover)
+  /**
+   * @type {Array<() => void>}
+   */
+  const pauses = []
 
+  /**
+   * @type {Array<() => void>}
+   */
+  const resumes = []
+
+  setContext(resumesKey, resumes)
+  setContext(pausesKey, pauses)
   setContext(slidesKey, slides)
   setContext(activeIndexKey, activeIndexStore)
   setContext(directionKey, direction)
   setContext(verticalKey, verticalContext)
   setContext(intervalKey, intervalContext)
   setContext(timeoutKey, timeoutFlag)
-  setContext(pauseOnHoverKey, pauseOnHoverContext)
 
   /**
    * Goto specific slider
@@ -181,14 +205,22 @@
 
   let showArrow = arrowTiming === 'always'
 
+  const hovering = writable(false)
+  const slidering = writable(false)
+
+  setContext(hoveringKey, hovering)
+  setContext(slideringKey, slidering)
+
   /**
    * @type {'running' | 'paused'}
    */
-  let indicatorsAnimationPlayState = 'running'
+  $: indicatorsAnimationPlayState =
+    ($hovering && pauseOnHover) || $slidering ? 'paused' : 'running'
 
   const onContainerMouseEnter = () => {
+    $hovering = true
     if (pauseOnHover) {
-      indicatorsAnimationPlayState = 'paused'
+      pauses.forEach(p => p())
     }
     if (arrowTiming === 'hover') {
       showArrow = true
@@ -196,8 +228,9 @@
   }
 
   const onContainerMouseLeave = () => {
+    $hovering = false
     if (pauseOnHover) {
-      indicatorsAnimationPlayState = 'running'
+      resumes.forEach(r => r())
     }
     if (arrowTiming === 'hover') {
       showArrow = false
@@ -255,9 +288,7 @@
                       indicatorsAlignDirection.startsWith('column')
                         ? '-vertical'
                         : ''
-                    }; animation-duration: ${
-                      interval + 300
-                    }ms; animation-iteration-count: 1;`
+                    }; animation-duration: ${interval}ms; animation-iteration-count: 1;`
                   : ''}
               />
             </div>
