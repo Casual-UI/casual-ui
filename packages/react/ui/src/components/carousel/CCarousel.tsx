@@ -144,8 +144,8 @@ const CCarousel = ({
 
   const [hovering, setHovering] = useState(false)
 
-  const [pauses, setPauses] = useState<Array<Function>>([])
-  const [resumes, setResumes] = useState<Array<Function>>([])
+  const pauses: Function[] = []
+  const resumes: Function[] = []
 
   const onMouseEnter = () => {
     if (arrowTiming === 'hover') {
@@ -211,8 +211,6 @@ const CCarousel = ({
         setSliding: setTransitioning,
         pauses,
         resumes,
-        addPause: p => setPauses([...pauses, p]),
-        addResume: r => setResumes([...resumes, r]),
       }}
     >
       <div

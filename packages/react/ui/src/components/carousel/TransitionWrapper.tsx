@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useCallback, useContext, useEffect } from 'react'
 import { useTransition, animated, config } from 'react-spring'
 import useTimer from './useTimer'
 import { CarouselContext } from './CarouselContext'
@@ -24,23 +24,22 @@ const TransitionWrapper = ({
 }) => {
   const { reset, begin, resume, pause } = useTimer(toNext, interval)
 
-  const { hovering, addPause, addResume, setSliding } =
-    useContext(CarouselContext)
+  const { hovering, pauses, resumes, setSliding } = useContext(CarouselContext)
 
-  useEffect(() => {
-    addPause(() => {
-      if (currentIndex === activeIndex) {
-        console.log('pause')
-
+  pauses.push(
+    useCallback(() => {
+      if (activeIndex === currentIndex) {
         pause()
       }
-    })
-    addResume(() => {
-      if (currentIndex === activeIndex) {
+    }, [activeIndex, currentIndex, pause])
+  )
+  resumes.push(
+    useCallback(() => {
+      if (activeIndex === currentIndex) {
         resume()
       }
-    })
-  }, [])
+    }, [activeIndex, currentIndex, resume])
+  )
 
   const transition = useTransition(activeIndex === currentIndex, {
     from: {
@@ -56,9 +55,9 @@ const TransitionWrapper = ({
     },
     onStart: () => {
       setSliding(true)
-      reset()
     },
     onRest({ value: { x } }: any) {
+      reset()
       if (x !== 0 || activeIndex !== currentIndex) {
         return
       }

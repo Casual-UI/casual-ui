@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 
-export default (cb: (...params: any) => any, delay: number) => {
+export default function useTimer(cb: (...params: any) => any, delay: number) {
   const [flag, setFlag] = useState<ReturnType<typeof setTimeout> | null>(null)
 
   const [start, setStart] = useState(Date.now())
@@ -16,28 +16,35 @@ export default (cb: (...params: any) => any, delay: number) => {
   }, [flag])
 
   const reset = useCallback(() => {
-    setRemain(delay)
     setStart(Date.now())
+    setRemain(delay)
     if (flag) {
       clearTimeout(flag)
+      setFlag(null)
     }
   }, [flag])
 
-  const begin = useCallback(() => {
-    reset()
+  const begin = () => {
+    setRemain(delay)
+    setStart(Date.now())
     setFlag(setTimeout(cb, remain))
-  }, [cb, flag, reset])
+  }
 
   const resume = useCallback(() => {
     if (remain < 1) {
       return
     }
+    if (flag) {
+      clearTimeout(flag)
+      setFlag(null)
+    }
     setFlag(setTimeout(cb, remain))
-  }, [cb, remain])
+  }, [remain, cb, flag])
 
   const pause = useCallback(() => {
     if (flag) {
       clearTimeout(flag)
+      setFlag(null)
     }
     setRemain(remain - (Date.now() - start))
   }, [flag, remain, start])
