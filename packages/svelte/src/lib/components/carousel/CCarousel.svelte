@@ -206,16 +206,16 @@
   let showArrow = arrowTiming === 'always'
 
   const hovering = writable(false)
-  const slidering = writable(false)
+  const sliding = writable(false)
 
   setContext(hoveringKey, hovering)
-  setContext(slideringKey, slidering)
+  setContext(slideringKey, sliding)
 
   /**
    * @type {'running' | 'paused'}
    */
   $: indicatorsAnimationPlayState =
-    ($hovering && pauseOnHover) || $slidering ? 'paused' : 'running'
+    ($hovering && pauseOnHover) || $sliding ? 'paused' : 'running'
 
   const onContainerMouseEnter = () => {
     $hovering = true

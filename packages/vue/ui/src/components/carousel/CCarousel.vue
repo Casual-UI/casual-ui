@@ -6,12 +6,18 @@ export const verticalKey = Symbol('vertical')
 export const intervalKey = Symbol('interval')
 export const timeoutKey = Symbol('timeout')
 export const toNextKey = Symbol('toNext')
-export const pauseOnHoverKey = Symbol('pauseOnHover')
+export const slidingKey = Symbol('sliding')
+export const hoveringKey = Symbol('hovering')
+export const pauseFunctionsKey = Symbol('pauses')
+export const resumeFunctionsKey = Symbol('resumes')
 
 export type Direction = 'forward' | 'backward'
 </script>
-<script setup lang="ts">
-import { computed, nextTick, provide, ref, toRefs } from 'vue'
+<script
+  setup
+  lang="ts"
+>
+import { computed, nextTick, onMounted, provide, ref, toRefs } from 'vue'
 import CButton from '../basic/button/CButton.vue'
 import CIcon from '../basic/icon/CIcon.vue'
 import {
@@ -96,9 +102,10 @@ const slides = ref([])
 const direction = ref<Direction>('forward')
 const timeoutFlag = ref(null)
 
-const indicatorsAnimationPlayState = ref<'running' | 'paused'>('running')
-
 const { modelValue, vertical, interval, pauseOnHover } = toRefs(props)
+
+const pauses: Array<() => void> = []
+const resumes: Array<() => void> = []
 
 provide(slidesKey, slides)
 provide(activeIndexKey, modelValue)
@@ -106,26 +113,40 @@ provide(directionKey, direction)
 provide(verticalKey, vertical)
 provide(intervalKey, interval)
 provide(timeoutKey, timeoutFlag)
-provide(pauseOnHoverKey, pauseOnHover)
+provide(pauseFunctionsKey, pauses)
+provide(resumeFunctionsKey, resumes)
 
 const showArrow = ref(props.arrowTiming === 'always')
 
+const hovering = ref(false)
+const sliding = ref(false)
+
+provide(slidingKey, sliding)
+provide(hoveringKey, hovering)
+
 const onContainerMouseEnter = () => {
-  if (props.pauseOnHover) {
-    indicatorsAnimationPlayState.value = 'paused'
-  }
+  hovering.value = true
   if (props.arrowTiming === 'hover') {
     showArrow.value = true
   }
+  if (props.pauseOnHover) {
+    pauses.forEach(p => p())
+  }
 }
 const onContainerMouseLeave = () => {
-  if (props.pauseOnHover) {
-    indicatorsAnimationPlayState.value = 'running'
-  }
+  hovering.value = false
+
   if (props.arrowTiming === 'hover') {
     showArrow.value = false
   }
+  if (props.pauseOnHover) {
+    resumes.forEach(r => r())
+  }
 }
+
+const indicatorsAnimationPlayState = computed(() =>
+  (props.pauseOnHover && hovering.value) || sliding.value ? 'paused' : 'running'
+)
 
 const toIndex = (idx: number) => {
   const updateIndex = (i: number) => {
@@ -170,6 +191,10 @@ const showNext = computed(
 )
 
 provide(toNextKey, toNext)
+
+onMounted(() => {
+  resumes.forEach(r => r())
+})
 
 defineExpose({
   toIndex,
@@ -231,7 +256,7 @@ defineExpose({
                             ? '-vertical'
                             : ''
                         }`,
-                        animationDuration: `${interval + 300}ms`,
+                        animationDuration: `${interval}ms`,
                         animationIterationCount: 1,
                       }
                     : {}
