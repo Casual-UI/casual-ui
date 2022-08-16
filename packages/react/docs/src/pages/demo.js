@@ -18,8 +18,6 @@ export default function Demo() {
     <CCarousel
       activeIndex={activeIndex}
       onActiveIndexChange={setActiveIndex}
-      infinity
-      interval={3000}
     >
       <CCarouselSlider>
         <div style={itemStyle}>Slider1</div>

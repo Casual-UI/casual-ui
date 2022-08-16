@@ -221,7 +221,6 @@ const CCarousel = ({
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
-        Hovering{hovering ? 'true' : 'false'}
         <div
           className={clsx(
             'c-carousel--indicators',

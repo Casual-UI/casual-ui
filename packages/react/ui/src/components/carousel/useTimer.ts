@@ -25,6 +25,7 @@ export default function useTimer(cb: (...params: any) => any, delay: number) {
   }, [flag])
 
   const begin = () => {
+    if (delay < 1) return
     setRemain(delay)
     setStart(Date.now())
     setFlag(setTimeout(cb, remain))
