@@ -76,6 +76,10 @@ if (type) {
 
   cd('../../../')
 
+  const tag = `v${packageInfo.version}`
+
+  await $`git tag ${tag}`
+  await $`git push origin ${tag}`
   await $`git add -A`
   await $`git commit -m "relese: ${packageInfo.version}"`
   await $`git push`
