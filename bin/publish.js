@@ -17,9 +17,12 @@ function addVersion(type = '--sm', packageInfo) {
       break
     case '--md':
       versions[1] = Number(versions[1]) + 1
+      versions[2] = 0
       break
     case '--lg':
       versions[0] = Number(versions[1]) + 0
+      versions[1] = 0
+      versions[2] = 0
       break
   }
   packageInfo.version = versions.join('.')
