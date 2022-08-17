@@ -15,6 +15,11 @@
     "prettier": "^2.6.1",
     "zx": "^7.0.8"
   },
+  "scripts": {
+    "pub:sm": "npx zx ./bin/publish.js --sm",
+    "pub:md": "npx zx ./bin/publish.js --md",
+    "pub:lg": "npx zx ./bin/publish.js --lg"
+  },
   "keywords": [
     "ui components",
     "vue components",
