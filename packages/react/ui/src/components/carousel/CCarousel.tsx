@@ -258,13 +258,7 @@ const CCarousel = ({
                             isActive
                               ? {
                                   animationPlayState: indicatorAnimationState,
-                                  animationName: `c-carousel-active-indicator-bar${
-                                    indicatorsAlignDirection.startsWith('col')
-                                      ? '-vertical'
-                                      : ''
-                                  }`,
                                   animationDuration: `${interval}ms`,
-                                  animationIterationCount: 1,
                                 }
                               : {}
                           }

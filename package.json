@@ -1,4 +1,7 @@
 {
+  "name": "casual-ui",
+  "version": "0.0.1",
+  "private": true,
   "type": "module",
   "author": {
     "email": "1197160272@qq.com",
@@ -9,20 +12,23 @@
     "url": "https://github.com/Blackman99/casual-ui.git"
   },
   "devDependencies": {
-    "prettier": "^2.6.1"
+    "prettier": "^2.6.1",
+    "zx": "^7.0.8"
   },
   "keywords": [
-    "ui components", 
-    "vue components", 
-    "vue ui components", 
-    "vue3", 
-    "vue3 components", 
+    "ui components",
+    "vue components",
+    "vue ui components",
+    "vue3",
+    "vue3 components",
     "vue3 ui components",
-    "react", "react ui", 
-    "react components", 
-    "react ui components", 
-    "react17", "react3 ui", 
-    "react3 components", 
+    "react",
+    "react ui",
+    "react components",
+    "react ui components",
+    "react17",
+    "react3 ui",
+    "react3 components",
     "react17 ui components"
   ]
 }

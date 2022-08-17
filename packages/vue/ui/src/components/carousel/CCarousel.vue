@@ -251,13 +251,7 @@ defineExpose({
                   i === modelValue && interval
                     ? {
                         animationPlayState: indicatorsAnimationPlayState,
-                        animationName: `c-carousel-active-indicator-bar${
-                          indicatorsAlignDirection.startsWith('column')
-                            ? '-vertical'
-                            : ''
-                        }`,
                         animationDuration: `${interval}ms`,
-                        animationIterationCount: 1,
                       }
                     : {}
                 "

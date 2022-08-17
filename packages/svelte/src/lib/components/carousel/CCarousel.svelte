@@ -284,11 +284,7 @@
               <div
                 class="c-carousel--indicator-item--progress-bar"
                 style={isActive && interval
-                  ? `animation-play-state: ${indicatorsAnimationPlayState}; animation-name: c-carousel-active-indicator-bar${
-                      indicatorsAlignDirection.startsWith('column')
-                        ? '-vertical'
-                        : ''
-                    }; animation-duration: ${interval}ms; animation-iteration-count: 1;`
+                  ? `animation-play-state: ${indicatorsAnimationPlayState}; animation-duration: ${interval}ms; `
                   : ''}
               />
             </div>
