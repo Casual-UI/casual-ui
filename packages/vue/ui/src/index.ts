@@ -1,4 +1,5 @@
 import 'casual-styles'
+import { key } from 'casual-i18n'
 import CButton from './components/basic/button/CButton.vue'
 import CIcon from './components/basic/icon/CIcon.vue'
 import CLoading from './components/basic/loading/CLoading.vue'
@@ -67,7 +68,16 @@ import CDrawer from './components/popup/CDrawer.vue'
 import CCarouselSlider from './components/carousel/CCarouselSlider.vue'
 import CCarousel from './components/carousel/CCarousel.vue'
 const CasualUI: Plugin = {
-  install: (app: App) => {
+  install: (
+    app: App,
+    {
+      locale = 'en',
+    }: {
+      locale: 'zhCN' | 'en'
+    } = {
+      locale: 'en',
+    }
+  ) => {
     app.component('CCarousel', CCarousel)
     app.component('CCarouselSlider', CCarouselSlider)
     app.component('CTabs', CTabs)
@@ -123,6 +133,8 @@ const CasualUI: Plugin = {
     app.directive('loading', vLoading)
 
     app.use(NotificationPlugin)
+
+    app.provide(key, locale)
   },
 }
 
