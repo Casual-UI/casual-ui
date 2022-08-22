@@ -27,6 +27,10 @@
     "message": "暗黑模式",
     "description": "Navbar item with label Dark mode"
   },
+  "item.label.I18n": {
+    "message": "国际化",
+    "description": "Navbar item with label I18n"
+  },
   "item.label.CSS Utils": {
     "message": "CSS 工具",
     "description": "Navbar item with label CSS Utils"

@@ -54,8 +54,10 @@ import CInfoItem from './src/components/list/CInfoItem'
 import CDrawer from './src/components/popup/CDrawer'
 import CCarousel from './src/components/carousel/CCarousel'
 import CCarouselSlider from './src/components/carousel/CCarouselSlider'
+import useI18n from './src/hooks/useI18n'
 
 export {
+  useI18n,
   CCarousel,
   CCarouselSlider,
   CDrawer,

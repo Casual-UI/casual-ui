@@ -1,0 +1,29 @@
+---
+title: 国际化
+---
+
+Casual UI 提供了 `useI18n` API 来切换语言
+
+这里是一个示例：
+
+```jsx live
+function Demo() {
+  const { locale, setLocale, messages } = useI18n()
+
+  const options = [
+    { label: '英文', value: 'en' },
+    { label: '中文', value: 'zhCN' },
+  ]
+
+  return (
+    <>
+      <CRadioGroup
+        value={locale}
+        onChange={setLocale}
+        options={options}
+      />
+      <pre>{JSON.stringify(messages)}</pre>
+    </>
+  )
+}
+```
