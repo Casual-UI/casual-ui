@@ -9,7 +9,7 @@ interface CTooltipProps {
    * The popup content.
    * @zh 弹出的内容文字
    */
-  content?: string
+  content?: string | number
   /**
    * The popup position.
    * @zh 弹出位置

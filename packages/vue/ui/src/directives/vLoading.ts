@@ -34,4 +34,4 @@ const vLoading: Directive = {
   },
 }
 
-export { vLoading }
+export default vLoading

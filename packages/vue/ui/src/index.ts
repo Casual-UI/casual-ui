@@ -60,14 +60,18 @@ import CFormItem from './components/form/CFormItem.vue'
 import CRadioGroup from './components/form/CRadioGroup.vue'
 import useValidator from './components/form/useValidator'
 import CInnerLoading from './components/basic/loading/CInnerLoading.vue'
-import { vLoading } from './directives'
+import vLoading from './directives/vLoading'
+import vDrag from './directives/vDrag'
 import { useBEM } from './usable/useBEM'
 import CInfoItem from './components/list/CInfoItem.vue'
 import CDrawer from './components/popup/CDrawer.vue'
 import CCarouselSlider from './components/carousel/CCarouselSlider.vue'
 import CCarousel from './components/carousel/CCarousel.vue'
+import CSlider from './components/form/CSlider.vue'
+
 const CasualUI: Plugin = {
   install: (app: App) => {
+    app.component('CSlider', CSlider)
     app.component('CCarousel', CCarousel)
     app.component('CCarouselSlider', CCarouselSlider)
     app.component('CTabs', CTabs)
@@ -121,6 +125,7 @@ const CasualUI: Plugin = {
     app.component('CDrawer', CDrawer)
 
     app.directive('loading', vLoading)
+    app.directive('drag', vDrag)
 
     app.use(NotificationPlugin)
   },
@@ -195,5 +200,7 @@ export {
   useScreen,
   useValidator,
   vLoading,
+  vDrag,
   useBEM,
+  CSlider,
 }

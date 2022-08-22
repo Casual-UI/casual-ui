@@ -1,0 +1,69 @@
+$thumb-sizes: ("xs": 12px, "sm": 14px, "md": 16px, "lg": 18px, "xl": 20px);
+
+.c-slider {
+  padding: 12px 0;
+  position: relative;
+
+  &--track {
+    height: 4px;
+    background-color: var(--casual-normal-bg);
+  }
+
+  &--thumb {
+    position: absolute;
+    border-radius: 50%;
+    cursor: grab;
+    z-index: 3;
+
+    &::before {
+      content: " ";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: inherit;
+      opacity: 0;
+      transition: opacity ease-in-out 0.2s, transform ease-in-out 0.2s;
+      border-radius: inherit;
+      z-index: 2;
+    }
+
+    &:hover {
+      &::before {
+        opacity: 0.2;
+        transform: scale3d(1.5, 1.5, 1);
+      }
+    }
+
+    &:active {
+      cursor: grabbing;
+
+      &::before {
+        opacity: 0.4;
+        transform: scale3d(1.7, 1.7, 1);
+      }
+    }
+  }
+
+  @each $size, $val in $thumb-sizes {
+    &--#{$size} {
+      .c-slider--thumb {
+        height: $val;
+        width: $val;
+
+        --slider-size: #{$val};
+
+        top: calc(50% - var(--slider-size) / 2);
+      }
+    }
+  }
+
+  &--primary {
+    .c-slider {
+      &--thumb {
+        background-color: var(--casual-primary);
+      }
+    }
+  }
+}
