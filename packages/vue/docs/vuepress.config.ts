@@ -44,6 +44,10 @@ export default defineUserConfig({
                 text: 'Dark Mode',
                 link: '/guide/dark-mode/',
               },
+              {
+                text: 'I18n',
+                link: '/guide/i18n/',
+              },
             ],
           },
           {
@@ -86,6 +90,7 @@ export default defineUserConfig({
             '/guide/install/',
             '/guide/theme-customize/',
             '/guide/dark-mode/',
+            '/guide/i18n/',
           ],
           '/components/': [
             {
@@ -141,7 +146,11 @@ export default defineUserConfig({
               ],
             },
           ],
-          '/usable/': ['/usable/useClickOutside/', '/usable/useFormValidator/'],
+          '/usable/': [
+            '/usable/useClickOutside/',
+            '/usable/useFormValidator/',
+            '/usable/useI18n/',
+          ],
           '/global-style-utils/': ['/global-style-utils/'],
           '/directives/': ['/directives/v-loading/'],
         },
@@ -168,6 +177,10 @@ export default defineUserConfig({
               {
                 text: '暗黑模式',
                 link: '/zh-CN/guide/dark-mode/',
+              },
+              {
+                text: '国际化',
+                link: '/zh-CN/guide/i18n/',
               },
             ],
           },
@@ -211,10 +224,12 @@ export default defineUserConfig({
             '/zh-CN/guide/install/',
             '/zh-CN/guide/theme-customize/',
             '/zh-CN/guide/dark-mode/',
+            '/zh-CN/guide/i18n/',
           ],
           '/zh-CN/usable/': [
             '/zh-CN/usable/useClickOutside/',
             '/zh-CN/usable/useFormValidator/',
+            '/zh-CN/usable/useI18n/',
           ],
           '/zh-CN/global-style-utils/': ['/zh-CN/global-style-utils/'],
           '/zh-CN/directives/': ['/zh-CN/directives/v-loading/'],

@@ -3,8 +3,8 @@
   lang="ts"
 >
 import { toRefs, computed, ref } from 'vue'
-import { weeks } from 'casual-i18n'
 import dayjs from 'dayjs'
+import { useMessage } from '../../../usable/useI18n'
 
 type Formatter = (origin: Date | null, format: string) => string
 
@@ -18,6 +18,9 @@ interface ODatePanelProps {
   formatter?: Formatter
   range?: boolean
 }
+
+const messages = useMessage()
+console.log('messages: ', messages)
 
 /**
  * 比较两个日期是否相等
@@ -185,7 +188,7 @@ const getDisplayDateNum = (date: number) => {
   <div :class="['c-date-panel', 'c-date-picker--panel']">
     <div class="c-date-panel--body">
       <div
-        v-for="w in weeks"
+        v-for="w in messages.weeks"
         :key="w"
         class="c-date-panel--week-item"
       >

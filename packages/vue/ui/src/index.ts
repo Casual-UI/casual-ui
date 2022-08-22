@@ -1,4 +1,5 @@
 import 'casual-styles'
+import { key, type Locale } from 'casual-i18n'
 import CButton from './components/basic/button/CButton.vue'
 import CIcon from './components/basic/icon/CIcon.vue'
 import CLoading from './components/basic/loading/CLoading.vue'
@@ -17,7 +18,7 @@ import CSelect from './components/form/CSelect.vue'
 import CTag from './components/basic/CTag.vue'
 import CRadio from './components/form/CRadio.vue'
 import useClickOutside from './usable/useClickOutside'
-import type { App, Plugin } from 'vue'
+import { ref, type App, type Plugin } from 'vue'
 import useInjectSize from './usable/useInjectSize'
 import CCheckbox from './components/form/CCheckbox.vue'
 import CCheckboxGroup from './components/form/CCheckboxGroup.vue'
@@ -68,9 +69,19 @@ import CDrawer from './components/popup/CDrawer.vue'
 import CCarouselSlider from './components/carousel/CCarouselSlider.vue'
 import CCarousel from './components/carousel/CCarousel.vue'
 import CSlider from './components/form/CSlider.vue'
+import useI18n, { useMessage } from './usable/useI18n'
 
 const CasualUI: Plugin = {
-  install: (app: App) => {
+  install: (
+    app: App,
+    {
+      locale = 'en',
+    }: {
+      locale: Locale
+    } = {
+      locale: 'en',
+    }
+  ) => {
     app.component('CSlider', CSlider)
     app.component('CCarousel', CCarousel)
     app.component('CCarouselSlider', CCarouselSlider)
@@ -128,6 +139,8 @@ const CasualUI: Plugin = {
     app.directive('drag', vDrag)
 
     app.use(NotificationPlugin)
+
+    app.provide(key, ref(locale))
   },
 }
 
@@ -203,4 +216,6 @@ export {
   vDrag,
   useBEM,
   CSlider,
+  useI18n,
+  useMessage,
 }

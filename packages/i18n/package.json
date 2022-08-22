@@ -1,16 +1,10 @@
 {
   "name": "casual-i18n",
   "version": "0.0.1",
-  "description": "Casual UI I18n",
-  "main": "index.js",
-  "type": "module",
-  "types": "index.d.ts",
-  "private": true,
-  "exports": {
-    ".": "./index.js"
-  },
+  "description": "The I18n package for Casual UI",
+  "main": "src/index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npx tsc -p ./tsconfig.json"
   },
   "repository": {
     "url": "https://github.com/Blackman99/casual-ui.git",
