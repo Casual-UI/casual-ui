@@ -56,3 +56,7 @@ import { CButton } from 'casual-ui-vue'
   <c-button label="A Button" />
 </template>
 ```
+
+### Plugin Options
+
+* locale - The i18n locale.

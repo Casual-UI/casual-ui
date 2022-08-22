@@ -56,3 +56,8 @@ import { CButton } from 'casual-ui-vue'
   <c-button label="按钮" />
 </template>
 ```
+
+
+### 插件选项
+
+* locale - 国际化语言
