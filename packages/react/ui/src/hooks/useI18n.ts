@@ -1,5 +1,5 @@
-import type { Locale } from 'casual-i18n'
-import allMessages from 'casual-i18n'
+import type { Locale } from '@casual-ui/i18n'
+import allMessages from '@casual-ui/i18n'
 import { useMemo, useState } from 'react'
 
 const useI18n = () => {

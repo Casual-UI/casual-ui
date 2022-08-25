@@ -1,5 +1,5 @@
-import type { Locale } from 'casual-i18n'
-import messages, { key } from 'casual-i18n'
+import type { Locale } from '@casual-ui/i18n'
+import messages, { key } from '@casual-ui/i18n'
 import { computed, inject, provide, ref } from 'vue'
 import type { Ref } from 'vue'
 

@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@quasar/extras": "^1.13.4",
-    "casual-i18n": "workspace:*",
+    "@casual-ui/i18n": "workspace:*",
     "casual-styles": "workspace:*",
     "casual-types": "workspace:*",
     "casual-ui-vue": "workspace:*",

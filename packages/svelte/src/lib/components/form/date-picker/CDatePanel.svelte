@@ -1,6 +1,6 @@
 <script>
   import clsx from '$lib/utils/clsx'
-  import { weeks } from 'casual-i18n'
+  import useI18n from '$lib/hooks/useI18n'
   import { createEventDispatcher } from 'svelte'
   import { cubicIn } from 'svelte/easing'
   import { scale } from 'svelte/transition'
@@ -221,6 +221,8 @@
     hoveringDate
     doLayout()
   }
+
+  const { messages } = useI18n()
 </script>
 
 <div
@@ -228,7 +230,7 @@
   transition:scale={{ duration: 300, easing: cubicIn }}
 >
   <div class="c-date-panel--body">
-    {#each weeks as w}
+    {#each $messages.weeks as w}
       <div class="c-date-panel--week-item">
         {w}
       </div>

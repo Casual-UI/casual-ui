@@ -18,9 +18,9 @@ const config = {
       $theme: 'src/theme',
       '$casual-style': '../styles',
     },
-    package: {
-      dir: 'dist',
-    },
+  },
+  package: {
+    dir: 'dist',
   },
 
   preprocess: sveltePreprocess(),

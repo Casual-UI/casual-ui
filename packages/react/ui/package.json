@@ -31,7 +31,7 @@
     "casual-styles": "workspace:*",
     "casual-types": "workspace:*",
     "casual-ui-react": "workspace:*",
-    "casual-i18n": "workspace:*",
+    "@casual-ui/i18n": "workspace:*",
     "prettier": "^2.6.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
