@@ -1,7 +1,4 @@
-<script
-  setup
-  lang="ts"
->
+<script setup lang="ts">
 import { toRefs, computed, ref } from 'vue'
 import dayjs from 'dayjs'
 import { useMessage } from '../../../usable/useI18n'
@@ -20,7 +17,6 @@ interface ODatePanelProps {
 }
 
 const messages = useMessage()
-console.log('messages: ', messages)
 
 /**
  * 比较两个日期是否相等
