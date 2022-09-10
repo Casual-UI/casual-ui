@@ -87,6 +87,10 @@ const config = {
                 to: 'guide/dark-mode',
                 label: 'Dark mode',
               },
+              {
+                to: 'guide/i18n',
+                label: 'I18n',
+              },
             ],
           },
           {

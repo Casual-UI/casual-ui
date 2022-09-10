@@ -19,4 +19,4 @@ export { key }
 
 export default messages
 
-export type { Locale, Messages }
+export type { Locale, Messages, LocaleItem }

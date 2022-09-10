@@ -2,7 +2,7 @@ import React, { useMemo, useState } from 'react'
 import clsx from 'clsx'
 import type { DateValue, Formatter } from './CDatePicker'
 import dayjs from 'dayjs'
-import { weeks } from 'casual-i18n'
+import useI18n from '../../../hooks/useI18n'
 
 interface CDatePanelProps {
   year?: number
@@ -94,7 +94,7 @@ const CDatePanel = ({
     return {
       items: items,
       start: leftPads.length,
-      end: leftPads.length + middle.length
+      end: leftPads.length + middle.length,
     }
   }, [month, year])
 
@@ -165,11 +165,16 @@ const CDatePanel = ({
     return d.getDate()
   }
 
+  const { locale, messages } = useI18n()
+
   return (
     <div className="c-date-panel c-date-picker--panel">
       <div className="c-date-panel--body">
-        {weeks.map(week => (
-          <div key={week} className="c-date-panel--week-item">
+        {messages.weeks.map(week => (
+          <div
+            key={week}
+            className="c-date-panel--week-item"
+          >
             {week}
           </div>
         ))}

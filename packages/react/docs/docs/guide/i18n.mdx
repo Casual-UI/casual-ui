@@ -1,0 +1,29 @@
+---
+title: I18n
+---
+
+Casual UI provide `useI18n` hook for i18n usage.
+
+Here's an example:
+
+```jsx live
+function Demo() {
+  const { locale, setLocale, messages } = useI18n()
+
+  const options = [
+    { label: 'English', value: 'en' },
+    { label: 'Chinese', value: 'zhCN' },
+  ]
+
+  return (
+    <>
+      <CRadioGroup
+        value={locale}
+        onChange={setLocale}
+        options={options}
+      />
+      <pre>{JSON.stringify(messages)}</pre>
+    </>
+  )
+}
+```
