@@ -3,6 +3,7 @@ $thumb-sizes: ("xs": 12px, "sm": 14px, "md": 16px, "lg": 18px, "xl": 20px);
 .c-slider {
   padding: 12px 0;
   position: relative;
+  cursor: grab;
 
   &--track {
     height: 4px;

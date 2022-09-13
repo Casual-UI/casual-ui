@@ -1,11 +1,9 @@
-<script
-  setup
-  lang="ts"
->
+<script setup lang="ts">
 import { useBEM } from '../../usable/useBEM'
 import { ref } from 'vue'
 import useInjectSize from '../../usable/useInjectSize'
 import { useDefaultVModel } from '../../usable/useVModel'
+import vDrag from '../../directives/vDrag'
 
 interface Props {
   /**
@@ -68,6 +66,8 @@ computedLeft()
 function computedLeft() {
   left.value = `${(100 * (innerValue.value - props.min)) / props.max}%`
 }
+
+function onLeft(delta: number) {}
 </script>
 <template>
   <div
@@ -79,7 +79,7 @@ function computedLeft() {
     "
   >
     <div class="c-slider--track"></div>
-    <div>
+    <div v-drag="{ onLeft }">
       <c-tooltip
         :content="innerValue"
         class="c-slider--thumb"
