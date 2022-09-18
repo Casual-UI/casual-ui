@@ -78,7 +78,7 @@ import 'casual-ui-react/dist/style.css'
 import { CButton } from 'casual-ui-react'
 
 function SomeComponent() {
-  return <OButton label="A Button" />
+  return <CButton label="A Button" />
 }
 ```
 
