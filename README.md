@@ -1,1 +1,1 @@
-This repo has been divided and moved to [Casual UI Organation](https://github.com/Casual-UI/)
+This repo has been divided and moved to [Casual UI Organization](https://github.com/Casual-UI/)
