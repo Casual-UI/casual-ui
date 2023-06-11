@@ -9,4 +9,3 @@ Please notice that the packages are moved to orgnization scope:
 
 * [Casual UI - Vue](https://vue.casual-ui.site/)
 * [Casual UI - Svelte](https://svelte.casual-ui.site/)
-
